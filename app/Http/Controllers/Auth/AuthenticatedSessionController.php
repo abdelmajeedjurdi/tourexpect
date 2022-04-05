@@ -7,6 +7,7 @@ use App\Http\Requests\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -19,6 +20,16 @@ class AuthenticatedSessionController extends Controller
     {
         return view('auth.login');
     }
+    protected function authenticated()
+    {
+        if (Auth::user()->role  == '1') //1 = Admin Login
+        {
+            return redirect('dashboard')->with('status', 'Welcome to your dashboard');
+        } elseif (Auth::user()->role  == '0') // Normal or Default User Login
+        {
+            return redirect('/')->with('status', 'Logged in successfully');
+        }
+    }
 
     /**
      * Handle an incoming authentication request.
@@ -28,6 +39,7 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request)
     {
+        Log::info($request);
         $request->authenticate();
 
         $request->session()->regenerate();

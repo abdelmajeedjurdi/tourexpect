@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\CompanyRequest;
-use App\Http\Resources\CompanyResource;
-use App\Models\Company;
+use App\Http\Requests\CategoryRequest;
+use App\Http\Resources\CategoryResource;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
-class CompanyController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +17,7 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        return CompanyResource::collection(Company::all());
+        return CategoryResource::collection(Category::all());
     }
 
     /**
@@ -26,47 +26,47 @@ class CompanyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CompanyRequest $request)
+    public function store(CategoryRequest $request)
     {
-        $company = Company::create($request->validated());
+        $category = Category::create($request->validated());
 
-        return new CompanyResource($company);
+        return new CategoryResource($category);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Company  $company
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show(Company $company)
+    public function show(Category $category)
     {
-        return new CompanyResource($company);
+        return new CategoryResource($category);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Company  $company
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(CompanyRequest $request, Company $company)
+    public function update(CategoryRequest $request, Category $category)
     {
-        $company->update($request->validated());
+        $category->update($request->validated());
 
-        return new CompanyResource($company);
+        return new CategoryResource($category);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Company  $company
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Company $company)
+    public function destroy(Category $category)
     {
-        $company->delete();
+        $category->delete();
 
         return response()->noContent();
     }

@@ -1,29 +1,29 @@
 import { createRouter, createWebHistory } from "vue-router";
 
-import CompaniesIndex from '../components/companies/CompaniesIndex'
-import CompaniesCreate from '../components/companies/CompaniesCreate'
-import CompaniesEdit from '../components/companies/CompaniesEdit'
+import CategoriesIndex from "../pages/categories/CategoriesIndex";
+import CategoriesCreate from "../pages/categories/CategoriesCreate";
+import CategoriesEdit from "../pages/categories/CategoriesEdit";
 
 const routes = [
     {
-        path: '/dashboard',
-        name: 'companies.index',
-        component: CompaniesIndex
+        path: "/dashboard",
+        name: "categories.index",
+        component: CategoriesIndex,
     },
     {
-        path: '/companies/create',
-        name: 'companies.create',
-        component: CompaniesCreate
+        path: "/categories/create",
+        name: "categories.create",
+        component: CategoriesCreate,
     },
     {
-        path: '/companies/:id/edit',
-        name: 'companies.edit',
-        component: CompaniesEdit,
-        props: true
-    }
-]
+        path: "/categories/:id/edit",
+        name: "categories.edit",
+        component: CategoriesEdit,
+        props: true,
+    },
+];
 
 export default createRouter({
     history: createWebHistory(),
-    routes
-})
+    routes,
+});
