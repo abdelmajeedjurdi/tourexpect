@@ -4,12 +4,13 @@ require("alpinejs");
 
 import { createApp } from "vue";
 import router from "./router";
-import CategoriesIndex from "./pages/categories/CategoriesIndex";
+import BackendView from "./pages/backend/BackendView.vue";
 
 createApp({
     components: {
-        CategoriesIndex,
+        BackendView,
     },
 })
     .use(router)
+    .use(BackendView)
     .mount("#app");

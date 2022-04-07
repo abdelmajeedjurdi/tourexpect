@@ -7,6 +7,9 @@ use App\Http\Requests\CategoryRequest;
 use App\Http\Resources\CategoryResource;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Str;
+
 
 class CategoryController extends Controller
 {
@@ -26,11 +29,31 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CategoryRequest $request)
+    public function store(Request $request)
     {
-        $category = Category::create($request->validated());
+        Log::info($request);
 
-        return new CategoryResource($category);
+        if ($request->hasFile('image')) {
+            $image = $request->image;
+            $imageName = $image->getClientOriginalName();
+            $imageName = time() . '_' . $imageName;
+            $image->move(public_path('/images/categories'), $imageName);
+        } else {
+            $imageName = 'default.jpg';
+        }
+
+        $category = new Category;
+        $category->name_en = $request->name_en;
+        $category->name_ar = $request->name_ar;
+        $category->description_en = $request->description_en;
+        $category->description_ar = $request->description_ar;
+        $category->image = $imageName;
+        $category->is_trending = $request->is_trending == true ? 1 : 0;
+        $category->is_slide = $request->is_slide == true ? 1 : 0;
+        $category->slug = Str::slug($category->name_en, '-');
+        $category->save();
+
+        return ['message' => 'Category Created Successfully'];
     }
 
     /**

@@ -19,9 +19,18 @@ export default function useCategories() {
     };
 
     const storeCategory = async (data) => {
+        let fd = new FormData();
+        fd.append("name_en", data.form.name_en);
+        fd.append("name_ar", data.form.name_ar);
+        fd.append("description_en", data.form.description_en);
+        fd.append("description_ar", data.form.description_ar);
+        fd.append("is_slide", data.form.is_slide);
+        fd.append("is_trending", data.form.is_trending);
+        fd.append("category_img", data.form.image);
+        fd.append("image", data.file);
         errors.value = "";
         try {
-            await axios.post("/api/categories", data);
+            await axios.post("/api/categories", fd);
             await router.push({ name: "categories.index" });
         } catch (e) {
             if (e.response.status === 422) {

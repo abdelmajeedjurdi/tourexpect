@@ -158,7 +158,7 @@
 </template>
 
 <script>
-import useCategories from "../../composables/categories";
+import useCategories from "../../../composables/categories";
 import { onMounted } from "vue";
 
 export default {

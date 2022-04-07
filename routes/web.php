@@ -23,10 +23,14 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
         // return 'this is admin';
         return view('dashboard');
     })->name('dashboard');;
+    Route::view('/dashboard/{any}', 'dashboard')
+        ->middleware('auth')
+        ->where('any', '.*');
 });
 
 require __DIR__ . '/auth.php';
 
-Route::view('/{any}', 'dashboard')
+
+Route::view('/{any}', 'welcome')
     ->middleware('auth')
     ->where('any', '.*');
