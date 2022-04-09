@@ -21,7 +21,7 @@
     </div>
   </div>
 
-  <form class="space-y-6" @submit.prevent="saveCategory">
+  <form class="space-y-6" @submit.prevent="saveProduct">
     <div class="lg:flex justify-between space-x-4">
       <div class="space-y-4 rounded-md w-full">
         <div class="flex justify-between">
@@ -516,12 +516,11 @@
       Create
     </button>
   </form>
-  {{ form }}
 </template>
 
 <script setup>
 import { reactive, ref } from "vue";
-import useCategories from "../../../composables/categories";
+import useProducts from "../../../composables/products";
 
 let live_property = ref(-1);
 const form = reactive({
@@ -560,10 +559,10 @@ const setProperty = () => {
   }
 };
 
-const { errors, storeCategory } = useCategories();
+const { errors, storeProduct } = useProducts();
 
-const saveCategory = async () => {
-  await storeCategory({ form: form, file, properties: properties.value });
+const saveProduct = async () => {
+  await storeProduct({ form: form, file, properties: properties.value });
 };
 let imagePreview = ref(null);
 let file = reactive(null);

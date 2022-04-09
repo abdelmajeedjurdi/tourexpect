@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import CategoriesIndex from "../pages/backend/categories/CategoriesIndex";
 import CategoriesCreate from "../pages/backend/categories/CategoryCreate";
 import CategoriesEdit from "../pages/backend/categories/CategoryEdit";
+import CategoryDetails from "../pages/backend/categories/CategoryDetails";
 
 import Test from "../pages/backend/Test.vue";
 import Dashboard from "../pages/backend/Dashboard.vue";
@@ -27,6 +28,12 @@ const routes = [
         path: "/dashboard/categories/:id/edit",
         name: "categories.edit",
         component: CategoriesEdit,
+        props: true,
+    },
+    {
+        path: "/dashboard/categories/:id/details",
+        name: "categories.details",
+        component: CategoryDetails,
         props: true,
     },
     {

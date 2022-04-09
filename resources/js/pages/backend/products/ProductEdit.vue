@@ -49,7 +49,7 @@
                   focus:ring-opacity-50
                   dark:bg-gray-800
                 "
-                v-model="form.name_en"
+                v-model="category.name_en"
               />
             </div>
           </div>
@@ -78,7 +78,7 @@
                   focus:ring-opacity-50
                   dark:bg-gray-800
                 "
-                v-model="form.name_ar"
+                v-model="category.name_ar"
               />
             </div>
           </div>
@@ -109,7 +109,7 @@
                   focus:ring-opacity-50
                   dark:bg-gray-800
                 "
-                v-model="form.description_en"
+                v-model="category.description_en"
               />
             </div>
           </div>
@@ -139,7 +139,7 @@
                   focus:ring-opacity-50
                   dark:bg-gray-800
                 "
-                v-model="form.description_ar"
+                v-model="category.description_ar"
               />
             </div>
           </div>
@@ -156,7 +156,7 @@
               name="is_slide"
               id="is_slide"
               class="w-5 h-5 rounded ms-2"
-              v-model="form.is_slide"
+              v-model="category.is_slide"
             />
           </div>
           <div class="w-full flex">
@@ -170,19 +170,19 @@
               name="is_trending"
               id="is_trending"
               class="w-5 h-5 rounded ms-2"
-              v-model="form.is_trending"
+              v-model="category.is_trending"
             />
           </div>
         </div>
 
-        <div class="flex w-full mt-2" v-if="imagePreview">
+        <!-- <div class="flex w-full mt-2" v-if="imagePreview">
           <img
             :src="imagePreview"
             alt=""
             class="figure-img img-fluid rounded"
             style="max-height: 100px"
           />
-        </div>
+        </div> -->
         <div class="flex flex-col mt-2">
           <input
             class="
@@ -402,13 +402,17 @@
             />
           </svg>
         </button>
-        <div class="rounded" v-for="(property, i) in properties" :key="i">
+        <div
+          class="rounded"
+          v-for="(property, i) in category.properties"
+          :key="i"
+        >
           <div
             class="w-full px-4 py-1 bg-gray-400 text-black flex justify-between"
           >
             <span>{{ property.title_en }}</span>
             <div class="flex">
-              <span class="cursor-pointer rotate-90" @click="editRow(i)">
+              <span class="cursor-pointer rotate-90" @click="editRow(property)">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   class="h-6 w-6 text-blue-500"
@@ -513,36 +517,62 @@
         disabled:opacity-25
       "
     >
-      Create
+      Update
     </button>
   </form>
-  {{ form }}
 </template>
 
 <script setup>
-import { reactive, ref } from "vue";
 import useCategories from "../../../composables/categories";
-
+import { onMounted, ref } from "vue";
+import { useSwal } from "../../../plugins/useSwal.js";
+const props = defineProps({ id: String });
+const { errors, category, getCategory, updateCategory, deleteProperty } =
+  useCategories();
+let Swal = useSwal();
+onMounted(getCategory(props.id));
 let live_property = ref(-1);
-const form = reactive({
-  name_en: "",
-  name_ar: "",
-  description_en: "",
-  description_ar: "",
-  is_slide: false,
-  is_trending: false,
-  image: "",
-});
 let property = ref({
   title_en: "",
   title_ar: "",
   description_en: "",
   description_ar: "",
 });
-let properties = ref([]);
+const saveCategory = async () => {
+  await updateCategory(props.id);
+};
+let is_editing = ref(false);
+const editRow = (property_) => {
+  is_editing.value = true;
+  property.value = property_;
+};
+const deleteRow = async (property_) => {
+  Swal.fire({
+    title: "Are you sure?",
+    html: "You won't be able to revert  Order, ",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Yes, delete it!",
+  }).then(async (result) => {
+    if (result.isConfirmed) {
+      if (property_.hasOwnProperty("id")) {
+        await deleteProperty(property_.id);
+        await getCategory(props.id);
+
+        console.log(property_.id);
+      } else {
+        category.value.properties.splice(property_, 1);
+        // console.log("hasnt");
+      }
+      Swal.fire("Deleted!", "Deleted Successfully", "success");
+    }
+  });
+};
 const setProperty = () => {
   if (!is_editing.value) {
-    properties.value.push(property.value);
+    category.value.properties.push(property.value);
     property.value = {
       title_en: "",
       title_ar: "",
@@ -558,31 +588,5 @@ const setProperty = () => {
       description_ar: "",
     };
   }
-};
-
-const { errors, storeCategory } = useCategories();
-
-const saveCategory = async () => {
-  await storeCategory({ form: form, file, properties: properties.value });
-};
-let imagePreview = ref(null);
-let file = reactive(null);
-function onFileSelected(event) {
-  file = event.target.files[0];
-  form.image = event.target.files[0].name;
-  let reader = new FileReader();
-  reader.readAsDataURL(file);
-  reader.onload = (event) => {
-    imagePreview.value = event.target.result;
-  };
-}
-const deleteRow = (property) => {
-  properties.value.splice(property, 1);
-};
-let is_editing = ref(false);
-const editRow = (property_id) => {
-  is_editing.value = true;
-  console.log(property_id);
-  property.value = properties.value[property_id];
 };
 </script>
