@@ -22,6 +22,7 @@
   </div>
 
   <form class="space-y-6" @submit.prevent="saveProduct">
+    <h1>Product Create</h1>
     <div class="lg:flex justify-between space-x-4">
       <div class="space-y-4 rounded-md w-full">
         <div class="flex justify-between">
@@ -524,6 +525,7 @@ import useProducts from "../../../composables/products";
 
 let live_property = ref(-1);
 const form = reactive({
+  category_id: 0,
   name_en: "",
   name_ar: "",
   description_en: "",

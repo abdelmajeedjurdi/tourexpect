@@ -13,7 +13,7 @@
         "
       >
         <router-link
-          :to="{ name: 'categories.create' }"
+          :to="{ name: 'category.create' }"
           class="text-sm font-medium text-white"
           >New Category</router-link
         >
@@ -62,7 +62,7 @@
                     <router-link
                       class="w-full ms-2"
                       :to="{
-                        name: 'categories.edit',
+                        name: 'category.edit',
                         params: { id: category.id },
                       }"
                       >Edit
@@ -78,7 +78,7 @@
             </span>
           </div>
           <router-link
-            :to="{ name: 'categories.details', params: { id: category.id } }"
+            :to="{ name: 'category.details', params: { id: category.id } }"
           >
             <img
               :src="'/images/categories/' + category.image"
