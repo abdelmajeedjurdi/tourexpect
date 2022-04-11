@@ -7,6 +7,7 @@ export default function useProducts() {
     const product = ref([]);
     const router = useRouter();
     const errors = ref("");
+    let fd = new FormData();
 
     const getProducts = async () => {
         let response = await axios.get("/api/products");
@@ -19,7 +20,6 @@ export default function useProducts() {
     };
 
     const storeProduct = async (data) => {
-        let fd = new FormData();
         fd.append("category_id", data.form.category_id);
         fd.append("name_en", data.form.name_en);
         fd.append("name_ar", data.form.name_ar);
@@ -57,6 +57,20 @@ export default function useProducts() {
     const destroyProduct = async (id) => {
         await axios.delete("/api/products/" + id);
     };
+    const addGallery = async (images) => {
+        for (var i = 0; i < images.length; i++) {
+            let file = images[i];
+            fd.append("images[" + i + "]", file);
+            console.log("i: " + i);
+        }
+    };
+    const addFiles = async (files) => {
+        for (var i = 0; i < files.length; i++) {
+            let file = files[i];
+            fd.append("files[" + i + "]", file);
+            console.log("i: " + i);
+        }
+    };
 
     return {
         products,
@@ -68,5 +82,7 @@ export default function useProducts() {
         updateProduct,
         destroyProduct,
         deleteProperty,
+        addGallery,
+        addFiles,
     };
 }

@@ -230,6 +230,18 @@
               /></svg
           ></label>
         </div>
+
+        <div class="mt-2">
+          <h2>Gallery</h2>
+          <UploadImages @changed="handleImages" />
+        </div>
+        <div class="mt-2">
+          <h2>Files</h2>
+          <UploadImages
+            @changed="handleFiles"
+            uploadMsg="Click to upload or drop your files here"
+          />
+        </div>
       </div>
       <div class="space-y-4 rounded-md w-full bg-gray-600 p-6 mt-6 xk:mt-0">
         <h3>Properties</h3>
@@ -525,7 +537,6 @@
       Create
     </button>
   </form>
-  {{ form }}
 </template>
 
 <script setup>
@@ -533,6 +544,7 @@ import { onMounted, reactive, ref } from "vue";
 import useProducts from "../../../composables/products";
 import useCategories from "../../../composables/categories";
 import SearchableDropdown from "../../../components/SearchableDropdown.vue";
+import UploadImages from "vue-upload-drop-images";
 
 let live_property = ref(-1);
 const form = reactive({
@@ -572,11 +584,17 @@ const setProperty = () => {
   }
 };
 
-const { errors, storeProduct } = useProducts();
+const { errors, storeProduct, addGallery, addFiles } = useProducts();
 const { categories, getCategories } = useCategories();
 onMounted(() => {
   getCategories();
 });
+const handleImages = (images) => {
+  addGallery(images);
+};
+const handleFiles = (files) => {
+  addFiles(files);
+};
 const saveProduct = async () => {
   await storeProduct({ form: form, file, properties: properties.value });
 };

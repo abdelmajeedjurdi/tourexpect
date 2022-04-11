@@ -5,7 +5,10 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\ProductResource;
 use App\Models\Product;
+use App\Models\ProductFile;
+use App\Models\ProductImage;
 use App\Models\ProductProperty;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
@@ -45,7 +48,7 @@ class ProductController extends Controller
             $image = $request->image;
             $imageName = $image->getClientOriginalName();
             $imageName = time() . '_' . $imageName;
-            $image->move(public_path('/images/Products'), $imageName);
+            $image->move(public_path('/images/products'), $imageName);
         } else {
             $imageName = 'default.jpg';
         }
@@ -69,6 +72,38 @@ class ProductController extends Controller
                 'description_en' => $item['description_en'],
                 'description_ar' => $item['description_ar']
             ]);
+        }
+
+        if ($request->hasFile('images')) {
+
+            foreach ($request->file('images') as $file) {
+
+                $imageName = time() . '_' . $file->getClientOriginalName();
+                $file->move(public_path('/images/products'), $imageName);
+
+                ProductImage::create([
+                    'product_id' => $product->id,
+                    'image' => $imageName,
+                    // 'created_at' => Carbon::now()
+                ]);
+            }
+        }
+
+        if ($request->hasFile('files')) {
+
+            foreach ($request->file('files') as $file) {
+
+                $OriginalName = $file->getClientOriginalName();
+                $imageName = time() . '_' . $file->getClientOriginalName();
+                $file->move(public_path('/files/products'), $imageName);
+
+                ProductFile::create([
+                    'product_id' => $product->id,
+                    'file' => $imageName,
+                    'original_name' => $OriginalName,
+                    // 'created_at' => Carbon::now()
+                ]);
+            }
         }
 
         return ['message' => 'Product Created Successfully'];
