@@ -1,7 +1,7 @@
 <template>
   <div class="w-full">
     <div class="mx-2 flex justify-between place-content-end mb-4">
-      <h3>All Categories</h3>
+      <h3>All Products</h3>
       <div
         class="
           px-4
@@ -31,7 +31,7 @@
         justify-between
       "
     >
-      <div v-for="category in categories" :key="category.id">
+      <div v-for="product in products" :key="product.id">
         <div class="bg-white rounded-lg overflow-hidden mb-10">
           <div class="w-full flex justify-end z-20">
             <span class="rounded-full p-1 transition-all duration-300 absolute">
@@ -62,14 +62,14 @@
                     <router-link
                       class="w-full ms-2"
                       :to="{
-                        name: 'category.edit',
-                        params: { id: category.id },
+                        name: 'product.edit',
+                        params: { id: product.id },
                       }"
                       >Edit
                     </router-link>
                   </li>
                   <li class="w-full text-red-500 hover:bg-gray-300">
-                    <button @click="deleteRow(category)" class="ms-2">
+                    <button @click="deleteRow(product)" class="ms-2">
                       Delete
                     </button>
                   </li>
@@ -78,16 +78,16 @@
             </span>
           </div>
           <router-link
-            :to="{ name: 'category.details', params: { id: category.id } }"
+            :to="{ name: 'product.details', params: { id: product.id } }"
           >
             <img
-              :src="'/images/categories/' + category.image"
+              :src="'/images/products/' + product.image"
               alt="image"
               class="w-full h-48"
             />
             <div class="p-2 h-32">
               <span class="text-base text-blue-500">
-                {{ category.name_en }}
+                {{ product.name_en }}
               </span>
 
               <p
@@ -99,8 +99,8 @@
                 "
               >
                 {{
-                  category.description_en.substring(0, 100) +
-                  (category.description_en.length > 100 ? "...." : "")
+                  product.description_en.substring(0, 100) +
+                  (product.description_en.length > 100 ? "...." : "")
                 }}
               </p>
             </div>
@@ -112,24 +112,24 @@
 </template>
 
 <script setup>
-import useCategories from "../../../composables/categories";
+import useProducts from "../../../composables/products";
 import { onMounted } from "vue";
 import { useSwal } from "../../../plugins/useSwal.js";
 
-const { categories, getCategories, destroyCategory } = useCategories();
+const { products, getProducts, destroyProduct } = useProducts();
 
 let Swal = useSwal();
-onMounted(getCategories);
+onMounted(getProducts);
 
-const deleteCategory = async (id) => {
+const deleteProduct = async (id) => {
   if (!window.confirm("Are you sure?")) {
     return;
   }
 
-  await destroyCategory(id);
-  await getCategories();
+  await destroyProduct(id);
+  await getProducts();
 };
-const deleteRow = (category_) => {
+const deleteRow = (product_) => {
   Swal.fire({
     title: "Are you sure?",
     html: "You won't be able to revert   Order, ",
@@ -140,8 +140,8 @@ const deleteRow = (category_) => {
     confirmButtonText: "Yes, delete it!",
   }).then(async (result) => {
     if (result.isConfirmed) {
-      await destroyCategory(category_.id);
-      await getCategories();
+      await destroyProduct(product_.id);
+      await getProducts();
       Swal.fire("Deleted!", "Order has been deleted.", "success");
     }
   });

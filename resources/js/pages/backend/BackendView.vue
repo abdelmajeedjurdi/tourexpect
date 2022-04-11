@@ -16,6 +16,7 @@
       <div
         class="
           fixed
+          z-10
           flex flex-col
           top-0
           left-0

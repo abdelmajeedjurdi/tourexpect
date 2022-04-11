@@ -23,9 +23,17 @@
 
   <form class="space-y-6" @submit.prevent="saveProduct">
     <h1>Product Create</h1>
+
     <div class="lg:flex justify-between space-x-4">
       <div class="space-y-4 rounded-md w-full">
         <div class="flex justify-between">
+          <div>
+            <searchable-dropdown
+              :options="categories"
+              @selected="selectCategory($event)"
+              class="mt-6 me-2"
+            />
+          </div>
           <div class="w-full me-2">
             <label
               for="name_en"
@@ -517,11 +525,14 @@
       Create
     </button>
   </form>
+  {{ form }}
 </template>
 
 <script setup>
-import { reactive, ref } from "vue";
+import { onMounted, reactive, ref } from "vue";
 import useProducts from "../../../composables/products";
+import useCategories from "../../../composables/categories";
+import SearchableDropdown from "../../../components/SearchableDropdown.vue";
 
 let live_property = ref(-1);
 const form = reactive({
@@ -562,7 +573,10 @@ const setProperty = () => {
 };
 
 const { errors, storeProduct } = useProducts();
-
+const { categories, getCategories } = useCategories();
+onMounted(() => {
+  getCategories();
+});
 const saveProduct = async () => {
   await storeProduct({ form: form, file, properties: properties.value });
 };
@@ -585,5 +599,10 @@ const editRow = (property_id) => {
   is_editing.value = true;
   console.log(property_id);
   property.value = properties.value[property_id];
+};
+
+const selectCategory = (category_id) => {
+  form.category_id = category_id;
+  console.log(category_id);
 };
 </script>

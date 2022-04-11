@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class ProductProperty extends Model
 {
     use HasFactory;
-    protected $fillable = ['title_en', 'title_ar', 'description_en', 'description_ar', 'category_id'];
+    protected $fillable = ['product_id', 'title_en', 'title_ar', 'description_en', 'description_ar', 'category_id'];
 }

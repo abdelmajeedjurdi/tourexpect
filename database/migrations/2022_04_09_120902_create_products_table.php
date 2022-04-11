@@ -20,6 +20,7 @@ class CreateProductsTable extends Migration
             $table->string('name_ar');
             $table->longText('description_en');
             $table->longText('description_ar');
+            $table->string('slug');
             $table->string('thumbnail')->default('default.jpg');
             $table->timestamps();
         });

@@ -20,12 +20,11 @@ export default function useProducts() {
 
     const storeProduct = async (data) => {
         let fd = new FormData();
+        fd.append("category_id", data.form.category_id);
         fd.append("name_en", data.form.name_en);
         fd.append("name_ar", data.form.name_ar);
         fd.append("description_en", data.form.description_en);
         fd.append("description_ar", data.form.description_ar);
-        fd.append("is_slide", data.form.is_slide);
-        fd.append("is_trending", data.form.is_trending);
         fd.append("product_img", data.form.image);
         fd.append("image", data.file);
         fd.append("properties", JSON.stringify(data.properties));
