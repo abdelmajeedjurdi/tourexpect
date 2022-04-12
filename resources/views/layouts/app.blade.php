@@ -36,4 +36,18 @@
     </div>
 </body>
 
+<script>
+    document.getElementById("lang").innerHTML = localStorage.getItem('lang') == 'en' ? 'العربية' : 'English';
+
+    function changeLang() {
+        if (localStorage.getItem('lang') == 'en')
+            localStorage.setItem('lang', 'ar')
+        else {
+
+            localStorage.setItem('lang', 'en')
+        }
+        location.reload()
+    }
+</script>
+
 </html>

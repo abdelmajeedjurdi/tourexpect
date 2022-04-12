@@ -10,11 +10,19 @@
                 <ul class="navbar-nav  justify-content-end ms-auto">
 
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fa fa-user me-sm-1"></i>
-                            <span class="d-sm-inline d-none">{{ Auth::user()->name }}</span>
-                        </a>
+                        @if (Auth::user())
+                            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa fa-user me-sm-1"></i>
+                                <span class="d-sm-inline d-none">{{ Auth::user()->name }}</span>
+                            </a>
+                        @endif
+                        @if (!Auth::user())
+                            <a style="text-decoration: none !important;" href="{{ route('login') }}"
+                                class="text-sm text-gray-200 dark:text-gray-500 underline">Log in</a>
+                            <a style="text-decoration: none !important;" href="{{ route('register') }}"
+                                class="ml-4 text-sm text-gray-200 dark:text-gray-500 underline">Register</a>
+                        @endif
                         <ul class="dropdown-menu " aria-labelledby="navbarDropdown">
                             <li>
                                 <a class="dropdown-item" href="#">{{ __('Profile') }}</a>
@@ -23,7 +31,7 @@
                             <li>
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
-                                                                             document.getElementById('logout-form').submit()">
+                                                                         document.getElementById('logout-form').submit()">
                                     {{ __('Logout') }}
                                 </a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST"
@@ -33,6 +41,12 @@
                             </li>
                         </ul>
                     </li>
+                    <li class="nav-item dropdown">
+                        <span id="lang"
+                            class="ml-4 px-2 py-1 rounded text-sm text-gray-200 dark:text-gray-500 cursor-pointer border"
+                            onclick="changeLang()"> Arabic </span>
+                    </li>
+
                     <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
                         <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
                             <div class="sidenav-toggler-inner">

@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('frontend');
 });
 
 
@@ -31,6 +31,6 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
 require __DIR__ . '/auth.php';
 
 
-Route::view('/{any}', 'welcome')
+Route::view('/{any}', 'frontend')
     ->middleware('auth')
     ->where('any', '.*');

@@ -9,6 +9,7 @@ import ProductsIndex from "../pages/backend/products/ProductsIndex";
 import ProductCreate from "../pages/backend/products/ProductCreate";
 import ProductEdit from "../pages/backend/products/ProductEdit";
 import ProductDetails from "../pages/backend/products/ProductDetails";
+import FrontendView from "../pages/frontend/FrontendView";
 
 import Test from "../pages/backend/Test.vue";
 import Dashboard from "../pages/backend/Dashboard.vue";
@@ -66,10 +67,12 @@ const routes = [
         props: true,
     },
 
+    // (((((((((((((((((--Front-End--))))))))))))))))),
+
     {
-        path: "/dashboard/test",
-        name: "test",
-        component: Test,
+        path: "/",
+        name: "front-end",
+        component: FrontendView,
     },
 ];
 
