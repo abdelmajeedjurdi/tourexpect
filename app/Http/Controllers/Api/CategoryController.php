@@ -23,6 +23,10 @@ class CategoryController extends Controller
     {
         return CategoryResource::collection(Category::all());
     }
+    public function getSlides()
+    {
+        return CategoryResource::collection(Category::where('is_slide', 1)->get());
+    }
 
     /**
      * Store a newly created resource in storage.

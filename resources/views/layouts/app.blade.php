@@ -25,9 +25,9 @@
 
 </head>
 
-<body class="font-sans antialiased">
+<body class="font-sans antialiased bg-dark">
     <div class="bg-dark" id="app">
-        @include('layouts.navigation')
+
 
         <!-- Page Content -->
         <main>
@@ -35,19 +35,5 @@
         </main>
     </div>
 </body>
-
-<script>
-    document.getElementById("lang").innerHTML = localStorage.getItem('lang') == 'en' ? 'العربية' : 'English';
-
-    function changeLang() {
-        if (localStorage.getItem('lang') == 'en')
-            localStorage.setItem('lang', 'ar')
-        else {
-
-            localStorage.setItem('lang', 'en')
-        }
-        location.reload()
-    }
-</script>
 
 </html>

@@ -9,9 +9,13 @@ import ProductsIndex from "../pages/backend/products/ProductsIndex";
 import ProductCreate from "../pages/backend/products/ProductCreate";
 import ProductEdit from "../pages/backend/products/ProductEdit";
 import ProductDetails from "../pages/backend/products/ProductDetails";
+
 import FrontendView from "../pages/frontend/FrontendView";
+import Category from "../pages/frontend/categories/CategoryDetails";
+import Categories from "../pages/frontend/categories/CategoriesList";
 
 import Test from "../pages/backend/Test.vue";
+import Hero from "../components/HeroCarousel";
 import Dashboard from "../pages/backend/Dashboard.vue";
 
 const routes = [
@@ -71,8 +75,18 @@ const routes = [
 
     {
         path: "/",
-        name: "front-end",
-        component: FrontendView,
+        name: "categories",
+        component: Categories,
+    },
+    {
+        path: "/cat",
+        name: "cat-details",
+        component: Category,
+    },
+    {
+        path: "/test",
+        name: "test",
+        component: Hero,
     },
 ];
 

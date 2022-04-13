@@ -5,12 +5,17 @@ import { useRouter } from "vue-router";
 export default function useCategories() {
     const categories = ref([]);
     const category = ref([]);
+    const slides = ref([]);
     const router = useRouter();
     const errors = ref("");
 
     const getCategories = async () => {
         let response = await axios.get("/api/categories");
         categories.value = response.data.data;
+    };
+    const getSlides = async () => {
+        let response = await axios.get("/api/categories-slides");
+        slides.value = response.data.data;
     };
 
     const getCategory = async (id) => {
@@ -86,5 +91,7 @@ export default function useCategories() {
         updateCategory,
         destroyCategory,
         deleteProperty,
+        getSlides,
+        slides,
     };
 }

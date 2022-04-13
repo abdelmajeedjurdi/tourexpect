@@ -23,3 +23,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::apiResource('categories', CategoryController::class);
 Route::apiResource('products', ProductController::class);
 Route::delete('cat-property/{id}', [CategoryController::class, 'deleteProperty']);
+Route::get('categories-slides', [CategoryController::class, 'getSlides']);
