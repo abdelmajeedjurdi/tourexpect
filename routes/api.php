@@ -24,3 +24,4 @@ Route::apiResource('categories', CategoryController::class);
 Route::apiResource('products', ProductController::class);
 Route::delete('cat-property/{id}', [CategoryController::class, 'deleteProperty']);
 Route::get('categories-slides', [CategoryController::class, 'getSlides']);
+Route::get('category/{slug}', [CategoryController::class, 'getCategoryDetails']);

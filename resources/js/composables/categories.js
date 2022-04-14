@@ -8,6 +8,7 @@ export default function useCategories() {
     const slides = ref([]);
     const router = useRouter();
     const errors = ref("");
+    const products = ref([]);
 
     const getCategories = async () => {
         let response = await axios.get("/api/categories");
@@ -21,6 +22,12 @@ export default function useCategories() {
     const getCategory = async (id) => {
         let response = await axios.get("/api/categories/" + id);
         category.value = response.data.data;
+    };
+    const getCategoryDetails = async (slug) => {
+        let response = await axios.get("/api/category/" + slug);
+        console.log(response.data);
+        category.value = response.data.category;
+        products.value = response.data.products;
     };
 
     const storeCategory = async (data) => {
@@ -93,5 +100,7 @@ export default function useCategories() {
         deleteProperty,
         getSlides,
         slides,
+        getCategoryDetails,
+        products,
     };
 }

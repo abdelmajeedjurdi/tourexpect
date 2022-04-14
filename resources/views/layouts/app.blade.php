@@ -35,5 +35,15 @@
         </main>
     </div>
 </body>
+<style>
+    /* @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@500'); */
+    @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400&display=swap');
+
+    * {
+        font-family: 'Tajawal', sans-serif;
+        line-height: 1.6;
+    }
+
+</style>
 
 </html>

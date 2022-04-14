@@ -13,6 +13,7 @@ import ProductDetails from "../pages/backend/products/ProductDetails";
 import FrontendView from "../pages/frontend/FrontendView";
 import Category from "../pages/frontend/categories/CategoryDetails";
 import Categories from "../pages/frontend/categories/CategoriesList";
+import Product from "../pages/frontend/products/ProductDetails";
 
 import Test from "../pages/backend/Test.vue";
 import Hero from "../components/HeroCarousel";
@@ -79,9 +80,16 @@ const routes = [
         component: Categories,
     },
     {
-        path: "/cat",
-        name: "cat-details",
+        path: "/categories/:slug",
+        name: "category",
         component: Category,
+        props: true,
+    },
+    {
+        path: "/categories/products/:slug",
+        name: "product",
+        component: Product,
+        props: true,
     },
     {
         path: "/test",

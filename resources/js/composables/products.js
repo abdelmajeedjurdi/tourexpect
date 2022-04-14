@@ -18,6 +18,10 @@ export default function useProducts() {
         let response = await axios.get("/api/products/" + id);
         product.value = response.data.data;
     };
+    const getProductDetails = async (id) => {
+        let response = await axios.get("/api/products/" + id);
+        product.value = response.data.data;
+    };
 
     const storeProduct = async (data) => {
         fd.append("category_id", data.form.category_id);
@@ -84,5 +88,6 @@ export default function useProducts() {
         deleteProperty,
         addGallery,
         addFiles,
+        getProductDetails,
     };
 }

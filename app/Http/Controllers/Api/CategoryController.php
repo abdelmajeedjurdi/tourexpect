@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryRequest;
 use App\Http\Resources\CategoryResource;
+use App\Http\Resources\ProductResource;
 use App\Models\Category;
 use App\Models\CategoryProperty;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
@@ -81,6 +83,13 @@ class CategoryController extends Controller
     public function show(Category $category)
     {
         return new CategoryResource($category);
+    }
+    public function getCategoryDetails($slug)
+    {
+        $category
+            = new CategoryResource(Category::where('slug', $slug)->first());
+        $products = ProductResource::collection(Product::where('category_id', $category->id)->get());
+        return ['category' => $category, 'products' => $products];
     }
 
     /**

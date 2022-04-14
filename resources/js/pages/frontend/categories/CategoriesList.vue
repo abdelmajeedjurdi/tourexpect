@@ -5,18 +5,10 @@
     <div class="flex justify-center items-center">
       <!--- more free and premium Tailwind CSS components at https://tailwinduikit.com/ --->
       <div
-        class="
-          2xl:mx-auto 2xl:container
-          lg:px-20  
-            md:px-6
-           
-          px-4
-          w-96
-          sm:w-auto
-        "
+        class="2xl:mx-auto 2xl:container lg:px-20 md:px-6 px-4 w-96 sm:w-auto"
       >
         <div class="lg:flex items-stretch md:mt-12 mt-8">
-          <div class="grid grid-cols-2 items-center">
+          <div class="grid grid-cols-1 sm:grid-cols-2 items-center">
             <div
               class="relative h-full brightness"
               v-for="category in categories"
@@ -24,7 +16,8 @@
             >
               <router-link
                 :to="{
-                  name: 'cat-details',
+                  name: 'category',
+                  params: { slug: category['slug'] },
                 }"
               >
                 <div>
@@ -62,8 +55,9 @@
 import { onMounted, ref } from "@vue/runtime-core";
 import useCategories from "../../../composables/categories";
 import HeroCarousel from "../../../components/HeroCarousel";
+import { inject } from "vue";
 let { categories, getCategories, slides, getSlides } = useCategories();
-let lang = ref(localStorage.getItem("lang") || "en");
+let lang = ref(inject("lang") || "en");
 onMounted(() => {
   getCategories();
   getSlides();

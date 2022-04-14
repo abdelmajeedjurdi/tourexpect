@@ -25,9 +25,37 @@
           alt="test"
           class="slides w-full"
         />
-        <div class="carousel-caption d-none d-md-block">
-          <h5>{{ "Header" + i }}</h5>
-          <p>{{ "This is description " + i }}</p>
+        <div
+          class="
+            absolute
+            top-1
+            text-white
+            d-md-block
+            w-full
+            p-10
+            sm:px-32 sm:py-20
+            lg:py-48 lg:px-72
+          "
+          :class="lang == 'ar' ? 'text-right' : 'text-left'"
+        >
+          <h5 class="text-3xl sm:text-5xl">
+            {{ slide["name_" + lang] }}
+          </h5>
+          <p class="text-xl sm:w-2/3 lg:w-1/2">
+            {{
+              slide["description_" + lang].substring(0, 150) +
+              (slide["description_" + lang].length > 150 ? "...." : "")
+            }}
+          </p>
+          <router-link
+            :to="{
+              name: 'category',
+              params: { slug: slide['slug'] },
+            }"
+            class="bg-red-500 px-8 py-2 text-white rounded-2xl w-full"
+          >
+            {{ $t("more_details") }}</router-link
+          >
         </div>
       </div>
     </div>
@@ -58,9 +86,11 @@
 <script setup>
 import { ref } from "@vue/reactivity";
 import { onMounted } from "@vue/runtime-core";
+import { inject } from "vue";
 const props = defineProps({
   slides: Array,
 });
+let lang = inject("lang");
 let active_slide = ref(0);
 onMounted(() => {
   updateCount();

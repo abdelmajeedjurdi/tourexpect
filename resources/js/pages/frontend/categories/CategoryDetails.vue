@@ -1,3 +1,63 @@
 <template>
-  <h1 class="text-white">Hello from Details</h1>
+  <div class="text-gray-200 container lg:px-20 md:px-6 px-4 w-96 sm:w-auto">
+    <div class="md:my-12 my-12">
+      <h2 class="font-bold mb-2">{{ category["name_" + lang] }}</h2>
+      <p class="lg:w-1/2">{{ category["description_" + lang] }}</p>
+    </div>
+
+    <div
+      class="
+        grid
+        gap-2
+        grid-cols-1
+        sm:grid-cols-2
+        md:grid-cols-3
+        lg:grid-cols-4
+        justify-between
+      "
+    >
+      <div v-for="product in products" :key="product.id">
+        <div class="overflow-hidden mb-10">
+          <router-link
+            :to="{
+              name: 'product',
+              params: { slug: product['slug'] },
+            }"
+          >
+            <img
+              :src="'/images/products/' + product.image"
+              alt="image"
+              class="w-full h-48"
+            />
+            <div class="p-2 text-center">
+              <h2 class="text-base text-gray-200 mb-0 uppercase">
+                {{ product["name_" + lang] }}
+              </h2>
+            </div>
+          </router-link>
+        </div>
+      </div>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 sm:gap-10 lg:gap-36">
+      <div
+        class="my-2"
+        v-for="property in category.properties"
+        :key="property.id"
+      >
+        <h3 class="uppercase">{{ property["title_" + lang] }}</h3>
+        <p>{{ property["description_" + lang] }}</p>
+      </div>
+    </div>
+  </div>
 </template>
+<script setup>
+import { onMounted } from "@vue/runtime-core";
+import { inject } from "vue";
+import useCategories from "../../../composables/categories";
+const props = defineProps({ slug: String });
+const { getCategoryDetails, category, products } = useCategories();
+const lang = inject("lang");
+onMounted(() => {
+  getCategoryDetails(props.slug);
+});
+</script>

@@ -18,6 +18,7 @@ class ProductResource extends JsonResource
     {
         return [
             'id'  => $this->id,
+            'slug'  => $this->slug,
             'category_id' => $this->category_id,
             'category' => Category::where('id', $this->category_id)->select('name_en', 'name_ar', 'id')->first(),
             'name_en'  => $this->name_en,

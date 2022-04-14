@@ -40,6 +40,9 @@ createApp({
         BackendView,
         FrontendView,
     },
+    provide: {
+        lang: localStorage.getItem("lang") || "en",
+    },
 })
     .use(router)
     .use(BackendView)

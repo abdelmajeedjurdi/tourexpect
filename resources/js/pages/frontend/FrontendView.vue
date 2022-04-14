@@ -7,6 +7,7 @@
   </div>
 </template>
 <script setup>
+import { inject } from "vue";
 import NavigationBar from "./NavigationBar.vue";
-let lang = localStorage.getItem("lang") || "en";
+let lang = inject("lang");
 </script>
