@@ -17,9 +17,10 @@ export default function useProducts() {
     const getProduct = async (id) => {
         let response = await axios.get("/api/products/" + id);
         product.value = response.data.data;
+        console.log(product.value);
     };
-    const getProductDetails = async (id) => {
-        let response = await axios.get("/api/products/" + id);
+    const getProductDetails = async (slug) => {
+        let response = await axios.get("/api/product/" + slug);
         product.value = response.data.data;
     };
 
@@ -43,10 +44,23 @@ export default function useProducts() {
         }
     };
 
-    const updateProduct = async (id) => {
+    const updateProduct = async (id, data) => {
+        fd.append("_method", "patch");
+        fd.append("category_id", data.form.category_id);
+        fd.append("name_en", data.form.name_en);
+        fd.append("name_ar", data.form.name_ar);
+        fd.append("description_en", data.form.description_en);
+        fd.append("description_ar", data.form.description_ar);
+        fd.append("product_img", data.form.image);
+        fd.append("new_image", data.file);
+        fd.append("properties", JSON.stringify(data.properties));
         errors.value = "";
         try {
-            await axios.put("/api/products/" + id, product.value);
+            await axios.post("/api/products/" + id, fd, {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                },
+            });
             await router.push({ name: "products.index" });
         } catch (e) {
             if (e.response.status === 422) {
@@ -65,7 +79,6 @@ export default function useProducts() {
         for (var i = 0; i < images.length; i++) {
             let file = images[i];
             fd.append("images[" + i + "]", file);
-            console.log("i: " + i);
         }
     };
     const addFiles = async (files) => {
@@ -74,6 +87,14 @@ export default function useProducts() {
             fd.append("files[" + i + "]", file);
             console.log("i: " + i);
         }
+    };
+    const destroyImage = async (id) => {
+        console.log(id);
+        await axios.delete("/api/delete-image/" + id);
+    };
+    const destroyFile = async (id) => {
+        console.log(id);
+        await axios.delete("/api/delete-file/" + id);
     };
 
     return {
@@ -89,5 +110,7 @@ export default function useProducts() {
         addGallery,
         addFiles,
         getProductDetails,
+        destroyImage,
+        destroyFile,
     };
 }

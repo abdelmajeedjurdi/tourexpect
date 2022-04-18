@@ -32,5 +32,4 @@ require __DIR__ . '/auth.php';
 
 
 Route::view('/{any}', 'frontend')
-    ->middleware('auth')
     ->where('any', '.*');

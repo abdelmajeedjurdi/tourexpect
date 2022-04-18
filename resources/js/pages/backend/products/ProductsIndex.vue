@@ -60,7 +60,8 @@
                 <ul class="dropdown-menu">
                   <li class="w-full hover:bg-gray-300">
                     <router-link
-                      class="w-full ms-2"
+                      style="padding-right: 70%"
+                      class="w-full ms-1"
                       :to="{
                         name: 'product.edit',
                         params: { id: product.id },
@@ -69,7 +70,10 @@
                     </router-link>
                   </li>
                   <li class="w-full text-red-500 hover:bg-gray-300">
-                    <button @click="deleteRow(product)" class="ms-2">
+                    <button
+                      @click="deleteRow(product)"
+                      class="w-full text-left ms-1"
+                    >
                       Delete
                     </button>
                   </li>

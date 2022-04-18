@@ -60,6 +60,7 @@
                 <ul class="dropdown-menu">
                   <li class="w-full hover:bg-gray-300">
                     <router-link
+                      style="padding-right: 70%"
                       class="w-full ms-2"
                       :to="{
                         name: 'category.edit',

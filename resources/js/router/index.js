@@ -10,10 +10,15 @@ import ProductCreate from "../pages/backend/products/ProductCreate";
 import ProductEdit from "../pages/backend/products/ProductEdit";
 import ProductDetails from "../pages/backend/products/ProductDetails";
 
-import FrontendView from "../pages/frontend/FrontendView";
+import AccessoriesIndex from "../pages/backend/accessories/AccessoriesIndex";
+import AccessoryCreate from "../pages/backend/accessories/AccessoryCreate";
+import AccessoryEdit from "../pages/backend/accessories/AccessoryEdit";
+import AccessoryDetails from "../pages/backend/accessories/AccessoryDetails";
+
 import Category from "../pages/frontend/categories/CategoryDetails";
 import Categories from "../pages/frontend/categories/CategoriesList";
 import Product from "../pages/frontend/products/ProductDetails";
+import Accessory from "../pages/frontend/accessories/AccessoryDetails";
 
 import Test from "../pages/backend/Test.vue";
 import Hero from "../components/HeroCarousel";
@@ -71,6 +76,29 @@ const routes = [
         component: ProductDetails,
         props: true,
     },
+    // (((((((((((((((((--Products--)))))))))))))))))
+    {
+        path: "/dashboard/accessories",
+        name: "accessories.index",
+        component: AccessoriesIndex,
+    },
+    {
+        path: "/dashboard/accessories/create",
+        name: "accessory.create",
+        component: AccessoryCreate,
+    },
+    {
+        path: "/dashboard/accessories/:id/edit",
+        name: "accessory.edit",
+        component: AccessoryEdit,
+        props: true,
+    },
+    {
+        path: "/dashboard/accessories/:id/details",
+        name: "accessory.details",
+        component: AccessoryDetails,
+        props: true,
+    },
 
     // (((((((((((((((((--Front-End--))))))))))))))))),
 
@@ -92,9 +120,16 @@ const routes = [
         props: true,
     },
     {
+        path: "/categories/accessories/:slug",
+        name: "accessory",
+        component: Accessory,
+        props: true,
+    },
+    {
         path: "/test",
         name: "test",
         component: Hero,
+        props: true,
     },
 ];
 

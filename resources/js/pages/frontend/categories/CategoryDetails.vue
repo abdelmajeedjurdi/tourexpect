@@ -1,7 +1,7 @@
 <template>
   <div class="text-gray-200 container lg:px-20 md:px-6 px-4 w-96 sm:w-auto">
     <div class="md:my-12 my-12">
-      <h2 class="font-bold mb-2">{{ category["name_" + lang] }}</h2>
+      <h2 class="font-bold mb-2 uppercase">{{ category["name_" + lang] }}</h2>
       <p class="lg:w-1/2">{{ category["description_" + lang] }}</p>
     </div>
 
@@ -48,6 +48,43 @@
         <p>{{ property["description_" + lang] }}</p>
       </div>
     </div>
+    <div class="my-12">
+      <h2 class="font-bold mb-2 uppercase">{{ $t("accessories") }}</h2>
+      <div
+        class="
+          mt-6
+          grid
+          gap-2
+          grid-cols-1
+          sm:grid-cols-2
+          md:grid-cols-3
+          lg:grid-cols-4
+          justify-between
+        "
+      >
+        <div v-for="accessory in accessories" :key="accessory.id">
+          <div class="overflow-hidden mb-10">
+            <router-link
+              :to="{
+                name: 'accessory',
+                params: { slug: accessory['slug'] },
+              }"
+            >
+              <img
+                :src="'/images/accessories/' + accessory.image"
+                alt="image"
+                class="w-full h-48"
+              />
+              <div class="p-2 text-center">
+                <h2 class="text-base text-gray-200 mb-0 uppercase">
+                  {{ accessory["name_" + lang] }}
+                </h2>
+              </div>
+            </router-link>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 <script setup>
@@ -55,7 +92,7 @@ import { onMounted } from "@vue/runtime-core";
 import { inject } from "vue";
 import useCategories from "../../../composables/categories";
 const props = defineProps({ slug: String });
-const { getCategoryDetails, category, products } = useCategories();
+const { getCategoryDetails, category, products, accessories } = useCategories();
 const lang = inject("lang");
 onMounted(() => {
   getCategoryDetails(props.slug);

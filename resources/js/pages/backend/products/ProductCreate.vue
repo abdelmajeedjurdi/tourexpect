@@ -153,36 +153,6 @@
             </div>
           </div>
         </div>
-        <div class="flex justify-between w-96">
-          <div class="w-full me-2 flex">
-            <label
-              for="is_slide"
-              class="block text-sm font-medium text-gray-700 dark:text-gray-200"
-              >Is Slide</label
-            >
-            <input
-              type="checkbox"
-              name="is_slide"
-              id="is_slide"
-              class="w-5 h-5 rounded ms-2"
-              v-model="form.is_slide"
-            />
-          </div>
-          <div class="w-full flex">
-            <label
-              for="is_trending"
-              class="block text-sm font-medium text-gray-700 dark:text-gray-200"
-              >Trending</label
-            >
-            <input
-              type="checkbox"
-              name="is_trending"
-              id="is_trending"
-              class="w-5 h-5 rounded ms-2"
-              v-model="form.is_trending"
-            />
-          </div>
-        </div>
 
         <div class="flex w-full mt-2" v-if="imagePreview">
           <img
@@ -553,8 +523,6 @@ const form = reactive({
   name_ar: "",
   description_en: "",
   description_ar: "",
-  is_slide: false,
-  is_trending: false,
   image: "",
 });
 let property = ref({

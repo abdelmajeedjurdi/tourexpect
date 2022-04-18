@@ -3,6 +3,8 @@
 namespace App\Http\Resources;
 
 use App\Models\Category;
+use App\Models\ProductFile;
+use App\Models\ProductImage;
 use App\Models\ProductProperty;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -26,7 +28,9 @@ class ProductResource extends JsonResource
             'image'  => $this->thumbnail,
             'description_en'  => $this->description_en,
             'description_ar'  => $this->description_ar,
-            'properties' => ProductProperty::where('product_id', $this->id)->get()
+            'properties' => ProductProperty::where('product_id', $this->id)->get(),
+            'files' => ProductFile::where('product_id', $this->id)->get(),
+            'images' => ProductImage::where('product_id', $this->id)->get()
         ];
     }
 }

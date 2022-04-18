@@ -9,6 +9,7 @@ export default function useCategories() {
     const router = useRouter();
     const errors = ref("");
     const products = ref([]);
+    const accessories = ref([]);
 
     const getCategories = async () => {
         let response = await axios.get("/api/categories");
@@ -28,10 +29,13 @@ export default function useCategories() {
         console.log(response.data);
         category.value = response.data.category;
         products.value = response.data.products;
+        accessories.value = response.data.accessories;
+        console.log(accessories.value);
     };
 
     const storeCategory = async (data) => {
         let fd = new FormData();
+        fd.append("category", data.form.category);
         fd.append("name_en", data.form.name_en);
         fd.append("name_ar", data.form.name_ar);
         fd.append("description_en", data.form.description_en);
@@ -56,6 +60,7 @@ export default function useCategories() {
         console.log(data);
         let fd = new FormData();
         fd.append("_method", "patch");
+        fd.append("category", data.form.category);
         fd.append("name_en", data.form.name_en);
         fd.append("name_ar", data.form.name_ar);
         fd.append("description_en", data.form.description_en);
@@ -102,5 +107,6 @@ export default function useCategories() {
         slides,
         getCategoryDetails,
         products,
+        accessories,
     };
 }

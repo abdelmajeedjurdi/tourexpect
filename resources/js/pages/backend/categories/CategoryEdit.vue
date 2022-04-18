@@ -24,6 +24,28 @@
   <form class="space-y-6" @submit.prevent="saveCategory">
     <div class="lg:flex justify-between space-x-4">
       <div class="space-y-4 rounded-md w-full">
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="category"
+            id="flag"
+            value="flag"
+            v-model="category.category"
+          />
+          <label class="form-check-label" for="flag">Flag</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="category"
+            id="sign"
+            value="sign"
+            v-model="category.category"
+          />
+          <label class="form-check-label" for="sign">Sign</label>
+        </div>
         <div class="flex justify-between">
           <div class="w-full me-2">
             <label

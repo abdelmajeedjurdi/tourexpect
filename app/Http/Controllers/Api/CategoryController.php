@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryRequest;
+use App\Http\Resources\AccessoryResource;
 use App\Http\Resources\CategoryResource;
 use App\Http\Resources\ProductResource;
+use App\Models\Accessory;
 use App\Models\Category;
 use App\Models\CategoryProperty;
 use App\Models\Product;
@@ -50,6 +52,7 @@ class CategoryController extends Controller
         }
 
         $category = new Category;
+        $category->category = $request->category;
         $category->name_en = $request->name_en;
         $category->name_ar = $request->name_ar;
         $category->description_en = $request->description_en;
@@ -89,7 +92,8 @@ class CategoryController extends Controller
         $category
             = new CategoryResource(Category::where('slug', $slug)->first());
         $products = ProductResource::collection(Product::where('category_id', $category->id)->get());
-        return ['category' => $category, 'products' => $products];
+        $accessories = AccessoryResource::collection(Accessory::where('category_id', $category->id)->get());
+        return ['category' => $category, 'products' => $products, 'accessories' => $accessories];
     }
 
     /**
@@ -102,7 +106,6 @@ class CategoryController extends Controller
     public function update(Request $request, Category $category)
     {
 
-        Log::info($request);
         $path = public_path() . '/images/categories/';
         //code for remove old image
         if ($request->new_image != 'null' && $request->new_image != 'default.jpg') {
@@ -119,6 +122,7 @@ class CategoryController extends Controller
             $imageName = $request->category_img;
         }
         $category->update([
+            'category' => $request->category,
             'name_en' => $request->name_en,
             'name_ar' => $request->name_ar,
             'description_en' => $request->description_en,
@@ -160,6 +164,9 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         Log::info($category);
+        if ($category->image !== 'default.jpg' || $category->image !== '')
+            unlink(public_path() . '/images/categories/' . $category->image);
+        CategoryProperty::where('category_id', $category->id)->delete();
         $category->delete();
 
         return response()->noContent();

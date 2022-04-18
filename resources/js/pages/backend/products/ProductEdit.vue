@@ -21,7 +21,7 @@
     </div>
   </div>
 
-  <form class="space-y-6" @submit.prevent="saveCategory">
+  <form class="space-y-6" @submit.prevent="saveProduct">
     <div class="lg:flex justify-between space-x-4">
       <div class="space-y-4 rounded-md w-full">
         <div class="flex justify-between">
@@ -49,7 +49,7 @@
                   focus:ring-opacity-50
                   dark:bg-gray-800
                 "
-                v-model="category.name_en"
+                v-model="product.name_en"
               />
             </div>
           </div>
@@ -78,7 +78,7 @@
                   focus:ring-opacity-50
                   dark:bg-gray-800
                 "
-                v-model="category.name_ar"
+                v-model="product.name_ar"
               />
             </div>
           </div>
@@ -109,7 +109,7 @@
                   focus:ring-opacity-50
                   dark:bg-gray-800
                 "
-                v-model="category.description_en"
+                v-model="product.description_en"
               />
             </div>
           </div>
@@ -139,87 +139,176 @@
                   focus:ring-opacity-50
                   dark:bg-gray-800
                 "
-                v-model="category.description_ar"
+                v-model="product.description_ar"
               />
             </div>
           </div>
         </div>
-        <div class="flex justify-between w-96">
-          <div class="w-full me-2 flex">
-            <label
-              for="is_slide"
-              class="block text-sm font-medium text-gray-700 dark:text-gray-200"
-              >Is Slide</label
-            >
-            <input
-              type="checkbox"
-              name="is_slide"
-              id="is_slide"
-              class="w-5 h-5 rounded ms-2"
-              v-model="category.is_slide"
+
+        <div>
+          <div
+            class="flex w-full justify-start mt-2"
+            v-if="product.image != undefined"
+          >
+            <img
+              :src="
+                imagePreview != null
+                  ? imagePreview
+                  : '/images/products/' + product.image
+              "
+              alt=""
+              class="figure-img img-fluid rounded"
+              style="max-height: 100px"
             />
           </div>
-          <div class="w-full flex">
-            <label
-              for="is_trending"
-              class="block text-sm font-medium text-gray-700 dark:text-gray-200"
-              >Trending</label
-            >
+
+          <div class="flex flex-col mt-2">
             <input
-              type="checkbox"
-              name="is_trending"
-              id="is_trending"
-              class="w-5 h-5 rounded ms-2"
-              v-model="category.is_trending"
+              class="
+                w-100
+                mt-2
+                py-3
+                px-3
+                rounded-lg
+                bg-white
+                dark:bg-gray-800
+                border border-gray-400
+                dark:border-gray-700
+                text-gray-800
+                dark:text-gray-50
+                font-semibold
+                focus:border-blue-500 focus:outline-none
+                hidden
+              "
+              @change="onFileSelected"
+              type="file"
+              id="user-image"
             />
+            <label for="user-image" class="w-100 flex justify-start"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-12 cursor-pointer"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                /></svg
+            ></label>
           </div>
         </div>
 
-        <!-- <div class="flex w-full mt-2" v-if="imagePreview">
-          <img
-            :src="imagePreview"
-            alt=""
-            class="figure-img img-fluid rounded"
-            style="max-height: 100px"
-          />
-        </div> -->
-        <div class="flex flex-col mt-2">
-          <input
-            class="
-              w-100
-              mt-2
-              py-3
-              px-3
-              rounded-lg
-              bg-white
-              dark:bg-gray-800
-              border border-gray-400
-              dark:border-gray-700
-              text-gray-800
-              dark:text-gray-50
-              font-semibold
-              focus:border-blue-500 focus:outline-none
-              hidden
-            "
-            @change="onFileSelected"
-            type="file"
-            id="image"
-          />
-          <label for="image" class="w-100 flex"
-            ><svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="w-12 cursor-pointer"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
+        <div class="mt-2">
+          <h2>Gallery</h2>
+          <UploadImages @changed="handleImages" />
+        </div>
+        <div>
+          <p>Note: After deleting image you can't retrieve it back.</p>
+          <div class="grid grid-cols-4">
+            <div
+              v-for="image in product.images"
+              :key="image.id"
+              class="w-48 bg-white mt-1"
             >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-              /></svg
-          ></label>
+              <div class="text-right absolute w-48 text-red-400">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  class="
+                    duration-700
+                    w-6
+                    float-right
+                    cursor-pointer
+                    hover:bg-red-400 hover:text-white
+                    rounded-full
+                  "
+                  @click="deleteFile(image.id)"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+              </div>
+              <img
+                class="h-28 mx-auto"
+                :src="'/images/products/' + image.image"
+                alt=""
+              />
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="mt-2">
+            <h2>Files</h2>
+            <UploadImages
+              @changed="handleFiles"
+              uploadMsg="Click to upload or drop your files here"
+            />
+          </div>
+          <p class="mt-3">
+            Note: After deleting a file you can't retrieve it back.
+          </p>
+          <div class="grid grid-cols-4">
+            <div
+              v-for="file in product.files"
+              :key="file.id"
+              class="w-28 bg-white rounded"
+            >
+              <div class="text-right absolute w-28 text-red-400">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  class="
+                    duration-700
+                    w-6
+                    float-right
+                    cursor-pointer
+                    hover:bg-red-400 hover:text-white
+                    rounded-full
+                  "
+                  @click="deleteFile('f', file.id)"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+              </div>
+              <div>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-28"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                  />
+                </svg>
+                <h3 class="text-base mx-auto w-28">
+                  {{ file.original_name }}
+                </h3>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div class="space-y-4 rounded-md w-full bg-gray-600 p-6 mt-6 xk:mt-0">
@@ -404,7 +493,7 @@
         </button>
         <div
           class="rounded"
-          v-for="(property, i) in category.properties"
+          v-for="(property, i) in product.properties"
           :key="i"
         >
           <div
@@ -523,14 +612,24 @@
 </template>
 
 <script setup>
-import useCategories from "../../../composables/categories";
-import { onMounted, ref } from "vue";
+import useProducts from "../../../composables/products";
+import { onMounted, reactive, ref } from "vue";
 import { useSwal } from "../../../plugins/useSwal.js";
+import UploadImages from "vue-upload-drop-images";
 const props = defineProps({ id: String });
-const { errors, category, getCategory, updateCategory, deleteProperty } =
-  useCategories();
+const {
+  errors,
+  product,
+  getProduct,
+  updateProduct,
+  deleteProperty,
+  addGallery,
+  addFiles,
+  destroyImage,
+  destroyFile,
+} = useProducts();
 let Swal = useSwal();
-onMounted(getCategory(props.id));
+onMounted(getProduct(props.id));
 let live_property = ref(-1);
 let property = ref({
   title_en: "",
@@ -538,8 +637,12 @@ let property = ref({
   description_en: "",
   description_ar: "",
 });
-const saveCategory = async () => {
-  await updateCategory(props.id);
+const saveProduct = async () => {
+  await updateProduct(props.id, {
+    form: product.value,
+    file,
+    properties: product.value.properties,
+  });
 };
 let is_editing = ref(false);
 const editRow = (property_) => {
@@ -559,11 +662,11 @@ const deleteRow = async (property_) => {
     if (result.isConfirmed) {
       if (property_.hasOwnProperty("id")) {
         await deleteProperty(property_.id);
-        await getCategory(props.id);
+        await getProduct(props.id);
 
         console.log(property_.id);
       } else {
-        category.value.properties.splice(property_, 1);
+        product.value.properties.splice(property_, 1);
         // console.log("hasnt");
       }
       Swal.fire("Deleted!", "Deleted Successfully", "success");
@@ -572,7 +675,7 @@ const deleteRow = async (property_) => {
 };
 const setProperty = () => {
   if (!is_editing.value) {
-    category.value.properties.push(property.value);
+    product.value.properties.push(property.value);
     property.value = {
       title_en: "",
       title_ar: "",
@@ -589,4 +692,26 @@ const setProperty = () => {
     };
   }
 };
+const deleteFile = async (type = "img", id) => {
+  if (type == "img") {
+    await destroyImage(id);
+  } else await destroyFile(id);
+  await getProduct(props.id);
+};
+const handleImages = (images) => {
+  addGallery(images);
+};
+const handleFiles = (files) => {
+  addFiles(files);
+};
+let file = reactive(null);
+function onFileSelected(event) {
+  file = event.target.files[0];
+
+  let reader = new FileReader();
+  reader.readAsDataURL(file);
+  reader.onload = (event) => {
+    imagePreview.value = event.target.result;
+  };
+}
 </script>

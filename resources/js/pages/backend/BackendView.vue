@@ -179,6 +179,47 @@
                 >
               </router-link>
             </li>
+            <li>
+              <router-link
+                :to="{ name: 'accessories.index' }"
+                class="
+                  relative
+                  flex flex-row
+                  items-center
+                  h-11
+                  focus:outline-none
+                  hover:bg-blue-800
+                  dark:hover:bg-gray-600
+                  text-white-600
+                  hover:text-white-800
+                  border-l-4 border-transparent
+                  hover:border-blue-500
+                  dark:hover:border-gray-800
+                  pr-6e
+                  dark:text-gray-200
+                "
+              >
+                <span class="inline-flex justify-center items-center">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"
+                    />
+                  </svg>
+                </span>
+                <span class="ml-2 text-sm tracking-wide truncate"
+                  >Accessories</span
+                >
+              </router-link>
+            </li>
           </ul>
           <p class="mb-14 px-5 py-3 md:block text-center text-xs">
             Created By Edo Khudeeda eido.khudyda@gmail.com
