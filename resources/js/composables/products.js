@@ -20,6 +20,7 @@ export default function useProducts() {
         console.log(product.value);
     };
     const getProductDetails = async (slug) => {
+        // console.log(router.options.routes);
         let response = await axios.get("/api/product/" + slug);
         product.value = response.data.data;
     };

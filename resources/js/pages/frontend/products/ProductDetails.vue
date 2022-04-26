@@ -13,13 +13,13 @@
         </div>
 
         <div class="rounded mb-12 w-2/3">
+          <product-inquire></product-inquire>
           <div
             class="
               w-full
               px-4
               py-2
-              mt-12
-              border-t border-b
+              border-b border-t
               text-white
               flex
               justify-between
@@ -84,11 +84,14 @@ import { onMounted, ref } from "@vue/runtime-core";
 import { inject } from "vue";
 import useProducts from "../../../composables/products";
 import ImagesCarousel from "../../../components/ImagesCarousel.vue";
+import ProductInquire from "../../../components/ProductInquire";
 const props = defineProps({ slug: String });
 const { getProductDetails, product, products } = useProducts();
 const lang = inject("lang");
 let active_tab = ref("");
 onMounted(() => {
   getProductDetails(props.slug);
+  let url = new URL(location.href);
+  console.log(url.href);
 });
 </script> 

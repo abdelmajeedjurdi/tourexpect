@@ -7,7 +7,7 @@
       <div
         class="2xl:mx-auto 2xl:container lg:px-20 md:px-6 px-4 w-96 sm:w-auto"
       >
-        <div class="lg:flex items-stretch md:mt-12 mt-8">
+        <div class="lg:flex items-stretch md:mt-12 my-8">
           <div class="grid grid-cols-1 sm:grid-cols-2 items-center">
             <div
               class="relative h-full brightness"

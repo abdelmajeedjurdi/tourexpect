@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class="bg-gray-700">
     <navigation-bar />
-    <div :dir="lang == 'ar' ? 'rtl' : 'ltr'">
+    <div :dir="lang == 'ar' ? 'rtl' : 'ltr'" style="min-height: 66vh">
       <router-view></router-view>
     </div>
     <frontend-footer></frontend-footer>

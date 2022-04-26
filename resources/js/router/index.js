@@ -22,6 +22,7 @@ import Accessory from "../pages/frontend/accessories/AccessoryDetails";
 
 import Flags from "../pages/frontend/categories/FlagsList";
 import Signs from "../pages/frontend/categories/SignsList";
+import About from "../pages/frontend/AboutUs";
 
 import Test from "../pages/backend/Test.vue";
 import Hero from "../components/HeroCarousel";
@@ -109,6 +110,11 @@ const routes = [
         path: "/",
         name: "categories",
         component: Categories,
+    },
+    {
+        path: "/about",
+        name: "about",
+        component: About,
     },
     {
         path: "/categories/:slug",

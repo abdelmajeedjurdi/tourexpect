@@ -1,7 +1,7 @@
 <template>
   <div class="border-b border-gray-500">
-    <nav class="container navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container container-fluid">
         <router-link class="navbar-brand" :to="{ name: 'categories' }">
           <svg
             xmlns="http://www.w3.org/2000/svg"
