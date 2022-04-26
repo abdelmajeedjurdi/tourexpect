@@ -27,6 +27,11 @@ class CategoryController extends Controller
     {
         return CategoryResource::collection(Category::all());
     }
+    public function getFlagsOrSigns(Request $request)
+    {
+        Log::info($request);
+        return CategoryResource::collection(Category::where('category', $request->type)->get());
+    }
     public function getSlides()
     {
         return CategoryResource::collection(Category::where('is_slide', 1)->get());

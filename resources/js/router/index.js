@@ -20,6 +20,9 @@ import Categories from "../pages/frontend/categories/CategoriesList";
 import Product from "../pages/frontend/products/ProductDetails";
 import Accessory from "../pages/frontend/accessories/AccessoryDetails";
 
+import Flags from "../pages/frontend/categories/FlagsList";
+import Signs from "../pages/frontend/categories/SignsList";
+
 import Test from "../pages/backend/Test.vue";
 import Hero from "../components/HeroCarousel";
 import Dashboard from "../pages/backend/Dashboard.vue";
@@ -124,6 +127,16 @@ const routes = [
         name: "accessory",
         component: Accessory,
         props: true,
+    },
+    {
+        path: "/categories/flags",
+        name: "flags",
+        component: Flags,
+    },
+    {
+        path: "/categories/signs",
+        name: "signs",
+        component: Signs,
     },
     {
         path: "/test",

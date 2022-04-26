@@ -17,7 +17,7 @@
       "
     >
       <div v-for="product in products" :key="product.id">
-        <div class="overflow-hidden mb-10">
+        <div class="overflow-hidden mb-10 brightness">
           <router-link
             :to="{
               name: 'product',
@@ -48,7 +48,7 @@
         <p>{{ property["description_" + lang] }}</p>
       </div>
     </div>
-    <div class="my-12">
+    <div class="my-12" v-if="accessories.length">
       <h2 class="font-bold mb-2 uppercase">{{ $t("accessories") }}</h2>
       <div
         class="
@@ -62,8 +62,8 @@
           justify-between
         "
       >
-        <div v-for="accessory in accessories" :key="accessory.id">
-          <div class="overflow-hidden mb-10">
+        <div class="" v-for="accessory in accessories" :key="accessory.id">
+          <div class="overflow-hidden mb-10 brightness">
             <router-link
               :to="{
                 name: 'accessory',
@@ -98,3 +98,10 @@ onMounted(() => {
   getCategoryDetails(props.slug);
 });
 </script>
+
+<style>
+.brightness:hover {
+  filter: brightness(1.5);
+  transition-duration: 1s;
+}
+</style>

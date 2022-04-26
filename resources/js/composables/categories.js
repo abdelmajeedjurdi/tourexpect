@@ -15,6 +15,10 @@ export default function useCategories() {
         let response = await axios.get("/api/categories");
         categories.value = response.data.data;
     };
+    const getFlagsOrSigns = async (type) => {
+        let response = await axios.get("/api/get-flags-signs?type=" + type);
+        categories.value = response.data.data;
+    };
     const getSlides = async () => {
         let response = await axios.get("/api/categories-slides");
         slides.value = response.data.data;
@@ -108,5 +112,6 @@ export default function useCategories() {
         getCategoryDetails,
         products,
         accessories,
+        getFlagsOrSigns,
     };
 }

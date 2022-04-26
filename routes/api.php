@@ -27,6 +27,7 @@ Route::apiResource('accessories', AccessoryController::class);
 Route::delete('cat-property/{id}', [CategoryController::class, 'deleteProperty']);
 Route::get('categories-slides', [CategoryController::class, 'getSlides']);
 Route::get('category/{slug}', [CategoryController::class, 'getCategoryDetails']);
+Route::get('get-flags-signs', [CategoryController::class, 'getFlagsOrSigns']);
 Route::get('product/{slug}', [ProductController::class, 'getProductDetails']);
 Route::delete('delete-image/{id}', [ProductController::class, 'deleteImage']);
 Route::delete('delete-file/{id}', [ProductController::class, 'deleteFile']);

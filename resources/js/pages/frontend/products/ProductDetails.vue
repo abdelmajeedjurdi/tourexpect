@@ -77,7 +77,6 @@
         </div>
       </div>
     </div>
-    {{ product.files }}
   </div>
 </template>
 <script setup>
