@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\AccessoryController;
 use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\ContactController;
 use App\Http\Controllers\Api\ProductController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -34,3 +35,4 @@ Route::delete('delete-file/{id}', [ProductController::class, 'deleteFile']);
 Route::delete('delete-accessory-file/{id}', [AccessoryController::class, 'deleteFile']);
 Route::delete('delete-accessory-image/{id}', [AccessoryController::class, 'deleteImage']);
 Route::get('accessory/{slug}', [AccessoryController::class, 'getAccessoryDetails']);
+Route::post('inquire', [ContactController::class, 'makeInquire']);
