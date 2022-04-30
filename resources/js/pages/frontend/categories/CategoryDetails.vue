@@ -1,5 +1,11 @@
 <template>
-  <div class="text-gray-200 container lg:px-20 md:px-6 px-4 w-96 sm:w-auto">
+  <div v-if="isLoading">
+    <preloader />
+  </div>
+  <div
+    v-else
+    class="text-gray-200 container lg:px-20 md:px-6 px-4 w-96 sm:w-auto"
+  >
     <div class="md:my-12 my-12">
       <h2 class="font-bold mb-2 uppercase">{{ category["name_" + lang] }}</h2>
       <p class="lg:w-1/2">{{ category["description_" + lang] }}</p>
@@ -88,14 +94,19 @@
   </div>
 </template>
 <script setup>
-import { onMounted } from "@vue/runtime-core";
+import { onMounted, ref } from "@vue/runtime-core";
 import { inject } from "vue";
 import useCategories from "../../../composables/categories";
+import Preloader from "../../frontend/Preloader.vue";
 const props = defineProps({ slug: String });
 const { getCategoryDetails, category, products, accessories } = useCategories();
 const lang = inject("lang");
-onMounted(() => {
-  getCategoryDetails(props.slug);
+let isLoading = ref(false);
+onMounted(async () => {
+  isLoading.value = true;
+  await getCategoryDetails(props.slug);
+
+  isLoading.value = false;
 });
 </script>
 

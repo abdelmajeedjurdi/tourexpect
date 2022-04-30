@@ -1,6 +1,9 @@
 <template>
   <!-- component -->
-  <div>
+  <div v-if="isLoading">
+    <preloader />
+  </div>
+  <div v-else>
     <div class="flex justify-center items-center">
       <!--- more free and premium Tailwind CSS components at https://tailwinduikit.com/ --->
       <div
@@ -54,10 +57,14 @@
 import { onMounted, ref } from "@vue/runtime-core";
 import useCategories from "../../../composables/categories";
 import { inject } from "vue";
+import Preloader from "../../frontend/Preloader.vue";
 let { categories, getFlagsOrSigns, slides } = useCategories();
 let lang = ref(inject("lang") || "en");
+let isLoading = ref(false);
 onMounted(() => {
+  isLoading.value = true;
   getFlagsOrSigns("flag");
+  isLoading.value = false;
 });
 </script>
 <style>

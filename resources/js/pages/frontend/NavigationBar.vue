@@ -80,6 +80,11 @@
                 $t("signs")
               }}</router-link>
             </li>
+            <li class="nav-item">
+              <router-link class="nav-link" :to="{ name: 'contact' }">{{
+                $t("contact")
+              }}</router-link>
+            </li>
             <!-- <li class="nav-item dropdown">
               <a
                 class="nav-link dropdown-toggle"

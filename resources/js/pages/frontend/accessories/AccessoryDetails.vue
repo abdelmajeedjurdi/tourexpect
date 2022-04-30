@@ -1,5 +1,11 @@
 <template>
-  <div class="text-gray-200 container lg:px-20 md:px-6 px-4 w-96 sm:w-auto">
+  <div v-if="isLoading">
+    <preloader />
+  </div>
+  <div
+    v-else
+    class="text-gray-200 container lg:px-20 md:px-6 px-4 w-96 sm:w-auto"
+  >
     <accessory-carousel
       v-if="accessory.images"
       :slides="accessory['images']"
@@ -200,7 +206,6 @@
               w-full
               px-4
               py-2
-              mt-12
               border-t border-b
               text-white
               flex
@@ -255,14 +260,18 @@ import { onMounted, reactive, ref } from "@vue/runtime-core";
 import { inject } from "vue";
 import useAccessories from "../../../composables/accessories";
 import AccessoryCarousel from "../../../components/AccessoryCarousel.vue";
+import Preloader from "../../frontend/Preloader.vue";
 const props = defineProps({ slug: String });
 const { getAccessoryDetails, accessory, accessories } = useAccessories();
 const lang = inject("lang");
 let active_tab = ref("");
-onMounted(() => {
-  getAccessoryDetails(props.slug);
+let isLoading = ref(false);
+onMounted(async () => {
+  isLoading.value = true;
+  await getAccessoryDetails(props.slug);
   let url = new URL(location.href);
   form.url = url.href;
+  isLoading.value = false;
 });
 let flashMessage = ref("Sending...");
 let sending = ref(false);

@@ -1,6 +1,9 @@
 <template>
   <!-- component -->
-  <div>
+  <div v-if="isLoading">
+    <preloader />
+  </div>
+  <div v-else>
     <hero-carousel :slides="slides" />
     <div class="flex justify-center items-center">
       <!--- more free and premium Tailwind CSS components at https://tailwinduikit.com/ --->
@@ -55,12 +58,16 @@
 import { onMounted, ref } from "@vue/runtime-core";
 import useCategories from "../../../composables/categories";
 import HeroCarousel from "../../../components/HeroCarousel";
+import Preloader from "../../frontend/Preloader.vue";
 import { inject } from "vue";
+let isLoading = ref(false);
 let { categories, getCategories, slides, getSlides } = useCategories();
 let lang = ref(inject("lang") || "en");
-onMounted(() => {
-  getCategories();
-  getSlides();
+onMounted(async () => {
+  isLoading.value = true;
+  await getCategories();
+  await getSlides();
+  isLoading.value = false;
 });
 </script>
 <style>

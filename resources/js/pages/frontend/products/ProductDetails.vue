@@ -276,6 +276,7 @@ import useProducts from "../../../composables/products";
 import ImagesCarousel from "../../../components/ImagesCarousel.vue";
 import ProductInquire from "../../../components/ProductInquire";
 import axios from "axios";
+import Preloader from "../../frontend/Preloader.vue";
 const props = defineProps({ slug: String });
 const { getProductDetails, product, products } = useProducts();
 const lang = inject("lang");
