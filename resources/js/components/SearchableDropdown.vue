@@ -1,7 +1,7 @@
 <template>
   <div class="dropdown">
     <button
-      class="btn btn-secondary dropdown-toggle w-40"
+      class="btn btn-secondary dropdown-toggle w-64"
       type="button"
       id="dropdownMenuButton1"
       data-bs-toggle="dropdown"
@@ -41,10 +41,36 @@
 </template>
 <script setup>
 import { ref } from "@vue/reactivity";
+import { onMounted } from "@vue/runtime-core";
 
-const props = defineProps({ options: Array });
+const props = defineProps({
+  options: Array,
+  category_id: { type: String, default: -1 },
+});
 const emit = defineEmits(["selected"]);
-let selected_option = ref(null);
+const foo = {
+  results: [
+    {
+      id: 12,
+      name: "Test",
+    },
+    {
+      id: 2,
+      name: "Beispiel",
+    },
+    {
+      id: 3,
+      name: "Sample",
+    },
+  ],
+};
+onMounted(() => {
+  console.log(props.options);
+});
+// foo.results.find(item => item.id === 2)
+let selected_option = ref(
+  props.options.find((item) => item.id == props.category_id)["name_en"]
+);
 function myFunction() {
   document.getElementById("myDropdown").classList.toggle("show");
 }

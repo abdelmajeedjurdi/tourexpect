@@ -25,6 +25,14 @@
     <div class="lg:flex justify-between space-x-4">
       <div class="space-y-4 rounded-md w-full">
         <div class="flex justify-between">
+          <div v-if="categories.length && product['category_id']" class="me-2">
+            <searchable-dropdown
+              :options="categories"
+              :category_id="product['category_id']"
+              @selected="selectCategory($event)"
+              class="mt-6 me-2"
+            />
+          </div>
           <div class="w-full me-2">
             <label
               for="name_en"
@@ -613,10 +621,13 @@
 
 <script setup>
 import useProducts from "../../../composables/products";
+import useCategories from "../../../composables/categories";
 import { onMounted, reactive, ref } from "vue";
 import { useSwal } from "../../../plugins/useSwal.js";
 import UploadImages from "vue-upload-drop-images";
+import SearchableDropdown from "../../../components/SearchableDropdown.vue";
 const props = defineProps({ id: String });
+const { categories, getCategories } = useCategories();
 const {
   errors,
   product,
@@ -629,7 +640,10 @@ const {
   destroyFile,
 } = useProducts();
 let Swal = useSwal();
-onMounted(getProduct(props.id));
+onMounted(async () => {
+  await getCategories();
+  await getProduct(props.id);
+});
 let live_property = ref(-1);
 let property = ref({
   title_en: "",
@@ -714,4 +728,8 @@ function onFileSelected(event) {
     imagePreview.value = event.target.result;
   };
 }
+const selectCategory = (category_id) => {
+  product.value.category_id = category_id;
+  console.log(product.value.category_id);
+};
 </script>

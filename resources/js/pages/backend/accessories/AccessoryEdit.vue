@@ -25,12 +25,23 @@
     <div class="lg:flex justify-between space-x-4">
       <div class="space-y-4 rounded-md w-full">
         <div class="flex justify-between">
+          <div
+            v-if="categories.length && accessory['category_id']"
+            class="me-2"
+          >
+            <searchable-dropdown
+              :options="categories"
+              :category_id="accessory['category_id']"
+              @selected="selectCategory($event)"
+              class="mt-6 me-2"
+            />
+          </div>
           <div class="w-full me-2">
             <label
               for="name_en"
               class="block text-sm font-medium text-gray-700 dark:text-gray-200"
-              >English Name</label
-            >
+              >English Name
+            </label>
             <div class="mt-1">
               <input
                 type="text"
@@ -345,9 +356,11 @@
 
 <script setup>
 import useAccessories from "../../../composables/accessories";
+import useCategories from "../../../composables/categories";
 import { onMounted, reactive, ref } from "vue";
 import { useSwal } from "../../../plugins/useSwal.js";
 import UploadImages from "vue-upload-drop-images";
+import SearchableDropdown from "../../../components/SearchableDropdown.vue";
 const props = defineProps({ id: String });
 const {
   errors,
@@ -359,8 +372,12 @@ const {
   destroyImage,
   destroyFile,
 } = useAccessories();
+const { categories, getCategories } = useCategories();
 let Swal = useSwal();
-onMounted(getAccessory(props.id));
+onMounted(async () => {
+  getAccessory(props.id);
+  await getCategories();
+});
 const saveAccessory = async () => {
   await updateAccessory(props.id, {
     form: accessory.value,
@@ -392,4 +409,8 @@ function onFileSelected(event) {
     imagePreview.value = event.target.result;
   };
 }
+const selectCategory = (category_id) => {
+  accessory.value.category_id = category_id;
+  console.log(accessory.value.category_id);
+};
 </script>
