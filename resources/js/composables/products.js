@@ -7,6 +7,7 @@ export default function useProducts() {
     const product = ref([]);
     const router = useRouter();
     const errors = ref("");
+    let percentage = ref(0);
     let fd = new FormData();
 
     const getProducts = async () => {
@@ -36,7 +37,20 @@ export default function useProducts() {
         fd.append("properties", JSON.stringify(data.properties));
         errors.value = "";
         try {
-            await axios.post("/api/products", fd);
+            await axios.post("/api/products", fd, {
+                onUploadProgress: function (progressEvent) {
+                    percentage.value = parseInt(
+                        Math.round(
+                            (progressEvent.loaded / progressEvent.total) * 100
+                        )
+                    );
+                    console.log(
+                        Math.round(
+                            (progressEvent.loaded / progressEvent.total) * 100
+                        )
+                    );
+                },
+            });
             await router.push({ name: "products.index" });
         } catch (e) {
             if (e.response.status === 422) {
@@ -60,6 +74,18 @@ export default function useProducts() {
             await axios.post("/api/products/" + id, fd, {
                 headers: {
                     "Content-Type": "multipart/form-data",
+                },
+                onUploadProgress: function (progressEvent) {
+                    percentage.value = parseInt(
+                        Math.round(
+                            (progressEvent.loaded / progressEvent.total) * 100
+                        )
+                    );
+                    console.log(
+                        Math.round(
+                            (progressEvent.loaded / progressEvent.total) * 100
+                        )
+                    );
                 },
             });
             await router.push({ name: "products.index" });
@@ -113,5 +139,6 @@ export default function useProducts() {
         getProductDetails,
         destroyImage,
         destroyFile,
+        percentage,
     };
 }

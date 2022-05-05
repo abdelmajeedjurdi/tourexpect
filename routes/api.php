@@ -36,3 +36,4 @@ Route::delete('delete-accessory-file/{id}', [AccessoryController::class, 'delete
 Route::delete('delete-accessory-image/{id}', [AccessoryController::class, 'deleteImage']);
 Route::get('accessory/{slug}', [AccessoryController::class, 'getAccessoryDetails']);
 Route::post('inquire', [ContactController::class, 'makeInquire']);
+Route::post('contact', [ContactController::class, 'makeContact']);

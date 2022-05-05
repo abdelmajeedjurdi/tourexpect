@@ -1,7 +1,10 @@
-<template>
-  <preloader />
-</template>
+<template></template>
 
 <script setup>
-import Preloader from "../frontend/Preloader.vue";
+import ProgressBar from "../../components/ProgressBar.vue";
+let width = 75;
 </script>
+<style>
+</style>
+
+ 

@@ -1,24 +1,10 @@
 <template>
-  <div v-if="errors">
-    <div
-      v-for="(v, k) in errors"
-      :key="k"
-      class="
-        bg-red-500
-        text-white
-        rounded
-        font-bold
-        mb-4
-        shadow-lg
-        py-2
-        px-4
-        pr-0
-      "
-    >
-      <p v-for="error in v" :key="error" class="text-sm">
-        {{ error }}
-      </p>
-    </div>
+  <div
+    v-if="isProgressing && percentage < 100"
+    class="-ml-6 -mt-6 w-full pt-52 fixed bg-black bg-opacity-50 z-20"
+    style="height: 100%"
+  >
+    <progress-bar :percentage="percentage" />
   </div>
 
   <form class="space-y-6" @submit.prevent="saveAccessory">
@@ -361,10 +347,13 @@ import { onMounted, reactive, ref } from "vue";
 import { useSwal } from "../../../plugins/useSwal.js";
 import UploadImages from "vue-upload-drop-images";
 import SearchableDropdown from "../../../components/SearchableDropdown.vue";
+import ProgressBar from "../../../components/ProgressBar.vue";
 const props = defineProps({ id: String });
+let isProgressing = ref(false);
 const {
   errors,
   accessory,
+  percentage,
   getAccessory,
   updateAccessory,
   addGallery,
@@ -379,10 +368,12 @@ onMounted(async () => {
   await getCategories();
 });
 const saveAccessory = async () => {
+  isProgressing.value = true;
   await updateAccessory(props.id, {
     form: accessory.value,
     file,
   });
+  isProgressing.value = false;
 };
 let is_editing = ref(false);
 const deleteFile = async (type = "img", id) => {

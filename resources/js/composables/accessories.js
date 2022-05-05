@@ -7,6 +7,7 @@ export default function useAccessories() {
     const accessory = ref([]);
     const router = useRouter();
     const errors = ref("");
+    let percentage = ref(0);
     let fd = new FormData();
 
     const getAccessories = async () => {
@@ -33,7 +34,20 @@ export default function useAccessories() {
         fd.append("image", data.file);
         errors.value = "";
         try {
-            await axios.post("/api/accessories", fd);
+            await axios.post("/api/accessories", fd, {
+                onUploadProgress: function (progressEvent) {
+                    percentage.value = parseInt(
+                        Math.round(
+                            (progressEvent.loaded / progressEvent.total) * 100
+                        )
+                    );
+                    console.log(
+                        Math.round(
+                            (progressEvent.loaded / progressEvent.total) * 100
+                        )
+                    );
+                },
+            });
             await router.push({ name: "accessories.index" });
         } catch (e) {
             if (e.response.status === 422) {
@@ -56,6 +70,18 @@ export default function useAccessories() {
             await axios.post("/api/accessories/" + id, fd, {
                 headers: {
                     "Content-Type": "multipart/form-data",
+                },
+                onUploadProgress: function (progressEvent) {
+                    percentage.value = parseInt(
+                        Math.round(
+                            (progressEvent.loaded / progressEvent.total) * 100
+                        )
+                    );
+                    console.log(
+                        Math.round(
+                            (progressEvent.loaded / progressEvent.total) * 100
+                        )
+                    );
                 },
             });
             await router.push({ name: "accessories.index" });
@@ -110,5 +136,6 @@ export default function useAccessories() {
         getAccessoryDetails,
         destroyImage,
         destroyFile,
+        percentage,
     };
 }

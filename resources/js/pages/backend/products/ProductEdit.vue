@@ -1,24 +1,10 @@
 <template>
-  <div v-if="errors">
-    <div
-      v-for="(v, k) in errors"
-      :key="k"
-      class="
-        bg-red-500
-        text-white
-        rounded
-        font-bold
-        mb-4
-        shadow-lg
-        py-2
-        px-4
-        pr-0
-      "
-    >
-      <p v-for="error in v" :key="error" class="text-sm">
-        {{ error }}
-      </p>
-    </div>
+  <div
+    v-if="isProgressing && percentage < 100"
+    class="-ml-6 -mt-6 w-full pt-52 fixed bg-black bg-opacity-50 z-20"
+    style="height: 100%"
+  >
+    <progress-bar :percentage="percentage" />
   </div>
 
   <form class="space-y-6" @submit.prevent="saveProduct">
@@ -626,11 +612,14 @@ import { onMounted, reactive, ref } from "vue";
 import { useSwal } from "../../../plugins/useSwal.js";
 import UploadImages from "vue-upload-drop-images";
 import SearchableDropdown from "../../../components/SearchableDropdown.vue";
+import ProgressBar from "../../../components/ProgressBar.vue";
 const props = defineProps({ id: String });
 const { categories, getCategories } = useCategories();
+let isProgressing = ref(false);
 const {
   errors,
   product,
+  percentage,
   getProduct,
   updateProduct,
   deleteProperty,
@@ -652,11 +641,13 @@ let property = ref({
   description_ar: "",
 });
 const saveProduct = async () => {
+  isProgressing.value = true;
   await updateProduct(props.id, {
     form: product.value,
     file,
     properties: product.value.properties,
   });
+  isProgressing.value = false;
 };
 let is_editing = ref(false);
 const editRow = (property_) => {

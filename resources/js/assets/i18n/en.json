@@ -5,5 +5,15 @@
     "home":"Home",
     "flags":"Flags",
     "signs":"Signs",
-    "about":"About"
+    "about":"About",
+    "contact-us":"Contact Us",
+    "contact":"Contact",
+    "your-name":"Your Name",
+    "your-email":"Your E-mail",
+    "your-phone":"Your Phone",
+    "subject":"Subject",
+    "your-message":"Your Message Here",
+    "send-message":"Send Message",
+    "send-inquiry":"Send Inquiry",
+    "inquiry":"Inquiry"
 }

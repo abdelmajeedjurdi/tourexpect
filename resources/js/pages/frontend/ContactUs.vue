@@ -1,13 +1,13 @@
 <template>
-  <div class="container mt-4">
-    <h1 class="text-gray-200">{{ $t("contact-us") }}</h1>
-    <form @submit.prevent="makeInquire" id="form">
+  <div class="container mt-4 text-gray-200" :dir="lang == 'ar' ? 'rtl' : 'ltr'">
+    <h1 class="">{{ $t("contact-us") }}</h1>
+    <form @submit.prevent="makeContact" id="form">
       <div class="mb-6">
         <input
           type="text"
           name="name"
           id="name"
-          placeholder="John Doe"
+          :placeholder="$t('your-name')"
           required
           v-model="form.name"
           class="
@@ -17,10 +17,7 @@
             placeholder-gray-300
             border border-gray-300
             rounded-md
-            focus:outline-none
-            focus:ring
-            focus:ring-indigo-100
-            focus:border-indigo-300
+            focus:outline-none focus:border focus:border-indigo-100
             bg-gray-800
           "
         />
@@ -30,7 +27,7 @@
           type="email"
           name="email"
           id="email"
-          placeholder="you@company.com"
+          :placeholder="$t('your-email')"
           required
           v-model="form.email"
           class="
@@ -40,10 +37,7 @@
             placeholder-gray-300
             border border-gray-300
             rounded-md
-            focus:outline-none
-            focus:ring
-            focus:ring-indigo-100
-            focus:border-indigo-300
+            focus:outline-none focus:border focus:border-indigo-100
             bg-gray-800
           "
         />
@@ -54,7 +48,7 @@
           name="phone"
           v-model="form.phone"
           id="phone"
-          placeholder="+1 (555) 1234-567"
+          :placeholder="$t('your-phone')"
           required
           class="
             w-full
@@ -63,10 +57,27 @@
             placeholder-gray-300
             border border-gray-300
             rounded-md
-            focus:outline-none
-            focus:ring
-            focus:ring-indigo-100
-            focus:border-indigo-300
+            focus:outline-none focus:border focus:border-indigo-100
+            bg-gray-800
+          "
+        />
+      </div>
+      <div class="mb-6">
+        <input
+          type="text"
+          name="subject"
+          v-model="form.subject"
+          id="subject"
+          :placeholder="$t('subject')"
+          required
+          class="
+            w-full
+            px-3
+            py-2
+            placeholder-gray-300
+            border border-gray-300
+            rounded-md
+            focus:outline-none focus:border focus:border-indigo-100
             bg-gray-800
           "
         />
@@ -76,7 +87,7 @@
           rows="5"
           name="message"
           id="message"
-          placeholder="Your Message"
+          :placeholder="$t('your-message')"
           v-model="form.message"
           class="
             w-full
@@ -85,10 +96,7 @@
             placeholder-gray-300
             border border-gray-300
             rounded-md
-            focus:outline-none
-            focus:ring
-            focus:ring-indigo-100
-            focus:border-indigo-300
+            focus:outline-none focus:border focus:border-indigo-100
             bg-gray-800
           "
           required
@@ -128,7 +136,7 @@
                 "
               />
             </svg>
-            <span> Send Message </span>
+            <span> {{ $t("send-message") }} </span>
           </div>
         </button>
       </div>
@@ -138,6 +146,8 @@
 </template>
 <script setup>
 import { reactive, ref } from "@vue/reactivity";
+import { inject } from "vue";
+let lang = inject("lang");
 
 let form = reactive({
   name: "",
@@ -148,16 +158,14 @@ let form = reactive({
 });
 let flashMessage = ref("Sending...");
 let sending = ref(false);
-const makeInquire = async () => {
+const makeContact = async () => {
   sending.value = true;
   await axios
-    .post("/api/inquire", form)
+    .post("/api/contact", form)
     .then((res) => {
       clearForm();
       flashMessage.value = res.data;
-      setTimeout(() => {
-        flash.value = false;
-      }, 3000);
+      setTimeout(() => {}, 3000);
       console.log(res);
     })
     .catch((e) => {

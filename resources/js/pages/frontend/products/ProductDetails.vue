@@ -66,7 +66,7 @@
                     type="text"
                     name="name"
                     id="name"
-                    placeholder="John Doe"
+                    :placeholder="$t('your-name')"
                     required
                     v-model="form.name"
                     class="
@@ -76,10 +76,7 @@
                       placeholder-gray-300
                       border border-gray-300
                       rounded-md
-                      focus:outline-none
-                      focus:ring
-                      focus:ring-indigo-100
-                      focus:border-indigo-300
+                      focus:outline-none focus:border focus:border-indigo-100
                       bg-gray-800
                     "
                   />
@@ -89,7 +86,7 @@
                     type="email"
                     name="email"
                     id="email"
-                    placeholder="you@company.com"
+                    :placeholder="$t('your-email')"
                     required
                     v-model="form.email"
                     class="
@@ -99,10 +96,7 @@
                       placeholder-gray-300
                       border border-gray-300
                       rounded-md
-                      focus:outline-none
-                      focus:ring
-                      focus:ring-indigo-100
-                      focus:border-indigo-300
+                      focus:outline-none focus:border focus:border-indigo-100
                       bg-gray-800
                     "
                   />
@@ -113,7 +107,7 @@
                     name="phone"
                     v-model="form.phone"
                     id="phone"
-                    placeholder="+1 (555) 1234-567"
+                    :placeholder="$t('your-phone')"
                     required
                     class="
                       w-full
@@ -122,10 +116,7 @@
                       placeholder-gray-300
                       border border-gray-300
                       rounded-md
-                      focus:outline-none
-                      focus:ring
-                      focus:ring-indigo-100
-                      focus:border-indigo-300
+                      focus:outline-none focus:border focus:border-indigo-100
                       bg-gray-800
                     "
                   />
@@ -135,7 +126,7 @@
                     rows="5"
                     name="message"
                     id="message"
-                    placeholder="Your Message"
+                    :placeholder="$t('your-message')"
                     v-model="form.message"
                     class="
                       w-full
@@ -144,10 +135,7 @@
                       placeholder-gray-300
                       border border-gray-300
                       rounded-md
-                      focus:outline-none
-                      focus:ring
-                      focus:ring-indigo-100
-                      focus:border-indigo-300
+                      focus:outline-none focus:border focus:border-indigo-100
                       bg-gray-800
                     "
                     required
@@ -187,7 +175,7 @@
                           "
                         />
                       </svg>
-                      <span> Send Message </span>
+                      <span> {{ $t("send-inquiry") }} </span>
                     </div>
                   </button>
                 </div>
@@ -280,7 +268,7 @@ import Preloader from "../../frontend/Preloader.vue";
 const props = defineProps({ slug: String });
 const { getProductDetails, product, products } = useProducts();
 const lang = inject("lang");
-let active_tab = ref("inquiry");
+let active_tab = ref("");
 
 onMounted(() => {
   getProductDetails(props.slug);
@@ -304,9 +292,7 @@ const makeInquire = async () => {
     .then((res) => {
       clearForm();
       flashMessage.value = res.data;
-      setTimeout(() => {
-        flash.value = false;
-      }, 3000);
+      setTimeout(() => {}, 3000);
       console.log(res);
     })
     .catch((e) => {

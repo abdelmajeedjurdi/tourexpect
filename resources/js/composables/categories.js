@@ -51,7 +51,20 @@ export default function useCategories() {
         fd.append("properties", JSON.stringify(data.properties));
         errors.value = "";
         try {
-            await axios.post("/api/categories", fd);
+            await axios.post("/api/categories", fd, {
+                onUploadProgress: function (progressEvent) {
+                    // uploadPercentage = parseInt(
+                    //     Math.round(
+                    //         (progressEvent.loaded / progressEvent.total) * 100
+                    //     )
+                    // );
+                    console.log(
+                        Math.round(
+                            (progressEvent.loaded / progressEvent.total) * 100
+                        )
+                    );
+                },
+            });
             await router.push({ name: "categories.index" });
         } catch (e) {
             if (e.response.status === 422) {

@@ -69,7 +69,9 @@ onMounted(() => {
 });
 // foo.results.find(item => item.id === 2)
 let selected_option = ref(
-  props.options.find((item) => item.id == props.category_id)["name_en"]
+  props.category_id == -1
+    ? props.options.find((item) => item.id == props.category_id)
+    : props.options.find((item) => item.id == props.category_id)["name_en"]
 );
 function myFunction() {
   document.getElementById("myDropdown").classList.toggle("show");

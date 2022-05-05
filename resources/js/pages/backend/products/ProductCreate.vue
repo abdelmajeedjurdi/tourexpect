@@ -1,24 +1,10 @@
 <template>
-  <div v-if="errors">
-    <div
-      v-for="(v, k) in errors"
-      :key="k"
-      class="
-        bg-red-500
-        text-white
-        rounded
-        font-bold
-        mb-4
-        shadow-lg
-        py-2
-        px-4
-        pr-0
-      "
-    >
-      <p v-for="error in v" :key="error" class="text-sm">
-        {{ error }}
-      </p>
-    </div>
+  <div
+    v-if="isProgressing && percentage < 100"
+    class="-ml-6 -mt-6 w-full pt-52 fixed bg-black bg-opacity-50 z-20"
+    style="height: 100%"
+  >
+    <progress-bar :percentage="percentage" />
   </div>
 
   <form class="space-y-6" @submit.prevent="saveProduct">
@@ -514,6 +500,7 @@ import { onMounted, reactive, ref } from "vue";
 import useProducts from "../../../composables/products";
 import useCategories from "../../../composables/categories";
 import SearchableDropdown from "../../../components/SearchableDropdown.vue";
+import ProgressBar from "../../../components/ProgressBar.vue";
 import UploadImages from "vue-upload-drop-images";
 
 let live_property = ref(-1);
@@ -552,7 +539,9 @@ const setProperty = () => {
   }
 };
 
-const { errors, storeProduct, addGallery, addFiles } = useProducts();
+let isProgressing = ref(false);
+const { errors, storeProduct, addGallery, addFiles, percentage } =
+  useProducts();
 const { categories, getCategories } = useCategories();
 onMounted(() => {
   getCategories();
@@ -564,7 +553,9 @@ const handleFiles = (files) => {
   addFiles(files);
 };
 const saveProduct = async () => {
+  isProgressing.value = true;
   await storeProduct({ form: form, file, properties: properties.value });
+  isProgressing.value = false;
 };
 let imagePreview = ref(null);
 let file = reactive(null);

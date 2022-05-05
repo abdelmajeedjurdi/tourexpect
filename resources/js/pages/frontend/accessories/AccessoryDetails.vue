@@ -72,7 +72,7 @@
                     type="text"
                     name="name"
                     id="name"
-                    placeholder="John Doe"
+                    :placeholder="$t('your-name')"
                     required
                     v-model="form.name"
                     class="
@@ -82,10 +82,7 @@
                       placeholder-gray-300
                       border border-gray-300
                       rounded-md
-                      focus:outline-none
-                      focus:ring
-                      focus:ring-indigo-100
-                      focus:border-indigo-300
+                      focus:outline-none focus:border focus:border-indigo-100
                       bg-gray-800
                     "
                   />
@@ -95,7 +92,7 @@
                     type="email"
                     name="email"
                     id="email"
-                    placeholder="you@company.com"
+                    :placeholder="$t('your-email')"
                     required
                     v-model="form.email"
                     class="
@@ -105,10 +102,7 @@
                       placeholder-gray-300
                       border border-gray-300
                       rounded-md
-                      focus:outline-none
-                      focus:ring
-                      focus:ring-indigo-100
-                      focus:border-indigo-300
+                      focus:outline-none focus:border focus:border-indigo-100
                       bg-gray-800
                     "
                   />
@@ -119,7 +113,7 @@
                     name="phone"
                     v-model="form.phone"
                     id="phone"
-                    placeholder="+1 (555) 1234-567"
+                    :placeholder="$t('your-phone')"
                     required
                     class="
                       w-full
@@ -128,10 +122,7 @@
                       placeholder-gray-300
                       border border-gray-300
                       rounded-md
-                      focus:outline-none
-                      focus:ring
-                      focus:ring-indigo-100
-                      focus:border-indigo-300
+                      focus:outline-none focus:border focus:border-indigo-100
                       bg-gray-800
                     "
                   />
@@ -141,7 +132,7 @@
                     rows="5"
                     name="message"
                     id="message"
-                    placeholder="Your Message"
+                    :placeholder="$t('your-message')"
                     v-model="form.message"
                     class="
                       w-full
@@ -150,10 +141,7 @@
                       placeholder-gray-300
                       border border-gray-300
                       rounded-md
-                      focus:outline-none
-                      focus:ring
-                      focus:ring-indigo-100
-                      focus:border-indigo-300
+                      focus:outline-none focus:border focus:border-indigo-100
                       bg-gray-800
                     "
                     required
@@ -193,7 +181,7 @@
                           "
                         />
                       </svg>
-                      <span> Send Message </span>
+                      <span>{{ $t("send-inquiry") }} </span>
                     </div>
                   </button>
                 </div>
@@ -238,7 +226,12 @@
               ></span>
             </div>
           </div>
-          <div class="py-2" :class="active_tab == 'files' ? '' : 'hidden'">
+          <div
+            class="py-2 transition-opacity duration-300 ease-linear"
+            :class="
+              active_tab == 'files' ? 'opacity-100' : 'opacity-0 invisible h-0'
+            "
+          >
             <ul>
               <li v-for="file in accessory.files" :key="file.id">
                 <a
