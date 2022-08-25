@@ -1,150 +1,383 @@
 <template>
-  <div class="border-b border-gray-500">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container container-fluid">
-        <router-link class="navbar-brand" :to="{ name: 'categories' }">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink"
-            version="1.1"
-            class="w-40 h-14"
-            viewBox="0 0 1190.5512 841.8898"
-            fill="#fff"
-          >
-            <g enable-background="new">
-              <path
-                transform="matrix(1,0,0,-1,0,841.8898)"
-                d="M 516.1799 546.1651 C 516.1799 557.1136 513.9592 565.2561 509.5193 570.5201 C 505.1631 575.7843 497.7332 579.0827 487.4 580.4872 C 482.5037 582.3207 483.3173 589.6894 487.4 590.383 C 526.9615 590.383 566.5232 590.383 606.0858 590.383 C 606.2369 590.3983 606.297 590.3456 606.2774 590.1987 C 606.2774 509.942 606.2774 429.6841 606.2774 349.4262 C 606.2774 338.478 607.6324 330.5052 610.5481 325.7748 C 618.0146 313.6569 662.2574 308.2748 663.0701 324.93 C 663.2368 328.3688 657.4779 335.789 649.7473 348.7972 C 625.7971 389.0954 606.9487 405.5023 623.5826 432.8181 C 634.9283 451.4491 672.891 466.6691 672.891 486.786 C 672.891 489.6635 671.1831 492.1894 667.9363 494.3667 C 664.6927 496.5423 659.4831 498.6471 652.3092 500.5431 C 648.2112 502.0435 647.6882 508.6434 652.3092 510.2286 C 685.6716 510.2286 719.0351 510.2286 752.3977 510.2286 C 759.8883 507.8962 756.381 500.8484 752.3977 500.5431 C 728.9487 496.8729 697.6528 470.55 685.3476 454.8308 C 680.7532 448.958 682.5044 447.8848 684.7634 441.7126 L 750.8608 346.5502 C 759.06 335.5997 765.8921 327.7383 771.4426 323.0379 C 776.9092 318.2627 782.3747 315.4564 787.6692 314.473 C 793.7223 312.8343 792.309 305.729 787.6692 304.7879 C 634.4314 304.7879 482.5196 305.5989 329.2877 305.604 C 328.2282 305.604 327.9464 305.8393 326.9288 306.184 C 325.4366 306.6863 323.9152 308.5427 323.7599 310.2239 C 323.5615 312.3825 326.5118 314.8064 328.386 315.3745 C 334.6452 317.2791 339.162 320.5619 341.8843 325.1957 C 344.973 330.4517 346.4955 339.3037 346.4955 351.7268 L 346.4955 446.972 C 346.4955 461.219 344.8732 470.554 341.6278 474.9055 C 338.3833 479.3275 332.405 481.5043 323.7789 481.5043 C 318.0566 481.5043 311.9936 479.9602 305.5884 476.8016 C 301.983 475.024 298.4323 472.8231 294.9506 470.2124 L 294.9506 494.1094 C 304.1243 500.3201 313.8823 505.2657 324.2914 508.9473 C 338.2971 513.9298 352.7303 516.4577 367.5042 516.4577 C 390.9047 516.4577 408.2409 510.2116 419.599 497.7181 C 430.9569 485.2945 436.5927 466.062 436.5927 440.1641 L 436.5927 353.6192 C 436.5927 340.8463 438.5395 331.4795 443.0846 325.8261 C 455.2211 310.7239 496.317 310.6879 509.5193 325.2835 C 514.0851 330.3298 516.1799 337.9156 516.1799 347.8139 Z "
-                fill="#fff"
-              />
-              <path
-                transform="matrix(1,0,0,-1,0,841.8898)"
-                d="M 891.2166 317.6892 C 909.4351 317.6892 923.252 324.9139 932.4816 339.3652 C 941.7127 353.8174 946.3609 375.2569 946.3609 403.6745 C 946.3609 436.1689 941.9587 459.9337 933.0931 475.0152 C 924.2901 490.0972 910.2898 497.6161 891.2166 497.6161 C 872.6936 497.6161 858.8767 490.2446 849.8282 475.452 C 840.7188 460.6594 836.1964 438.0605 836.1964 407.6518 C 836.1964 377.4404 840.7188 354.8852 849.8282 339.9951 C 858.8767 325.1083 872.6936 317.6892 891.2166 317.6892 Z M 1027.6685 407.6518 L 1027.6685 407.6518 C 1027.6685 376.13 1015.3803 351.006 990.7438 332.3327 C 966.1671 313.6623 932.9706 304.3497 891.2166 304.3497 C 849.5235 304.3497 816.4494 313.6623 791.9952 332.3327 C 767.4803 351.006 755.2531 376.13 755.2531 407.6518 C 755.2531 439.3701 767.4803 464.5389 791.8736 483.1146 C 816.3261 501.6892 849.4007 510.9523 891.2166 510.9523 C 933.0931 510.9523 966.3506 501.6892 990.8654 483.1146 C 1015.3803 464.5389 1027.6685 439.3701 1027.6685 407.6518 "
-              />
-              <path
-                transform="matrix(1,0,0,-1,0,841.8898)"
-                d="M 286.9719 349.6898 C 286.9719 337.8991 288.6792 329.4765 292.0105 324.4924 C 295.3406 319.5088 301.1471 316.2112 309.5172 314.7364 C 316.3742 312.0324 313.1858 305.3526 309.5172 305.0504 L 168.0934 305.0504 C 162.8447 306.0626 163.0868 313.835 168.0934 314.7364 C 178.4265 316.77 185.8564 320.421 190.2121 325.546 C 194.652 330.6694 196.8741 338.1792 196.8741 348.0763 L 196.8741 466.2737 C 196.8741 477.2222 194.652 485.365 190.2121 490.7684 C 185.8564 496.1032 178.4265 499.4014 168.0934 500.8059 C 163.1018 502.255 162.4669 509.4405 168.0934 510.4919 L 283.756 510.4919 Z "
-                fill="#fff"
-              />
-              <path
-                transform="matrix(1,0,0,-1,0,841.8898)"
-                d="M 231.8063 620.2329 C 258.9265 620.2329 280.9205 599.3456 280.9205 573.5891 C 280.9205 547.8335 258.9265 526.9465 231.8063 526.9465 C 204.6872 526.9465 182.6923 547.8335 182.6923 573.5891 C 182.6923 599.3456 204.6872 620.2329 231.8063 620.2329 "
-                fill="#fff"
-                fill-rule="evenodd"
-              />
-            </g>
-          </svg>
-        </router-link>
-        <div>
-          <span
-            class="rounded border language p-2 mx-2"
-            id="lang"
-            @click="changeLang"
-          >
-            {{ lang == "en" ? "العربية" : "English" }}
-          </span>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNavDropdown"
-            aria-controls="navbarNavDropdown"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
+    <div class="bg-white  w-full fixed top-0 z-20 " style="font-family: 'Source Sans Pro', sans-serif; !important;">
+
+
+        <div id="navbar" class="flex justify-between py-3 px-3 md:px-0 w-full max-w-6xl mx-auto">
+
+            <div class="  w-52 py-2.5 flex items-center justify-between ">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 text-gray-700 hover:text-black cursor-pointer"
+                    viewBox="0 0 20 20" fill="currentColor" @click="showMenu(-1)">
+                    <path fill-rule="evenodd"
+                        d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                        clip-rule="evenodd" />
+                </svg>
+                <nuxt-link to="/" class="flex items-center">
+                    <img src="/images/logo.svg" alt="logo" class="h-6 ">
+                </nuxt-link>
+            </div>
+            <div class="hidden lg:block" style="width: 47rem;">
+                <nav class=" border-gray-200 sm:px-4 py-2.5 md:py-4 rounded   w-full hidden lg:block">
+                    <div class=" flex items-center justify-center">
+
+                        <div class="flex justify-between lg:justify-start w-full md:w-auto">
+
+
+
+                        </div>
+                        <div class=" absolute md:static w-full md:block md:w-auto left-0 right-0  z-20"
+                            :class="mobileMinueClass" style="top:8rem ;" id="mobile-menu">
+                            <ul
+                                class=" flex flex-col mx-auto md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium items-center">
+
+
+                                <li class="w-full md:w-auto text-center" v-for="(item, i) in menu">
+                                    <div v-if="item.only_sidebar == false">
+                                        <button @click="showMenu(item.id)"
+                                            class="peer py-2 pr-4 pl-3 font-bold text-xl text-gray-800  border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:tour-blue md:p-0">
+                                            {{
+                                                    $t(item.name)
+                                            }}</button>
+
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <div class=" w-36 ">
+                <div class="flex  py-2.5 justify-end items-center">
+                    <button @click="switchLanguage()"
+                        class="bg-white text-sm border px-3  md:mx-3 py-1 md:py-1 rounded  shadow-md hover:shadow-sm duration-700 h-8 ">
+                        {{ lang == 'ar' ? 'English' : 'العربية' }}
+                    </button>
+                    <select name="curr" id="curr"
+                        class="bg-white text-sm border px-2 m-1 md:m-0 py-1 md:py-1 rounded  shadow-md hover:shadow-sm duration-700 h-8 ">
+                        <option value="USD">USD</option>
+                        <option value="aed">AED</option>
+                    </select>
+                </div>
+            </div>
+
         </div>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item" id="lang2">
-              <span
-                class="nav-link rounded border language"
-                aria-current="page"
-                @click="changeLang"
-                >{{ lang == "en" ? "العربية" : "English" }}</span
-              >
-            </li>
-            <li class="nav-item">
-              <router-link class="nav-link" :to="{ name: 'categories' }">{{
-                $t("home")
-              }}</router-link>
-            </li>
-            <li class="nav-item">
-              <router-link class="nav-link" :to="{ name: 'flags' }">{{
-                $t("flags")
-              }}</router-link>
-            </li>
-            <li class="nav-item">
-              <router-link class="nav-link" :to="{ name: 'signs' }">{{
-                $t("signs")
-              }}</router-link>
-            </li>
-            <li class="nav-item">
-              <router-link class="nav-link" :to="{ name: 'contact' }">{{
-                $t("contact")
-              }}</router-link>
-            </li>
-            <!-- <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                id="navbarDropdownMenuLink"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Dropdown link
-              </a>
-              <ul
-                class="dropdown-menu"
-                aria-labelledby="navbarDropdownMenuLink"
-              >
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                </li>
-              </ul>
-            </li> -->
-          </ul>
+
+        <bread-crumb v-if="url.path !== '/'" />
+
+        <div v-show="is_menu" class="top-0 z-40 absolute w-full h-screen  menu bg-black bg-opacity-25 hidden md:flex ">
+            <div class=" flex" id="menu">
+                <div class="w-80 h-screen border  bg-white">
+                    <div class="w-full  py-10 flex items-center mx-auto">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                            class="h-5 w-5 text-gray-400 mx-5 hover:text-gray-500 cursor-pointer " @click="closeMenu"
+                            viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                clip-rule="evenodd" />
+                        </svg>
+                        <nuxt-link to="/" class="flex items-center justify-center">
+                            <img src="/images/logo.svg" alt="logo" class="h-6 ">
+                        </nuxt-link>
+                    </div>
+                    <ul class=" space-y-6 md:flex-row mx-20 md:mt-0 md:text-sm md:font-medium items-center">
+                        <li class="w-full md:w-auto" v-for="(item, i) in menu" @mouseenter="setSubmenu(i)">
+                            <nuxt-link :to="'/' + item.name" :class="menu_path_by_id.menu == i ? 'tour-blue' : ''"
+                                class="block font-semibold text-2xl py-2 pr-4 pl-3 text-black  border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:tour-blue md:p-0">
+                                {{ $t(item.name) }}</nuxt-link>
+                        </li>
+                    </ul>
+                </div>
+                <div v-if="submenu.length" class="w-64  md:w-64 h-screen border bg-white  ">
+
+                    <div class="w-full  py-10 text-center text-xl font-bold ">
+                        <span>{{ $t(menu_title) }}</span>
+                    </div>
+                    <ul class=" space-y-4 md:flex-row mx-6 md:mt-0 md:text-sm md:font-medium items-center">
+                        <li class="w-full flex justify-between md:w-auto" v-for="(item, j) in submenu"
+                            @mouseenter="setSubSubMenu(j)">
+                            <nuxt-link :to="'/' + menu_title + '/' + item.name"
+                                :class="menu_path_by_id.sub_menu == j ? 'tour-blue' : ''"
+                                class="block   text-sm py-2 pr-4 pl-3 text-black border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:tour-blue md:p-0">
+                                {{ $t(item.name) }}
+                            </nuxt-link>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 text-gray-600" fill="none"
+                                v-if="item.items.length" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                            </svg>
+                        </li>
+                    </ul>
+                </div>
+                <div v-if="subsubmenu.length" class="w-64  md:w-64 h-screen border bg-white  ">
+
+                    <div class="w-full  py-10 text-center text-xl font-bold ">
+                        <span>{{ $t(submenu_title) }}</span>
+                    </div>
+                    <ul class=" space-y-4 md:flex-row mx-6 md:mt-0 md:text-sm md:font-medium items-center">
+                        <li class="w-full md:w-auto" v-for="(item, i) in subsubmenu">
+                            <nuxt-link :to="'/' + menu_title + '/' + submenu_title + '/' + item"
+                                class="block   text-sm py-2 pr-4 pl-3 text-black border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:tour-blue md:p-0">
+                                {{ $t(item) }}</nuxt-link>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
-      </div>
-    </nav>
-  </div>
+
+
+        <!-- Mobile Side bar -->
+        <div v-show="mobile_menu" id="mobilemenu"
+            class="top-0 z-40 absolute w-full h-screen menu flex bg-black bg-opacity-25 md:hidden">
+            <div class="w-full h-screen border  bg-white">
+
+                <div class="w-full  py-10 flex items-center mx-auto">
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                        class="h-5 w-5 text-gray-400 mx-5 hover:text-gray-500 cursor-pointer " @click="closeMenu"
+                        viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd"
+                            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                            clip-rule="evenodd" />
+                    </svg>
+
+                    <nuxt-link to="/" class="flex items-center justify-center">
+                        <img src="/images/logo.svg" alt="logo" class="h-6 ">
+                    </nuxt-link>
+                </div>
+                <ul class=" space-y-6 md:flex-row mx-20 md:mt-0 md:text-sm md:font-medium items-center">
+
+
+                    <li class="w-full md:w-auto" v-for="(item, i) in menu" @click="setSubmenu(i)">
+
+                        <button :class="menu_path_by_id.menu == i ? 'tour-blue' : ''"
+                            class="block font-semibold text-xl py-2 pr-4 pl-3 text-black  border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:tour-blue md:p-0">
+                            {{ $t(item.name) }}</button>
+
+                    </li>
+                </ul>
+            </div>
+
+            <div v-if="submenu.length" class="w-full  md:w-64 h-screen border bg-white z-20   absolute md:static">
+                <div class="flex w-full justify-between mt-4">
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                        class="h-6  text-gray-400 mx-2 hover:text-gray-500 cursor-pointer" @click="closeSubmenue"
+                        fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                        class="h-6 w-6 text-gray-400 mx-5 hover:text-gray-500 cursor-pointer " @click="closeMenu"
+                        viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd"
+                            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                            clip-rule="evenodd" />
+                    </svg>
+                </div>
+                <div class="w-full  py-10 text-center text-xl font-bold ">
+                    <span>{{ $t(menu_title) }}</span>
+                </div>
+                <ul class=" space-y-4 md:flex-row mx-6 md:mt-0 md:text-sm md:font-medium items-center">
+
+
+                    <li class="w-full flex justify-between items-center md:w-auto" v-for="(item, j) in submenu"
+                        @click="setSubSubMenu(j)">
+
+                        <button :class="menu_path_by_id.sub_menu == j ? 'tour-blue' : ''"
+                            class="block   text-sm py-2 pr-4 pl-3 text-black border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:tour-blue md:p-0">
+                            {{ $t(item.name) }}
+
+                        </button>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 text-gray-600" fill="none"
+                            v-if="item.items.length" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                        </svg>
+
+                    </li>
+                </ul>
+            </div>
+
+            <div v-if="subsubmenu.length" class="w-full  md:w-64 h-screen border bg-white z-30   absolute md:static  ">
+                <div class="flex w-full justify-between mt-4">
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                        class="h-6  text-gray-400 mx-2 hover:text-gray-500 cursor-pointer" @click="subsubmenu = []"
+                        fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                        class="h-6 w-6 text-gray-400 mx-5 hover:text-gray-500 cursor-pointer " @click="closeMenu"
+                        viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd"
+                            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                            clip-rule="evenodd" />
+                    </svg>
+                </div>
+                <div class="w-full  py-10 text-center text-xl font-bold ">
+                    <span>{{ $t(submenu_title) }}</span>
+                </div>
+                <ul class=" space-y-4 md:flex-row mx-6 md:mt-0 md:text-sm md:font-medium items-center">
+
+
+                    <li class="w-full md:w-auto" v-for="(item, i) in subsubmenu">
+
+                        <button
+                            class="block   text-sm py-2 pr-4 pl-3 text-black border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:tour-blue md:p-0">
+                            {{ $t(item) }}</button>
+
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+
 </template>
 <script setup>
-import { ref } from "@vue/reactivity";
-import { onMounted } from "@vue/runtime-core";
-import { inject } from "vue";
-let lang = inject("lang");
-function changeLang() {
-  if (lang == "en") localStorage.setItem("lang", "ar");
-  else {
-    localStorage.setItem("lang", "en");
-  }
-  location.reload();
+import { onMounted, ref } from 'vue';
+import { useRoute } from 'vue-router';
+
+let url = ref(useRoute())
+let lang = ref('');
+onMounted(() => {
+    lang.value = window.localStorage.getItem('lang');
+
+})
+const switchLanguage = () => {
+
+    // if (process.server) {
+    if (window.localStorage.getItem('lang') == 'en') {
+        window.localStorage.setItem('lang', 'ar')
+        lang.value = 'ar'
+        window.location.reload();
+    }
+    // }
+    else {
+        localStorage.setItem('lang', 'en')
+        lang.value = 'en'
+        window.location.reload()
+    }
+}
+// ********************************************
+onMounted(() => {
+    let specifiedElement = document.getElementById("menu");
+    let specifiedElement3 = document.getElementById("mobilemenu");
+    let specifiedElement2 = document.getElementById("navbar");
+    document.addEventListener("click", (event) => {
+        const isClickInside = specifiedElement.contains(event.target);
+        const isClickInside2 = specifiedElement2.contains(event.target);
+        const isClickInside3 = specifiedElement3.contains(event.target);
+
+        if (!isClickInside && !isClickInside2 && !isClickInside3) {
+            console.log('test2');
+            closeMenu()
+            // isOptionsShow.value = false;
+        }
+    });
+});
+
+let menu = ref([
+    {
+        id: 0,
+        name: 'destinations',
+        only_sidebar: false,
+        items: [{ id: 0, name: 'turkiye', items: ['trabzon', 'istanbul'] },
+        { id: 1, name: 'uae', items: ['abo_dhabi', 'dubai'] },
+        { id: 1, name: 'iran', items: [] }]
+    },
+    {
+        id: 1,
+        name: 'packages',
+        only_sidebar: false,
+        items: [{ id: 0, name: '', items: [] }]
+    },
+    {
+        id: 2,
+        name: 'tours',
+        only_sidebar: false,
+        items: [
+            { id: 0, name: 'turkiye', items: ['trabzon', 'istanbul'] }
+        ]
+    },
+    {
+        id: 3,
+        name: 'activities',
+        only_sidebar: false, items: [{ id: 0, name: 'turkiye', items: ['trabzon', 'istanbul'] }]
+    },
+    {
+        id: 4,
+        name: 'transfer',
+        only_sidebar: false, items: [{ id: 0, name: 'turkiye', items: ['trabzon', 'istanbul'] }]
+    },
+    {
+        id: 5,
+        name: 'test',
+        only_sidebar: true,
+        items: []
+    }])
+let submenu = ref([])
+let subsubmenu = ref([])
+let menu_title = ref('');
+let submenu_title = ref('');
+let menu_path_by_id = ref({
+    menu: -1,
+    sub_menu: -1,
+})
+const setSubSubMenu = (i) => {
+    menu_path_by_id.value.sub_menu = i
+    subsubmenu.value = menu.value[menu_path_by_id.value.menu].items[menu_path_by_id.value.sub_menu]['items']
+    submenu_title.value = menu.value[menu_path_by_id.value.menu].items[menu_path_by_id.value.sub_menu]['name']
+    console.log(subsubmenu.value);
+}
+const closeSubmenue = () => {
+    menu_path_by_id.value.sub_menu = -1
+    subsubmenu.value = []
+    submenu.value = []
+}
+
+const setSubmenu = (i) => {
+    menu_path_by_id.value.menu = i
+    subsubmenu.value = [];
+    submenu.value = menu.value[i]['items']
+    menu_title.value = menu.value[i]['name']
+}
+let is_menu = ref(false)
+let mobile_menu = ref(false)
+const showMenu = (i) => {
+    menu_path_by_id.value.menu = i
+    is_menu.value = true
+    mobile_menu.value = true
+    if (i != -1)
+        setSubmenu(i)
+}
+const closeMenu = () => {
+
+    menu_path_by_id.value.menu = -1;
+    menu_path_by_id.value.sub_menu = -1;
+
+    submenu.value = [];
+    subsubmenu.value = [];
+    is_menu.value = false
+    mobile_menu.value = false
+}
+const test = () => {
+    console.log('test');
 }
 </script>
 
-<style>
-@media only screen and (min-width: 990px) {
-  #lang {
-    display: none;
-  }
-  #lang2 > span {
-    display: block;
-  }
+<style type="text/css" scoped>
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@600&display=swap');
+
+.st0 {
+    fill-rule: evenodd;
+    clip-rule: evenodd;
+    fill: #00AEEF !important;
 }
-.language {
-  color: #fff !important;
-  cursor: pointer;
+
+.st1 {
+    fill: #283a97 !important;
 }
-.language:hover {
-  color: #000 !important;
-  background-color: #fff !important;
+
+.st2 {
+    fill: #FF8200;
 }
+
 .router-link-active {
-  color: white !important;
+    color: #00AEEF
 }
 </style>

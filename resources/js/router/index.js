@@ -15,13 +15,9 @@ import AccessoryCreate from "../pages/backend/accessories/AccessoryCreate";
 import AccessoryEdit from "../pages/backend/accessories/AccessoryEdit";
 import AccessoryDetails from "../pages/backend/accessories/AccessoryDetails";
 
-import Category from "../pages/frontend/categories/CategoryDetails";
-import Categories from "../pages/frontend/categories/CategoriesList";
-import Product from "../pages/frontend/products/ProductDetails";
-import Accessory from "../pages/frontend/accessories/AccessoryDetails";
+import Frontend from "../pages/frontend";
+import CommingSoon from "../pages/frontend/CommingSoon";
 
-import Flags from "../pages/frontend/categories/FlagsList";
-import Signs from "../pages/frontend/categories/SignsList";
 import About from "../pages/frontend/AboutUs";
 import Contact from "../pages/frontend/ContactUs";
 
@@ -108,9 +104,13 @@ const routes = [
     // (((((((((((((((((--Front-End--))))))))))))))))),
 
     {
+        path: "/test",
+        name: "Frontend",
+        component: Frontend,
+    }, {
         path: "/",
-        name: "categories",
-        component: Categories,
+        name: "CommingSoon",
+        component: CommingSoon,
     },
     {
         path: "/about",
@@ -123,35 +123,7 @@ const routes = [
         component: Contact,
     },
     {
-        path: "/categories/:slug",
-        name: "category",
-        component: Category,
-        props: true,
-    },
-    {
-        path: "/categories/products/:slug",
-        name: "product",
-        component: Product,
-        props: true,
-    },
-    {
-        path: "/categories/accessories/:slug",
-        name: "accessory",
-        component: Accessory,
-        props: true,
-    },
-    {
-        path: "/categories/flags",
-        name: "flags",
-        component: Flags,
-    },
-    {
-        path: "/categories/signs",
-        name: "signs",
-        component: Signs,
-    },
-    {
-        path: "/test",
+        path: "/test2",
         name: "test",
         component: Test,
         props: true,
