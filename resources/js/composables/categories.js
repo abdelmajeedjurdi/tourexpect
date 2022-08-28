@@ -8,7 +8,7 @@ export default function useCategories() {
     const slides = ref([]);
     const router = useRouter();
     const errors = ref("");
-    const products = ref([]);
+    const tours = ref([]);
     const accessories = ref([]);
 
     const getCategories = async () => {
@@ -32,14 +32,14 @@ export default function useCategories() {
         let response = await axios.get("/api/category/" + slug);
         console.log(response.data);
         category.value = response.data.category;
-        products.value = response.data.products;
+        tours.value = response.data.tours;
         accessories.value = response.data.accessories;
         console.log(accessories.value);
     };
 
     const storeCategory = async (data) => {
         let fd = new FormData();
-        fd.append("category", data.form.category);
+        fd.append("category", 'flag');
         fd.append("name_en", data.form.name_en);
         fd.append("name_ar", data.form.name_ar);
         fd.append("description_en", data.form.description_en);
@@ -77,7 +77,7 @@ export default function useCategories() {
         console.log(data);
         let fd = new FormData();
         fd.append("_method", "patch");
-        fd.append("category", data.form.category);
+        fd.append("category", 'flag');
         fd.append("name_en", data.form.name_en);
         fd.append("name_ar", data.form.name_ar);
         fd.append("description_en", data.form.description_en);
@@ -123,7 +123,7 @@ export default function useCategories() {
         getSlides,
         slides,
         getCategoryDetails,
-        products,
+        tours,
         accessories,
         getFlagsOrSigns,
     };

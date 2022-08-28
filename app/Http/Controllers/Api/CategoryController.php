@@ -6,11 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryRequest;
 use App\Http\Resources\AccessoryResource;
 use App\Http\Resources\CategoryResource;
-use App\Http\Resources\ProductResource;
+use App\Http\Resources\TourResource;
 use App\Models\Accessory;
 use App\Models\Category;
 use App\Models\CategoryProperty;
-use App\Models\Product;
+use App\Models\Tour;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
@@ -57,7 +57,7 @@ class CategoryController extends Controller
         }
 
         $category = new Category;
-        $category->category = $request->category;
+        $category->category = 'test'; // $request->category;
         $category->name_en = $request->name_en;
         $category->name_ar = $request->name_ar;
         $category->description_en = $request->description_en;
@@ -68,16 +68,16 @@ class CategoryController extends Controller
         $category->slug = Str::slug($category->name_en, '-');
         $category->save();
 
-        foreach (json_decode($request['properties'], true) as $item) {
-            Log::info($item);
-            CategoryProperty::create([
-                'category_id' => $category->id,
-                'title_en' => $item['title_en'],
-                'title_ar' => $item['title_ar'],
-                'description_en' => $item['description_en'],
-                'description_ar' => $item['description_ar']
-            ]);
-        }
+        // foreach (json_decode($request['properties'], true) as $item) {
+        //     Log::info($item);
+        //     CategoryProperty::create([
+        //         'category_id' => $category->id,
+        //         'title_en' => $item['title_en'],
+        //         'title_ar' => $item['title_ar'],
+        //         'description_en' => $item['description_en'],
+        //         'description_ar' => $item['description_ar']
+        //     ]);
+        // }
 
         return ['message' => 'Category Created Successfully'];
     }
@@ -96,9 +96,9 @@ class CategoryController extends Controller
     {
         $category
             = new CategoryResource(Category::where('slug', $slug)->first());
-        $products = ProductResource::collection(Product::where('category_id', $category->id)->get());
+        $tours = TourResource::collection(Tour::where('category_id', $category->id)->get());
         $accessories = AccessoryResource::collection(Accessory::where('category_id', $category->id)->get());
-        return ['category' => $category, 'products' => $products, 'accessories' => $accessories];
+        return ['category' => $category, 'tours' => $tours, 'accessories' => $accessories];
     }
 
     /**
@@ -137,25 +137,6 @@ class CategoryController extends Controller
             'image' =>  $imageName,
             'slug' => Str::slug($request->name_en, '-')
         ]);
-        foreach (json_decode($request['properties'], true) as $item) {
-            if (!array_key_exists('id', $item)) {
-
-                CategoryProperty::create([
-                    'category_id' => $category['id'],
-                    'title_en' => $item['title_en'],
-                    'title_ar' => $item['title_ar'],
-                    'description_en' => $item['description_en'],
-                    'description_ar' => $item['description_ar'],
-                ]);
-            } else {
-                CategoryProperty::where('id', $item['id'])->update([
-                    'title_en' => $item['title_en'],
-                    'title_ar' => $item['title_ar'],
-                    'description_en' => $item['description_en'],
-                    'description_ar' => $item['description_ar'],
-                ]);
-            }
-        }
 
         return ['message' => 'Category Updated Successfully.'];
     }

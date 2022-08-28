@@ -3,27 +3,27 @@ import axios from "axios";
 import { useRouter } from "vue-router";
 
 export default function useProducts() {
-    const products = ref([]);
-    const product = ref([]);
+    const tours = ref([]);
+    const tour = ref([]);
     const router = useRouter();
     const errors = ref("");
     let percentage = ref(0);
     let fd = new FormData();
 
     const getProducts = async () => {
-        let response = await axios.get("/api/products");
-        products.value = response.data.data;
+        let response = await axios.get("/api/tours");
+        tours.value = response.data.data;
     };
 
     const getProduct = async (id) => {
-        let response = await axios.get("/api/products/" + id);
-        product.value = response.data.data;
-        console.log(product.value);
+        let response = await axios.get("/api/tours/" + id);
+        tour.value = response.data.data;
+        console.log(tour.value);
     };
     const getProductDetails = async (slug) => {
         // console.log(router.options.routes);
-        let response = await axios.get("/api/product/" + slug);
-        product.value = response.data.data;
+        let response = await axios.get("/api/tour/" + slug);
+        tour.value = response.data.data;
     };
 
     const storeProduct = async (data) => {
@@ -37,7 +37,7 @@ export default function useProducts() {
         fd.append("properties", JSON.stringify(data.properties));
         errors.value = "";
         try {
-            await axios.post("/api/products", fd, {
+            await axios.post("/api/tours", fd, {
                 onUploadProgress: function (progressEvent) {
                     percentage.value = parseInt(
                         Math.round(
@@ -51,7 +51,7 @@ export default function useProducts() {
                     );
                 },
             });
-            await router.push({ name: "products.index" });
+            await router.push({ name: "tours.index" });
         } catch (e) {
             if (e.response.status === 422) {
                 errors.value = e.response.data.errors;
@@ -71,7 +71,7 @@ export default function useProducts() {
         fd.append("properties", JSON.stringify(data.properties));
         errors.value = "";
         try {
-            await axios.post("/api/products/" + id, fd, {
+            await axios.post("/api/tours/" + id, fd, {
                 headers: {
                     "Content-Type": "multipart/form-data",
                 },
@@ -88,7 +88,7 @@ export default function useProducts() {
                     );
                 },
             });
-            await router.push({ name: "products.index" });
+            await router.push({ name: "tours.index" });
         } catch (e) {
             if (e.response.status === 422) {
                 errors.value = e.response.data.errors;
@@ -100,7 +100,7 @@ export default function useProducts() {
         await axios.delete("/api/cat-property/" + id);
     };
     const destroyProduct = async (id) => {
-        await axios.delete("/api/products/" + id);
+        await axios.delete("/api/tours/" + id);
     };
     const addGallery = async (images) => {
         for (var i = 0; i < images.length; i++) {
@@ -125,8 +125,8 @@ export default function useProducts() {
     };
 
     return {
-        products,
-        product,
+        tours,
+        tour,
         errors,
         getProducts,
         getProduct,

@@ -5,10 +5,10 @@ import CategoryCreate from "../pages/backend/categories/CategoryCreate";
 import CategoryEdit from "../pages/backend/categories/CategoryEdit";
 import CategoryDetails from "../pages/backend/categories/CategoryDetails";
 
-import ProductsIndex from "../pages/backend/products/ProductsIndex";
-import ProductCreate from "../pages/backend/products/ProductCreate";
-import ProductEdit from "../pages/backend/products/ProductEdit";
-import ProductDetails from "../pages/backend/products/ProductDetails";
+import ToursIndex from "../pages/backend/tours/ToursIndex";
+import TourCreate from "../pages/backend/tours/TourCreate";
+import TourEdit from "../pages/backend/tours/TourEdit";
+import TourDetails from "../pages/backend/tours/TourDetails";
 
 import AccessoriesIndex from "../pages/backend/accessories/AccessoriesIndex";
 import AccessoryCreate from "../pages/backend/accessories/AccessoryCreate";
@@ -54,30 +54,30 @@ const routes = [
         props: true,
     },
 
-    // (((((((((((((((((--Products--)))))))))))))))))
+    // (((((((((((((((((--Tours--)))))))))))))))))
     {
-        path: "/dashboard/products",
-        name: "products.index",
-        component: ProductsIndex,
+        path: "/dashboard/tours",
+        name: "tours.index",
+        component: ToursIndex,
     },
     {
-        path: "/dashboard/products/create",
-        name: "product.create",
-        component: ProductCreate,
+        path: "/dashboard/tours/create",
+        name: "tour.create",
+        component: TourCreate,
     },
     {
-        path: "/dashboard/products/:id/edit",
-        name: "product.edit",
-        component: ProductEdit,
+        path: "/dashboard/tours/:id/edit",
+        name: "tour.edit",
+        component: TourEdit,
         props: true,
     },
     {
-        path: "/dashboard/products/:id/details",
-        name: "product.details",
-        component: ProductDetails,
+        path: "/dashboard/tours/:id/details",
+        name: "tour.details",
+        component: TourDetails,
         props: true,
     },
-    // (((((((((((((((((--Products--)))))))))))))))))
+    // (((((((((((((((((--Tours--)))))))))))))))))
     {
         path: "/dashboard/accessories",
         name: "accessories.index",

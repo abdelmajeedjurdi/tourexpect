@@ -11,9 +11,9 @@
                         d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
                         clip-rule="evenodd" />
                 </svg>
-                <nuxt-link to="/" class="flex items-center">
+                <router-link to="/" class="flex items-center">
                     <img src="/images/logo.svg" alt="logo" class="h-6 ">
-                </nuxt-link>
+                </router-link>
             </div>
             <div class="hidden lg:block" style="width: 47rem;">
                 <nav class=" border-gray-200 sm:px-4 py-2.5 md:py-4 rounded   w-full hidden lg:block">
@@ -27,7 +27,7 @@
                         <div class=" absolute md:static w-full md:block md:w-auto left-0 right-0  z-20"
                             :class="mobileMinueClass" style="top:8rem ;" id="mobile-menu">
                             <ul
-                                class=" flex flex-col mx-auto md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium items-center">
+                                class=" flex flex-col mx-auto my-auto md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium items-center">
 
 
                                 <li class="w-full md:w-auto text-center" v-for="(item, i) in menu">
@@ -45,14 +45,14 @@
                     </div>
                 </nav>
             </div>
-            <div class=" w-36 ">
+            <div class=" w-36 my-auto">
                 <div class="flex  py-2.5 justify-end items-center">
                     <button @click="switchLanguage()"
                         class="bg-white text-sm border px-3  md:mx-3 py-1 md:py-1 rounded  shadow-md hover:shadow-sm duration-700 h-8 ">
                         {{ lang == 'ar' ? 'English' : 'العربية' }}
                     </button>
                     <select name="curr" id="curr"
-                        class="bg-white text-sm border px-2 m-1 md:m-0 py-1 md:py-1 rounded  shadow-md hover:shadow-sm duration-700 h-8 ">
+                        class="bg-white text-sm border w-20 m-1 md:m-0 py-1 md:py-1 rounded  shadow-md hover:shadow-sm duration-700 h-8 ">
                         <option value="USD">USD</option>
                         <option value="aed">AED</option>
                     </select>
@@ -74,15 +74,15 @@
                                 d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
                                 clip-rule="evenodd" />
                         </svg>
-                        <nuxt-link to="/" class="flex items-center justify-center">
+                        <router-link to="/" class="flex items-center justify-center">
                             <img src="/images/logo.svg" alt="logo" class="h-6 ">
-                        </nuxt-link>
+                        </router-link>
                     </div>
                     <ul class=" space-y-6 md:flex-row mx-20 md:mt-0 md:text-sm md:font-medium items-center">
                         <li class="w-full md:w-auto" v-for="(item, i) in menu" @mouseenter="setSubmenu(i)">
-                            <nuxt-link :to="'/' + item.name" :class="menu_path_by_id.menu == i ? 'tour-blue' : ''"
+                            <router-link :to="'/' + item.name" :class="menu_path_by_id.menu == i ? 'tour-blue' : ''"
                                 class="block font-semibold text-2xl py-2 pr-4 pl-3 text-black  border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:tour-blue md:p-0">
-                                {{ $t(item.name) }}</nuxt-link>
+                                {{ $t(item.name) }}</router-link>
                         </li>
                     </ul>
                 </div>
@@ -94,11 +94,11 @@
                     <ul class=" space-y-4 md:flex-row mx-6 md:mt-0 md:text-sm md:font-medium items-center">
                         <li class="w-full flex justify-between md:w-auto" v-for="(item, j) in submenu"
                             @mouseenter="setSubSubMenu(j)">
-                            <nuxt-link :to="'/' + menu_title + '/' + item.name"
+                            <router-link :to="'/' + menu_title + '/' + item.name"
                                 :class="menu_path_by_id.sub_menu == j ? 'tour-blue' : ''"
                                 class="block   text-sm py-2 pr-4 pl-3 text-black border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:tour-blue md:p-0">
                                 {{ $t(item.name) }}
-                            </nuxt-link>
+                            </router-link>
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 text-gray-600" fill="none"
                                 v-if="item.items.length" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
@@ -113,9 +113,9 @@
                     </div>
                     <ul class=" space-y-4 md:flex-row mx-6 md:mt-0 md:text-sm md:font-medium items-center">
                         <li class="w-full md:w-auto" v-for="(item, i) in subsubmenu">
-                            <nuxt-link :to="'/' + menu_title + '/' + submenu_title + '/' + item"
+                            <router-link :to="'/' + menu_title + '/' + submenu_title + '/' + item"
                                 class="block   text-sm py-2 pr-4 pl-3 text-black border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:tour-blue md:p-0">
-                                {{ $t(item) }}</nuxt-link>
+                                {{ $t(item) }}</router-link>
                         </li>
                     </ul>
                 </div>
@@ -137,9 +137,9 @@
                             clip-rule="evenodd" />
                     </svg>
 
-                    <nuxt-link to="/" class="flex items-center justify-center">
+                    <router-link to="/" class="flex items-center justify-center">
                         <img src="/images/logo.svg" alt="logo" class="h-6 ">
-                    </nuxt-link>
+                    </router-link>
                 </div>
                 <ul class=" space-y-6 md:flex-row mx-20 md:mt-0 md:text-sm md:font-medium items-center">
 

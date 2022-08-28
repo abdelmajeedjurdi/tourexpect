@@ -21,7 +21,7 @@
         :class="i == active_slide ? 'active' : ''"
       >
         <img
-          :src="'/images/products/' + slide.image"
+          :src="'/images/tours/' + slide.image"
           alt="test"
           class="image-slides w-full"
         />

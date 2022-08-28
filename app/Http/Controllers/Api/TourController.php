@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\ProductResource;
-use App\Models\Product;
+use App\Http\Resources\TourResource;
+use App\Models\Tour;
 use App\Models\ProductFile;
 use App\Models\ProductImage;
 use App\Models\ProductProperty;
@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 
-class ProductController extends Controller
+class TourController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,7 +22,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return ProductResource::collection(Product::all());
+        return TourResource::collection(Tour::all());
+        // return "index is working";
     }
 
     /**
@@ -48,25 +49,25 @@ class ProductController extends Controller
             $image = $request->image;
             $imageName = $image->getClientOriginalName();
             $imageName = time() . '_' . $imageName;
-            $image->move(public_path('/images/products'), $imageName);
+            $image->move(public_path('/images/tours'), $imageName);
         } else {
             $imageName = 'default.jpg';
         }
 
-        $product = new Product();
-        $product->category_id = $request->category_id;
-        $product->name_en = $request->name_en;
-        $product->name_ar = $request->name_ar;
-        $product->description_en = $request->description_en;
-        $product->description_ar = $request->description_ar;
-        $product->thumbnail = $imageName;
-        $product->slug = Str::slug($product->name_en, '-');
-        $product->save();
+        $tour = new Tour();
+        $tour->category_id = $request->category_id;
+        $tour->name_en = $request->name_en;
+        $tour->name_ar = $request->name_ar;
+        $tour->description_en = $request->description_en;
+        $tour->description_ar = $request->description_ar;
+        $tour->thumbnail = $imageName;
+        $tour->slug = Str::slug($tour->name_en, '-');
+        $tour->save();
 
         foreach (json_decode($request['properties'], true) as $item) {
             Log::info($item);
             ProductProperty::create([
-                'product_id' => $product->id,
+                'product_id' => $tour->id,
                 'title_en' => $item['title_en'],
                 'title_ar' => $item['title_ar'],
                 'description_en' => $item['description_en'],
@@ -79,10 +80,10 @@ class ProductController extends Controller
             foreach ($request->file('images') as $file) {
 
                 $imageName = time() . '_' . $file->getClientOriginalName();
-                $file->move(public_path('/images/products'), $imageName);
+                $file->move(public_path('/images/tours'), $imageName);
 
                 ProductImage::create([
-                    'product_id' => $product->id,
+                    'product_id' => $tour->id,
                     'image' => $imageName,
                     // 'created_at' => Carbon::now()
                 ]);
@@ -95,10 +96,10 @@ class ProductController extends Controller
 
                 $OriginalName = $file->getClientOriginalName();
                 $imageName = time() . '_' . $file->getClientOriginalName();
-                $file->move(public_path('/files/products'), $imageName);
+                $file->move(public_path('/files/tours'), $imageName);
 
                 ProductFile::create([
-                    'product_id' => $product->id,
+                    'product_id' => $tour->id,
                     'file' => $imageName,
                     'original_name' => $OriginalName,
                     // 'created_at' => Carbon::now()
@@ -106,7 +107,7 @@ class ProductController extends Controller
             }
         }
 
-        return ['message' => 'Product Created Successfully'];
+        return ['message' => 'Tour Created Successfully'];
     }
 
     /**
@@ -115,13 +116,13 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show(Tour $tour)
     {
-        return new ProductResource($product);
+        return new TourResource($tour);
     }
     public function getProductDetails($slug)
     {
-        return new ProductResource(Product::where('slug', $slug)->first());
+        return new TourResource(Tour::where('slug', $slug)->first());
     }
 
 
@@ -132,10 +133,10 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, Tour $tour)
     {
         Log::info($request);
-        $path = public_path() . '/images/products/';
+        $path = public_path() . '/images/tours/';
         //code for remove old image
         if ($request->new_image != 'null' && $request->new_image != 'default.jpg') {
             $file_old = $path . $request->product_img;
@@ -146,11 +147,11 @@ class ProductController extends Controller
             $image = $request->new_image;
             $imageName = $image->getClientOriginalName();
             $imageName = time() . '_' . $imageName;
-            $image->move(public_path('/images/products/'), $imageName);
+            $image->move(public_path('/images/tours/'), $imageName);
         } else {
             $imageName = $request->product_img;
         }
-        $product->update([
+        $tour->update([
             'category_id' => $request->category_id,
             'name_en' => $request->name_en,
             'name_ar' => $request->name_ar,
@@ -163,7 +164,7 @@ class ProductController extends Controller
             if (!array_key_exists('id', $item)) {
 
                 ProductProperty::create([
-                    'product_id' => $product['id'],
+                    'product_id' => $tour['id'],
                     'title_en' => $item['title_en'],
                     'title_ar' => $item['title_ar'],
                     'description_en' => $item['description_en'],
@@ -184,10 +185,10 @@ class ProductController extends Controller
             foreach ($request->file('images') as $file) {
 
                 $imageName = time() . '_' . $file->getClientOriginalName();
-                $file->move(public_path('/images/products'), $imageName);
+                $file->move(public_path('/images/tours'), $imageName);
 
                 ProductImage::create([
-                    'product_id' => $product->id,
+                    'product_id' => $tour->id,
                     'image' => $imageName,
                     // 'created_at' => Carbon::now()
                 ]);
@@ -200,17 +201,17 @@ class ProductController extends Controller
 
                 $OriginalName = $file->getClientOriginalName();
                 $imageName = time() . '_' . $file->getClientOriginalName();
-                $file->move(public_path('/files/products'), $imageName);
+                $file->move(public_path('/files/tours'), $imageName);
 
                 ProductFile::create([
-                    'product_id' => $product->id,
+                    'product_id' => $tour->id,
                     'file' => $imageName,
                     'original_name' => $OriginalName,
                 ]);
             }
         }
 
-        return ['message' => 'Product Updated Successfully.'];
+        return ['message' => 'Tour Updated Successfully.'];
     }
 
     /**
@@ -221,27 +222,27 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        $product = Product::find($id);
-        Log::info($product);
-        if ($product->thumbnail !== 'default.jpg' || $product->thumbnail !== '')
-            unlink(public_path() . '/images/products/' . $product->thumbnail);
-        $images = ProductImage::where('product_id', $product->id)->get();
-        $files = ProductFile::where('product_id', $product->id)->get();
+        $tour = Tour::find($id);
+        Log::info($tour);
+        if ($tour->thumbnail !== 'default.jpg' || $tour->thumbnail !== '')
+            unlink(public_path() . '/images/tours/' . $tour->thumbnail);
+        $images = ProductImage::where('product_id', $tour->id)->get();
+        $files = ProductFile::where('product_id', $tour->id)->get();
         foreach ($images as $image) {
-            unlink(public_path() . '/images/products/' . $image->image);
+            unlink(public_path() . '/images/tours/' . $image->image);
         }
         foreach ($files as $file) {
-            unlink(public_path() . '/files/products/' . $file->file);
+            unlink(public_path() . '/files/tours/' . $file->file);
         }
-        ProductImage::where('product_id', $product->id)->delete();
-        ProductFile::where('product_id', $product->id)->delete();
-        ProductProperty::where('product_id', $product->id)->delete();
-        $product->delete();
+        ProductImage::where('product_id', $tour->id)->delete();
+        ProductFile::where('product_id', $tour->id)->delete();
+        ProductProperty::where('product_id', $tour->id)->delete();
+        $tour->delete();
         return;
     }
     public function deleteImage($id)
     {
-        $path = public_path() . '/images/products/';
+        $path = public_path() . '/images/tours/';
 
         $image = ProductImage::find($id);
         unlink($path . $image->image);
@@ -250,7 +251,7 @@ class ProductController extends Controller
     }
     public function deleteFile($id)
     {
-        $path = public_path() . '/files/products/';
+        $path = public_path() . '/files/tours/';
 
         $file = ProductFile::find($id);
         Log::info($file);
