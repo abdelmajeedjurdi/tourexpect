@@ -1,22 +1,22 @@
 <template>
-    <div v-if="isProgressing && percentage < 100" class="-ml-6 -mt-6 w-full pt-52 fixed bg-black bg-opacity-50 z-20"
-        style="height: 100%">
-        <progress-bar :percentage="percentage" />
-    </div>
+    <div>
+        <div v-if="isProgressing && percentage < 100" class="-ml-6 -mt-6 w-full pt-52 fixed bg-black bg-opacity-50 z-20"
+            style="height: 100%">
+            <progress-bar :percentage="percentage" />
+        </div>
+        <div class="flex">
+            <form class="space-y-6 w-full" @submit.prevent="saveTour">
+                <div class="lg:flex justify-between space-x-4">
+                    <div class="space-y-4 rounded-md w-full">
+                        <!-- title -->
+                        <div class="flex justify-between">
 
-    <form class="space-y-6" @submit.prevent="saveTour">
-        <div class="lg:flex justify-between space-x-4">
-            <div class="space-y-4 rounded-md w-full">
-                <div class="flex justify-between">
-                    <div v-if="categories.length && tour['category_id']" class="me-2">
-                        <searchable-dropdown :options="categories" :category_id="tour['category_id']"
-                            @selected="selectCategory($event)" class="mt-6 me-2" />
-                    </div>
-                    <div class="w-full me-2">
-                        <label for="name_en" class="block text-sm font-medium text-gray-700 dark:text-gray-200">English
-                            Name</label>
-                        <div class="mt-1">
-                            <input type="text" name="name_en" id="name_en" class="
+                            <div class="w-full me-2">
+                                <label for="title_en"
+                                    class="block text-sm font-medium text-gray-700 dark:text-gray-200">English
+                                    Name</label>
+                                <div class="mt-1">
+                                    <input type="text" name="title_en" id="title_en" class="
                   block
                   mt-1
                   w-full
@@ -28,14 +28,15 @@
                   focus:ring-indigo-200
                   focus:ring-opacity-50
                   dark:bg-gray-800
-                " v-model="tour.name_en" />
-                        </div>
-                    </div>
-                    <div class="w-full">
-                        <label for="name_ar" class="block text-sm font-medium text-gray-700 dark:text-gray-200">Arabic
-                            Name</label>
-                        <div class="mt-1">
-                            <input dir="rtl" type="text" name="name_ar" id="name_ar" class="
+                " v-model="tour.title_en" />
+                                </div>
+                            </div>
+                            <div class="w-full">
+                                <label for="title_ar"
+                                    class="block text-sm font-medium text-gray-700 dark:text-gray-200">Arabic
+                                    Name</label>
+                                <div class="mt-1">
+                                    <input dir="rtl" type="text" name="title_ar" id="title_ar" class="
                   block
                   mt-1
                   w-full
@@ -47,17 +48,64 @@
                   focus:ring-indigo-200
                   focus:ring-opacity-50
                   dark:bg-gray-800
-                " v-model="tour.name_ar" />
+                " v-model="tour.title_ar" />
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="flex justify-between">
-                    <div class="w-full me-2">
-                        <label for="description_en"
-                            class="block text-sm font-medium text-gray-700 dark:text-gray-200">English
-                            Description</label>
-                        <div class="mt-1">
-                            <textarea rows="10" type="text" name="description_en" id="description_en" class="
+
+                        <!-- address -->
+                        <div class="flex justify-between">
+
+                            <div class="w-full me-2">
+                                <label for="address_en"
+                                    class="block text-sm font-medium text-gray-700 dark:text-gray-200">English
+                                    Address</label>
+                                <div class="mt-1">
+                                    <input type="text" name="address_en" id="address_en" class="
+                  block
+                  mt-1
+                  w-full
+                  rounded-md
+                  border-gray-500
+                  shadow-sm
+                  focus:border-indigo-300
+                  focus:ring
+                  focus:ring-indigo-200
+                  focus:ring-opacity-50
+                  dark:bg-gray-800
+                " v-model="tour.address_en" />
+                                </div>
+                            </div>
+                            <div class="w-full">
+                                <label for="address_ar"
+                                    class="block text-sm font-medium text-gray-700 dark:text-gray-200">Arabic
+                                    Address</label>
+                                <div class="mt-1">
+                                    <input dir="rtl" type="text" name="address_ar" id="address_ar" class="
+                            block
+                            mt-1
+                            w-full
+                            rounded-md
+                            border-gray-500
+                            shadow-sm
+                            focus:border-indigo-300
+                            focus:ring
+                            focus:ring-indigo-200
+                            focus:ring-opacity-50
+                            dark:bg-gray-800
+                            " v-model="tour.address_ar" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- description -->
+                        <div class="flex justify-between">
+                            <div class="w-full me-2">
+                                <label for="description_en"
+                                    class="block text-sm font-medium text-gray-700 dark:text-gray-200">English
+                                    Description</label>
+                                <div class="mt-1">
+                                    <textarea rows="10" type="text" name="description_en" id="description_en" class="
                   block
                   mt-1
                   w-full
@@ -70,14 +118,15 @@
                   focus:ring-opacity-50
                   dark:bg-gray-800
                 " v-model="tour.description_en" />
-                        </div>
-                    </div>
-                    <div class="w-full">
-                        <label for="description_ar"
-                            class="block text-sm font-medium text-gray-700 dark:text-gray-200">Arabic
-                            Description</label>
-                        <div class="mt-1">
-                            <textarea dir="rtl" rows="10" type="text" name="description_ar" id="description_ar" class="
+                                </div>
+                            </div>
+                            <div class="w-full">
+                                <label for="description_ar"
+                                    class="block text-sm font-medium text-gray-700 dark:text-gray-200">Arabic
+                                    Description</label>
+                                <div class="mt-1">
+                                    <textarea dir="rtl" rows="10" type="text" name="description_ar" id="description_ar"
+                                        class="
                   block
                   mt-1
                   w-full
@@ -90,293 +139,418 @@
                   focus:ring-opacity-50
                   dark:bg-gray-800
                 " v-model="tour.description_ar" />
+                                </div>
+                            </div>
                         </div>
+
+                        <!-- itinerary -->
+                        <div class="flex justify-between">
+                            <div class="w-full me-2">
+                                <label for="itinerary_en"
+                                    class="block text-sm font-medium text-gray-700 dark:text-gray-200">English
+                                    Itinerary</label>
+                                <div class="mt-1">
+                                    <textarea rows="10" type="text" name="itinerary_en" id="itinerary_en"
+                                        placeholder="Separate it by lines" class="
+                  block
+                  mt-1
+                  w-full
+                  rounded-md
+                  border-gray-500
+                  shadow-sm
+                  focus:border-indigo-300
+                  focus:ring
+                  focus:ring-indigo-200
+                  focus:ring-opacity-50
+                  dark:bg-gray-800
+                " v-model="tour.itinerary_en" />
+                                </div>
+                            </div>
+                            <div class="w-full">
+                                <label for="itinerary_ar"
+                                    class="block text-sm font-medium text-gray-700 dark:text-gray-200">Arabic
+                                    Itinerary</label>
+                                <div class="mt-1">
+                                    <textarea dir="rtl" rows="10" type="text" placeholder="Separate it by lines"
+                                        name="itinerary_ar" id="itinerary_ar" class="
+                                                                        block
+                                                                        mt-1
+                                                                        w-full
+                                                                        rounded-md
+                                                                        border-gray-500
+                                                                        shadow-sm
+                                                                        focus:border-indigo-300
+                                                                        focus:ring
+                                                                        focus:ring-indigo-200
+                                                                        focus:ring-opacity-50
+                                                                        dark:bg-gray-800
+                                                                        " v-model="tour.itinerary_ar" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- duration -->
+                        <div class="flex justify-between">
+
+                            <div class="w-full me-2">
+                                <label for="duration_en"
+                                    class="block text-sm font-medium text-gray-700 dark:text-gray-200">English
+                                    Duration</label>
+                                <div class="mt-1">
+                                    <input type="text" name="duration_en" id="duration_en" class="
+                  block
+                  mt-1
+                  w-full
+                  rounded-md
+                  border-gray-500
+                  shadow-sm
+                  focus:border-indigo-300
+                  focus:ring
+                  focus:ring-indigo-200
+                  focus:ring-opacity-50
+                  dark:bg-gray-800
+                " v-model="tour.duration_en" />
+                                </div>
+                            </div>
+                            <div class="w-full">
+                                <label for="duration_ar"
+                                    class="block text-sm font-medium text-gray-700 dark:text-gray-200">Arabic
+                                    Duration</label>
+                                <div class="mt-1">
+                                    <input dir="rtl" type="text" name="duration_ar" id="duration_ar" class="
+                            block
+                            mt-1
+                            w-full
+                            rounded-md
+                            border-gray-500
+                            shadow-sm
+                            focus:border-indigo-300
+                            focus:ring
+                            focus:ring-indigo-200
+                            focus:ring-opacity-50
+                            dark:bg-gray-800
+                            " v-model="tour.duration_ar" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- include -->
+                        <div class="flex justify-between">
+                            <div class="w-full me-2">
+                                <label for="include_en"
+                                    class="block text-sm font-medium text-gray-700 dark:text-gray-200">English
+                                    Include</label>
+                                <div class="mt-1">
+                                    <textarea rows="10" type="text" name="include_en" id="include_en"
+                                        placeholder="Separate it by lines" class="
+                  block
+                  mt-1
+                  w-full
+                  rounded-md
+                  border-gray-500
+                  shadow-sm
+                  focus:border-indigo-300
+                  focus:ring
+                  focus:ring-indigo-200
+                  focus:ring-opacity-50
+                  dark:bg-gray-800
+                " v-model="tour.include_en" />
+                                </div>
+                            </div>
+                            <div class="w-full">
+                                <label for="include_ar"
+                                    class="block text-sm font-medium text-gray-700 dark:text-gray-200">Arabic
+                                    Include</label>
+                                <div class="mt-1">
+                                    <textarea dir="rtl" rows="10" type="text" placeholder="Separate it by lines"
+                                        name="include_ar" id="include_ar" class="
+                                                                        block
+                                                                        mt-1
+                                                                        w-full
+                                                                        rounded-md
+                                                                        border-gray-500
+                                                                        shadow-sm
+                                                                        focus:border-indigo-300
+                                                                        focus:ring
+                                                                        focus:ring-indigo-200
+                                                                        focus:ring-opacity-50
+                                                                        dark:bg-gray-800
+                                                                        " v-model="tour.include_ar" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- exclude -->
+                        <div class="flex justify-between">
+                            <div class="w-full me-2">
+                                <label for="exclude_en"
+                                    class="block text-sm font-medium text-gray-700 dark:text-gray-200">English
+                                    Exclude</label>
+                                <div class="mt-1">
+                                    <textarea rows="10" type="text" name="exclude_en" id="exclude_en"
+                                        placeholder="Separate it by lines" class="
+                  block
+                  mt-1
+                  w-full
+                  rounded-md
+                  border-gray-500
+                  shadow-sm
+                  focus:border-indigo-300
+                  focus:ring
+                  focus:ring-indigo-200
+                  focus:ring-opacity-50
+                  dark:bg-gray-800
+                " v-model="tour.exclude_en" />
+                                </div>
+                            </div>
+                            <div class="w-full">
+                                <label for="exclude_ar"
+                                    class="block text-sm font-medium text-gray-700 dark:text-gray-200">Arabic
+                                    Exclude</label>
+                                <div class="mt-1">
+                                    <textarea dir="rtl" rows="10" type="text" placeholder="Separate it by lines"
+                                        name="exclude_ar" id="exclude_ar" class="
+                                                                        block
+                                                                        mt-1
+                                                                        w-full
+                                                                        rounded-md
+                                                                        border-gray-500
+                                                                        shadow-sm
+                                                                        focus:border-indigo-300
+                                                                        focus:ring
+                                                                        focus:ring-indigo-200
+                                                                        focus:ring-opacity-50
+                                                                        dark:bg-gray-800
+                                                                        " v-model="tour.exclude_ar" />
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="mt-2">
+                            <h2>Gallery</h2>
+                            <UploadImages @changed="handleImages" />
+                        </div>
+                        <div>
+                            <p>Note: After deleting image you can't retrieve it back.</p>
+
+
+                            <div class="
+                                    grid
+                                    gap-2
+                                    grid-cols-1
+                                    sm:grid-cols-2
+                                    md:grid-cols-3
+                                    lg:grid-cols-4
+                                    xl:grid-cols-5
+                                    justify-between
+                                    ">
+                                <div v-for="image in tour.images" :key="tour.id">
+                                    <div class="bg-white rounded-lg overflow-hidden mb-10">
+                                        <div class="w-full flex justify-end z-20">
+                                            <span class="rounded-full p-1 transition-all duration-300 absolute">
+                                                <div class="btn-group dropend">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
+                                                        class="
+                                                                duration-700
+                                                                w-6
+                                                                float-right
+                                                                cursor-pointer
+                                                                text-red-400
+                                                                hover:bg-red-500 hover:text-white
+                                                                rounded-full
+                                                            " @click="deleteFile(image.id)">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                    </svg>
+                                                </div>
+                                            </span>
+                                        </div>
+                                        <div>
+                                            <img :src="'/images/tours/' + image.image"
+                                                class="w-full h-48 object-cover" />
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <button type="submit" class="
+                                            inline-flex
+                                            items-center
+                                            px-4
+                                            py-2
+                                            text-xs
+                                            font-semibold
+                                            tracking-widest
+                                            text-white
+                                            uppercase
+                                            bg-gray-800
+                                            rounded-md
+                                            border border-transparent
+                                            ring-gray-300
+                                            transition
+                                            duration-150
+                                            ease-in-out
+                                            hover:bg-gray-700
+                                            active:bg-gray-900
+                                            focus:outline-none focus:border-gray-900 focus:ring
+                                            disabled:opacity-25
+                                        ">
+                    Update
+                </button>
+            </form>
+
+            <div class="ml-3 bg-gray-600 rounded h-screen w-96 text-center px-4">
+                <div v-if="categories.length && tour['category_id']" class="me-2">
+                    <searchable-dropdown :options="categories" :category_id="tour['category_id']"
+                        @selected="selectCategory($event)" class="mt-6 me-2" />
+                </div>
+
+                <div class="w-full me-2 mt-4">
+                    <label for="adult_price"
+                        class="block text-sm font-medium w-full text-left text-gray-700 dark:text-gray-200">Adult
+                        Price</label>
+                    <div class="mt-1">
+                        <input type="number" name="adult_price" id="adult_price" class="
+                  block
+                  mt-1
+                  w-full
+                  rounded-md
+                  border-gray-500
+                  shadow-sm
+                  focus:border-indigo-300
+                  focus:ring
+                  focus:ring-indigo-200
+                  focus:ring-opacity-50
+                  dark:bg-gray-800
+                " v-model="tour.adult_price" />
+                    </div>
+                </div>
+                <div class="w-full me-2 mt-2">
+                    <label for="child_price"
+                        class="block text-sm font-medium w-full text-left text-gray-700 dark:text-gray-200">Child
+                        Price</label>
+                    <div class="mt-1">
+                        <input type="number" name="child_price" id="child_price" class="
+                  block
+                  mt-1
+                  w-full
+                  rounded-md
+                  border-gray-500
+                  shadow-sm
+                  focus:border-indigo-300
+                  focus:ring
+                  focus:ring-indigo-200
+                  focus:ring-opacity-50
+                  dark:bg-gray-800
+                " v-model="tour.child_price" />
+                    </div>
+                </div>
+                <div class="w-full me-2 mt-2">
+                    <label for="discount"
+                        class="block text-sm font-medium w-full text-left text-gray-700 dark:text-gray-200">
+                        Discount</label>
+                    <div class="mt-1">
+                        <input type="number" name="discount" id="discount" class="
+                  block
+                  mt-1
+                  w-full
+                  rounded-md
+                  border-gray-500
+                  shadow-sm
+                  focus:border-indigo-300
+                  focus:ring
+                  focus:ring-indigo-200
+                  focus:ring-opacity-50
+                  dark:bg-gray-800
+                " v-model="tour.discount" />
+                    </div>
+                </div>
+                <div class="w-full mt-2">
+                    <label for="discount_type"
+                        class="block text-sm font-medium w-full text-left text-gray-700 dark:text-gray-200">
+                        Discount Type</label>
+                    <select name="discount_type" id="discount_type" class="w-full bg-gray-700 rounded text-gray-200"
+                        v-model="tour.discount_type">
+                        <option class="" value="pecentage">Percentage</option>
+                        <option class="py-4" value="amount">Amount</option>
+                    </select>
+                </div>
+                <div class="w-full me-2 mt-2">
+                    <label for="max_number_of_people"
+                        class="block text-sm font-medium w-full text-left text-gray-700 dark:text-gray-200">
+                        Max number of people</label>
+                    <div class="mt-1">
+                        <input type="number" name="max_number_of_people" id="max_number_of_people" class="
+                  block
+                  mt-1
+                  w-full
+                  rounded-md
+                  border-gray-500
+                  shadow-sm
+                  focus:border-indigo-300
+                  focus:ring
+                  focus:ring-indigo-200
+                  focus:ring-opacity-50
+                  dark:bg-gray-800
+                " v-model="tour.max_number_of_people" />
                     </div>
                 </div>
 
                 <div>
-                    <div class="flex w-full justify-start mt-2" v-if="tour.image != undefined">
+                    <div class="flex w-full justify-start mt-2" v-if="tour.thumbnail != undefined">
                         <img :src="
                             imagePreview != null
                                 ? imagePreview
-                                : '/images/tours/' + tour.image
+                                : '/images/tours/' + tour.thumbnail
                         " alt="" class="figure-img img-fluid rounded" style="max-height: 100px" />
                     </div>
 
                     <div class="flex flex-col mt-2">
                         <input class="
-                w-100
-                mt-2
-                py-3
-                px-3
-                rounded-lg
-                bg-white
-                dark:bg-gray-800
-                border border-gray-400
-                dark:border-gray-700
-                text-gray-800
-                dark:text-gray-50
-                font-semibold
-                focus:border-blue-500 focus:outline-none
-                hidden
-              " @change="onFileSelected" type="file" id="user-image" />
-                        <label for="user-image" class="w-100 flex justify-start"><svg xmlns="http://www.w3.org/2000/svg"
-                                class="w-12 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                w-100
+                                                mt-2
+                                                py-3
+                                                px-3
+                                                rounded-lg
+                                                bg-white
+                                                dark:bg-gray-800
+                                                border border-gray-400
+                                                dark:border-gray-700
+                                                text-gray-800
+                                                dark:text-gray-50
+                                                font-semibold
+                                                focus:border-blue-500 focus:outline-none
+                                                hidden
+                                            " @change="onFileSelected" type="file" id="user-image" />
+                        <label for="user-image" class="w-100 flex justify-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-12 cursor-pointer" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                            </svg></label>
-                    </div>
-                </div>
+                            </svg>
 
-                <div class="mt-2">
-                    <h2>Gallery</h2>
-                    <UploadImages @changed="handleImages" />
-                </div>
-                <div>
-                    <p>Note: After deleting image you can't retrieve it back.</p>
-                    <div class="grid grid-cols-4">
-                        <div v-for="image in tour.images" :key="image.id" class="w-48 bg-white mt-1">
-                            <div class="text-right absolute w-48 text-red-400">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke="currentColor" stroke-width="2" class="
-                    duration-700
-                    w-6
-                    float-right
-                    cursor-pointer
-                    hover:bg-red-400 hover:text-white
-                    rounded-full
-                  " @click="deleteFile(image.id)">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>
-                            </div>
-                            <img class="h-28 mx-auto" :src="'/images/tours/' + image.image" alt="" />
-                        </div>
+                            <span class="my-auto text-gray-200">Change thumbnail</span>
+                        </label>
                     </div>
                 </div>
-
-                <div>
-                    <div class="mt-2">
-                        <h2>Files</h2>
-                        <UploadImages @changed="handleFiles" uploadMsg="Click to upload or drop your files here" />
-                    </div>
-                    <p class="mt-3">
-                        Note: After deleting a file you can't retrieve it back.
-                    </p>
-                    <div class="grid grid-cols-4">
-                        <div v-for="file in tour.files" :key="file.id" class="w-28 bg-white rounded">
-                            <div class="text-right absolute w-28 text-red-400">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke="currentColor" stroke-width="2" class="
-                    duration-700
-                    w-6
-                    float-right
-                    cursor-pointer
-                    hover:bg-red-400 hover:text-white
-                    rounded-full
-                  " @click="deleteFile('f', file.id)">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>
-                            </div>
-                            <div>
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-28" fill="none" viewBox="0 0 24 24"
-                                    stroke="currentColor" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                                </svg>
-                                <h3 class="text-base mx-auto w-28">
-                                    {{ file.original_name }}
-                                </h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="space-y-4 rounded-md w-full bg-gray-600 p-6 mt-6 xk:mt-0">
-                <h3>Properties</h3>
-                <div class="flex justify-between">
-                    <div class="w-full me-2">
-                        <label for="title_en" class="block text-sm font-medium text-gray-700 dark:text-gray-200">English
-                            Title</label>
-                        <div class="mt-1">
-                            <input type="text" name="title_en" id="title_en" class="
-                  block
-                  mt-1
-                  w-full
-                  rounded-md
-                  border-gray-500
-                  shadow-sm
-                  focus:border-indigo-300
-                  focus:ring
-                  focus:ring-indigo-200
-                  focus:ring-opacity-50
-                  dark:bg-gray-800
-                " v-model="property.title_en" />
-                        </div>
-                    </div>
-                    <div class="w-full">
-                        <label for="title_ar" class="block text-sm font-medium text-gray-700 dark:text-gray-200">Arabic
-                            Title</label>
-                        <div class="mt-1">
-                            <input dir="rtl" type="text" name="title_ar" id="title_ar" class="
-                  block
-                  mt-1
-                  w-full
-                  rounded-md
-                  border-gray-500
-                  shadow-sm
-                  focus:border-indigo-300
-                  focus:ring
-                  focus:ring-indigo-200
-                  focus:ring-opacity-50
-                  dark:bg-gray-800
-                " v-model="property.title_ar" />
-                        </div>
-                    </div>
-                </div>
-                <div class="flex justify-between">
-                    <div class="w-full me-2">
-                        <label for="description_en"
-                            class="block text-sm font-medium text-gray-700 dark:text-gray-200">English
-                            Description</label>
-                        <div class="mt-1">
-                            <textarea rows="5" type="text" name="description_en" id="description_en" class="
-                  block
-                  mt-1
-                  w-full
-                  rounded-md
-                  border-gray-500
-                  shadow-sm
-                  focus:border-indigo-300
-                  focus:ring
-                  focus:ring-indigo-200
-                  focus:ring-opacity-50
-                  dark:bg-gray-800
-                " v-model="property.description_en" />
-                        </div>
-                    </div>
-                    <div class="w-full">
-                        <label for="description_ar"
-                            class="block text-sm font-medium text-gray-700 dark:text-gray-200">Arabic
-                            Description</label>
-                        <div class="mt-1">
-                            <textarea dir="rtl" rows="5" type="text" name="description_ar" id="description_ar" class="
-                  block
-                  mt-1
-                  w-full
-                  rounded-md
-                  border-gray-500
-                  shadow-sm
-                  focus:border-indigo-300
-                  focus:ring
-                  focus:ring-indigo-200
-                  focus:ring-opacity-50
-                  dark:bg-gray-800
-                " v-model="property.description_ar" />
-                        </div>
-                    </div>
-                </div>
-                <button v-if="!is_editing" type="button" class="
-            px-6
-            py-1
-            bg-green-400
-            rounded-lg
-            text-blue-600
-            hover:bg-green-300
-            duration-300
-          " @click="setProperty">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                    </svg>
-                </button>
-                <button v-else type="button" class="
-            px-6
-            py-1
-            bg-green-400
-            rounded-lg
-            text-blue-600
-            hover:bg-green-300
-            duration-300
-          " @click="setProperty">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-                    </svg>
-                </button>
-                <div class="rounded" v-for="(property, i) in tour.properties" :key="i">
-                    <div class="w-full px-4 py-1 bg-gray-400 text-black flex justify-between">
-                        <span>{{ property.title_en }}</span>
-                        <div class="flex">
-                            <span class="cursor-pointer rotate-90" @click="editRow(property)">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-500" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                                </svg>
-                            </span>
-                            <span class="cursor-pointer rotate-90" @click="deleteRow(property)">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 text-red-500" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>
-                            </span>
-                            <span class="cursor-pointer rotate-90" @click="
-                                live_property == i
-                                    ? (live_property = -1)
-                                    : (live_property = i)
-                            ">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                                    stroke="currentColor" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-                                </svg></span>
-                        </div>
-                    </div>
-                    <div class="p-4 bg-gray-500" :class="live_property == i ? '' : 'hidden'">
-                        <div class="flex text-white">
-                            <span class="w-1/2 text-left">{{ property.title_en }}</span>
-                            <span class="w-1/2 text-right">{{ property.title_ar }}</span>
-                        </div>
-                        <div class="flex">
-                            <p class="w-1/2 text-left">
-                                {{ property.description_en }}
-                            </p>
-                            <p class="w-1/2 text-right">
-                                {{ property.description_ar }}
-                            </p>
-                        </div>
-                    </div>
+                <div class="flex items-center  rounded border border-gray-600 w-full mx-auto mt-2 px-2 bg-gray-500">
+                    <input id="active" type="checkbox" value="" name="bordered-checkbox"
+                        class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500  focus:ring-2"
+                        v-model="tour.active">
+                    <label for="active"
+                        class="py-2  text-sm font-medium text-gray-200 mx-2 dark:text-gray-300">Active</label>
                 </div>
             </div>
         </div>
-
-        <button type="submit" class="
-        inline-flex
-        items-center
-        px-4
-        py-2
-        text-xs
-        font-semibold
-        tracking-widest
-        text-white
-        uppercase
-        bg-gray-800
-        rounded-md
-        border border-transparent
-        ring-gray-300
-        transition
-        duration-150
-        ease-in-out
-        hover:bg-gray-700
-        active:bg-gray-900
-        focus:outline-none focus:border-gray-900 focus:ring
-        disabled:opacity-25
-      ">
-            Update
-        </button>
-    </form>
+    </div>
 </template>
 
 <script setup>
@@ -403,6 +577,7 @@ const {
     destroyFile,
 } = useTours();
 let Swal = useSwal();
+let imagePreview = ref(null)
 onMounted(async () => {
     await getCategories();
     await getTour(props.id);
@@ -471,11 +646,11 @@ const setProperty = () => {
         };
     }
 };
-const deleteFile = async (type = "img", id) => {
-    if (type == "img") {
-        await destroyImage(id);
-    } else await destroyFile(id);
+const deleteFile = async (id) => {
+
+    await destroyImage(id);
     await getTour(props.id);
+    console.log(id);
 };
 const handleImages = (images) => {
     addGallery(images);

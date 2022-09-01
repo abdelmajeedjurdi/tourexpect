@@ -1,8 +1,8 @@
 <template>
-  <div class="w-full">
-    <div class="mx-2 flex justify-between place-content-end mb-4">
-      <h3>All Products</h3>
-      <div class="
+    <div class="w-full">
+        <div class="mx-2 flex justify-between place-content-end mb-4">
+            <h3>All Tours</h3>
+            <div class="
           px-4
           py-2
           bg-blue-600
@@ -10,10 +10,11 @@
           cursor-pointer
           rounded-lg
         ">
-        <router-link :to="{ name: 'product.create' }" class="text-sm font-medium text-white">New Product</router-link>
-      </div>
-    </div>
-    <div class="
+                <router-link :to="{ name: 'tour.create' }" class="text-sm font-medium text-white">New Tour
+                </router-link>
+            </div>
+        </div>
+        <div class="
         grid
         gap-2
         grid-cols-1
@@ -23,94 +24,99 @@
         xl:grid-cols-5
         justify-between
       ">
-      <div v-for="product in products" :key="product.id">
-        <div class="bg-white rounded-lg overflow-hidden mb-10">
-          <div class="w-full flex justify-end z-20">
-            <span class="rounded-full p-1 transition-all duration-300 absolute">
-              <div class="btn-group dropend">
-                <button type="button" class="" data-bs-toggle="dropdown" aria-expanded="false">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                      d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
-                  </svg>
-                </button>
-                <ul class="dropdown-menu">
-                  <li class="w-full hover:bg-gray-300">
-                    <router-link style="padding-right: 70%" class="w-full ms-1" :to="{
-                      name: 'product.edit',
-                    params: { id: product.id },
-                    }">Edit
-                    </router-link>
-                  </li>
-                  <li class="w-full text-red-500 hover:bg-gray-300">
-                    <button @click="deleteRow(product)" class="w-full text-left ms-1">
-                      Delete
-                    </button>
-                  </li>
-                </ul>
-              </div>
-            </span>
-          </div>
-          <router-link :to="{ name: 'product.details', params: { id: product.id } }">
-            <img :src="'/images/products/' + product.image" alt="image" class="w-full h-48" />
-            <div class="p-2 h-32">
-              <span class="text-base text-blue-500">
-                {{ product.name_en }}
-              </span>
+            <div v-for="tour in tours" :key="tour.id">
+                <div class="bg-white rounded-lg overflow-hidden mb-10">
+                    <div class="w-full flex justify-end z-20">
+                        <span class="rounded-full p-1 transition-all duration-300 absolute">
+                            <div class="btn-group dropend">
+                                <button type="button" class="" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
+                                    </svg>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li class="w-full hover:bg-gray-300">
+                                        <router-link style="padding-right: 70%" class="w-full ms-1" :to="{
+                                            name: 'tour.edit',
+                                            params: { id: tour.id },
+                                        }">Edit
+                                        </router-link>
+                                    </li>
+                                    <li class="w-full text-red-500 hover:bg-gray-300">
+                                        <button @click="deleteRow(tour)" class="w-full text-left ms-1">
+                                            Delete
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </span>
+                    </div>
+                    <router-link :to="{ name: 'tour.details', params: { id: tour.id } }">
+                        <img :src="'/images/tours/' + tour.thumbnail" :alt="tour.title_en + ' image'"
+                            class="w-full h-48 object-cover" />
+                        <div class="p-2 h-32">
+                            <span class="text-base text-blue-500">
+                                {{  tour.title_en  }}
+                            </span>
 
-              <p class="
+                            <p class="
                   text-base text-body-color
                   leading-relaxed
                   mb-7
                   text-gray-600
                 ">
-                {{
-                product.description_en.substring(0, 100) +
-                  (product.description_en.length > 100 ? "...." : "")
-                }}
-              </p>
+                                {{
+                                 tour.description_en.substring(0, 100) +
+                                 (tour.description_en.length > 100 ? "...." : "")
+
+
+
+                                }}
+                            </p>
+                        </div>
+                    </router-link>
+                </div>
             </div>
-          </router-link>
         </div>
-      </div>
     </div>
-  </div>
+    {{  tours  }}
 </template>
 
 <script setup>
-import useProducts from "../../../composables/tours";
+import useTours from "../../../composables/tours";
 import { onMounted } from "vue";
 import { useSwal } from "../../../plugins/useSwal.js";
 
-const { products, getProducts, destroyProduct } = useProducts();
+const { tours, getTours, destroyTour } = useTours();
 
 let Swal = useSwal();
-onMounted(getProducts);
+onMounted(getTours);
 
-const deleteProduct = async (id) => {
-  if (!window.confirm("Are you sure?")) {
-    return;
-  }
-
-  await destroyProduct(id);
-  await getProducts();
-};
-const deleteRow = (product_) => {
-  Swal.fire({
-    title: "Are you sure?",
-    html: "You won't be able to revert   Order, ",
-    icon: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#3085d6",
-    cancelButtonColor: "#d33",
-    confirmButtonText: "Yes, delete it!",
-  }).then(async (result) => {
-    if (result.isConfirmed) {
-      await destroyProduct(product_.id);
-      await getProducts();
-      Swal.fire("Deleted!", "Order has been deleted.", "success");
+const deleteTour = async (id) => {
+    if (!window.confirm("Are you sure?")) {
+        return;
     }
-  });
+
+    await destroyTour(id);
+    await getTours();
+};
+const deleteRow = (tour_) => {
+    Swal.fire({
+        title: "Are you sure?",
+        html: "You won't be able to revert   Order, ",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+    }).then(async (result) => {
+        if (result.isConfirmed) {
+            await destroyTour(tour_.id);
+            await getTours();
+            Swal.fire("Deleted!", "Order has been deleted.", "success");
+        }
+    });
 };
 </script>

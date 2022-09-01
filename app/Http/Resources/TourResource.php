@@ -3,9 +3,9 @@
 namespace App\Http\Resources;
 
 use App\Models\Category;
-// use App\Models\ProductFile;
-// use App\Models\ProductImage;
-// use App\Models\ProductProperty;
+// use App\Models\TourFile;
+use App\Models\TourImage;
+// use App\Models\TourProperty;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class TourResource extends JsonResource
@@ -27,13 +27,13 @@ class TourResource extends JsonResource
             'title_en'  => $this->title_en,
             'title_ar'  => $this->title_ar,
             'address_ar'  => $this->address_ar,
-            'title_ar'  => $this->title_ar,
+            'address_en'  => $this->address_en,
             'thumbnail'  => $this->thumbnail,
             'description_en'  => $this->description_en,
             'description_ar'  => $this->description_ar,
             'itinerary_ar'  => $this->itinerary_ar,
             'itinerary_en'  => $this->itinerary_en,
-            'active'  => $this->active,
+            'active'  => $this->active == 1 ? 'true' : 'false',
             'adult_price'  => $this->adult_price,
             'child_price'  => $this->child_price,
             'discount'  => $this->discount,
@@ -45,8 +45,8 @@ class TourResource extends JsonResource
             'include_en'  => $this->include_en,
             'exclude_ar'  => $this->exclude_ar,
             'exclude_en'  => $this->exclude_en,
-            // 'files' => ProductFile::where('product_id', $this->id)->get(),
-            // 'images' => ProductImage::where('product_id', $this->id)->get()
+            // 'files' => TourFile::where('tour_id', $this->id)->get(),
+            'images' => TourImage::where('tour_id', $this->id)->get()
         ];
     }
 }

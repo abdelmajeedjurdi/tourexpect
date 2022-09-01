@@ -29,7 +29,7 @@ Route::delete('cat-property/{id}', [CategoryController::class, 'deleteProperty']
 Route::get('categories-slides', [CategoryController::class, 'getSlides']);
 Route::get('category/{slug}', [CategoryController::class, 'getCategoryDetails']);
 Route::get('get-flags-signs', [CategoryController::class, 'getFlagsOrSigns']);
-Route::get('product/{slug}', [TourController::class, 'getProductDetails']);
+Route::get('tour/{slug}', [TourController::class, 'getTourDetails']);
 Route::delete('delete-image/{id}', [TourController::class, 'deleteImage']);
 Route::delete('delete-file/{id}', [TourController::class, 'deleteFile']);
 Route::delete('delete-accessory-file/{id}', [AccessoryController::class, 'deleteFile']);

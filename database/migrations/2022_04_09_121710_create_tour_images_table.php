@@ -13,9 +13,9 @@ class CreateTourImagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('product_images', function (Blueprint $table) {
+        Schema::create('tour_images', function (Blueprint $table) {
             $table->id();
-            $table->string('product_id');
+            $table->string('tour_id');
             $table->string('image');
             $table->timestamps();
         });
@@ -28,6 +28,6 @@ class CreateTourImagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('product_images');
+        Schema::dropIfExists('tour_images');
     }
 }

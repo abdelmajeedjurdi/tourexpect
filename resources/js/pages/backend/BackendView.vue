@@ -127,34 +127,7 @@
                                             d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                                     </svg>
                                 </span>
-                                <span class="ml-2 text-sm tracking-wide truncate">Products</span>
-                            </router-link>
-                        </li>
-                        <li>
-                            <router-link :to="{ name: 'accessories.index' }" class="
-                  relative
-                  flex flex-row
-                  items-center
-                  h-11
-                  focus:outline-none
-                  hover:bg-blue-800
-                  dark:hover:bg-gray-600
-                  text-white-600
-                  hover:text-white-800
-                  border-l-4 border-transparent
-                  hover:border-blue-500
-                  dark:hover:border-gray-800
-                  pr-6e
-                  dark:text-gray-200
-                ">
-                                <span class="inline-flex justify-center items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
-                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
-                                    </svg>
-                                </span>
-                                <span class="ml-2 text-sm tracking-wide truncate">Accessories</span>
+                                <span class="ml-2 text-sm tracking-wide truncate">Tours</span>
                             </router-link>
                         </li>
                     </ul>
