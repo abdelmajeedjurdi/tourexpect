@@ -2,54 +2,50 @@ import { ref } from "vue";
 import axios from "axios";
 import { useRouter } from "vue-router";
 
-export default function useCategories() {
-    const categories = ref([]);
-    const category = ref([]);
+export default function useBlogs() {
+    const blogs = ref([]);
+    const blog = ref([]);
     const slides = ref([]);
     const router = useRouter();
     const errors = ref("");
     const tours = ref([]);
 
-    const getCategories = async () => {
-        let response = await axios.get("/api/categories");
-        categories.value = response.data.data;
-        // console.log('getCategories Called');
+    const getBlogs = async () => {
+        let response = await axios.get("/api/blogs");
+        blogs.value = response.data.data;
     };
     const getFlagsOrSigns = async (type) => {
         let response = await axios.get("/api/get-flags-signs?type=" + type);
-        categories.value = response.data.data;
+        blogs.value = response.data.data;
     };
     const getSlides = async () => {
-        let response = await axios.get("/api/categories-slides");
+        let response = await axios.get("/api/blogs-slides");
         slides.value = response.data.data;
     };
 
-    const getCategory = async (id) => {
-        let response = await axios.get("/api/categories/" + id);
-        category.value = response.data.data;
+    const getBlog = async (id) => {
+        let response = await axios.get("/api/blogs/" + id);
+        blog.value = response.data.data;
     };
-    const getCategoryDetails = async (slug) => {
-        let response = await axios.get("/api/category/" + slug);
+    const getBlogDetails = async (slug) => {
+        let response = await axios.get("/api/blog/" + slug);
         console.log(response.data);
-        category.value = response.data.category;
+        blog.value = response.data.blog;
         tours.value = response.data.tours;
     };
 
-    const storeCategory = async (data) => {
+    const storeBlog = async (data) => {
+        console.log(data);
         let fd = new FormData();
-        fd.append("category", 'flag');
-        fd.append("name_en", data.form.name_en);
-        fd.append("name_ar", data.form.name_ar);
-        fd.append("description_en", data.form.description_en);
-        fd.append("description_ar", data.form.description_ar);
-        fd.append("is_slide", data.form.is_slide);
-        fd.append("is_trending", data.form.is_trending);
-        fd.append("category_img", data.form.image);
-        fd.append("image", data.file);
-        fd.append("properties", JSON.stringify(data.properties));
+        fd.append("title_en", data.form.title_en);
+        fd.append("title_ar", data.form.title_ar);
+        fd.append("content_en", JSON.stringify(data.form.content_en));
+        fd.append("content_ar", JSON.stringify(data.form.content_ar));
+        // fd.append("blog_img", data.form.image);
+        // fd.append("image", data.file);
         errors.value = "";
         try {
-            await axios.post("/api/categories", fd, {
+            await axios.post("/api/blogs", fd, {
                 onUploadProgress: function (progressEvent) {
                     // uploadPercentage = parseInt(
                     //     Math.round(
@@ -63,7 +59,7 @@ export default function useCategories() {
                     );
                 },
             });
-            await router.push({ name: "categories.index" });
+            // await router.push({ name: "blogs.index" });
         } catch (e) {
             if (e.response.status === 422) {
                 errors.value = e.response.data.errors;
@@ -71,29 +67,29 @@ export default function useCategories() {
         }
     };
 
-    const updateCategory = async (id, data) => {
+    const updateBlog = async (id, data) => {
         console.log(data);
         let fd = new FormData();
         fd.append("_method", "patch");
-        fd.append("category", 'flag');
+        fd.append("blog", 'flag');
         fd.append("name_en", data.form.name_en);
         fd.append("name_ar", data.form.name_ar);
         fd.append("description_en", data.form.description_en);
         fd.append("description_ar", data.form.description_ar);
         fd.append("is_slide", data.form.is_slide);
         fd.append("is_trending", data.form.is_trending);
-        fd.append("category_img", data.form.image);
+        fd.append("blog_img", data.form.image);
         fd.append("new_image", data.file);
         fd.append("properties", JSON.stringify(data.form.properties));
 
         errors.value = "";
         try {
-            await axios.post("/api/categories/" + id, fd, {
+            await axios.post("/api/blogs/" + id, fd, {
                 headers: {
                     "Content-Type": "multipart/form-data",
                 },
             });
-            await router.push({ name: "categories.index" });
+            await router.push({ name: "blogs.index" });
         } catch (e) {
             if (e.response.status === 422) {
                 errors.value = e.response.data.errors;
@@ -104,23 +100,23 @@ export default function useCategories() {
     const deleteProperty = async (id) => {
         await axios.delete("/api/cat-property/" + id);
     };
-    const destroyCategory = async (id) => {
-        await axios.delete("/api/categories/" + id);
+    const destroyBlog = async (id) => {
+        await axios.delete("/api/blogs/" + id);
     };
 
     return {
-        categories,
-        category,
+        blogs,
+        blog,
         errors,
-        getCategories,
-        getCategory,
-        storeCategory,
-        updateCategory,
-        destroyCategory,
+        getBlogs,
+        getBlog,
+        storeBlog,
+        updateBlog,
+        destroyBlog,
         deleteProperty,
         getSlides,
         slides,
-        getCategoryDetails,
+        getBlogDetails,
         tours,
         getFlagsOrSigns,
     };

@@ -10,16 +10,15 @@ import TourCreate from "../pages/backend/tours/TourCreate";
 import TourEdit from "../pages/backend/tours/TourEdit";
 import TourDetails from "../pages/backend/tours/TourDetails";
 
-import AccessoriesIndex from "../pages/backend/accessories/AccessoriesIndex";
-import AccessoryCreate from "../pages/backend/accessories/AccessoryCreate";
-import AccessoryEdit from "../pages/backend/accessories/AccessoryEdit";
-import AccessoryDetails from "../pages/backend/accessories/AccessoryDetails";
+// import BlogCreate from "../pages/backend/blogs/BlogCreate";
+// import BlogIndex from "../pages/backend/blogs"
 
 import Frontend from "../pages/frontend";
 import CommingSoon from "../pages/frontend/CommingSoon";
 
 import About from "../pages/frontend/AboutUs";
 import Contact from "../pages/frontend/ContactUs";
+import Blogs from "../pages/frontend/Blogs";
 
 import Test from "../pages/backend/Test.vue";
 import Hero from "../components/HeroCarousel";
@@ -77,27 +76,30 @@ const routes = [
         component: TourDetails,
         props: true,
     },
-    // (((((((((((((((((--Tours--)))))))))))))))))
+    // (((((((((((((((((--Blogs--)))))))))))))))))
+    // {
+    //     path: "/dashboard/blogs",
+    //     name: "blogs.index",
+    //     component: BlogIndex,
+    // },
+    // {
+    //     path: "/dashboard/blogs/create",
+    //     name: "blog.create",
+    //     component: BlogCreate,
+    //     meta: {
+    //         title: "Create Blog"
+    //     }
+    // },
     {
-        path: "/dashboard/accessories",
-        name: "accessories.index",
-        component: AccessoriesIndex,
-    },
-    {
-        path: "/dashboard/accessories/create",
-        name: "accessory.create",
-        component: AccessoryCreate,
-    },
-    {
-        path: "/dashboard/accessories/:id/edit",
-        name: "accessory.edit",
-        component: AccessoryEdit,
+        path: "/dashboard/blogs/:id/edit",
+        name: "blog.edit",
+        component: TourEdit,
         props: true,
     },
     {
-        path: "/dashboard/accessories/:id/details",
-        name: "accessory.details",
-        component: AccessoryDetails,
+        path: "/dashboard/blogs/:id/details",
+        name: "blog.details",
+        component: TourDetails,
         props: true,
     },
 
@@ -107,7 +109,8 @@ const routes = [
         path: "/test",
         name: "Frontend",
         component: Frontend,
-    }, {
+    },
+    {
         path: "/",
         name: "CommingSoon",
         component: CommingSoon,
@@ -127,6 +130,11 @@ const routes = [
         name: "test",
         component: Test,
         props: true,
+    },
+    {
+        path: "/blogs",
+        name: "blogs",
+        component: Blogs,
     },
 ];
 

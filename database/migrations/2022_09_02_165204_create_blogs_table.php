@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAccessoriesTable extends Migration
+class CreateBlogsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,16 @@ class CreateAccessoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('accessories', function (Blueprint $table) {
+        Schema::create('blogs', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('category_id');
-            $table->string('name_en');
-            $table->string('name_ar');
-            $table->longText('description_en');
-            $table->longText('description_ar');
             $table->string('slug');
-            $table->string('thumbnail')->default('default.jpg');
+            $table->string('image')->default('default.jpg');
+            $table->string('title_ar');
+            $table->string('title_en');
+            $table->json('content_ar');
+            $table->json('content_en');
+            $table->integer('category_id');
+            $table->integer('destination_id');
             $table->timestamps();
         });
     }
@@ -33,6 +34,6 @@ class CreateAccessoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('accessories');
+        Schema::dropIfExists('blogs');
     }
 }

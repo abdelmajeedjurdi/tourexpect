@@ -4,10 +4,8 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryRequest;
-use App\Http\Resources\AccessoryResource;
 use App\Http\Resources\CategoryResource;
 use App\Http\Resources\TourResource;
-use App\Models\Accessory;
 use App\Models\Category;
 use App\Models\CategoryProperty;
 use App\Models\Tour;
@@ -46,7 +44,6 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
 
-        Log::info($request);
         if ($request->hasFile('image')) {
             $image = $request->image;
             $imageName = $image->getClientOriginalName();
@@ -97,8 +94,7 @@ class CategoryController extends Controller
         $category
             = new CategoryResource(Category::where('slug', $slug)->first());
         $tours = TourResource::collection(Tour::where('category_id', $category->id)->get());
-        $accessories = AccessoryResource::collection(Accessory::where('category_id', $category->id)->get());
-        return ['category' => $category, 'tours' => $tours, 'accessories' => $accessories];
+        return ['category' => $category, 'tours' => $tours];
     }
 
     /**
@@ -149,19 +145,9 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        Log::info($category);
         if ($category->image !== 'default.jpg' || $category->image !== '')
             unlink(public_path() . '/images/categories/' . $category->image);
-        CategoryProperty::where('category_id', $category->id)->delete();
         $category->delete();
-
-        return response()->noContent();
-    }
-    public function deleteProperty($id)
-    {
-        Log::info($id);
-        $categoryProperty = CategoryProperty::find($id);
-        $categoryProperty->delete();
 
         return response()->noContent();
     }

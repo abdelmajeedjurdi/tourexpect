@@ -27,7 +27,6 @@ class CategoryResource extends JsonResource
             'description_ar'  => $this->description_ar,
             'is_trending' => $this->is_trending == 1 ? true   : false,
             'is_slide' => $this->is_slide ==  1 ? true   : false,
-            'properties' => CategoryProperty::where('category_id', $this->id)->get()
         ];
     }
 }
