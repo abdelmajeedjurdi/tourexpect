@@ -38,13 +38,24 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
+        if ($request->hasFile('image')) {
+            $image = $request->image;
+            $imageName = $image->getClientOriginalName();
+            $imageName = time() . '_' . $imageName;
+            $image->move(public_path('/images/blogs'), $imageName);
+        } else {
+            $imageName = 'default.jpg';
+        }
         Log::info($request->content_en);
         $blog = new Blog();
+        $blog->destination_id = -1;
+        $blog->category_id = $request->category_id;
         $blog->title_en = $request->title_en;
         $blog->title_ar = $request->title_ar;
         $blog->content_en = $request->content_en;
         $blog->content_ar = $request->content_ar;
         $blog->slug = Str::slug($blog->title_en, '-');
+        $blog->image = $imageName;
         $blog->save();
     }
 

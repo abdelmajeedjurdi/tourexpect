@@ -10,8 +10,8 @@ import TourCreate from "../pages/backend/tours/TourCreate";
 import TourEdit from "../pages/backend/tours/TourEdit";
 import TourDetails from "../pages/backend/tours/TourDetails";
 
-// import BlogCreate from "../pages/backend/blogs/BlogCreate";
-// import BlogIndex from "../pages/backend/blogs"
+import BlogCreate from "../pages/backend/blogs/BlogCreate";
+import BlogsIndex from "../pages/backend/blogs/BlogsIndex"
 
 import Frontend from "../pages/frontend";
 import CommingSoon from "../pages/frontend/CommingSoon";
@@ -77,19 +77,19 @@ const routes = [
         props: true,
     },
     // (((((((((((((((((--Blogs--)))))))))))))))))
-    // {
-    //     path: "/dashboard/blogs",
-    //     name: "blogs.index",
-    //     component: BlogIndex,
-    // },
-    // {
-    //     path: "/dashboard/blogs/create",
-    //     name: "blog.create",
-    //     component: BlogCreate,
-    //     meta: {
-    //         title: "Create Blog"
-    //     }
-    // },
+    {
+        path: "/dashboard/blogs",
+        name: "blogs.index",
+        component: BlogsIndex,
+    },
+    {
+        path: "/dashboard/blogs/create",
+        name: "blog.create",
+        component: BlogCreate,
+        meta: {
+            title: "Create Blog"
+        }
+    },
     {
         path: "/dashboard/blogs/:id/edit",
         name: "blog.edit",

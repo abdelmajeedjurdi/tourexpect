@@ -130,7 +130,7 @@
                                 <span class="ml-2 text-sm tracking-wide truncate">Tours</span>
                             </router-link>
                         </li>
-                        <!-- <li>
+                        <li>
                             <router-link :to="{ name: 'blogs.index' }" class="
                                     relative
                                     flex flex-row
@@ -156,7 +156,7 @@
                                 </span>
                                 <span class="ml-2 text-sm tracking-wide truncate">Blogs</span>
                             </router-link>
-                        </li> -->
+                        </li>
                     </ul>
                     <p class="mb-14 px-5 py-3 md:block text-center text-xs">
                         Created By Edo Khudeeda eido.khudyda@gmail.com

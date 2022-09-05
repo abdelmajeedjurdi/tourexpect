@@ -37,12 +37,13 @@ export default function useBlogs() {
     const storeBlog = async (data) => {
         console.log(data);
         let fd = new FormData();
+        fd.append("category_id", data.form.category_id);
         fd.append("title_en", data.form.title_en);
         fd.append("title_ar", data.form.title_ar);
         fd.append("content_en", JSON.stringify(data.form.content_en));
         fd.append("content_ar", JSON.stringify(data.form.content_ar));
-        // fd.append("blog_img", data.form.image);
-        // fd.append("image", data.file);
+        fd.append("blog_img", data.form.image);
+        fd.append("image", data.file);
         errors.value = "";
         try {
             await axios.post("/api/blogs", fd, {
@@ -59,7 +60,7 @@ export default function useBlogs() {
                     );
                 },
             });
-            // await router.push({ name: "blogs.index" });
+            await router.push({ name: "blogs.index" });
         } catch (e) {
             if (e.response.status === 422) {
                 errors.value = e.response.data.errors;
