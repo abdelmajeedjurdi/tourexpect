@@ -18,7 +18,6 @@ export default function useTours() {
     const getTour = async (id) => {
         let response = await axios.get("/api/tours/" + id);
         tour.value = response.data.data;
-        console.log(tour.value);
     };
     const getTourDetails = async (slug) => {
         // console.log(router.options.routes);

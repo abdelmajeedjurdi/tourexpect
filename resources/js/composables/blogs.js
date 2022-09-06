@@ -13,16 +13,8 @@ export default function useBlogs() {
     const getBlogs = async () => {
         let response = await axios.get("/api/blogs");
         blogs.value = response.data.data;
+        // blogs.value.content_en = JSON.parse(blogs.value.content_en)
     };
-    const getFlagsOrSigns = async (type) => {
-        let response = await axios.get("/api/get-flags-signs?type=" + type);
-        blogs.value = response.data.data;
-    };
-    const getSlides = async () => {
-        let response = await axios.get("/api/blogs-slides");
-        slides.value = response.data.data;
-    };
-
     const getBlog = async (id) => {
         let response = await axios.get("/api/blogs/" + id);
         blog.value = response.data.data;
@@ -60,7 +52,7 @@ export default function useBlogs() {
                     );
                 },
             });
-            await router.push({ name: "blogs.index" });
+            // await router.push({ name: "blogs.index" });
         } catch (e) {
             if (e.response.status === 422) {
                 errors.value = e.response.data.errors;
@@ -98,9 +90,6 @@ export default function useBlogs() {
         }
     };
 
-    const deleteProperty = async (id) => {
-        await axios.delete("/api/cat-property/" + id);
-    };
     const destroyBlog = async (id) => {
         await axios.delete("/api/blogs/" + id);
     };
@@ -114,11 +103,8 @@ export default function useBlogs() {
         storeBlog,
         updateBlog,
         destroyBlog,
-        deleteProperty,
-        getSlides,
         slides,
         getBlogDetails,
         tours,
-        getFlagsOrSigns,
     };
 }

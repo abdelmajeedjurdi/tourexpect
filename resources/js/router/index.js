@@ -12,6 +12,8 @@ import TourDetails from "../pages/backend/tours/TourDetails";
 
 import BlogCreate from "../pages/backend/blogs/BlogCreate";
 import BlogsIndex from "../pages/backend/blogs/BlogsIndex"
+import BlogEdit from "../pages/backend/blogs/BlogEdit"
+import BlogDetails from "../pages/backend/blogs/BlogDetails"
 
 import Frontend from "../pages/frontend";
 import CommingSoon from "../pages/frontend/CommingSoon";
@@ -93,13 +95,13 @@ const routes = [
     {
         path: "/dashboard/blogs/:id/edit",
         name: "blog.edit",
-        component: TourEdit,
+        component: BlogEdit,
         props: true,
     },
     {
         path: "/dashboard/blogs/:id/details",
         name: "blog.details",
-        component: TourDetails,
+        component: BlogDetails,
         props: true,
     },
 

@@ -65,9 +65,9 @@ class BlogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Blog $blog)
     {
-        //
+        return new BlogResource($blog);
     }
 
     /**
@@ -99,8 +99,12 @@ class BlogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Blog $blog)
     {
-        //
+        if ($blog->image !== 'default.jpg' || $blog->image !== '')
+            unlink(public_path() . '/images/blogs/' . $blog->image);
+        $blog->delete();
+
+        return response()->noContent();
     }
 }

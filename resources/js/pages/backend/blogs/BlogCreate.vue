@@ -136,8 +136,8 @@
                         ">
                 Create
             </button>
-            {{ form }}
         </form>
+        {{ form.content_en }}
     </div>
 </template>
 
