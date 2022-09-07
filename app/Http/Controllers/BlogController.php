@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\BlogRequest;
 use App\Http\Resources\BlogResource;
 use App\Models\Blog;
 use Illuminate\Http\Request;
@@ -36,7 +37,7 @@ class BlogController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(BlogRequest $request)
     {
         if ($request->hasFile('image')) {
             $image = $request->image;
@@ -88,9 +89,35 @@ class BlogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(BlogRequest $request, Blog $blog)
     {
-        //
+        Log::info($request);
+        $path = public_path() . '/images/blogs/';
+        //code for remove old image
+        if ($request->new_image != 'null' && $request->new_image != 'default.jpg') {
+            $file_old = $path . $request->blog_img;
+            if ($request->blog_img != 'default.jpg' && $request->blog_img != null)
+                unlink($file_old);
+
+            //code for add new image
+            $image = $request->new_image;
+            $imageName = $image->getClientOriginalName();
+            $imageName = time() . '_' . $imageName;
+            $image->move(public_path('/images/blogs/'), $imageName);
+        } else {
+            $imageName = $request->blog_img;
+        }
+        $blog->update([
+            'blog' => $request->blog,
+            'title_en' => $request->title_en,
+            'title_ar' => $request->title_ar,
+            'content_en' => $request->content_en,
+            'content_ar' => $request->content_ar,
+            'image' =>  $imageName,
+            'slug' => Str::slug($request->title_en, '-')
+        ]);
+
+        return ['message' => 'Category Updated Successfully.'];
     }
 
     /**

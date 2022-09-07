@@ -1,5 +1,22 @@
 <template>
     <div>
+        <div v-if="errors">
+            <div v-for="(v, k) in errors" :key="k" class="
+                                                            bg-red-500
+                                                            text-white
+                                                            rounded
+                                                            font-bold
+                                                            mb-4
+                                                            shadow-lg
+                                                            py-2
+                                                            px-4
+                                                            pr-0
+                                                        ">
+                <p v-for="error in v" :key="error" class="text-sm">
+                    {{ error }}
+                </p>
+            </div>
+        </div>
         <div v-if="isProgressing && percentage < 100" class="-ml-6 -mt-6 w-full pt-52 fixed bg-black bg-opacity-50 z-20"
             style="height: 100%">
             <progress-bar :percentage="percentage" />
@@ -8,7 +25,6 @@
 
             <form class="space-y-6 w-full" @submit.prevent="saveTour">
                 <h1>Tour Create</h1>
-                {{ form }}
                 <div class="lg:flex justify-between space-x-4">
                     <div class="space-y-4 rounded-md w-full">
                         <div class="flex justify-between">
@@ -502,13 +518,28 @@ import UploadImages from "vue-upload-drop-images";
 
 let live_property = ref(-1);
 const form = reactive({
-    category_id: 0,
+    category_id: '',
     title_en: "",
     title_ar: "",
+    address_ar: '',
+    address_en: '',
     description_en: "",
     description_ar: "",
     image: "",
-    discount_type: "pecentage"
+    discount_type: "pecentage",
+    itinerary_ar: '',
+    itinerary_en: '',
+    active: '',
+    adult_price: '',
+    child_price: '',
+    discount: '',
+    duration_en: '',
+    duration_ar: '',
+    max_number_of_people: '',
+    include_en: '',
+    include_ar: '',
+    exclude_en: '',
+    exclude_ar: '',
 });
 let property = ref({
     title_en: "",

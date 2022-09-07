@@ -58,7 +58,7 @@
                             class="w-full h-48 object-cover" />
                         <div class="p-2 h-32">
                             <span class="text-base text-blue-500">
-                                {{  tour.title_en  }}
+                                {{ tour.title_en }}
                             </span>
 
                             <p class="
@@ -68,8 +68,8 @@
                   text-gray-600
                 ">
                                 {{
-                                 tour.description_en.substring(0, 100) +
-                                 (tour.description_en.length > 100 ? "...." : "")
+                                tour.description_en.substring(0, 100) +
+                                (tour.description_en.length > 100 ? "...." : "")
 
 
 
@@ -81,7 +81,6 @@
             </div>
         </div>
     </div>
-    {{  tours  }}
 </template>
 
 <script setup>

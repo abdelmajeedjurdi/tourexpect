@@ -2,16 +2,16 @@
     <div>
         <div v-if="errors">
             <div v-for="(v, k) in errors" :key="k" class="
-        bg-red-500
-        text-white
-        rounded
-        font-bold
-        mb-4
-        shadow-lg
-        py-2
-        px-4
-        pr-0
-      ">
+                                                            bg-red-500
+                                                            text-white
+                                                            rounded
+                                                            font-bold
+                                                            mb-4
+                                                            shadow-lg
+                                                            py-2
+                                                            px-4
+                                                            pr-0
+                                                        ">
                 <p v-for="error in v" :key="error" class="text-sm">
                     {{ error }}
                 </p>
@@ -92,18 +92,18 @@
                             <div class="mt-1">
                                 <textarea dir="rtl" rows="10" type="text" name="description_ar" id="description_ar"
                                     class="
-                  block
-                  mt-1
-                  w-full
-                  rounded-md
-                  border-gray-500
-                  shadow-sm
-                  focus:border-indigo-300
-                  focus:ring
-                  focus:ring-indigo-200
-                  focus:ring-opacity-50
-                  dark:bg-gray-800
-                " v-model="form.description_ar" />
+                                        block
+                                        mt-1
+                                        w-full
+                                        rounded-md
+                                        border-gray-500
+                                        shadow-sm
+                                        focus:border-indigo-300
+                                        focus:ring
+                                        focus:ring-indigo-200
+                                        focus:ring-opacity-50
+                                        dark:bg-gray-800
+                                        " v-model="form.description_ar" />
                             </div>
                         </div>
                     </div>
@@ -184,7 +184,6 @@
 import { reactive, ref } from "vue";
 import useCategories from "../../../composables/categories";
 
-let live_property = ref(-1);
 const form = reactive({
     category: "",
     name_en: "",
@@ -195,37 +194,11 @@ const form = reactive({
     is_trending: false,
     image: "",
 });
-let property = ref({
-    title_en: "",
-    title_ar: "",
-    description_en: "",
-    description_ar: "",
-});
-let properties = ref([]);
-const setProperty = () => {
-    if (!is_editing.value) {
-        properties.value.push(property.value);
-        property.value = {
-            title_en: "",
-            title_ar: "",
-            description_en: "",
-            description_ar: "",
-        };
-    } else {
-        is_editing.value = false;
-        property.value = {
-            title_en: "",
-            title_ar: "",
-            description_en: "",
-            description_ar: "",
-        };
-    }
-};
 
 const { errors, storeCategory } = useCategories();
 
 const saveCategory = async () => {
-    await storeCategory({ form: form, file, properties: properties.value });
+    await storeCategory({ form: form, file });
 };
 let imagePreview = ref(null);
 let file = reactive(null);
@@ -238,13 +211,4 @@ function onFileSelected(event) {
         imagePreview.value = event.target.result;
     };
 }
-const deleteRow = (property) => {
-    properties.value.splice(property, 1);
-};
-let is_editing = ref(false);
-const editRow = (property_id) => {
-    is_editing.value = true;
-    console.log(property_id);
-    property.value = properties.value[property_id];
-};
 </script>

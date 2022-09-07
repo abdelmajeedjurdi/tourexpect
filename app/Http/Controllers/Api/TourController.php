@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\TourRequest;
 use App\Http\Resources\TourResource;
 use App\Models\Tour;
 use App\Models\TourFile;
@@ -43,7 +44,7 @@ class TourController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TourRequest $request)
     {
         Log::info($request);
         if ($request->hasFile('image')) {
@@ -125,7 +126,7 @@ class TourController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tour $tour)
+    public function update(TourRequest $request, Tour $tour)
     {
         Log::info($request);
         $path = public_path() . '/images/tours/';

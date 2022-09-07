@@ -18,6 +18,8 @@ export default function useBlogs() {
     const getBlog = async (id) => {
         let response = await axios.get("/api/blogs/" + id);
         blog.value = response.data.data;
+        blog.value.content_en = JSON.parse(blog.value.content_en)
+        blog.value.content_ar = JSON.parse(blog.value.content_ar)
     };
     const getBlogDetails = async (slug) => {
         let response = await axios.get("/api/blog/" + slug);
@@ -52,7 +54,7 @@ export default function useBlogs() {
                     );
                 },
             });
-            // await router.push({ name: "blogs.index" });
+            await router.push({ name: "blogs.index" });
         } catch (e) {
             if (e.response.status === 422) {
                 errors.value = e.response.data.errors;
@@ -64,16 +66,13 @@ export default function useBlogs() {
         console.log(data);
         let fd = new FormData();
         fd.append("_method", "patch");
-        fd.append("blog", 'flag');
-        fd.append("name_en", data.form.name_en);
-        fd.append("name_ar", data.form.name_ar);
-        fd.append("description_en", data.form.description_en);
-        fd.append("description_ar", data.form.description_ar);
-        fd.append("is_slide", data.form.is_slide);
-        fd.append("is_trending", data.form.is_trending);
+        fd.append("category_id", data.form.category_id);
+        fd.append("title_en", data.form.title_en);
+        fd.append("title_ar", data.form.title_ar);
+        fd.append("content_en", JSON.stringify(data.form.content_en));
+        fd.append("content_ar", JSON.stringify(data.form.content_ar));
         fd.append("blog_img", data.form.image);
         fd.append("new_image", data.file);
-        fd.append("properties", JSON.stringify(data.form.properties));
 
         errors.value = "";
         try {
@@ -105,6 +104,6 @@ export default function useBlogs() {
         destroyBlog,
         slides,
         getBlogDetails,
-        tours,
+        tours
     };
 }

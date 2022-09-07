@@ -17,7 +17,8 @@ const props = defineProps({
 const { getBlog, blog } = useBlogs()
 onMounted(async () => {
     await getBlog(props.id)
-    var deltaOps = JSON.parse(blog.value['content_en'])['ops'];
+    console.log(blog.value['content_en']['ops']);
+    var deltaOps = blog.value['content_en']['ops'];
 
     var cfg = {};
 

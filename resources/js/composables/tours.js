@@ -73,6 +73,7 @@ export default function useTours() {
             await router.push({ name: "tours.index" });
         } catch (e) {
             if (e.response.status === 422) {
+                console.log(e);
                 errors.value = e.response.data.errors;
             }
         }
@@ -126,6 +127,7 @@ export default function useTours() {
             });
             await router.push({ name: "tours.index" });
         } catch (e) {
+            console.log(e);
             if (e.response.status === 422) {
                 errors.value = e.response.data.errors;
             }

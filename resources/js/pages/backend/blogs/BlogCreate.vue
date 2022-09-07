@@ -137,7 +137,6 @@
                 Create
             </button>
         </form>
-        {{ form.content_en }}
     </div>
 </template>
 
@@ -150,14 +149,12 @@ import useBlogs from "../../../composables/blogs";
 import useCategories from "../../../composables/categories"
 let live_property = ref(-1);
 const form = reactive({
-    category_id: null,
+    category_id: '',
     blog: "",
     title_en: "",
     title_ar: "",
-    description_en: "",
-    description_ar: "",
-    is_slide: false,
-    is_trending: false,
+    content_en: "",
+    content_ar: "",
     image: "",
 });
 

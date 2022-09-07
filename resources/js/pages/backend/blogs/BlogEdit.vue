@@ -4,7 +4,7 @@
             style="height: 100%">
             <progress-bar :percentage="percentage" />
         </div>
-        <div class="flex">
+        <div>
 
             <form class="space-y-6" @submit.prevent="saveBlog">
                 <div class="lg:flex justify-between space-x-4">
@@ -96,14 +96,15 @@
                             </div>
                         </div>
                         <!-- contents -->
+                        <div v-if="blog.content_en!=undefined">
+                            <div class="bg-white mb-6">
+                                <quill-editor toolbar="full" ref="myQuillEditor" v-model:content="blog.content_en" />
+                            </div>
 
-                        <div class="bg-white mb-6">
-                            <quill-editor toolbar="full" ref="myQuillEditor" v-model:content="content" />
+                            <div class="bg-white">
+                                <quill-editor toolbar="full" ref="myQuillEditor" v-model:content="blog.content_ar" />
+                            </div>
                         </div>
-
-                        <!-- <div class="bg-white">
-                            <quill-editor toolbar="full" ref="myQuillEditor" v-model:content="blog.content_ar" />
-                        </div> -->
                     </div>
                 </div>
 
@@ -133,6 +134,7 @@
                 </button>
             </form>
         </div>
+        {{ blog }}
     </div>
 </template>
 
@@ -154,17 +156,14 @@ const {
     percentage,
     getBlog,
     updateBlog,
+    temp
 } = useBlogs();
 let Swal = useSwal();
 let imagePreview = ref(null)
-let content = ref()
+// let content = ref({ "ops": JSON.parse(blog.value.content_en)['ops'] })
 onMounted(async () => {
     await getCategories();
     await getBlog(props.id);
-    content.value = JSON.parse(blog.value.content_en)
-    blog.value.content_en = JSON.parse(blog.value.content_en)
-    console.log(typeof (blog.value.content_en));
-
 });
 const saveBlog = async () => {
     isProgressing.value = true;

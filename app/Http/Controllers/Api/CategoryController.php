@@ -25,11 +25,6 @@ class CategoryController extends Controller
     {
         return CategoryResource::collection(Category::all());
     }
-    public function getFlagsOrSigns(Request $request)
-    {
-        Log::info($request);
-        return CategoryResource::collection(Category::where('category', $request->type)->get());
-    }
     public function getSlides()
     {
         return CategoryResource::collection(Category::where('is_slide', 1)->get());
@@ -41,8 +36,9 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategoryRequest $request)
     {
+        Log::info($request);
 
         if ($request->hasFile('image')) {
             $image = $request->image;
@@ -65,16 +61,6 @@ class CategoryController extends Controller
         $category->slug = Str::slug($category->name_en, '-');
         $category->save();
 
-        // foreach (json_decode($request['properties'], true) as $item) {
-        //     Log::info($item);
-        //     CategoryProperty::create([
-        //         'category_id' => $category->id,
-        //         'title_en' => $item['title_en'],
-        //         'title_ar' => $item['title_ar'],
-        //         'description_en' => $item['description_en'],
-        //         'description_ar' => $item['description_ar']
-        //     ]);
-        // }
 
         return ['message' => 'Category Created Successfully'];
     }
@@ -104,7 +90,7 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(CategoryRequest $request, Category $category)
     {
 
         $path = public_path() . '/images/categories/';
