@@ -20,7 +20,6 @@ export default function useTours() {
         tour.value = response.data.data;
     };
     const getTourDetails = async (slug) => {
-        // console.log(router.options.routes);
         let response = await axios.get("/api/tour/" + slug);
         tour.value = response.data.data;
     };
@@ -63,24 +62,17 @@ export default function useTours() {
                             (progressEvent.loaded / progressEvent.total) * 100
                         )
                     );
-                    console.log(
-                        Math.round(
-                            (progressEvent.loaded / progressEvent.total) * 100
-                        )
-                    );
                 },
             });
             await router.push({ name: "tours.index" });
         } catch (e) {
             if (e.response.status === 422) {
-                console.log(e);
                 errors.value = e.response.data.errors;
             }
         }
     };
 
     const updateTour = async (id, data) => {
-        console.log(data.form.thumbnail);
         fd.append("_method", "patch");
         fd.append("category_id", data.form.category_id);
         fd.append("title_en", data.form.title_en);
@@ -118,16 +110,10 @@ export default function useTours() {
                             (progressEvent.loaded / progressEvent.total) * 100
                         )
                     );
-                    console.log(
-                        Math.round(
-                            (progressEvent.loaded / progressEvent.total) * 100
-                        )
-                    );
                 },
             });
             await router.push({ name: "tours.index" });
         } catch (e) {
-            console.log(e);
             if (e.response.status === 422) {
                 errors.value = e.response.data.errors;
             }
@@ -150,15 +136,12 @@ export default function useTours() {
         for (var i = 0; i < files.length; i++) {
             let file = files[i];
             fd.append("files[" + i + "]", file);
-            console.log("i: " + i);
         }
     };
     const destroyImage = async (id) => {
-        console.log(id);
         await axios.delete("/api/delete-image/" + id);
     };
     const destroyFile = async (id) => {
-        console.log(id);
         await axios.delete("/api/delete-file/" + id);
     };
 

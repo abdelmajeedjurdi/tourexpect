@@ -16,29 +16,54 @@
             </p>
         </div>
     </div>
-
-    <form class="space-y-6" @submit.prevent="saveCategory">
+    {{ destination }}
+    <form class="space-y-6" @submit.prevent="saveDestination">
         <div class="lg:flex justify-between space-x-4">
             <div class="space-y-4 rounded-md w-full">
-
+                <div class="flex justify-between">
+                    <div class="w-full me-2">
+                        <label for="name_en" class="block text-sm font-medium text-gray-700 dark:text-gray-200">Country
+                        </label>
+                        <div class="mt-1">
+                            <select name="countries" id="countries" class="
+                                    block
+                                    mt-1
+                                    w-80
+                                    rounded-md
+                                    border-gray-500
+                                    shadow-sm
+                                    focus:border-indigo-300
+                                    focus:ring
+                                    focus:ring-indigo-200
+                                    focus:ring-opacity-50
+                                    dark:bg-gray-800
+                                    " v-model="destination.country_id">
+                                <option v-for="country in countries" :value="country.id">
+                                    {{
+                                    country.name_en}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
                 <div class="flex justify-between">
                     <div class="w-full me-2">
                         <label for="name_en" class="block text-sm font-medium text-gray-700 dark:text-gray-200">English
                             Name</label>
                         <div class="mt-1">
                             <input type="text" name="name_en" id="name_en" class="
-                  block
-                  mt-1
-                  w-full
-                  rounded-md
-                  border-gray-500
-                  shadow-sm
-                  focus:border-indigo-300
-                  focus:ring
-                  focus:ring-indigo-200
-                  focus:ring-opacity-50
-                  dark:bg-gray-800
-                " v-model="category.name_en" />
+                                block
+                                mt-1
+                                w-full
+                                rounded-md
+                                border-gray-500
+                                shadow-sm
+                                focus:border-indigo-300
+                                focus:ring
+                                focus:ring-indigo-200
+                                focus:ring-opacity-50
+                                dark:bg-gray-800
+                                " v-model="destination.name_en" />
                         </div>
                     </div>
                     <div class="w-full">
@@ -57,7 +82,7 @@
                   focus:ring-indigo-200
                   focus:ring-opacity-50
                   dark:bg-gray-800
-                " v-model="category.name_ar" />
+                " v-model="destination.name_ar" />
                         </div>
                     </div>
                 </div>
@@ -79,7 +104,7 @@
                   focus:ring-indigo-200
                   focus:ring-opacity-50
                   dark:bg-gray-800
-                " v-model="category.description_en" />
+                " v-model="destination.description_en" />
                         </div>
                     </div>
                     <div class="w-full">
@@ -99,31 +124,17 @@
                   focus:ring-indigo-200
                   focus:ring-opacity-50
                   dark:bg-gray-800
-                " v-model="category.description_ar" />
+                " v-model="destination.description_ar" />
                         </div>
-                    </div>
-                </div>
-                <div class="flex justify-between w-96">
-                    <div class="w-full me-2 flex">
-                        <label for="is_slide" class="block text-sm font-medium text-gray-700 dark:text-gray-200">Is
-                            Slide</label>
-                        <input type="checkbox" name="is_slide" id="is_slide" class="w-5 h-5 rounded ms-2"
-                            v-model="category.is_slide" />
-                    </div>
-                    <div class="w-full flex">
-                        <label for="is_trending"
-                            class="block text-sm font-medium text-gray-700 dark:text-gray-200">Trending</label>
-                        <input type="checkbox" name="is_trending" id="is_trending" class="w-5 h-5 rounded ms-2"
-                            v-model="category.is_trending" />
                     </div>
                 </div>
 
                 <div>
-                    <div class="flex w-full justify-start mt-2" v-if="category.image != undefined">
+                    <div class="flex w-full justify-start mt-2" v-if="destination.image != undefined">
                         <img :src="
                             imagePreview != null
                                 ? imagePreview
-                                : '/images/categories/' + category.image
+                                : '/images/destinations/' + destination.image
                         " alt="" class="figure-img img-fluid rounded" style="max-height: 100px" />
                     </div>
 
@@ -182,24 +193,20 @@
 </template>
 
 <script setup>
-import useCategories from "../../../composables/categories";
+import useDestinations from "../../../composables/destinations";
 import { onMounted, reactive, ref } from "vue";
 import { useSwal } from "../../../plugins/useSwal.js";
 const props = defineProps({ id: String });
-const { errors, category, getCategory, updateCategory, deleteProperty } =
-    useCategories();
+const { errors, destination, getDestination, updateDestination, countries, getCountries } =
+    useDestinations();
 let Swal = useSwal();
 let imagePreview = ref(null);
-onMounted(getCategory(props.id));
-let live_property = ref(-1);
-let property = ref({
-    title_en: "",
-    title_ar: "",
-    description_en: "",
-    description_ar: "",
+onMounted(async () => {
+    await getCountries();
+    await getDestination(props.id)
 });
-const saveCategory = async () => {
-    await updateCategory(props.id, { form: category.value, file });
+const saveDestination = async () => {
+    await updateDestination(props.id, { form: destination.value, file });
 };
 let file = reactive(null);
 function onFileSelected(event) {
@@ -212,48 +219,4 @@ function onFileSelected(event) {
     };
 }
 let is_editing = ref(false);
-const editRow = (property_) => {
-    is_editing.value = true;
-    property.value = property_;
-};
-const deleteRow = async (property_) => {
-    Swal.fire({
-        title: "Are you sure?",
-        html: "You won't be able to revert  Order, ",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, delete it!",
-    }).then(async (result) => {
-        if (result.isConfirmed) {
-            if (property_.hasOwnProperty("id")) {
-                await deleteProperty(property_.id);
-                await getCategory(props.id);
-            } else {
-                category.value.properties.splice(property_, 1);
-            }
-            Swal.fire("Deleted!", "Deleted Successfully", "success");
-        }
-    });
-};
-const setProperty = () => {
-    if (!is_editing.value) {
-        category.value.properties.push(property.value);
-        property.value = {
-            title_en: "",
-            title_ar: "",
-            description_en: "",
-            description_ar: "",
-        };
-    } else {
-        is_editing.value = false;
-        property.value = {
-            title_en: "",
-            title_ar: "",
-            description_en: "",
-            description_ar: "",
-        };
-    }
-};
 </script>

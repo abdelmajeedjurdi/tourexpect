@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
@@ -28,5 +29,12 @@ class DatabaseSeeder extends Seeder
             'role' => '0',
             'password' => Hash::make('password')
         ]);
+        DB::table('countries')->insert(
+            [
+                ['name_en' => 'Turkey', 'name_ar' => 'تركيا', 'slug' => 'turkey'],
+                ['name_en' => 'UAE', 'name_ar' => 'الامارات', 'slug' => 'uae'],
+                ['name_en' => 'Iran', 'name_ar' => 'ايران', 'slug' => 'iran']
+            ]
+        );
     }
 }

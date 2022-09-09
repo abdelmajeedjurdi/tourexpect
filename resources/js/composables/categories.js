@@ -13,7 +13,6 @@ export default function useCategories() {
     const getCategories = async () => {
         let response = await axios.get("/api/categories");
         categories.value = response.data.data;
-        // console.log('getCategories Called');
     };
     const getFlagsOrSigns = async (type) => {
         let response = await axios.get("/api/get-flags-signs?type=" + type);
@@ -30,7 +29,6 @@ export default function useCategories() {
     };
     const getCategoryDetails = async (slug) => {
         let response = await axios.get("/api/category/" + slug);
-        console.log(response.data);
         category.value = response.data.category;
         tours.value = response.data.tours;
     };
@@ -56,11 +54,6 @@ export default function useCategories() {
                     //         (progressEvent.loaded / progressEvent.total) * 100
                     //     )
                     // );
-                    console.log(
-                        Math.round(
-                            (progressEvent.loaded / progressEvent.total) * 100
-                        )
-                    );
                 },
             });
             await router.push({ name: "categories.index" });
@@ -72,7 +65,6 @@ export default function useCategories() {
     };
 
     const updateCategory = async (id, data) => {
-        console.log(data);
         let fd = new FormData();
         fd.append("_method", "patch");
         fd.append("category", 'flag');

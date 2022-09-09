@@ -35,7 +35,7 @@
                                         <button @click="showMenu(item.id)"
                                             class="peer py-2 pr-4 pl-3 font-bold text-xl text-gray-800  border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:tour-blue md:p-0">
                                             {{
-                                                    $t(item.name)
+                                            $t(item.name)
                                             }}</button>
 
                                     </div>
@@ -264,7 +264,6 @@ onMounted(() => {
         const isClickInside3 = specifiedElement3.contains(event.target);
 
         if (!isClickInside && !isClickInside2 && !isClickInside3) {
-            console.log('test2');
             closeMenu()
             // isOptionsShow.value = false;
         }
@@ -322,7 +321,7 @@ const setSubSubMenu = (i) => {
     menu_path_by_id.value.sub_menu = i
     subsubmenu.value = menu.value[menu_path_by_id.value.menu].items[menu_path_by_id.value.sub_menu]['items']
     submenu_title.value = menu.value[menu_path_by_id.value.menu].items[menu_path_by_id.value.sub_menu]['name']
-    console.log(subsubmenu.value);
+
 }
 const closeSubmenue = () => {
     menu_path_by_id.value.sub_menu = -1
@@ -356,7 +355,6 @@ const closeMenu = () => {
     mobile_menu.value = false
 }
 const test = () => {
-    console.log('test');
 }
 </script>
 

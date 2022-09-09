@@ -5,6 +5,11 @@ import CategoryCreate from "../pages/backend/categories/CategoryCreate";
 import CategoryEdit from "../pages/backend/categories/CategoryEdit";
 import CategoryDetails from "../pages/backend/categories/CategoryDetails";
 
+import DestinationsIndex from "../pages/backend/destinations/DestinationsIndex";
+import DestinationCreate from "../pages/backend/destinations/DestinationCreate";
+import DestinationEdit from "../pages/backend/destinations/DestinationEdit";
+import DestinationDetails from "../pages/backend/destinations/DestinationDetails";
+
 import ToursIndex from "../pages/backend/tours/ToursIndex";
 import TourCreate from "../pages/backend/tours/TourCreate";
 import TourEdit from "../pages/backend/tours/TourEdit";
@@ -52,6 +57,30 @@ const routes = [
         path: "/dashboard/categories/:id/details",
         name: "category.details",
         component: CategoryDetails,
+        props: true,
+    },
+    // ((((((((((((-- Destinations --)))))))))))))))
+
+    {
+        path: "/dashboard/destinations",
+        name: "destinations.index",
+        component: DestinationsIndex,
+    },
+    {
+        path: "/dashboard/destinations/create",
+        name: "destination.create",
+        component: DestinationCreate,
+    },
+    {
+        path: "/dashboard/destinations/:id/edit",
+        name: "destination.edit",
+        component: DestinationEdit,
+        props: true,
+    },
+    {
+        path: "/dashboard/destinations/:id/details",
+        name: "destination.details",
+        component: DestinationDetails,
         props: true,
     },
 

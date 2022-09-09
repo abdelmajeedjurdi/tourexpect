@@ -12,7 +12,6 @@ var QuillDeltaToHtmlConverter = require('quill-delta-to-html').QuillDeltaToHtmlC
 let html = ref(null)
 onMounted(async () => {
     await getBlogs()
-    console.log(JSON.parse(blogs.value[1]['content_en'])['ops']);
     var deltaOps = JSON.parse(blogs.value[2]['content_en'])['ops'];
 
     var cfg = {};

@@ -3,7 +3,8 @@
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\ContactController;
 use App\Http\Controllers\Api\TourController;
-use App\Http\Controllers\BlogController;
+use App\Http\Controllers\Api\BlogController;
+use App\Http\Controllers\Api\DestinationController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -23,11 +24,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::apiResource('categories', CategoryController::class);
+Route::apiResource('destinations', DestinationController::class);
 Route::apiResource('tours', TourController::class);
 Route::delete('cat-property/{id}', [CategoryController::class, 'deleteProperty']);
 Route::get('categories-slides', [CategoryController::class, 'getSlides']);
 Route::get('category/{slug}', [CategoryController::class, 'getCategoryDetails']);
-Route::get('get-flags-signs', [CategoryController::class, 'getFlagsOrSigns']);
+Route::get('countries', [DestinationController::class, 'getCountries']);
 Route::get('tour/{slug}', [TourController::class, 'getTourDetails']);
 Route::delete('delete-image/{id}', [TourController::class, 'deleteImage']);
 Route::delete('delete-file/{id}', [TourController::class, 'deleteFile']);

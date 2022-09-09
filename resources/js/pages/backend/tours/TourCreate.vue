@@ -486,7 +486,7 @@
                             font-semibold
                             focus:border-blue-500 focus:outline-none
                             hidden
-                            " @change="onFileSelected" type="file" id="image" />
+                            " @change="onFileSelected" type="file" id="image" accept="image/*" />
                     <label for="image" class="w-100 flex">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-12 cursor-pointer" fill="none"
                             viewBox="0 0 24 24" stroke="currentColor">
@@ -603,12 +603,10 @@ const deleteRow = (property) => {
 let is_editing = ref(false);
 const editRow = (property_id) => {
     is_editing.value = true;
-    console.log(property_id);
     property.value = properties.value[property_id];
 };
 
 const selectCategory = (category_id) => {
     form.category_id = category_id;
-    console.log(category_id);
 };
 </script>

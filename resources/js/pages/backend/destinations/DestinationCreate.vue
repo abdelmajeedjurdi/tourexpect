@@ -17,11 +17,35 @@
                 </p>
             </div>
         </div>
-
-        <form class="space-y-6" @submit.prevent="saveCategory">
+        <form class="space-y-6" @submit.prevent="saveDestination">
             <div class="lg:flex justify-between space-x-4">
                 <div class="space-y-4 rounded-md w-full">
-
+                    <div class="flex justify-between">
+                        <div class="w-full me-2">
+                            <label for="name_en"
+                                class="block text-sm font-medium text-gray-700 dark:text-gray-200">Country </label>
+                            <div class="mt-1">
+                                <select name="countries" id="countries" class="
+                                    block
+                                    mt-1
+                                    w-80
+                                    rounded-md
+                                    border-gray-500
+                                    shadow-sm
+                                    focus:border-indigo-300
+                                    focus:ring
+                                    focus:ring-indigo-200
+                                    focus:ring-opacity-50
+                                    dark:bg-gray-800
+                                    " v-model="form.country_id">
+                                    <option v-for="country in countries" :value="country.id">
+                                        {{
+                                        country.name_en}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
                     <div class="flex justify-between">
                         <div class="w-full me-2">
                             <label for="name_en"
@@ -49,18 +73,18 @@
                                 Name</label>
                             <div class="mt-1">
                                 <input dir="rtl" type="text" name="name_ar" id="name_ar" class="
-                  block
-                  mt-1
-                  w-full
-                  rounded-md
-                  border-gray-500
-                  shadow-sm
-                  focus:border-indigo-300
-                  focus:ring
-                  focus:ring-indigo-200
-                  focus:ring-opacity-50
-                  dark:bg-gray-800
-                " v-model="form.name_ar" />
+                                    block
+                                    mt-1
+                                    w-full
+                                    rounded-md
+                                    border-gray-500
+                                    shadow-sm
+                                    focus:border-indigo-300
+                                    focus:ring
+                                    focus:ring-indigo-200
+                                    focus:ring-opacity-50
+                                    dark:bg-gray-800
+                                    " v-model="form.name_ar" />
                             </div>
                         </div>
                     </div>
@@ -107,20 +131,6 @@
                             </div>
                         </div>
                     </div>
-                    <div class="flex justify-between w-96">
-                        <div class="w-full me-2 flex">
-                            <label for="is_slide" class="block text-sm font-medium text-gray-700 dark:text-gray-200">Is
-                                Slide</label>
-                            <input type="checkbox" name="is_slide" id="is_slide" class="w-5 h-5 rounded ms-2"
-                                v-model="form.is_slide" />
-                        </div>
-                        <div class="w-full flex">
-                            <label for="is_trending"
-                                class="block text-sm font-medium text-gray-700 dark:text-gray-200">Trending</label>
-                            <input type="checkbox" name="is_trending" id="is_trending" class="w-5 h-5 rounded ms-2"
-                                v-model="form.is_trending" />
-                        </div>
-                    </div>
 
                     <div class="flex w-full mt-2" v-if="imagePreview">
                         <img :src="imagePreview" alt="" class="figure-img img-fluid rounded"
@@ -153,27 +163,27 @@
             </div>
 
             <button type="submit" class="
-        inline-flex
-        items-center
-        px-4
-        py-2
-        text-xs
-        font-semibold
-        tracking-widest
-        text-white
-        uppercase
-        bg-gray-800
-        rounded-md
-        border border-transparent
-        ring-gray-300
-        transition
-        duration-150
-        ease-in-out
-        hover:bg-gray-700
-        active:bg-gray-900
-        focus:outline-none focus:border-gray-900 focus:ring
-        disabled:opacity-25
-      ">
+                                    inline-flex
+                                    items-center
+                                    px-4
+                                    py-2
+                                    text-xs
+                                    font-semibold
+                                    tracking-widest
+                                    text-white
+                                    uppercase
+                                    bg-gray-800
+                                    rounded-md
+                                    border border-transparent
+                                    ring-gray-300
+                                    transition
+                                    duration-150
+                                    ease-in-out
+                                    hover:bg-gray-700
+                                    active:bg-gray-900
+                                    focus:outline-none focus:border-gray-900 focus:ring
+                                    disabled:opacity-25
+                                ">
                 Create
             </button>
         </form>
@@ -181,24 +191,24 @@
 </template>
 
 <script setup>
-import { reactive, ref } from "vue";
-import useCategories from "../../../composables/categories";
+import { onMounted, reactive, ref } from "vue";
+import useDestinations from "../../../composables/destinations";
 
 const form = reactive({
-    category: "",
     name_en: "",
     name_ar: "",
     description_en: "",
     description_ar: "",
-    is_slide: false,
-    is_trending: false,
+    country_id: "",
     image: "",
 });
 
-const { errors, storeCategory } = useCategories();
-
-const saveCategory = async () => {
-    await storeCategory({ form: form, file });
+const { errors, storeDestination, countries, getCountries } = useDestinations();
+onMounted(async () => {
+    await getCountries()
+})
+const saveDestination = async () => {
+    await storeDestination({ form: form, file });
 };
 let imagePreview = ref(null);
 let file = reactive(null);

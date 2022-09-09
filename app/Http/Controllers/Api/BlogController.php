@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\BlogRequest;
 use App\Http\Resources\BlogResource;
 use App\Models\Blog;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 
 class BlogController extends Controller
@@ -47,7 +47,6 @@ class BlogController extends Controller
         } else {
             $imageName = 'default.jpg';
         }
-        Log::info($request->content_en);
         $blog = new Blog();
         $blog->destination_id = -1;
         $blog->category_id = $request->category_id;
@@ -91,7 +90,6 @@ class BlogController extends Controller
      */
     public function update(BlogRequest $request, Blog $blog)
     {
-        Log::info($request);
         $path = public_path() . '/images/blogs/';
         //code for remove old image
         if ($request->new_image != 'null' && $request->new_image != 'default.jpg') {

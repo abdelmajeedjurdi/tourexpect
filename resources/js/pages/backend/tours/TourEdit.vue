@@ -529,7 +529,7 @@
                                                 font-semibold
                                                 focus:border-blue-500 focus:outline-none
                                                 hidden
-                                            " @change="onFileSelected" type="file" id="user-image" />
+                                            " @change="onFileSelected" type="file" id="user-image" accept="image/*" />
                         <label for="user-image" class="w-100 flex justify-start">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-12 cursor-pointer" fill="none"
                                 viewBox="0 0 24 24" stroke="currentColor">
@@ -618,10 +618,8 @@ const deleteRow = async (property_) => {
                 await deleteProperty(property_.id);
                 await getTour(props.id);
 
-                console.log(property_.id);
             } else {
                 tour.value.properties.splice(property_, 1);
-                // console.log("hasnt");
             }
             Swal.fire("Deleted!", "Deleted Successfully", "success");
         }
@@ -650,7 +648,6 @@ const deleteFile = async (id) => {
 
     await destroyImage(id);
     await getTour(props.id);
-    console.log(id);
 };
 const handleImages = (images) => {
     addGallery(images);
@@ -670,6 +667,5 @@ function onFileSelected(event) {
 }
 const selectCategory = (category_id) => {
     tour.value.category_id = category_id;
-    console.log(tour.value.category_id);
 };
 </script>

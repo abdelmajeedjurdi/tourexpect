@@ -1,22 +1,30 @@
 <template>
     <div class="w-full">
         <div class="mx-2 flex justify-between place-content-end mb-4">
-            <h3>All Blogs</h3>
+            <h3>All Destinations</h3>
             <div class="
-                px-4
-                py-2
-                bg-blue-600
-                hover:bg-blue-700
-                cursor-pointer
-                rounded-lg
-                ">
-                <router-link :to="{ name: 'blog.create' }" class="text-sm font-medium text-white">New Blog
+          px-4
+          py-2
+          bg-blue-600
+          hover:bg-blue-700
+          cursor-pointer
+          rounded-lg
+        ">
+                <router-link :to="{ name: 'destination.create' }" class="text-sm font-medium text-white">New Destination
                 </router-link>
             </div>
         </div>
-        <div
-            class="grid gap-2 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 justify-between ">
-            <div v-for="blog in blogs" :key="blog.id">
+        <div class="
+        grid
+        gap-2
+        grid-cols-1
+        sm:grid-cols-2
+        md:grid-cols-3
+        lg:grid-cols-4
+        xl:grid-cols-5
+        justify-between
+      ">
+            <div v-for="destination in destinations" :key="destination.id">
                 <div class="bg-white rounded-lg overflow-hidden mb-10">
                     <div class="w-full flex justify-end z-20">
                         <span class="rounded-full p-1 transition-all duration-300 absolute">
@@ -31,13 +39,13 @@
                                 <ul class="dropdown-menu">
                                     <li class="w-full hover:bg-gray-300">
                                         <router-link style="padding-right: 70%" class="w-full ms-2" :to="{
-                                            name: 'blog.edit',
-                                            params: { id: blog.id },
+                                            name: 'destination.edit',
+                                            params: { id: destination.id },
                                         }">Edit
                                         </router-link>
                                     </li>
                                     <li class="w-full text-red-500 hover:bg-gray-300">
-                                        <button @click="deleteRow(blog)" class="ms-2">
+                                        <button @click="deleteRow(destination)" class="ms-2">
                                             Delete
                                         </button>
                                     </li>
@@ -45,13 +53,25 @@
                             </div>
                         </span>
                     </div>
-                    <router-link :to="{ name: 'blog.details', params: { id: blog.id } }">
-                        <img :src="'/images/blogs/' + blog.image" alt="image" class="w-full h-48 object-cover" />
-                        <div class="p-2 h-20">
+                    <router-link :to="{ name: 'destination.details', params: { id: destination.id } }">
+                        <img :src="'/images/destinations/' + destination.image" alt="image"
+                            class="w-full h-48 object-cover" />
+                        <div class="p-2 h-32">
                             <span class="text-base text-blue-500">
-                                {{ blog.title_en }}
+                                {{ destination.name_en }}
                             </span>
 
+                            <p class="
+                  text-base text-body-color
+                  leading-relaxed
+                  mb-7
+                  text-gray-600
+                ">
+                                {{
+                                destination.description_en.substring(0, 100) +
+                                (destination.description_en.length > 100 ? "...." : "")
+                                }}
+                            </p>
                         </div>
                     </router-link>
                 </div>
@@ -61,33 +81,24 @@
 </template>
 
 <script setup>
-import useBlogs from "../../../composables/blogs";
+import useDestinations from "../../../composables/destinations";
 import { onMounted } from "vue";
 import { useSwal } from "../../../plugins/useSwal.js";
 
-var QuillDeltaToHtmlConverter = require('quill-delta-to-html').QuillDeltaToHtmlConverter;
-const { blogs, getBlogs, destroyBlog } = useBlogs();
+const { destinations, getDestinations, destroyDestination } = useDestinations();
 
 let Swal = useSwal();
-onMounted(getBlogs);
-// function toHtml(content) {
-//     var deltaOps = JSON.parse(content)['ops'];
+onMounted(getDestinations);
 
-//     var cfg = {};
-
-//     var converter = new QuillDeltaToHtmlConverter(deltaOps, cfg);
-//     // return 'wait'
-//     return converter.convert();
-// }
-const deleteBlog = async (id) => {
+const deleteDestination = async (id) => {
     if (!window.confirm("Are you sure?")) {
         return;
     }
 
-    await destroyBlog(id);
-    await getBlogs();
+    await destroyDestination(id);
+    await getDestinations();
 };
-const deleteRow = (blog_) => {
+const deleteRow = (destination_) => {
     Swal.fire({
         title: "Are you sure?",
         html: "You won't be able to revert   Order, ",
@@ -98,8 +109,8 @@ const deleteRow = (blog_) => {
         confirmButtonText: "Yes, delete it!",
     }).then(async (result) => {
         if (result.isConfirmed) {
-            await destroyBlog(blog_.id);
-            await getBlogs();
+            await destroyDestination(destination_.id);
+            await getDestinations();
             Swal.fire("Deleted!", "Order has been deleted.", "success");
         }
     });

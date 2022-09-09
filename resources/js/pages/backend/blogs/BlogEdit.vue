@@ -36,7 +36,7 @@
                                                 font-semibold
                                                 focus:border-blue-500 focus:outline-none
                                                 hidden
-                                            " @change="onFileSelected" type="file" id="user-image" />
+                                            " @change="onFileSelected" type="file" accept="image/*" id="user-image" />
                                 <label for="user-image" class="w-100 flex justify-start">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="w-12 cursor-pointer" fill="none"
                                         viewBox="0 0 24 24" stroke="currentColor">
@@ -186,6 +186,5 @@ function onFileSelected(event) {
 }
 const selectCategory = (category_id) => {
     blog.value.category_id = category_id;
-    console.log(blog.value.category_id);
 };
 </script>

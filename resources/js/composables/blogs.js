@@ -23,13 +23,11 @@ export default function useBlogs() {
     };
     const getBlogDetails = async (slug) => {
         let response = await axios.get("/api/blog/" + slug);
-        console.log(response.data);
         blog.value = response.data.blog;
         tours.value = response.data.tours;
     };
 
     const storeBlog = async (data) => {
-        console.log(data);
         let fd = new FormData();
         fd.append("category_id", data.form.category_id);
         fd.append("title_en", data.form.title_en);
@@ -47,11 +45,6 @@ export default function useBlogs() {
                     //         (progressEvent.loaded / progressEvent.total) * 100
                     //     )
                     // );
-                    console.log(
-                        Math.round(
-                            (progressEvent.loaded / progressEvent.total) * 100
-                        )
-                    );
                 },
             });
             await router.push({ name: "blogs.index" });
@@ -63,7 +56,6 @@ export default function useBlogs() {
     };
 
     const updateBlog = async (id, data) => {
-        console.log(data);
         let fd = new FormData();
         fd.append("_method", "patch");
         fd.append("category_id", data.form.category_id);

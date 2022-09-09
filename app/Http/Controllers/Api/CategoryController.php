@@ -7,9 +7,7 @@ use App\Http\Requests\CategoryRequest;
 use App\Http\Resources\CategoryResource;
 use App\Http\Resources\TourResource;
 use App\Models\Category;
-use App\Models\CategoryProperty;
 use App\Models\Tour;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 
@@ -24,10 +22,6 @@ class CategoryController extends Controller
     public function index()
     {
         return CategoryResource::collection(Category::all());
-    }
-    public function getSlides()
-    {
-        return CategoryResource::collection(Category::where('is_slide', 1)->get());
     }
 
     /**
