@@ -30,6 +30,7 @@ export default function useBlogs() {
     const storeBlog = async (data) => {
         let fd = new FormData();
         fd.append("category_id", data.form.category_id);
+        fd.append("destination_id", data.form.destination_id);
         fd.append("title_en", data.form.title_en);
         fd.append("title_ar", data.form.title_ar);
         fd.append("content_en", JSON.stringify(data.form.content_en));
@@ -59,6 +60,7 @@ export default function useBlogs() {
         let fd = new FormData();
         fd.append("_method", "patch");
         fd.append("category_id", data.form.category_id);
+        fd.append("destination_id", data.form.destination_id);
         fd.append("title_en", data.form.title_en);
         fd.append("title_ar", data.form.title_ar);
         fd.append("content_en", JSON.stringify(data.form.content_en));

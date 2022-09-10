@@ -48,7 +48,7 @@ class BlogController extends Controller
             $imageName = 'default.jpg';
         }
         $blog = new Blog();
-        $blog->destination_id = -1;
+        $blog->destination_id = $request->destination_id;
         $blog->category_id = $request->category_id;
         $blog->title_en = $request->title_en;
         $blog->title_ar = $request->title_ar;
@@ -106,7 +106,8 @@ class BlogController extends Controller
             $imageName = $request->blog_img;
         }
         $blog->update([
-            'blog' => $request->blog,
+            'category_id' => $request->category_id,
+            'destination_id' => $request->destination_id,
             'title_en' => $request->title_en,
             'title_ar' => $request->title_ar,
             'content_en' => $request->content_en,

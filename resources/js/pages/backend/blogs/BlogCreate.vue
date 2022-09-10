@@ -17,7 +17,7 @@
                 </p>
             </div>
         </div>
-
+        {{ form }}
         <form class="space-y-6" @submit.prevent="saveBlog">
             <div class="lg:flex justify-between space-x-4">
                 <div class="space-y-4 rounded-md w-full">
@@ -51,9 +51,11 @@
                                 </svg></label>
                         </div>
                     </div>
-                    <div>
+                    <div class="flex justify-between w-1/2">
                         <searchable-dropdown :options="categories" @selected="selectCategory($event)"
                             class="mt-6 me-2" />
+                        <searchable-dropdown component_placeholder="Select Destination" component_id="destinations"
+                            :options="destinations" @selected="selectDestination($event)" class="mt-6 me-2" />
                     </div>
                     <!-- titles -->
                     <div class="flex justify-between">
@@ -147,9 +149,10 @@ import { onMounted, reactive, ref } from "vue";
 import SearchableDropdown from "../../../components/SearchableDropdown.vue";
 import useBlogs from "../../../composables/blogs";
 import useCategories from "../../../composables/categories"
-let live_property = ref(-1);
+import useDestinations from "../../../composables/destinations"
 const form = reactive({
     category_id: '',
+    destination_id: '',
     blog: "",
     title_en: "",
     title_ar: "",
@@ -157,11 +160,12 @@ const form = reactive({
     content_ar: "",
     image: "",
 });
-
+const { destinations, getDestinations } = useDestinations();
 const { errors, storeBlog } = useBlogs();
 const { categories, getCategories } = useCategories();
 onMounted(async () => {
     await getCategories()
+    getDestinations()
 })
 const saveBlog = async () => {
     await storeBlog({ form: form, file });
@@ -179,6 +183,9 @@ function onFileSelected(event) {
 }
 const selectCategory = (category_id) => {
     form.category_id = category_id;
+};
+const selectDestination = (destination_id) => {
+    form.destination_id = destination_id;
 };
 </script>
 <style>

@@ -48,9 +48,17 @@
                                 </label>
                             </div>
                         </div>
-                        <div v-if="categories.length && blog['category_id']" class="me-2">
-                            <searchable-dropdown :options="categories" :category_id="blog['category_id']"
-                                @selected="selectCategory($event)" class="mt-6 me-2" />
+                        <div class="flex justify-between w-1/2">
+                            <div v-if="categories.length && blog['category_id']" class="me-2">
+                                <searchable-dropdown :options="categories" :category_id="blog['category_id']"
+                                    @selected="selectCategory($event)" class="mt-6 me-2" />
+                            </div>
+                            <div v-if="destinations.length && blog['destination_id']" class="me-2">
+                                <searchable-dropdown component_placeholder="Select Destination"
+                                    component_id="destinations" :options="destinations"
+                                    :category_id="blog['destination_id']" @selected="selectDestination($event)"
+                                    class="mt-6 me-2" />
+                            </div>
                         </div>
                         <!-- titles -->
                         <div class="flex justify-between">
@@ -134,7 +142,6 @@
                 </button>
             </form>
         </div>
-        {{ blog }}
     </div>
 </template>
 
@@ -143,12 +150,14 @@ import { QuillEditor } from '@vueup/vue-quill'
 import '@vueup/vue-quill/dist/vue-quill.snow.css'
 import useBlogs from "../../../composables/blogs";
 import useCategories from "../../../composables/categories";
+import useDestinations from '../../../composables/destinations';
 import { onMounted, reactive, ref } from "vue";
 import { useSwal } from "../../../plugins/useSwal.js";
 import SearchableDropdown from "../../../components/SearchableDropdown.vue";
 import ProgressBar from "../../../components/ProgressBar.vue";
 const props = defineProps({ id: String });
 const { categories, getCategories } = useCategories();
+const { destinations, getDestinations } = useDestinations();
 let isProgressing = ref(false);
 const {
     errors,
@@ -164,6 +173,7 @@ let imagePreview = ref(null)
 onMounted(async () => {
     await getCategories();
     await getBlog(props.id);
+    getDestinations()
 });
 const saveBlog = async () => {
     isProgressing.value = true;
@@ -186,5 +196,8 @@ function onFileSelected(event) {
 }
 const selectCategory = (category_id) => {
     blog.value.category_id = category_id;
+};
+const selectDestination = (destination_id) => {
+    blog.value.destination_id = destination_id;
 };
 </script>

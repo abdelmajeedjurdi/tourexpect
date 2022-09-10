@@ -1,4 +1,5 @@
 <template>
+    {{ form }}
     <div>
         <div v-if="errors">
             <div v-for="(v, k) in errors" :key="k" class="
@@ -374,9 +375,13 @@
             </form>
             <div class="ml-3 bg-gray-600 rounded h-screen w-96 text-center px-4">
                 <div>
-                    <searchable-dropdown :options="categories" @selected="selectCategory($event)" class="mt-6 me-2" />
+                    <searchable-dropdown component_id="categories" :options="categories"
+                        @selected="selectCategory($event)" class="mt-6 me-2" />
                 </div>
-
+                <div>
+                    <searchable-dropdown component_placeholder="Select Destination" component_id="destinations"
+                        :options="destinations" @selected="selectDestination($event)" class="mt-6 me-2" />
+                </div>
                 <div class="w-full me-2 mt-4">
                     <label for="adult_price"
                         class="block text-sm font-medium w-full text-left text-gray-700 dark:text-gray-200">Adult
@@ -512,6 +517,7 @@
 import { onMounted, reactive, ref } from "vue";
 import useTours from "../../../composables/tours";
 import useCategories from "../../../composables/categories";
+import useDestinations from "../../../composables/destinations";
 import SearchableDropdown from "../../../components/SearchableDropdown.vue";
 import ProgressBar from "../../../components/ProgressBar.vue";
 import UploadImages from "vue-upload-drop-images";
@@ -519,6 +525,7 @@ import UploadImages from "vue-upload-drop-images";
 let live_property = ref(-1);
 const form = reactive({
     category_id: '',
+    destination_id: '',
     title_en: "",
     title_ar: "",
     address_ar: '',
@@ -572,8 +579,10 @@ let isProgressing = ref(false);
 const { errors, storeTour, addGallery, addFiles, percentage } =
     useTours();
 const { categories, getCategories } = useCategories();
+const { destinations, getDestinations } = useDestinations();
 onMounted(() => {
     getCategories();
+    getDestinations()
 });
 const handleImages = (images) => {
     addGallery(images);
@@ -608,5 +617,8 @@ const editRow = (property_id) => {
 
 const selectCategory = (category_id) => {
     form.category_id = category_id;
+};
+const selectDestination = (destination_id) => {
+    form.destination_id = destination_id;
 };
 </script>

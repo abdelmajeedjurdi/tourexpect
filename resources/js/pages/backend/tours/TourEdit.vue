@@ -406,11 +406,14 @@
                     Update
                 </button>
             </form>
-
             <div class="ml-3 bg-gray-600 rounded h-screen w-96 text-center px-4">
                 <div v-if="categories.length && tour['category_id']" class="me-2">
-                    <searchable-dropdown :options="categories" :category_id="tour['category_id']"
-                        @selected="selectCategory($event)" class="mt-6 me-2" />
+                    <searchable-dropdown component_id="categories" :options="categories"
+                        :category_id="tour['category_id']" @selected="selectCategory($event)" class="mt-6 me-2" />
+                </div>
+                <div v-if="destinations.length && tour['destination_id']" class="me-2">
+                    <searchable-dropdown component_id="destinations" :options="destinations"
+                        :category_id="tour['destination_id']" @selected="selectDestination($event)" class="mt-6 me-2" />
                 </div>
 
                 <div class="w-full me-2 mt-4">
@@ -556,6 +559,7 @@
 <script setup>
 import useTours from "../../../composables/tours";
 import useCategories from "../../../composables/categories";
+import useDestinations from "../../../composables/destinations";
 import { onMounted, reactive, ref } from "vue";
 import { useSwal } from "../../../plugins/useSwal.js";
 import UploadImages from "vue-upload-drop-images";
@@ -563,6 +567,7 @@ import SearchableDropdown from "../../../components/SearchableDropdown.vue";
 import ProgressBar from "../../../components/ProgressBar.vue";
 const props = defineProps({ id: String });
 const { categories, getCategories } = useCategories();
+const { destinations, getDestinations } = useDestinations();
 let isProgressing = ref(false);
 const {
     errors,
@@ -580,6 +585,7 @@ let Swal = useSwal();
 let imagePreview = ref(null)
 onMounted(async () => {
     await getCategories();
+    await getDestinations();
     await getTour(props.id);
 });
 let live_property = ref(-1);
@@ -667,5 +673,8 @@ function onFileSelected(event) {
 }
 const selectCategory = (category_id) => {
     tour.value.category_id = category_id;
+};
+const selectDestination = (destination_id) => {
+    tour.value.destination_id = destination_id;
 };
 </script>

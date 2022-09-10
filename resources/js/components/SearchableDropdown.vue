@@ -2,10 +2,9 @@
     <div class="dropdown">
         <button class="btn btn-secondary dropdown-toggle w-64" type="button" id="dropdownMenuButton1"
             data-bs-toggle="dropdown" aria-expanded="false" @click="myFunction">
-            {{ selected_option == null ? " Select Category" : selected_option }}
+            {{ selected_option == null ? component_placeholder : selected_option }}
         </button>
-
-        <ul id="myDropdown" class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton1">
+        <ul :id="component_id" class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton1">
             <input class="dropdown-item border border-gray-500 w-1/2" type="text" autocomplete="off"
                 placeholder="Search.." id="myInput" @keyup="filterFunction()" />
             <li v-for="option in options" :key="option.id" @click="selected_option = option.name_en">
@@ -23,6 +22,8 @@ import { onMounted } from "@vue/runtime-core";
 const props = defineProps({
     options: Array,
     category_id: { type: String, default: -1 },
+    component_id: { type: String, default: 'myDropdown' },
+    component_placeholder: { type: String, default: 'Select Category' }
 });
 const emit = defineEmits(["selected"]);
 const foo = {
@@ -48,14 +49,14 @@ let selected_option = ref(
         : props.options.find((item) => item.id == props.category_id)["name_en"]
 );
 function myFunction() {
-    document.getElementById("myDropdown").classList.toggle("show");
+    document.getElementById(props.component_id).classList.toggle("show");
 }
 
 function filterFunction() {
     var input, filter, ul, li, span, i, div, txtValue;
     input = document.getElementById("myInput");
     filter = input.value.toUpperCase();
-    div = document.getElementById("myDropdown");
+    div = document.getElementById(props.component_id);
     span = div.getElementsByTagName("span");
     for (i = 0; i < span.length; i++) {
         txtValue = span[i].textContent || span[i].innerText;

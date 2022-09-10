@@ -58,7 +58,7 @@ class TourController extends Controller
 
         $tour = new Tour();
         $tour->category_id = $request->category_id;
-        $tour->destination_id = 1;
+        $tour->destination_id = $request->destination_id;
         $tour->title_en = $request->title_en;
         $tour->title_ar = $request->title_ar;
         $tour->description_en = $request->description_en;
@@ -146,6 +146,7 @@ class TourController extends Controller
         }
         $tour->update([
             'category_id' => $request->category_id,
+            'destination_id' => $request->destination_id,
             'title_en' => $request->title_en,
             'title_ar' => $request->title_ar,
             'address_ar' => $request->address_ar,
