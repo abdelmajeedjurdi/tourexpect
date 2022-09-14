@@ -19,6 +19,8 @@ class CreateBlogsTable extends Migration
             $table->string('image')->default('default.jpg');
             $table->string('title_ar');
             $table->string('title_en');
+            $table->longText('preview_text_ar');
+            $table->longText('preview_text_en');
             $table->json('content_ar');
             $table->json('content_en');
             $table->integer('category_id');

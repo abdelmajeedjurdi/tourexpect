@@ -1,5 +1,22 @@
 <template>
     <div>
+        <div v-if="errors">
+            <div v-for="(v, k) in errors" :key="k" class="
+                        bg-red-500
+                        text-white
+                        rounded
+                        font-bold
+                        mb-4
+                        shadow-lg
+                        py-2
+                        px-4
+                        pr-0
+                    ">
+                <p v-for="error in v" :key="error" class="text-sm">
+                    {{ error }}
+                </p>
+            </div>
+        </div>
         <div v-if="isProgressing && percentage < 100" class="-ml-6 -mt-6 w-full pt-52 fixed bg-black bg-opacity-50 z-20"
             style="height: 100%">
             <progress-bar :percentage="percentage" />
@@ -100,6 +117,49 @@
                                             focus:ring-opacity-50
                                             dark:bg-gray-800
                                             " v-model="blog.title_ar" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between ">
+                            <div class="w-full me-2">
+                                <label for="preview_text_en"
+                                    class="block text-sm font-medium text-gray-700 dark:text-gray-200">English
+                                    Preview</label>
+                                <div class="mt-1">
+                                    <textarea rows="10" type="text" name="preview_text_en" id="preview_text_en" class="
+                                                                                block
+                                                                                mt-1
+                                                                                w-full
+                                                                                rounded-md
+                                                                                border-gray-500
+                                                                                shadow-sm
+                                                                                focus:border-indigo-300
+                                                                                focus:ring
+                                                                                focus:ring-indigo-200
+                                                                                focus:ring-opacity-50
+                                                                                dark:bg-gray-800 h-28
+                                                                                " v-model="blog.preview_text_en" />
+                                </div>
+                            </div>
+                            <div class="w-full">
+                                <label for="preview_text_ar"
+                                    class="block text-sm font-medium text-gray-700 dark:text-gray-200">Arabic
+                                    Preview</label>
+                                <div class="mt-1">
+                                    <textarea dir="rtl" rows="10" type="text" name="preview_text_ar"
+                                        id="preview_text_ar" class="
+                                                                                    block
+                                                                                    mt-1
+                                                                                    w-full
+                                                                                    rounded-md
+                                                                                    border-gray-500
+                                                                                    shadow-sm
+                                                                                    focus:border-indigo-300
+                                                                                    focus:ring
+                                                                                    focus:ring-indigo-200
+                                                                                    focus:ring-opacity-50
+                                                                                    dark:bg-gray-800 h-28
+                                                                                    " v-model="blog.preview_text_ar" />
                                 </div>
                             </div>
                         </div>

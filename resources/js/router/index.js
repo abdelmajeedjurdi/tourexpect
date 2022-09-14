@@ -30,6 +30,7 @@ import Blogs from "../pages/frontend/Blogs";
 import Test from "../pages/backend/Test.vue";
 import Hero from "../components/HeroCarousel";
 import Dashboard from "../pages/backend/Dashboard.vue";
+import SingleBlog from "../pages/frontend/SingleBlog"
 
 const routes = [
     {
@@ -166,6 +167,12 @@ const routes = [
         path: "/blogs",
         name: "blogs",
         component: Blogs,
+    },
+    {
+        path: "/blogs/:slug/:id",
+        name: "blog",
+        component: SingleBlog,
+        props: true,
     },
 ];
 

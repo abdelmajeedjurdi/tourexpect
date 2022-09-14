@@ -2,11 +2,10 @@
 
 namespace App\Http\Resources;
 
-use App\Models\Category;
-use App\Models\CategoryProperty;
+use App\Models\Destination;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class CategoryResource extends JsonResource
+class CountryResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -21,11 +20,8 @@ class CategoryResource extends JsonResource
             'slug'  => $this->slug,
             'name_en'  => $this->name_en,
             'name_ar'  => $this->name_ar,
-            'image'  => $this->image,
-            'description_en'  => $this->description_en,
-            'description_ar'  => $this->description_ar,
-            'is_trending' => $this->is_trending == 1 ? true   : false,
-            'is_slide' => $this->is_slide ==  1 ? true   : false,
+            'destinations' => Destination::select('id', 'country_id', 'name_en', 'name_ar', 'slug')->where('country_id', $this->id)->get()
+
         ];
     }
 }

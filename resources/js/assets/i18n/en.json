@@ -48,5 +48,9 @@
     "istanbul": "Istanbul",
     "select_destination": "Select a country or a city to explore",
     "uae": "UAE",
+    "all-destinations": "All Destinations",
+    "all-categories": "All Categories",
+    "categories": "Categories",
+    "blogs": "Blogs",
     "test": "Test"
 }

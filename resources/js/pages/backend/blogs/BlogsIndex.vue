@@ -51,7 +51,17 @@
                             <span class="text-base text-blue-500">
                                 {{ blog.title_en }}
                             </span>
-
+                            <p class="
+                                text-base text-body-color
+                                leading-relaxed
+                                mb-7
+                                text-gray-600
+                                ">
+                                {{
+                                blog.preview_text_en.substring(0, 100) +
+                                (blog.preview_text_en.length > 100 ? "...." : "")
+                                }}
+                            </p>
                         </div>
                     </router-link>
                 </div>
@@ -65,20 +75,10 @@ import useBlogs from "../../../composables/blogs";
 import { onMounted } from "vue";
 import { useSwal } from "../../../plugins/useSwal.js";
 
-var QuillDeltaToHtmlConverter = require('quill-delta-to-html').QuillDeltaToHtmlConverter;
 const { blogs, getBlogs, destroyBlog } = useBlogs();
 
 let Swal = useSwal();
 onMounted(getBlogs);
-// function toHtml(content) {
-//     var deltaOps = JSON.parse(content)['ops'];
-
-//     var cfg = {};
-
-//     var converter = new QuillDeltaToHtmlConverter(deltaOps, cfg);
-//     // return 'wait'
-//     return converter.convert();
-// }
 const deleteBlog = async (id) => {
     if (!window.confirm("Are you sure?")) {
         return;

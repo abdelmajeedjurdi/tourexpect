@@ -14,7 +14,7 @@ class Blog extends Model
         'content_en',
         'content_ar',
         'slug',
-        'image',
+        'image', 'preview_text_ar', 'preview_text_en',
         'destination_id', 'category_id'
     ];
 }

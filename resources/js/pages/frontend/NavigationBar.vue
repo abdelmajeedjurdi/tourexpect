@@ -40,6 +40,17 @@
 
                                     </div>
                                 </li>
+                                <li class="w-full md:w-auto text-center">
+                                    <div>
+                                        <router-link :to="{name:'blogs'}"
+                                            class="peer py-2 pr-4 pl-3 font-bold text-xl text-gray-800  border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:tour-blue md:p-0">
+                                            {{
+                                            $t('blogs')
+                                            }}</router-link>
+
+                                    </div>
+                                </li>
+
                             </ul>
                         </div>
                     </div>
@@ -78,6 +89,7 @@
                             <img src="/images/logo.svg" alt="logo" class="h-6 ">
                         </router-link>
                     </div>
+
                     <ul class=" space-y-6 md:flex-row mx-20 md:mt-0 md:text-sm md:font-medium items-center">
                         <li class="w-full md:w-auto" v-for="(item, i) in menu" @mouseenter="setSubmenu(i)">
                             <router-link :to="'/' + item.name" :class="menu_path_by_id.menu == i ? 'tour-blue' : ''"
@@ -353,8 +365,6 @@ const closeMenu = () => {
     subsubmenu.value = [];
     is_menu.value = false
     mobile_menu.value = false
-}
-const test = () => {
 }
 </script>
 

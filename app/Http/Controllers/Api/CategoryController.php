@@ -44,7 +44,6 @@ class CategoryController extends Controller
         }
 
         $category = new Category;
-        $category->category = 'test'; // $request->category;
         $category->name_en = $request->name_en;
         $category->name_ar = $request->name_ar;
         $category->description_en = $request->description_en;
@@ -103,7 +102,6 @@ class CategoryController extends Controller
             $imageName = $request->category_img;
         }
         $category->update([
-            'category' => $request->category,
             'name_en' => $request->name_en,
             'name_ar' => $request->name_ar,
             'description_en' => $request->description_en,

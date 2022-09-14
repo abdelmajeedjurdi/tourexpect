@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Category;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -36,5 +37,66 @@ class DatabaseSeeder extends Seeder
                 ['name_en' => 'Iran', 'name_ar' => 'ايران', 'slug' => 'iran']
             ]
         );
+        DB::table('categories')->insert([
+            [
+                'name_en' => 'Tourisem one',
+                'name_ar' => 'الأولى للسياحة',
+                'description_en' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry',
+                'description_ar' => 'لوريم إيبسوم بشكل إفتراضي كنموذج عن النص، وإذا قمت بإدخال  في أي محرك بحث ستظهر العديد من المواقع الحديثة العهد في نتائج البحث. على مدى السنين ظهرت نسخ جديدة ومختلفة من نص لوريم إيبسوم، ',
+                'is_trending' =>  0,
+                'is_slide' =>  0,
+                'image' =>  'default.jpg',
+                'slug' => 'test'
+            ],
+            [
+                'name_en' => 'Tourisem Tow',
+                'name_ar' => 'الثانية للسياحة',
+                'description_en' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry',
+                'description_ar' => 'لوريم إيبسوم بشكل إفتراضي كنموذج عن النص، وإذا قمت بإدخال  في أي محرك بحث ستظهر العديد من المواقع الحديثة العهد في نتائج البحث. على مدى السنين ظهرت نسخ جديدة ومختلفة من نص لوريم إيبسوم، ',
+                'is_trending' =>  0,
+                'is_slide' =>  0,
+                'image' =>  'default.jpg',
+                'slug' => 'test2'
+            ],
+            [
+                'name_en' => 'Tourisem Three',
+                'name_ar' => 'الثالثة للسياحة',
+                'description_en' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry',
+                'description_ar' => 'لوريم إيبسوم بشكل إفتراضي كنموذج عن النص، وإذا قمت بإدخال  في أي محرك بحث ستظهر العديد من المواقع الحديثة العهد في نتائج البحث. على مدى السنين ظهرت نسخ جديدة ومختلفة من نص لوريم إيبسوم، ',
+                'is_trending' =>  0,
+                'is_slide' =>  0,
+                'image' =>  'default.jpg',
+                'slug' => 'test3'
+            ]
+        ]);
+        DB::table('destinations')->insert([
+            [
+                'name_en' => 'First Destination',
+                'name_ar' => 'اول وجهة',
+                'description_en' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry',
+                'description_ar' => 'لوريم إيبسوم بشكل إفتراضي كنموذج عن النص، وإذا قمت بإدخال  في أي محرك بحث ستظهر العديد من المواقع الحديثة العهد في نتائج البحث. على مدى السنين ظهرت نسخ جديدة ومختلفة من نص لوريم إيبسوم، ',
+                'country_id' =>  1,
+                'image' =>  'default.jpg',
+                'slug' => 'test'
+            ],
+            [
+                'name_en' => 'Tourisem Tow',
+                'name_ar' => 'الثانية للسياحة',
+                'description_en' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry',
+                'description_ar' => 'لوريم إيبسوم بشكل إفتراضي كنموذج عن النص، وإذا قمت بإدخال  في أي محرك بحث ستظهر العديد من المواقع الحديثة العهد في نتائج البحث. على مدى السنين ظهرت نسخ جديدة ومختلفة من نص لوريم إيبسوم، ',
+                'country_id' =>  1,
+                'image' =>  'default.jpg',
+                'slug' => 'test2'
+            ],
+            [
+                'name_en' => 'Tourisem Three',
+                'name_ar' => 'الثالثة للسياحة',
+                'description_en' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry',
+                'description_ar' => 'لوريم إيبسوم بشكل إفتراضي كنموذج عن النص، وإذا قمت بإدخال  في أي محرك بحث ستظهر العديد من المواقع الحديثة العهد في نتائج البحث. على مدى السنين ظهرت نسخ جديدة ومختلفة من نص لوريم إيبسوم، ',
+                'country_id' =>  2,
+                'image' =>  'default.jpg',
+                'slug' => 'test3'
+            ]
+        ]);
     }
 }

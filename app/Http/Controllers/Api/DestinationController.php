@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\DestinationRequest;
+use App\Http\Resources\CountryResource;
 use App\Http\Resources\DestinationResource;
 use App\Models\Destination;
 use Illuminate\Http\Request;
@@ -29,6 +30,17 @@ class DestinationController extends Controller
         return $countries;
     }
 
+    public function getDestinationsOnCountry()
+    {
+        // $countries = DB::table('countries')
+        //     ->join('destinations', 'destinations.country_id', '=', 'countries.id')
+        //     ->select('destinations.name_en as destination', 'countries.name_en')
+        //     ->get();
+        $countries = CountryResource::collection(DB::table('countries')->get());
+        // $countries= Destination::all()
+        // $countries = DB::table('countries')->get();
+        return $countries;
+    }
     /**
      * Show the form for creating a new resource.
      *

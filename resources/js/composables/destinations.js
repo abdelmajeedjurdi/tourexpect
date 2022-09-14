@@ -19,6 +19,10 @@ export default function useDestinations() {
         let response = await axios.get("/api/countries");
         countries.value = response.data;
     };
+    const getDestinationsOnCountry = async () => {
+        let response = await axios.get("/api/countries-destinations");
+        countries.value = response.data.data;
+    };
 
     const getDestination = async (id) => {
         let response = await axios.get("/api/destinations/" + id);
@@ -104,6 +108,6 @@ export default function useDestinations() {
         deleteProperty,
         getDestinationDetails,
         tours,
-        countries, getCountries
+        countries, getCountries, getDestinationsOnCountry
     };
 }

@@ -46,5 +46,9 @@
     "istanbul": "استنبول ",
     "select_destination": "حدد دولة أو مدينة لاستكشافها",
     "uae": "الامارات العربية المتحدة",
+    "all-destinations": "جميع الوجهات",
+    "all-categories": "جميع الفئات",
+    "categories": "الفئات",
+    "blogs": "المدونة",
     "test": "تجريبي"
 }

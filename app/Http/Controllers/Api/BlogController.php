@@ -20,7 +20,17 @@ class BlogController extends Controller
     {
         return BlogResource::collection(Blog::all());
     }
-
+    public function getFilteredBlogs(Request $request)
+    {
+        if ($request->d == '*' && $request->c == '*')
+            return BlogResource::collection(Blog::paginate(2));
+        if ($request->d == '*' && $request->c != '*')
+            return BlogResource::collection(Blog::where('category_id', $request->c)->paginate(2));
+        if ($request->c == '*' && $request->d != '*')
+            return BlogResource::collection(Blog::where('destination_id', $request->d)->paginate(2));
+        return
+            BlogResource::collection(Blog::where('destination_id', $request->d)->where('category_id', $request->c)->paginate(2));
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -52,6 +62,8 @@ class BlogController extends Controller
         $blog->category_id = $request->category_id;
         $blog->title_en = $request->title_en;
         $blog->title_ar = $request->title_ar;
+        $blog->preview_text_en = $request->preview_text_en;
+        $blog->preview_text_ar = $request->preview_text_ar;
         $blog->content_en = $request->content_en;
         $blog->content_ar = $request->content_ar;
         $blog->slug = Str::slug($blog->title_en, '-');
@@ -110,6 +122,8 @@ class BlogController extends Controller
             'destination_id' => $request->destination_id,
             'title_en' => $request->title_en,
             'title_ar' => $request->title_ar,
+            'preview_text_en' => $request->preview_text_en,
+            'preview_text_ar' => $request->preview_text_ar,
             'content_en' => $request->content_en,
             'content_ar' => $request->content_ar,
             'image' =>  $imageName,
