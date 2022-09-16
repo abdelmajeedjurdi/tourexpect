@@ -60,7 +60,7 @@ export default function useBlogs() {
                     // );
                 },
             });
-            // await router.push({ name: "blogs.index" });
+            await router.push({ name: "blogs.index" });
         } catch (e) {
             if (e.response.status === 422) {
                 errors.value = e.response.data.errors;

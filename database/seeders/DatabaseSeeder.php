@@ -46,7 +46,7 @@ class DatabaseSeeder extends Seeder
                 'is_trending' =>  0,
                 'is_slide' =>  0,
                 'image' =>  'default.jpg',
-                'slug' => 'test'
+                'slug' => 'c-one'
             ],
             [
                 'name_en' => 'Tourisem Tow',
@@ -56,7 +56,7 @@ class DatabaseSeeder extends Seeder
                 'is_trending' =>  0,
                 'is_slide' =>  0,
                 'image' =>  'default.jpg',
-                'slug' => 'test2'
+                'slug' => 'c-tow'
             ],
             [
                 'name_en' => 'Tourisem Three',
@@ -66,7 +66,7 @@ class DatabaseSeeder extends Seeder
                 'is_trending' =>  0,
                 'is_slide' =>  0,
                 'image' =>  'default.jpg',
-                'slug' => 'test3'
+                'slug' => 'c-three'
             ]
         ]);
         DB::table('destinations')->insert([
@@ -77,7 +77,7 @@ class DatabaseSeeder extends Seeder
                 'description_ar' => 'لوريم إيبسوم بشكل إفتراضي كنموذج عن النص، وإذا قمت بإدخال  في أي محرك بحث ستظهر العديد من المواقع الحديثة العهد في نتائج البحث. على مدى السنين ظهرت نسخ جديدة ومختلفة من نص لوريم إيبسوم، ',
                 'country_id' =>  1,
                 'image' =>  'default.jpg',
-                'slug' => 'test'
+                'slug' => 'd-one'
             ],
             [
                 'name_en' => 'Tourisem Tow',
@@ -86,7 +86,7 @@ class DatabaseSeeder extends Seeder
                 'description_ar' => 'لوريم إيبسوم بشكل إفتراضي كنموذج عن النص، وإذا قمت بإدخال  في أي محرك بحث ستظهر العديد من المواقع الحديثة العهد في نتائج البحث. على مدى السنين ظهرت نسخ جديدة ومختلفة من نص لوريم إيبسوم، ',
                 'country_id' =>  1,
                 'image' =>  'default.jpg',
-                'slug' => 'test2'
+                'slug' => 'd-tow'
             ],
             [
                 'name_en' => 'Tourisem Three',
@@ -95,7 +95,7 @@ class DatabaseSeeder extends Seeder
                 'description_ar' => 'لوريم إيبسوم بشكل إفتراضي كنموذج عن النص، وإذا قمت بإدخال  في أي محرك بحث ستظهر العديد من المواقع الحديثة العهد في نتائج البحث. على مدى السنين ظهرت نسخ جديدة ومختلفة من نص لوريم إيبسوم، ',
                 'country_id' =>  2,
                 'image' =>  'default.jpg',
-                'slug' => 'test3'
+                'slug' => 'd-three'
             ]
         ]);
     }

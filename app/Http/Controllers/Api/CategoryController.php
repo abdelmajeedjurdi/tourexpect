@@ -22,6 +22,7 @@ class CategoryController extends Controller
     public function index()
     {
         return CategoryResource::collection(Category::all());
+        return public_path('\images\categories');
     }
 
     /**
@@ -38,7 +39,7 @@ class CategoryController extends Controller
             $image = $request->image;
             $imageName = $image->getClientOriginalName();
             $imageName = time() . '_' . $imageName;
-            $image->move(public_path('/images/categories'), $imageName);
+            $image->move('images/categories', $imageName);
         } else {
             $imageName = 'default.jpg';
         }

@@ -34486,23 +34486,29 @@ function useBlogs() {
               });
 
             case 15:
-              _context5.next = 20;
-              break;
+              _context5.next = 17;
+              return router.push({
+                name: "blogs.index"
+              });
 
             case 17:
-              _context5.prev = 17;
+              _context5.next = 22;
+              break;
+
+            case 19:
+              _context5.prev = 19;
               _context5.t0 = _context5["catch"](12);
 
               if (_context5.t0.response.status === 422) {
                 errors.value = _context5.t0.response.data.errors;
               }
 
-            case 20:
+            case 22:
             case "end":
               return _context5.stop();
           }
         }
-      }, _callee5, null, [[12, 17]]);
+      }, _callee5, null, [[12, 19]]);
     }));
 
     return function storeBlog(_x4) {
