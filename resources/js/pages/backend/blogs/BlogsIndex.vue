@@ -2,19 +2,16 @@
     <div class="w-full">
         <div class="mx-2 flex justify-between place-content-end mb-4">
             <h3>All Blogs</h3>
-            <div class="
-                px-4
+
+            <router-link :to="{ name: 'blog.create' }" class="px-4
                 py-2
                 bg-blue-600
                 hover:bg-blue-700
                 cursor-pointer
-                rounded-lg
-                ">
-                <router-link :to="{ name: 'blog.create' }" class="text-sm font-medium text-white">New Blog
-                </router-link>
-            </div>
+                rounded-lg text-sm font-medium text-white">New Blog
+            </router-link>
         </div>
-        <div
+        <div style="min-height:70vh ;"
             class="grid gap-2 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 justify-between ">
             <div v-for="blog in blogs" :key="blog.id">
                 <div class="bg-white rounded-lg overflow-hidden mb-10">
@@ -67,25 +64,31 @@
                 </div>
             </div>
         </div>
+        <pagenation @selected="changePage($event)" :pages="pages" />
     </div>
 </template>
 
 <script setup>
 import useBlogs from "../../../composables/blogs";
-import { onMounted } from "vue";
+import { onMounted, ref } from "vue";
 import { useSwal } from "../../../plugins/useSwal.js";
-
-const { blogs, getBlogs, destroyBlog } = useBlogs();
+import Pagenation from "../../../components/Pagenation.vue";
+const { blogs, getBlogs, destroyBlog, pages } = useBlogs();
 
 let Swal = useSwal();
-onMounted(getBlogs);
+let currentPage = ref(1)
+onMounted(getBlogs(currentPage.value));
+const changePage = (page) => {
+    currentPage.value = page
+    getBlogs(currentPage.value)
+}
 const deleteBlog = async (id) => {
     if (!window.confirm("Are you sure?")) {
         return;
     }
 
     await destroyBlog(id);
-    await getBlogs();
+    await getBlogs(currentPage.value);
 };
 const deleteRow = (blog_) => {
     Swal.fire({
@@ -99,7 +102,7 @@ const deleteRow = (blog_) => {
     }).then(async (result) => {
         if (result.isConfirmed) {
             await destroyBlog(blog_.id);
-            await getBlogs();
+            await getBlogs(currentPage.value);
             Swal.fire("Deleted!", "Order has been deleted.", "success");
         }
     });

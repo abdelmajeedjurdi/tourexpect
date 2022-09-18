@@ -8,6 +8,7 @@ use App\Http\Resources\CategoryResource;
 use App\Http\Resources\TourResource;
 use App\Models\Category;
 use App\Models\Tour;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 
@@ -19,10 +20,9 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return CategoryResource::collection(Category::all());
-        return public_path('\images\categories');
+        return CategoryResource::collection(Category::paginate(15));
     }
 
     /**
@@ -87,7 +87,7 @@ class CategoryController extends Controller
     public function update(CategoryRequest $request, Category $category)
     {
 
-        $path = public_path() . '/images/categories/';
+        $path = 'images/categories/';
         //code for remove old image
         if ($request->new_image != 'null' && $request->new_image != 'default.jpg') {
             $file_old = $path . $request->category_img;
@@ -98,7 +98,7 @@ class CategoryController extends Controller
             $image = $request->new_image;
             $imageName = $image->getClientOriginalName();
             $imageName = time() . '_' . $imageName;
-            $image->move(public_path('/images/categories/'), $imageName);
+            $image->move('images/categories/', $imageName);
         } else {
             $imageName = $request->category_img;
         }
@@ -125,7 +125,7 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         if ($category->image !== 'default.jpg' || $category->image !== '')
-            unlink(public_path() . '/images/categories/' . $category->image);
+            unlink('images/categories/' . $category->image);
         $category->delete();
 
         return response()->noContent();

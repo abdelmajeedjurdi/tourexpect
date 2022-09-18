@@ -24,7 +24,7 @@ class TourController extends Controller
      */
     public function index()
     {
-        return TourResource::collection(Tour::all());
+        return TourResource::collection(Tour::paginate(15));
         // return "index is working";
     }
 
@@ -51,7 +51,7 @@ class TourController extends Controller
             $image = $request->image;
             $imageName = $image->getClientOriginalName();
             $imageName = time() . '_' . $imageName;
-            $image->move(public_path('/images/tours'), $imageName);
+            $image->move('images/tours', $imageName);
         } else {
             $imageName = 'default.jpg';
         }
@@ -90,7 +90,7 @@ class TourController extends Controller
             foreach ($request->file('images') as $file) {
 
                 $imageName = time() . '_' . $file->getClientOriginalName();
-                $file->move(public_path('/images/tours'), $imageName);
+                $file->move('images/tours', $imageName);
 
                 TourImage::create([
                     'tour_id' => $tour->id,
@@ -129,7 +129,7 @@ class TourController extends Controller
     public function update(TourRequest $request, Tour $tour)
     {
         Log::info($request);
-        $path = public_path() . '/images/tours/';
+        $path = 'images/tours/';
         //code for remove old image
         if ($request->new_image != 'null' && $request->new_image != 'default.jpg') {
             $file_old = $path . $request->tour_img;
@@ -140,7 +140,7 @@ class TourController extends Controller
             $image = $request->new_image;
             $imageName = $image->getClientOriginalName();
             $imageName = time() . '_' . $imageName;
-            $image->move(public_path('/images/tours/'), $imageName);
+            $image->move('images/tours/', $imageName);
         } else {
             $imageName = $request->tour_img;
         }
@@ -175,7 +175,7 @@ class TourController extends Controller
             foreach ($request->file('images') as $file) {
 
                 $imageName = time() . '_' . $file->getClientOriginalName();
-                $file->move(public_path('/images/tours'), $imageName);
+                $file->move('images/tours', $imageName);
 
                 TourImage::create([
                     'tour_id' => $tour->id,
@@ -215,10 +215,10 @@ class TourController extends Controller
         $tour = Tour::find($id);
         Log::info($tour);
         if ($tour->thumbnail !== 'default.jpg' || $tour->thumbnail !== '')
-            unlink(public_path() . '/images/tours/' . $tour->thumbnail);
+            unlink('images/tours/' . $tour->thumbnail);
         $images = TourImage::where('tour_id', $tour->id)->get();
         foreach ($images as $image) {
-            unlink(public_path() . '/images/tours/' . $image->image);
+            unlink('images/tours/' . $image->image);
         }
         TourImage::where('tour_id', $tour->id)->delete();
         $tour->delete();
@@ -226,7 +226,7 @@ class TourController extends Controller
     }
     public function deleteImage($id)
     {
-        $path = public_path() . '/images/tours/';
+        $path = 'images/tours/';
 
         $image = DB::table('tour_images')->where('id', $id)->first('image');
         unlink($path . $image->image);

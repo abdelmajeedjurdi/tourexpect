@@ -55,9 +55,9 @@
                     }}</label>
             </div>
         </div>
-        <div class="min-h-screen w-full px-4">
-            <div
-                class="grid gap-2 grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 justify-between ">
+        <div class=" w-full px-4">
+            <div style="min-height:80vh ;"
+                class=" grid gap-2 grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 justify-between ">
                 <div v-for="blog in blogs" :key="blog.id">
                     <div class="bg-white border hover:shadow-lg duration-700 overflow-hidden mb-10">
                         <router-link :to="{ name: 'blog', params: { slug: blog.slug,id:blog.id } }">

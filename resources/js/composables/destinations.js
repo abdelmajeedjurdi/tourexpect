@@ -9,10 +9,12 @@ export default function useDestinations() {
     const errors = ref("");
     const tours = ref([]);
     const countries = ref([]);
+    const pages = ref([])
 
-    const getDestinations = async () => {
-        let response = await axios.get("/api/destinations");
+    const getDestinations = async (page) => {
+        let response = await axios.get(`/api/destinations?page=${page}`);
         destinations.value = response.data.data;
+        pages.value = response.data.meta
     };
 
     const getCountries = async () => {
@@ -108,6 +110,6 @@ export default function useDestinations() {
         deleteProperty,
         getDestinationDetails,
         tours,
-        countries, getCountries, getDestinationsOnCountry
+        countries, getCountries, getDestinationsOnCountry, pages
     };
 }

@@ -2,19 +2,16 @@
     <div class="w-full">
         <div class="mx-2 flex justify-between place-content-end mb-4">
             <h3>All Categories</h3>
-            <div class="
-          px-4
-          py-2
-          bg-blue-600
-          hover:bg-blue-700
-          cursor-pointer
-          rounded-lg
-        ">
-                <router-link :to="{ name: 'category.create' }" class="text-sm font-medium text-white">New Category
-                </router-link>
-            </div>
+
+            <router-link :to="{ name: 'category.create' }" class="px-4
+                py-2
+                bg-blue-600
+                hover:bg-blue-700
+                cursor-pointer
+                rounded-lg text-sm font-medium text-white">New Category
+            </router-link>
         </div>
-        <div class="
+        <div style="min-height:70vh ;" class="
         grid
         gap-2
         grid-cols-1
@@ -68,8 +65,8 @@
                   text-gray-600
                 ">
                                 {{
-                                        category.description_en.substring(0, 100) +
-                                        (category.description_en.length > 100 ? "...." : "")
+                                category.description_en.substring(0, 100) +
+                                (category.description_en.length > 100 ? "...." : "")
                                 }}
                             </p>
                         </div>
@@ -77,18 +74,20 @@
                 </div>
             </div>
         </div>
+        <pagenation @selected="changePage($event)" :pages="pages" />
     </div>
 </template>
 
 <script setup>
 import useCategories from "../../../composables/categories";
-import { onMounted } from "vue";
+import { onMounted, ref } from "vue";
 import { useSwal } from "../../../plugins/useSwal.js";
-
-const { categories, getCategories, destroyCategory } = useCategories();
+import Pagenation from "../../../components/Pagenation.vue";
+const { categories, getCategories, destroyCategory, pages } = useCategories();
 
 let Swal = useSwal();
-onMounted(getCategories);
+let currentPage = ref(1)
+onMounted(getCategories(currentPage.value));
 
 const deleteCategory = async (id) => {
     if (!window.confirm("Are you sure?")) {
@@ -96,8 +95,12 @@ const deleteCategory = async (id) => {
     }
 
     await destroyCategory(id);
-    await getCategories();
+    await getCategories(currentPage.value);
 };
+const changePage = (page) => {
+    currentPage.value = page
+    getCategories(currentPage.value)
+}
 const deleteRow = (category_) => {
     Swal.fire({
         title: "Are you sure?",
@@ -110,7 +113,7 @@ const deleteRow = (category_) => {
     }).then(async (result) => {
         if (result.isConfirmed) {
             await destroyCategory(category_.id);
-            await getCategories();
+            await getCategories(currentPage.value);
             Swal.fire("Deleted!", "Order has been deleted.", "success");
         }
     });

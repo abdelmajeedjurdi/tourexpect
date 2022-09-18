@@ -7,12 +7,14 @@ export default function useTours() {
     const tour = ref([]);
     const router = useRouter();
     const errors = ref("");
+    const pages = ref([])
     let percentage = ref(0);
     let fd = new FormData();
 
-    const getTours = async () => {
-        let response = await axios.get("/api/tours");
+    const getTours = async (page) => {
+        let response = await axios.get(`/api/tours?page=${page}`);
         tours.value = response.data.data;
+        pages.value = response.data.meta
     };
 
     const getTour = async (id) => {
@@ -162,6 +164,6 @@ export default function useTours() {
         getTourDetails,
         destroyImage,
         destroyFile,
-        percentage,
+        percentage, pages
     };
 }

@@ -18,18 +18,18 @@ class BlogController extends Controller
      */
     public function index()
     {
-        return BlogResource::collection(Blog::all());
+        return BlogResource::collection(Blog::paginate(15));
     }
     public function getFilteredBlogs(Request $request)
     {
         if ($request->d == '*' && $request->c == '*')
-            return BlogResource::collection(Blog::paginate(2));
+            return BlogResource::collection(Blog::paginate(9));
         if ($request->d == '*' && $request->c != '*')
-            return BlogResource::collection(Blog::where('category_id', $request->c)->paginate(2));
+            return BlogResource::collection(Blog::where('category_id', $request->c)->paginate(9));
         if ($request->c == '*' && $request->d != '*')
-            return BlogResource::collection(Blog::where('destination_id', $request->d)->paginate(2));
+            return BlogResource::collection(Blog::where('destination_id', $request->d)->paginate(9));
         return
-            BlogResource::collection(Blog::where('destination_id', $request->d)->where('category_id', $request->c)->paginate(2));
+            BlogResource::collection(Blog::where('destination_id', $request->d)->where('category_id', $request->c)->paginate(9));
     }
     /**
      * Show the form for creating a new resource.
@@ -53,7 +53,7 @@ class BlogController extends Controller
             $image = $request->image;
             $imageName = $image->getClientOriginalName();
             $imageName = time() . '_' . $imageName;
-            $image->move(public_path('/images/blogs'), $imageName);
+            $image->move('images/blogs', $imageName);
         } else {
             $imageName = 'default.jpg';
         }
@@ -102,7 +102,7 @@ class BlogController extends Controller
      */
     public function update(BlogRequest $request, Blog $blog)
     {
-        $path = public_path() . '/images/blogs/';
+        $path = 'images/blogs/';
         //code for remove old image
         if ($request->new_image != 'null' && $request->new_image != 'default.jpg') {
             $file_old = $path . $request->blog_img;
@@ -113,7 +113,7 @@ class BlogController extends Controller
             $image = $request->new_image;
             $imageName = $image->getClientOriginalName();
             $imageName = time() . '_' . $imageName;
-            $image->move(public_path('/images/blogs/'), $imageName);
+            $image->move('images/blogs/', $imageName);
         } else {
             $imageName = $request->blog_img;
         }
@@ -142,7 +142,7 @@ class BlogController extends Controller
     public function destroy(Blog $blog)
     {
         if ($blog->image !== 'default.jpg' || $blog->image !== '')
-            unlink(public_path() . '/images/blogs/' . $blog->image);
+            unlink('images/blogs/' . $blog->image);
         $blog->delete();
 
         return response()->noContent();

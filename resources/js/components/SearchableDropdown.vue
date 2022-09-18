@@ -4,7 +4,8 @@
             data-bs-toggle="dropdown" aria-expanded="false" @click="myFunction">
             {{ selected_option == null ? component_placeholder : selected_option }}
         </button>
-        <ul :id="component_id" class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton1">
+        <ul :id="component_id+'-temp'" class="dropdown-menu dropdown-menu-dark"
+            :class="isListShow==true?'show':'hidden'" aria-labelledby="dropdownMenuButton1">
             <input class="dropdown-item border border-gray-500 w-1/2" type="text" autocomplete="off"
                 placeholder="Search.." id="myInput" @keyup="filterFunction()" />
             <li v-for="option in options" :key="option.id" @click="selected_option = option.name_en">
@@ -26,30 +27,15 @@ const props = defineProps({
     component_placeholder: { type: String, default: 'Select Category' }
 });
 const emit = defineEmits(["selected"]);
-const foo = {
-    results: [
-        {
-            id: 12,
-            name: "Test",
-        },
-        {
-            id: 2,
-            name: "Beispiel",
-        },
-        {
-            id: 3,
-            name: "Sample",
-        },
-    ],
-};
-// foo.results.find(item => item.id === 2)
 let selected_option = ref(
     props.category_id == -1
         ? props.options.find((item) => item.id == props.category_id)
         : props.options.find((item) => item.id == props.category_id)["name_en"]
 );
+let isListShow = ref(false)
 function myFunction() {
-    document.getElementById(props.component_id).classList.toggle("show");
+    // document.getElementById(props.component_id).classList.toggle("show");
+    isListShow.value = true
 }
 
 function filterFunction() {

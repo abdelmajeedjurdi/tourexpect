@@ -21,7 +21,7 @@ class DestinationController extends Controller
      */
     public function index()
     {
-        return DestinationResource::collection(Destination::all());
+        return DestinationResource::collection(Destination::paginate(15));
     }
 
     public function getCountries()
@@ -65,7 +65,7 @@ class DestinationController extends Controller
             $image = $request->image;
             $imageName = $image->getClientOriginalName();
             $imageName = time() . '_' . $imageName;
-            $image->move(public_path('/images/destinations'), $imageName);
+            $image->move('images/destinations', $imageName);
         } else {
             $imageName = 'default.jpg';
         }
@@ -115,7 +115,7 @@ class DestinationController extends Controller
      */
     public function update(DestinationRequest $request, Destination $destination)
     {
-        $path = public_path() . '/images/destinations/';
+        $path = 'images/destinations/';
         //code for remove old image
         if ($request->new_image != 'null' && $request->new_image != 'default.jpg') {
             $file_old = $path . $request->destination_img;
@@ -126,7 +126,7 @@ class DestinationController extends Controller
             $image = $request->new_image;
             $imageName = $image->getClientOriginalName();
             $imageName = time() . '_' . $imageName;
-            $image->move(public_path('/images/destinations/'), $imageName);
+            $image->move('images/destinations/', $imageName);
         } else {
             $imageName = $request->destination_img;
         }
@@ -152,7 +152,7 @@ class DestinationController extends Controller
     public function destroy(Destination $destination)
     {
         if ($destination->image !== 'default.jpg' || $destination->image !== '')
-            unlink(public_path() . '/images/destinations/' . $destination->image);
+            unlink('images/destinations/' . $destination->image);
         $destination->delete();
         return response()->noContent();
     }

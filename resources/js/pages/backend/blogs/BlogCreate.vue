@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="px-14">
         <div v-if="errors">
             <div v-for="(v, k) in errors" :key="k" class="
                 bg-red-500
@@ -150,7 +150,7 @@
                             v-model:content="form.content_en" />
                     </div>
 
-                    <div class="bg-white">
+                    <div style="margin-top: 5rem;" class="bg-white">
                         <quill-editor placeholder="اكتب المقال باللغة العربية" toolbar="full" ref="myQuillEditor"
                             v-model:content="form.content_ar" />
                     </div>

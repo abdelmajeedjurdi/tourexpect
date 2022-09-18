@@ -2,19 +2,17 @@
     <div class="w-full">
         <div class="mx-2 flex justify-between place-content-end mb-4">
             <h3>All Tours</h3>
-            <div class="
-          px-4
-          py-2
-          bg-blue-600
-          hover:bg-blue-700
-          cursor-pointer
-          rounded-lg
-        ">
-                <router-link :to="{ name: 'tour.create' }" class="text-sm font-medium text-white">New Tour
-                </router-link>
-            </div>
+
+            <router-link :to="{ name: 'tour.create' }" class="
+                px-4
+                py-2
+                bg-blue-600
+                hover:bg-blue-700
+                cursor-pointer
+                rounded-lg text-sm font-medium text-white">New Tour
+            </router-link>
         </div>
-        <div class="
+        <div style="min-height:70vh ;" class="
         grid
         gap-2
         grid-cols-1
@@ -80,26 +78,32 @@
                 </div>
             </div>
         </div>
+        <pagenation @selected="changePage($event)" :pages="pages" />
+
     </div>
 </template>
 
 <script setup>
 import useTours from "../../../composables/tours";
-import { onMounted } from "vue";
+import { onMounted, ref } from "vue";
 import { useSwal } from "../../../plugins/useSwal.js";
+import Pagenation from "../../../components/Pagenation.vue";
 
-const { tours, getTours, destroyTour } = useTours();
-
+const { tours, getTours, destroyTour, pages } = useTours();
+let currentPage = ref(1)
 let Swal = useSwal();
-onMounted(getTours);
-
+onMounted(getTours(currentPage.value));
+const changePage = (page) => {
+    currentPage.value = page
+    getTours(currentPage.value)
+}
 const deleteTour = async (id) => {
     if (!window.confirm("Are you sure?")) {
         return;
     }
 
     await destroyTour(id);
-    await getTours();
+    await getTours(currentPage.value);
 };
 const deleteRow = (tour_) => {
     Swal.fire({
@@ -113,7 +117,7 @@ const deleteRow = (tour_) => {
     }).then(async (result) => {
         if (result.isConfirmed) {
             await destroyTour(tour_.id);
-            await getTours();
+            await getTours(currentPage.value);
             Swal.fire("Deleted!", "Order has been deleted.", "success");
         }
     });

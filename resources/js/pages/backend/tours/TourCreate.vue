@@ -1,5 +1,4 @@
 <template>
-    {{ form }}
     <div>
         <div v-if="errors">
             <div v-for="(v, k) in errors" :key="k" class="

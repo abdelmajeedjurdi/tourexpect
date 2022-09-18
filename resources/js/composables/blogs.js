@@ -10,10 +10,12 @@ export default function useBlogs() {
     const errors = ref("");
     const tours = ref([]);
     const pagenation = ref([])
+    const pages = ref([])
 
-    const getBlogs = async () => {
-        let response = await axios.get("/api/blogs");
+    const getBlogs = async (page) => {
+        let response = await axios.get(`/api/blogs?page=${page}`);
         blogs.value = response.data.data;
+        pages.value = response.data.meta
         // blogs.value.content_en = JSON.parse(blogs.value.content_en)
     };
     const getFilteredBlogs = async (filter) => {
@@ -22,6 +24,7 @@ export default function useBlogs() {
         console.log(response.data);
         blogs.value = response.data.data;
         pagenation.value = response.data
+
         console.log(response.data);
         // blogs.value.content_en = JSON.parse(blogs.value.content_en)
     };
@@ -112,45 +115,9 @@ export default function useBlogs() {
         destroyBlog,
         slides,
         getBlogDetails, getFilteredBlogs,
-        tours, pagenation
+        tours, pagenation, pages
     };
 
-    // ffffffffffffffffffffffffffffffffff
 
-    let p = {
-        "links": {
-            "first": "http://127.0.0.1:8000/api/filtered-blogs?page=1",
-            "last": "http://127.0.0.1:8000/api/filtered-blogs?page=2",
-            "prev": null, "next": "http://127.0.0.1:8000/api/filtered-blogs?page=2"
-        },
-        "meta": {
-            "current_page": 1,
-            "from": 1,
-            "last_page": 2,
-            "links": [
-                {
-                    "url": null,
-                    "label": "&laquo; Previous",
-                    "active": false
-                },
-                {
-                    "url": "http://127.0.0.1:8000/api/filtered-blogs?page=1",
-                    "label": "1", "active": true
-                },
-                {
-                    "url": "http://127.0.0.1:8000/api/filtered-blogs?page=2",
-                    "label": "2",
-                    "active": false
-                }, {
-                    "url": "http://127.0.0.1:8000/api/filtered-blogs?page=2",
-                    "label": "Next &raquo;",
-                    "active": false
-                }],
-            "path": "http://127.0.0.1:8000/api/filtered-blogs",
-            "per_page": 3,
-            "to": 3,
-            "total": 6
-        }
-    }
 
 }

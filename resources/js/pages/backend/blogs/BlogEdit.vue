@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="px-14">
         <div v-if="errors">
             <div v-for="(v, k) in errors" :key="k" class="
                         bg-red-500
@@ -169,7 +169,7 @@
                                 <quill-editor toolbar="full" ref="myQuillEditor" v-model:content="blog.content_en" />
                             </div>
 
-                            <div class="bg-white">
+                            <div class="bg-white mt-20">
                                 <quill-editor toolbar="full" ref="myQuillEditor" v-model:content="blog.content_ar" />
                             </div>
                         </div>

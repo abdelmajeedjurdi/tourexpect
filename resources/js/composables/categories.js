@@ -9,10 +9,12 @@ export default function useCategories() {
     const router = useRouter();
     const errors = ref("");
     const tours = ref([]);
+    const pages = ref([])
 
-    const getCategories = async () => {
-        let response = await axios.get("/api/categories");
+    const getCategories = async (page) => {
+        let response = await axios.get(`/api/categories?page=${page}`);
         categories.value = response.data.data;
+        pages.value = response.data.meta
     };
     const getFlagsOrSigns = async (type) => {
         let response = await axios.get("/api/get-flags-signs?type=" + type);
@@ -114,6 +116,6 @@ export default function useCategories() {
         slides,
         getCategoryDetails,
         tours,
-        getFlagsOrSigns,
+        getFlagsOrSigns, pages
     };
 }
