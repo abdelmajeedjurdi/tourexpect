@@ -36,16 +36,20 @@
                                 </button>
                                 <ul class="dropdown-menu">
                                     <li class="w-full hover:bg-gray-300">
-                                        <router-link style="padding-right: 70%" class="w-full ms-1" :to="{
+                                        <router-link style="padding-right: 70%" class="w-full ms-2" :to="{
                                             name: 'tour.edit',
                                             params: { id: tour.id },
                                         }">Edit
                                         </router-link>
                                     </li>
-                                    <li class="w-full text-red-500 hover:bg-gray-300">
-                                        <button @click="deleteRow(tour)" class="w-full text-left ms-1">
-                                            Delete
-                                        </button>
+                                    <li @click="deleteRow(tour)"
+                                        class="ps-2 w-full text-red-500 hover:bg-gray-300 cursor-pointer">
+
+                                        Delete
+                                    </li>
+                                    <li @click="dublicateRow(tour.id)"
+                                        class="ps-2 w-full text-gray-700 hover:bg-gray-300 cursor-pointer">
+                                        Dublicate
                                     </li>
                                 </ul>
                             </div>
@@ -60,11 +64,11 @@
                             </span>
 
                             <p class="
-                  text-base text-body-color
-                  leading-relaxed
-                  mb-7
-                  text-gray-600
-                ">
+                                text-base text-body-color
+                                leading-relaxed
+                                mb-7
+                                text-gray-600
+                                ">
                                 {{
                                 tour.description_en.substring(0, 100) +
                                 (tour.description_en.length > 100 ? "...." : "")
@@ -89,12 +93,16 @@ import { onMounted, ref } from "vue";
 import { useSwal } from "../../../plugins/useSwal.js";
 import Pagenation from "../../../components/Pagenation.vue";
 
-const { tours, getTours, destroyTour, pages } = useTours();
+const { tours, getTours, destroyTour, pages, dublicate } = useTours();
 let currentPage = ref(1)
 let Swal = useSwal();
 onMounted(getTours(currentPage.value));
 const changePage = (page) => {
     currentPage.value = page
+    getTours(currentPage.value)
+}
+const dublicateRow = async (id) => {
+    await dublicate(id)
     getTours(currentPage.value)
 }
 const deleteTour = async (id) => {

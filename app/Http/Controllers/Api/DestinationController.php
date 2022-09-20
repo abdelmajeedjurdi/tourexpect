@@ -151,9 +151,25 @@ class DestinationController extends Controller
      */
     public function destroy(Destination $destination)
     {
-        if ($destination->image !== 'default.jpg' || $destination->image !== '')
+        Log::info($destination);
+        if ($destination->image !== 'default.jpg' && $destination->image !== '')
             unlink('images/destinations/' . $destination->image);
         $destination->delete();
+        return response()->noContent();
+    }
+    public function dublicate($id)
+    {
+        $request = Destination::where('id', $id)->first();
+        $item = new Destination;
+        $item->country_id = $request->country_id;
+        $item->name_en = $request->name_en;
+        $item->name_ar = $request->name_ar;
+        $item->description_en = $request->description_en;
+        $item->description_ar = $request->description_ar;
+        $item->image = 'default.jpg';
+        $item->slug = Str::slug($item->name_en, '-') . '-' . Destination::max('id');
+        $item->save();
+
         return response()->noContent();
     }
 }

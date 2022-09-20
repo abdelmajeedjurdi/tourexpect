@@ -41,10 +41,15 @@
                                         }">Edit
                                         </router-link>
                                     </li>
-                                    <li class="w-full text-red-500 hover:bg-gray-300">
-                                        <button @click="deleteRow(category)" class="ms-2">
+                                    <li @click="deleteRow(category)"
+                                        class="cursor-pointer w-full text-red-500 hover:bg-gray-300">
+                                        <button class="ms-2">
                                             Delete
                                         </button>
+                                    </li>
+                                    <li @click="dublicateRow(category.id)"
+                                        class="ps-2 cursor-pointer w-full text-gray-700 hover:bg-gray-300">
+                                        Dublicate
                                     </li>
                                 </ul>
                             </div>
@@ -83,12 +88,15 @@ import useCategories from "../../../composables/categories";
 import { onMounted, ref } from "vue";
 import { useSwal } from "../../../plugins/useSwal.js";
 import Pagenation from "../../../components/Pagenation.vue";
-const { categories, getCategories, destroyCategory, pages } = useCategories();
+const { categories, getCategories, destroyCategory, pages, dublicate } = useCategories();
 
 let Swal = useSwal();
 let currentPage = ref(1)
 onMounted(getCategories(currentPage.value));
-
+const dublicateRow = async (id) => {
+    await dublicate(id)
+    getCategories(currentPage.value)
+}
 const deleteCategory = async (id) => {
     if (!window.confirm("Are you sure?")) {
         return;

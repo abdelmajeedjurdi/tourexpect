@@ -104,9 +104,13 @@ export default function useBlogs() {
         await axios.delete("/api/blogs/" + id);
     };
 
+    const dublicate = async (id) => {
+        await axios.post("/api/blog/dublicate/" + id);
+    }
+
     return {
         blogs,
-        blog,
+        blog, dublicate,
         errors,
         getBlogs,
         getBlog,

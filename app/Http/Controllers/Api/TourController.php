@@ -214,7 +214,7 @@ class TourController extends Controller
     {
         $tour = Tour::find($id);
         Log::info($tour);
-        if ($tour->thumbnail !== 'default.jpg' || $tour->thumbnail !== '')
+        if ($tour->thumbnail !== 'default.jpg' && $tour->thumbnail !== '')
             unlink('images/tours/' . $tour->thumbnail);
         $images = TourImage::where('tour_id', $tour->id)->get();
         foreach ($images as $image) {
@@ -223,6 +223,40 @@ class TourController extends Controller
         TourImage::where('tour_id', $tour->id)->delete();
         $tour->delete();
         return;
+    }
+    public function dublicate($id)
+    {
+        $request = Tour::where('id', $id)->first();
+        $tour = new Tour();
+        $tour->category_id = $request->category_id;
+        $tour->destination_id = $request->destination_id;
+        $tour->title_en = $request->title_en;
+        $tour->title_ar = $request->title_ar;
+        $tour->description_en = $request->description_en;
+        $tour->description_ar = $request->description_ar;
+        $tour->thumbnail = 'default.jpg';
+        $tour->slug =
+            Str::slug($tour->title_en, '-') . '-' . Tour::max('id');
+        $tour->address_en = $request->address_en;
+        $tour->address_ar = $request->address_ar;
+        $tour->itinerary_en = $request->itinerary_en;
+        $tour->itinerary_ar = $request->itinerary_ar;
+        $tour->active = $request->active;
+        $tour->adult_price = $request->adult_price;
+        $tour->child_price = $request->child_price;
+        $tour->discount = $request->discount;
+        $tour->discount_type = $request->discount_type;
+        $tour->duration_en = $request->duration_en;
+        $tour->duration_ar = $request->duration_ar;
+        $tour->max_number_of_people = $request->max_number_of_people;
+        $tour->include_en = $request->include_en;
+        $tour->include_ar = $request->include_ar;
+        $tour->exclude_en = $request->exclude_en;
+        $tour->exclude_ar = $request->exclude_ar;
+
+        $tour->save();
+
+        return response()->noContent();
     }
     public function deleteImage($id)
     {
@@ -233,6 +267,7 @@ class TourController extends Controller
         DB::table('tour_images')->delete($id);
         return "done";
     }
+
     // public function deleteFile($id)
     // {
     //     $path = public_path() . '/files/tours/';

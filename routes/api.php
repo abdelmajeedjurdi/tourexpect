@@ -37,5 +37,9 @@ Route::delete('delete-image/{id}', [TourController::class, 'deleteImage']);
 Route::delete('delete-file/{id}', [TourController::class, 'deleteFile']);
 Route::post('inquire', [ContactController::class, 'makeInquire']);
 Route::post('contact', [ContactController::class, 'makeContact']);
+Route::post('category/dublicate/{id}', [CategoryController::class, 'dublicate']);
+Route::post('destination/dublicate/{id}', [DestinationController::class, 'dublicate']);
+Route::post('tour/dublicate/{id}', [TourController::class, 'dublicate']);
+Route::post('blog/dublicate/{id}', [BlogController::class, 'dublicate']);
 
 Route::apiResource('blogs', BlogController::class);

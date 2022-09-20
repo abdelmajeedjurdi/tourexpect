@@ -33,10 +33,12 @@
                                         }">Edit
                                         </router-link>
                                     </li>
-                                    <li class="w-full text-red-500 hover:bg-gray-300">
-                                        <button @click="deleteRow(blog)" class="ms-2">
-                                            Delete
-                                        </button>
+                                    <li @click="deleteRow(blog)" class="ps-2 w-full text-red-500 hover:bg-gray-300">
+                                        Delete
+                                    </li>
+                                    <li @click="dublicateRow(blog.id)"
+                                        class="ps-2 w-full text-gray-700 hover:bg-gray-300 cursor-pointer">
+                                        Dublicate
                                     </li>
                                 </ul>
                             </div>
@@ -73,13 +75,17 @@ import useBlogs from "../../../composables/blogs";
 import { onMounted, ref } from "vue";
 import { useSwal } from "../../../plugins/useSwal.js";
 import Pagenation from "../../../components/Pagenation.vue";
-const { blogs, getBlogs, destroyBlog, pages } = useBlogs();
+const { blogs, getBlogs, destroyBlog, pages, dublicate } = useBlogs();
 
 let Swal = useSwal();
 let currentPage = ref(1)
 onMounted(getBlogs(currentPage.value));
 const changePage = (page) => {
     currentPage.value = page
+    getBlogs(currentPage.value)
+}
+const dublicateRow = async (id) => {
+    await dublicate(id)
     getBlogs(currentPage.value)
 }
 const deleteBlog = async (id) => {

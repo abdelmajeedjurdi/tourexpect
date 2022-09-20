@@ -141,9 +141,28 @@ class BlogController extends Controller
      */
     public function destroy(Blog $blog)
     {
-        if ($blog->image !== 'default.jpg' || $blog->image !== '')
+        if ($blog->image !== 'default.jpg' && $blog->image !== '')
             unlink('images/blogs/' . $blog->image);
         $blog->delete();
+
+        return response()->noContent();
+    }
+
+    public function dublicate($id)
+    {
+        $request = Blog::where('id', $id)->first();
+        $blog = new Blog();
+        $blog->destination_id = $request->destination_id;
+        $blog->category_id = $request->category_id;
+        $blog->title_en = $request->title_en;
+        $blog->title_ar = $request->title_ar;
+        $blog->preview_text_en = $request->preview_text_en;
+        $blog->preview_text_ar = $request->preview_text_ar;
+        $blog->content_en = $request->content_en;
+        $blog->content_ar = $request->content_ar;
+        $blog->slug = Str::slug($blog->title_en, '-') . '-' . Blog::max('id');
+        $blog->image = 'default.jpg';
+        $blog->save();
 
         return response()->noContent();
     }

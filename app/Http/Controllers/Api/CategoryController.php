@@ -124,9 +124,25 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        if ($category->image !== 'default.jpg' || $category->image !== '')
+        if ($category->image !== 'default.jpg' && $category->image !== '')
             unlink('images/categories/' . $category->image);
         $category->delete();
+
+        return response()->noContent();
+    }
+    public function dublicate($id)
+    {
+        $request = Category::where('id', $id)->first();
+        $category = new Category;
+        $category->name_en = $request->name_en;
+        $category->name_ar = $request->name_ar;
+        $category->description_en = $request->description_en;
+        $category->description_ar = $request->description_ar;
+        $category->image = 'default.jpg';
+        $category->is_trending = $request->is_trending;
+        $category->is_slide = $request->is_slide;
+        $category->slug = Str::slug($category->name_en, '-') . '-' . Category::max('id');
+        $category->save();
 
         return response()->noContent();
     }

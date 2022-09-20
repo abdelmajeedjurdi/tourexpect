@@ -41,10 +41,14 @@
                                         }">Edit
                                         </router-link>
                                     </li>
-                                    <li class="w-full text-red-500 hover:bg-gray-300">
-                                        <button @click="deleteRow(destination)" class="ms-2">
-                                            Delete
-                                        </button>
+                                    <li @click="deleteRow(destination)"
+                                        class="ps-2 w-full text-red-500 hover:bg-gray-300 cursor-pointer">
+
+                                        Delete
+                                    </li>
+                                    <li @click="dublicateRow(destination.id)"
+                                        class="ps-2 w-full text-gray-700 hover:bg-gray-300 cursor-pointer">
+                                        Dublicate
                                     </li>
                                 </ul>
                             </div>
@@ -59,11 +63,11 @@
                             </span>
 
                             <p class="
-                  text-base text-body-color
-                  leading-relaxed
-                  mb-7
-                  text-gray-600
-                ">
+                                    text-base text-body-color
+                                    leading-relaxed
+                                    mb-7
+                                    text-gray-600
+                                    ">
                                 {{
                                 destination.description_en.substring(0, 100) +
                                 (destination.description_en.length > 100 ? "...." : "")
@@ -84,7 +88,7 @@ import { onMounted, ref } from "vue";
 import { useSwal } from "../../../plugins/useSwal.js";
 import Pagenation from "../../../components/Pagenation.vue";
 
-const { destinations, getDestinations, destroyDestination, pages } = useDestinations();
+const { destinations, getDestinations, destroyDestination, pages, dublicate } = useDestinations();
 let currentPage = ref(1)
 let Swal = useSwal();
 onMounted(() => { getDestinations(currentPage.value) });
@@ -97,6 +101,10 @@ const deleteDestination = async (id) => {
     await destroyDestination(id);
     await getDestinations(currentPage.value);
 };
+const dublicateRow = async (id) => {
+    await dublicate(id)
+    getDestinations(currentPage.value);
+}
 const changePage = (page) => {
     currentPage.value = page
     getDestinations(currentPage.value)

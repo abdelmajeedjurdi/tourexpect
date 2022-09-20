@@ -25946,7 +25946,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         blogs = _useBlogs.blogs,
         getBlogs = _useBlogs.getBlogs,
         destroyBlog = _useBlogs.destroyBlog,
-        pages = _useBlogs.pages;
+        pages = _useBlogs.pages,
+        dublicate = _useBlogs.dublicate;
 
     var Swal = (0,_plugins_useSwal_js__WEBPACK_IMPORTED_MODULE_2__.useSwal)();
     var currentPage = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)(1);
@@ -25957,28 +25958,19 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       getBlogs(currentPage.value);
     };
 
-    var deleteBlog = /*#__PURE__*/function () {
+    var dublicateRow = /*#__PURE__*/function () {
       var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(id) {
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                if (window.confirm("Are you sure?")) {
-                  _context.next = 2;
-                  break;
-                }
-
-                return _context.abrupt("return");
+                _context.next = 2;
+                return dublicate(id);
 
               case 2:
-                _context.next = 4;
-                return destroyBlog(id);
+                getBlogs(currentPage.value);
 
-              case 4:
-                _context.next = 6;
-                return getBlogs(currentPage.value);
-
-              case 6:
+              case 3:
               case "end":
                 return _context.stop();
             }
@@ -25986,8 +25978,42 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee);
       }));
 
-      return function deleteBlog(_x) {
+      return function dublicateRow(_x) {
         return _ref2.apply(this, arguments);
+      };
+    }();
+
+    var deleteBlog = /*#__PURE__*/function () {
+      var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(id) {
+        return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                if (window.confirm("Are you sure?")) {
+                  _context2.next = 2;
+                  break;
+                }
+
+                return _context2.abrupt("return");
+
+              case 2:
+                _context2.next = 4;
+                return destroyBlog(id);
+
+              case 4:
+                _context2.next = 6;
+                return getBlogs(currentPage.value);
+
+              case 6:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }));
+
+      return function deleteBlog(_x2) {
+        return _ref3.apply(this, arguments);
       };
     }();
 
@@ -26001,21 +26027,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         cancelButtonColor: "#d33",
         confirmButtonText: "Yes, delete it!"
       }).then( /*#__PURE__*/function () {
-        var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(result) {
-          return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+        var _ref4 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(result) {
+          return _regeneratorRuntime().wrap(function _callee3$(_context3) {
             while (1) {
-              switch (_context2.prev = _context2.next) {
+              switch (_context3.prev = _context3.next) {
                 case 0:
                   if (!result.isConfirmed) {
-                    _context2.next = 6;
+                    _context3.next = 6;
                     break;
                   }
 
-                  _context2.next = 3;
+                  _context3.next = 3;
                   return destroyBlog(blog_.id);
 
                 case 3:
-                  _context2.next = 5;
+                  _context3.next = 5;
                   return getBlogs(currentPage.value);
 
                 case 5:
@@ -26023,14 +26049,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 case 6:
                 case "end":
-                  return _context2.stop();
+                  return _context3.stop();
               }
             }
-          }, _callee2);
+          }, _callee3);
         }));
 
-        return function (_x2) {
-          return _ref3.apply(this, arguments);
+        return function (_x3) {
+          return _ref4.apply(this, arguments);
         };
       }());
     };
@@ -26040,9 +26066,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       getBlogs: getBlogs,
       destroyBlog: destroyBlog,
       pages: pages,
+      dublicate: dublicate,
       Swal: Swal,
       currentPage: currentPage,
       changePage: changePage,
+      dublicateRow: dublicateRow,
       deleteBlog: deleteBlog,
       deleteRow: deleteRow,
       useBlogs: _composables_blogs__WEBPACK_IMPORTED_MODULE_0__["default"],
@@ -26098,34 +26126,26 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         categories = _useCategories.categories,
         getCategories = _useCategories.getCategories,
         destroyCategory = _useCategories.destroyCategory,
-        pages = _useCategories.pages;
+        pages = _useCategories.pages,
+        dublicate = _useCategories.dublicate;
 
     var Swal = (0,_plugins_useSwal_js__WEBPACK_IMPORTED_MODULE_2__.useSwal)();
     var currentPage = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)(1);
     (0,vue__WEBPACK_IMPORTED_MODULE_1__.onMounted)(getCategories(currentPage.value));
 
-    var deleteCategory = /*#__PURE__*/function () {
+    var dublicateRow = /*#__PURE__*/function () {
       var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(id) {
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                if (window.confirm("Are you sure?")) {
-                  _context.next = 2;
-                  break;
-                }
-
-                return _context.abrupt("return");
+                _context.next = 2;
+                return dublicate(id);
 
               case 2:
-                _context.next = 4;
-                return destroyCategory(id);
+                getCategories(currentPage.value);
 
-              case 4:
-                _context.next = 6;
-                return getCategories(currentPage.value);
-
-              case 6:
+              case 3:
               case "end":
                 return _context.stop();
             }
@@ -26133,8 +26153,42 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee);
       }));
 
-      return function deleteCategory(_x) {
+      return function dublicateRow(_x) {
         return _ref2.apply(this, arguments);
+      };
+    }();
+
+    var deleteCategory = /*#__PURE__*/function () {
+      var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(id) {
+        return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                if (window.confirm("Are you sure?")) {
+                  _context2.next = 2;
+                  break;
+                }
+
+                return _context2.abrupt("return");
+
+              case 2:
+                _context2.next = 4;
+                return destroyCategory(id);
+
+              case 4:
+                _context2.next = 6;
+                return getCategories(currentPage.value);
+
+              case 6:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }));
+
+      return function deleteCategory(_x2) {
+        return _ref3.apply(this, arguments);
       };
     }();
 
@@ -26153,21 +26207,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         cancelButtonColor: "#d33",
         confirmButtonText: "Yes, delete it!"
       }).then( /*#__PURE__*/function () {
-        var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(result) {
-          return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+        var _ref4 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(result) {
+          return _regeneratorRuntime().wrap(function _callee3$(_context3) {
             while (1) {
-              switch (_context2.prev = _context2.next) {
+              switch (_context3.prev = _context3.next) {
                 case 0:
                   if (!result.isConfirmed) {
-                    _context2.next = 6;
+                    _context3.next = 6;
                     break;
                   }
 
-                  _context2.next = 3;
+                  _context3.next = 3;
                   return destroyCategory(category_.id);
 
                 case 3:
-                  _context2.next = 5;
+                  _context3.next = 5;
                   return getCategories(currentPage.value);
 
                 case 5:
@@ -26175,14 +26229,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 case 6:
                 case "end":
-                  return _context2.stop();
+                  return _context3.stop();
               }
             }
-          }, _callee2);
+          }, _callee3);
         }));
 
-        return function (_x2) {
-          return _ref3.apply(this, arguments);
+        return function (_x3) {
+          return _ref4.apply(this, arguments);
         };
       }());
     };
@@ -26192,8 +26246,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       getCategories: getCategories,
       destroyCategory: destroyCategory,
       pages: pages,
+      dublicate: dublicate,
       Swal: Swal,
       currentPage: currentPage,
+      dublicateRow: dublicateRow,
       deleteCategory: deleteCategory,
       changePage: changePage,
       deleteRow: deleteRow,
@@ -26932,7 +26988,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         destinations = _useDestinations.destinations,
         getDestinations = _useDestinations.getDestinations,
         destroyDestination = _useDestinations.destroyDestination,
-        pages = _useDestinations.pages;
+        pages = _useDestinations.pages,
+        dublicate = _useDestinations.dublicate;
 
     var currentPage = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)(1);
     var Swal = (0,_plugins_useSwal_js__WEBPACK_IMPORTED_MODULE_2__.useSwal)();
@@ -26974,6 +27031,31 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       };
     }();
 
+    var dublicateRow = /*#__PURE__*/function () {
+      var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(id) {
+        return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.next = 2;
+                return dublicate(id);
+
+              case 2:
+                getDestinations(currentPage.value);
+
+              case 3:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }));
+
+      return function dublicateRow(_x2) {
+        return _ref3.apply(this, arguments);
+      };
+    }();
+
     var changePage = function changePage(page) {
       currentPage.value = page;
       getDestinations(currentPage.value);
@@ -26989,21 +27071,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         cancelButtonColor: "#d33",
         confirmButtonText: "Yes, delete it!"
       }).then( /*#__PURE__*/function () {
-        var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(result) {
-          return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+        var _ref4 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(result) {
+          return _regeneratorRuntime().wrap(function _callee3$(_context3) {
             while (1) {
-              switch (_context2.prev = _context2.next) {
+              switch (_context3.prev = _context3.next) {
                 case 0:
                   if (!result.isConfirmed) {
-                    _context2.next = 6;
+                    _context3.next = 6;
                     break;
                   }
 
-                  _context2.next = 3;
+                  _context3.next = 3;
                   return destroyDestination(destination_.id);
 
                 case 3:
-                  _context2.next = 5;
+                  _context3.next = 5;
                   return getDestinations(currentPage.value);
 
                 case 5:
@@ -27011,14 +27093,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 case 6:
                 case "end":
-                  return _context2.stop();
+                  return _context3.stop();
               }
             }
-          }, _callee2);
+          }, _callee3);
         }));
 
-        return function (_x2) {
-          return _ref3.apply(this, arguments);
+        return function (_x3) {
+          return _ref4.apply(this, arguments);
         };
       }());
     };
@@ -27028,9 +27110,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       getDestinations: getDestinations,
       destroyDestination: destroyDestination,
       pages: pages,
+      dublicate: dublicate,
       currentPage: currentPage,
       Swal: Swal,
       deleteDestination: deleteDestination,
+      dublicateRow: dublicateRow,
       changePage: changePage,
       deleteRow: deleteRow,
       useDestinations: _composables_destinations__WEBPACK_IMPORTED_MODULE_0__["default"],
@@ -27705,7 +27789,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         tours = _useTours.tours,
         getTours = _useTours.getTours,
         destroyTour = _useTours.destroyTour,
-        pages = _useTours.pages;
+        pages = _useTours.pages,
+        dublicate = _useTours.dublicate;
 
     var currentPage = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)(1);
     var Swal = (0,_plugins_useSwal_js__WEBPACK_IMPORTED_MODULE_2__.useSwal)();
@@ -27716,28 +27801,19 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       getTours(currentPage.value);
     };
 
-    var deleteTour = /*#__PURE__*/function () {
+    var dublicateRow = /*#__PURE__*/function () {
       var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(id) {
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                if (window.confirm("Are you sure?")) {
-                  _context.next = 2;
-                  break;
-                }
-
-                return _context.abrupt("return");
+                _context.next = 2;
+                return dublicate(id);
 
               case 2:
-                _context.next = 4;
-                return destroyTour(id);
+                getTours(currentPage.value);
 
-              case 4:
-                _context.next = 6;
-                return getTours(currentPage.value);
-
-              case 6:
+              case 3:
               case "end":
                 return _context.stop();
             }
@@ -27745,8 +27821,42 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee);
       }));
 
-      return function deleteTour(_x) {
+      return function dublicateRow(_x) {
         return _ref2.apply(this, arguments);
+      };
+    }();
+
+    var deleteTour = /*#__PURE__*/function () {
+      var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(id) {
+        return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                if (window.confirm("Are you sure?")) {
+                  _context2.next = 2;
+                  break;
+                }
+
+                return _context2.abrupt("return");
+
+              case 2:
+                _context2.next = 4;
+                return destroyTour(id);
+
+              case 4:
+                _context2.next = 6;
+                return getTours(currentPage.value);
+
+              case 6:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }));
+
+      return function deleteTour(_x2) {
+        return _ref3.apply(this, arguments);
       };
     }();
 
@@ -27760,21 +27870,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         cancelButtonColor: "#d33",
         confirmButtonText: "Yes, delete it!"
       }).then( /*#__PURE__*/function () {
-        var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(result) {
-          return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+        var _ref4 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(result) {
+          return _regeneratorRuntime().wrap(function _callee3$(_context3) {
             while (1) {
-              switch (_context2.prev = _context2.next) {
+              switch (_context3.prev = _context3.next) {
                 case 0:
                   if (!result.isConfirmed) {
-                    _context2.next = 6;
+                    _context3.next = 6;
                     break;
                   }
 
-                  _context2.next = 3;
+                  _context3.next = 3;
                   return destroyTour(tour_.id);
 
                 case 3:
-                  _context2.next = 5;
+                  _context3.next = 5;
                   return getTours(currentPage.value);
 
                 case 5:
@@ -27782,14 +27892,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 case 6:
                 case "end":
-                  return _context2.stop();
+                  return _context3.stop();
               }
             }
-          }, _callee2);
+          }, _callee3);
         }));
 
-        return function (_x2) {
-          return _ref3.apply(this, arguments);
+        return function (_x3) {
+          return _ref4.apply(this, arguments);
         };
       }());
     };
@@ -27799,9 +27909,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       getTours: getTours,
       destroyTour: destroyTour,
       pages: pages,
+      dublicate: dublicate,
       currentPage: currentPage,
       Swal: Swal,
       changePage: changePage,
+      dublicateRow: dublicateRow,
       deleteTour: deleteTour,
       deleteRow: deleteRow,
       useTours: _composables_tours__WEBPACK_IMPORTED_MODULE_0__["default"],
@@ -29681,9 +29793,7 @@ var _hoisted_12 = {
 
 var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Edit ");
 
-var _hoisted_14 = {
-  "class": "w-full text-red-500 hover:bg-gray-300"
-};
+var _hoisted_14 = ["onClick"];
 var _hoisted_15 = ["onClick"];
 var _hoisted_16 = ["src"];
 var _hoisted_17 = {
@@ -29735,14 +29845,21 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
     }, 1032
     /* PROPS, DYNAMIC_SLOTS */
-    , ["to"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    , ["to"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
       onClick: function onClick($event) {
         return $setup.deleteRow(blog);
       },
-      "class": "ms-2"
+      "class": "ps-2 w-full text-red-500 hover:bg-gray-300"
     }, " Delete ", 8
     /* PROPS */
-    , _hoisted_15)])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+    , _hoisted_14), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
+      onClick: function onClick($event) {
+        return $setup.dublicateRow(blog.id);
+      },
+      "class": "ps-2 w-full text-gray-700 hover:bg-gray-300 cursor-pointer"
+    }, " Dublicate ", 8
+    /* PROPS */
+    , _hoisted_15)])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
       to: {
         name: 'blog.details',
         params: {
@@ -29857,18 +29974,24 @@ var _hoisted_12 = {
 
 var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Edit ");
 
-var _hoisted_14 = {
-  "class": "w-full text-red-500 hover:bg-gray-300"
-};
-var _hoisted_15 = ["onClick"];
-var _hoisted_16 = ["src"];
-var _hoisted_17 = {
+var _hoisted_14 = ["onClick"];
+
+var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  "class": "ms-2"
+}, " Delete ", -1
+/* HOISTED */
+);
+
+var _hoisted_16 = [_hoisted_15];
+var _hoisted_17 = ["onClick"];
+var _hoisted_18 = ["src"];
+var _hoisted_19 = {
   "class": "p-2 h-32"
 };
-var _hoisted_18 = {
+var _hoisted_20 = {
   "class": "text-base text-blue-500"
 };
-var _hoisted_19 = {
+var _hoisted_21 = {
   "class": "text-base text-body-color leading-relaxed mb-7 text-gray-600"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -29911,14 +30034,21 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
     }, 1032
     /* PROPS, DYNAMIC_SLOTS */
-    , ["to"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    , ["to"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
       onClick: function onClick($event) {
         return $setup.deleteRow(category);
       },
-      "class": "ms-2"
-    }, " Delete ", 8
+      "class": "cursor-pointer w-full text-red-500 hover:bg-gray-300"
+    }, _hoisted_16, 8
     /* PROPS */
-    , _hoisted_15)])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+    , _hoisted_14), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
+      onClick: function onClick($event) {
+        return $setup.dublicateRow(category.id);
+      },
+      "class": "ps-2 cursor-pointer w-full text-gray-700 hover:bg-gray-300"
+    }, " Dublicate ", 8
+    /* PROPS */
+    , _hoisted_17)])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
       to: {
         name: 'category.details',
         params: {
@@ -29933,9 +30063,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           "class": "w-full h-48 object-cover"
         }, null, 8
         /* PROPS */
-        , _hoisted_16), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_18, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(category.name_en), 1
+        , _hoisted_18), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_20, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(category.name_en), 1
         /* TEXT */
-        ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(category.description_en.substring(0, 100) + (category.description_en.length > 100 ? "...." : "")), 1
+        ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(category.description_en.substring(0, 100) + (category.description_en.length > 100 ? "...." : "")), 1
         /* TEXT */
         )])];
       }),
@@ -31213,9 +31343,7 @@ var _hoisted_12 = {
 
 var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Edit ");
 
-var _hoisted_14 = {
-  "class": "w-full text-red-500 hover:bg-gray-300"
-};
+var _hoisted_14 = ["onClick"];
 var _hoisted_15 = ["onClick"];
 var _hoisted_16 = ["src"];
 var _hoisted_17 = {
@@ -31267,14 +31395,21 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
     }, 1032
     /* PROPS, DYNAMIC_SLOTS */
-    , ["to"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    , ["to"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
       onClick: function onClick($event) {
         return $setup.deleteRow(destination);
       },
-      "class": "ms-2"
+      "class": "ps-2 w-full text-red-500 hover:bg-gray-300 cursor-pointer"
     }, " Delete ", 8
     /* PROPS */
-    , _hoisted_15)])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+    , _hoisted_14), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
+      onClick: function onClick($event) {
+        return $setup.dublicateRow(destination.id);
+      },
+      "class": "ps-2 w-full text-gray-700 hover:bg-gray-300 cursor-pointer"
+    }, " Dublicate ", 8
+    /* PROPS */
+    , _hoisted_15)])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
       to: {
         name: 'destination.details',
         params: {
@@ -32967,9 +33102,7 @@ var _hoisted_12 = {
 
 var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Edit ");
 
-var _hoisted_14 = {
-  "class": "w-full text-red-500 hover:bg-gray-300"
-};
+var _hoisted_14 = ["onClick"];
 var _hoisted_15 = ["onClick"];
 var _hoisted_16 = ["src", "alt"];
 var _hoisted_17 = {
@@ -33005,7 +33138,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       style: {
         "padding-right": "70%"
       },
-      "class": "w-full ms-1",
+      "class": "w-full ms-2",
       to: {
         name: 'tour.edit',
         params: {
@@ -33021,14 +33154,21 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
     }, 1032
     /* PROPS, DYNAMIC_SLOTS */
-    , ["to"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    , ["to"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
       onClick: function onClick($event) {
         return $setup.deleteRow(tour);
       },
-      "class": "w-full text-left ms-1"
+      "class": "ps-2 w-full text-red-500 hover:bg-gray-300 cursor-pointer"
     }, " Delete ", 8
     /* PROPS */
-    , _hoisted_15)])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+    , _hoisted_14), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
+      onClick: function onClick($event) {
+        return $setup.dublicateRow(tour.id);
+      },
+      "class": "ps-2 w-full text-gray-700 hover:bg-gray-300 cursor-pointer"
+    }, " Dublicate ", 8
+    /* PROPS */
+    , _hoisted_15)])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
       to: {
         name: 'tour.details',
         params: {
@@ -34821,9 +34961,32 @@ function useBlogs() {
     };
   }();
 
+  var dublicate = /*#__PURE__*/function () {
+    var _ref8 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(id) {
+      return _regeneratorRuntime().wrap(function _callee8$(_context8) {
+        while (1) {
+          switch (_context8.prev = _context8.next) {
+            case 0:
+              _context8.next = 2;
+              return axios__WEBPACK_IMPORTED_MODULE_1___default().post("/api/blog/dublicate/" + id);
+
+            case 2:
+            case "end":
+              return _context8.stop();
+          }
+        }
+      }, _callee8);
+    }));
+
+    return function dublicate(_x9) {
+      return _ref8.apply(this, arguments);
+    };
+  }();
+
   return {
     blogs: blogs,
     blog: blog,
+    dublicate: dublicate,
     errors: errors,
     getBlogs: getBlogs,
     getBlog: getBlog,
@@ -35177,6 +35340,28 @@ function useCategories() {
     };
   }();
 
+  var dublicate = /*#__PURE__*/function () {
+    var _ref10 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee10(id) {
+      return _regeneratorRuntime().wrap(function _callee10$(_context10) {
+        while (1) {
+          switch (_context10.prev = _context10.next) {
+            case 0:
+              _context10.next = 2;
+              return axios__WEBPACK_IMPORTED_MODULE_1___default().post("/api/category/dublicate/" + id);
+
+            case 2:
+            case "end":
+              return _context10.stop();
+          }
+        }
+      }, _callee10);
+    }));
+
+    return function dublicate(_x10) {
+      return _ref10.apply(this, arguments);
+    };
+  }();
+
   return {
     categories: categories,
     category: category,
@@ -35192,7 +35377,8 @@ function useCategories() {
     getCategoryDetails: getCategoryDetails,
     tours: tours,
     getFlagsOrSigns: getFlagsOrSigns,
-    pages: pages
+    pages: pages,
+    dublicate: dublicate
   };
 }
 
@@ -35529,6 +35715,28 @@ function useDestinations() {
     };
   }();
 
+  var dublicate = /*#__PURE__*/function () {
+    var _ref10 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee10(id) {
+      return _regeneratorRuntime().wrap(function _callee10$(_context10) {
+        while (1) {
+          switch (_context10.prev = _context10.next) {
+            case 0:
+              _context10.next = 2;
+              return axios__WEBPACK_IMPORTED_MODULE_1___default().post("/api/destination/dublicate/" + id);
+
+            case 2:
+            case "end":
+              return _context10.stop();
+          }
+        }
+      }, _callee10);
+    }));
+
+    return function dublicate(_x9) {
+      return _ref10.apply(this, arguments);
+    };
+  }();
+
   return {
     destinations: destinations,
     destination: destination,
@@ -35544,7 +35752,8 @@ function useDestinations() {
     countries: countries,
     getCountries: getCountries,
     getDestinationsOnCountry: getDestinationsOnCountry,
-    pages: pages
+    pages: pages,
+    dublicate: dublicate
   };
 }
 
@@ -35951,8 +36160,31 @@ function useTours() {
     };
   }();
 
+  var dublicate = /*#__PURE__*/function () {
+    var _ref12 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee12(id) {
+      return _regeneratorRuntime().wrap(function _callee12$(_context12) {
+        while (1) {
+          switch (_context12.prev = _context12.next) {
+            case 0:
+              _context12.next = 2;
+              return axios__WEBPACK_IMPORTED_MODULE_1___default().post("/api/tour/dublicate/" + id);
+
+            case 2:
+            case "end":
+              return _context12.stop();
+          }
+        }
+      }, _callee12);
+    }));
+
+    return function dublicate(_x13) {
+      return _ref12.apply(this, arguments);
+    };
+  }();
+
   return {
     tours: tours,
+    dublicate: dublicate,
     tour: tour,
     errors: errors,
     getTours: getTours,
