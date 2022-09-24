@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\ContactController;
 use App\Http\Controllers\Api\TourController;
 use App\Http\Controllers\Api\BlogController;
 use App\Http\Controllers\Api\DestinationController;
+use App\Http\Controllers\Api\GeneralController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -41,5 +42,7 @@ Route::post('category/dublicate/{id}', [CategoryController::class, 'dublicate'])
 Route::post('destination/dublicate/{id}', [DestinationController::class, 'dublicate']);
 Route::post('tour/dublicate/{id}', [TourController::class, 'dublicate']);
 Route::post('blog/dublicate/{id}', [BlogController::class, 'dublicate']);
+Route::get('nav-destination', [GeneralController::class, 'destinations']);
+Route::get('nav-tours', [GeneralController::class, 'tours']);
 
 Route::apiResource('blogs', BlogController::class);

@@ -30,8 +30,8 @@ class BlogRequest extends FormRequest
             'title_ar' => ['required'],
             'content_en' => ['required', 'min:200'],
             'content_ar' => ['required', 'min:200'],
-            'preview_text_en' => ['required', 'max:200'],
-            'preview_text_ar' => ['required', 'max:200'],
+            'preview_text_en' => ['required'],
+            'preview_text_ar' => ['required'],
         ];
     }
 }

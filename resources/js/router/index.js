@@ -174,6 +174,26 @@ const routes = [
         component: SingleBlog,
         props: true,
     },
+    {
+        path: "/packages",
+        name: "packages",
+        component: CommingSoon,
+    },
+    {
+        path: "/activities",
+        name: "activities",
+        component: CommingSoon,
+    },
+    {
+        path: "/transfer",
+        name: "transfer",
+        component: CommingSoon,
+    },
+    {
+        path: "/hotels-and-resorts",
+        name: "hotels-and-resorts",
+        component: CommingSoon,
+    },
 ];
 
 export default createRouter({
