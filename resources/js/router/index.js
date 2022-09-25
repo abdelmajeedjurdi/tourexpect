@@ -194,6 +194,11 @@ const routes = [
         name: "hotels-and-resorts",
         component: CommingSoon,
     },
+    {
+        path: "/:pathMatch(.*)*",
+        name: "404",
+        component: CommingSoon,
+    },
 ];
 
 export default createRouter({

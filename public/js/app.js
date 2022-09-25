@@ -28199,6 +28199,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         getDestinations = _useGeneral.getDestinations,
         destinations = _useGeneral.destinations;
 
+    var router = (0,vue_router__WEBPACK_IMPORTED_MODULE_2__.useRouter)();
     var url = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)((0,vue_router__WEBPACK_IMPORTED_MODULE_2__.useRoute)());
     var lang = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)('');
 
@@ -28233,7 +28234,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 var isClickInside3 = specifiedElement3.contains(event.target);
 
                 if (!isClickInside && !isClickInside2 && !isClickInside3) {
-                  closeMenu(); // isOptionsShow.value = false;
+                  closeMenu();
+                  console.log('menu closed'); // isOptionsShow.value = false;
                 }
               });
               _context.next = 7;
@@ -28265,11 +28267,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       slug: 'packages',
       only_sidebar: false,
       is_link: true,
-      items: [{
-        id: 0,
-        name_en: '',
-        items: []
-      }]
+      items: []
     }, {
       id: 2,
       name_en: 'Tours',
@@ -28285,11 +28283,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       slug: 'activities',
       is_link: true,
       only_sidebar: false,
-      items: [{
-        id: 0,
-        name_en: 'turkiye',
-        items: ['trabzon', 'istanbul']
-      }]
+      items: []
     }, {
       id: 4,
       name_en: 'Transfer',
@@ -28297,15 +28291,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       slug: 'transfer',
       is_link: true,
       only_sidebar: false,
-      items: [{
-        id: 0,
-        name_en: 'turkiye',
-        items: ['trabzon', 'istanbul']
-      }]
+      items: [] // items: [{ id: 0, name_en: 'turkiye', items: ['trabzon', 'istanbul'] }]
+
     }, {
       id: 6,
       name_en: 'Hotels & Resorts',
-      name_ar: 'الفنادق والمنتجعات',
+      name_ar: 'الفنادق و المنتجعات',
       slug: 'hotels-and-resorts',
       only_sidebar: true,
       is_link: true,
@@ -28330,14 +28321,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       sub_menu: -1
     });
 
-    var setSubSubMenu = function setSubSubMenu(i) {
-      menu_path_by_id.value.sub_menu = i;
-      console.log(menu.value[menu_path_by_id.value.menu].items[menu_path_by_id.value.sub_menu]['items'][0]);
-      subsubmenu.value = menu.value[menu_path_by_id.value.menu].items[menu_path_by_id.value.sub_menu];
-      console.log('test');
-      submenu_title.value = menu.value[menu_path_by_id.value.menu].items[menu_path_by_id.value.sub_menu]['name_' + lang.value];
-      console.log(menu.value[menu_path_by_id.value.menu].items[menu_path_by_id.value.sub_menu]);
-      submenu_slug.value = menu.value[menu_path_by_id.value.menu].items[menu_path_by_id.value.sub_menu]['slug'];
+    var setSubmenu = function setSubmenu(i) {
+      menu_path_by_id.value.menu = i;
+      subsubmenu.value = [];
+      submenu_title.value = '';
+      submenu_slug.value = '';
+
+      if (!menu.value[i]['is_link']) {
+        submenu.value = menu.value[i]['items'];
+        menu_title.value = menu.value[i]['name_en'];
+        menu_slug.value = menu.value[i]['slug'];
+      } else submenu.value = [];
     };
 
     var closeSubmenue = function closeSubmenue() {
@@ -28346,14 +28340,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       submenu.value = [];
     };
 
-    var setSubmenu = function setSubmenu(i) {
-      submenu_title.value = '';
-      submenu_slug.value = '';
-      menu_path_by_id.value.menu = i;
-      subsubmenu.value = [];
-      submenu.value = menu.value[i]['items'];
-      menu_title.value = menu.value[i]['name_en'];
-      menu_slug.value = menu.value[i]['slug'];
+    var setSubSubMenu = function setSubSubMenu(i) {
+      menu_path_by_id.value.sub_menu = i;
+      subsubmenu.value = menu.value[menu_path_by_id.value.menu].items[menu_path_by_id.value.sub_menu];
+
+      if (subsubmenu.value['items'].length > 0) {
+        submenu_title.value = menu.value[menu_path_by_id.value.menu].items[menu_path_by_id.value.sub_menu]['name_' + lang.value];
+        submenu_slug.value = menu.value[menu_path_by_id.value.menu].items[menu_path_by_id.value.sub_menu]['slug'];
+      } else {
+        submenu_title.value = "";
+      }
     };
 
     var is_menu = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(false);
@@ -28369,6 +28365,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     var closeMenu = function closeMenu() {
       menu_path_by_id.value.menu = -1;
       menu_path_by_id.value.sub_menu = -1;
+      submenu_title.value = '';
       submenu.value = [];
       subsubmenu.value = [];
       is_menu.value = false;
@@ -28378,6 +28375,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     var __returned__ = {
       getDestinations: getDestinations,
       destinations: destinations,
+      router: router,
       url: url,
       lang: lang,
       switchLanguage: switchLanguage,
@@ -28389,9 +28387,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       submenu_title: submenu_title,
       submenu_slug: submenu_slug,
       menu_path_by_id: menu_path_by_id,
-      setSubSubMenu: setSubSubMenu,
-      closeSubmenue: closeSubmenue,
       setSubmenu: setSubmenu,
+      closeSubmenue: closeSubmenue,
+      setSubSubMenu: setSubSubMenu,
       is_menu: is_menu,
       mobile_menu: mobile_menu,
       showMenu: showMenu,
@@ -28399,6 +28397,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       onMounted: vue__WEBPACK_IMPORTED_MODULE_0__.onMounted,
       ref: vue__WEBPACK_IMPORTED_MODULE_0__.ref,
       useRoute: vue_router__WEBPACK_IMPORTED_MODULE_2__.useRoute,
+      useRouter: vue_router__WEBPACK_IMPORTED_MODULE_2__.useRouter,
       useGeneral: _composables_general__WEBPACK_IMPORTED_MODULE_1__["default"]
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
@@ -33966,10 +33965,10 @@ var _hoisted_1 = {
 };
 var _hoisted_2 = {
   id: "navbar",
-  "class": "flex justify-between py-3 px-3 md:px-0 w-full max-w-6xl mx-auto"
+  "class": "flex outclick justify-between h-16 px-3 md:px-0 max-w-6xl mx-auto"
 };
 var _hoisted_3 = {
-  "class": "w-52 py-2.5 flex items-center justify-between"
+  "class": "flex items-center"
 };
 
 var _hoisted_4 = /*#__PURE__*/_withScopeId(function () {
@@ -33995,40 +33994,13 @@ var _hoisted_6 = /*#__PURE__*/_withScopeId(function () {
 });
 
 var _hoisted_7 = {
-  "class": "hidden lg:block",
-  style: {
-    "width": "85rem"
-  }
-};
-var _hoisted_8 = {
-  "class": "border-gray-200 sm:px-4 py-2.5 md:py-4 rounded w-full hidden lg:block"
-};
-var _hoisted_9 = {
-  "class": "flex items-center justify-center"
-};
-var _hoisted_10 = {
-  "class": "flex flex-col mx-auto my-auto md:flex-row md:mt-0 md:text-sm md:font-medium items-center"
-};
-var _hoisted_11 = {
-  "class": "w-full md:w-auto text-center"
-};
-var _hoisted_12 = {
-  key: 0,
-  "class": "md:mx-4"
-};
-var _hoisted_13 = ["onClick"];
-var _hoisted_14 = {
-  key: 1,
-  "class": "md:mx-4"
-};
-var _hoisted_15 = {
   "class": "w-36 my-auto"
 };
-var _hoisted_16 = {
-  "class": "flex py-2.5 justify-end items-center"
+var _hoisted_8 = {
+  "class": "flex justify-end items-center"
 };
 
-var _hoisted_17 = /*#__PURE__*/_withScopeId(function () {
+var _hoisted_9 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
     name: "curr",
     id: "curr",
@@ -34042,21 +34014,55 @@ var _hoisted_17 = /*#__PURE__*/_withScopeId(function () {
   );
 });
 
-var _hoisted_18 = {
-  "class": "top-0 z-40 absolute w-full h-screen menu bg-black bg-opacity-25 hidden md:flex"
+var _hoisted_10 = {
+  "class": "flex justify-between px-3 md:px-0 w-full max-w-6xl mx-auto"
 };
+var _hoisted_11 = {
+  "class": "hidden lg:block w-full"
+};
+var _hoisted_12 = {
+  "class": "border-gray-200 sm:px-4 rounded w-full hidden lg:block"
+};
+var _hoisted_13 = {
+  "class": "flex items-center justify-center"
+};
+var _hoisted_14 = {
+  "class": "absolute md:static w-full md:block md:w-auto left-0 right-0 z-20",
+  style: {
+    "top": "8rem"
+  },
+  id: "mobile-menu"
+};
+var _hoisted_15 = {
+  "class": "flex flex-col mx-auto my-auto md:flex-row md:mt-0 md:text-sm md:font-medium items-center"
+};
+var _hoisted_16 = {
+  "class": "w-full md:w-auto text-center"
+};
+var _hoisted_17 = {
+  key: 0,
+  "class": "md:mx-4"
+};
+var _hoisted_18 = ["onClick"];
 var _hoisted_19 = {
+  key: 1,
+  "class": "md:mx-4"
+};
+var _hoisted_20 = {
+  "class": "top-0 outclick z-40 absolute w-full h-screen menu bg-black bg-opacity-25 hidden md:flex"
+};
+var _hoisted_21 = {
   "class": "flex",
   id: "menu"
 };
-var _hoisted_20 = {
+var _hoisted_22 = {
   "class": "w-80 h-screen border bg-white"
 };
-var _hoisted_21 = {
+var _hoisted_23 = {
   "class": "w-full py-10 flex items-center mx-auto"
 };
 
-var _hoisted_22 = /*#__PURE__*/_withScopeId(function () {
+var _hoisted_24 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
     "fill-rule": "evenodd",
     d: "M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z",
@@ -34066,9 +34072,9 @@ var _hoisted_22 = /*#__PURE__*/_withScopeId(function () {
   );
 });
 
-var _hoisted_23 = [_hoisted_22];
+var _hoisted_25 = [_hoisted_24];
 
-var _hoisted_24 = /*#__PURE__*/_withScopeId(function () {
+var _hoisted_26 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
     src: "/images/logo.svg",
     alt: "logo",
@@ -34078,22 +34084,22 @@ var _hoisted_24 = /*#__PURE__*/_withScopeId(function () {
   );
 });
 
-var _hoisted_25 = {
-  "class": "space-y-6 md:flex-row mx-20 md:mt-0 md:text-sm md:font-medium items-center"
-};
-var _hoisted_26 = ["onMouseenter"];
 var _hoisted_27 = {
+  "class": "space-y-6 md:flex-row md:mt-0 md:text-sm md:font-medium items-center"
+};
+var _hoisted_28 = ["onMouseenter"];
+var _hoisted_29 = {
   key: 0,
   "class": "w-64 md:w-64 h-screen border bg-white"
 };
-var _hoisted_28 = {
+var _hoisted_30 = {
   "class": "w-full py-10 text-center text-xl font-bold"
 };
-var _hoisted_29 = {
+var _hoisted_31 = {
   "class": "space-y-4 md:flex-row mx-6 md:mt-0 md:text-sm md:font-medium items-center"
 };
-var _hoisted_30 = ["onMouseenter"];
-var _hoisted_31 = {
+var _hoisted_32 = ["onMouseenter"];
+var _hoisted_33 = {
   key: 0,
   xmlns: "http://www.w3.org/2000/svg",
   "class": "h-5 text-gray-600",
@@ -34103,7 +34109,7 @@ var _hoisted_31 = {
   "stroke-width": "2"
 };
 
-var _hoisted_32 = /*#__PURE__*/_withScopeId(function () {
+var _hoisted_34 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
     "stroke-linecap": "round",
     "stroke-linejoin": "round",
@@ -34113,32 +34119,32 @@ var _hoisted_32 = /*#__PURE__*/_withScopeId(function () {
   );
 });
 
-var _hoisted_33 = [_hoisted_32];
-var _hoisted_34 = {
+var _hoisted_35 = [_hoisted_34];
+var _hoisted_36 = {
   key: 1,
   "class": "w-64 md:w-64 h-screen border bg-white"
 };
-var _hoisted_35 = {
+var _hoisted_37 = {
   "class": "w-full py-10 text-center text-xl font-bold"
 };
-var _hoisted_36 = {
+var _hoisted_38 = {
   "class": "space-y-4 md:flex-row mx-6 md:mt-0 md:text-sm md:font-medium items-center"
 };
-var _hoisted_37 = {
+var _hoisted_39 = {
   "class": "w-full md:w-auto"
 };
-var _hoisted_38 = {
+var _hoisted_40 = {
   id: "mobilemenu",
-  "class": "top-0 z-40 absolute w-full h-screen menu flex bg-black bg-opacity-25 md:hidden"
+  "class": "top-0 outclick z-40 absolute w-full h-screen menu flex bg-opacity-25 md:hidden"
 };
-var _hoisted_39 = {
+var _hoisted_41 = {
   "class": "w-full h-screen border bg-white"
 };
-var _hoisted_40 = {
+var _hoisted_42 = {
   "class": "w-full py-10 flex items-center mx-auto"
 };
 
-var _hoisted_41 = /*#__PURE__*/_withScopeId(function () {
+var _hoisted_43 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
     "fill-rule": "evenodd",
     d: "M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z",
@@ -34148,9 +34154,9 @@ var _hoisted_41 = /*#__PURE__*/_withScopeId(function () {
   );
 });
 
-var _hoisted_42 = [_hoisted_41];
+var _hoisted_44 = [_hoisted_43];
 
-var _hoisted_43 = /*#__PURE__*/_withScopeId(function () {
+var _hoisted_45 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
     src: "/images/logo.svg",
     alt: "logo",
@@ -34160,19 +34166,18 @@ var _hoisted_43 = /*#__PURE__*/_withScopeId(function () {
   );
 });
 
-var _hoisted_44 = {
+var _hoisted_46 = {
   "class": "space-y-6 md:flex-row mx-20 md:mt-0 md:text-sm md:font-medium items-center"
 };
-var _hoisted_45 = ["onClick"];
-var _hoisted_46 = {
-  key: 0,
+var _hoisted_47 = ["onClick"];
+var _hoisted_48 = {
   "class": "w-full md:w-64 h-screen border bg-white z-20 absolute md:static"
 };
-var _hoisted_47 = {
-  "class": "flex w-full justify-between mt-4"
+var _hoisted_49 = {
+  "class": "flex w-full justify-between mt-4 px-4"
 };
 
-var _hoisted_48 = /*#__PURE__*/_withScopeId(function () {
+var _hoisted_50 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
     "stroke-linecap": "round",
     "stroke-linejoin": "round",
@@ -34182,9 +34187,9 @@ var _hoisted_48 = /*#__PURE__*/_withScopeId(function () {
   );
 });
 
-var _hoisted_49 = [_hoisted_48];
+var _hoisted_51 = [_hoisted_50];
 
-var _hoisted_50 = /*#__PURE__*/_withScopeId(function () {
+var _hoisted_52 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
     "fill-rule": "evenodd",
     d: "M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z",
@@ -34194,15 +34199,15 @@ var _hoisted_50 = /*#__PURE__*/_withScopeId(function () {
   );
 });
 
-var _hoisted_51 = [_hoisted_50];
-var _hoisted_52 = {
+var _hoisted_53 = [_hoisted_52];
+var _hoisted_54 = {
   "class": "w-full py-10 text-center text-xl font-bold"
 };
-var _hoisted_53 = {
+var _hoisted_55 = {
   "class": "space-y-4 md:flex-row mx-6 md:mt-0 md:text-sm md:font-medium items-center"
 };
-var _hoisted_54 = ["onClick"];
-var _hoisted_55 = {
+var _hoisted_56 = ["onClick"];
+var _hoisted_57 = {
   key: 0,
   xmlns: "http://www.w3.org/2000/svg",
   "class": "h-4 text-gray-600",
@@ -34212,7 +34217,7 @@ var _hoisted_55 = {
   "stroke-width": "2"
 };
 
-var _hoisted_56 = /*#__PURE__*/_withScopeId(function () {
+var _hoisted_58 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
     "stroke-linecap": "round",
     "stroke-linejoin": "round",
@@ -34222,16 +34227,15 @@ var _hoisted_56 = /*#__PURE__*/_withScopeId(function () {
   );
 });
 
-var _hoisted_57 = [_hoisted_56];
-var _hoisted_58 = {
-  key: 1,
+var _hoisted_59 = [_hoisted_58];
+var _hoisted_60 = {
   "class": "w-full md:w-64 h-screen border bg-white z-30 absolute md:static"
 };
-var _hoisted_59 = {
-  "class": "flex w-full justify-between mt-4"
+var _hoisted_61 = {
+  "class": "flex w-full justify-between mt-4 px-4"
 };
 
-var _hoisted_60 = /*#__PURE__*/_withScopeId(function () {
+var _hoisted_62 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
     "stroke-linecap": "round",
     "stroke-linejoin": "round",
@@ -34241,9 +34245,9 @@ var _hoisted_60 = /*#__PURE__*/_withScopeId(function () {
   );
 });
 
-var _hoisted_61 = [_hoisted_60];
+var _hoisted_63 = [_hoisted_62];
 
-var _hoisted_62 = /*#__PURE__*/_withScopeId(function () {
+var _hoisted_64 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
     "fill-rule": "evenodd",
     d: "M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z",
@@ -34253,27 +34257,25 @@ var _hoisted_62 = /*#__PURE__*/_withScopeId(function () {
   );
 });
 
-var _hoisted_63 = [_hoisted_62];
-var _hoisted_64 = {
+var _hoisted_65 = [_hoisted_64];
+var _hoisted_66 = {
   "class": "w-full py-10 text-center text-xl font-bold"
 };
-var _hoisted_65 = {
+var _hoisted_67 = {
   "class": "space-y-4 md:flex-row mx-6 md:mt-0 md:text-sm md:font-medium items-center"
 };
-var _hoisted_66 = {
+var _hoisted_68 = {
   "class": "w-full md:w-auto"
 };
-var _hoisted_67 = {
-  "class": "block text-sm py-2 pr-4 pl-3 text-black border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:tour-blue md:p-0"
-};
+var _hoisted_69 = ["onClick"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
 
   var _component_bread_crumb = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("bread-crumb");
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("svg", {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" first navbar "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("svg", {
     xmlns: "http://www.w3.org/2000/svg",
-    "class": "h-6 text-gray-700 hover:text-black cursor-pointer",
+    "class": "h-6 text-gray-600 hover:text-black cursor-pointer",
     viewBox: "0 0 20 20",
     fill: "currentColor",
     onClick: _cache[0] || (_cache[0] = function ($event) {
@@ -34281,7 +34283,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     })
   }, _hoisted_5)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: "/",
-    "class": "flex items-center"
+    "class": "items-center"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [_hoisted_6];
@@ -34289,25 +34291,26 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     _: 1
     /* STABLE */
 
-  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("nav", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"flex justify-between lg:justify-start w-full md:w-auto\">\n                        </div> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["absolute md:static w-full md:block md:w-auto left-0 right-0 z-20", _ctx.mobileMinueClass]),
-    style: {
-      "top": "8rem"
-    },
-    id: "mobile-menu"
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_10, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.menu, function (item, i) {
-    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", _hoisted_11, [item.only_sidebar == false && item.is_link == false ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    onClick: _cache[1] || (_cache[1] = function ($event) {
+      return $setup.switchLanguage();
+    }),
+    "class": "bg-white text-xs border px-2 py-1 md:py-1 rounded shadow-md hover:shadow-sm duration-700 h-8"
+  }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.lang == 'ar' ? 'English' : 'العربية'), 1
+  /* TEXT */
+  ), _hoisted_9])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" second navbar "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("nav", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_15, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.menu, function (item, i) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", _hoisted_16, [item.only_sidebar == false && item.is_link == false ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
       onClick: function onClick($event) {
         return $setup.showMenu(item.id);
       },
-      "class": "peer py-2 pr-4 pl-3 font-bold text-xl text-gray-800 border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:tour-blue md:p-0"
+      "class": "peer pr-4 pl-3 font-bold text-xl text-gray-800 border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-400 md:p-0"
     }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item['name_' + $setup.lang]), 9
     /* TEXT, PROPS */
-    , _hoisted_13)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), item.is_link == true ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+    , _hoisted_18)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), item.is_link == true ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
       to: {
         name: item.slug
       },
-      "class": "peer py-2 pr-4 pl-3 font-bold text-xl text-gray-800 border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:tour-blue md:p-0"
+      "class": "peer pr-4 pl-3 font-bold text-xl text-gray-800 border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-400 md:p-0"
     }, {
       "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
         return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item['name_' + $setup.lang]), 1
@@ -34322,42 +34325,33 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     , ["to"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]);
   }), 256
   /* UNKEYED_FRAGMENT */
-  ))])], 2
-  /* CLASS */
-  )])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-    onClick: _cache[1] || (_cache[1] = function ($event) {
-      return $setup.switchLanguage();
-    }),
-    "class": "bg-white text-xs border px-2 py-1 md:py-1 rounded shadow-md hover:shadow-sm duration-700 h-8"
-  }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.lang == 'ar' ? 'English' : 'العربية'), 1
-  /* TEXT */
-  ), _hoisted_17])])]), $setup.url.path !== '/' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_bread_crumb, {
+  ))])])])])])]), $setup.url.path !== '/' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_bread_crumb, {
     key: 0
-  })) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_21, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("svg", {
+  })) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Desktop Side bar "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_21, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" first layer "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_23, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("svg", {
     xmlns: "http://www.w3.org/2000/svg",
     "class": "h-5 w-5 text-gray-400 mx-5 hover:text-gray-500 cursor-pointer",
     onClick: $setup.closeMenu,
     viewBox: "0 0 20 20",
     fill: "currentColor"
-  }, _hoisted_23)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+  }, _hoisted_25)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: "/",
     "class": "flex items-center justify-center"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_24];
+      return [_hoisted_26];
     }),
     _: 1
     /* STABLE */
 
-  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_25, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.menu, function (item, i) {
+  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_27, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.menu, function (item, i) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", {
       "class": "w-full md:w-auto",
       onMouseenter: function onMouseenter($event) {
-        return item.is_link ? '' : $setup.setSubmenu(i);
+        return $setup.setSubmenu(i);
       }
     }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
       to: '/' + item.slug,
-      "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([$setup.menu_path_by_id.menu == i ? 'tour-blue' : '', "block font-semibold text-2xl py-2 pr-4 pl-3 text-black border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:tour-blue md:p-0"])
+      "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([$setup.menu_path_by_id.menu == i ? 'text-blue-400' : 'text-black', "block font-semibold text-2xl py-2 pr-4 pl-3 border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-400 md:p-0"])
     }, {
       "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
         return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item['name_' + $setup.lang]), 1
@@ -34371,12 +34365,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     /* PROPS, DYNAMIC_SLOTS */
     , ["to", "class"])], 40
     /* PROPS, HYDRATE_EVENTS */
-    , _hoisted_26);
+    , _hoisted_28);
   }), 256
   /* UNKEYED_FRAGMENT */
-  ))])]), $setup.submenu.length ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_27, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_28, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$t($setup.menu_title)), 1
+  ))])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" second layer "), $setup.submenu.length ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_29, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_30, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$t($setup.menu_title)), 1
   /* TEXT */
-  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_29, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.submenu, function (item, j) {
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_31, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.submenu, function (item, j) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", {
       "class": "w-full flex justify-between md:w-auto",
       onMouseenter: function onMouseenter($event) {
@@ -34384,7 +34378,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }
     }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
       to: '/' + $setup.menu_slug + '/' + $setup.submenu_slug,
-      "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([$setup.menu_path_by_id.sub_menu == j ? 'tour-blue' : '', "block text-sm py-2 pr-4 pl-3 text-black border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:tour-blue md:p-0"])
+      "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([$setup.menu_path_by_id.sub_menu == j ? 'text-blue-400' : 'text-black', "block text-sm py-2 pr-4 pl-3 border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-400 md:p-0"])
     }, {
       "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
         return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item['name_' + $setup.lang]), 1
@@ -34396,17 +34390,17 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
     }, 1032
     /* PROPS, DYNAMIC_SLOTS */
-    , ["to", "class"]), item.items.length ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("svg", _hoisted_31, _hoisted_33)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 40
+    , ["to", "class"]), item.items.length ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("svg", _hoisted_33, _hoisted_35)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 40
     /* PROPS, HYDRATE_EVENTS */
-    , _hoisted_30);
+    , _hoisted_32);
   }), 256
   /* UNKEYED_FRAGMENT */
-  ))])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $setup.submenu_title.length ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_34, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_35, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.submenu_title), 1
+  ))])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" third layer "), $setup.submenu_title.length ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_36, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_37, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.submenu_title), 1
   /* TEXT */
-  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_36, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.subsubmenu['items'], function (item, i) {
-    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", _hoisted_37, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_38, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.subsubmenu['items'], function (item, i) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", _hoisted_39, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
       to: '/' + $setup.menu_slug + '/' + $setup.submenu_slug + '/' + item['slug'],
-      "class": "block text-sm py-2 pr-4 pl-3 text-black border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:tour-blue md:p-0"
+      "class": "block text-sm py-2 pr-4 pl-3 text-gray-700 border-gray-100 md:border-0 hover:text-blue-400 md:p-0"
     }, {
       "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
         return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item['name_' + $setup.lang]), 1
@@ -34423,93 +34417,109 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* UNKEYED_FRAGMENT */
   ))])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])], 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $setup.is_menu]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Mobile Side bar "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_38, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_39, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_40, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("svg", {
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $setup.is_menu]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Mobile Side bar "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_40, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" first layer "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_41, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_42, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("svg", {
     xmlns: "http://www.w3.org/2000/svg",
     "class": "h-5 w-5 text-gray-400 mx-5 hover:text-gray-500 cursor-pointer",
     onClick: $setup.closeMenu,
     viewBox: "0 0 20 20",
     fill: "currentColor"
-  }, _hoisted_42)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+  }, _hoisted_44)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: "/",
     "class": "flex items-center justify-center"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_43];
+      return [_hoisted_45];
     }),
     _: 1
     /* STABLE */
 
-  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_44, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.menu, function (item, i) {
+  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_46, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.menu, function (item, i) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", {
       "class": "w-full md:w-auto",
       onClick: function onClick($event) {
-        return $setup.setSubmenu(i);
+        return item['items'].length > 0 ? $setup.setSubmenu(i) : ($setup.router.push({
+          path: "/".concat(item.slug)
+        }), $setup.closeMenu());
       }
     }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-      "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([$setup.menu_path_by_id.menu == i ? 'tour-blue' : '', "block font-semibold text-xl py-2 pr-4 pl-3 text-black border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:tour-blue md:p-0"])
+      "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([$setup.menu_path_by_id.menu == i ? 'text-blue-400' : '', "block font-semibold text-xl py-2 pr-4 pl-3 text-black border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-400 md:p-0"])
     }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item['name_' + $setup.lang]), 3
     /* TEXT, CLASS */
     )], 8
     /* PROPS */
-    , _hoisted_45);
+    , _hoisted_47);
   }), 256
   /* UNKEYED_FRAGMENT */
-  ))])]), $setup.submenu.length ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_46, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_47, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("svg", {
+  ))])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" second layer "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_48, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_49, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("svg", {
     xmlns: "http://www.w3.org/2000/svg",
-    "class": "h-6 text-gray-400 mx-2 hover:text-gray-500 cursor-pointer",
+    "class": "h-6 text-gray-400 hover:text-gray-500 cursor-pointer",
     onClick: $setup.closeSubmenue,
     fill: "none",
     viewBox: "0 0 24 24",
     stroke: "currentColor",
     "stroke-width": "2"
-  }, _hoisted_49)), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("svg", {
+  }, _hoisted_51)), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("svg", {
     xmlns: "http://www.w3.org/2000/svg",
-    "class": "h-6 w-6 text-gray-400 mx-5 hover:text-gray-500 cursor-pointer",
+    "class": "h-6 text-gray-400 hover:text-gray-500 cursor-pointer",
     onClick: $setup.closeMenu,
     viewBox: "0 0 20 20",
     fill: "currentColor"
-  }, _hoisted_51))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_52, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$t($setup.menu_title)), 1
+  }, _hoisted_53))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_54, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$t($setup.menu_title)), 1
   /* TEXT */
-  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_53, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.submenu, function (item, j) {
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_55, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.submenu, function (item, j) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", {
       "class": "w-full flex justify-between items-center md:w-auto",
       onClick: function onClick($event) {
-        return $setup.setSubSubMenu(j);
+        return item['items'].length > 0 ? $setup.setSubSubMenu(j) : ($setup.router.push({
+          path: "/".concat($setup.menu_slug, "/").concat(item.slug)
+        }), $setup.closeMenu());
       }
     }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-      "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([$setup.menu_path_by_id.sub_menu == j ? 'tour-blue' : '', "block text-sm py-2 pr-4 pl-3 text-black border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:tour-blue md:p-0"])
+      "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([$setup.menu_path_by_id.sub_menu == j ? 'text-blue-400' : '', "block text-sm py-2 pr-4 pl-3 text-black border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-400 md:p-0"])
     }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item['name_' + $setup.lang]), 3
     /* TEXT, CLASS */
-    ), item.items.length ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("svg", _hoisted_55, _hoisted_57)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 8
+    ), item.items.length ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("svg", _hoisted_57, _hoisted_59)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 8
     /* PROPS */
-    , _hoisted_54);
+    , _hoisted_56);
   }), 256
   /* UNKEYED_FRAGMENT */
-  ))])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $setup.subsubmenu.length ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_58, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_59, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("svg", {
+  ))])], 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $setup.submenu.length]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" third layer "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_60, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_61, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("svg", {
     xmlns: "http://www.w3.org/2000/svg",
-    "class": "h-6 text-gray-400 mx-2 hover:text-gray-500 cursor-pointer",
+    "class": "h-6 text-gray-400 hover:text-gray-500 cursor-pointer",
     onClick: _cache[2] || (_cache[2] = function ($event) {
-      return $setup.subsubmenu = [];
+      return $setup.submenu_title = '';
     }),
     fill: "none",
     viewBox: "0 0 24 24",
     stroke: "currentColor",
     "stroke-width": "2"
-  }, _hoisted_61)), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("svg", {
+  }, _hoisted_63)), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("svg", {
     xmlns: "http://www.w3.org/2000/svg",
-    "class": "h-6 w-6 text-gray-400 mx-5 hover:text-gray-500 cursor-pointer",
+    "class": "h-6 text-gray-400 hover:text-gray-500 cursor-pointer",
     onClick: $setup.closeMenu,
     viewBox: "0 0 20 20",
     fill: "currentColor"
-  }, _hoisted_63))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_64, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.submenu_title), 1
+  }, _hoisted_65))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_66, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.submenu_title), 1
   /* TEXT */
-  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_65, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.subsubmenu, function (item, i) {
-    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", _hoisted_66, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", _hoisted_67, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$t(item)), 1
-    /* TEXT */
-    )]);
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_67, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.subsubmenu['items'], function (item, i) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", _hoisted_68, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+      onClick: function onClick() {
+        $setup.router.push({
+          path: "/".concat($setup.menu_slug, "/").concat($setup.submenu_slug, "/").concat(item.slug)
+        });
+        $setup.closeMenu();
+      },
+      "class": "block text-sm py-2 pr-4 pl-3 text-black border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-400 md:p-0"
+    }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item['name_' + $setup.lang]), 9
+    /* TEXT, PROPS */
+    , _hoisted_69)]);
   }), 256
   /* UNKEYED_FRAGMENT */
-  ))])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 512
+  ))])], 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $setup.submenu_title.length]])], 512
   /* NEED_PATCH */
   ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $setup.mobile_menu]])]);
 }
@@ -36566,6 +36576,10 @@ var routes = [{
 }, {
   path: "/hotels-and-resorts",
   name: "hotels-and-resorts",
+  component: _pages_frontend_CommingSoon__WEBPACK_IMPORTED_MODULE_17__["default"]
+}, {
+  path: "/:pathMatch(.*)*",
+  name: "404",
   component: _pages_frontend_CommingSoon__WEBPACK_IMPORTED_MODULE_17__["default"]
 }];
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,vue_router__WEBPACK_IMPORTED_MODULE_25__.createRouter)({
@@ -38770,7 +38784,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.ql-align-center {\n    text-align: center;\n}\n.ql-image {\n    margin-left: auto;\n    margin-right: auto;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.ql-align-center {\r\n    text-align: center;\n}\n.ql-image {\r\n    margin-left: auto;\r\n    margin-right: auto;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -83843,7 +83857,7 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"hello":"مرحبا ايها العالم","hello2":"مرحبا ايها العالم 2","home":"الرئيسية","destinations":"الوجهات","packages":"برامج سياحية","tours":"جولات سياحية","activities":"انشطة","transfer":"تنقل","hero-header":"الأفضل في العالم في انتظارك.","hero-description":"اكتشف تجارب واقعية استثنائية برعاية خبراء. احصل على خصومات اللحظة الأخيرة ووفر مع استرداد النقود وغير ذلك الكثير.","search_all_experiences_and_destinations":"ابحث في جميع التجارب والوجهات","search":"بحث","airport_transfer":"نقل من المطار","private_car":"سيارة مع سائق","header":"جولة مرتفعات ايدر","start_from":"تبدأ من : 50 $","reservation":"احجز رحلتك على الفور","your_name":"الاسم :","your_phone":"رقم الجوال :","guests":"المسافرون","antalya":"رحلة أرض الاساطير أنطاليا","antalya_desc":"رحلة سياحية ليوم واحد الى ارض الاساطير للاستمتاع بأجمل الاوقات وممارسة النشاطات الممتعة والمتنوعة في...","setoff":"انطلق معنا","details_of_trip":"تفاصيل الرحلة","details":"شركة سفرك السياحية تقدم لعملائها الكرام جولة ممتعة في مرتفعات آيدر الشهيرة، والتي تعد بالكثير من المفاجآت، مثل: الحمامات الصحية والمياه المعدنية والكبريتية، كما تشتهر المنطقة بالوجبات اللذيذة، وببيوتها الخشبية الجذابة والجبال الشاهقة التي يصل ارتفاعها إلى 1350 متراً، حيث يلقب البعض قرية آيدر بقرية جبال الألب التركية بسبب روعتها وجمالها، لتستمتعوا برحلة جميلة شاملة لوجبة الغداء والمواصلات والمرشد السياحي.","pictures_and_videos":"الصور والفيديوهات","detail1":"الإفطار والتوجه (مع جروب جماعي) إلى هضبة ايدر","detail2":"الاستمتاع بمغامرة التجديف و القفز بين ضفتي النهر","detail3":"و من ثم التوجه الى الشلالات و الحمامات الكبريتية","what_expected":"ماذا تتوقع؟","includes":"الرحلة تشمل","include1":"المواصلات","include2":"مرشد سياحي","excludes":"الرحلة لا تشمل","exclude1":"التسوق والمشتريات","terms_and_policy":"الشروط والأحكام","term1":"تبدأ الرحلة الساعة 09:30 ص","term2":"تنتهي الرحلة الساعة 06:00 م","term3":"الرحلة يوميّة مع غروب سياحي","child":"طفل","adults":"بالغ","required":"حقل الزامي","turkiye":"تركيا","trabzon":" ترابزون","istanbul":"استنبول ","select_destination":"حدد دولة أو مدينة لاستكشافها","uae":"الامارات العربية المتحدة","all-destinations":"جميع الوجهات","all-categories":"جميع الفئات","categories":"الفئات","blogs":"المدونة","test":"تجريبي"}');
+module.exports = JSON.parse('{"hello":"مرحبا ايها العالم","hello2":"مرحبا ايها العالم 2","home":"الرئيسية","destinations":"الوجهات","Destinations":"الوجهات","packages":"برامج سياحية","tours":"جولات سياحية","activities":"انشطة","transfer":"تنقل","hero-header":"الأفضل في العالم في انتظارك.","hero-description":"اكتشف تجارب واقعية استثنائية برعاية خبراء. احصل على خصومات اللحظة الأخيرة ووفر مع استرداد النقود وغير ذلك الكثير.","search_all_experiences_and_destinations":"ابحث في جميع التجارب والوجهات","search":"بحث","airport_transfer":"نقل من المطار","private_car":"سيارة مع سائق","header":"جولة مرتفعات ايدر","start_from":"تبدأ من : 50 $","reservation":"احجز رحلتك على الفور","your_name":"الاسم :","your_phone":"رقم الجوال :","guests":"المسافرون","antalya":"رحلة أرض الاساطير أنطاليا","antalya_desc":"رحلة سياحية ليوم واحد الى ارض الاساطير للاستمتاع بأجمل الاوقات وممارسة النشاطات الممتعة والمتنوعة في...","setoff":"انطلق معنا","details_of_trip":"تفاصيل الرحلة","details":"شركة سفرك السياحية تقدم لعملائها الكرام جولة ممتعة في مرتفعات آيدر الشهيرة، والتي تعد بالكثير من المفاجآت، مثل: الحمامات الصحية والمياه المعدنية والكبريتية، كما تشتهر المنطقة بالوجبات اللذيذة، وببيوتها الخشبية الجذابة والجبال الشاهقة التي يصل ارتفاعها إلى 1350 متراً، حيث يلقب البعض قرية آيدر بقرية جبال الألب التركية بسبب روعتها وجمالها، لتستمتعوا برحلة جميلة شاملة لوجبة الغداء والمواصلات والمرشد السياحي.","pictures_and_videos":"الصور والفيديوهات","detail1":"الإفطار والتوجه (مع جروب جماعي) إلى هضبة ايدر","detail2":"الاستمتاع بمغامرة التجديف و القفز بين ضفتي النهر","detail3":"و من ثم التوجه الى الشلالات و الحمامات الكبريتية","what_expected":"ماذا تتوقع؟","includes":"الرحلة تشمل","include1":"المواصلات","include2":"مرشد سياحي","excludes":"الرحلة لا تشمل","exclude1":"التسوق والمشتريات","terms_and_policy":"الشروط والأحكام","term1":"تبدأ الرحلة الساعة 09:30 ص","term2":"تنتهي الرحلة الساعة 06:00 م","term3":"الرحلة يوميّة مع غروب سياحي","child":"طفل","adults":"بالغ","required":"حقل الزامي","turkiye":"تركيا","trabzon":" ترابزون","istanbul":"استنبول ","select_destination":"حدد دولة أو مدينة لاستكشافها","uae":"الامارات العربية المتحدة","all-destinations":"جميع الوجهات","all-categories":"جميع الفئات","categories":"الفئات","blogs":"المدونة","test":"تجريبي"}');
 
 /***/ }),
 
@@ -83854,7 +83868,7 @@ module.exports = JSON.parse('{"hello":"مرحبا ايها العالم","hello2
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"hello":"Hello World p","hello2":"Hello World 2","home":"Home","destinations":"Destinations","packages":"Packages","tours":"Tours","activities":"Activities","transfer":"Transfer","hero-header":"The world\'s best is waiting for you.","hero-description":"Find exceptional real_life experiences curated by experts. Get last minute discounts, save with cashback and much more.","search_all_experiences_and_destinations":"Search all experiences and destinations","search":"Search","airport_transfer":"Airport Transfer","private_car":"Private Car","header":"Ayder Heights Tour","start_from":"START FROM :50 $","reservation":"Reserve Your Trip Immediately","your_name":"Your Name","your_phone":"Your Phone","guests":"Number Guests","antalya":"ANTALYA DIVING TOUR","antalya_desc":"Water Sports Tourism Is Prospering In The City Of Antalya Due To Its Distinctive Views Of Several Se...","setoff":"LET’S SET OFF TOGETHER","details_of_trip":"Details of the trip","details":"We have breakfast then we go to Ayder Heights, where you can enjoy the adventure of jumping rope between the banks of the river and rowing, in addition to mineral baths (sulfur water), and then we go to the waterfalls and enjoy free time to wander until the time to return to the hotel.","pictures_and_videos":"Pictures and Videos","detail1":"Breakfast and heading (with a group) to Ayder plateau","detail2":"Enjoy the adventure of rafting and jumping between the two banks of the river","detail3":"And then we go to the waterfalls and sulfur baths","what_expected":"What are you expecting?","includes":"The trip Includes","include1":"Transportation","include2":"Tourist guide","excludes":"The trip does not include","exclude1":"Shopping and purchases","exclude2":"Enjoy the adventure of rafting and jumping between the two banks of the river","exclude3":"And then we go to the waterfalls and sulfur baths","terms_and_policy":"Terms and Policy","term1":"The tour starts at 09:30 am","term2":"The tour ends at 06:00","term3":"The tour is daily with a tourist group","required":"This Field is required","child":"Child","adults":"Adults","turkiye":"Turkiye","trabzon":"Trabzon","istanbul":"Istanbul","select_destination":"Select a country or a city to explore","uae":"UAE","all-destinations":"All Destinations","all-categories":"All Categories","categories":"Categories","blogs":"Blogs","test":"Test"}');
+module.exports = JSON.parse('{"hello":"Hello World p","hello2":"Hello World 2","home":"Home","destinations":"Destinations","Destinations":"Destinations","packages":"Packages","tours":"Tours","activities":"Activities","transfer":"Transfer","hero-header":"The world\'s best is waiting for you.","hero-description":"Find exceptional real_life experiences curated by experts. Get last minute discounts, save with cashback and much more.","search_all_experiences_and_destinations":"Search all experiences and destinations","search":"Search","airport_transfer":"Airport Transfer","private_car":"Private Car","header":"Ayder Heights Tour","start_from":"START FROM :50 $","reservation":"Reserve Your Trip Immediately","your_name":"Your Name","your_phone":"Your Phone","guests":"Number Guests","antalya":"ANTALYA DIVING TOUR","antalya_desc":"Water Sports Tourism Is Prospering In The City Of Antalya Due To Its Distinctive Views Of Several Se...","setoff":"LET’S SET OFF TOGETHER","details_of_trip":"Details of the trip","details":"We have breakfast then we go to Ayder Heights, where you can enjoy the adventure of jumping rope between the banks of the river and rowing, in addition to mineral baths (sulfur water), and then we go to the waterfalls and enjoy free time to wander until the time to return to the hotel.","pictures_and_videos":"Pictures and Videos","detail1":"Breakfast and heading (with a group) to Ayder plateau","detail2":"Enjoy the adventure of rafting and jumping between the two banks of the river","detail3":"And then we go to the waterfalls and sulfur baths","what_expected":"What are you expecting?","includes":"The trip Includes","include1":"Transportation","include2":"Tourist guide","excludes":"The trip does not include","exclude1":"Shopping and purchases","exclude2":"Enjoy the adventure of rafting and jumping between the two banks of the river","exclude3":"And then we go to the waterfalls and sulfur baths","terms_and_policy":"Terms and Policy","term1":"The tour starts at 09:30 am","term2":"The tour ends at 06:00","term3":"The tour is daily with a tourist group","required":"This Field is required","child":"Child","adults":"Adults","turkiye":"Turkiye","trabzon":"Trabzon","istanbul":"Istanbul","select_destination":"Select a country or a city to explore","uae":"UAE","all-destinations":"All Destinations","all-categories":"All Categories","categories":"Categories","blogs":"Blogs","test":"Test"}');
 
 /***/ })
 
