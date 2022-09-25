@@ -1,69 +1,65 @@
 <template>
     <div class="bg-white  w-full fixed top-0 z-20 " style="font-family: 'Source Sans Pro', sans-serif; !important;">
         <!-- first navbar -->
-        <div class="flex outclick justify-between h-16 px-3 md:px-0   max-w-6xl mx-auto ">
-            <div class="flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 text-gray-600 hover:text-black cursor-pointer"
-                    viewBox="0 0 20 20" fill="currentColor" @click="showMenu(-1)">
-                    <path fill-rule="evenodd"
-                        d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-                        clip-rule="evenodd" />
-                </svg>
-                <router-link to="/" class=" items-center">
-                    <img src="/images/logo.svg" alt="logo" class="h-6 ">
-                </router-link>
-            </div>
-            <div class=" w-36 my-auto">
-                <div class="flex justify-end items-center">
-                    <button @click="switchLanguage()"
-                        class="bg-white text-xs border px-2   py-1 md:py-1 rounded  shadow-md hover:shadow-sm duration-700 h-8 ">
-                        {{ lang == 'ar' ? 'English' : 'العربية' }}
-                    </button>
-                    <select name="curr" id="curr"
-                        class="bg-white text-xs border w-20 m-1 md:m-0 py-1 md:py-1 rounded  shadow-md hover:shadow-sm duration-700 h-8 ">
-                        <option value="USD">USD</option>
-                        <option value="aed">AED</option>
-                    </select>
+        <div id="navbar">
+
+            <div class="flex outclick justify-between h-16 px-3 md:px-0   max-w-6xl mx-auto ">
+                <div class="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 text-gray-600 hover:text-black cursor-pointer"
+                        viewBox="0 0 20 20" fill="currentColor" @click="showMenu(-1)">
+                        <path fill-rule="evenodd"
+                            d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                            clip-rule="evenodd" />
+                    </svg>
+                    <router-link to="/" class=" items-center">
+                        <img src="/images/logo.svg" alt="logo" class="h-6 ">
+                    </router-link>
+                </div>
+                <div class=" w-36 my-auto">
+                    <div class="flex justify-end items-center">
+                        <button @click="switchLanguage()"
+                            class="bg-white text-xs border px-2   py-1 md:py-1 rounded  shadow-md hover:shadow-sm duration-700 h-8 ">
+                            {{ lang == 'ar' ? 'English' : 'العربية' }}
+                        </button>
+                        <select name="curr" id="curr"
+                            class="bg-white text-xs border w-20 m-1 md:m-0 py-1 md:py-1 rounded  shadow-md hover:shadow-sm duration-700 h-8 ">
+                            <option value="USD">USD</option>
+                            <option value="aed">AED</option>
+                        </select>
+                    </div>
                 </div>
             </div>
-        </div>
-        <!-- second navbar -->
-        <div id="navbar" class="flex justify-between  px-3 md:px-0 w-full max-w-6xl mx-auto">
-            <div class="hidden lg:block w-full">
-                <nav class=" border-gray-200 sm:px-4   rounded   w-full hidden lg:block">
-                    <div class=" flex items-center justify-center">
-
-                        <div class=" absolute md:static w-full md:block md:w-auto left-0 right-0  z-20"
-                            style="top:8rem ;" id="mobile-menu">
-                            <ul
-                                class=" flex flex-col mx-auto my-auto md:flex-row  md:mt-0 md:text-sm md:font-medium items-center">
-
-
-                                <li class="w-full md:w-auto text-center  " v-for="(item, i) in menu">
-                                    <div v-if="item.only_sidebar == false&&item.is_link==false" class="md:mx-4">
-                                        <button @click="showMenu(item.id)"
-                                            class="peer pr-4 pl-3 font-bold text-xl text-gray-800  border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-400 md:p-0">
-                                            {{
-                                            item['name_'+lang]
-                                            }}</button>
-
-                                    </div>
-                                    <div v-if="item.is_link==true" class="md:mx-4">
-                                        <router-link :to="{name:item.slug}"
-                                            class="peer   pr-4 pl-3 font-bold text-xl text-gray-800  border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-400 md:p-0">
-                                            {{
-                                            item['name_'+lang]
-                                            }}</router-link>
-
-                                    </div>
-                                </li>
-
-                            </ul>
+            <!-- second navbar -->
+            <div class="flex justify-between  px-3 md:px-0 w-full max-w-6xl mx-auto">
+                <div class="hidden lg:block w-full">
+                    <nav class=" border-gray-200 sm:px-4   rounded   w-full hidden lg:block">
+                        <div class=" flex items-center justify-center">
+                            <div class=" absolute md:static w-full md:block md:w-auto left-0 right-0  z-20"
+                                style="top:8rem ;" id="mobile-menu">
+                                <ul
+                                    class=" flex flex-col mx-auto my-auto md:flex-row  md:mt-0 md:text-sm md:font-medium items-center">
+                                    <li class="w-full md:w-auto text-center  " v-for="(item, i) in menu">
+                                        <div v-if="item.only_sidebar == false&&item.is_link==false" class="md:mx-4">
+                                            <button @click="showMenu(item.id)"
+                                                class="peer pr-4 pl-3 font-bold text-xl text-gray-800  border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-400 md:p-0">
+                                                {{
+                                                item['name_'+lang]
+                                                }}</button>
+                                        </div>
+                                        <div v-if="item.is_link==true" class="md:mx-4">
+                                            <router-link :to="{name:item.slug}"
+                                                class="peer   pr-4 pl-3 font-bold text-xl text-gray-800  border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-400 md:p-0">
+                                                {{
+                                                item['name_'+lang]
+                                                }}</router-link>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                </nav>
+                    </nav>
+                </div>
             </div>
-
         </div>
 
         <bread-crumb v-if="url.path !== '/'" />
