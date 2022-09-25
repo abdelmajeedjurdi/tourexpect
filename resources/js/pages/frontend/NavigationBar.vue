@@ -1,7 +1,7 @@
 <template>
     <div class="bg-white  w-full fixed top-0 z-20 " style="font-family: 'Source Sans Pro', sans-serif; !important;">
         <!-- first navbar -->
-        <div id="navbar" class="flex outclick justify-between h-16 px-3 md:px-0   max-w-6xl mx-auto ">
+        <div class="flex outclick justify-between h-16 px-3 md:px-0   max-w-6xl mx-auto ">
             <div class="flex items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 text-gray-600 hover:text-black cursor-pointer"
                     viewBox="0 0 20 20" fill="currentColor" @click="showMenu(-1)">
@@ -28,7 +28,7 @@
             </div>
         </div>
         <!-- second navbar -->
-        <div class="flex justify-between  px-3 md:px-0 w-full max-w-6xl mx-auto">
+        <div id="navbar" class="flex justify-between  px-3 md:px-0 w-full max-w-6xl mx-auto">
             <div class="hidden lg:block w-full">
                 <nav class=" border-gray-200 sm:px-4   rounded   w-full hidden lg:block">
                     <div class=" flex items-center justify-center">
@@ -88,7 +88,7 @@
 
                     <ul class=" space-y-6 md:flex-row md:mt-0 md:text-sm md:font-medium items-center">
                         <li class="w-full md:w-auto" v-for="(item, i) in menu" @mouseenter="setSubmenu(i)">
-                            <router-link :to="'/' + item.slug"
+                            <router-link :to="'/' + item.slug" @click="closeMenu"
                                 :class="menu_path_by_id.menu == i ? 'text-blue-400' : 'text-black'"
                                 class="block font-semibold text-2xl py-2 pr-4 pl-3   border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-400 md:p-0">
                                 {{ item['name_'+lang] }}
@@ -105,7 +105,7 @@
                     <ul class=" space-y-4 md:flex-row mx-6 md:mt-0 md:text-sm md:font-medium items-center">
                         <li class="w-full flex justify-between md:w-auto" v-for="(item, j) in submenu"
                             @mouseenter="setSubSubMenu(j)">
-                            <router-link :to="'/' + menu_slug + '/'+submenu_slug "
+                            <router-link :to="'/' + menu_slug + '/'+submenu_slug " @click="closeMenu"
                                 :class="menu_path_by_id.sub_menu == j ? 'text-blue-400' : 'text-black'"
                                 class="block   text-sm py-2 pr-4 pl-3  border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-400 md:p-0">
                                 {{ item['name_'+lang] }}
@@ -126,6 +126,7 @@
                     <ul class=" space-y-4 md:flex-row mx-6 md:mt-0 md:text-sm md:font-medium items-center">
                         <li class="w-full md:w-auto" v-for="(item, i) in subsubmenu['items']">
                             <router-link :to="'/' + menu_slug + '/' + submenu_slug + '/' + item['slug']"
+                                @click="closeMenu"
                                 class="block   text-sm py-2 pr-4 pl-3 text-gray-700 border-gray-100 md:border-0 hover:text-blue-400 md:p-0">
                                 {{ item['name_'+lang] }}
                             </router-link>

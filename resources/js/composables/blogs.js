@@ -34,6 +34,12 @@ export default function useBlogs() {
         blog.value.content_en = JSON.parse(blog.value.content_en)
         blog.value.content_ar = JSON.parse(blog.value.content_ar)
     };
+    const getSingleBlog = async (slug) => {
+        let response = await axios.get("/api/single-blog/" + slug);
+        blog.value = response.data.data;
+        blog.value.content_en = JSON.parse(blog.value.content_en)
+        blog.value.content_ar = JSON.parse(blog.value.content_ar)
+    };
     const getBlogDetails = async (slug) => {
         let response = await axios.get("/api/blog/" + slug);
         blog.value = response.data.blog;
@@ -119,7 +125,7 @@ export default function useBlogs() {
         destroyBlog,
         slides,
         getBlogDetails, getFilteredBlogs,
-        tours, pagenation, pages
+        tours, pagenation, pages, getSingleBlog
     };
 
 

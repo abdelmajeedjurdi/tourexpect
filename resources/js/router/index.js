@@ -169,7 +169,7 @@ const routes = [
         component: Blogs,
     },
     {
-        path: "/blogs/:slug/:id",
+        path: "/blogs/:slug",
         name: "blog",
         component: SingleBlog,
         props: true,

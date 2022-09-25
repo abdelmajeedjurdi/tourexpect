@@ -81,6 +81,12 @@ class BlogController extends Controller
     {
         return new BlogResource($blog);
     }
+    public function getSingleBlog($slug)
+    {
+        $blog = BlogResource::collection(Blog::where('slug', $slug)->get())[0];
+        // return new ($blog);
+        return $blog;
+    }
 
     /**
      * Show the form for editing the specified resource.

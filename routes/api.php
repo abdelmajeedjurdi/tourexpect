@@ -44,5 +44,6 @@ Route::post('tour/dublicate/{id}', [TourController::class, 'dublicate']);
 Route::post('blog/dublicate/{id}', [BlogController::class, 'dublicate']);
 Route::get('nav-destination', [GeneralController::class, 'destinations']);
 Route::get('nav-tours', [GeneralController::class, 'tours']);
+Route::get('single-blog/{slug}', [BlogController::class, 'getSingleBlog']);
 
 Route::apiResource('blogs', BlogController::class);

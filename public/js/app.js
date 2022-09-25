@@ -28438,7 +28438,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   __name: 'SingleBlog',
   props: {
-    id: String,
     slug: String
   },
   setup: function setup(__props, _ref) {
@@ -28453,7 +28452,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     var lang = (0,vue__WEBPACK_IMPORTED_MODULE_0__.inject)('lang');
 
     var _useBlogs = (0,_composables_blogs__WEBPACK_IMPORTED_MODULE_1__["default"])(),
-        getBlog = _useBlogs.getBlog,
+        getSingleBlog = _useBlogs.getSingleBlog,
         blog = _useBlogs.blog;
 
     (0,vue__WEBPACK_IMPORTED_MODULE_0__.onMounted)( /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
@@ -28463,7 +28462,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           switch (_context.prev = _context.next) {
             case 0:
               _context.next = 2;
-              return getBlog(props.id);
+              return getSingleBlog(props.slug);
 
             case 2:
               deltaOps = blog.value['content_' + lang]['ops'];
@@ -28484,7 +28483,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       rout: rout,
       lang: lang,
       props: props,
-      getBlog: getBlog,
+      getSingleBlog: getSingleBlog,
       blog: blog,
       inject: vue__WEBPACK_IMPORTED_MODULE_0__.inject,
       onMounted: vue__WEBPACK_IMPORTED_MODULE_0__.onMounted,
@@ -33406,47 +33405,45 @@ var _hoisted_27 = {
 var _hoisted_28 = {
   "class": "inline-flex items-center -space-x-px"
 };
-
-var _hoisted_29 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+var _hoisted_29 = {
   "class": "block py-2 px-3 ml-0 leading-tight text-gray-500 bg-white rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+};
+
+var _hoisted_30 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "sr-only"
-}, "Previous"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
-  "aria-hidden": "true",
-  "class": "w-5 h-5",
-  fill: "currentColor",
-  viewBox: "0 0 20 20",
-  xmlns: "http://www.w3.org/2000/svg"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
+}, "Previous", -1
+/* HOISTED */
+);
+
+var _hoisted_31 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
   "fill-rule": "evenodd",
   d: "M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z",
   "clip-rule": "evenodd"
-})])], -1
+}, null, -1
 /* HOISTED */
 );
 
-var _hoisted_30 = [_hoisted_29];
-var _hoisted_31 = ["onClick"];
-
-var _hoisted_32 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+var _hoisted_32 = [_hoisted_31];
+var _hoisted_33 = ["onClick"];
+var _hoisted_34 = {
   "class": "block py-2 px-3 leading-tight text-gray-500 bg-white rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+};
+
+var _hoisted_35 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "sr-only"
-}, "Next"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
-  "aria-hidden": "true",
-  "class": "w-5 h-5",
-  fill: "currentColor",
-  viewBox: "0 0 20 20",
-  xmlns: "http://www.w3.org/2000/svg"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
+}, "Next", -1
+/* HOISTED */
+);
+
+var _hoisted_36 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
   "fill-rule": "evenodd",
   d: "M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z",
   "clip-rule": "evenodd"
-})])], -1
+}, null, -1
 /* HOISTED */
 );
 
-var _hoisted_33 = [_hoisted_32];
+var _hoisted_37 = [_hoisted_36];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
 
@@ -33537,8 +33534,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       to: {
         name: 'blog',
         params: {
-          slug: blog.slug,
-          id: blog.id
+          slug: blog.slug
         }
       }
     }, {
@@ -33569,7 +33565,16 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $setup.filter.page = $setup.pagenation['meta']['current_page'] - 1;
     }),
     "class": "cursor-pointer"
-  }, _hoisted_30)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.pagenation['meta']['links'], function (link) {
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_29, [_hoisted_30, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("svg", {
+    style: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeStyle)($setup.lang == 'en' ? '' : 'rotate:180deg'),
+    "aria-hidden": "true",
+    "class": "w-5 h-5",
+    fill: "currentColor",
+    viewBox: "0 0 20 20",
+    xmlns: "http://www.w3.org/2000/svg"
+  }, _hoisted_32, 4
+  /* STYLE */
+  ))])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.pagenation['meta']['links'], function (link) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", {
       onClick: function onClick($event) {
         return $setup.filter.page = link.label;
@@ -33582,7 +33587,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     /* TEXT, CLASS */
     )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 8
     /* PROPS */
-    , _hoisted_31);
+    , _hoisted_33);
   }), 256
   /* UNKEYED_FRAGMENT */
   )), $setup.pagenation['meta']['current_page'] != $setup.pagenation['meta']['last_page'] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", {
@@ -33591,7 +33596,16 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $setup.filter.page = $setup.pagenation['meta']['current_page'] + 1;
     }),
     "class": "cursor-pointer"
-  }, _hoisted_33)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end of pagenation ")])]);
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_34, [_hoisted_35, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("svg", {
+    style: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeStyle)($setup.lang == 'en' ? '' : 'rotate:180deg'),
+    "aria-hidden": "true",
+    "class": "w-5 h-5",
+    fill: "currentColor",
+    viewBox: "0 0 20 20",
+    xmlns: "http://www.w3.org/2000/svg"
+  }, _hoisted_37, 4
+  /* STYLE */
+  ))])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end of pagenation ")])]);
 }
 
 /***/ }),
@@ -33964,7 +33978,6 @@ var _hoisted_1 = {
   }
 };
 var _hoisted_2 = {
-  id: "navbar",
   "class": "flex outclick justify-between h-16 px-3 md:px-0 max-w-6xl mx-auto"
 };
 var _hoisted_3 = {
@@ -34015,6 +34028,7 @@ var _hoisted_9 = /*#__PURE__*/_withScopeId(function () {
 });
 
 var _hoisted_10 = {
+  id: "navbar",
   "class": "flex justify-between px-3 md:px-0 w-full max-w-6xl mx-auto"
 };
 var _hoisted_11 = {
@@ -34351,6 +34365,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }
     }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
       to: '/' + item.slug,
+      onClick: $setup.closeMenu,
       "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([$setup.menu_path_by_id.menu == i ? 'text-blue-400' : 'text-black', "block font-semibold text-2xl py-2 pr-4 pl-3 border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-400 md:p-0"])
     }, {
       "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -34378,6 +34393,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }
     }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
       to: '/' + $setup.menu_slug + '/' + $setup.submenu_slug,
+      onClick: $setup.closeMenu,
       "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([$setup.menu_path_by_id.sub_menu == j ? 'text-blue-400' : 'text-black', "block text-sm py-2 pr-4 pl-3 border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-400 md:p-0"])
     }, {
       "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -34400,6 +34416,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_38, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.subsubmenu['items'], function (item, i) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", _hoisted_39, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
       to: '/' + $setup.menu_slug + '/' + $setup.submenu_slug + '/' + item['slug'],
+      onClick: $setup.closeMenu,
       "class": "block text-sm py-2 pr-4 pl-3 text-gray-700 border-gray-100 md:border-0 hover:text-blue-400 md:p-0"
     }, {
       "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -34540,7 +34557,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "bg-white w-full max-w-4xl mx-auto pt-16"
+  "class": "bg-white w-full max-w-4xl mx-auto pt-16 px-4"
 };
 var _hoisted_2 = ["src"];
 var _hoisted_3 = {
@@ -34551,10 +34568,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
     src: '/images/blogs/' + $setup.blog.image,
     alt: "image",
-    "class": "w-full object-cover",
-    style: {
-      "height": "30rem"
-    }
+    "class": "w-full object-cover h-60 md:h-120"
   }, null, 8
   /* PROPS */
   , _hoisted_2), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", _hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.blog['title_' + $setup.lang]), 1
@@ -34887,7 +34901,7 @@ function useBlogs() {
     };
   }();
 
-  var getBlogDetails = /*#__PURE__*/function () {
+  var getSingleBlog = /*#__PURE__*/function () {
     var _ref4 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(slug) {
       var response;
       return _regeneratorRuntime().wrap(function _callee4$(_context4) {
@@ -34895,14 +34909,15 @@ function useBlogs() {
           switch (_context4.prev = _context4.next) {
             case 0:
               _context4.next = 2;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/blog/" + slug);
+              return axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/single-blog/" + slug);
 
             case 2:
               response = _context4.sent;
-              blog.value = response.data.blog;
-              tours.value = response.data.tours;
+              blog.value = response.data.data;
+              blog.value.content_en = JSON.parse(blog.value.content_en);
+              blog.value.content_ar = JSON.parse(blog.value.content_ar);
 
-            case 5:
+            case 6:
             case "end":
               return _context4.stop();
           }
@@ -34910,17 +34925,45 @@ function useBlogs() {
       }, _callee4);
     }));
 
-    return function getBlogDetails(_x4) {
+    return function getSingleBlog(_x4) {
       return _ref4.apply(this, arguments);
     };
   }();
 
-  var storeBlog = /*#__PURE__*/function () {
-    var _ref5 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(data) {
-      var fd;
+  var getBlogDetails = /*#__PURE__*/function () {
+    var _ref5 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(slug) {
+      var response;
       return _regeneratorRuntime().wrap(function _callee5$(_context5) {
         while (1) {
           switch (_context5.prev = _context5.next) {
+            case 0:
+              _context5.next = 2;
+              return axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/blog/" + slug);
+
+            case 2:
+              response = _context5.sent;
+              blog.value = response.data.blog;
+              tours.value = response.data.tours;
+
+            case 5:
+            case "end":
+              return _context5.stop();
+          }
+        }
+      }, _callee5);
+    }));
+
+    return function getBlogDetails(_x5) {
+      return _ref5.apply(this, arguments);
+    };
+  }();
+
+  var storeBlog = /*#__PURE__*/function () {
+    var _ref6 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(data) {
+      var fd;
+      return _regeneratorRuntime().wrap(function _callee6$(_context6) {
+        while (1) {
+          switch (_context6.prev = _context6.next) {
             case 0:
               fd = new FormData();
               fd.append("category_id", data.form.category_id);
@@ -34934,8 +34977,8 @@ function useBlogs() {
               fd.append("blog_img", data.form.image);
               fd.append("image", data.file);
               errors.value = "";
-              _context5.prev = 12;
-              _context5.next = 15;
+              _context6.prev = 12;
+              _context6.next = 15;
               return axios__WEBPACK_IMPORTED_MODULE_1___default().post("/api/blogs", fd, {
                 onUploadProgress: function onUploadProgress(progressEvent) {// uploadPercentage = parseInt(
                   //     Math.round(
@@ -34946,42 +34989,42 @@ function useBlogs() {
               });
 
             case 15:
-              _context5.next = 17;
+              _context6.next = 17;
               return router.push({
                 name: "blogs.index"
               });
 
             case 17:
-              _context5.next = 22;
+              _context6.next = 22;
               break;
 
             case 19:
-              _context5.prev = 19;
-              _context5.t0 = _context5["catch"](12);
+              _context6.prev = 19;
+              _context6.t0 = _context6["catch"](12);
 
-              if (_context5.t0.response.status === 422) {
-                errors.value = _context5.t0.response.data.errors;
+              if (_context6.t0.response.status === 422) {
+                errors.value = _context6.t0.response.data.errors;
               }
 
             case 22:
             case "end":
-              return _context5.stop();
+              return _context6.stop();
           }
         }
-      }, _callee5, null, [[12, 19]]);
+      }, _callee6, null, [[12, 19]]);
     }));
 
-    return function storeBlog(_x5) {
-      return _ref5.apply(this, arguments);
+    return function storeBlog(_x6) {
+      return _ref6.apply(this, arguments);
     };
   }();
 
   var updateBlog = /*#__PURE__*/function () {
-    var _ref6 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(id, data) {
+    var _ref7 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(id, data) {
       var fd;
-      return _regeneratorRuntime().wrap(function _callee6$(_context6) {
+      return _regeneratorRuntime().wrap(function _callee7$(_context7) {
         while (1) {
-          switch (_context6.prev = _context6.next) {
+          switch (_context7.prev = _context7.next) {
             case 0:
               fd = new FormData();
               fd.append("_method", "patch");
@@ -34996,8 +35039,8 @@ function useBlogs() {
               fd.append("blog_img", data.form.image);
               fd.append("new_image", data.file);
               errors.value = "";
-              _context6.prev = 13;
-              _context6.next = 16;
+              _context7.prev = 13;
+              _context7.next = 16;
               return axios__WEBPACK_IMPORTED_MODULE_1___default().post("/api/blogs/" + id, fd, {
                 headers: {
                   "Content-Type": "multipart/form-data"
@@ -35005,66 +35048,44 @@ function useBlogs() {
               });
 
             case 16:
-              _context6.next = 18;
+              _context7.next = 18;
               return router.push({
                 name: "blogs.index"
               });
 
             case 18:
-              _context6.next = 23;
+              _context7.next = 23;
               break;
 
             case 20:
-              _context6.prev = 20;
-              _context6.t0 = _context6["catch"](13);
+              _context7.prev = 20;
+              _context7.t0 = _context7["catch"](13);
 
-              if (_context6.t0.response.status === 422) {
-                errors.value = _context6.t0.response.data.errors;
+              if (_context7.t0.response.status === 422) {
+                errors.value = _context7.t0.response.data.errors;
               }
 
             case 23:
             case "end":
-              return _context6.stop();
-          }
-        }
-      }, _callee6, null, [[13, 20]]);
-    }));
-
-    return function updateBlog(_x6, _x7) {
-      return _ref6.apply(this, arguments);
-    };
-  }();
-
-  var destroyBlog = /*#__PURE__*/function () {
-    var _ref7 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(id) {
-      return _regeneratorRuntime().wrap(function _callee7$(_context7) {
-        while (1) {
-          switch (_context7.prev = _context7.next) {
-            case 0:
-              _context7.next = 2;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default()["delete"]("/api/blogs/" + id);
-
-            case 2:
-            case "end":
               return _context7.stop();
           }
         }
-      }, _callee7);
+      }, _callee7, null, [[13, 20]]);
     }));
 
-    return function destroyBlog(_x8) {
+    return function updateBlog(_x7, _x8) {
       return _ref7.apply(this, arguments);
     };
   }();
 
-  var dublicate = /*#__PURE__*/function () {
+  var destroyBlog = /*#__PURE__*/function () {
     var _ref8 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(id) {
       return _regeneratorRuntime().wrap(function _callee8$(_context8) {
         while (1) {
           switch (_context8.prev = _context8.next) {
             case 0:
               _context8.next = 2;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default().post("/api/blog/dublicate/" + id);
+              return axios__WEBPACK_IMPORTED_MODULE_1___default()["delete"]("/api/blogs/" + id);
 
             case 2:
             case "end":
@@ -35074,8 +35095,30 @@ function useBlogs() {
       }, _callee8);
     }));
 
-    return function dublicate(_x9) {
+    return function destroyBlog(_x9) {
       return _ref8.apply(this, arguments);
+    };
+  }();
+
+  var dublicate = /*#__PURE__*/function () {
+    var _ref9 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9(id) {
+      return _regeneratorRuntime().wrap(function _callee9$(_context9) {
+        while (1) {
+          switch (_context9.prev = _context9.next) {
+            case 0:
+              _context9.next = 2;
+              return axios__WEBPACK_IMPORTED_MODULE_1___default().post("/api/blog/dublicate/" + id);
+
+            case 2:
+            case "end":
+              return _context9.stop();
+          }
+        }
+      }, _callee9);
+    }));
+
+    return function dublicate(_x10) {
+      return _ref9.apply(this, arguments);
     };
   }();
 
@@ -35094,7 +35137,8 @@ function useBlogs() {
     getFilteredBlogs: getFilteredBlogs,
     tours: tours,
     pagenation: pagenation,
-    pages: pages
+    pages: pages,
+    getSingleBlog: getSingleBlog
   };
 }
 
@@ -36557,7 +36601,7 @@ var routes = [{
   name: "blogs",
   component: _pages_frontend_Blogs__WEBPACK_IMPORTED_MODULE_20__["default"]
 }, {
-  path: "/blogs/:slug/:id",
+  path: "/blogs/:slug",
   name: "blog",
   component: _pages_frontend_SingleBlog__WEBPACK_IMPORTED_MODULE_24__["default"],
   props: true
@@ -38784,7 +38828,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.ql-align-center {\r\n    text-align: center;\n}\n.ql-image {\r\n    margin-left: auto;\r\n    margin-right: auto;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.ql-align-center {\n    text-align: center;\n}\n.ql-image {\n    width: 100%;\n    margin-left: auto;\n    margin-right: auto;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

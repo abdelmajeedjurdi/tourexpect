@@ -1,6 +1,6 @@
 <template>
-    <div class="bg-white w-full max-w-4xl mx-auto pt-16">
-        <img :src="'/images/blogs/' + blog.image" alt="image" class="w-full object-cover" style="height: 30rem" />
+    <div class="bg-white w-full max-w-4xl mx-auto pt-16 px-4">
+        <img :src="'/images/blogs/' + blog.image" alt="image" class="w-full object-cover h-60 md:h-120" />
         <h1 class="text-blue-500 text-center py-8 uppercase font-bold text-4xl">{{ blog['title_'+lang] }}</h1>
         <div v-html="html"></div>
     </div>
@@ -14,12 +14,11 @@ let html = ref(null)
 let rout = useRoute()
 const lang = inject('lang')
 const props = defineProps({
-    id: String,
     slug: String
 })
-const { getBlog, blog } = useBlogs()
+const { getSingleBlog, blog } = useBlogs()
 onMounted(async () => {
-    await getBlog(props.id)
+    await getSingleBlog(props.slug)
     var deltaOps = blog.value['content_' + lang]['ops'];
 
     var cfg = {};
@@ -35,6 +34,7 @@ onMounted(async () => {
 }
 
 .ql-image {
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
 }
