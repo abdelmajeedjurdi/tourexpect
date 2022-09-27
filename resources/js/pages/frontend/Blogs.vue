@@ -1,5 +1,10 @@
 <template>
+
+    <Head>
+        <title>Hello Title</title>
+    </Head>
     <div class=" sm:px-4 xl:px-0 sm:flex w-full max-w-6xl mx-auto my-28">
+
         <div class="max-h-screen w-11/12 mx-auto sm:mx-0 sm:w-80 border rounded shadow block px-3 py-3 mb-5 sm:mb-0">
             <div class="flex justify-between sm:hidden" @click="showFilter">
                 <span class="text-lg">{{ $t('filter') }}</span>
@@ -138,6 +143,7 @@
     </div>
 </template>
 <script setup>
+import { createHead } from '@vueuse/head'
 import { inject, onMounted, ref, watch } from 'vue';
 import useBlogs from '../../composables/blogs';
 import useDestinations from '../../composables/destinations';
@@ -150,7 +156,7 @@ let filter = ref({
     category: '*',
     page: 1
 })
-let lang = inject('lang')
+let lang = inject('lang') || 'en'
 let active_country = ref(0)
 onMounted(() => {
     getFilteredBlogs(filter.value)

@@ -12,7 +12,7 @@ import useBlogs from '../../composables/blogs';
 var QuillDeltaToHtmlConverter = require('quill-delta-to-html').QuillDeltaToHtmlConverter;
 let html = ref(null)
 let rout = useRoute()
-const lang = inject('lang')
+const lang = inject('lang') || 'en'
 const props = defineProps({
     slug: String
 })

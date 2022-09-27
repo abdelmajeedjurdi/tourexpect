@@ -5,8 +5,9 @@
 
             <div class="flex outclick justify-between h-16 px-3 md:px-0   max-w-6xl mx-auto ">
                 <div class="flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 text-gray-600 hover:text-black cursor-pointer"
-                        viewBox="0 0 20 20" fill="currentColor" @click="showMenu(-1)">
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                        class="h-6 text-gray-600 hover:text-black cursor-pointer me-3" viewBox="0 0 20 20"
+                        fill="currentColor" @click="showMenu(-1)">
                         <path fill-rule="evenodd"
                             d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
                             clip-rule="evenodd" />
@@ -251,21 +252,21 @@ let lang = ref('');
 const switchLanguage = () => {
 
     // if (process.server) {
-    if (window.localStorage.getItem('lang') == 'en') {
-        window.localStorage.setItem('lang', 'ar')
-        lang.value = 'ar'
+    if (window.localStorage.getItem('lang') == 'ar') {
+        window.localStorage.setItem('lang', 'en')
+        lang.value = 'en'
         window.location.reload();
     }
     // }
     else {
-        localStorage.setItem('lang', 'en')
-        lang.value = 'en'
+        localStorage.setItem('lang', 'ar')
+        lang.value = 'ar'
         window.location.reload()
     }
 }
 // ********************************************
 onMounted(async () => {
-    lang.value = window.localStorage.getItem('lang');
+    lang.value = window.localStorage.getItem('lang') || 'en';
     let specifiedElement = document.getElementById("menu");
     let specifiedElement3 = document.getElementById("mobilemenu");
     let specifiedElement2 = document.getElementById("navbar");
