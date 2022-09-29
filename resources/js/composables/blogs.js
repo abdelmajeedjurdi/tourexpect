@@ -19,14 +19,10 @@ export default function useBlogs() {
         // blogs.value.content_en = JSON.parse(blogs.value.content_en)
     };
     const getFilteredBlogs = async (filter) => {
-        console.log(filter);
         let response = await axios.get(`/api/filtered-blogs?d=${filter.destination}&c=${filter.category}&page=${filter.page}`);
-        console.log(response.data);
+
         blogs.value = response.data.data;
         pagenation.value = response.data
-
-        console.log(response.data);
-        // blogs.value.content_en = JSON.parse(blogs.value.content_en)
     };
     const getBlog = async (id) => {
         let response = await axios.get("/api/blogs/" + id);

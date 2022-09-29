@@ -25392,15 +25392,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {},
   setup: function setup() {
-    var isDark = (0,_vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.ref)(getTheme());
-
-    function getTheme() {
-      if (window.localStorage.getItem("dark")) {
-        return JSON.parse(window.localStorage.getItem("dark"));
-      }
-
-      return !!window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-    }
+    var isDark = (0,_vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.ref)(JSON.parse(window.localStorage.getItem("dark"))) || false;
 
     function setTheme(value) {
       window.localStorage.setItem("dark", value);
@@ -28328,7 +28320,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 if (!isClickInside && !isClickInside2 && !isClickInside3) {
                   closeMenu();
-                  console.log('menu closed'); // isOptionsShow.value = false;
                 }
               });
               _context.next = 7;
@@ -28939,7 +28930,7 @@ var _hoisted_3 = ["onClick"];
 var _hoisted_4 = ["onClick"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-    "class": "btn btn-secondary dropdown-toggle w-64",
+    "class": "rounded py-2 bg-gray-100 dropdown-toggle w-64 dark:bg-gray-800",
     type: "button",
     id: "dropdownMenuButton1",
     "data-bs-toggle": "dropdown",
@@ -28949,7 +28940,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* TEXT */
   ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", {
     id: $props.component_id + '-temp',
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["dropdown-menu dropdown-menu-dark", $setup.isListShow == true ? 'show' : 'hidden']),
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["dropdown-menu dark:dropdown-menu-dark", $setup.isListShow == true ? 'show' : 'hidden']),
     "aria-labelledby": "dropdownMenuButton1"
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     "class": "dropdown-item border border-gray-500 w-1/2",
@@ -28972,7 +28963,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       onClick: function onClick($event) {
         return _ctx.$emit('selected', option.id);
       },
-      "class": "dropdown-item hover:bg-gray-300 cursor-pointer"
+      "class": "dropdown-item dark:text-gray-200 dark:hover:bg-gray-600 hover:bg-gray-300 cursor-pointer text-gray-200"
     }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(option["name_en"]), 9
     /* TEXT, PROPS */
     , _hoisted_4)], 8
@@ -29004,16 +28995,57 @@ var _hoisted_1 = {
   "class": "min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-white dark:bg-gray-700 text-black dark:text-white w-full"
 };
 var _hoisted_2 = {
-  "class": "fixed z-10 flex flex-col top-0 left-0 w-10 hover:w-52 hover:bg-white bg-blue-900 dark:bg-gray-900 h-full text-white transition-all duration-300 border-none sidebar"
+  "class": "fixed z-10 flex flex-col top-0 left-0 w-10 hover:w-52 bg-blue-900 dark:bg-gray-900 h-full text-white transition-all duration-300 border-none sidebar"
 };
 var _hoisted_3 = {
-  "class": "overflow-y-auto overflow-x-hidden flex flex-col justify-between flex-grow"
+  "class": ""
 };
 var _hoisted_4 = {
+  key: 0,
+  xmlns: "http://www.w3.org/2000/svg",
+  fill: "none",
+  viewBox: "0 0 24 24",
+  "stroke-width": "1.5",
+  stroke: "currentColor",
+  "class": "w-4"
+};
+
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
+  "stroke-linecap": "round",
+  "stroke-linejoin": "round",
+  d: "M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_6 = [_hoisted_5];
+var _hoisted_7 = {
+  key: 1,
+  xmlns: "http://www.w3.org/2000/svg",
+  fill: "none",
+  viewBox: "0 0 24 24",
+  "stroke-width": "1.5",
+  stroke: "currentColor",
+  "class": "w-4"
+};
+
+var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
+  "stroke-linecap": "round",
+  "stroke-linejoin": "round",
+  d: "M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_9 = [_hoisted_8];
+var _hoisted_10 = {
+  "class": "overflow-y-auto overflow-x-hidden flex flex-col justify-between flex-grow"
+};
+var _hoisted_11 = {
   "class": "flex flex-col py-4 space-y-1 -ml-6"
 };
 
-var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
+var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
   "class": "px-5 hidden md:block"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "flex flex-row items-center h-8"
@@ -29023,7 +29055,7 @@ var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 /* HOISTED */
 );
 
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "inline-flex justify-center items-center"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
   "class": "w-5 h-5",
@@ -29040,13 +29072,13 @@ var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 /* HOISTED */
 );
 
-var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "ml-2 text-sm tracking-wide truncate"
 }, "Dashboard", -1
 /* HOISTED */
 );
 
-var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "inline-flex justify-center items-center"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
   xmlns: "http://www.w3.org/2000/svg",
@@ -29063,13 +29095,13 @@ var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 /* HOISTED */
 );
 
-var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "ml-2 text-sm tracking-wide truncate"
 }, "Categories", -1
 /* HOISTED */
 );
 
-var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "inline-flex justify-center items-center"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
   xmlns: "http://www.w3.org/2000/svg",
@@ -29086,13 +29118,13 @@ var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "ml-2 text-sm tracking-wide truncate"
 }, "Destinations", -1
 /* HOISTED */
 );
 
-var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "inline-flex justify-center items-center"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
   xmlns: "http://www.w3.org/2000/svg",
@@ -29109,13 +29141,13 @@ var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "ml-2 text-sm tracking-wide truncate"
 }, "Tours", -1
 /* HOISTED */
 );
 
-var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "inline-flex justify-center items-center"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
   xmlns: "http://www.w3.org/2000/svg",
@@ -29132,19 +29164,19 @@ var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "ml-2 text-sm tracking-wide truncate"
 }, "Blogs", -1
 /* HOISTED */
 );
 
-var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
-  "class": "mb-14 px-5 py-3 md:block text-center text-xs"
+var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+  "class": "mb-14 px-5 py-3 md:block text-center text-xs text-blue-400 dark:text-gray-200"
 }, " Created By Edo Khudeeda eido.khudyda@gmail.com ", -1
 /* HOISTED */
 );
 
-var _hoisted_17 = {
+var _hoisted_24 = {
   "class": "min-h-screen ml-10 dark:bg-gray-700 dark:text-gray-400 p-6"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -29156,14 +29188,20 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)({
       dark: $setup.isDark
     })
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_4, [_hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    "aria-hidden": "true",
+    onClick: _cache[0] || (_cache[0] = function () {
+      return $setup.toggleTheme && $setup.toggleTheme.apply($setup, arguments);
+    }),
+    "class": "mt-4 ml-1 group p-2 transition-colors duration-200 rounded-full shadow-md bg-blue-200 hover:bg-blue-200 dark:bg-gray-50 dark:hover:bg-gray-200 text-gray-900 focus:outline-none"
+  }, [$setup.isDark ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("svg", _hoisted_4, _hoisted_6)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("svg", _hoisted_7, _hoisted_9))])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_11, [_hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: {
       name: 'dashboard'
     },
-    "class": "relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6e dark:text-gray-200"
+    "class": "relative flex flex-row items-center h-11 focus:outline-none dark:hover:bg-gray-600 text-gray-200 hover:text-white border-l-4 border-transparent hover:bg-blue-800 hover:border-blue-500 dark:hover:border-gray-800 pr-6e"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_6, _hoisted_7];
+      return [_hoisted_13, _hoisted_14];
     }),
     _: 1
     /* STABLE */
@@ -29172,10 +29210,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     to: {
       name: 'categories.index'
     },
-    "class": "relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6e dark:text-gray-200"
+    "class": "relative flex flex-row items-center h-11 focus:outline-none dark:hover:bg-gray-600 text-gray-200 hover:text-white border-l-4 border-transparent hover:bg-blue-800 hover:border-blue-500 dark:hover:border-gray-800 pr-6e"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_8, _hoisted_9];
+      return [_hoisted_15, _hoisted_16];
     }),
     _: 1
     /* STABLE */
@@ -29186,10 +29224,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     to: {
       name: 'destinations.index'
     },
-    "class": "relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6e dark:text-gray-200"
+    "class": "relative flex flex-row items-center h-11 focus:outline-none dark:hover:bg-gray-600 text-gray-200 hover:text-white border-l-4 border-transparent hover:bg-blue-800 hover:border-blue-500 dark:hover:border-gray-800 pr-6e"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_10, _hoisted_11];
+      return [_hoisted_17, _hoisted_18];
     }),
     _: 1
     /* STABLE */
@@ -29200,10 +29238,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     to: {
       name: 'tours.index'
     },
-    "class": "relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6e dark:text-gray-200"
+    "class": "relative flex flex-row items-center h-11 focus:outline-none dark:hover:bg-gray-600 text-gray-200 hover:text-white border-l-4 border-transparent hover:bg-blue-800 hover:border-blue-500 dark:hover:border-gray-800 pr-6e"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_12, _hoisted_13];
+      return [_hoisted_19, _hoisted_20];
     }),
     _: 1
     /* STABLE */
@@ -29214,17 +29252,17 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     to: {
       name: 'blogs.index'
     },
-    "class": "relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6e dark:text-gray-200"
+    "class": "relative flex flex-row items-center h-11 focus:outline-none dark:hover:bg-gray-600 text-gray-200 hover:text-white border-l-4 border-transparent hover:bg-blue-800 hover:border-blue-500 dark:hover:border-gray-800 pr-6e"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_14, _hoisted_15];
+      return [_hoisted_21, _hoisted_22];
     }),
     _: 1
     /* STABLE */
 
   }, 8
   /* PROPS */
-  , ["to"])])]), _hoisted_16])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" ./Sidebar "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_view)])])], 2
+  , ["to"])])]), _hoisted_23])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" ./Sidebar "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_24, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_view)])])], 2
   /* CLASS */
   );
 }
@@ -31872,7 +31910,7 @@ var _hoisted_59 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 );
 
 var _hoisted_60 = {
-  "class": "ml-3 bg-gray-600 rounded h-screen w-96 text-center px-4"
+  "class": "ml-3 bg-blue-400 dark:bg-gray-600 rounded h-screen w-96 text-center px-4"
 };
 var _hoisted_61 = {
   "class": "w-full me-2 mt-4"
@@ -31986,7 +32024,7 @@ var _hoisted_81 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 );
 
 var _hoisted_82 = {
-  "class": "flex items-center rounded border border-gray-600 w-full mx-auto mt-2 px-2 bg-gray-500"
+  "class": "flex items-center rounded border border-gray-600 w-full mx-auto mt-2 px-2"
 };
 
 var _hoisted_83 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
@@ -32237,7 +32275,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.form.discount]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_70, [_hoisted_71, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
     name: "discount_type",
     id: "discount_type",
-    "class": "w-full bg-gray-700 rounded text-gray-200",
+    "class": "w-full dark:bg-gray-700 rounded text-gray-700 dark:text-gray-200",
     "onUpdate:modelValue": _cache[19] || (_cache[19] = function ($event) {
       return $setup.form.discount_type = $event;
     })
@@ -34989,18 +35027,15 @@ function useBlogs() {
         while (1) {
           switch (_context2.prev = _context2.next) {
             case 0:
-              console.log(filter);
-              _context2.next = 3;
+              _context2.next = 2;
               return axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/filtered-blogs?d=".concat(filter.destination, "&c=").concat(filter.category, "&page=").concat(filter.page));
 
-            case 3:
+            case 2:
               response = _context2.sent;
-              console.log(response.data);
               blogs.value = response.data.data;
               pagenation.value = response.data;
-              console.log(response.data); // blogs.value.content_en = JSON.parse(blogs.value.content_en)
 
-            case 8:
+            case 5:
             case "end":
               return _context2.stop();
           }
@@ -36701,10 +36736,7 @@ var routes = [{
 }, {
   path: "/dashboard/blogs/create",
   name: "blog.create",
-  component: _pages_backend_blogs_BlogCreate__WEBPACK_IMPORTED_MODULE_12__["default"],
-  meta: {
-    title: "Create Blog"
-  }
+  component: _pages_backend_blogs_BlogCreate__WEBPACK_IMPORTED_MODULE_12__["default"]
 }, {
   path: "/dashboard/blogs/:id/edit",
   name: "blog.edit",
@@ -36718,7 +36750,7 @@ var routes = [{
 }, // (((((((((((((((((--Front-End--))))))))))))))))),
 {
   path: "/test",
-  name: "Frontend",
+  name: "Home",
   component: _pages_frontend__WEBPACK_IMPORTED_MODULE_16__["default"]
 }, {
   path: "/",
@@ -36740,7 +36772,10 @@ var routes = [{
 }, {
   path: "/blogs",
   name: "blogs",
-  component: _pages_frontend_Blogs__WEBPACK_IMPORTED_MODULE_20__["default"]
+  component: _pages_frontend_Blogs__WEBPACK_IMPORTED_MODULE_20__["default"],
+  meta: {
+    title: "Blogs"
+  }
 }, {
   path: "/blogs/:slug",
   name: "blog",
@@ -36767,10 +36802,32 @@ var routes = [{
   name: "404",
   component: _pages_frontend_CommingSoon__WEBPACK_IMPORTED_MODULE_17__["default"]
 }];
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,vue_router__WEBPACK_IMPORTED_MODULE_25__.createRouter)({
+var router = (0,vue_router__WEBPACK_IMPORTED_MODULE_25__.createRouter)({
   history: (0,vue_router__WEBPACK_IMPORTED_MODULE_25__.createWebHistory)(),
   routes: routes
-}));
+});
+router.beforeEach(function (to, from, next) {
+  console.log(to);
+  var name = to.name;
+  name = name.replace(/\-/g, ' ');
+  name = name.replace(/(^\w|\s\w)/g, function (m) {
+    return m.toUpperCase();
+  });
+  var title = "Tourexpect - ".concat(name);
+
+  if (to.params.slug) {
+    var s = to.params.slug;
+    s = s.replace(/\-/g, ' ');
+    s = s.replace(/(^\w|\s\w)/g, function (m) {
+      return m.toUpperCase();
+    });
+    title += " - ".concat(s);
+  }
+
+  document.title = title;
+  next();
+});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (router);
 
 /***/ }),
 
@@ -38872,7 +38929,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n/* Compiled dark classes from Tailwind */\n.dark .dark\\:divide-gray-700> :not([hidden])~ :not([hidden]) {\n    border-color: rgba(55, 65, 81);\n}\n.dark .dark\\:bg-gray-50 {\n    background-color: rgba(249, 250, 251);\n}\n.dark .dark\\:bg-gray-100 {\n    background-color: rgba(243, 244, 246);\n}\n.dark .dark\\:bg-gray-600 {\n    background-color: rgba(75, 85, 99);\n}\n.dark .dark\\:bg-gray-700 {\n    background-color: rgba(55, 65, 81);\n}\n.dark .dark\\:bg-gray-800 {\n    background-color: rgba(31, 41, 55);\n}\n.dark .dark\\:bg-gray-900 {\n    background-color: rgba(17, 24, 39);\n}\n.dark .dark\\:bg-red-700 {\n    background-color: rgba(185, 28, 28);\n}\n.dark .dark\\:bg-green-700 {\n    background-color: rgba(4, 120, 87);\n}\n.dark .dark\\:hover\\:bg-gray-200:hover {\n    background-color: rgba(229, 231, 235);\n}\n.dark .dark\\:hover\\:bg-gray-600:hover {\n    background-color: rgba(75, 85, 99);\n}\n.dark .dark\\:hover\\:bg-gray-700:hover {\n    background-color: rgba(55, 65, 81);\n}\n.dark .dark\\:hover\\:bg-gray-900:hover {\n    background-color: rgba(17, 24, 39);\n}\n.dark .dark\\:border-gray-100 {\n    border-color: rgba(243, 244, 246);\n}\n.dark .dark\\:border-gray-400 {\n    border-color: rgba(156, 163, 175);\n}\n.dark .dark\\:border-gray-500 {\n    border-color: rgba(107, 114, 128);\n}\n.dark .dark\\:border-gray-600 {\n    border-color: rgba(75, 85, 99);\n}\n.dark .dark\\:border-gray-700 {\n    border-color: rgba(55, 65, 81);\n}\n.dark .dark\\:border-gray-900 {\n    border-color: rgba(17, 24, 39);\n}\n.dark .dark\\:hover\\:border-gray-800:hover {\n    border-color: rgba(31, 41, 55);\n}\n.dark .dark\\:text-white {\n    color: rgba(255, 255, 255);\n}\n.dark .dark\\:text-gray-50 {\n    color: rgba(249, 250, 251);\n}\n.dark .dark\\:text-gray-100 {\n    color: rgba(243, 244, 246);\n}\n.dark .dark\\:text-gray-200 {\n    color: rgba(229, 231, 235);\n}\n.dark .dark\\:text-gray-400 {\n    color: rgba(156, 163, 175);\n}\n.dark .dark\\:text-gray-500 {\n    color: rgba(107, 114, 128);\n}\n.dark .dark\\:text-gray-700 {\n    color: rgba(55, 65, 81);\n}\n.dark .dark\\:text-gray-800 {\n    color: rgba(31, 41, 55);\n}\n.dark .dark\\:text-red-100 {\n    color: rgba(254, 226, 226);\n}\n.dark .dark\\:text-green-100 {\n    color: rgba(209, 250, 229);\n}\n.dark .dark\\:text-blue-400 {\n    color: rgba(96, 165, 250);\n}\n.dark .group:hover .dark\\:group-hover\\:text-gray-500 {\n    color: rgba(107, 114, 128);\n}\n.dark .group:focus .dark\\:group-focus\\:text-gray-700 {\n    color: rgba(55, 65, 81);\n}\n.dark .dark\\:hover\\:text-gray-100:hover {\n    color: rgba(243, 244, 246);\n}\n.dark .dark\\:hover\\:text-blue-500:hover {\n    color: rgba(59, 130, 246);\n}\n\n/* Custom style */\n.header-right {\n    width: calc(100% - 3.5rem);\n}\n.sidebar:hover {\n    width: 16rem;\n}\n@media only screen and (min-width: 768px) {\n.header-right {\n        width: calc(100% - 16rem);\n}\n}\n.ag-theme-alpine .ag-root-wrapper {\n    background-color: transparent !important;\n}\n.ag-row {\n    background-color: transparent !important;\n}\n.ag-center-cols-container {\n    width: 100% !important;\n}\na {\n    text-decoration: none;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n/* Compiled dark classes from Tailwind */\n.dark .dark\\:divide-gray-700> :not([hidden])~ :not([hidden]) {\n    border-color: rgba(55, 65, 81);\n}\n.dark .dark\\:dropdown-menu-dark {\n    background-color: rgb(31, 41, 55);\n    color: white;\n}\n.dark .dark\\:.dropdown-item-dark {\n    color: white !important;\n}\n.dark .dark\\:bg-gray-50 {\n    background-color: rgba(249, 250, 251);\n}\n.dark .dark\\:bg-gray-100 {\n    background-color: rgba(243, 244, 246);\n}\n.dark .dark\\:bg-gray-600 {\n    background-color: rgba(75, 85, 99);\n}\n.dark .dark\\:bg-gray-700 {\n    background-color: rgba(55, 65, 81);\n}\n.dark .dark\\:bg-gray-800 {\n    background-color: rgba(31, 41, 55);\n}\n.dark .dark\\:bg-gray-900 {\n    background-color: rgba(17, 24, 39);\n}\n.dark .dark\\:bg-red-700 {\n    background-color: rgba(185, 28, 28);\n}\n.dark .dark\\:bg-green-700 {\n    background-color: rgba(4, 120, 87);\n}\n.dark .dark\\:hover\\:bg-gray-200:hover {\n    background-color: rgba(229, 231, 235);\n}\n.dark .dark\\:hover\\:bg-gray-600:hover {\n    background-color: rgba(75, 85, 99) !important;\n}\n.dark .dark\\:hover\\:bg-gray-700:hover {\n    background-color: rgba(55, 65, 81);\n}\n.dark .dark\\:hover\\:bg-gray-900:hover {\n    background-color: rgba(17, 24, 39);\n}\n.dark .dark\\:border-gray-100 {\n    border-color: rgba(243, 244, 246);\n}\n.dark .dark\\:border-gray-400 {\n    border-color: rgba(156, 163, 175);\n}\n.dark .dark\\:border-gray-500 {\n    border-color: rgba(107, 114, 128);\n}\n.dark .dark\\:border-gray-600 {\n    border-color: rgba(75, 85, 99);\n}\n.dark .dark\\:border-gray-700 {\n    border-color: rgba(55, 65, 81);\n}\n.dark .dark\\:border-gray-900 {\n    border-color: rgba(17, 24, 39);\n}\n.dark .dark\\:hover\\:border-gray-800:hover {\n    border-color: rgba(31, 41, 55);\n}\n.dark .dark\\:text-white {\n    color: rgba(255, 255, 255);\n}\n.dark .dark\\:text-gray-50 {\n    color: rgba(249, 250, 251);\n}\n.dark .dark\\:text-gray-100 {\n    color: rgba(243, 244, 246);\n}\n.dark .dark\\:text-gray-200 {\n    color: rgba(229, 231, 235) !important;\n}\n.dark .dark\\:text-gray-400 {\n    color: rgba(156, 163, 175);\n}\n.dark .dark\\:text-gray-500 {\n    color: rgba(107, 114, 128);\n}\n.dark .dark\\:text-gray-700 {\n    color: rgba(55, 65, 81);\n}\n.dark .dark\\:text-gray-800 {\n    color: rgba(31, 41, 55);\n}\n.dark .dark\\:text-red-100 {\n    color: rgba(254, 226, 226);\n}\n.dark .dark\\:text-green-100 {\n    color: rgba(209, 250, 229);\n}\n.dark .dark\\:text-blue-400 {\n    color: rgba(96, 165, 250);\n}\n.dark .group:hover .dark\\:group-hover\\:text-gray-500 {\n    color: rgba(107, 114, 128);\n}\n.dark .group:focus .dark\\:group-focus\\:text-gray-700 {\n    color: rgba(55, 65, 81);\n}\n.dark .dark\\:hover\\:text-gray-100:hover {\n    color: rgba(243, 244, 246);\n}\n.dark .dark\\:hover\\:text-blue-500:hover {\n    color: rgba(59, 130, 246);\n}\n\n/* Custom style */\n.header-right {\n    width: calc(100% - 3.5rem);\n}\n.sidebar:hover {\n    width: 16rem;\n}\n@media only screen and (min-width: 768px) {\n.header-right {\n        width: calc(100% - 16rem);\n}\n}\n.ag-theme-alpine .ag-root-wrapper {\n    background-color: transparent !important;\n}\n.ag-row {\n    background-color: transparent !important;\n}\n.ag-center-cols-container {\n    width: 100% !important;\n}\na {\n    text-decoration: none;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

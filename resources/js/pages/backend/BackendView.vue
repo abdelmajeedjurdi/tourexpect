@@ -18,7 +18,7 @@
           top-0
           left-0
           w-10
-          hover:w-52 hover:bg-white
+          hover:w-52
           bg-blue-900
           dark:bg-gray-900
           h-full
@@ -28,12 +28,31 @@
           border-none
           sidebar
         ">
+                <div class="">
+                    <button aria-hidden="true" @click="toggleTheme"
+                        class="mt-4 ml-1 group p-2 transition-colors duration-200 rounded-full shadow-md bg-blue-200 hover:bg-blue-200 dark:bg-gray-50 dark:hover:bg-gray-200 text-gray-900 focus:outline-none">
+                        <svg v-if="isDark" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke-width="1.5" stroke="currentColor" class="w-4">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+                        </svg>
+                        <svg v-else xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke-width="1.5" stroke="currentColor" class="w-4">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+                        </svg>
+
+
+                    </button>
+
+                </div>
                 <div class="
             overflow-y-auto overflow-x-hidden
             flex flex-col
             justify-between
             flex-grow
           ">
+
                     <ul class="flex flex-col py-4 space-y-1 -ml-6">
                         <li class="px-5 hidden md:block">
                             <div class="flex flex-row items-center h-8">
@@ -50,21 +69,20 @@
                         </li>
                         <li>
                             <router-link :to="{ name: 'dashboard' }" class="
-                  relative
-                  flex flex-row
-                  items-center
-                  h-11
-                  focus:outline-none
-                  hover:bg-blue-800
-                  dark:hover:bg-gray-600
-                  text-white-600
-                  hover:text-white-800
-                  border-l-4 border-transparent
-                  hover:border-blue-500
-                  dark:hover:border-gray-800
-                  pr-6e
-                  dark:text-gray-200
-                ">
+                                relative
+                                flex flex-row
+                                items-center
+                                h-11
+                                focus:outline-none
+                                dark:hover:bg-gray-600
+                                text-gray-200
+                                hover:text-white
+                                border-l-4 border-transparent
+                                hover:bg-blue-800
+                                hover:border-blue-500
+                                dark:hover:border-gray-800
+                                pr-6e
+                                ">
                                 <span class="inline-flex justify-center items-center">
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -83,15 +101,14 @@
                                 items-center
                                 h-11
                                 focus:outline-none
-                                hover:bg-blue-800
                                 dark:hover:bg-gray-600
-                                text-white-600
-                                hover:text-white-800
+                                text-gray-200
+                                hover:text-white
                                 border-l-4 border-transparent
+                                hover:bg-blue-800
                                 hover:border-blue-500
                                 dark:hover:border-gray-800
                                 pr-6e
-                                dark:text-gray-200
                                 ">
                                 <span class="inline-flex justify-center items-center">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -107,20 +124,18 @@
                         <li>
                             <router-link :to="{ name: 'destinations.index' }" class="
                                                                                     relative
-                                                                                    flex flex-row
-                                                                                    items-center
-                                                                                    h-11
-                                                                                    focus:outline-none
-                                                                                    hover:bg-blue-800
-                                                                                    dark:hover:bg-gray-600
-                                                                                    text-white-600
-                                                                                    hover:text-white-800
-                                                                                    border-l-4 border-transparent
-                                                                                    hover:border-blue-500
-                                                                                    dark:hover:border-gray-800
-                                                                                    pr-6e
-                                                                                    dark:text-gray-200
-                                                                                    ">
+                                flex flex-row
+                                items-center
+                                h-11
+                                focus:outline-none
+                                dark:hover:bg-gray-600
+                                text-gray-200
+                                hover:text-white
+                                border-l-4 border-transparent
+                                hover:bg-blue-800
+                                hover:border-blue-500
+                                dark:hover:border-gray-800
+                                pr-6e ">
                                 <span class="inline-flex justify-center items-center">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                         stroke-width="1.5" stroke="currentColor" class="w-5">
@@ -135,19 +150,18 @@
                         <li>
                             <router-link :to="{ name: 'tours.index' }" class="
                                     relative
-                                    flex flex-row
-                                    items-center
-                                    h-11
-                                    focus:outline-none
-                                    hover:bg-blue-800
-                                    dark:hover:bg-gray-600
-                                    text-white-600
-                                    hover:text-white-800
-                                    border-l-4 border-transparent
-                                    hover:border-blue-500
-                                    dark:hover:border-gray-800
-                                    pr-6e
-                                    dark:text-gray-200
+                                flex flex-row
+                                items-center
+                                h-11
+                                focus:outline-none
+                                dark:hover:bg-gray-600
+                                text-gray-200
+                                hover:text-white
+                                border-l-4 border-transparent
+                                hover:bg-blue-800
+                                hover:border-blue-500
+                                dark:hover:border-gray-800
+                                pr-6e
                                     ">
                                 <span class="inline-flex justify-center items-center">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -163,19 +177,18 @@
                         <li>
                             <router-link :to="{ name: 'blogs.index' }" class="
                                     relative
-                                    flex flex-row
-                                    items-center
-                                    h-11
-                                    focus:outline-none
-                                    hover:bg-blue-800
-                                    dark:hover:bg-gray-600
-                                    text-white-600
-                                    hover:text-white-800
-                                    border-l-4 border-transparent
-                                    hover:border-blue-500
-                                    dark:hover:border-gray-800
-                                    pr-6e
-                                    dark:text-gray-200
+                                flex flex-row
+                                items-center
+                                h-11
+                                focus:outline-none
+                                dark:hover:bg-gray-600
+                                text-gray-200
+                                hover:text-white
+                                border-l-4 border-transparent
+                                hover:bg-blue-800
+                                hover:border-blue-500
+                                dark:hover:border-gray-800
+                                pr-6e
                                     ">
                                 <span class="inline-flex justify-center items-center">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -189,7 +202,7 @@
                             </router-link>
                         </li>
                     </ul>
-                    <p class="mb-14 px-5 py-3 md:block text-center text-xs">
+                    <p class="mb-14 px-5 py-3 md:block text-center text-xs text-blue-400 dark:text-gray-200">
                         Created By Edo Khudeeda eido.khudyda@gmail.com
                     </p>
                 </div>
@@ -207,16 +220,7 @@ import { onMounted } from "@vue/runtime-core";
 export default {
     components: {},
     setup() {
-        let isDark = ref(getTheme());
-        function getTheme() {
-            if (window.localStorage.getItem("dark")) {
-                return JSON.parse(window.localStorage.getItem("dark"));
-            }
-            return (
-                !!window.matchMedia &&
-                window.matchMedia("(prefers-color-scheme: dark)").matches
-            );
-        }
+        let isDark = ref(JSON.parse(window.localStorage.getItem("dark"))) || false;
         function setTheme(value) {
             window.localStorage.setItem("dark", value);
         }
@@ -238,6 +242,15 @@ export default {
 /* Compiled dark classes from Tailwind */
 .dark .dark\:divide-gray-700> :not([hidden])~ :not([hidden]) {
     border-color: rgba(55, 65, 81);
+}
+
+.dark .dark\:dropdown-menu-dark {
+    background-color: rgb(31, 41, 55);
+    color: white;
+}
+
+.dark .dark\:.dropdown-item-dark {
+    color: white !important;
 }
 
 .dark .dark\:bg-gray-50 {
@@ -277,7 +290,7 @@ export default {
 }
 
 .dark .dark\:hover\:bg-gray-600:hover {
-    background-color: rgba(75, 85, 99);
+    background-color: rgba(75, 85, 99) !important;
 }
 
 .dark .dark\:hover\:bg-gray-700:hover {
@@ -329,7 +342,7 @@ export default {
 }
 
 .dark .dark\:text-gray-200 {
-    color: rgba(229, 231, 235);
+    color: rgba(229, 231, 235) !important;
 }
 
 .dark .dark\:text-gray-400 {

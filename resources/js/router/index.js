@@ -118,9 +118,7 @@ const routes = [
         path: "/dashboard/blogs/create",
         name: "blog.create",
         component: BlogCreate,
-        meta: {
-            title: "Create Blog"
-        }
+
     },
     {
         path: "/dashboard/blogs/:id/edit",
@@ -139,7 +137,7 @@ const routes = [
 
     {
         path: "/test",
-        name: "Frontend",
+        name: "Home",
         component: Frontend,
     },
     {
@@ -167,6 +165,9 @@ const routes = [
         path: "/blogs",
         name: "blogs",
         component: Blogs,
+        meta: {
+            title: "Blogs"
+        }
     },
     {
         path: "/blogs/:slug",
@@ -201,7 +202,25 @@ const routes = [
     },
 ];
 
-export default createRouter({
+const router = createRouter({
     history: createWebHistory(),
     routes,
 });
+
+router.beforeEach((to, from, next) => {
+    console.log(to);
+    let name = to.name
+    name = name.replace(/\-/g, ' ');
+    name = name.replace(/(^\w|\s\w)/g, m => m.toUpperCase());
+    let title = `Tourexpect - ${name}`
+    if (to.params.slug) {
+        let s = to.params.slug
+        s = s.replace(/\-/g, ' ');
+        s = s.replace(/(^\w|\s\w)/g, m => m.toUpperCase());
+        title += ` - ${s}`
+    }
+    document.title = title
+    next();
+})
+
+export default router;

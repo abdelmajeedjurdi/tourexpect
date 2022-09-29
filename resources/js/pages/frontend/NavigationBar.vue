@@ -277,8 +277,6 @@ onMounted(async () => {
 
         if (!isClickInside && !isClickInside2 && !isClickInside3) {
             closeMenu()
-            console.log('menu closed');
-            // isOptionsShow.value = false;
         }
     });
     await getDestinations();

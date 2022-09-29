@@ -24,7 +24,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResource('categories', CategoryController::class);
+Route::apiResource('categories', CategoryController::class); //->middleware('auth'); this is working
 Route::apiResource('destinations', DestinationController::class);
 Route::apiResource('tours', TourController::class);
 Route::get('filtered-blogs', [BlogController::class, 'getFilteredBlogs']);

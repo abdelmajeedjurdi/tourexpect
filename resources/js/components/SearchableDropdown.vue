@@ -1,15 +1,16 @@
 <template>
     <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle w-64" type="button" id="dropdownMenuButton1"
-            data-bs-toggle="dropdown" aria-expanded="false" @click="myFunction">
+        <button class="rounded py-2 bg-gray-100 dropdown-toggle w-64 dark:bg-gray-800" type="button"
+            id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" @click="myFunction">
             {{ selected_option == null ? component_placeholder : selected_option }}
         </button>
-        <ul :id="component_id+'-temp'" class="dropdown-menu dropdown-menu-dark"
+        <ul :id="component_id+'-temp'" class="dropdown-menu dark:dropdown-menu-dark"
             :class="isListShow==true?'show':'hidden'" aria-labelledby="dropdownMenuButton1">
             <input class="dropdown-item border border-gray-500 w-1/2" type="text" autocomplete="off"
                 placeholder="Search.." id="myInput" @keyup="filterFunction()" />
             <li v-for="option in options" :key="option.id" @click="selected_option = option.name_en">
-                <span @click="$emit('selected', option.id)" class="dropdown-item hover:bg-gray-300 cursor-pointer">
+                <span @click="$emit('selected', option.id)"
+                    class="dropdown-item dark:text-gray-200 dark:hover:bg-gray-600 hover:bg-gray-300 cursor-pointer text-gray-200">
                     {{ option["name_en"] }}
                 </span>
             </li>

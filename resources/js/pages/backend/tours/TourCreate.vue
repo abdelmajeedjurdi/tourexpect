@@ -2,16 +2,16 @@
     <div>
         <div v-if="errors">
             <div v-for="(v, k) in errors" :key="k" class="
-                                                            bg-red-500
-                                                            text-white
-                                                            rounded
-                                                            font-bold
-                                                            mb-4
-                                                            shadow-lg
-                                                            py-2
-                                                            px-4
-                                                            pr-0
-                                                        ">
+                    bg-red-500
+                    text-white
+                    rounded
+                    font-bold
+                    mb-4
+                    shadow-lg
+                    py-2
+                    px-4
+                    pr-0
+                ">
                 <p v-for="error in v" :key="error" class="text-sm">
                     {{ error }}
                 </p>
@@ -372,7 +372,7 @@
                     Create
                 </button>
             </form>
-            <div class="ml-3 bg-gray-600 rounded h-screen w-96 text-center px-4">
+            <div class="ml-3 bg-blue-400 dark:bg-gray-600 rounded h-screen w-96 text-center px-4">
                 <div>
                     <searchable-dropdown component_id="categories" :options="categories"
                         @selected="selectCategory($event)" class="mt-6 me-2" />
@@ -445,7 +445,8 @@
                     <label for="discount_type"
                         class="block text-sm font-medium w-full text-left text-gray-700 dark:text-gray-200">
                         Discount Type</label>
-                    <select name="discount_type" id="discount_type" class="w-full bg-gray-700 rounded text-gray-200"
+                    <select name="discount_type" id="discount_type"
+                        class="w-full dark:bg-gray-700 rounded text-gray-700 dark:text-gray-200"
                         v-model="form.discount_type">
                         <option class="" value="pecentage">Percentage</option>
                         <option class="py-4" value="amount">Amount</option>
@@ -500,7 +501,7 @@
                         <span class="my-auto text-gray-200">Select thumbnail</span>
                     </label>
                 </div>
-                <div class="flex items-center  rounded border border-gray-600 w-full mx-auto mt-2 px-2 bg-gray-500">
+                <div class="flex items-center  rounded border border-gray-600 w-full mx-auto mt-2 px-2 ">
                     <input id="active" type="checkbox" value="" name="bordered-checkbox"
                         class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500  focus:ring-2"
                         v-model="form.active">
