@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\TourController;
 use App\Http\Controllers\Api\BlogController;
 use App\Http\Controllers\Api\DestinationController;
 use App\Http\Controllers\Api\GeneralController;
+use App\Http\Controllers\Api\PackageController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -24,9 +25,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResource('categories', CategoryController::class); //->middleware('auth'); this is working
-Route::apiResource('destinations', DestinationController::class);
-Route::apiResource('tours', TourController::class);
+Route::apiResource('categories', CategoryController::class)->middleware(['auth', 'isAdmin']);
+Route::apiResource('destinations', DestinationController::class)->middleware(['auth', 'isAdmin']);
+Route::apiResource('tours', TourController::class)->middleware(['auth', 'isAdmin']);
+Route::apiResource('packages', PackageController::class)->middleware(['auth', 'isAdmin']);
+Route::apiResource('blogs', BlogController::class)->middleware(['auth', 'isAdmin']);
+Route::get('all-categories', [CategoryController::class, 'index']);
 Route::get('filtered-blogs', [BlogController::class, 'getFilteredBlogs']);
 Route::delete('cat-property/{id}', [CategoryController::class, 'deleteProperty']);
 Route::get('categories-slides', [CategoryController::class, 'getSlides']);
@@ -35,6 +39,7 @@ Route::get('countries', [DestinationController::class, 'getCountries']);
 Route::get('countries-destinations', [DestinationController::class, 'getDestinationsOnCountry']);
 Route::get('tour/{slug}', [TourController::class, 'getTourDetails']);
 Route::delete('delete-image/{id}', [TourController::class, 'deleteImage']);
+Route::delete('delete-package-image/{id}', [PackageController::class, 'deleteImage']);
 Route::delete('delete-file/{id}', [TourController::class, 'deleteFile']);
 Route::post('inquire', [ContactController::class, 'makeInquire']);
 Route::post('contact', [ContactController::class, 'makeContact']);
@@ -45,5 +50,3 @@ Route::post('blog/dublicate/{id}', [BlogController::class, 'dublicate']);
 Route::get('nav-destination', [GeneralController::class, 'destinations']);
 Route::get('nav-tours', [GeneralController::class, 'tours']);
 Route::get('single-blog/{slug}', [BlogController::class, 'getSingleBlog']);
-
-Route::apiResource('blogs', BlogController::class);

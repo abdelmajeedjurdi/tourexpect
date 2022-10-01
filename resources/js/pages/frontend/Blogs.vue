@@ -150,7 +150,7 @@ import useDestinations from '../../composables/destinations';
 import useCategories from '../../composables/categories';
 const { getFilteredBlogs, blogs, pagenation } = useBlogs();
 const { getDestinationsOnCountry, countries } = useDestinations()
-const { getCategories, categories } = useCategories()
+const { getAllCategories, categories } = useCategories()
 let filter = ref({
     destination: '*',
     category: '*',
@@ -161,7 +161,7 @@ let active_country = ref(0)
 onMounted(() => {
     getFilteredBlogs(filter.value)
     getDestinationsOnCountry()
-    getCategories()
+    getAllCategories()
 })
 const showFilter = () => {
     if (document.getElementById('filter').style.display == "block")

@@ -16,6 +16,11 @@ export default function useCategories() {
         categories.value = response.data.data;
         pages.value = response.data.meta
     };
+    const getAllCategories = async (page) => {
+        let response = await axios.get(`/api/all-categories?page=${page}`);
+        categories.value = response.data.data;
+        pages.value = response.data.meta
+    };
     const getFlagsOrSigns = async (type) => {
         let response = await axios.get("/api/get-flags-signs?type=" + type);
         categories.value = response.data.data;
@@ -109,7 +114,7 @@ export default function useCategories() {
         categories,
         category,
         errors,
-        getCategories,
+        getCategories, getAllCategories,
         getCategory,
         storeCategory,
         updateCategory,

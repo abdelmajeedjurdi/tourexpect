@@ -15,6 +15,11 @@ import TourCreate from "../pages/backend/tours/TourCreate";
 import TourEdit from "../pages/backend/tours/TourEdit";
 import TourDetails from "../pages/backend/tours/TourDetails";
 
+import PackagesIndex from "../pages/backend/packages/PackagesIndex";
+import PackageCreate from "../pages/backend/packages/PackageCreate";
+import PackageEdit from "../pages/backend/packages/PackageEdit";
+import PackageDetails from "../pages/backend/packages/PackageDetails";
+
 import BlogCreate from "../pages/backend/blogs/BlogCreate";
 import BlogsIndex from "../pages/backend/blogs/BlogsIndex"
 import BlogEdit from "../pages/backend/blogs/BlogEdit"
@@ -106,6 +111,30 @@ const routes = [
         path: "/dashboard/tours/:id/details",
         name: "tour.details",
         component: TourDetails,
+        props: true,
+    },
+
+    // (((((((((((((((((--Packages--)))))))))))))))))
+    {
+        path: "/dashboard/packages",
+        name: "packages.index",
+        component: PackagesIndex,
+    },
+    {
+        path: "/dashboard/packages/create",
+        name: "single_package.create",
+        component: PackageCreate,
+    },
+    {
+        path: "/dashboard/packages/:id/edit",
+        name: "single_package.edit",
+        component: PackageEdit,
+        props: true,
+    },
+    {
+        path: "/dashboard/packages/:id/details",
+        name: "single_package.details",
+        component: PackageDetails,
         props: true,
     },
     // (((((((((((((((((--Blogs--)))))))))))))))))
