@@ -243,7 +243,7 @@
 <script setup>
 import { onMounted, ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import useGeneral from '../../composables/general'
+import useGeneral from '../composables/general'
 
 const { getDestinations, destinations } = useGeneral();
 const router = useRouter()

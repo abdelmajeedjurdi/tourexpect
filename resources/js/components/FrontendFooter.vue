@@ -32,10 +32,10 @@
                 </p>
             </div>
             <div v-for="coulomn in menu_meue">
-                <h3 class="text-white mx-7 pt-4 ">{{ coulomn['title_en'] }}</h3>
+                <h3 class="text-white mx-7 pt-4 ">{{ coulomn['title_'+lang] }}</h3>
                 <ul class="   w-full">
                     <li class=" w-full" v-for="link in coulomn['links']">
-                        <router-link class="text-white" :to="link['slug']">{{ link['name_en'] }}</router-link>
+                        <router-link class="text-white" :to="link['slug']">{{ link['name_'+lang] }}</router-link>
                     </li>
                 </ul>
             </div>
@@ -60,57 +60,68 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { inject, ref } from 'vue';
 
+let lang = inject("lang");
 const menu_meue = ref([
     {
-        title_en: "Our Links",
-        title_ar: "روابطنا",
+        title_en: "Our Services",
+        title_ar: "خدماتنا",
         links: [
             {
-                name_en: "First Link",
+                name_en: "Packages",
+                name_ar: "الباقات",
                 slug: "#"
             },
             {
-                name_en: "Second Link",
+                name_en: "Tours",
+                name_ar: "الجولات",
                 slug: "#"
             },
             {
-                name_en: "Third Link",
+                name_en: "Activities",
+                name_ar: "الأنشطة",
                 slug: "#"
             },
             {
-                name_en: "Fourth Link",
+                name_en: "Transfer",
+                name_ar: "التنقل",
                 slug: "#"
             },
             {
-                name_en: "Fifth Link",
+                name_en: "Hotels & Resorts",
+                name_ar: "النادق و المنتجعات",
                 slug: "#"
             }
         ]
     },
     {
-        title_en: "Our Links",
-        title_ar: "روابطنا",
+        title_en: "About Tourexpect",
+        title_ar: "عن تورايكسبكت",
         links: [
             {
-                name_en: "First Link",
+                name_en: "About Us",
+                name_ar: "حولنا",
                 slug: "#"
             },
             {
-                name_en: "Second Link",
+                name_en: "We Are Hiring",
+                name_ar: "نحن نوظف",
                 slug: "#"
             },
             {
-                name_en: "Third Link",
+                name_en: "Terms & Conditions",
+                name_ar: "الشروط والأحكام",
                 slug: "#"
             },
             {
-                name_en: "Fourth Link",
+                name_en: "Privicy Policies",
+                name_ar: "سياسات الخصوصية",
                 slug: "#"
             },
             {
-                name_en: "Fifth Link",
+                name_en: "Support",
+                name_ar: "الدعم",
                 slug: "#"
             }
         ]

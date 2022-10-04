@@ -9,7 +9,7 @@
 </template>
 <script setup>
 import { inject } from "vue";
-import NavigationBar from "./NavigationBar.vue";
-import FrontendFooter from "./FrontendFooter.vue";
+import NavigationBar from "../../components/NavigationBar.vue";
+import FrontendFooter from "../../components/FrontendFooter.vue";
 let lang = inject("lang");
 </script>
