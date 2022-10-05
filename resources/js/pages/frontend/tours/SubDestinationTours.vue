@@ -62,25 +62,33 @@
                 </div>
             </div>
             <!-- pagenation -->
-            <pagenation @selected="changePage($event)" :pages="pages" />
-
+            <pagenation @selected="changePage($event)" :pages="alter_pages" />
             <!-- end of pagenation -->
         </div>
     </div>
 </template>
 <script setup>
-import { inject, onMounted, ref } from "vue";
+import { inject, onMounted, ref, watch } from "vue";
 import useTours from "../../../composables/tours";
 import Pagenation from "../../../components/Pagenation.vue";
 
-const { getAllTours, tours, pages } = useTours();
+const props = defineProps({ destination: String, subdestination: String });
+const { getDestinationTours, tours, alter_pages } = useTours();
 const lang = inject('lang') || 'en'
 let currentPage = ref(1)
 onMounted(() => {
-    getAllTours(currentPage.value)
+    getDestinationTours(currentPage.value, props.destination, props.subdestination)
 })
 const changePage = (page) => {
     currentPage.value = page
-    getAllTours(currentPage.value)
+    getDestinationTours(currentPage.value, props.destination, props.subdestination)
 }
+watch(() => props.subdestination, (first, second) => {
+    console.log(
+        "Watch props.selected function called with args:",
+        first,
+        second
+    );
+    getDestinationTours(currentPage.value, props.destination, props.subdestination)
+});
 </script>

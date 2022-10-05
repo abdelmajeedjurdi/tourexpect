@@ -1,75 +1,149 @@
 <template>
     <div class="bg-white  w-full fixed top-0 z-20 " style="font-family: 'Source Sans Pro', sans-serif; !important;">
-        <!-- first navbar -->
-        <div id="navbar">
+        <nav>
+            <!-- first navbar -->
+            <div id="navbar">
 
-            <div class="flex outclick justify-between h-16 px-3 md:px-0   max-w-6xl mx-auto ">
-                <div class="flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg"
-                        class="h-6 text-gray-600 hover:text-black cursor-pointer me-3" viewBox="0 0 20 20"
-                        fill="currentColor" @click="showMenu(-1)">
-                        <path fill-rule="evenodd"
-                            d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-                            clip-rule="evenodd" />
-                    </svg>
-                    <router-link to="/" class=" items-center">
-                        <img src="/images/logo.svg" alt="logo" class="h-6 ">
-                    </router-link>
+                <div class="flex outclick justify-between h-16 px-3 md:px-0   max-w-6xl mx-auto ">
+                    <div class="flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                            class="h-6 text-gray-600 hover:text-black cursor-pointer me-3" viewBox="0 0 20 20"
+                            fill="currentColor" @click="showMenu(-1)">
+                            <path fill-rule="evenodd"
+                                d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                                clip-rule="evenodd" />
+                        </svg>
+                        <router-link to="/" class=" items-center">
+                            <img src="/images/logo.svg" alt="logo" class="h-6 ">
+                        </router-link>
+                    </div>
+                    <div class=" w-36 my-auto">
+                        <div class="flex justify-end items-center">
+                            <button @click="switchLanguage()"
+                                class="bg-white text-xs border px-2   py-1 md:py-1 rounded  shadow-md hover:shadow-sm duration-700 h-8 ">
+                                {{ lang == 'ar' ? 'English' : 'العربية' }}
+                            </button>
+                            <select name="curr" id="curr"
+                                class="bg-white text-xs border w-20 m-1 md:m-0 py-1 md:py-1 rounded  shadow-md hover:shadow-sm duration-700 h-8 ">
+                                <option value="USD">USD</option>
+                                <option value="aed">AED</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
-                <div class=" w-36 my-auto">
-                    <div class="flex justify-end items-center">
-                        <button @click="switchLanguage()"
-                            class="bg-white text-xs border px-2   py-1 md:py-1 rounded  shadow-md hover:shadow-sm duration-700 h-8 ">
-                            {{ lang == 'ar' ? 'English' : 'العربية' }}
-                        </button>
-                        <select name="curr" id="curr"
-                            class="bg-white text-xs border w-20 m-1 md:m-0 py-1 md:py-1 rounded  shadow-md hover:shadow-sm duration-700 h-8 ">
-                            <option value="USD">USD</option>
-                            <option value="aed">AED</option>
-                        </select>
+                <!-- second navbar -->
+                <div class="flex justify-between  px-3 md:px-0 w-full max-w-6xl mx-auto">
+                    <div class="hidden lg:block w-full">
+                        <nav class=" border-gray-200 sm:px-4   rounded   w-full hidden lg:block">
+                            <div class=" flex items-center justify-center">
+                                <div class=" absolute md:static w-full md:block md:w-auto left-0 right-0  z-20"
+                                    style="top:8rem ;" id="mobile-menu">
+                                    <ul
+                                        class=" flex flex-col mx-auto my-auto md:flex-row  md:mt-0 md:text-sm md:font-medium items-center">
+                                        <li class="w-full md:w-auto text-center  " v-for="(item, i) in menu">
+                                            <div v-if="item.only_sidebar == false&&item.is_link==false" class="md:mx-4">
+                                                <button @click="showMenu(item.id)"
+                                                    class="peer pr-4 pl-3 font-bold text-xl text-gray-800  border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-400 md:p-0">
+                                                    {{
+                                                    item['name_'+lang]
+                                                    }}</button>
+                                            </div>
+                                            <div v-if="item.is_link==true" class="md:mx-4">
+                                                <router-link :to="{name:item.slug}"
+                                                    class="peer   pr-4 pl-3 font-bold text-xl text-gray-800  border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-400 md:p-0">
+                                                    {{
+                                                    item['name_'+lang]
+                                                    }}</router-link>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </nav>
                     </div>
                 </div>
             </div>
-            <!-- second navbar -->
-            <div class="flex justify-between  px-3 md:px-0 w-full max-w-6xl mx-auto">
-                <div class="hidden lg:block w-full">
-                    <nav class=" border-gray-200 sm:px-4   rounded   w-full hidden lg:block">
-                        <div class=" flex items-center justify-center">
-                            <div class=" absolute md:static w-full md:block md:w-auto left-0 right-0  z-20"
-                                style="top:8rem ;" id="mobile-menu">
-                                <ul
-                                    class=" flex flex-col mx-auto my-auto md:flex-row  md:mt-0 md:text-sm md:font-medium items-center">
-                                    <li class="w-full md:w-auto text-center  " v-for="(item, i) in menu">
-                                        <div v-if="item.only_sidebar == false&&item.is_link==false" class="md:mx-4">
-                                            <button @click="showMenu(item.id)"
-                                                class="peer pr-4 pl-3 font-bold text-xl text-gray-800  border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-400 md:p-0">
-                                                {{
-                                                item['name_'+lang]
-                                                }}</button>
-                                        </div>
-                                        <div v-if="item.is_link==true" class="md:mx-4">
-                                            <router-link :to="{name:item.slug}"
-                                                class="peer   pr-4 pl-3 font-bold text-xl text-gray-800  border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-400 md:p-0">
-                                                {{
-                                                item['name_'+lang]
-                                                }}</router-link>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
+
+            <bread-crumb v-if="url.path !== '/'" />
+            <!-- Desktop Side bar -->
+            <div v-show="is_menu"
+                class="top-0 outclick z-40 absolute w-full h-screen  menu bg-black bg-opacity-25 hidden md:flex ">
+                <div class=" flex" id="menu">
+                    <!-- first layer -->
+                    <div class="w-80 h-screen border  bg-white">
+                        <div class="w-full  py-10 flex items-center mx-auto">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                class="h-5 w-5 text-gray-400 mx-5 hover:text-gray-500 cursor-pointer "
+                                @click="closeMenu" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd"
+                                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                            <router-link to="/" class="flex items-center justify-center">
+                                <img src="/images/logo.svg" alt="logo" class="h-6 ">
+                            </router-link>
                         </div>
-                    </nav>
+
+                        <ul class=" space-y-6 md:flex-row md:mt-0 md:text-sm md:font-medium items-center">
+                            <li class="w-full md:w-auto" v-for="(item, i) in menu" @mouseenter="setSubmenu(i)">
+                                <router-link :to="'/' + item.slug" @click="closeMenu"
+                                    :class="menu_path_by_id.menu == i ? 'text-blue-400' : 'text-black'"
+                                    class="block font-semibold text-2xl py-2 pr-4 pl-3   border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-400 md:p-0">
+                                    {{ item['name_'+lang] }}
+                                </router-link>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- second layer -->
+                    <div v-if="submenu.length" class="w-64  md:w-64 h-screen border bg-white  ">
+
+                        <div class="w-full  py-10 text-center text-xl font-bold ">
+                            <span>{{ $t(menu_title) }}</span>
+                        </div>
+                        <ul class=" space-y-4 md:flex-row mx-6 md:mt-0 md:text-sm md:font-medium items-center">
+                            <li class="w-full flex justify-between md:w-auto" v-for="(item, j) in submenu"
+                                @mouseenter="setSubSubMenu(j)">
+                                <router-link
+                                    :to="{path: `/${menu_slug}/${submenu_slug} `,params: { destination: submenu_slug }}"
+                                    @click="closeMenu"
+                                    :class="menu_path_by_id.sub_menu == j ? 'text-blue-400' : 'text-black'"
+                                    class="block   text-sm py-2 pr-4 pl-3  border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-400 md:p-0">
+                                    {{ item['name_'+lang] }}
+                                </router-link>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 text-gray-600" fill="none"
+                                    v-if="item.items.length" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                                </svg>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- third layer -->
+                    <div class="w-64  md:w-64 h-screen border bg-white" v-if="submenu_title.length">
+
+                        <div class="w-full  py-10 text-center text-xl font-bold ">
+                            <span>{{ submenu_title }}</span>
+                        </div>
+                        <ul class=" space-y-4 md:flex-row mx-6 md:mt-0 md:text-sm md:font-medium items-center">
+                            <li class="w-full md:w-auto" v-for="(item, i) in subsubmenu['items']">
+                                <router-link
+                                    :to="{path: `/${menu_slug}/${submenu_slug}/${item['slug']} `,params: { destination: submenu_slug.at,subdestination:item['slug'] }}"
+                                    @click="closeMenu"
+                                    class="block   text-sm py-2 pr-4 pl-3 text-gray-700 border-gray-100 md:border-0 hover:text-blue-400 md:p-0">
+                                    {{ item['name_'+lang] }}
+                                </router-link>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <bread-crumb v-if="url.path !== '/'" />
-        <!-- Desktop Side bar -->
-        <div v-show="is_menu"
-            class="top-0 outclick z-40 absolute w-full h-screen  menu bg-black bg-opacity-25 hidden md:flex ">
-            <div class=" flex" id="menu">
+
+            <!-- Mobile Side bar -->
+            <div v-show="mobile_menu" id="mobilemenu"
+                class="top-0 outclick z-40 absolute w-full h-screen menu flex  bg-opacity-25 md:hidden">
                 <!-- first layer -->
-                <div class="w-80 h-screen border  bg-white">
+                <div class="w-full h-screen border  bg-white">
+
                     <div class="w-full  py-10 flex items-center mx-auto">
                         <svg xmlns="http://www.w3.org/2000/svg"
                             class="h-5 w-5 text-gray-400 mx-5 hover:text-gray-500 cursor-pointer " @click="closeMenu"
@@ -78,164 +152,95 @@
                                 d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
                                 clip-rule="evenodd" />
                         </svg>
+
                         <router-link to="/" class="flex items-center justify-center">
                             <img src="/images/logo.svg" alt="logo" class="h-6 ">
                         </router-link>
                     </div>
+                    <ul class=" space-y-6 md:flex-row mx-20 md:mt-0 md:text-sm md:font-medium items-center">
+                        <li class="w-full md:w-auto" v-for="(item, i) in menu"
+                            @click="item['items'].length>0?setSubmenu(i):(router.push({ path: `/${item.slug}` }),closeMenu())">
 
-                    <ul class=" space-y-6 md:flex-row md:mt-0 md:text-sm md:font-medium items-center">
-                        <li class="w-full md:w-auto" v-for="(item, i) in menu" @mouseenter="setSubmenu(i)">
-                            <router-link :to="'/' + item.slug" @click="closeMenu"
-                                :class="menu_path_by_id.menu == i ? 'text-blue-400' : 'text-black'"
-                                class="block font-semibold text-2xl py-2 pr-4 pl-3   border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-400 md:p-0">
-                                {{ item['name_'+lang] }}
-                            </router-link>
+                            <button :class="menu_path_by_id.menu == i ? 'text-blue-400' : ''"
+                                class="block font-semibold text-xl py-2 pr-4 pl-3 text-black  border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-400 md:p-0">
+                                {{ item['name_'+lang] }}</button>
                         </li>
                     </ul>
                 </div>
                 <!-- second layer -->
-                <div v-if="submenu.length" class="w-64  md:w-64 h-screen border bg-white  ">
+                <div v-show="submenu.length" class="w-full  md:w-64 h-screen border bg-white z-20   absolute md:static">
+                    <div class="flex w-full justify-between mt-4 px-4">
 
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                            class="h-6  text-gray-400   hover:text-gray-500 cursor-pointer" @click="closeSubmenue"
+                            fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                            class="h-6  text-gray-400  hover:text-gray-500 cursor-pointer " @click="closeMenu"
+                            viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </div>
                     <div class="w-full  py-10 text-center text-xl font-bold ">
                         <span>{{ $t(menu_title) }}</span>
                     </div>
                     <ul class=" space-y-4 md:flex-row mx-6 md:mt-0 md:text-sm md:font-medium items-center">
-                        <li class="w-full flex justify-between md:w-auto" v-for="(item, j) in submenu"
-                            @mouseenter="setSubSubMenu(j)">
-                            <router-link :to="'/' + menu_slug + '/'+submenu_slug " @click="closeMenu"
-                                :class="menu_path_by_id.sub_menu == j ? 'text-blue-400' : 'text-black'"
-                                class="block   text-sm py-2 pr-4 pl-3  border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-400 md:p-0">
+
+
+                        <li class="w-full flex justify-between items-center md:w-auto" v-for="(item, j) in submenu"
+                            @click=" item['items'].length>0?setSubSubMenu(j):(router.push({ path: `/${menu_slug}/${item.slug}` }), closeMenu()) ">
+
+                            <button :class="menu_path_by_id.sub_menu == j ? 'text-blue-400' : ''"
+                                class="block   text-sm py-2 pr-4 pl-3 text-black border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-400 md:p-0">
                                 {{ item['name_'+lang] }}
-                            </router-link>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 text-gray-600" fill="none"
+
+                            </button>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 text-gray-600" fill="none"
                                 v-if="item.items.length" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
                             </svg>
+
                         </li>
                     </ul>
                 </div>
                 <!-- third layer -->
-                <div class="w-64  md:w-64 h-screen border bg-white" v-if="submenu_title.length">
-
+                <div v-show="submenu_title.length"
+                    class="w-full  md:w-64 h-screen border bg-white z-30   absolute md:static  ">
+                    <div class="flex w-full justify-between mt-4 px-4">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                            class="h-6  text-gray-400  hover:text-gray-500 cursor-pointer" @click="submenu_title = ''"
+                            fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                            class="h-6 text-gray-400   hover:text-gray-500 cursor-pointer " @click="closeMenu"
+                            viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </div>
                     <div class="w-full  py-10 text-center text-xl font-bold ">
                         <span>{{ submenu_title }}</span>
                     </div>
                     <ul class=" space-y-4 md:flex-row mx-6 md:mt-0 md:text-sm md:font-medium items-center">
+
+
                         <li class="w-full md:w-auto" v-for="(item, i) in subsubmenu['items']">
-                            <router-link :to="'/' + menu_slug + '/' + submenu_slug + '/' + item['slug']"
-                                @click="closeMenu"
-                                class="block   text-sm py-2 pr-4 pl-3 text-gray-700 border-gray-100 md:border-0 hover:text-blue-400 md:p-0">
-                                {{ item['name_'+lang] }}
-                            </router-link>
+
+                            <button
+                                @click="()=>{router.push({ path: `/${menu_slug}/${submenu_slug}/${item.slug}`});closeMenu()}"
+                                class="block   text-sm py-2 pr-4 pl-3 text-black border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-400 md:p-0">
+                                {{ item['name_'+lang] }}</button>
+
                         </li>
                     </ul>
                 </div>
             </div>
-        </div>
-
-
-        <!-- Mobile Side bar -->
-        <div v-show="mobile_menu" id="mobilemenu"
-            class="top-0 outclick z-40 absolute w-full h-screen menu flex  bg-opacity-25 md:hidden">
-            <!-- first layer -->
-            <div class="w-full h-screen border  bg-white">
-
-                <div class="w-full  py-10 flex items-center mx-auto">
-                    <svg xmlns="http://www.w3.org/2000/svg"
-                        class="h-5 w-5 text-gray-400 mx-5 hover:text-gray-500 cursor-pointer " @click="closeMenu"
-                        viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd"
-                            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                            clip-rule="evenodd" />
-                    </svg>
-
-                    <router-link to="/" class="flex items-center justify-center">
-                        <img src="/images/logo.svg" alt="logo" class="h-6 ">
-                    </router-link>
-                </div>
-                <ul class=" space-y-6 md:flex-row mx-20 md:mt-0 md:text-sm md:font-medium items-center">
-                    <li class="w-full md:w-auto" v-for="(item, i) in menu"
-                        @click="item['items'].length>0?setSubmenu(i):(router.push({ path: `/${item.slug}` }),closeMenu())">
-
-                        <button :class="menu_path_by_id.menu == i ? 'text-blue-400' : ''"
-                            class="block font-semibold text-xl py-2 pr-4 pl-3 text-black  border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-400 md:p-0">
-                            {{ item['name_'+lang] }}</button>
-                    </li>
-                </ul>
-            </div>
-            <!-- second layer -->
-            <div v-show="submenu.length" class="w-full  md:w-64 h-screen border bg-white z-20   absolute md:static">
-                <div class="flex w-full justify-between mt-4 px-4">
-
-                    <svg xmlns="http://www.w3.org/2000/svg"
-                        class="h-6  text-gray-400   hover:text-gray-500 cursor-pointer" @click="closeSubmenue"
-                        fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
-                    </svg>
-                    <svg xmlns="http://www.w3.org/2000/svg"
-                        class="h-6  text-gray-400  hover:text-gray-500 cursor-pointer " @click="closeMenu"
-                        viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd"
-                            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                            clip-rule="evenodd" />
-                    </svg>
-                </div>
-                <div class="w-full  py-10 text-center text-xl font-bold ">
-                    <span>{{ $t(menu_title) }}</span>
-                </div>
-                <ul class=" space-y-4 md:flex-row mx-6 md:mt-0 md:text-sm md:font-medium items-center">
-
-
-                    <li class="w-full flex justify-between items-center md:w-auto" v-for="(item, j) in submenu"
-                        @click=" item['items'].length>0?setSubSubMenu(j):(router.push({ path: `/${menu_slug}/${item.slug}` }), closeMenu()) ">
-
-                        <button :class="menu_path_by_id.sub_menu == j ? 'text-blue-400' : ''"
-                            class="block   text-sm py-2 pr-4 pl-3 text-black border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-400 md:p-0">
-                            {{ item['name_'+lang] }}
-
-                        </button>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 text-gray-600" fill="none"
-                            v-if="item.items.length" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                        </svg>
-
-                    </li>
-                </ul>
-            </div>
-            <!-- third layer -->
-            <div v-show="submenu_title.length"
-                class="w-full  md:w-64 h-screen border bg-white z-30   absolute md:static  ">
-                <div class="flex w-full justify-between mt-4 px-4">
-                    <svg xmlns="http://www.w3.org/2000/svg"
-                        class="h-6  text-gray-400  hover:text-gray-500 cursor-pointer" @click="submenu_title = ''"
-                        fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
-                    </svg>
-                    <svg xmlns="http://www.w3.org/2000/svg"
-                        class="h-6 text-gray-400   hover:text-gray-500 cursor-pointer " @click="closeMenu"
-                        viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd"
-                            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                            clip-rule="evenodd" />
-                    </svg>
-                </div>
-                <div class="w-full  py-10 text-center text-xl font-bold ">
-                    <span>{{ submenu_title }}</span>
-                </div>
-                <ul class=" space-y-4 md:flex-row mx-6 md:mt-0 md:text-sm md:font-medium items-center">
-
-
-                    <li class="w-full md:w-auto" v-for="(item, i) in subsubmenu['items']">
-
-                        <button
-                            @click="()=>{router.push({ path: `/${menu_slug}/${submenu_slug}/${item.slug}`});closeMenu()}"
-                            class="block   text-sm py-2 pr-4 pl-3 text-black border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-400 md:p-0">
-                            {{ item['name_'+lang] }}</button>
-
-                    </li>
-                </ul>
-            </div>
-        </div>
+        </nav>
 
     </div>
 

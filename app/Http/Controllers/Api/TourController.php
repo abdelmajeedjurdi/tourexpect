@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\TourRequest;
+use App\Http\Resources\DestinationTourResource;
 use App\Http\Resources\TourResource;
+use App\Models\Destination;
 use App\Models\Tour;
 use App\Models\TourFile;
 use App\Models\TourImage;
@@ -26,6 +28,27 @@ class TourController extends Controller
     {
         return TourResource::collection(Tour::paginate(15));
         // return "index is working";
+    }
+    public function getAllTours()
+    {
+        return TourResource::collection(Tour::paginate(15));
+        // return "index is working";
+    }
+    public function getDestinationTours(Request $request)
+    {
+        Log::info($request);
+        // return TourResource::collection(Tour::paginate(15));
+        if ($request->subdestination == 'null') {
+            $all = DB::table('countries')
+                ->join('destinations', 'countries.id', '=', 'destinations.country_id')
+                ->join('tours', 'destinations.id', '=', 'tours.destination_id')
+                ->select('tours.id', 'tours.destination_id', 'tours.title_en', 'tours.title_ar', 'tours.address_ar', 'tours.address_en', 'tours.description_en', 'tours.description_ar', 'tours.slug', 'tours.adult_price', 'tours.child_price', 'tours.discount', 'tours.thumbnail', 'tours.discount_type', 'tours.duration_en', 'tours.duration_ar')->where('countries.slug', '=', $request->destination)->paginate(2);
+        } else {
+            $all = DB::table('destinations')
+                ->join('tours', 'destinations.id', '=', 'tours.destination_id')
+                ->select('tours.id', 'tours.destination_id', 'tours.title_en', 'tours.title_ar', 'tours.address_ar', 'tours.address_en', 'tours.description_en', 'tours.description_ar', 'tours.slug', 'tours.adult_price', 'tours.child_price', 'tours.discount', 'tours.thumbnail', 'tours.discount_type', 'tours.duration_en', 'tours.duration_ar')->where('destinations.slug', '=', $request->subdestination)->paginate(2);
+        }
+        return $all;
     }
 
     /**

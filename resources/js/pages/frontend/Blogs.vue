@@ -1,8 +1,5 @@
 <template>
 
-    <Head>
-        <title>Hello Title</title>
-    </Head>
     <div class=" sm:px-4 xl:px-0 sm:flex w-full max-w-6xl mx-auto my-28">
 
         <div class="max-h-screen w-11/12 mx-auto sm:mx-0 sm:w-80 border rounded shadow block px-3 py-3 mb-5 sm:mb-0">

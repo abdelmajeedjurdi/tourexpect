@@ -8,6 +8,16 @@ export default function useTours() {
     const router = useRouter();
     const errors = ref("");
     const pages = ref([])
+    const alter_pages = ref({
+        current_page: null,
+        from: null,
+        last_page: null,
+        links: [],
+        path: null,
+        per_page: null,
+        to: null,
+        total: null
+    })
     let percentage = ref(0);
     let fd = new FormData();
 
@@ -15,6 +25,26 @@ export default function useTours() {
         let response = await axios.get(`/api/tours?page=${page}`);
         tours.value = response.data.data;
         pages.value = response.data.meta
+    };
+    const getAllTours = async (page) => {
+        let response = await axios.get(`/api/all-tours?page=${page}`);
+        tours.value = response.data.data;
+        pages.value = response.data.meta
+        console.log(pages.value);
+    };
+    const getDestinationTours = async (page, destination, subdestination = null) => {
+        let response = await axios.get(`/api/destination-tours?page=${page}&destination=${destination}&subdestination=${subdestination}`);
+        tours.value = response.data.data;
+        pages.value = response.data.meta
+        alter_pages.value['current_page'] = response.data['current_page']
+        alter_pages.value['last_page'] = response.data['last_page']
+        alter_pages.value['from'] = response.data['from']
+        alter_pages.value['links'] = response.data['links']
+        alter_pages.value['to'] = response.data['to']
+        alter_pages.value['total'] = response.data['total']
+        alter_pages.value['path'] = response.data['path']
+        console.log(response.data);
+
     };
 
     const getTour = async (id) => {
@@ -166,7 +196,7 @@ export default function useTours() {
         addFiles,
         getTourDetails,
         destroyImage,
-        destroyFile,
-        percentage, pages
+        destroyFile, getDestinationTours,
+        percentage, pages, getAllTours, alter_pages
     };
 }

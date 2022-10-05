@@ -17,7 +17,7 @@ class Tour extends Model
         'title_en',
         'title_ar',
         'address_ar',
-        'title_ar',
+        'address_en',
         'thumbnail',
         'description_en',
         'description_ar',

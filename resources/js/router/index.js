@@ -31,9 +31,10 @@ import CommingSoon from "../pages/frontend/CommingSoon";
 import About from "../pages/frontend/AboutUs";
 import Contact from "../pages/frontend/ContactUs";
 import Blogs from "../pages/frontend/Blogs";
-
+import Tours from "../pages/frontend/tours/Tours"
+import DestinationTours from "../pages/frontend/tours/DestinationTours"
+import SubDestinationTours from "../pages/frontend/tours/SubDestinationTours"
 import Test from "../pages/backend/Test.vue";
-import Hero from "../components/HeroCarousel";
 import Dashboard from "../pages/backend/Dashboard.vue";
 import SingleBlog from "../pages/frontend/SingleBlog"
 
@@ -185,24 +186,33 @@ const routes = [
         component: Contact,
     },
     {
-        path: "/test2",
-        name: "test",
-        component: Test,
-        props: true,
-    },
-    {
         path: "/blogs",
         name: "blogs",
         component: Blogs,
-        meta: {
-            title: "Blogs"
-        }
     },
     {
         path: "/blogs/:slug",
         name: "blog",
         component: SingleBlog,
         props: true,
+    },
+
+    {
+        path: "/tours",
+        name: "tours",
+        component: Tours,
+    },
+    {
+        path: "/tours/:destination",
+        name: "DTours",
+        component: DestinationTours,
+        props: true
+    },
+    {
+        path: "/tours/:destination/:subdestination",
+        name: "SDTours",
+        component: SubDestinationTours,
+        props: true
     },
     {
         path: "/packages",
@@ -224,6 +234,13 @@ const routes = [
         name: "hotels-and-resorts",
         component: CommingSoon,
     },
+
+    {
+        path: "/test2",
+        name: "test",
+        component: Test,
+        props: true,
+    },
     {
         path: "/:pathMatch(.*)*",
         name: "404",
@@ -241,7 +258,7 @@ router.beforeEach((to, from, next) => {
     let name = to.name
     name = name.replace(/\-/g, ' ');
     name = name.replace(/(^\w|\s\w)/g, m => m.toUpperCase());
-    let title = `Tourexpect - ${name}`
+    let title = `${name} - Tourexpect`
     if (to.params.slug) {
         let s = to.params.slug
         s = s.replace(/\-/g, ' ');

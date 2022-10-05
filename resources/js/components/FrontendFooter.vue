@@ -120,8 +120,8 @@ const menu_meue = ref([
                 slug: "#"
             },
             {
-                name_en: "Support",
-                name_ar: "الدعم",
+                name_en: "Contact Us",
+                name_ar: "اتصل بنا",
                 slug: "#"
             }
         ]

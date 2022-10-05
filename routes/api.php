@@ -31,6 +31,8 @@ Route::apiResource('tours', TourController::class)->middleware(['auth', 'isAdmin
 Route::apiResource('packages', PackageController::class)->middleware(['auth', 'isAdmin']);
 Route::apiResource('blogs', BlogController::class)->middleware(['auth', 'isAdmin']);
 Route::get('all-categories', [CategoryController::class, 'index']);
+Route::get('all-tours', [TourController::class, 'getAllTours']);
+Route::get('destination-tours', [TourController::class, 'getDestinationTours']);
 Route::get('filtered-blogs', [BlogController::class, 'getFilteredBlogs']);
 Route::delete('cat-property/{id}', [CategoryController::class, 'deleteProperty']);
 Route::get('categories-slides', [CategoryController::class, 'getSlides']);
