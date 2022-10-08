@@ -3,8 +3,9 @@
         <div class=" w-full">
             <div style="min-height:80vh ;"
                 class=" grid gap-4 grid-cols-1  md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 justify-between ">
-                <div v-for="tour in tours" :key="tour.id">
-                    <TourVue :tour="tour" />
+                <div v-for="pack in packages" :key="pack.id">
+
+                    <PackVue :pack="pack" />
                 </div>
             </div>
             <!-- pagenation -->
@@ -15,17 +16,17 @@
 </template>
 <script setup>
 import { onMounted, ref } from "vue";
-import useTours from "../../../composables/tours";
+import usePackages from "../../../composables/packages";
 import Pagenation from "../../../components/Pagenation.vue";
-import TourVue from "../../../components/Tour.vue";
+import PackVue from "../../../components/Pack.vue";
 
-const { getAllTours, tours, pages } = useTours();
+const { getAllPacks, packages, pages } = usePackages();
 let currentPage = ref(1)
 onMounted(() => {
-    getAllTours(currentPage.value)
+    getAllPacks(currentPage.value)
 })
 const changePage = (page) => {
     currentPage.value = page
-    getAllTours(currentPage.value)
+    getAllPacks(currentPage.value)
 }
 </script>

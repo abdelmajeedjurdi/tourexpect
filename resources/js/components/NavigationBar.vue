@@ -286,6 +286,7 @@ onMounted(async () => {
     });
     await getDestinations();
     menu.value[0]['items'] = destinations.value
+    menu.value[1]['items'] = destinations.value
     menu.value[2]['items'] = destinations.value
 });
 
@@ -305,7 +306,7 @@ let menu = ref([
         name_ar: 'الباقات',
         slug: 'packages',
         only_sidebar: false,
-        is_link: true,
+        is_link: false,
         items: []
     },
     {
@@ -315,9 +316,7 @@ let menu = ref([
         slug: 'tours',
         only_sidebar: false,
         is_link: false,
-        items: [
-
-        ]
+        items: []
     },
     {
         id: 3,
@@ -366,11 +365,14 @@ let menu_path_by_id = ref({
     sub_menu: -1,
 })
 const setSubmenu = (i) => {
+    console.log('submenu seted', i);
     menu_path_by_id.value.menu = i
     subsubmenu.value = [];
     submenu_title.value = ''
     submenu_slug.value = ''
     if (!menu.value[i]['is_link']) {
+
+        console.log(menu.value);
         submenu.value = menu.value[i]['items']
         menu_title.value = menu.value[i]['name_en']
         menu_slug.value = menu.value[i]['slug']

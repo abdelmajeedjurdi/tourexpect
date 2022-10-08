@@ -1,12 +1,12 @@
 <template>
     <div class="bg-white w-full pt-16 px-3 md:px-0 max-w-6xl mx-auto">
-
+        <h1>{{ destination }}</h1>
         <div class=" w-full">
             <div style="min-height:80vh ;"
                 class=" grid gap-4 grid-cols-1  md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 justify-between ">
-                <div v-for="tour in tours" :key="tour.id">
+                <div v-for="pack in packages" :key="pack.id">
 
-                    <TourVue :tour="tour" />
+                    <PackVue :pack="pack" />
                 </div>
             </div>
             <!-- pagenation -->
@@ -17,19 +17,19 @@
 </template>
 <script setup>
 import { inject, onMounted, ref, watch } from "vue";
-import useTours from "../../../composables/tours";
+import usePackages from "../../../composables/packages";
 import Pagenation from "../../../components/Pagenation.vue";
-import TourVue from "../../../components/Tour.vue";
+import PackVue from "../../../components/Pack.vue";
 const props = defineProps({ destination: String });
-const { getDestinationTours, tours, alter_pages } = useTours();
+const { getDestinationPacks, packages, alter_pages } = usePackages();
 const lang = inject('lang') || 'en'
 let currentPage = ref(1)
 onMounted(() => {
-    getDestinationTours(currentPage.value, props.destination)
+    getDestinationPacks(currentPage.value, props.destination)
 })
 const changePage = (page) => {
     currentPage.value = page
-    getDestinationTours(currentPage.value, props.destination)
+    getDestinationPacks(currentPage.value, props.destination)
 }
 watch(() => props.destination, (first, second) => {
     console.log(
@@ -37,6 +37,6 @@ watch(() => props.destination, (first, second) => {
         first,
         second
     );
-    getDestinationTours(currentPage.value, props.destination)
+    getDestinationPacks(currentPage.value, props.destination)
 });
 </script>

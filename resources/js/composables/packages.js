@@ -8,6 +8,16 @@ export default function usePackages() {
     const router = useRouter();
     const errors = ref("");
     const pages = ref([])
+    const alter_pages = ref({
+        current_page: null,
+        from: null,
+        last_page: null,
+        links: [],
+        path: null,
+        per_page: null,
+        to: null,
+        total: null
+    })
     let percentage = ref(0);
     let fd = new FormData();
 
@@ -17,6 +27,26 @@ export default function usePackages() {
         pages.value = response.data.meta
     };
 
+    const getAllPacks = async (page) => {
+        let response = await axios.get(`/api/all-packs?page=${page}`);
+        packages.value = response.data.data;
+        pages.value = response.data.meta
+        console.log(pages.value);
+    };
+    const getDestinationPacks = async (page, destination, subdestination = null) => {
+        let response = await axios.get(`/api/destination-packs?page=${page}&destination=${destination}&subdestination=${subdestination}`);
+        packages.value = response.data.data;
+        pages.value = response.data.meta
+        alter_pages.value['current_page'] = response.data['current_page']
+        alter_pages.value['last_page'] = response.data['last_page']
+        alter_pages.value['from'] = response.data['from']
+        alter_pages.value['links'] = response.data['links']
+        alter_pages.value['to'] = response.data['to']
+        alter_pages.value['total'] = response.data['total']
+        alter_pages.value['path'] = response.data['path']
+        console.log(response.data);
+
+    };
     const getPackage = async (id) => {
         let response = await axios.get("/api/packages/" + id);
         single_package.value = response.data.data;
@@ -167,6 +197,6 @@ export default function usePackages() {
         getPackageDetails,
         destroyImage,
         destroyFile,
-        percentage, pages
+        percentage, pages, getAllPacks, getDestinationPacks
     };
 }

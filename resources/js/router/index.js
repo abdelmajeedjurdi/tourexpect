@@ -34,6 +34,9 @@ import Blogs from "../pages/frontend/Blogs";
 import Tours from "../pages/frontend/tours/Tours"
 import DestinationTours from "../pages/frontend/tours/DestinationTours"
 import SubDestinationTours from "../pages/frontend/tours/SubDestinationTours"
+import Packages from "../pages/frontend/packs/Packs"
+import DestinationPacks from "../pages/frontend/packs/DestinationPacks"
+import SubDestinationPacks from "../pages/frontend/packs/SubDestinationPacks"
 import Test from "../pages/backend/Test.vue";
 import Dashboard from "../pages/backend/Dashboard.vue";
 import SingleBlog from "../pages/frontend/SingleBlog"
@@ -217,7 +220,19 @@ const routes = [
     {
         path: "/packages",
         name: "packages",
-        component: CommingSoon,
+        component: Packages,
+    },
+    {
+        path: "/packages/:destination",
+        name: "Dpackages",
+        component: DestinationPacks,
+        props: true
+    },
+    {
+        path: "/packages/:destination/:subdestination",
+        name: "SDpackages",
+        component: SubDestinationPacks,
+        props: true
     },
     {
         path: "/activities",
