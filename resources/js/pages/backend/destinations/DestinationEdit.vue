@@ -16,7 +16,6 @@
             </p>
         </div>
     </div>
-    {{ destination }}
     <form class="space-y-6" @submit.prevent="saveDestination">
         <div class="lg:flex justify-between space-x-4">
             <div class="space-y-4 rounded-md w-full">
@@ -140,26 +139,28 @@
 
                     <div class="flex flex-col mt-2">
                         <input class="
-                w-100
-                mt-2
-                py-3
-                px-3
-                rounded-lg
-                bg-white
-                dark:bg-gray-800
-                border border-gray-400
-                dark:border-gray-700
-                text-gray-800
-                dark:text-gray-50
-                font-semibold
-                focus:border-blue-500 focus:outline-none
-                hidden
-              " @change="onFileSelected" type="file" id="user-image" accept="image/*" />
-                        <label for="user-image" class="w-100 flex justify-start"><svg xmlns="http://www.w3.org/2000/svg"
-                                class="w-12 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        w-100
+                                        mt-2
+                                        py-3
+                                        px-3
+                                        rounded-lg
+                                        bg-white
+                                        dark:bg-gray-800
+                                        border border-gray-400
+                                        dark:border-gray-700
+                                        text-gray-800
+                                        dark:text-gray-50
+                                        font-semibold
+                                        focus:border-blue-500 focus:outline-none
+                                        hidden
+                                    " @change="onFileSelected" type="file" id="user-image" accept="image/*" />
+                        <label for="user-image" class="w-100 flex justify-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-12 cursor-pointer" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                            </svg></label>
+                            </svg>
+                        </label>
                     </div>
                 </div>
             </div>

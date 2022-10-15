@@ -17,18 +17,18 @@
                                     Name</label>
                                 <div class="mt-1">
                                     <input type="text" name="title_en" id="title_en" class="
-                  block
-                  mt-1
-                  w-full
-                  rounded-md
-                  border-gray-500
-                  shadow-sm
-                  focus:border-indigo-300
-                  focus:ring
-                  focus:ring-indigo-200
-                  focus:ring-opacity-50
-                  dark:bg-gray-800
-                " v-model="single_package.title_en" />
+                                        block
+                                        mt-1
+                                        w-full
+                                        rounded-md
+                                        border-gray-500
+                                        shadow-sm
+                                        focus:border-indigo-300
+                                        focus:ring
+                                        focus:ring-indigo-200
+                                        focus:ring-opacity-50
+                                        dark:bg-gray-800
+                                        " v-model="single_package.title_en" />
                                 </div>
                             </div>
                             <div class="w-full">
@@ -37,18 +37,18 @@
                                     Name</label>
                                 <div class="mt-1">
                                     <input dir="rtl" type="text" name="title_ar" id="title_ar" class="
-                  block
-                  mt-1
-                  w-full
-                  rounded-md
-                  border-gray-500
-                  shadow-sm
-                  focus:border-indigo-300
-                  focus:ring
-                  focus:ring-indigo-200
-                  focus:ring-opacity-50
-                  dark:bg-gray-800
-                " v-model="single_package.title_ar" />
+                                        block
+                                        mt-1
+                                        w-full
+                                        rounded-md
+                                        border-gray-500
+                                        shadow-sm
+                                        focus:border-indigo-300
+                                        focus:ring
+                                        focus:ring-indigo-200
+                                        focus:ring-opacity-50
+                                        dark:bg-gray-800
+                                        " v-model="single_package.title_ar" />
                                 </div>
                             </div>
                         </div>
@@ -106,18 +106,18 @@
                                     Description</label>
                                 <div class="mt-1">
                                     <textarea rows="10" type="text" name="description_en" id="description_en" class="
-                  block
-                  mt-1
-                  w-full
-                  rounded-md
-                  border-gray-500
-                  shadow-sm
-                  focus:border-indigo-300
-                  focus:ring
-                  focus:ring-indigo-200
-                  focus:ring-opacity-50
-                  dark:bg-gray-800
-                " v-model="single_package.description_en" />
+                                        block
+                                        mt-1
+                                        w-full
+                                        rounded-md
+                                        border-gray-500
+                                        shadow-sm
+                                        focus:border-indigo-300
+                                        focus:ring
+                                        focus:ring-indigo-200
+                                        focus:ring-opacity-50
+                                        dark:bg-gray-800
+                                        " v-model="single_package.description_en" />
                                 </div>
                             </div>
                             <div class="w-full">

@@ -59,7 +59,6 @@ class DestinationController extends Controller
      */
     public function store(DestinationRequest $request)
     {
-        Log::info($request);
 
         if ($request->hasFile('image')) {
             $image = $request->image;
@@ -151,7 +150,6 @@ class DestinationController extends Controller
      */
     public function destroy(Destination $destination)
     {
-        Log::info($destination);
         if ($destination->image !== 'default.jpg' && $destination->image !== '')
             unlink('images/destinations/' . $destination->image);
         $destination->delete();

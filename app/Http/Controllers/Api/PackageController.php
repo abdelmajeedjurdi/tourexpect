@@ -31,8 +31,6 @@ class PackageController extends Controller
     }
     public function getDestinationPacks(Request $request)
     {
-        Log::info($request);
-        // return TourResource::collection(Tour::paginate(15));
         if ($request->subdestination == 'null') {
             $all = DB::table('countries')
                 ->join('destinations', 'countries.id', '=', 'destinations.country_id')
@@ -64,7 +62,6 @@ class PackageController extends Controller
      */
     public function store(PackageRequest $request)
     {
-        Log::info($request);
         if ($request->hasFile('image')) {
             $image = $request->image;
             $imageName = $image->getClientOriginalName();
@@ -146,7 +143,6 @@ class PackageController extends Controller
      */
     public function update(PackageRequest $request, Package $package)
     {
-        Log::info($request);
         $path = 'images/packages/';
         //code for remove old image
         if ($request->new_image != 'null' && $request->new_image != 'default.jpg') {
@@ -231,7 +227,6 @@ class PackageController extends Controller
     public function destroy($id)
     {
         $package = Package::find($id);
-        Log::info($package);
         if ($package->thumbnail !== 'default.jpg' && $package->thumbnail !== '')
             unlink('images/packages/' . $package->thumbnail);
         $images = PackageImage::where('package_id', $package->id)->get();
@@ -291,7 +286,6 @@ class PackageController extends Controller
     //     $path = public_path() . '/files/packages/';
 
     //     $file = PackageImage::find($id);
-    //     Log::info($file);
     //     unlink($path . $file->file);
     //     $file->delete();
     //     return '';

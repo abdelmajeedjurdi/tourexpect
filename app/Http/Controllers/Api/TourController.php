@@ -36,7 +36,7 @@ class TourController extends Controller
     }
     public function getDestinationTours(Request $request)
     {
-        Log::info($request);
+
         // return TourResource::collection(Tour::paginate(15));
         if ($request->subdestination == 'null') {
             $all = DB::table('countries')
@@ -69,7 +69,7 @@ class TourController extends Controller
      */
     public function store(TourRequest $request)
     {
-        Log::info($request);
+
         if ($request->hasFile('image')) {
             $image = $request->image;
             $imageName = $image->getClientOriginalName();
@@ -151,7 +151,7 @@ class TourController extends Controller
      */
     public function update(TourRequest $request, Tour $tour)
     {
-        Log::info($request);
+
         $path = 'images/tours/';
         //code for remove old image
         if ($request->new_image != 'null' && $request->new_image != 'default.jpg') {

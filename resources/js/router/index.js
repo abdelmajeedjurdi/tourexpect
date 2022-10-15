@@ -20,6 +20,11 @@ import PackageCreate from "../pages/backend/packages/PackageCreate";
 import PackageEdit from "../pages/backend/packages/PackageEdit";
 import PackageDetails from "../pages/backend/packages/PackageDetails";
 
+import HotelsIndex from "../pages/backend/hotels/HotelsIndex";
+import HotelCreate from "../pages/backend/hotels/HotelCreate";
+import HotelEdit from "../pages/backend/hotels/HotelEdit";
+import HotelDetails from "../pages/backend/hotels/HotelDetails";
+
 import BlogCreate from "../pages/backend/blogs/BlogCreate";
 import BlogsIndex from "../pages/backend/blogs/BlogsIndex"
 import BlogEdit from "../pages/backend/blogs/BlogEdit"
@@ -139,6 +144,29 @@ const routes = [
         path: "/dashboard/packages/:id/details",
         name: "single_package.details",
         component: PackageDetails,
+        props: true,
+    },
+    // (((((((((((((((((--Hotels And Resorts--)))))))))))))))))
+    {
+        path: "/dashboard/hotels",
+        name: "hotels.index",
+        component: HotelsIndex,
+    },
+    {
+        path: "/dashboard/hotels/create",
+        name: "hotel.create",
+        component: HotelCreate,
+    },
+    {
+        path: "/dashboard/hotels/:id/edit",
+        name: "hotel.edit",
+        component: HotelEdit,
+        props: true,
+    },
+    {
+        path: "/dashboard/hotels/:id",
+        name: "hotel.details",
+        component: HotelDetails,
         props: true,
     },
     // (((((((((((((((((--Blogs--)))))))))))))))))

@@ -20,7 +20,6 @@ class ContactController extends Controller
     }
     public function makeContact(Request $request)
     {
-        Log::info($request);
         // $details = $request->validated();
         Mail::to('tourexpect4@gmail.com')->send(new ContactMail($request));
 
