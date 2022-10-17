@@ -288,6 +288,8 @@ onMounted(async () => {
     menu.value[0]['items'] = destinations.value
     menu.value[1]['items'] = destinations.value
     menu.value[2]['items'] = destinations.value
+    menu.value[5]['items'] = destinations.value
+
 });
 
 let menu = ref([
@@ -337,16 +339,16 @@ let menu = ref([
         // items: [{ id: 0, name_en: 'turkiye', items: ['trabzon', 'istanbul'] }]
     },
     {
-        id: 6,
+        id: 5,
         name_en: 'Hotels & Resorts',
         name_ar: 'الفنادق و المنتجعات',
         slug: 'hotels-and-resorts',
-        only_sidebar: true,
-        is_link: true,
+        only_sidebar: false,
+        is_link: false,
         items: []
     },
     {
-        id: 7,
+        id: 6,
         name_en: 'Blogs',
         name_ar: 'المدونة',
         slug: 'blogs',
@@ -405,6 +407,7 @@ const setSubSubMenu = (i) => {
 let is_menu = ref(false)
 let mobile_menu = ref(false)
 const showMenu = (i) => {
+    console.log(i);
     menu_path_by_id.value.menu = i
     is_menu.value = true
     mobile_menu.value = true

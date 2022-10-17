@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div style="min-height:22rem ;">
         <div>
             <!-- Adding Room -->
             <div class="absolute w-11/12 z-10 " v-if="isAddingRoom==true">
@@ -52,8 +52,8 @@
                                 </div>
                             </div>
                             <div>
-                                <div class="flex w-full mt-2" v-if="imagePreview">
-                                    <img :src="imagePreview" alt="" class="figure-img img-fluid rounded"
+                                <div class="flex w-full mt-2" v-if="imagePreview2">
+                                    <img :src="imagePreview2" alt="" class="figure-img img-fluid rounded"
                                         style="max-height: 100px" />
                                 </div>
                                 <div class="flex flex-col mt-2">
@@ -72,9 +72,9 @@
                                                         font-semibold
                                                         focus:border-blue-500 focus:outline-none
                                                         hidden
-                                                        " @change="onFileSelected" type="file" id="image"
+                                                        " @change="onFileSelected" type="file" id="image2"
                                         accept="image/*" />
-                                    <label for="image" class="w-100 flex">
+                                    <label for="image2" class="w-100 flex">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="w-12 cursor-pointer" fill="none"
                                             viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -168,8 +168,8 @@
                             </div>
                             <div class="flex w-full justify-start mt-2" v-if="room.image != undefined">
                                 <img :src="
-                                    imagePreview != null
-                                        ? imagePreview
+                                    imagePreview2 != null
+                                        ? imagePreview2
                                         : '/images/rooms/' + room.image
                                 " alt="" class="figure-img img-fluid rounded" style="max-height: 100px" />
                             </div>
@@ -259,6 +259,7 @@
                         xl:grid-cols-5
                         justify-between
                       ">
+
                 <div v-for="room in rooms" :key="room.id">
                     <div class="bg-white rounded-lg overflow-hidden mb-10">
                         <div class="w-full flex justify-end z-20">
@@ -326,13 +327,13 @@ const saveRoom = async () => {
     form.name_en = ''
     form.name_ar = ''
     form.image = ''
-    imagePreview.value = null
+    imagePreview2.value = null
 };
 const deleteRow = async (id) => {
     deleteRoom(id)
     emit('edited')
 }
-let imagePreview = ref(null);
+let imagePreview2 = ref(null);
 let file = reactive(null);
 function onFileSelected(event) {
     file = event.target.files[0];
@@ -340,7 +341,7 @@ function onFileSelected(event) {
     let reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = (event) => {
-        imagePreview.value = event.target.result;
+        imagePreview2.value = event.target.result;
     };
 }
 let form = reactive({

@@ -30,12 +30,16 @@ import BlogsIndex from "../pages/backend/blogs/BlogsIndex"
 import BlogEdit from "../pages/backend/blogs/BlogEdit"
 import BlogDetails from "../pages/backend/blogs/BlogDetails"
 
+// Frontend
 import Frontend from "../pages/frontend";
 import CommingSoon from "../pages/frontend/CommingSoon";
 
 import About from "../pages/frontend/AboutUs";
 import Contact from "../pages/frontend/ContactUs";
 import Blogs from "../pages/frontend/Blogs";
+import HotelsAndResorts from "../pages/frontend/hotels/HotelsAndResorts"
+import DestinationHotelsAndResorts from "../pages/frontend/hotels/DestinationHotelsAndResorts"
+import SubDestinationHotelsAndResorts from "../pages/frontend/hotels/SubDestinationHotelsAndResorts"
 import Tours from "../pages/frontend/tours/Tours"
 import DestinationTours from "../pages/frontend/tours/DestinationTours"
 import SubDestinationTours from "../pages/frontend/tours/SubDestinationTours"
@@ -194,7 +198,7 @@ const routes = [
         props: true,
     },
 
-    // (((((((((((((((((--Front-End--))))))))))))))))),
+    // [[[[[[[[[[[<<<<<<<<<<<<<<<<<<<<<<<<<<(((((((((((((((((--Front-End--)))))))))))))))))>>>>>>>>>>>>>>>>>>>>>>>>>>]]]]]]]]]]],
 
     {
         path: "/test",
@@ -263,6 +267,23 @@ const routes = [
         props: true
     },
     {
+        path: "/hotels-and-resorts",
+        name: "hotels-and-resorts",
+        component: HotelsAndResorts,
+    },
+    {
+        path: "/hotels-and-resorts/:destination",
+        name: "DTours",
+        component: DestinationHotelsAndResorts,
+        props: true
+    },
+    {
+        path: "/hotels-and-resorts/:destination/:subdestination",
+        name: "SDTours",
+        component: SubDestinationHotelsAndResorts,
+        props: true
+    },
+    {
         path: "/activities",
         name: "activities",
         component: CommingSoon,
@@ -270,11 +291,6 @@ const routes = [
     {
         path: "/transfer",
         name: "transfer",
-        component: CommingSoon,
-    },
-    {
-        path: "/hotels-and-resorts",
-        name: "hotels-and-resorts",
         component: CommingSoon,
     },
 

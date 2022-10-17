@@ -71,31 +71,31 @@ class DatabaseSeeder extends Seeder
         ]);
         DB::table('destinations')->insert([
             [
-                'name_en' => 'First Destination',
-                'name_ar' => 'اول وجهة',
+                'name_en' => 'Istanbul',
+                'name_ar' => 'استنبول',
                 'description_en' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry',
                 'description_ar' => 'لوريم إيبسوم بشكل إفتراضي كنموذج عن النص، وإذا قمت بإدخال  في أي محرك بحث ستظهر العديد من المواقع الحديثة العهد في نتائج البحث. على مدى السنين ظهرت نسخ جديدة ومختلفة من نص لوريم إيبسوم، ',
                 'country_id' =>  1,
                 'image' =>  'default.jpg',
-                'slug' => 'd-one'
+                'slug' => 'istanbul'
             ],
             [
-                'name_en' => 'Tourisem Tow',
-                'name_ar' => 'الثانية للسياحة',
+                'name_en' => 'Tahran',
+                'name_ar' => 'طهران',
                 'description_en' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry',
                 'description_ar' => 'لوريم إيبسوم بشكل إفتراضي كنموذج عن النص، وإذا قمت بإدخال  في أي محرك بحث ستظهر العديد من المواقع الحديثة العهد في نتائج البحث. على مدى السنين ظهرت نسخ جديدة ومختلفة من نص لوريم إيبسوم، ',
-                'country_id' =>  1,
+                'country_id' =>  3,
                 'image' =>  'default.jpg',
-                'slug' => 'd-tow'
+                'slug' => 'tahran'
             ],
             [
-                'name_en' => 'Tourisem Three',
-                'name_ar' => 'الثالثة للسياحة',
+                'name_en' => 'Dubai',
+                'name_ar' => 'دبي',
                 'description_en' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry',
                 'description_ar' => 'لوريم إيبسوم بشكل إفتراضي كنموذج عن النص، وإذا قمت بإدخال  في أي محرك بحث ستظهر العديد من المواقع الحديثة العهد في نتائج البحث. على مدى السنين ظهرت نسخ جديدة ومختلفة من نص لوريم إيبسوم، ',
                 'country_id' =>  2,
                 'image' =>  'default.jpg',
-                'slug' => 'd-three'
+                'slug' => 'dubai'
             ]
         ]);
     }

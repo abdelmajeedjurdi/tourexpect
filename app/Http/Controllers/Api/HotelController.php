@@ -37,12 +37,12 @@ class HotelController extends Controller
         if ($request->subdestination == 'null') {
             $all = DB::table('countries')
                 ->join('destinations', 'countries.id', '=', 'destinations.country_id')
-                ->join('rooms', 'destinations.id', '=', 'rooms.destination_id')
-                ->select('rooms.id', 'rooms.destination_id', 'rooms.title_en', 'rooms.title_ar', 'rooms.address_ar', 'rooms.address_en', 'rooms.description_en', 'rooms.description_ar', 'rooms.slug', 'rooms.adult_price', 'rooms.child_price', 'rooms.discount', 'rooms.thumbnail', 'rooms.discount_type', 'rooms.duration_en', 'rooms.duration_ar')->where('countries.slug', '=', $request->destination)->paginate(2);
+                ->join('hotels', 'destinations.id', '=', 'hotels.destination_id')
+                ->select('hotels.id', 'hotels.destination_id', 'hotels.title_en', 'hotels.title_ar', 'hotels.address_ar', 'hotels.address_en', 'hotels.description_en', 'hotels.description_ar', 'hotels.slug', 'hotels.price', 'hotels.discount', 'hotels.thumbnail', 'hotels.discount_type', 'hotels.stars')->where('countries.slug', '=', $request->destination)->paginate(2);
         } else {
             $all = DB::table('destinations')
-                ->join('rooms', 'destinations.id', '=', 'rooms.destination_id')
-                ->select('rooms.id', 'rooms.destination_id', 'rooms.title_en', 'rooms.title_ar', 'rooms.address_ar', 'rooms.address_en', 'rooms.description_en', 'rooms.description_ar', 'rooms.slug', 'rooms.adult_price', 'rooms.child_price', 'rooms.discount', 'rooms.thumbnail', 'rooms.discount_type', 'rooms.duration_en', 'rooms.duration_ar')->where('destinations.slug', '=', $request->subdestination)->paginate(2);
+                ->join('hotels', 'destinations.id', '=', 'hotels.destination_id')
+                ->select('hotels.id', 'hotels.destination_id', 'hotels.title_en', 'hotels.title_ar', 'hotels.address_ar', 'hotels.address_en', 'hotels.description_en', 'hotels.description_ar', 'hotels.slug', 'hotels.price',  'hotels.discount', 'hotels.thumbnail', 'hotels.discount_type', 'hotels.stars')->where('destinations.slug', '=', $request->subdestination)->paginate(2);
         }
         return $all;
     }

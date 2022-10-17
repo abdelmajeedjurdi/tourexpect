@@ -328,6 +328,7 @@ import { useSwal } from "../../../plugins/useSwal.js";
 import UploadImages from "vue-upload-drop-images";
 import SearchableDropdown from "../../../components/SearchableDropdown.vue";
 import ProgressBar from "../../../components/ProgressBar.vue";
+import RoomsCroud from "../../../components/RoomsCrud.vue"
 const props = defineProps({ id: String });
 const { categories, getCategories } = useCategories();
 const { destinations, getDestinations } = useDestinations();
