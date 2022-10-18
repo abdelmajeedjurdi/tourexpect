@@ -42,6 +42,7 @@ class PackageResource extends JsonResource
             'include_en'  => $this->include_en,
             'exclude_ar'  => $this->exclude_ar,
             'exclude_en'  => $this->exclude_en,
+            'source'  => $this->source,
             // 'files' => TourFile::where('tour_id', $this->id)->get(),
             'images' => PackageImage::where('package_id', $this->id)->get()
         ];

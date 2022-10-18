@@ -104,6 +104,7 @@ class TourController extends Controller
         $tour->include_ar = $request->include_ar;
         $tour->exclude_en = $request->exclude_en;
         $tour->exclude_ar = $request->exclude_ar;
+        $tour->source = $request->source;
 
         $tour->save();
 
@@ -190,6 +191,7 @@ class TourController extends Controller
             'include_ar' => $request->include_ar,
             'exclude_en' => $request->exclude_en,
             'exclude_ar' => $request->exclude_ar,
+            'source' => $request->source,
             'thumbnail' =>  $imageName,
             'slug' => Str::slug($request->title_en, '-')
         ]);

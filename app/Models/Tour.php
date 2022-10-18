@@ -35,5 +35,6 @@ class Tour extends Model
         'include_en',
         'exclude_ar',
         'exclude_en',
+        'source'
     ];
 }

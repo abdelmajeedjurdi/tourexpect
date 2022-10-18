@@ -39,6 +39,7 @@ class HotelResource extends JsonResource
             'discount'  => $this->discount,
             'discount_type'  => $this->discount_type,
             'stars'  => $this->stars,
+            'source'  => $this->source,
             // 'files' => HotelFile::where('tour_id', $this->id)->get(),
             'images' => HotelImage::where('hotel_id', $this->id)->get(),
             'rooms' => DB::table('rooms')->where('hotel_id', '=', $this->id)->get(),

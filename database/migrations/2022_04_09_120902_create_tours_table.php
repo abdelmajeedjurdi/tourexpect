@@ -39,6 +39,7 @@ class CreateToursTable extends Migration
             $table->longText('include_en');
             $table->longText('exclude_ar');
             $table->longText('exclude_en');
+            $table->string('source');
             $table->timestamps();
         });
     }

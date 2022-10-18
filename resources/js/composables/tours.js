@@ -80,6 +80,7 @@ export default function useTours() {
         fd.append("include_ar", data.form.include_ar);
         fd.append("exclude_en", data.form.exclude_en);
         fd.append("exclude_ar", data.form.exclude_ar);
+        fd.append("source", data.form.source);
 
 
         fd.append("image", data.file);
@@ -129,6 +130,7 @@ export default function useTours() {
         fd.append("include_ar", data.form.include_ar);
         fd.append("exclude_en", data.form.exclude_en);
         fd.append("exclude_ar", data.form.exclude_ar);
+        fd.append("source", data.form.source);
         fd.append("tour_img", data.form.thumbnail);
         fd.append("new_image", data.file);
         fd.append("properties", JSON.stringify(data.properties));

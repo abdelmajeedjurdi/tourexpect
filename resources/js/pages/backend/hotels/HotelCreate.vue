@@ -194,7 +194,7 @@
                     Create
                 </button>
             </form>
-            <div class="ml-3 bg-blue-400 dark:bg-gray-600 rounded h-screen w-96 text-center px-4">
+            <div class="ml-3 bg-blue-400 dark:bg-gray-600 rounded h-screen w-96 text-center px-4" style="height:115vh">
                 <div>
                     <searchable-dropdown component_id="categories" :options="categories"
                         @selected="selectCategory($event)" class="mt-6 me-2" />
@@ -301,6 +301,26 @@
                         </div>
                     </div>
                 </div>
+                <div class="w-full me-2 mt-2">
+                    <label for="max_number_of_people"
+                        class="block text-sm font-medium w-full text-left text-gray-700 dark:text-gray-200">
+                        Source</label>
+                    <div class="mt-1">
+                        <input type="text" name="source" id="source" class="
+                                                  block
+                                                  mt-1
+                                                  w-full
+                                                  rounded-md
+                                                  border-gray-500
+                                                  shadow-sm
+                                                  focus:border-indigo-300
+                                                  focus:ring
+                                                  focus:ring-indigo-200
+                                                  focus:ring-opacity-50
+                                                  dark:bg-gray-800
+                                                " v-model="form.source" />
+                    </div>
+                </div>
 
                 <div class="flex w-full mt-2" v-if="imagePreview">
                     <img :src="imagePreview" alt="" class="figure-img img-fluid rounded" style="max-height: 100px" />
@@ -367,6 +387,7 @@ const form = reactive({
     stars: 0,
     active: '',
     discount: '',
+    source:'',
     facilities: {
         indoor_and_outdoor_pool: false,
         free_wify: false,

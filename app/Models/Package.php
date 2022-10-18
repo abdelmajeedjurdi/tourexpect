@@ -35,5 +35,6 @@ class Package extends Model
         'include_en',
         'exclude_ar',
         'exclude_en',
+        'source'
     ];
 }

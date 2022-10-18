@@ -31,6 +31,7 @@ class CreateHotelsTable extends Migration
             $table->float('price')->nullable();
             $table->integer('stars');
             $table->json('facilities')->nullable();
+            $table->string('source');
             $table->timestamps();
         });
     }

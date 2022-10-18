@@ -406,7 +406,7 @@
                     Update
                 </button>
             </form>
-            <div class="ml-3 bg-gray-600 rounded h-screen w-96 text-center px-4">
+            <div class="ml-3 bg-blue-400 dark:bg-gray-600 rounded h-screen w-96 text-center px-4" style="height:115vh">
                 <div v-if="categories.length && single_package['category_id']" class="me-2">
                     <searchable-dropdown component_id="categories" :options="categories"
                         :category_id="single_package['category_id']" @selected="selectCategory($event)"
@@ -482,7 +482,8 @@
                     <label for="discount_type"
                         class="block text-sm font-medium w-full text-left text-gray-700 dark:text-gray-200">
                         Discount Type</label>
-                    <select name="discount_type" id="discount_type" class="w-full bg-gray-700 rounded text-gray-200"
+                    <select name="discount_type" id="discount_type"
+                        class="w-full dark:bg-gray-700 rounded text-gray-700 dark:text-gray-200"
                         v-model="single_package.discount_type">
                         <option class="" value="pecentage">Percentage</option>
                         <option class="py-4" value="amount">Amount</option>
@@ -506,6 +507,26 @@
                   focus:ring-opacity-50
                   dark:bg-gray-800
                 " v-model="single_package.max_number_of_people" />
+                    </div>
+                </div>
+                <div class="w-full me-2 mt-2">
+                    <label for="source"
+                        class="block text-sm font-medium w-full text-left text-gray-700 dark:text-gray-200">
+                        Source</label>
+                    <div class="mt-1">
+                        <input type="text" name="source" id="source" class="
+                                            block
+                                            mt-1
+                                            w-full
+                                            rounded-md
+                                            border-gray-500
+                                            shadow-sm
+                                            focus:border-indigo-300
+                                            focus:ring
+                                            focus:ring-indigo-200
+                                            focus:ring-opacity-50
+                                            dark:bg-gray-800
+                                            " v-model="single_package.source" />
                     </div>
                 </div>
 
@@ -546,7 +567,7 @@
                         </label>
                     </div>
                 </div>
-                <div class="flex items-center  rounded border border-gray-600 w-full mx-auto mt-2 px-2 bg-gray-500">
+                <div class="flex items-center  rounded border border-gray-600 w-full mx-auto mt-2 px-2">
                     <input id="active" type="checkbox" value="" name="bordered-checkbox"
                         class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500  focus:ring-2"
                         v-model="single_package.active">

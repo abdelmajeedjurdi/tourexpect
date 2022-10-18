@@ -91,6 +91,7 @@ class HotelController extends Controller
         $tour->discount_type = $request->discount_type;
         $tour->stars = $request->stars;
         $tour->facilities = $request->facilities;
+        $tour->source = $request->source;
 
         $tour->save();
 
@@ -255,6 +256,7 @@ class HotelController extends Controller
             'discount' => $request->discount,
             'discount_type' => $request->discount_type,
             'stars' => $request->stars,
+            'source' => $request->source,
             'facilities' => json_encode($request->facilities),
             'thumbnail' =>  $imageName,
             'slug' => Str::slug($request->title_en, '-')

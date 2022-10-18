@@ -372,7 +372,7 @@
                     Create
                 </button>
             </form>
-            <div class="ml-3 bg-blue-400 dark:bg-gray-600 rounded h-screen w-96 text-center px-4">
+            <div class="ml-3 bg-blue-400 dark:bg-gray-600 rounded h-screen w-96 text-center px-4" style="height:115vh">
                 <div>
                     <searchable-dropdown component_id="categories" :options="categories"
                         @selected="selectCategory($event)" class="mt-6 me-2" />
@@ -458,18 +458,38 @@
                         Max number of people</label>
                     <div class="mt-1">
                         <input type="number" name="max_number_of_people" id="max_number_of_people" class="
-                  block
-                  mt-1
-                  w-full
-                  rounded-md
-                  border-gray-500
-                  shadow-sm
-                  focus:border-indigo-300
-                  focus:ring
-                  focus:ring-indigo-200
-                  focus:ring-opacity-50
-                  dark:bg-gray-800
-                " v-model="form.max_number_of_people" />
+                                  block
+                                  mt-1
+                                  w-full
+                                  rounded-md
+                                  border-gray-500
+                                  shadow-sm
+                                  focus:border-indigo-300
+                                  focus:ring
+                                  focus:ring-indigo-200
+                                  focus:ring-opacity-50
+                                  dark:bg-gray-800
+                                " v-model="form.max_number_of_people" />
+                    </div>
+                </div>
+                <div class="w-full me-2 mt-2">
+                    <label for="max_number_of_people"
+                        class="block text-sm font-medium w-full text-left text-gray-700 dark:text-gray-200">
+                        Source</label>
+                    <div class="mt-1">
+                        <input type="text" name="source" id="source" class="
+                                  block
+                                  mt-1
+                                  w-full
+                                  rounded-md
+                                  border-gray-500
+                                  shadow-sm
+                                  focus:border-indigo-300
+                                  focus:ring
+                                  focus:ring-indigo-200
+                                  focus:ring-opacity-50
+                                  dark:bg-gray-800
+                                " v-model="form.source" />
                     </div>
                 </div>
                 <div class="flex w-full mt-2" v-if="imagePreview">
@@ -547,6 +567,7 @@ const form = reactive({
     include_ar: '',
     exclude_en: '',
     exclude_ar: '',
+    source: ''
 });
 let property = ref({
     title_en: "",

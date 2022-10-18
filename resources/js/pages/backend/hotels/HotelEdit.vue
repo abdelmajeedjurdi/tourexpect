@@ -275,6 +275,26 @@
                         </div>
                     </div>
                 </div>
+                <div class="w-full me-2 mt-2">
+                    <label for="max_number_of_people"
+                        class="block text-sm font-medium w-full text-left text-gray-700 dark:text-gray-200">
+                        Source</label>
+                    <div class="mt-1">
+                        <input type="text" name="source" id="source" class="
+                                                  block
+                                                  mt-1
+                                                  w-full
+                                                  rounded-md
+                                                  border-gray-500
+                                                  shadow-sm
+                                                  focus:border-indigo-300
+                                                  focus:ring
+                                                  focus:ring-indigo-200
+                                                  focus:ring-opacity-50
+                                                  dark:bg-gray-800
+                                                " v-model="hotel.source" />
+                    </div>
+                </div>
 
                 <div class="flex w-full mt-2" v-if="imagePreview">
                     <img :src="imagePreview" alt="" class="figure-img img-fluid rounded" style="max-height: 100px" />

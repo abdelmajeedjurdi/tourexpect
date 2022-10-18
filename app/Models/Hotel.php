@@ -24,6 +24,7 @@ class Hotel extends Model
         'active', 'price',
         'discount',
         'discount_type',
-        'stars', 'facilities'
+        'stars', 'facilities',
+        'source'
     ];
 }

@@ -74,6 +74,7 @@ export default function useHotels() {
         fd.append("discount", data.form.discount);
         fd.append("discount_type", data.form.discount_type);
         fd.append("stars", data.form.stars);
+        fd.append("source", data.form.source);
         fd.append("facilities", JSON.stringify(data.form.facilities));
 
 
@@ -177,6 +178,7 @@ export default function useHotels() {
         fd.append("discount", data.form.discount);
         fd.append("discount_type", data.form.discount_type);
         fd.append("stars", data.form.stars);
+        fd.append("source", data.form.source);
         fd.append("facilities", data.form.facilities);
         fd.append("hotel_img", data.form.thumbnail);
         fd.append("new_image", data.file);

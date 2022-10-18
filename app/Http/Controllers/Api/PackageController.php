@@ -96,6 +96,7 @@ class PackageController extends Controller
         $package->include_ar = $request->include_ar;
         $package->exclude_en = $request->exclude_en;
         $package->exclude_ar = $request->exclude_ar;
+        $package->source = $request->source;
 
         $package->save();
 
@@ -181,6 +182,7 @@ class PackageController extends Controller
             'include_ar' => $request->include_ar,
             'exclude_en' => $request->exclude_en,
             'exclude_ar' => $request->exclude_ar,
+            'source' => $request->source,
             'thumbnail' =>  $imageName,
             'slug' => Str::slug($request->title_en, '-')
         ]);
