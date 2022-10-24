@@ -33,11 +33,6 @@ const changePage = (page) => {
     getDestinationPacks(currentPage.value, props.destination, props.subdestination)
 }
 watch(() => props.subdestination, (first, second) => {
-    console.log(
-        "Watch props.selected function called with args:",
-        first,
-        second
-    );
     getDestinationPacks(currentPage.value, props.destination, props.subdestination)
 });
 </script>

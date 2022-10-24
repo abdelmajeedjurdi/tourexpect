@@ -13,6 +13,7 @@ use App\Models\TourImage;
 use App\Models\TourProperty;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
@@ -26,6 +27,7 @@ class TourController extends Controller
      */
     public function index()
     {
+        // return Auth::user()->role;
         return TourResource::collection(Tour::paginate(15));
         // return "index is working";
     }

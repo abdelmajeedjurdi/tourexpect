@@ -20,6 +20,11 @@ import PackageCreate from "../pages/backend/packages/PackageCreate";
 import PackageEdit from "../pages/backend/packages/PackageEdit";
 import PackageDetails from "../pages/backend/packages/PackageDetails";
 
+import ActivitiesIndex from "../pages/backend/activities/ActivitiesIndex";
+import ActivityCreate from "../pages/backend/activities/ActivityCreate";
+import ActivityEdit from "../pages/backend/activities/ActivityEdit";
+import ActivityDetails from "../pages/backend/activities/ActivityDetails";
+
 import HotelsIndex from "../pages/backend/hotels/HotelsIndex";
 import HotelCreate from "../pages/backend/hotels/HotelCreate";
 import HotelEdit from "../pages/backend/hotels/HotelEdit";
@@ -43,6 +48,9 @@ import SubDestinationHotelsAndResorts from "../pages/frontend/hotels/SubDestinat
 import Tours from "../pages/frontend/tours/Tours"
 import DestinationTours from "../pages/frontend/tours/DestinationTours"
 import SubDestinationTours from "../pages/frontend/tours/SubDestinationTours"
+import Activities from "../pages/frontend/activities/Activities"
+import DestinationActivites from "../pages/frontend/activities/DestinationActivities"
+import SubDestinationActivites from "../pages/frontend/activities/SubDestinationActivities"
 import Packages from "../pages/frontend/packs/Packs"
 import DestinationPacks from "../pages/frontend/packs/DestinationPacks"
 import SubDestinationPacks from "../pages/frontend/packs/SubDestinationPacks"
@@ -150,6 +158,29 @@ const routes = [
         component: PackageDetails,
         props: true,
     },
+    // (((((((((((((((((--Activities--)))))))))))))))))
+    {
+        path: "/dashboard/activities",
+        name: "activities.index",
+        component: ActivitiesIndex,
+    },
+    {
+        path: "/dashboard/activities/create",
+        name: "activity.create",
+        component: ActivityCreate,
+    },
+    {
+        path: "/dashboard/activities/:id/edit",
+        name: "activity.edit",
+        component: ActivityEdit,
+        props: true,
+    },
+    {
+        path: "/dashboard/packages/:id/details",
+        name: "activity.details",
+        component: ActivityDetails,
+        props: true,
+    },
     // (((((((((((((((((--Hotels And Resorts--)))))))))))))))))
     {
         path: "/dashboard/hotels",
@@ -249,6 +280,25 @@ const routes = [
         component: SubDestinationTours,
         props: true
     },
+
+    {
+        path: "/activities",
+        name: "activities",
+        component: Activities,
+    },
+    {
+        path: "/activities/:destination",
+        name: "DActivities",
+        component: DestinationActivites,
+        props: true
+    },
+    {
+        path: "/activities/:destination/:subdestination",
+        name: "SDActivities",
+        component: SubDestinationActivites,
+        props: true
+    },
+
     {
         path: "/packages",
         name: "packages",
@@ -284,11 +334,6 @@ const routes = [
         props: true
     },
     {
-        path: "/activities",
-        name: "activities",
-        component: CommingSoon,
-    },
-    {
         path: "/transfer",
         name: "transfer",
         component: CommingSoon,
@@ -313,7 +358,6 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-    console.log(to);
     let name = to.name
     name = name.replace(/\-/g, ' ');
     name = name.replace(/(^\w|\s\w)/g, m => m.toUpperCase());

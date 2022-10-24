@@ -31,7 +31,6 @@ export default function useHotels() {
         let response = await axios.get(`/api/all-hotels?page=${page}`);
         hotels.value = response.data.data;
         pages.value = response.data.meta
-        console.log(pages.value);
     };
     const getDestinationHotels = async (page, destination, subdestination = null) => {
         let response = await axios.get(`/api/destination-hotels?page=${page}&destination=${destination}&subdestination=${subdestination}`);
@@ -44,7 +43,6 @@ export default function useHotels() {
         alter_pages.value['to'] = response.data['to']
         alter_pages.value['total'] = response.data['total']
         alter_pages.value['path'] = response.data['path']
-        console.log(response.data);
 
     };
 
@@ -93,7 +91,6 @@ export default function useHotels() {
                     );
                 },
             });
-            console.log(response);
             await router.push({ name: "hotel.details", params: { id: response.data } });
         } catch (e) {
             if (e.response.status === 422) {
@@ -130,13 +127,11 @@ export default function useHotels() {
     const getRoom = async (id) => {
         let response = await axios.get("/api/rooms/" + id);
         room.value = response.data;
-        console.log(response);
     }
     const deleteRoom = async (id) => {
         await axios.delete("/api/rooms/" + id);
     }
     const updateRoom = async (data) => {
-        console.log('editnigjlsdf');
         fd.append("_method", "patch");
         fd.append("id", data.form.id);
         fd.append("name_en", data.form.name_en);

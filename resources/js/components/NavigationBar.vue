@@ -288,6 +288,7 @@ onMounted(async () => {
     menu.value[0]['items'] = destinations.value
     menu.value[1]['items'] = destinations.value
     menu.value[2]['items'] = destinations.value
+    menu.value[3]['items'] = destinations.value
     menu.value[5]['items'] = destinations.value
 
 });
@@ -325,7 +326,7 @@ let menu = ref([
         name_en: 'Activities',
         name_ar: 'انشطة',
         slug: 'activities',
-        is_link: true,
+        is_link: false,
         only_sidebar: false, items: []
     },
     {
@@ -367,14 +368,12 @@ let menu_path_by_id = ref({
     sub_menu: -1,
 })
 const setSubmenu = (i) => {
-    console.log('submenu seted', i);
     menu_path_by_id.value.menu = i
     subsubmenu.value = [];
     submenu_title.value = ''
     submenu_slug.value = ''
     if (!menu.value[i]['is_link']) {
 
-        console.log(menu.value);
         submenu.value = menu.value[i]['items']
         menu_title.value = menu.value[i]['name_en']
         menu_slug.value = menu.value[i]['slug']
@@ -407,7 +406,6 @@ const setSubSubMenu = (i) => {
 let is_menu = ref(false)
 let mobile_menu = ref(false)
 const showMenu = (i) => {
-    console.log(i);
     menu_path_by_id.value.menu = i
     is_menu.value = true
     mobile_menu.value = true

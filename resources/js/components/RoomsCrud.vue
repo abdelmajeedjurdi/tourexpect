@@ -313,13 +313,11 @@ let isAddingRoom = ref(false)
 let isEditingRoom = ref(false)
 const saveRoom = async () => {
     if (isAddingRoom.value) {
-        console.log('adding');
         await storeRoom({ form: form, file });
 
         isAddingRoom.value = false
     }
     else {
-        console.log('editing');
         await updateRoom({ form: room.value, file });
         isEditingRoom.value = false
     }

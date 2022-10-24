@@ -30,7 +30,6 @@ export default function useTours() {
         let response = await axios.get(`/api/all-tours?page=${page}`);
         tours.value = response.data.data;
         pages.value = response.data.meta
-        console.log(pages.value);
     };
     const getDestinationTours = async (page, destination, subdestination = null) => {
         let response = await axios.get(`/api/destination-tours?page=${page}&destination=${destination}&subdestination=${subdestination}`);
@@ -43,7 +42,6 @@ export default function useTours() {
         alter_pages.value['to'] = response.data['to']
         alter_pages.value['total'] = response.data['total']
         alter_pages.value['path'] = response.data['path']
-        console.log(response.data);
 
     };
 

@@ -30,11 +30,6 @@ const changePage = (page) => {
     getDestinationHotels(currentPage.value, props.destination, props.subdestination)
 }
 watch(() => props.subdestination, (first, second) => {
-    console.log(
-        "Watch props.selected function called with args:",
-        first,
-        second
-    );
     getDestinationHotels(currentPage.value, props.destination, props.subdestination)
 });
 </script>

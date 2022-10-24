@@ -31,7 +31,6 @@ export default function usePackages() {
         let response = await axios.get(`/api/all-packs?page=${page}`);
         packages.value = response.data.data;
         pages.value = response.data.meta
-        console.log(pages.value);
     };
     const getDestinationPacks = async (page, destination, subdestination = null) => {
         let response = await axios.get(`/api/destination-packs?page=${page}&destination=${destination}&subdestination=${subdestination}`);
@@ -44,7 +43,6 @@ export default function usePackages() {
         alter_pages.value['to'] = response.data['to']
         alter_pages.value['total'] = response.data['total']
         alter_pages.value['path'] = response.data['path']
-        console.log(response.data);
 
     };
     const getPackage = async (id) => {
