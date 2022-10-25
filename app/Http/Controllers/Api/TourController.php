@@ -44,11 +44,11 @@ class TourController extends Controller
             $all = DB::table('countries')
                 ->join('destinations', 'countries.id', '=', 'destinations.country_id')
                 ->join('tours', 'destinations.id', '=', 'tours.destination_id')
-                ->select('tours.id', 'tours.destination_id', 'tours.title_en', 'tours.title_ar', 'tours.address_ar', 'tours.address_en', 'tours.description_en', 'tours.description_ar', 'tours.slug', 'tours.adult_price', 'tours.child_price', 'tours.discount', 'tours.thumbnail', 'tours.discount_type', 'tours.duration_en', 'tours.duration_ar')->where('countries.slug', '=', $request->destination)->paginate(2);
+                ->select('tours.id', 'tours.destination_id', 'tours.title_en', 'tours.title_ar', 'tours.address_ar', 'tours.address_en', 'tours.description_en', 'tours.description_ar', 'tours.slug', 'tours.adult_price', 'tours.child_price', 'tours.discount', 'tours.thumbnail', 'tours.discount_type', 'tours.duration_en', 'tours.duration_ar')->where('countries.slug', '=', $request->destination)->paginate(12);
         } else {
             $all = DB::table('destinations')
                 ->join('tours', 'destinations.id', '=', 'tours.destination_id')
-                ->select('tours.id', 'tours.destination_id', 'tours.title_en', 'tours.title_ar', 'tours.address_ar', 'tours.address_en', 'tours.description_en', 'tours.description_ar', 'tours.slug', 'tours.adult_price', 'tours.child_price', 'tours.discount', 'tours.thumbnail', 'tours.discount_type', 'tours.duration_en', 'tours.duration_ar')->where('destinations.slug', '=', $request->subdestination)->paginate(2);
+                ->select('tours.id', 'tours.destination_id', 'tours.title_en', 'tours.title_ar', 'tours.address_ar', 'tours.address_en', 'tours.description_en', 'tours.description_ar', 'tours.slug', 'tours.adult_price', 'tours.child_price', 'tours.discount', 'tours.thumbnail', 'tours.discount_type', 'tours.duration_en', 'tours.duration_ar')->where('destinations.slug', '=', $request->subdestination)->paginate(12);
         }
         return $all;
     }

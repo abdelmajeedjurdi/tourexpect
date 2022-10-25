@@ -38,11 +38,11 @@ class HotelController extends Controller
             $all = DB::table('countries')
                 ->join('destinations', 'countries.id', '=', 'destinations.country_id')
                 ->join('hotels', 'destinations.id', '=', 'hotels.destination_id')
-                ->select('hotels.id', 'hotels.destination_id', 'hotels.title_en', 'hotels.title_ar', 'hotels.address_ar', 'hotels.address_en', 'hotels.description_en', 'hotels.description_ar', 'hotels.slug', 'hotels.price', 'hotels.discount', 'hotels.thumbnail', 'hotels.discount_type', 'hotels.stars')->where('countries.slug', '=', $request->destination)->paginate(2);
+                ->select('hotels.id', 'hotels.destination_id', 'hotels.title_en', 'hotels.title_ar', 'hotels.address_ar', 'hotels.address_en', 'hotels.description_en', 'hotels.description_ar', 'hotels.slug', 'hotels.price', 'hotels.discount', 'hotels.thumbnail', 'hotels.discount_type', 'hotels.stars')->where('countries.slug', '=', $request->destination)->paginate(12);
         } else {
             $all = DB::table('destinations')
                 ->join('hotels', 'destinations.id', '=', 'hotels.destination_id')
-                ->select('hotels.id', 'hotels.destination_id', 'hotels.title_en', 'hotels.title_ar', 'hotels.address_ar', 'hotels.address_en', 'hotels.description_en', 'hotels.description_ar', 'hotels.slug', 'hotels.price',  'hotels.discount', 'hotels.thumbnail', 'hotels.discount_type', 'hotels.stars')->where('destinations.slug', '=', $request->subdestination)->paginate(2);
+                ->select('hotels.id', 'hotels.destination_id', 'hotels.title_en', 'hotels.title_ar', 'hotels.address_ar', 'hotels.address_en', 'hotels.description_en', 'hotels.description_ar', 'hotels.slug', 'hotels.price',  'hotels.discount', 'hotels.thumbnail', 'hotels.discount_type', 'hotels.stars')->where('destinations.slug', '=', $request->subdestination)->paginate(12);
         }
         return $all;
     }

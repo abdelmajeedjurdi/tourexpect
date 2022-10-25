@@ -27,7 +27,6 @@ export default function useActivities() {
         pages.value = response.data.meta
     };
     const getAllActivities = async (page) => {
-        console.log('hi');
         let response = await axios.get(`/api/all-activities?page=${page}`);
         activities.value = response.data.data;
 

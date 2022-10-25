@@ -16,10 +16,10 @@
 
                 <h3 class="font-semibold text-lg">{{ $t('destinations') }}</h3>
                 <div v-for="country in countries">
-                    <router-link :to="'/activities/'+country.slug"
+                    <router-link :to="'/activities/' + country.slug"
                         class="border px-2 flex justify-between items-center cursor-pointer"
-                        :class="active_country==country.slug?'bg-blue-400 text-white':''"
-                        @click="active_country==country.slug?active_country='0':active_country=country.slug">
+                        :class="active_country == country.slug ? 'bg-blue-400 text-white' : ''"
+                        @click="active_country == country.slug ? active_country = '0' : active_country = country.slug">
                         <span>
                             {{ country['name_en'] }}
                         </span>
@@ -30,14 +30,14 @@
                             </svg>
                         </span>
                     </router-link>
-                    <div v-show="country.slug==active_country" class="px-2  ">
+                    <div v-show="country.slug == active_country" class="px-2  ">
                         <div class="button space-y-3" v-for="destination in country['items']">
                             <input type="radio" :id="destination.slug" name="destinations" class="hidden"
                                 v-model="filter.destination" :value="destination.slug" />
                             <label class="rounded px-2  w-full  cursor-pointer"
-                                :class="filter.destination==destination.slug?'bg-blue-400  text-white font-bold':'bg-gray-100 border'"
+                                :class="filter.destination == destination.slug ? 'bg-blue-400  text-white font-bold' : 'bg-gray-100 border'"
                                 :for="destination.slug">{{
-                                destination['name_'+lang]
+                                        destination['name_' + lang]
                                 }}</label>
                         </div>
                     </div>
@@ -47,18 +47,18 @@
                     <div class="button text-center">
                         <input type="radio" id="all-categories" name="categories" class="hidden"
                             v-model="filter.category" value="*" />
-                        <label :class="filter.category=='*'?'bg-blue-400 text-white':'bg-gray-300'"
+                        <label :class="filter.category == '*' ? 'bg-blue-400 text-white' : 'bg-gray-300'"
                             class="rounded  w-4/5 text-center py-1 cursor-pointer" for="all-categories">{{
-                            $t('all-categories')
+                                    $t('all-categories')
                             }}</label>
                     </div>
                     <div class="button text-center" v-for="category in categories">
                         <input type="radio" :id="category.slug" name="categories" class="hidden"
                             v-model="filter.category" :value="category['slug']" />
                         <label class="rounded text-center py-1 w-4/5  cursor-pointer"
-                            :class="filter.category==category['slug']?'bg-blue-400  text-white font-bold':'bg-gray-300'"
+                            :class="filter.category == category['slug'] ? 'bg-blue-400  text-white font-bold' : 'bg-gray-300'"
                             :for="category.slug">{{
-                            category['name_'+lang]
+                                    category['name_' + lang]
                             }}</label>
                     </div>
                 </div>
@@ -73,7 +73,7 @@
                 </div>
             </div>
             <!-- pagenation -->
-            <pagenation @selected="changePage($event)" :pages="pages" />
+            <pagenation @selected="changePage($event)" :pages="alter_pages" />
             <!-- end of pagenation -->
         </div>
     </div>
@@ -86,7 +86,7 @@ import ActivityVue from "../../../components/Activity.vue";
 import useDestinations from '../../../composables/destinations';
 import useCategories from '../../../composables/categories';
 
-const { getFilteredActivities, activities, pages, getDestinationActivities } = useActivities();
+const { getFilteredActivities, activities, alter_pages, getDestinationActivities } = useActivities();
 const { getDestinationsOnCountry, countries } = useDestinations()
 const { getAllCategories, categories } = useCategories()
 
@@ -116,9 +116,12 @@ let filter = ref({
 })
 const changePage = (page) => {
     filter.value.page = page
+    currentPage.value = page
 }
 watch(filter.value, () => {
-    getFilteredActivities(filter.value)
+    if (filter.value.destination == '*' && filter.value.category == '*')
+        getDestinationActivities(currentPage.value, props.destination)
+    else getFilteredActivities(filter.value)
 })
 watch(() => props.destination, (first, second) => {
     console.log(props.destination);

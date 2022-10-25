@@ -40,6 +40,7 @@ Route::delete('api/delete-file/{id}', [TourController::class, 'deleteFile'])->mi
 Route::post('api/category/dublicate/{id}', [CategoryController::class, 'dublicate'])->middleware(['auth', 'isAdmin']);
 Route::post('api/destination/dublicate/{id}', [DestinationController::class, 'dublicate'])->middleware(['auth', 'isAdmin']);
 Route::post('api/tour/dublicate/{id}', [TourController::class, 'dublicate'])->middleware(['auth', 'isAdmin']);
+Route::post('api/activity/dublicate/{id}', [ActivityController::class, 'dublicate'])->middleware(['auth', 'isAdmin']);
 Route::post('api/blog/dublicate/{id}', [BlogController::class, 'dublicate'])->middleware(['auth', 'isAdmin']);
 
 Route::post('api/rooms', [HotelController::class, 'storeRoom'])->middleware(['auth', 'isAdmin']);

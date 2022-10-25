@@ -35,11 +35,11 @@ class PackageController extends Controller
             $all = DB::table('countries')
                 ->join('destinations', 'countries.id', '=', 'destinations.country_id')
                 ->join('packages', 'destinations.id', '=', 'packages.destination_id')
-                ->select('packages.id', 'packages.destination_id', 'packages.title_en', 'packages.title_ar', 'packages.address_ar', 'packages.address_en', 'packages.description_en', 'packages.description_ar', 'packages.slug', 'packages.adult_price', 'packages.child_price', 'packages.discount', 'packages.thumbnail', 'packages.discount_type', 'packages.duration_en', 'packages.duration_ar')->where('countries.slug', '=', $request->destination)->paginate(2);
+                ->select('packages.id', 'packages.destination_id', 'packages.title_en', 'packages.title_ar', 'packages.address_ar', 'packages.address_en', 'packages.description_en', 'packages.description_ar', 'packages.slug', 'packages.adult_price', 'packages.child_price', 'packages.discount', 'packages.thumbnail', 'packages.discount_type', 'packages.duration_en', 'packages.duration_ar')->where('countries.slug', '=', $request->destination)->paginate(12);
         } else {
             $all = DB::table('destinations')
                 ->join('packages', 'destinations.id', '=', 'packages.destination_id')
-                ->select('packages.id', 'packages.destination_id', 'packages.title_en', 'packages.title_ar', 'packages.address_ar', 'packages.address_en', 'packages.description_en', 'packages.description_ar', 'packages.slug', 'packages.adult_price', 'packages.child_price', 'packages.discount', 'packages.thumbnail', 'packages.discount_type', 'packages.duration_en', 'packages.duration_ar')->where('destinations.slug', '=', $request->subdestination)->paginate(2);
+                ->select('packages.id', 'packages.destination_id', 'packages.title_en', 'packages.title_ar', 'packages.address_ar', 'packages.address_en', 'packages.description_en', 'packages.description_ar', 'packages.slug', 'packages.adult_price', 'packages.child_price', 'packages.discount', 'packages.thumbnail', 'packages.discount_type', 'packages.duration_en', 'packages.duration_ar')->where('destinations.slug', '=', $request->subdestination)->paginate(12);
         }
         return $all;
     }
