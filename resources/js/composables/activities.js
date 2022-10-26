@@ -36,7 +36,7 @@ export default function useActivities() {
         let response = await axios.get(`/api/filtered-activities?d=${filter.destination}&c=${filter.category}&page=${filter.page}`);
 
         activities.value = response.data.data;
-        pages.value = response.data.data
+        pages.value = response.data.meta
     };
     const getDestinationActivities = async (page, destination, subdestination = null) => {
         let response = await axios.get(`/api/destination-activities?page=${page}&destination=${destination}&subdestination=${subdestination}`);

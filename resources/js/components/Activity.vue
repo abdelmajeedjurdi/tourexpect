@@ -2,52 +2,64 @@
     <div class="bg-white border hover:shadow-lg duration-700 overflow-hidden mb-10">
         <router-link to="#">
             <img :src="'/images/activities/' + activity.thumbnail" alt="image" class="w-full h-56 object-cover" />
-            <div class="p-2 h-40">
-                <h3 class=" text-xl text-black font-bold">
+            <div class="p-3 h-40">
+                <h3 class=" text-lg text-black font-bold ">
                     {{
-                    activity['title_'+lang].substring(0, 65) +
-                    (activity['title_'+lang].length > 65 ? "..." : "")
+                            activity['title_' + lang].substring(0, 65) +
+                            (activity['title_' + lang].length > 65 ? "..." : "")
                     }}
                 </h3>
-                <div class=" overflow-hidden flex text-base text-body-color leading-relaxed items-center text-black">
-                    <span class=" ">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="h-5 text-indigo-800">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
-                        </svg>
+                <div class="flex justify-between  ">
+                    <div
+                        class=" overflow-hidden flex text-base text-body-color leading-relaxed items-center text-black">
+                        <span class=" ">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="h-5 text-indigo-800" style="margin: -3px">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                            </svg>
 
-                    </span>
-                    {{
-                    activity['address_'+lang]
-                    }}
+                        </span>
+                        <span class="ms-1">
+                            {{
+                                    activity.destination['name_' + lang]
+                            }}
+                        </span>
+                    </div>
+                    <div
+                        class=" overflow-hidden flex text-base text-body-color leading-relaxed items-center text-black">
+                        <span class=" ">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-5 text-indigo-800">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+
+
+                        </span>
+                        {{
+                                activity['duration_' + lang]
+                        }}
+                    </div>
                 </div>
                 <div
-                    class=" overflow-hidden flex justify-between text-base text-body-color leading-relaxed text-indigo-800 font-bold">
-                    <span>
-                        {{
-                        activity['duration_'+lang]
-                        }}
-                    </span>
+                    class=" overflow-hidden flex justify-between text-base text-body-color leading-relaxed text-indigo-800 font-bold mt-1 ">
+
                     <span class="">
                         {{ $t('from') }}
-                        <span v-if="activity['discount']" class="line-through text-red-500 me-1">
-                            {{ activity['adult_price']}}
+                        <span v-if="activity['discount']" class="line-through text-gray-400 me-1">
+                            {{ activity['adult_price'] + '$' }}
                         </span>
-                        <span class="text-blue-500">
-                            {{ activity['discount_type']=='amount'?
-                            activity['adult_price']-activity['discount']
-                            :activity['adult_price']-(activity['adult_price']*activity['discount']/100) }}
+                        <span class="text-gray-800 mx-0.5">
+                            {{ activity['discount_type'] == 'amount' ?
+                                    activity['adult_price'] - activity['discount']
+                                    : activity['adult_price'] - (activity['adult_price'] * activity['discount'] / 100)
+                            }}$
                         </span>
                     </span>
-                </div>
-                <div class=" overflow-hidden text-base text-body-color leading-relaxed text-gray-700">
-                    {{
-                    activity['description_'+lang].substring(0, 100) +
-                    (activity['description_'+lang].length > 100 ? "..." : "")
-                    }}
+                    <button class="px-4 py-0.5 bg-yellow-600 text-white rounded-lg">{{ $t('book_now') }}</button>
                 </div>
             </div>
         </router-link>
