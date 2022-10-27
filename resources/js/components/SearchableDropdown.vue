@@ -4,8 +4,8 @@
             id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" @click="myFunction">
             {{ selected_option == null ? component_placeholder : selected_option }}
         </button>
-        <ul :id="component_id+'-temp'" class="dropdown-menu dark:dropdown-menu-dark"
-            :class="isListShow==true?'show':'hidden'" aria-labelledby="dropdownMenuButton1">
+        <ul :id="component_id   +   '-temp'" class="dropdown-menu dark:dropdown-menu-dark"
+            :class="isListShow   ==   true   ?   'show'   :   'hidden'" aria-labelledby="dropdownMenuButton1">
             <input class="dropdown-item border border-gray-500 w-1/2" type="text" autocomplete="off"
                 placeholder="Search.." id="myInput" @keyup="filterFunction()" />
             <li v-for="option in options" :key="option.id" @click="selected_option = option.name_en">
@@ -40,7 +40,7 @@ function myFunction() {
 }
 
 function filterFunction() {
-    var input, filter, ul, li, span, i, div, txtValue;
+    let input, filter, ul, li, span, i, div, txtValue;
     input = document.getElementById("myInput");
     filter = input.value.toUpperCase();
     div = document.getElementById(props.component_id);

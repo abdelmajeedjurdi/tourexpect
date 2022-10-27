@@ -17,6 +17,6 @@ class Category extends Model
         'description_ar',
         'image',
         'is_slide',
-        'slug'
+        'slug', 'for_category'
     ];
 }

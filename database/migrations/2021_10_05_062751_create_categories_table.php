@@ -22,6 +22,7 @@ class CreateCategoriesTable extends Migration
             $table->string('image')->default('default.jpg');
             $table->boolean('is_slide');
             $table->boolean('is_trending');
+            $table->string('for_category');
             $table->string('slug')->unique();
             $table->timestamps();
         });

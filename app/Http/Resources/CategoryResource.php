@@ -24,6 +24,7 @@ class CategoryResource extends JsonResource
             'image'  => $this->image,
             'description_en'  => $this->description_en,
             'description_ar'  => $this->description_ar,
+            'for_category'  => $this->for_category,
             'is_trending' => $this->is_trending == 1 ? true   : false,
             'is_slide' => $this->is_slide ==  1 ? true   : false,
         ];

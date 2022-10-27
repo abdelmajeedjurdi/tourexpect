@@ -70,6 +70,7 @@
                 class=" grid gap-2 grid-cols-1  md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 justify-between ">
                 <div v-for="activity in activities" :key="activity.id">
                     <ActivityVue :activity="activity" />
+                    <!-- <p>{{ activity }}</p> -->
                 </div>
             </div>
             <!-- pagenation -->
@@ -88,7 +89,7 @@ import useCategories from '../../../composables/categories';
 
 const { getFilteredActivities, activities, alter_pages, getDestinationActivities } = useActivities();
 const { getDestinationsOnCountry, countries } = useDestinations()
-const { getAllCategories, categories } = useCategories()
+const { getCategoriesOnSection, categories } = useCategories()
 
 const props = defineProps({ destination: String });
 let lang = inject('lang') || 'en'
@@ -96,7 +97,7 @@ let currentPage = ref(1)
 let country = ref('')
 onMounted(async () => {
     getDestinationActivities(currentPage.value, props.destination)
-    getAllCategories()
+    getCategoriesOnSection('activities')
     await getDestinationsOnCountry()
     // country.value = countries.value[0]
     console.log(countries.value);

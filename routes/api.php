@@ -42,10 +42,11 @@ Route::group(['middleware' => 'web'], function () {
 // Route::middleware('auth:sanctum')->apiResource('/categories', CategoryController::class);
 
 Route::get('all-categories', [CategoryController::class, 'index']);
+Route::get('categories-on-section', [CategoryController::class, 'getCategoriesOnSection']);
 Route::get('all-tours', [TourController::class, 'getAllTours']);
 Route::get('destination-tours', [TourController::class, 'getDestinationTours']);
 Route::get('all-activities', [ActivityController::class, 'getAllActivities']);
-Route::get('destination-activities', [TourController::class, 'getDestinationActivities']);
+Route::get('destination-tours', [TourController::class, 'getDestinationTours']);
 Route::get('all-hotels', [HotelController::class, 'getAllHotels']);
 Route::get('destination-hotels', [HotelController::class, 'getDestinationHotels']);
 Route::get('all-packs', [PackageController::class, 'getAllPacks']);

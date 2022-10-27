@@ -86,13 +86,13 @@ import useCategories from '../../../composables/categories';
 
 const { getFilteredActivities, activities, pages } = useActivities();
 const { getDestinationsOnCountry, countries } = useDestinations()
-const { getAllCategories, categories } = useCategories()
+const { getCategoriesOnSection, categories } = useCategories()
 
 let lang = inject('lang') || 'en'
 let currentPage = ref(1)
 onMounted(() => {
     getFilteredActivities(filter.value)
-    getAllCategories()
+    getCategoriesOnSection('activities')
     getDestinationsOnCountry()
 })
 const showFilter = () => {

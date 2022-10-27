@@ -24,7 +24,7 @@
                         </span>
                         <span class="ms-1">
                             {{
-                                    activity.destination['name_' + lang]
+                                    activity.destination ? activity.destination['name_' + lang] : activity['destination_' + lang]
                             }}
                         </span>
                     </div>

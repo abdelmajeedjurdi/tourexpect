@@ -207,9 +207,9 @@ const form = reactive({
 });
 const { destinations, getDestinations } = useDestinations();
 const { errors, storeBlog } = useBlogs();
-const { categories, getCategories } = useCategories();
+const { categories, getCategoriesOnSection } = useCategories();
 onMounted(async () => {
-    await getCategories()
+    await getCategoriesOnSection('blogs')
     getDestinations()
 })
 const saveBlog = async () => {

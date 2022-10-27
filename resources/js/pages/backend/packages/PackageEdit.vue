@@ -589,7 +589,7 @@ import UploadImages from "vue-upload-drop-images";
 import SearchableDropdown from "../../../components/SearchableDropdown.vue";
 import ProgressBar from "../../../components/ProgressBar.vue";
 const props = defineProps({ id: String });
-const { categories, getCategories } = useCategories();
+const { categories, getCategoriesOnSection } = useCategories();
 const { destinations, getDestinations } = useDestinations();
 let isProgressing = ref(false);
 const {
@@ -607,7 +607,7 @@ const {
 let Swal = useSwal();
 let imagePreview = ref(null)
 onMounted(async () => {
-    await getCategories();
+    await getCategoriesOnSection('packages');
     await getDestinations();
     await getPackage(props.id);
 });

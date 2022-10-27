@@ -24,6 +24,10 @@ class CategoryController extends Controller
     {
         return CategoryResource::collection(Category::paginate(15));
     }
+    public function getCategoriesOnSection(Request $request)
+    {
+        return CategoryResource::collection(Category::where('for_category', $request->type)->get());
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -33,6 +37,7 @@ class CategoryController extends Controller
      */
     public function store(CategoryRequest $request)
     {
+        Log::info($request);
         if ($request->hasFile('image')) {
             $image = $request->image;
             $imageName = $image->getClientOriginalName();
@@ -47,6 +52,7 @@ class CategoryController extends Controller
         $category->name_ar = $request->name_ar;
         $category->description_en = $request->description_en;
         $category->description_ar = $request->description_ar;
+        $category->for_category = $request->for_category;
         $category->image = $imageName;
         $category->is_trending = $request->is_trending == 'true' ? 1 : 0;
         $category->is_slide = $request->is_slide == 'true' ? 1 : 0;
@@ -105,6 +111,7 @@ class CategoryController extends Controller
             'name_ar' => $request->name_ar,
             'description_en' => $request->description_en,
             'description_ar' => $request->description_ar,
+            'for_category' => $request->for_category,
             'is_trending' => $request->is_trending == 'true' ? 1 : 0,
             'is_slide' => $request->is_slide == 'true' ? 1 : 0,
             'image' =>  $imageName,
@@ -136,6 +143,7 @@ class CategoryController extends Controller
         $category->name_ar = $request->name_ar;
         $category->description_en = $request->description_en;
         $category->description_ar = $request->description_ar;
+        $category->for_category = $request->for_category;
         $category->image = 'default.jpg';
         $category->is_trending = $request->is_trending;
         $category->is_slide = $request->is_slide;

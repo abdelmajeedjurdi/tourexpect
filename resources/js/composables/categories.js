@@ -21,6 +21,11 @@ export default function useCategories() {
         categories.value = response.data.data;
         pages.value = response.data.meta
     };
+    const getCategoriesOnSection = async (type) => {
+        let response = await axios.get(`/api/categories-on-section?type=${type}`);
+        categories.value = response.data.data;
+        // pages.value = response.data.meta
+    };
     const getFlagsOrSigns = async (type) => {
         let response = await axios.get("/api/get-flags-signs?type=" + type);
         categories.value = response.data.data;
@@ -49,6 +54,7 @@ export default function useCategories() {
         fd.append("description_ar", data.form.description_ar);
         fd.append("is_slide", data.form.is_slide);
         fd.append("is_trending", data.form.is_trending);
+        fd.append("for_category", data.form.for_category);
         fd.append("category_img", data.form.image);
         fd.append("image", data.file);
         fd.append("properties", JSON.stringify(data.properties));
@@ -81,6 +87,7 @@ export default function useCategories() {
         fd.append("description_ar", data.form.description_ar);
         fd.append("is_slide", data.form.is_slide);
         fd.append("is_trending", data.form.is_trending);
+        fd.append("for_category", data.form.for_category);
         fd.append("category_img", data.form.image);
         fd.append("new_image", data.file);
         fd.append("properties", JSON.stringify(data.form.properties));
@@ -114,7 +121,7 @@ export default function useCategories() {
         categories,
         category,
         errors,
-        getCategories, getAllCategories,
+        getCategories, getAllCategories, getCategoriesOnSection,
         getCategory,
         storeCategory,
         updateCategory,

@@ -27,7 +27,8 @@ class CategoryRequest extends FormRequest
             'name_en' => ['required'],
             'name_ar' => ['required'],
             'description_en' => ['required'],
-            'description_ar' => ['required']
+            'description_ar' => ['required'],
+            'for_category' => ['required']
         ];
     }
 }

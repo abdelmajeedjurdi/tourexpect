@@ -88,7 +88,7 @@ import useCategories from '../../../composables/categories';
 
 const { getFilteredActivities, activities, pages, getDestinationActivities } = useActivities();
 const { getDestinationsOnCountry, countries } = useDestinations()
-const { getAllCategories, categories } = useCategories()
+const { getCategoriesOnSection, categories } = useCategories()
 
 const props = defineProps({ destination: String, subdestination: String });
 let lang = inject('lang') || 'en'
@@ -96,7 +96,7 @@ let currentPage = ref(1)
 let country = ref('')
 onMounted(async () => {
     getFilteredActivities(filter.value)
-    getAllCategories()
+    getCategoriesOnSection('activities')
     await getDestinationsOnCountry()
     // country.value = countries.value[0]
     console.log(countries.value);

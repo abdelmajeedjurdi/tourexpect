@@ -61,11 +61,49 @@ class ActivityController extends Controller
             $all = DB::table('countries')
                 ->join('destinations', 'countries.id', '=', 'destinations.country_id')
                 ->join('activities', 'destinations.id', '=', 'activities.destination_id')
-                ->select('activities.id', 'activities.destination_id', 'activities.title_en', 'activities.title_ar', 'activities.address_ar', 'activities.address_en', 'activities.description_en', 'activities.description_ar', 'activities.slug', 'activities.adult_price', 'activities.child_price', 'activities.discount', 'activities.thumbnail', 'activities.discount_type', 'activities.duration_en', 'activities.duration_ar')->where('countries.slug', '=', $request->destination)->paginate(12);
+                ->select(
+                    'activities.id',
+                    'activities.destination_id',
+                    'activities.title_en',
+                    'activities.title_ar',
+                    'activities.address_ar',
+                    'activities.address_en',
+                    'activities.description_en',
+                    'activities.description_ar',
+                    'activities.slug',
+                    'activities.adult_price',
+                    'activities.child_price',
+                    'activities.discount',
+                    'activities.thumbnail',
+                    'activities.discount_type',
+                    'activities.duration_en',
+                    'activities.duration_ar',
+                    'destinations.name_en as destination_en',
+                    'destinations.name_ar as destination_ar'
+                )->where('countries.slug', '=', $request->destination)->paginate(12);
         } else {
             $all = DB::table('destinations')
                 ->join('activities', 'destinations.id', '=', 'activities.destination_id')
-                ->select('activities.id', 'activities.destination_id', 'activities.title_en', 'activities.title_ar', 'activities.address_ar', 'activities.address_en', 'activities.description_en', 'activities.description_ar', 'activities.slug', 'activities.adult_price', 'activities.child_price', 'activities.discount', 'activities.thumbnail', 'activities.discount_type', 'activities.duration_en', 'activities.duration_ar')->where('destinations.slug', '=', $request->subdestination)->paginate(12);
+                ->select(
+                    'activities.id',
+                    'activities.destination_id',
+                    'activities.title_en',
+                    'activities.title_ar',
+                    'activities.address_ar',
+                    'activities.address_en',
+                    'activities.description_en',
+                    'activities.description_ar',
+                    'activities.slug',
+                    'activities.adult_price',
+                    'activities.child_price',
+                    'activities.discount',
+                    'activities.thumbnail',
+                    'activities.discount_type',
+                    'activities.duration_en',
+                    'activities.duration_ar',
+                    'destinations.name_en as destination_en',
+                    'destinations.name_ar as destination_ar'
+                )->where('destinations.slug', '=', $request->subdestination)->paginate(12);
         }
         return $all;
     }

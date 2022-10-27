@@ -216,7 +216,7 @@ import { useSwal } from "../../../plugins/useSwal.js";
 import SearchableDropdown from "../../../components/SearchableDropdown.vue";
 import ProgressBar from "../../../components/ProgressBar.vue";
 const props = defineProps({ id: String });
-const { categories, getCategories } = useCategories();
+const { categories, getCategoriesOnSection } = useCategories();
 const { destinations, getDestinations } = useDestinations();
 let isProgressing = ref(false);
 const {
@@ -231,7 +231,7 @@ let Swal = useSwal();
 let imagePreview = ref(null)
 // let content = ref({ "ops": JSON.parse(blog.value.content_en)['ops'] })
 onMounted(async () => {
-    await getCategories();
+    await getCategoriesOnSection('blogs');
     await getBlog(props.id);
     getDestinations()
 });

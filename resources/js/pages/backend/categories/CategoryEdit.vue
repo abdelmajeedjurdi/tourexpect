@@ -103,6 +103,23 @@
                         </div>
                     </div>
                 </div>
+                <div class="flex w-full mt-2">
+                    <div class="w-1/2 mt-2">
+                        <label for="for_category"
+                            class="block text-sm font-medium w-full text-left text-gray-700 dark:text-gray-200">
+                            For</label>
+                        <select name="for_category" id="for_category"
+                            class="w-full dark:bg-gray-700 rounded text-gray-700 dark:text-gray-200"
+                            v-model="category.for_category">
+                            <option class="" value="tours">Tours</option>
+                            <option class="py-4" value="packages">Packages</option>
+                            <option class="py-4" value="activities">Activities</option>
+                            <option class="py-4" value="hotels">Hotels & Resorts</option>
+                            <option class="py-4" value="blogs">Blog</option>
+
+                        </select>
+                    </div>
+                </div>
                 <div class="flex justify-between w-96">
                     <div class="w-full me-2 flex">
                         <label for="is_slide" class="block text-sm font-medium text-gray-700 dark:text-gray-200">Is

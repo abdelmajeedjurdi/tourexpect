@@ -1,17 +1,8 @@
 <template>
     <div>
         <div v-if="errors">
-            <div v-for="(v, k) in errors" :key="k" class="
-                                                            bg-red-500
-                                                            text-white
-                                                            rounded
-                                                            font-bold
-                                                            mb-4
-                                                            shadow-lg
-                                                            py-2
-                                                            px-4
-                                                            pr-0
-                                                        ">
+            <div v-for="(v, k) in errors" :key="k"
+                class="bg-red-500 text-white rounded font-bold mb-4 shadow-lg py-2 px-4 pr-0 ">
                 <p v-for="error in v" :key="error" class="text-sm">
                     {{ error }}
                 </p>
@@ -28,19 +19,9 @@
                                 class="block text-sm font-medium text-gray-700 dark:text-gray-200">English
                                 Name</label>
                             <div class="mt-1">
-                                <input type="text" name="name_en" id="name_en" class="
-                                    block
-                                    mt-1
-                                    w-full
-                                    rounded-md
-                                    border-gray-500
-                                    shadow-sm
-                                    focus:border-indigo-300
-                                    focus:ring
-                                    focus:ring-indigo-200
-                                    focus:ring-opacity-50
-                                    dark:bg-gray-800
-                                    " v-model="form.name_en" />
+                                <input type="text" name="name_en" id="name_en"
+                                    class="block mt-1 w-full rounded-md border-gray-500 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-800"
+                                    v-model="form.name_en" />
                             </div>
                         </div>
                         <div class="w-full">
@@ -48,19 +29,9 @@
                                 class="block text-sm font-medium text-gray-700 dark:text-gray-200">Arabic
                                 Name</label>
                             <div class="mt-1">
-                                <input dir="rtl" type="text" name="name_ar" id="name_ar" class="
-                  block
-                  mt-1
-                  w-full
-                  rounded-md
-                  border-gray-500
-                  shadow-sm
-                  focus:border-indigo-300
-                  focus:ring
-                  focus:ring-indigo-200
-                  focus:ring-opacity-50
-                  dark:bg-gray-800
-                " v-model="form.name_ar" />
+                                <input dir="rtl" type="text" name="name_ar" id="name_ar"
+                                    class="block mt-1 w-full rounded-md border-gray-500 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-800"
+                                    v-model="form.name_ar" />
                             </div>
                         </div>
                     </div>
@@ -107,6 +78,22 @@
                             </div>
                         </div>
                     </div>
+                    <div class="flex w-full mt-2">
+                        <div class="w-1/2 mt-2">
+                            <label for="for_category"
+                                class="block text-sm font-medium w-full text-left text-gray-700 dark:text-gray-200">
+                                For</label>
+                            <select name="for_category" id="for_category"
+                                class="w-full dark:bg-gray-700 rounded text-gray-700 dark:text-gray-200"
+                                v-model="form.for_category">
+                                <option class="" value="tours">Tours</option>
+                                <option class="py-4" value="packages">Packages</option>
+                                <option class="py-4" value="activities">Activities</option>
+                                <option class="py-4" value="hotels">Hotels & Resorts</option>
+                                <option class="py-4" value="blogs">Blogs</option>
+                            </select>
+                        </div>
+                    </div>
                     <div class="flex justify-between w-96">
                         <div class="w-full me-2 flex">
                             <label for="is_slide" class="block text-sm font-medium text-gray-700 dark:text-gray-200">Is
@@ -128,21 +115,20 @@
                     </div>
                     <div class="flex flex-col mt-2">
                         <input class="
-              w-100
-              mt-2
-              py-3
-              px-3
-              rounded-lg
-              bg-white
-              dark:bg-gray-800
-              border border-gray-400
-              dark:border-gray-700
-              text-gray-800
-              dark:text-gray-50
-              font-semibold
-              focus:border-blue-500 focus:outline-none
-              hidden
-            " @change="onFileSelected" type="file" id="image" accept="image/*" />
+                                    w-100
+                                    mt-2
+                                    py-3
+                                    px-3
+                                    rounded-lg
+                                    bg-white
+                                    dark:bg-gray-800
+                                    border border-gray-400
+                                    dark:border-gray-700
+                                    text-gray-800
+                                    dark:text-gray-50
+                                    font-semibold
+                                    focus:border-blue-500 focus:outline-none
+                                    hidden" @change="onFileSelected" type="file" id="image" accept="image/*" />
                         <label for="image" class="w-100 flex"><svg xmlns="http://www.w3.org/2000/svg"
                                 class="w-12 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -152,28 +138,8 @@
                 </div>
             </div>
 
-            <button type="submit" class="
-        inline-flex
-        items-center
-        px-4
-        py-2
-        text-xs
-        font-semibold
-        tracking-widest
-        text-white
-        uppercase
-        bg-gray-800
-        rounded-md
-        border border-transparent
-        ring-gray-300
-        transition
-        duration-150
-        ease-in-out
-        hover:bg-gray-700
-        active:bg-gray-900
-        focus:outline-none focus:border-gray-900 focus:ring
-        disabled:opacity-25
-      ">
+            <button type="submit"
+                class="inline-flex items-center px-4 py-2 text-xs font-semibold tracking-widest text-white uppercase bg-gray-800 rounded-md border border-transparent ring-gray-300 transition duration-150 ease-in-out hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring disabled:opacity-25">
                 Create
             </button>
         </form>
@@ -192,6 +158,7 @@ const form = reactive({
     description_ar: "",
     is_slide: false,
     is_trending: false,
+    for_category: '',
     image: "",
 });
 

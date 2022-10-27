@@ -599,10 +599,10 @@ const setProperty = () => {
 let isProgressing = ref(false);
 const { errors, storeActivity, addGallery, addFiles, percentage } =
     useActivities();
-const { categories, getCategories } = useCategories();
+const { categories, getCategoriesOnSection } = useCategories();
 const { destinations, getDestinations } = useDestinations();
 onMounted(() => {
-    getCategories();
+    getCategoriesOnSection('activities');
     getDestinations()
 });
 const handleImages = (images) => {
