@@ -15,7 +15,7 @@
             <div id="filter" class="space-y-4 hidden sm:block">
 
                 <h3 class="font-semibold text-lg">{{ $t('destinations') }}</h3>
-                <div v-for="country in countries">
+                <div v-for="country in countries" :key="country">
                     <router-link :to="'/activities/' + country.slug"
                         class="border px-2 flex justify-between items-center cursor-pointer"
                         :class="active_country == country.slug ? 'bg-blue-400 text-white' : ''"
@@ -31,7 +31,7 @@
                         </span>
                     </router-link>
                     <div v-show="country.slug == active_country" class="px-2  ">
-                        <div class="button space-y-3" v-for="destination in country['items']">
+                        <div class="button space-y-3" v-for="destination in country['items']" :key="destination">
                             <input type="radio" :id="destination.slug" name="destinations" class="hidden"
                                 v-model="filter.destination" :value="destination.slug" />
                             <label class="rounded px-2  w-full  cursor-pointer"
@@ -52,7 +52,7 @@
                                     $t('all-categories')
                             }}</label>
                     </div>
-                    <div class="button text-center" v-for="category in categories">
+                    <div class="button text-center" v-for="category in categories" :key="category">
                         <input type="radio" :id="category.slug" name="categories" class="hidden"
                             v-model="filter.category" :value="category['slug']" />
                         <label class="rounded text-center py-1 w-4/5  cursor-pointer"

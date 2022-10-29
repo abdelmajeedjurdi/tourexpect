@@ -46,7 +46,8 @@ class DatabaseSeeder extends Seeder
                 'is_trending' =>  0,
                 'is_slide' =>  0,
                 'image' =>  'default.jpg',
-                'slug' => 'c-one'
+                'slug' => 'c-one',
+                'for_category' => 'tours'
             ],
             [
                 'name_en' => 'Tourisem Tow',
@@ -56,7 +57,9 @@ class DatabaseSeeder extends Seeder
                 'is_trending' =>  0,
                 'is_slide' =>  0,
                 'image' =>  'default.jpg',
-                'slug' => 'c-tow'
+                'slug' =>
+                'c-tow',
+                'for_category' => 'tours'
             ],
             [
                 'name_en' => 'Tourisem Three',
@@ -66,7 +69,9 @@ class DatabaseSeeder extends Seeder
                 'is_trending' =>  0,
                 'is_slide' =>  0,
                 'image' =>  'default.jpg',
-                'slug' => 'c-three'
+                'slug' =>
+                'c-three',
+                'for_category' => 'packages'
             ]
         ]);
         DB::table('destinations')->insert([

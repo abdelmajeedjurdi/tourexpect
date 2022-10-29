@@ -40,19 +40,19 @@
                                     style="top:8rem ;" id="mobile-menu">
                                     <ul
                                         class=" flex flex-col mx-auto my-auto md:flex-row  md:mt-0 md:text-sm md:font-medium items-center">
-                                        <li class="w-full md:w-auto text-center  " v-for="(item, i) in menu">
-                                            <div v-if="item.only_sidebar == false&&item.is_link==false" class="md:mx-4">
+                                        <li class="w-full md:w-auto text-center  " v-for="(item, i) in menu" :key="i">
+                                            <div v-if="item.only_sidebar == false && item.is_link == false" class="md:mx-4">
                                                 <button @click="showMenu(item.id)"
                                                     class="peer pr-4 pl-3 font-bold text-xl text-gray-800  border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-400 md:p-0">
                                                     {{
-                                                    item['name_'+lang]
+                                                            item['name_' + lang]
                                                     }}</button>
                                             </div>
-                                            <div v-if="item.is_link==true" class="md:mx-4">
-                                                <router-link :to="{name:item.slug}"
+                                            <div v-if="item.is_link == true" class="md:mx-4">
+                                                <router-link :to="{ name: item.slug }"
                                                     class="peer   pr-4 pl-3 font-bold text-xl text-gray-800  border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-400 md:p-0">
                                                     {{
-                                                    item['name_'+lang]
+                                                            item['name_' + lang]
                                                     }}</router-link>
                                             </div>
                                         </li>
@@ -85,11 +85,11 @@
                         </div>
 
                         <ul class=" space-y-6 md:flex-row md:mt-0 md:text-sm md:font-medium items-center">
-                            <li class="w-full md:w-auto" v-for="(item, i) in menu" @mouseenter="setSubmenu(i)">
+                            <li class="w-full md:w-auto" v-for="(item, i) in menu" @mouseenter="setSubmenu(i)" :key="i">
                                 <router-link :to="'/' + item.slug" @click="closeMenu"
                                     :class="menu_path_by_id.menu == i ? 'text-blue-400' : 'text-black'"
                                     class="block font-semibold text-2xl py-2 pr-4 pl-3   border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-400 md:p-0">
-                                    {{ item['name_'+lang] }}
+                                    {{ item['name_' + lang] }}
                                 </router-link>
                             </li>
                         </ul>
@@ -101,14 +101,14 @@
                             <span>{{ $t(menu_title) }}</span>
                         </div>
                         <ul class=" space-y-4 md:flex-row mx-6 md:mt-0 md:text-sm md:font-medium items-center">
-                            <li class="w-full flex justify-between md:w-auto" v-for="(item, j) in submenu"
+                            <li class="w-full flex justify-between md:w-auto" v-for="(item, j) in submenu" :key="j"
                                 @mouseenter="setSubSubMenu(j)">
                                 <router-link
-                                    :to="{path: `/${menu_slug}/${submenu_slug} `,params: { destination: submenu_slug }}"
+                                    :to="{ path: `/${menu_slug}/${submenu_slug} `, params: { destination: submenu_slug } }"
                                     @click="closeMenu"
                                     :class="menu_path_by_id.sub_menu == j ? 'text-blue-400' : 'text-black'"
                                     class="block   text-sm py-2 pr-4 pl-3  border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-400 md:p-0">
-                                    {{ item['name_'+lang] }}
+                                    {{ item['name_' + lang] }}
                                 </router-link>
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 text-gray-600" fill="none"
                                     v-if="item.items.length" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -124,12 +124,12 @@
                             <span>{{ submenu_title }}</span>
                         </div>
                         <ul class=" space-y-4 md:flex-row mx-6 md:mt-0 md:text-sm md:font-medium items-center">
-                            <li class="w-full md:w-auto" v-for="(item, i) in subsubmenu['items']">
+                            <li class="w-full md:w-auto" v-for="(item, i) in subsubmenu['items']" :key="i">
                                 <router-link
-                                    :to="{path: `/${menu_slug}/${submenu_slug}/${item['slug']} `,params: { destination: submenu_slug.at,subdestination:item['slug'] }}"
+                                    :to="{ path: `/${menu_slug}/${submenu_slug}/${item['slug']} `, params: { destination: submenu_slug.at, subdestination: item['slug'] } }"
                                     @click="closeMenu"
                                     class="block   text-sm py-2 pr-4 pl-3 text-gray-700 border-gray-100 md:border-0 hover:text-blue-400 md:p-0">
-                                    {{ item['name_'+lang] }}
+                                    {{ item['name_' + lang] }}
                                 </router-link>
                             </li>
                         </ul>
@@ -158,12 +158,12 @@
                         </router-link>
                     </div>
                     <ul class=" space-y-6 md:flex-row mx-20 md:mt-0 md:text-sm md:font-medium items-center">
-                        <li class="w-full md:w-auto" v-for="(item, i) in menu"
-                            @click="item['items'].length>0?setSubmenu(i):(router.push({ path: `/${item.slug}` }),closeMenu())">
+                        <li class="w-full md:w-auto" v-for="(item, i) in menu" :key="i"
+                            @click="item['items'].length > 0 ? setSubmenu(i) : (router.push({ path: `/${item.slug}` }), closeMenu())">
 
                             <button :class="menu_path_by_id.menu == i ? 'text-blue-400' : ''"
                                 class="block font-semibold text-xl py-2 pr-4 pl-3 text-black  border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-400 md:p-0">
-                                {{ item['name_'+lang] }}</button>
+                                {{ item['name_' + lang] }}</button>
                         </li>
                     </ul>
                 </div>
@@ -191,11 +191,12 @@
 
 
                         <li class="w-full flex justify-between items-center md:w-auto" v-for="(item, j) in submenu"
-                            @click=" item['items'].length>0?setSubSubMenu(j):(router.push({ path: `/${menu_slug}/${item.slug}` }), closeMenu()) ">
+                            :key="j"
+                            @click="item['items'].length > 0 ? setSubSubMenu(j) : (router.push({ path: `/${menu_slug}/${item.slug}` }), closeMenu())">
 
                             <button :class="menu_path_by_id.sub_menu == j ? 'text-blue-400' : ''"
                                 class="block   text-sm py-2 pr-4 pl-3 text-black border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-400 md:p-0">
-                                {{ item['name_'+lang] }}
+                                {{ item['name_' + lang] }}
 
                             </button>
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 text-gray-600" fill="none"
@@ -229,12 +230,12 @@
                     <ul class=" space-y-4 md:flex-row mx-6 md:mt-0 md:text-sm md:font-medium items-center">
 
 
-                        <li class="w-full md:w-auto" v-for="(item, i) in subsubmenu['items']">
+                        <li class="w-full md:w-auto" v-for="(item, i) in subsubmenu['items']" :key="i">
 
                             <button
-                                @click="()=>{router.push({ path: `/${menu_slug}/${submenu_slug}/${item.slug}`});closeMenu()}"
+                                @click="() => { router.push({ path: `/${menu_slug}/${submenu_slug}/${item.slug}` }); closeMenu() }"
                                 class="block   text-sm py-2 pr-4 pl-3 text-black border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-400 md:p-0">
-                                {{ item['name_'+lang] }}</button>
+                                {{ item['name_' + lang] }}</button>
 
                         </li>
                     </ul>

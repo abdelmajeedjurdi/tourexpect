@@ -323,13 +323,13 @@ const routes = [
     },
     {
         path: "/hotels-and-resorts/:destination",
-        name: "DTours",
+        name: "DHotels",
         component: DestinationHotelsAndResorts,
         props: true
     },
     {
         path: "/hotels-and-resorts/:destination/:subdestination",
-        name: "SDTours",
+        name: "SDHotels",
         component: SubDestinationHotelsAndResorts,
         props: true
     },

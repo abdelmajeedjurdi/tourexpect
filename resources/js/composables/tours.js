@@ -31,6 +31,13 @@ export default function useTours() {
         tours.value = response.data.data;
         pages.value = response.data.meta
     };
+
+    const getFilteredTours = async (filter) => {
+        let response = await axios.get(`/api/filtered-tours?d=${filter.destination}&c=${filter.category}&page=${filter.page}`);
+
+        tours.value = response.data.data;
+        pages.value = response.data.meta
+    };
     const getDestinationTours = async (page, destination, subdestination = null) => {
         let response = await axios.get(`/api/destination-tours?page=${page}&destination=${destination}&subdestination=${subdestination}`);
         tours.value = response.data.data;
@@ -197,6 +204,6 @@ export default function useTours() {
         getTourDetails,
         destroyImage,
         destroyFile, getDestinationTours,
-        percentage, pages, getAllTours, alter_pages
+        percentage, pages, getAllTours, alter_pages, getFilteredTours
     };
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Models\Destination;
 use App\Models\PackageImage;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -21,6 +22,7 @@ class PackageResource extends JsonResource
             'category_id' => $this->category_id,
             'destination_id' => $this->destination_id,
             // 'category' => Category::where('id', $this->category_id)->select('name_en', 'name_ar', 'id')->first(),
+            'destination' => Destination::where('id', $this->destination_id)->select('name_en', 'name_ar', 'id')->first(),
             'title_en'  => $this->title_en,
             'title_ar'  => $this->title_ar,
             'address_ar'  => $this->address_ar,

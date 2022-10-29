@@ -32,6 +32,12 @@ export default function usePackages() {
         packages.value = response.data.data;
         pages.value = response.data.meta
     };
+    const getFilteredPacks = async (filter) => {
+        let response = await axios.get(`/api/filtered-packs?d=${filter.destination}&c=${filter.category}&page=${filter.page}`);
+
+        packages.value = response.data.data;
+        pages.value = response.data.meta
+    };
     const getDestinationPacks = async (page, destination, subdestination = null) => {
         let response = await axios.get(`/api/destination-packs?page=${page}&destination=${destination}&subdestination=${subdestination}`);
         packages.value = response.data.data;
@@ -197,6 +203,6 @@ export default function usePackages() {
         getPackageDetails,
         destroyImage,
         destroyFile,
-        percentage, pages, getAllPacks, getDestinationPacks
+        percentage, pages, getAllPacks, getDestinationPacks, getFilteredPacks
     };
 }

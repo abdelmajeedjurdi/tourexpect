@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\TourRequest;
 use App\Http\Resources\DestinationTourResource;
 use App\Http\Resources\TourResource;
+use App\Models\Category;
 use App\Models\Destination;
 use App\Models\Tour;
 use App\Models\TourFile;
@@ -36,6 +37,26 @@ class TourController extends Controller
         return TourResource::collection(Tour::paginate(15));
         // return "index is working";
     }
+
+    public function getFilteredTours(Request $request)
+    {
+        Log::info($request);
+        // return Destination::where('slug', $request->d)->first('id')->id;
+        if ($request->d == '*' && $request->c == '*')
+            return TourResource::collection(Tour::paginate(9));
+        if ($request->d == '*' && $request->c != '*') {
+            $c_id = Category::where('slug', $request->c)->first('id')->id;
+            return TourResource::collection(Tour::where('category_id', $c_id)->paginate(9));
+        }
+        if ($request->c == '*' && $request->d != '*') {
+            $d_id = Destination::where('slug', $request->d)->first('id')->id;
+            return TourResource::collection(Tour::where('destination_id', $d_id)->paginate(9));
+        }
+        $d_id = Destination::where('slug', $request->d)->first('id')->id;
+        $c_id = Category::where('slug', $request->c)->first('id')->id;
+        return
+            TourResource::collection(Tour::where('destination_id', $d_id)->where('category_id', $c_id)->paginate(9));
+    }
     public function getDestinationTours(Request $request)
     {
 
@@ -44,11 +65,49 @@ class TourController extends Controller
             $all = DB::table('countries')
                 ->join('destinations', 'countries.id', '=', 'destinations.country_id')
                 ->join('tours', 'destinations.id', '=', 'tours.destination_id')
-                ->select('tours.id', 'tours.destination_id', 'tours.title_en', 'tours.title_ar', 'tours.address_ar', 'tours.address_en', 'tours.description_en', 'tours.description_ar', 'tours.slug', 'tours.adult_price', 'tours.child_price', 'tours.discount', 'tours.thumbnail', 'tours.discount_type', 'tours.duration_en', 'tours.duration_ar')->where('countries.slug', '=', $request->destination)->paginate(12);
+                ->select(
+                    'tours.id',
+                    'tours.destination_id',
+                    'tours.title_en',
+                    'tours.title_ar',
+                    'tours.address_ar',
+                    'tours.address_en',
+                    'tours.description_en',
+                    'tours.description_ar',
+                    'tours.slug',
+                    'tours.adult_price',
+                    'tours.child_price',
+                    'tours.discount',
+                    'tours.thumbnail',
+                    'tours.discount_type',
+                    'tours.duration_en',
+                    'tours.duration_ar',
+                    'destinations.name_en as destination_en',
+                    'destinations.name_ar as destination_ar'
+                )->where('countries.slug', '=', $request->destination)->paginate(12);
         } else {
             $all = DB::table('destinations')
                 ->join('tours', 'destinations.id', '=', 'tours.destination_id')
-                ->select('tours.id', 'tours.destination_id', 'tours.title_en', 'tours.title_ar', 'tours.address_ar', 'tours.address_en', 'tours.description_en', 'tours.description_ar', 'tours.slug', 'tours.adult_price', 'tours.child_price', 'tours.discount', 'tours.thumbnail', 'tours.discount_type', 'tours.duration_en', 'tours.duration_ar')->where('destinations.slug', '=', $request->subdestination)->paginate(12);
+                ->select(
+                    'tours.id',
+                    'tours.destination_id',
+                    'tours.title_en',
+                    'tours.title_ar',
+                    'tours.address_ar',
+                    'tours.address_en',
+                    'tours.description_en',
+                    'tours.description_ar',
+                    'tours.slug',
+                    'tours.adult_price',
+                    'tours.child_price',
+                    'tours.discount',
+                    'tours.thumbnail',
+                    'tours.discount_type',
+                    'tours.duration_en',
+                    'tours.duration_ar',
+                    'destinations.name_en as destination_en',
+                    'destinations.name_ar as destination_ar'
+                )->where('destinations.slug', '=', $request->subdestination)->paginate(12);
         }
         return $all;
     }

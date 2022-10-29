@@ -53,6 +53,8 @@ Route::get('all-packs', [PackageController::class, 'getAllPacks']);
 Route::get('destination-packs', [PackageController::class, 'getDestinationPacks']);
 Route::get('filtered-blogs', [BlogController::class, 'getFilteredBlogs']);
 Route::get('filtered-activities', [ActivityController::class, 'getFilteredActivities']);
+Route::get('filtered-packs', [PackageController::class, 'getFilteredPacks']);
+Route::get('filtered-tours', [TourController::class, 'getFilteredTours']);
 Route::get('destination-activities', [ActivityController::class, 'getDestinationActivities']);
 Route::get('categories-slides', [CategoryController::class, 'getSlides']);
 Route::get('category/{slug}', [CategoryController::class, 'getCategoryDetails']);

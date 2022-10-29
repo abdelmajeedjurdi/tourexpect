@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PackageRequest;
 use App\Http\Resources\PackageResource;
+use App\Models\Category;
+use App\Models\Destination;
 use App\Models\Package;
 use App\Models\PackageImage;
 use Illuminate\Http\Request;
@@ -29,17 +31,74 @@ class PackageController extends Controller
         return PackageResource::collection(Package::paginate(15));
         // return "index is working";
     }
+    public function getFilteredPacks(Request $request)
+    {
+        Log::info($request);
+        // return Destination::where('slug', $request->d)->first('id')->id;
+        if ($request->d == '*' && $request->c == '*')
+            return PackageResource::collection(Package::paginate(9));
+        if ($request->d == '*' && $request->c != '*') {
+            $c_id = Category::where('slug', $request->c)->first('id')->id;
+            return PackageResource::collection(Package::where('category_id', $c_id)->paginate(9));
+        }
+        if ($request->c == '*' && $request->d != '*') {
+            $d_id = Destination::where('slug', $request->d)->first('id')->id;
+            return PackageResource::collection(Package::where('destination_id', $d_id)->paginate(9));
+        }
+        $d_id = Destination::where('slug', $request->d)->first('id')->id;
+        $c_id = Category::where('slug', $request->c)->first('id')->id;
+        return
+            PackageResource::collection(Package::where('destination_id', $d_id)->where('category_id', $c_id)->paginate(9));
+    }
     public function getDestinationPacks(Request $request)
     {
         if ($request->subdestination == 'null') {
             $all = DB::table('countries')
                 ->join('destinations', 'countries.id', '=', 'destinations.country_id')
                 ->join('packages', 'destinations.id', '=', 'packages.destination_id')
-                ->select('packages.id', 'packages.destination_id', 'packages.title_en', 'packages.title_ar', 'packages.address_ar', 'packages.address_en', 'packages.description_en', 'packages.description_ar', 'packages.slug', 'packages.adult_price', 'packages.child_price', 'packages.discount', 'packages.thumbnail', 'packages.discount_type', 'packages.duration_en', 'packages.duration_ar')->where('countries.slug', '=', $request->destination)->paginate(12);
+                ->select(
+                    'packages.id',
+                    'packages.destination_id',
+                    'packages.title_en',
+                    'packages.title_ar',
+                    'packages.address_ar',
+                    'packages.address_en',
+                    'packages.description_en',
+                    'packages.description_ar',
+                    'packages.slug',
+                    'packages.adult_price',
+                    'packages.child_price',
+                    'packages.discount',
+                    'packages.thumbnail',
+                    'packages.discount_type',
+                    'packages.duration_en',
+                    'packages.duration_ar',
+                    'destinations.name_en as destination_en',
+                    'destinations.name_ar as destination_ar'
+                )->where('countries.slug', '=', $request->destination)->paginate(12);
         } else {
             $all = DB::table('destinations')
                 ->join('packages', 'destinations.id', '=', 'packages.destination_id')
-                ->select('packages.id', 'packages.destination_id', 'packages.title_en', 'packages.title_ar', 'packages.address_ar', 'packages.address_en', 'packages.description_en', 'packages.description_ar', 'packages.slug', 'packages.adult_price', 'packages.child_price', 'packages.discount', 'packages.thumbnail', 'packages.discount_type', 'packages.duration_en', 'packages.duration_ar')->where('destinations.slug', '=', $request->subdestination)->paginate(12);
+                ->select(
+                    'packages.id',
+                    'packages.destination_id',
+                    'packages.title_en',
+                    'packages.title_ar',
+                    'packages.address_ar',
+                    'packages.address_en',
+                    'packages.description_en',
+                    'packages.description_ar',
+                    'packages.slug',
+                    'packages.adult_price',
+                    'packages.child_price',
+                    'packages.discount',
+                    'packages.thumbnail',
+                    'packages.discount_type',
+                    'packages.duration_en',
+                    'packages.duration_ar',
+                    'destinations.name_en as destination_en',
+                    'destinations.name_ar as destination_ar'
+                )->where('destinations.slug', '=', $request->subdestination)->paginate(12);
         }
         return $all;
     }
