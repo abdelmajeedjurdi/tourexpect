@@ -46,6 +46,7 @@ import HotelsAndResorts from "../pages/frontend/hotels/HotelsAndResorts"
 import DestinationHotelsAndResorts from "../pages/frontend/hotels/DestinationHotelsAndResorts"
 import SubDestinationHotelsAndResorts from "../pages/frontend/hotels/SubDestinationHotelsAndResorts"
 import Tours from "../pages/frontend/tours/Tours"
+import Tour from "../pages/frontend/tours/TourDetails"
 import DestinationTours from "../pages/frontend/tours/DestinationTours"
 import SubDestinationTours from "../pages/frontend/tours/SubDestinationTours"
 import Activities from "../pages/frontend/activities/Activities"
@@ -268,6 +269,13 @@ const routes = [
         name: "tours",
         component: Tours,
     },
+    {
+        path: "/tours/details/:slug",
+        name: "tours-details",
+        component: Tour,
+        props: true
+    },
+
     {
         path: "/tours/:destination",
         name: "DTours",

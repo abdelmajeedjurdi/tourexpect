@@ -35,6 +35,14 @@ class Tour extends Model
         'include_en',
         'exclude_ar',
         'exclude_en',
-        'source'
+        'source',
+        'options_ar',
+        'options_en',
+        'highlights_ar',
+        'highlights_en',
+        'informations_ar',
+        'informations_en',
+        'policy_en',
+        'policy_ar',
     ];
 }

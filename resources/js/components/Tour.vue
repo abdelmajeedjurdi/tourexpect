@@ -1,6 +1,6 @@
 <template>
     <div class="bg-white border hover:shadow-lg duration-700 overflow-hidden mb-10">
-        <router-link to="#">
+        <router-link :to="{ name: 'tours-details', params: { slug: tour.slug } }">
             <div class="relative">
                 <img :src="'/images/tours/' + tour.thumbnail" alt="image" class="w-full h-56 object-cover" />
                 <div

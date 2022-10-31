@@ -165,6 +165,14 @@ class TourController extends Controller
         $tour->include_ar = $request->include_ar;
         $tour->exclude_en = $request->exclude_en;
         $tour->exclude_ar = $request->exclude_ar;
+        $tour->options_ar = $request->options_ar;
+        $tour->options_en = $request->options_en;
+        $tour->highlights_ar = $request->highlights_ar;
+        $tour->highlights_en = $request->highlights_en;
+        $tour->informations_ar = $request->informations_ar;
+        $tour->informations_en = $request->informations_en;
+        $tour->policy_ar = $request->policy_ar;
+        $tour->policy_en = $request->policy_en;
         $tour->source = $request->source;
 
         $tour->save();
@@ -213,6 +221,7 @@ class TourController extends Controller
      */
     public function update(TourRequest $request, Tour $tour)
     {
+        Log::info($request);
 
         $path = 'images/tours/';
         //code for remove old image
@@ -252,6 +261,14 @@ class TourController extends Controller
             'include_ar' => $request->include_ar,
             'exclude_en' => $request->exclude_en,
             'exclude_ar' => $request->exclude_ar,
+            'options_ar' => $request->options_ar,
+            'options_en' => $request->options_en,
+            'highlights_ar' => $request->highlights_ar,
+            'highlights_en' => $request->highlights_en,
+            'informations_ar' => $request->informations_ar,
+            'informations_en' => $request->informations_en,
+            'policy_ar' => $request->policy_ar,
+            'policy_en' => $request->policy_en,
             'source' => $request->source,
             'thumbnail' =>  $imageName,
             'slug' => Str::slug($request->title_en, '-')

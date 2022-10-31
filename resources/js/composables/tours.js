@@ -86,6 +86,14 @@ export default function useTours() {
         fd.append("exclude_en", data.form.exclude_en);
         fd.append("exclude_ar", data.form.exclude_ar);
         fd.append("source", data.form.source);
+        fd.append("options_ar", data.form.options_ar);
+        fd.append("options_en", data.form.options_en);
+        fd.append("highlights_ar", data.form.highlights_ar);
+        fd.append("highlights_en", data.form.highlights_en);
+        fd.append("informations_ar", data.form.informations_ar);
+        fd.append("informations_en", data.form.informations_en);
+        fd.append("policy_ar", data.form.policy_ar);
+        fd.append("policy_en", data.form.policy_en);
 
 
         fd.append("image", data.file);
@@ -136,6 +144,14 @@ export default function useTours() {
         fd.append("exclude_en", data.form.exclude_en);
         fd.append("exclude_ar", data.form.exclude_ar);
         fd.append("source", data.form.source);
+        fd.append("options_ar", data.form.options_ar);
+        fd.append("options_en", data.form.options_en);
+        fd.append("highlights_ar", data.form.highlights_ar);
+        fd.append("highlights_en", data.form.highlights_en);
+        fd.append("informations_ar", data.form.informations_ar);
+        fd.append("informations_en", data.form.informations_en);
+        fd.append("policy_ar", data.form.policy_ar);
+        fd.append("policy_en", data.form.policy_en);
         fd.append("tour_img", data.form.thumbnail);
         fd.append("new_image", data.file);
         fd.append("properties", JSON.stringify(data.properties));
