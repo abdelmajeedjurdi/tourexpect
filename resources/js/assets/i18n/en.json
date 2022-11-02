@@ -55,5 +55,7 @@
     "blogs": "Blogs",
     "test": "Test",
     "book_now": "Book Now",
-    "from": "From"
+    "from": "From",
+    "tour_overview":"Tour Overview",
+    "tour_options":"Tour Options"
 }

@@ -21,9 +21,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('frontend');
-});
+
 
 
 Route::apiResource('api/categories', CategoryController::class)->middleware(['auth', 'isAdmin']);
@@ -48,7 +46,12 @@ Route::get('api/rooms/{id}', [HotelController::class, 'getRoom'])->middleware(['
 Route::patch('api/rooms/{id}', [HotelController::class, 'updateRoom'])->middleware(['auth', 'isAdmin']);
 Route::delete('api/rooms/{id}', [HotelController::class, 'deleteRoom'])->middleware(['auth', 'isAdmin']);
 
-
+Route::get('/', function () {
+    return view('frontend');
+});
+Route::get('/categories', function () {
+    return view('categories');
+});
 Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::get('/dashboard', function () {
         // return 'this is admin';
