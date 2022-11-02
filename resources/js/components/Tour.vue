@@ -41,7 +41,7 @@
                     </div>
                 </div>
             </div>
-            <div class="p-3 h-40 relative">
+            <div class="p-3 h-44 relative">
                 <h3 class=" text-lg text-black font-bold ">
                     {{
                             tour['title_' + lang].substring(0, 65) +

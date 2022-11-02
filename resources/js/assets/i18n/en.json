@@ -57,5 +57,9 @@
     "book_now": "Book Now",
     "from": "From",
     "tour_overview":"Tour Overview",
-    "tour_options":"Tour Options"
+    "tour_options":"Tour Options",
+    "tour_highlights":"Tour Highlights",
+    "tour_inclusion":"Tour Inclusion",
+    "important_information":"Important Information",
+    "timing_and_transfer_policy":"Timing and Transfer Policy"
 }

@@ -54,6 +54,10 @@
     "test": "تجريبي",
     "book_now": "احجز الآن",
     "from": "تبدأ",
-    "tour_overview":"نظرة عامة على الجولة",
-    "tour_options":"خيارات الجولة"
+    "tour_overview":"نظرة عامة على الرحلة",
+    "tour_options":"خيارات الرحلة",
+    "tour_highlights":"مميزات الرحلة",
+    "tour_inclusion":"تشمل الرحلة",
+    "important_information":"معلومات مهمة",
+    "timing_and_transfer_policy":"سياسة التوقيت والتحويل"
 }
