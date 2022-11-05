@@ -158,6 +158,133 @@
                             </div>
                         </div>
                         <div class="flex justify-between">
+                            <div class="space-y-4 rounded-md w-full bg-gray-600 p-6 mt-6 xk:mt-0">
+                                <h3>Banner Highlights</h3>
+                                <div class="flex justify-between">
+                                    <div class="w-full me-2">
+                                        <label for="title_en"
+                                            class="block text-sm font-medium text-gray-700 dark:text-gray-200">English
+                                            Title</label>
+                                        <div class="mt-1">
+                                            <input type="text" name="title_en" id="title_en" class="
+                                              block
+                                              mt-1
+                                              w-full
+                                              rounded-md
+                                              border-gray-500
+                                              shadow-sm
+                                              focus:border-indigo-300
+                                              focus:ring
+                                              focus:ring-indigo-200
+                                              focus:ring-opacity-50
+                                              dark:bg-gray-800
+                                            " v-model="banner_highlight.title_en" />
+                                        </div>
+                                    </div>
+                                    <div class="w-full">
+                                        <label for="title_ar"
+                                            class="block text-sm font-medium text-gray-700 dark:text-gray-200">Arabic
+                                            Title</label>
+                                        <div class="mt-1">
+                                            <input dir="rtl" type="text" name="title_ar" id="title_ar" class="
+                                              block
+                                              mt-1
+                                              w-full
+                                              rounded-md
+                                              border-gray-500
+                                              shadow-sm
+                                              focus:border-indigo-300
+                                              focus:ring
+                                              focus:ring-indigo-200
+                                              focus:ring-opacity-50
+                                              dark:bg-gray-800
+                                            " v-model="banner_highlight.title_ar" />
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="dropdown mt-4">
+                                            <button
+                                                :style="`background-image: url(/images/banner_highlights/${selected_img})`"
+                                                class="rounded py-2 bg-gray-100 dropdown-toggle bg-no-repeat w-20 dark:bg-gray-800"
+                                                type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+                                                aria-expanded="false" @click="openImgs = true">
+                                            </button>
+                                            <ul id="component_id" class="dropdown-menu dark:dropdown-menu-dark"
+                                                :class="openImgs == true ? 'show' : 'hidden'"
+                                                aria-labelledby="dropdownMenuButton1">
+                                                <li v-for="img in highlight_imgs" :key="img.id">
+                                                    <span @click="setHighlightImage(img.name)"
+                                                        class="dropdown-item dark:text-gray-200 dark:hover:bg-gray-600 hover:bg-gray-300 cursor-pointer text-gray-200">
+                                                        <img class="h-12" :src="'/images/banner_highlights/' + img.name"
+                                                            alt="">
+                                                    </span>
+                                                </li>
+                                            </ul>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <button v-if="!is_editing" type="button" class="
+                                        px-6
+                                        py-1
+                                        bg-green-400
+                                        rounded-lg
+                                        text-blue-600
+                                        hover:bg-green-300
+                                        duration-300
+                                      " @click="setBannerHighlight">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                                    </svg>
+                                </button>
+                                <button v-else type="button" class="
+                                        px-6
+                                        py-1
+                                        bg-green-400
+                                        rounded-lg
+                                        text-blue-600
+                                        hover:bg-green-300
+                                        duration-300
+                                      " @click="setBannerHighlight">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                                    </svg>
+                                </button>
+                                <div class="rounded" v-for="(ban_highlight, i) in banner_highlights" :key="i">
+
+                                    <div class="w-full rounded items-center p-1 bg-gray-400 text-black flex ">
+                                        <div class="flex w-full justify-between">
+                                            <span class="">{{ ban_highlight.title_en }}</span>
+                                            <span>{{ ban_highlight.title_ar }}</span>
+                                        </div>
+                                        <img class="h-9 mx-2" :src="'/images/banner_highlights/' + ban_highlight.img"
+                                            alt="">
+                                        <div class="flex">
+                                            <span class="cursor-pointer rotate-90" @click="editRow(i)">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-500"
+                                                    fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                                    stroke-width="2">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                                                </svg>
+                                            </span>
+                                            <span class="cursor-pointer rotate-90" @click="deleteRow(ban_highlight)">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 text-red-500"
+                                                    fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                                    stroke-width="2">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                </svg>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between">
                             <div class="w-full me-2">
                                 <label for="itinerary_en"
                                     class="block text-sm font-medium text-gray-700 dark:text-gray-200">English
@@ -944,4 +1071,48 @@ const selectCategory = (category_id) => {
 const selectDestination = (destination_id) => {
     form.destination_id = destination_id;
 };
+
+
+let banner_highlight = ref({
+    title_en: "",
+    title_ar: "",
+    img: ''
+});
+let banner_highlights = ref([]);
+const setBannerHighlight = () => {
+    if (!is_editing.value) {
+        banner_highlights.value.push(banner_highlight.value);
+        banner_highlight.value = {
+            title_en: "",
+            title_ar: "",
+            img: ''
+        };
+        selected_img.value = 'default.jpg'
+    } else {
+        is_editing.value = false;
+        banner_highlight.value = {
+            title_en: "",
+            title_ar: "",
+            img: '',
+        };
+        selected_img.value = 'default.jpg'
+    }
+};
+const deleteRow = (banner_highlight) => {
+    banner_highlights.value.splice(banner_highlight, 1);
+};
+let is_editing = ref(false);
+const editRow = (banner_highlight_id) => {
+    is_editing.value = true;
+    console.log(banner_highlight_id);
+    banner_highlight.value = banner_highlights.value[banner_highlight_id];
+    selected_img.value = banner_highlights.value[banner_highlight_id].img;
+};
+let openImgs = ref(false)
+let selected_img = ref('default.jpg')
+let highlight_imgs = reactive([{ id: 1, name: 'tour-o.svg' }, { id: 2, name: 'tour-2.svg' }, { id: 3, name: 'tour-3.svg' }])
+const setHighlightImage = (img) => {
+    selected_img.value = img
+    banner_highlight.value.img = img
+}
 </script>
