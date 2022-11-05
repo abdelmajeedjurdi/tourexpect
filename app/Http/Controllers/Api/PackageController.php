@@ -121,6 +121,7 @@ class PackageController extends Controller
      */
     public function store(PackageRequest $request)
     {
+        Log::info($request);
         if ($request->hasFile('image')) {
             $image = $request->image;
             $imageName = $image->getClientOriginalName();
@@ -156,6 +157,22 @@ class PackageController extends Controller
         $package->exclude_en = $request->exclude_en;
         $package->exclude_ar = $request->exclude_ar;
         $package->source = $request->source;
+        $package->options_ar = $request->options_ar;
+        $package->options_en = $request->options_en;
+        $package->highlights_ar = $request->highlights_ar;
+        $package->highlights_en = $request->highlights_en;
+        $package->information_ar = $request->information_ar;
+        $package->information_en = $request->information_en;
+        $package->policy_ar = $request->policy_ar;
+        $package->policy_en = $request->policy_en;
+        $package->timing_and_transfer_ar = $request->timing_and_transfer_ar;
+        $package->timing_and_transfer_en = $request->timing_and_transfer_en;
+        $package->notes_en = $request->notes_en;
+        $package->notes_ar = $request->notes_ar;
+        $package->terms_and_conditions_en = $request->terms_and_conditions_en;
+        $package->terms_and_conditions_ar = $request->terms_and_conditions_ar;
+        $package->is_from = $request->is_from == 'true' ? 1 : 0;
+
 
         $package->save();
 
@@ -242,6 +259,21 @@ class PackageController extends Controller
             'exclude_en' => $request->exclude_en,
             'exclude_ar' => $request->exclude_ar,
             'source' => $request->source,
+            'options_ar' => $request->options_ar,
+            'options_en' => $request->options_en,
+            'highlights_ar' => $request->highlights_ar,
+            'highlights_en' => $request->highlights_en,
+            'information_ar' => $request->information_ar,
+            'information_en' => $request->information_en,
+            'policy_ar' => $request->policy_ar,
+            'policy_en' => $request->policy_en,
+            'timing_and_transfer_ar' => $request->timing_and_transfer_ar,
+            'timing_and_transfer_en' => $request->timing_and_transfer_en,
+            'notes_en' => $request->notes_en,
+            'notes_ar' => $request->notes_ar,
+            'terms_and_conditions_en' => $request->terms_and_conditions_en,
+            'terms_and_conditions_ar' => $request->terms_and_conditions_ar,
+            'is_from' => $request->is_from == 'true' ? 1 : 0,
             'thumbnail' =>  $imageName,
             'slug' => Str::slug($request->title_en, '-')
         ]);

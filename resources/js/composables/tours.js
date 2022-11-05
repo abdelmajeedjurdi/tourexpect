@@ -62,6 +62,7 @@ export default function useTours() {
     };
 
     const storeTour = async (data) => {
+        console.log(data);
         fd.append("category_id", data.form.category_id);
         fd.append("destination_id", data.form.destination_id);
         fd.append("title_en", data.form.title_en);
@@ -90,16 +91,22 @@ export default function useTours() {
         fd.append("options_en", data.form.options_en);
         fd.append("highlights_ar", data.form.highlights_ar);
         fd.append("highlights_en", data.form.highlights_en);
-        fd.append("informations_ar", data.form.informations_ar);
-        fd.append("informations_en", data.form.informations_en);
+        fd.append("information_ar", data.form.information_ar);
+        fd.append("information_en", data.form.information_en);
         fd.append("policy_ar", data.form.policy_ar);
         fd.append("policy_en", data.form.policy_en);
+        fd.append("timing_and_transfer_ar", data.form.timing_and_transfer_ar)
+        fd.append("timing_and_transfer_en", data.form.timing_and_transfer_en)
+        fd.append("notes_en", data.form.notes_en)
+        fd.append("notes_ar", data.form.notes_ar)
+        fd.append("terms_and_conditions_en", data.form.terms_and_conditions_en)
+        fd.append("terms_and_conditions_ar", data.form.terms_and_conditions_ar)
+        fd.append("is_from", data.form.is_from)
 
 
         fd.append("image", data.file);
 
 
-        fd.append("properties", JSON.stringify(data.properties));
         errors.value = "";
         try {
             await axios.post("/api/tours", fd, {
@@ -148,13 +155,19 @@ export default function useTours() {
         fd.append("options_en", data.form.options_en);
         fd.append("highlights_ar", data.form.highlights_ar);
         fd.append("highlights_en", data.form.highlights_en);
-        fd.append("informations_ar", data.form.informations_ar);
-        fd.append("informations_en", data.form.informations_en);
+        fd.append("information_ar", data.form.information_ar);
+        fd.append("information_en", data.form.information_en);
         fd.append("policy_ar", data.form.policy_ar);
         fd.append("policy_en", data.form.policy_en);
+        fd.append("timing_and_transfer_ar", data.form.timing_and_transfer_ar)
+        fd.append("timing_and_transfer_en", data.form.timing_and_transfer_en)
+        fd.append("notes_en", data.form.notes_en)
+        fd.append("notes_ar", data.form.notes_ar)
+        fd.append("terms_and_conditions_en", data.form.terms_and_conditions_en)
+        fd.append("terms_and_conditions_ar", data.form.terms_and_conditions_ar)
+        fd.append("is_from", data.form.is_from)
         fd.append("tour_img", data.form.thumbnail);
         fd.append("new_image", data.file);
-        fd.append("properties", JSON.stringify(data.properties));
         errors.value = "";
         try {
             await axios.post("/api/tours/" + id, fd, {

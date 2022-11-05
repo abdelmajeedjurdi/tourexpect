@@ -147,8 +147,8 @@ class ActivityController extends Controller
         $activity->slug = Str::slug($activity->title_en, '-');
         $activity->address_en = $request->address_en;
         $activity->address_ar = $request->address_ar;
-        $activity->highlights_en = $request->highlights_en;
-        $activity->highlights_ar = $request->highlights_ar;
+        $activity->itinerary_en = $request->itinerary_en;
+        $activity->itinerary_ar = $request->itinerary_ar;
         $activity->active = $request->active == 'true' ? 1 : 0;
         $activity->adult_price = $request->adult_price;
         $activity->child_price = $request->child_price;
@@ -162,6 +162,22 @@ class ActivityController extends Controller
         $activity->exclude_en = $request->exclude_en;
         $activity->exclude_ar = $request->exclude_ar;
         $activity->source = $request->source;
+        $activity->options_ar = $request->options_ar;
+        $activity->options_en = $request->options_en;
+        $activity->information_ar = $request->information_ar;
+        $activity->information_en = $request->information_en;
+        $activity->policy_ar = $request->policy_ar;
+        $activity->policy_en = $request->policy_en;
+        $activity->highlights_en = $request->highlights_en;
+        $activity->highlights_ar = $request->highlights_ar;
+        $activity->timing_and_transfer_ar = $request->timing_and_transfer_ar;
+        $activity->timing_and_transfer_en = $request->timing_and_transfer_en;
+        $activity->notes_en = $request->notes_en;
+        $activity->notes_ar = $request->notes_ar;
+        $activity->terms_and_conditions_en = $request->terms_and_conditions_en;
+        $activity->terms_and_conditions_ar = $request->terms_and_conditions_ar;
+        $activity->is_from = $request->is_from == 'true' ? 1 : 0;
+
 
         $activity->save();
 
@@ -234,8 +250,8 @@ class ActivityController extends Controller
             'address_en' => $request->address_en,
             'description_ar' => $request->description_ar,
             'description_en' => $request->description_en,
-            'highlights_en' => $request->highlights_en,
-            'highlights_ar' => $request->highlights_ar,
+            'itinerary_en' => $request->itinerary_en,
+            'itinerary_ar' => $request->itinerary_ar,
             'active' => $request->active == 'true' ? 1 : 0,
             'adult_price' => $request->adult_price,
             'child_price' => $request->child_price,
@@ -249,6 +265,21 @@ class ActivityController extends Controller
             'exclude_en' => $request->exclude_en,
             'exclude_ar' => $request->exclude_ar,
             'source' => $request->source,
+            'options_ar' => $request->options_ar,
+            'options_en' => $request->options_en,
+            'information_ar' => $request->information_ar,
+            'information_en' => $request->information_en,
+            'policy_ar' => $request->policy_ar,
+            'policy_en' => $request->policy_en,
+            'highlights_en' => $request->highlights_en,
+            'highlights_ar' => $request->highlights_ar,
+            'timing_and_transfer_ar' => $request->timing_and_transfer_ar,
+            'timing_and_transfer_en' => $request->timing_and_transfer_en,
+            'notes_en' => $request->notes_en,
+            'notes_ar' => $request->notes_ar,
+            'terms_and_conditions_en' => $request->terms_and_conditions_en,
+            'terms_and_conditions_ar' => $request->terms_and_conditions_ar,
+            'is_from' => $request->is_from == 'true' ? 1 : 0,
             'thumbnail' =>  $imageName,
             'slug' => Str::slug($request->title_en, '-')
         ]);

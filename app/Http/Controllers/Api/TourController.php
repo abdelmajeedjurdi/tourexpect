@@ -130,7 +130,7 @@ class TourController extends Controller
      */
     public function store(TourRequest $request)
     {
-
+        Log::info($request);
         if ($request->hasFile('image')) {
             $image = $request->image;
             $imageName = $image->getClientOriginalName();
@@ -165,15 +165,22 @@ class TourController extends Controller
         $tour->include_ar = $request->include_ar;
         $tour->exclude_en = $request->exclude_en;
         $tour->exclude_ar = $request->exclude_ar;
+        $tour->source = $request->source;
         $tour->options_ar = $request->options_ar;
         $tour->options_en = $request->options_en;
         $tour->highlights_ar = $request->highlights_ar;
         $tour->highlights_en = $request->highlights_en;
-        $tour->informations_ar = $request->informations_ar;
-        $tour->informations_en = $request->informations_en;
+        $tour->information_ar = $request->information_ar;
+        $tour->information_en = $request->information_en;
         $tour->policy_ar = $request->policy_ar;
         $tour->policy_en = $request->policy_en;
-        $tour->source = $request->source;
+        $tour->timing_and_transfer_ar = $request->timing_and_transfer_ar;
+        $tour->timing_and_transfer_en = $request->timing_and_transfer_en;
+        $tour->notes_en = $request->notes_en;
+        $tour->notes_ar = $request->notes_ar;
+        $tour->terms_and_conditions_en = $request->terms_and_conditions_en;
+        $tour->terms_and_conditions_ar = $request->terms_and_conditions_ar;
+        $tour->is_from = $request->is_from == 'true' ? 1 : 0;
 
         $tour->save();
 
@@ -261,15 +268,22 @@ class TourController extends Controller
             'include_ar' => $request->include_ar,
             'exclude_en' => $request->exclude_en,
             'exclude_ar' => $request->exclude_ar,
+            'source' => $request->source,
             'options_ar' => $request->options_ar,
             'options_en' => $request->options_en,
             'highlights_ar' => $request->highlights_ar,
             'highlights_en' => $request->highlights_en,
-            'informations_ar' => $request->informations_ar,
-            'informations_en' => $request->informations_en,
+            'information_ar' => $request->information_ar,
+            'information_en' => $request->information_en,
             'policy_ar' => $request->policy_ar,
             'policy_en' => $request->policy_en,
-            'source' => $request->source,
+            'timing_and_transfer_ar' => $request->timing_and_transfer_ar,
+            'timing_and_transfer_en' => $request->timing_and_transfer_en,
+            'notes_en' => $request->notes_en,
+            'notes_ar' => $request->notes_ar,
+            'terms_and_conditions_en' => $request->terms_and_conditions_en,
+            'terms_and_conditions_ar' => $request->terms_and_conditions_ar,
+            'is_from' => $request->is_from == 'true' ? 1 : 0,
             'thumbnail' =>  $imageName,
             'slug' => Str::slug($request->title_en, '-')
         ]);

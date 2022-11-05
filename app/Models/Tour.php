@@ -40,9 +40,16 @@ class Tour extends Model
         'options_en',
         'highlights_ar',
         'highlights_en',
-        'informations_ar',
-        'informations_en',
+        'information_ar',
+        'information_en',
         'policy_en',
         'policy_ar',
+        'timing_and_transfer_ar',
+        'timing_and_transfer_en',
+        'notes_en',
+        'notes_ar',
+        'terms_and_conditions_en',
+        'terms_and_conditions_ar',
+        'is_from',
     ];
 }

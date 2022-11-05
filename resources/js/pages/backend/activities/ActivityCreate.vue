@@ -78,18 +78,19 @@
                                     Address</label>
                                 <div class="mt-1">
                                     <input type="text" name="address_en" id="address_en" class="
-                  block
-                  mt-1
-                  w-full
-                  rounded-md
-                  border-gray-500
-                  shadow-sm
-                  focus:border-indigo-300
-                  focus:ring
-                  focus:ring-indigo-200
-                  focus:ring-opacity-50
-                  dark:bg-gray-800
-                " v-model="form.address_en" />
+                                                                                            block
+                                                                                            mt-1
+                                                                                            w-full
+                                                                                            rounded-md
+                                                                                            border-gray-500
+                                                                                            shadow-sm
+                                                                                            focus:border-indigo-300
+                                                                                            focus:ring
+                                                                                            focus:ring-indigo-200
+                                                                                            focus:ring-opacity-50
+                                                                                            dark:bg-gray-800
+                                                                                            "
+                                        v-model="form.address_en" />
                                 </div>
                             </div>
                             <div class="w-full">
@@ -158,11 +159,11 @@
                         </div>
                         <div class="flex justify-between">
                             <div class="w-full me-2">
-                                <label for="highlights_en"
+                                <label for="itinerary_en"
                                     class="block text-sm font-medium text-gray-700 dark:text-gray-200">English
-                                    highlights</label>
+                                    Itinerary</label>
                                 <div class="mt-1">
-                                    <textarea rows="10" type="text" name="highlights_en" id="highlights_en"
+                                    <textarea rows="10" type="text" name="itinerary_en" id="itinerary_en"
                                         placeholder="Separate it by lines" class="
                   block
                   mt-1
@@ -175,16 +176,16 @@
                   focus:ring-indigo-200
                   focus:ring-opacity-50
                   dark:bg-gray-800
-                " v-model="form.highlights_en" />
+                " v-model="form.itinerary_en" />
                                 </div>
                             </div>
                             <div class="w-full">
-                                <label for="highlights_ar"
+                                <label for="itinerary_ar"
                                     class="block text-sm font-medium text-gray-700 dark:text-gray-200">Arabic
-                                    highlights</label>
+                                    Itinerary</label>
                                 <div class="mt-1">
                                     <textarea dir="rtl" rows="10" type="text" placeholder="Separate it by lines"
-                                        name="highlights_ar" id="highlights_ar" class="
+                                        name="itinerary_ar" id="itinerary_ar" class="
                                                                         block
                                                                         mt-1
                                                                         w-full
@@ -196,7 +197,7 @@
                                                                         focus:ring-indigo-200
                                                                         focus:ring-opacity-50
                                                                         dark:bg-gray-800
-                                                                        " v-model="form.highlights_ar" />
+                                                                        " v-model="form.itinerary_ar" />
                                 </div>
                             </div>
                         </div>
@@ -253,18 +254,18 @@
                                 <div class="mt-1">
                                     <textarea rows="10" type="text" name="include_en" id="include_en"
                                         placeholder="Separate it by lines" class="
-                  block
-                  mt-1
-                  w-full
-                  rounded-md
-                  border-gray-500
-                  shadow-sm
-                  focus:border-indigo-300
-                  focus:ring
-                  focus:ring-indigo-200
-                  focus:ring-opacity-50
-                  dark:bg-gray-800
-                " v-model="form.include_en" />
+                                            block
+                                            mt-1
+                                            w-full
+                                            rounded-md
+                                            border-gray-500
+                                            shadow-sm
+                                            focus:border-indigo-300
+                                            focus:ring
+                                            focus:ring-indigo-200
+                                            focus:ring-opacity-50
+                                            dark:bg-gray-800
+                                            " v-model="form.include_en" />
                                 </div>
                             </div>
                             <div class="w-full">
@@ -335,12 +336,325 @@
                             </div>
                         </div>
 
-
-
-
                         <div class="mt-2">
                             <h2>Gallery</h2>
                             <UploadImages @changed="handleImages" />
+                        </div>
+
+                        <div class="flex justify-between">
+                            <div class="w-full me-2">
+                                <label for="options_en"
+                                    class="block text-sm font-medium text-gray-700 dark:text-gray-200">English
+                                    Options</label>
+                                <div class="mt-1">
+                                    <textarea rows="10" type="text" name="options_en" id="options_en"
+                                        placeholder="Separate it by lines" class="
+                                                                    block
+                                                                    mt-1
+                                                                    w-full
+                                                                    rounded-md
+                                                                    border-gray-500
+                                                                    shadow-sm
+                                                                    focus:border-indigo-300
+                                                                    focus:ring
+                                                                    focus:ring-indigo-200
+                                                                    focus:ring-opacity-50
+                                                                    dark:bg-gray-800
+                                                                    " v-model="form.options_en" />
+                                </div>
+                            </div>
+                            <div class="w-full">
+                                <label for="options_ar"
+                                    class="block text-sm font-medium text-gray-700 dark:text-gray-200">Arabic
+                                    Options</label>
+                                <div class="mt-1">
+                                    <textarea dir="rtl" rows="10" type="text" placeholder="Separate it by lines"
+                                        name="options_ar" id="options_ar" class="
+                                                                                                block
+                                                                                                mt-1
+                                                                                                w-full
+                                                                                                rounded-md
+                                                                                                border-gray-500
+                                                                                                shadow-sm
+                                                                                                focus:border-indigo-300
+                                                                                                focus:ring
+                                                                                                focus:ring-indigo-200
+                                                                                                focus:ring-opacity-50
+                                                                                                dark:bg-gray-800
+                                                                                                "
+                                        v-model="form.options_ar" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between">
+                            <div class="w-full me-2">
+                                <label for="highlights_en"
+                                    class="block text-sm font-medium text-gray-700 dark:text-gray-200">English
+                                    Highlights</label>
+                                <div class="mt-1">
+                                    <textarea rows="10" type="text" name="highlights_en" id="highlights_en"
+                                        placeholder="Separate it by lines" class="
+                                                                    block
+                                                                    mt-1
+                                                                    w-full
+                                                                    rounded-md
+                                                                    border-gray-500
+                                                                    shadow-sm
+                                                                    focus:border-indigo-300
+                                                                    focus:ring
+                                                                    focus:ring-indigo-200
+                                                                    focus:ring-opacity-50
+                                                                    dark:bg-gray-800
+                                                                    " v-model="form.highlights_en" />
+                                </div>
+                            </div>
+                            <div class="w-full">
+                                <label for="highlights_ar"
+                                    class="block text-sm font-medium text-gray-700 dark:text-gray-200">Arabic
+                                    Highlights</label>
+                                <div class="mt-1">
+                                    <textarea dir="rtl" rows="10" type="text" placeholder="Separate it by lines"
+                                        name="highlights_ar" id="highlights_ar" class="
+                                                                                                block
+                                                                                                mt-1
+                                                                                                w-full
+                                                                                                rounded-md
+                                                                                                border-gray-500
+                                                                                                shadow-sm
+                                                                                                focus:border-indigo-300
+                                                                                                focus:ring
+                                                                                                focus:ring-indigo-200
+                                                                                                focus:ring-opacity-50
+                                                                                                dark:bg-gray-800
+                                                                                                "
+                                        v-model="form.highlights_ar" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between">
+                            <div class="w-full me-2">
+                                <label for="information_en"
+                                    class="block text-sm font-medium text-gray-700 dark:text-gray-200">English
+                                    Information</label>
+                                <div class="mt-1">
+                                    <textarea rows="10" type="text" name="information_en" id="information_en"
+                                        placeholder="Separate it by lines" class="
+                                                                    block
+                                                                    mt-1
+                                                                    w-full
+                                                                    rounded-md
+                                                                    border-gray-500
+                                                                    shadow-sm
+                                                                    focus:border-indigo-300
+                                                                    focus:ring
+                                                                    focus:ring-indigo-200
+                                                                    focus:ring-opacity-50
+                                                                    dark:bg-gray-800
+                                                                    " v-model="form.information_en" />
+                                </div>
+                            </div>
+                            <div class="w-full">
+                                <label for="information_ar"
+                                    class="block text-sm font-medium text-gray-700 dark:text-gray-200">Arabic
+                                    Information</label>
+                                <div class="mt-1">
+                                    <textarea dir="rtl" rows="10" type="text" placeholder="Separate it by lines"
+                                        name="information_ar" id="information_ar" class="
+                                                                                                block
+                                                                                                mt-1
+                                                                                                w-full
+                                                                                                rounded-md
+                                                                                                border-gray-500
+                                                                                                shadow-sm
+                                                                                                focus:border-indigo-300
+                                                                                                focus:ring
+                                                                                                focus:ring-indigo-200
+                                                                                                focus:ring-opacity-50
+                                                                                                dark:bg-gray-800
+                                                                                                "
+                                        v-model="form.information_ar" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between">
+                            <div class="w-full me-2">
+                                <label for="policy_en"
+                                    class="block text-sm font-medium text-gray-700 dark:text-gray-200">English Booking
+                                    Policy</label>
+                                <div class="mt-1">
+                                    <textarea rows="10" type="text" name="policy_en" id="policy_en"
+                                        placeholder="Separate it by lines" class="
+                                                                    block
+                                                                    mt-1
+                                                                    w-full
+                                                                    rounded-md
+                                                                    border-gray-500
+                                                                    shadow-sm
+                                                                    focus:border-indigo-300
+                                                                    focus:ring
+                                                                    focus:ring-indigo-200
+                                                                    focus:ring-opacity-50
+                                                                    dark:bg-gray-800
+                                                                    " v-model="form.policy_en" />
+                                </div>
+                            </div>
+                            <div class="w-full">
+                                <label for="policy_ar"
+                                    class="block text-sm font-medium text-gray-700 dark:text-gray-200">Arabic Booking
+                                    Policy</label>
+                                <div class="mt-1">
+                                    <textarea dir="rtl" rows="10" type="text" placeholder="Separate it by lines"
+                                        name="policy_ar" id="policy_ar" class="
+                                                                                                block
+                                                                                                mt-1
+                                                                                                w-full
+                                                                                                rounded-md
+                                                                                                border-gray-500
+                                                                                                shadow-sm
+                                                                                                focus:border-indigo-300
+                                                                                                focus:ring
+                                                                                                focus:ring-indigo-200
+                                                                                                focus:ring-opacity-50
+                                                                                                dark:bg-gray-800
+                                                                                                "
+                                        v-model="form.policy_ar" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between">
+                            <div class="w-full me-2">
+                                <label for="timing_and_transfer_en"
+                                    class="block text-sm font-medium text-gray-700 dark:text-gray-200">English
+                                    Timing and Transfer Policy</label>
+                                <div class="mt-1">
+                                    <textarea rows="10" type="text" name="timing_and_transfer_en"
+                                        id="timing_and_transfer_en" placeholder="Separate it by lines" class="
+                                                                    block
+                                                                    mt-1
+                                                                    w-full
+                                                                    rounded-md
+                                                                    border-gray-500
+                                                                    shadow-sm
+                                                                    focus:border-indigo-300
+                                                                    focus:ring
+                                                                    focus:ring-indigo-200
+                                                                    focus:ring-opacity-50
+                                                                    dark:bg-gray-800
+                                                                    " v-model="form.timing_and_transfer_en" />
+                                </div>
+                            </div>
+                            <div class="w-full">
+                                <label for="timing_and_transfer_ar"
+                                    class="block text-sm font-medium text-gray-700 dark:text-gray-200">Arabic
+                                    Timing and Transfer Policy</label>
+                                <div class="mt-1">
+                                    <textarea dir="rtl" rows="10" type="text" placeholder="Separate it by lines"
+                                        name="timing_and_transfer_ar" id="timing_and_transfer_ar" class="
+                                                                                                block
+                                                                                                mt-1
+                                                                                                w-full
+                                                                                                rounded-md
+                                                                                                border-gray-500
+                                                                                                shadow-sm
+                                                                                                focus:border-indigo-300
+                                                                                                focus:ring
+                                                                                                focus:ring-indigo-200
+                                                                                                focus:ring-opacity-50
+                                                                                                dark:bg-gray-800
+                                                                                                "
+                                        v-model="form.timing_and_transfer_ar" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between">
+                            <div class="w-full me-2">
+                                <label for="terms_and_conditions_en"
+                                    class="block text-sm font-medium text-gray-700 dark:text-gray-200">English
+                                    Terms and Conditions</label>
+                                <div class="mt-1">
+                                    <textarea rows="10" type="text" name="terms_and_conditions_en"
+                                        id="terms_and_conditions_en" placeholder="Separate it by lines" class="
+                                                                                            block
+                                                                                            mt-1
+                                                                                            w-full
+                                                                                            rounded-md
+                                                                                            border-gray-500
+                                                                                            shadow-sm
+                                                                                            focus:border-indigo-300
+                                                                                            focus:ring
+                                                                                            focus:ring-indigo-200
+                                                                                            focus:ring-opacity-50
+                                                                                            dark:bg-gray-800
+                                                                                            "
+                                        v-model="form.terms_and_conditions_en" />
+                                </div>
+                            </div>
+                            <div class="w-full">
+                                <label for="terms_and_conditions_ar"
+                                    class="block text-sm font-medium text-gray-700 dark:text-gray-200">Arabic
+                                    Terms and Conditions Policy</label>
+                                <div class="mt-1">
+                                    <textarea dir="rtl" rows="10" type="text" placeholder="Separate it by lines"
+                                        name="terms_and_conditions_ar" id="terms_and_conditions_ar"
+                                        class="
+                                                                                                                        block
+                                                                                                                        mt-1
+                                                                                                                        w-full
+                                                                                                                        rounded-md
+                                                                                                                        border-gray-500
+                                                                                                                        shadow-sm
+                                                                                                                        focus:border-indigo-300
+                                                                                                                        focus:ring
+                                                                                                                        focus:ring-indigo-200
+                                                                                                                        focus:ring-opacity-50
+                                                                                                                        dark:bg-gray-800
+                                                                                                                        " v-model="form.terms_and_conditions_ar" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between">
+                            <div class="w-full me-2">
+                                <label for="notes_en"
+                                    class="block text-sm font-medium text-gray-700 dark:text-gray-200">English
+                                    Notes</label>
+                                <div class="mt-1">
+                                    <textarea rows="10" type="text" name="notes_en" id="notes_en"
+                                        placeholder="Separate it by lines" class="
+                                                                                block
+                                                                                mt-1
+                                                                                w-full
+                                                                                rounded-md
+                                                                                border-gray-500
+                                                                                shadow-sm
+                                                                                focus:border-indigo-300
+                                                                                focus:ring
+                                                                                focus:ring-indigo-200
+                                                                                focus:ring-opacity-50
+                                                                                dark:bg-gray-800
+                                                                                " v-model="form.notes_en" />
+                                </div>
+                            </div>
+                            <div class="w-full">
+                                <label for="notes_ar"
+                                    class="block text-sm font-medium text-gray-700 dark:text-gray-200">Arabic
+                                    Notes</label>
+                                <div class="mt-1">
+                                    <textarea dir="rtl" rows="10" type="text" placeholder="Separate it by lines"
+                                        name="notes_ar" id="notes_ar" class="
+                                                block
+                                                mt-1
+                                                w-full
+                                                rounded-md
+                                                border-gray-500
+                                                shadow-sm
+                                                focus:border-indigo-300
+                                                focus:ring
+                                                focus:ring-indigo-200
+                                                focus:ring-opacity-50
+                                                dark:bg-gray-800
+                                                " v-model="form.notes_ar" />
+                                </div>
+                            </div>
                         </div>
 
                     </div>
@@ -348,27 +662,27 @@
                 </div>
 
                 <button type="submit" class="
-        inline-flex
-        items-center
-        px-4
-        py-2
-        text-xs
-        font-semibold
-        tracking-widest
-        text-white
-        uppercase
-        bg-gray-800
-        rounded-md
-        border border-transparent
-        ring-gray-300
-        transition
-        duration-150
-        ease-in-out
-        hover:bg-gray-700
-        active:bg-gray-900
-        focus:outline-none focus:border-gray-900 focus:ring
-        disabled:opacity-25
-      ">
+                                            inline-flex
+                                            items-center
+                                            px-4
+                                            py-2
+                                            text-xs
+                                            font-semibold
+                                            tracking-widest
+                                            text-white
+                                            uppercase
+                                            bg-gray-800
+                                            rounded-md
+                                            border border-transparent
+                                            ring-gray-300
+                                            transition
+                                            duration-150
+                                            ease-in-out
+                                            hover:bg-gray-700
+                                            active:bg-gray-900
+                                            focus:outline-none focus:border-gray-900 focus:ring
+                                            disabled:opacity-25
+                                        ">
                     Create
                 </button>
             </form>
@@ -387,18 +701,18 @@
                         Price</label>
                     <div class="mt-1">
                         <input type="number" name="adult_price" id="adult_price" class="
-                  block
-                  mt-1
-                  w-full
-                  rounded-md
-                  border-gray-500
-                  shadow-sm
-                  focus:border-indigo-300
-                  focus:ring
-                  focus:ring-indigo-200
-                  focus:ring-opacity-50
-                  dark:bg-gray-800
-                " v-model="form.adult_price" />
+                                                                                        block
+                                                                                        mt-1
+                                                                                        w-full
+                                                                                        rounded-md
+                                                                                        border-gray-500
+                                                                                        shadow-sm
+                                                                                        focus:border-indigo-300
+                                                                                        focus:ring
+                                                                                        focus:ring-indigo-200
+                                                                                        focus:ring-opacity-50
+                                                                                        dark:bg-gray-800
+                                                                                        " v-model="form.adult_price" />
                     </div>
                 </div>
                 <div class="w-full me-2 mt-2">
@@ -448,9 +762,16 @@
                     <select name="discount_type" id="discount_type"
                         class="w-full dark:bg-gray-700 rounded text-gray-700 dark:text-gray-200"
                         v-model="form.discount_type">
-                        <option class="" value="pecentage">Percentage</option>
+                        <option class="" value="percentage">Percentage</option>
                         <option class="py-4" value="amount">Amount</option>
                     </select>
+                </div>
+                <div class="flex items-center  rounded border border-gray-600 w-full mx-auto mt-2 px-2 ">
+                    <input id="is_from" type="checkbox" value="" name="bordered-checkbox"
+                        class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500  focus:ring-2"
+                        v-model="form.is_from">
+                    <label for="is_from" class="py-2  text-sm font-medium text-gray-200 mx-2 dark:text-gray-300">Is
+                        From?</label>
                 </div>
                 <div class="w-full me-2 mt-2">
                     <label for="max_number_of_people"
@@ -542,7 +863,6 @@ import SearchableDropdown from "../../../components/SearchableDropdown.vue";
 import ProgressBar from "../../../components/ProgressBar.vue";
 import UploadImages from "vue-upload-drop-images";
 
-let live_property = ref(-1);
 const form = reactive({
     category_id: '',
     destination_id: '',
@@ -553,9 +873,9 @@ const form = reactive({
     description_en: "",
     description_ar: "",
     image: "",
-    discount_type: "pecentage",
-    highlights_ar: '',
-    highlights_en: '',
+    discount_type: "percentage",
+    itinerary_ar: '',
+    itinerary_en: '',
     active: '',
     adult_price: '',
     child_price: '',
@@ -568,33 +888,23 @@ const form = reactive({
     exclude_en: '',
     exclude_ar: '',
     source: '',
+    options_ar: '',
+    options_en: '',
+    highlights_ar: '',
+    highlights_en: '',
+    information_ar: '',
+    information_en: '',
+    policy_ar: '',
+    policy_en: '',
+    timing_and_transfer_ar: '',
+    timing_and_transfer_en: '',
+    notes_en: '',
+    notes_ar: '',
+    terms_and_conditions_en: '',
+    terms_and_conditions_ar: '',
+    is_from: true
 });
-let property = ref({
-    title_en: "",
-    title_ar: "",
-    description_en: "",
-    description_ar: "",
-});
-let properties = ref([]);
-const setProperty = () => {
-    if (!is_editing.value) {
-        properties.value.push(property.value);
-        property.value = {
-            title_en: "",
-            title_ar: "",
-            description_en: "",
-            description_ar: "",
-        };
-    } else {
-        is_editing.value = false;
-        property.value = {
-            title_en: "",
-            title_ar: "",
-            description_en: "",
-            description_ar: "",
-        };
-    }
-};
+
 
 let isProgressing = ref(false);
 const { errors, storeActivity, addGallery, addFiles, percentage } =
@@ -613,7 +923,7 @@ const handleFiles = (files) => {
 };
 const saveActivity = async () => {
     isProgressing.value = true;
-    await storeActivity({ form: form, file, properties: properties.value });
+    await storeActivity({ form: form, file });
     isProgressing.value = false;
 };
 let imagePreview = ref(null);
@@ -627,14 +937,6 @@ function onFileSelected(event) {
         imagePreview.value = event.target.result;
     };
 }
-const deleteRow = (property) => {
-    properties.value.splice(property, 1);
-};
-let is_editing = ref(false);
-const editRow = (property_id) => {
-    is_editing.value = true;
-    property.value = properties.value[property_id];
-};
 
 const selectCategory = (category_id) => {
     form.category_id = category_id;

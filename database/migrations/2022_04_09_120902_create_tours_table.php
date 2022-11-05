@@ -31,7 +31,7 @@ class CreateToursTable extends Migration
             $table->float('child_price')->nullable();
             $table->float('discount')->default(0.0);
             $table->string('thumbnail')->default('default.jpg');
-            $table->string('discount_type')->default('persentage');
+            $table->string('discount_type')->default('percentage');
             $table->string('duration_en')->nullable();
             $table->string('duration_ar')->nullable();
             $table->integer('max_number_of_people')->nullable();
@@ -39,15 +39,22 @@ class CreateToursTable extends Migration
             $table->longText('include_en')->nullable();
             $table->longText('exclude_ar')->nullable();
             $table->longText('exclude_en')->nullable();
+            $table->string('source')->nullable();
             $table->longText('options_ar')->nullable();
             $table->longText('options_en')->nullable();
             $table->longText('highlights_ar')->nullable();
             $table->longText('highlights_en')->nullable();
-            $table->longText('informations_ar')->nullable();
-            $table->longText('informations_en')->nullable();
+            $table->longText('information_ar')->nullable();
+            $table->longText('information_en')->nullable();
             $table->longText('policy_ar')->nullable();
             $table->longText('policy_en')->nullable();
-            $table->string('source')->nullable();
+            $table->longText('timing_and_transfer_ar')->nullable();
+            $table->longText('timing_and_transfer_en')->nullable();
+            $table->longText('notes_en')->nullable();
+            $table->longText('notes_ar')->nullable();
+            $table->longText('terms_and_conditions_en')->nullable();
+            $table->longText('terms_and_conditions_ar')->nullable();
+            $table->boolean('is_from')->nullable();
             $table->timestamps();
         });
     }

@@ -8,7 +8,7 @@
             <form class="space-y-6 w-full" @submit.prevent="saveHotel">
                 <h1 class="flex items-center">Hotel Details
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 mx-2"
-                        :class="hotel.active=='true'?'text-green-400':''">
+                        :class="hotel.active == 'true' ? 'text-green-400' : ''">
                         <path fill-rule="evenodd"
                             d="M8.603 3.799A4.49 4.49 0 0112 2.25c1.357 0 2.573.6 3.397 1.549a4.49 4.49 0 013.498 1.307 4.491 4.491 0 011.307 3.497A4.49 4.49 0 0121.75 12a4.49 4.49 0 01-1.549 3.397 4.491 4.491 0 01-1.307 3.497 4.491 4.491 0 01-3.497 1.307A4.49 4.49 0 0112 21.75a4.49 4.49 0 01-3.397-1.549 4.49 4.49 0 01-3.498-1.306 4.491 4.491 0 01-1.307-3.498A4.49 4.49 0 012.25 12c0-1.357.6-2.573 1.549-3.397a4.49 4.49 0 011.307-3.497 4.49 4.49 0 013.497-1.307zm7.007 6.387a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
                             clip-rule="evenodd" />
@@ -27,7 +27,7 @@
                                 <div class="mt-1">
                                     <input dir="ltr" type="text" name="title_ar" id="title_ar"
                                         class="block mt-1 w-full rounded-md border-gray-500 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-800"
-                                        v-model=" hotel.title_en" />
+                                        v-model="hotel.title_en" />
                                 </div>
                             </div>
                             <div class="w-full">
@@ -37,7 +37,7 @@
                                 <div class="mt-1">
                                     <input dir="rtl" type="text" name="title_ar" id="title_ar"
                                         class="block mt-1 w-full rounded-md border-gray-500 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-800"
-                                        v-model=" hotel.title_ar" />
+                                        v-model="hotel.title_ar" />
                                 </div>
                             </div>
                         </div>
@@ -52,7 +52,7 @@
                                 <div class="mt-1">
                                     <input dir="ltr" type="text" name="title_ar" id="title_ar"
                                         class="block mt-1 w-full rounded-md border-gray-500 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-800"
-                                        v-model=" hotel.address_en" />
+                                        v-model="hotel.address_en" />
                                 </div>
                             </div>
                             <div class="w-full">
@@ -62,7 +62,7 @@
                                 <div class="mt-1">
                                     <input dir="ltr" type="text" name="title_ar" id="title_ar"
                                         class="block mt-1 w-full rounded-md border-gray-500 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-800"
-                                        v-model=" hotel.address_ar" />
+                                        v-model="hotel.address_ar" />
                                 </div>
                             </div>
                         </div>
@@ -112,7 +112,7 @@
                                                     xl:grid-cols-5
                                                     justify-between
                                                     ">
-                        <div v-for="image in hotel.images" :key="hotel.id">
+                        <div v-for="image in hotel.images" :key="image.id">
                             <div class="bg-white rounded-lg overflow-hidden mb-10">
                                 <div class="w-full flex justify-end z-20">
                                     <span class="rounded-full p-1 transition-all duration-300 absolute">
@@ -223,7 +223,7 @@
                     <select name="discount_type" id="discount_type"
                         class="w-full dark:bg-gray-700 rounded text-gray-700 dark:text-gray-200"
                         v-model="hotel.discount_type">
-                        <option class="" value="pecentage">Percentage</option>
+                        <option class="" value="percentage">Percentage</option>
                         <option class="py-4" value="amount">Amount</option>
                     </select>
                 </div>
@@ -233,9 +233,9 @@
                         class="block text-sm font-medium w-full text-left text-gray-700 dark:text-gray-200">
                         Stars</label>
                     <div class="flex">
-                        <svg v-for="i in 5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                            @click="hotel.stars=i" fill="currentColor" class="w-6 "
-                            :class="i<=hotel.stars?'text-yellow-500':''">
+                        <svg v-for="i in 5" :key="i" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                            @click="hotel.stars = i" fill="currentColor" class="w-6 "
+                            :class="i <= hotel.stars ? 'text-yellow-500' : ''">
                             <path fill-rule="evenodd"
                                 d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
                                 clip-rule="evenodd" />

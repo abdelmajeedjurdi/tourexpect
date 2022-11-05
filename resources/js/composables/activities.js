@@ -68,11 +68,10 @@ export default function useActivities() {
         fd.append("title_ar", data.form.title_ar);
         fd.append("description_en", data.form.description_en);
         fd.append("description_ar", data.form.description_ar);
-        fd.append("activity_img", data.form.image);
         fd.append("address_ar", data.form.address_ar);
         fd.append("address_en", data.form.address_en);
-        fd.append("highlights_en", data.form.highlights_en);
-        fd.append("highlights_ar", data.form.highlights_ar);
+        fd.append("itinerary_en", data.form.itinerary_en);
+        fd.append("itinerary_ar", data.form.itinerary_ar);
         fd.append("active", data.form.active);
         fd.append("adult_price", data.form.adult_price);
         fd.append("child_price", data.form.child_price);
@@ -86,6 +85,21 @@ export default function useActivities() {
         fd.append("exclude_en", data.form.exclude_en);
         fd.append("exclude_ar", data.form.exclude_ar);
         fd.append("source", data.form.source);
+        fd.append("options_ar", data.form.options_ar);
+        fd.append("options_en", data.form.options_en);
+        fd.append("highlights_ar", data.form.highlights_ar);
+        fd.append("highlights_en", data.form.highlights_en);
+        fd.append("information_ar", data.form.information_ar);
+        fd.append("information_en", data.form.information_en);
+        fd.append("policy_ar", data.form.policy_ar);
+        fd.append("policy_en", data.form.policy_en);
+        fd.append("timing_and_transfer_ar", data.form.timing_and_transfer_ar)
+        fd.append("timing_and_transfer_en", data.form.timing_and_transfer_en)
+        fd.append("notes_en", data.form.notes_en)
+        fd.append("notes_ar", data.form.notes_ar)
+        fd.append("terms_and_conditions_en", data.form.terms_and_conditions_en)
+        fd.append("terms_and_conditions_ar", data.form.terms_and_conditions_ar)
+        fd.append("is_from", data.form.is_from)
 
 
         fd.append("image", data.file);
@@ -121,8 +135,8 @@ export default function useActivities() {
         fd.append("description_ar", data.form.description_ar);
         fd.append("address_ar", data.form.address_ar);
         fd.append("address_en", data.form.address_en);
-        fd.append("highlights_en", data.form.highlights_en);
-        fd.append("highlights_ar", data.form.highlights_ar);
+        fd.append("itinerary_en", data.form.itinerary_en);
+        fd.append("itinerary_ar", data.form.itinerary_ar);
         fd.append("active", data.form.active);
         fd.append("adult_price", data.form.adult_price);
         fd.append("child_price", data.form.child_price);
@@ -136,6 +150,21 @@ export default function useActivities() {
         fd.append("exclude_en", data.form.exclude_en);
         fd.append("exclude_ar", data.form.exclude_ar);
         fd.append("source", data.form.source);
+        fd.append("options_ar", data.form.options_ar);
+        fd.append("options_en", data.form.options_en);
+        fd.append("highlights_ar", data.form.highlights_ar);
+        fd.append("highlights_en", data.form.highlights_en);
+        fd.append("information_ar", data.form.information_ar);
+        fd.append("information_en", data.form.information_en);
+        fd.append("policy_ar", data.form.policy_ar);
+        fd.append("policy_en", data.form.policy_en);
+        fd.append("timing_and_transfer_ar", data.form.timing_and_transfer_ar)
+        fd.append("timing_and_transfer_en", data.form.timing_and_transfer_en)
+        fd.append("notes_en", data.form.notes_en)
+        fd.append("notes_ar", data.form.notes_ar)
+        fd.append("terms_and_conditions_en", data.form.terms_and_conditions_en)
+        fd.append("terms_and_conditions_ar", data.form.terms_and_conditions_ar)
+        fd.append("is_from", data.form.is_from)
         fd.append("activity_img", data.form.thumbnail);
         fd.append("new_image", data.file);
         fd.append("properties", JSON.stringify(data.properties));

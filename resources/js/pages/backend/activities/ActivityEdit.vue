@@ -17,18 +17,19 @@
                                     Name</label>
                                 <div class="mt-1">
                                     <input type="text" name="title_en" id="title_en" class="
-                                        block
-                                        mt-1
-                                        w-full
-                                        rounded-md
-                                        border-gray-500
-                                        shadow-sm
-                                        focus:border-indigo-300
-                                        focus:ring
-                                        focus:ring-indigo-200
-                                        focus:ring-opacity-50
-                                        dark:bg-gray-800
-                                        " v-model="activity.title_en" />
+                                                                                            block
+                                                                                            mt-1
+                                                                                            w-full
+                                                                                            rounded-md
+                                                                                            border-gray-500
+                                                                                            shadow-sm
+                                                                                            focus:border-indigo-300
+                                                                                            focus:ring
+                                                                                            focus:ring-indigo-200
+                                                                                            focus:ring-opacity-50
+                                                                                            dark:bg-gray-800
+                                                                                            "
+                                        v-model="activity.title_en" />
                                 </div>
                             </div>
                             <div class="w-full">
@@ -143,14 +144,14 @@
                             </div>
                         </div>
 
-                        <!-- highlights -->
+                        <!-- itinerary -->
                         <div class="flex justify-between">
                             <div class="w-full me-2">
-                                <label for="highlights_en"
+                                <label for="itinerary_en"
                                     class="block text-sm font-medium text-gray-700 dark:text-gray-200">English
-                                    highlights</label>
+                                    Itinerary</label>
                                 <div class="mt-1">
-                                    <textarea rows="10" type="text" name="highlights_en" id="highlights_en"
+                                    <textarea rows="10" type="text" name="itinerary_en" id="itinerary_en"
                                         placeholder="Separate it by lines" class="
                   block
                   mt-1
@@ -163,16 +164,16 @@
                   focus:ring-indigo-200
                   focus:ring-opacity-50
                   dark:bg-gray-800
-                " v-model="activity.highlights_en" />
+                " v-model="activity.itinerary_en" />
                                 </div>
                             </div>
                             <div class="w-full">
-                                <label for="highlights_ar"
+                                <label for="itinerary_ar"
                                     class="block text-sm font-medium text-gray-700 dark:text-gray-200">Arabic
-                                    highlights</label>
+                                    Itinerary</label>
                                 <div class="mt-1">
                                     <textarea dir="rtl" rows="10" type="text" placeholder="Separate it by lines"
-                                        name="highlights_ar" id="highlights_ar" class="
+                                        name="itinerary_ar" id="itinerary_ar" class="
                                                                         block
                                                                         mt-1
                                                                         w-full
@@ -184,7 +185,7 @@
                                                                         focus:ring-indigo-200
                                                                         focus:ring-opacity-50
                                                                         dark:bg-gray-800
-                                                                        " v-model="activity.highlights_ar" />
+                                                                        " v-model="activity.itinerary_ar" />
                                 </div>
                             </div>
                         </div>
@@ -346,7 +347,7 @@
                                     xl:grid-cols-5
                                     justify-between
                                     ">
-                                <div v-for="image in activity.images" :key="activity.id">
+                                <div v-for="image in activity.images" :key="image.id">
                                     <div class="bg-white rounded-lg overflow-hidden mb-10">
                                         <div class="w-full flex justify-end z-20">
                                             <span class="rounded-full p-1 transition-all duration-300 absolute">
@@ -374,6 +375,321 @@
 
                                         </div>
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between">
+                            <div class="w-full me-2">
+                                <label for="options_en"
+                                    class="block text-sm font-medium text-gray-700 dark:text-gray-200">English
+                                    Options</label>
+                                <div class="mt-1">
+                                    <textarea rows="10" type="text" name="options_en" id="options_en"
+                                        placeholder="Separate it by lines" class="
+                                                                    block
+                                                                    mt-1
+                                                                    w-full
+                                                                    rounded-md
+                                                                    border-gray-500
+                                                                    shadow-sm
+                                                                    focus:border-indigo-300
+                                                                    focus:ring
+                                                                    focus:ring-indigo-200
+                                                                    focus:ring-opacity-50
+                                                                    dark:bg-gray-800
+                                                                    " v-model="activity.options_en" />
+                                </div>
+                            </div>
+                            <div class="w-full">
+                                <label for="options_ar"
+                                    class="block text-sm font-medium text-gray-700 dark:text-gray-200">Arabic
+                                    Options</label>
+                                <div class="mt-1">
+                                    <textarea dir="rtl" rows="10" type="text" placeholder="Separate it by lines"
+                                        name="options_ar" id="options_ar" class="
+                                                                                                block
+                                                                                                mt-1
+                                                                                                w-full
+                                                                                                rounded-md
+                                                                                                border-gray-500
+                                                                                                shadow-sm
+                                                                                                focus:border-indigo-300
+                                                                                                focus:ring
+                                                                                                focus:ring-indigo-200
+                                                                                                focus:ring-opacity-50
+                                                                                                dark:bg-gray-800
+                                                                                                "
+                                        v-model="activity.options_ar" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between">
+                            <div class="w-full me-2">
+                                <label for="highlights_en"
+                                    class="block text-sm font-medium text-gray-700 dark:text-gray-200">English
+                                    Highlights</label>
+                                <div class="mt-1">
+                                    <textarea rows="10" type="text" name="highlights_en" id="highlights_en"
+                                        placeholder="Separate it by lines" class="
+                                                                    block
+                                                                    mt-1
+                                                                    w-full
+                                                                    rounded-md
+                                                                    border-gray-500
+                                                                    shadow-sm
+                                                                    focus:border-indigo-300
+                                                                    focus:ring
+                                                                    focus:ring-indigo-200
+                                                                    focus:ring-opacity-50
+                                                                    dark:bg-gray-800
+                                                                    " v-model="activity.highlights_en" />
+                                </div>
+                            </div>
+                            <div class="w-full">
+                                <label for="highlights_ar"
+                                    class="block text-sm font-medium text-gray-700 dark:text-gray-200">Arabic
+                                    Highlights</label>
+                                <div class="mt-1">
+                                    <textarea dir="rtl" rows="10" type="text" placeholder="Separate it by lines"
+                                        name="highlights_ar" id="highlights_ar" class="
+                                                                                                block
+                                                                                                mt-1
+                                                                                                w-full
+                                                                                                rounded-md
+                                                                                                border-gray-500
+                                                                                                shadow-sm
+                                                                                                focus:border-indigo-300
+                                                                                                focus:ring
+                                                                                                focus:ring-indigo-200
+                                                                                                focus:ring-opacity-50
+                                                                                                dark:bg-gray-800
+                                                                                                "
+                                        v-model="activity.highlights_ar" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between">
+                            <div class="w-full me-2">
+                                <label for="information_en"
+                                    class="block text-sm font-medium text-gray-700 dark:text-gray-200">English
+                                    Information</label>
+                                <div class="mt-1">
+                                    <textarea rows="10" type="text" name="information_en" id="information_en"
+                                        placeholder="Separate it by lines" class="
+                                                                    block
+                                                                    mt-1
+                                                                    w-full
+                                                                    rounded-md
+                                                                    border-gray-500
+                                                                    shadow-sm
+                                                                    focus:border-indigo-300
+                                                                    focus:ring
+                                                                    focus:ring-indigo-200
+                                                                    focus:ring-opacity-50
+                                                                    dark:bg-gray-800
+                                                                    " v-model="activity.information_en" />
+                                </div>
+                            </div>
+                            <div class="w-full">
+                                <label for="information_ar"
+                                    class="block text-sm font-medium text-gray-700 dark:text-gray-200">Arabic
+                                    Information</label>
+                                <div class="mt-1">
+                                    <textarea dir="rtl" rows="10" type="text" placeholder="Separate it by lines"
+                                        name="information_ar" id="information_ar" class="
+                                                                                                block
+                                                                                                mt-1
+                                                                                                w-full
+                                                                                                rounded-md
+                                                                                                border-gray-500
+                                                                                                shadow-sm
+                                                                                                focus:border-indigo-300
+                                                                                                focus:ring
+                                                                                                focus:ring-indigo-200
+                                                                                                focus:ring-opacity-50
+                                                                                                dark:bg-gray-800
+                                                                                                "
+                                        v-model="activity.information_ar" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between">
+                            <div class="w-full me-2">
+                                <label for="policy_en"
+                                    class="block text-sm font-medium text-gray-700 dark:text-gray-200">English Booking
+                                    Policy</label>
+                                <div class="mt-1">
+                                    <textarea rows="10" type="text" name="policy_en" id="policy_en"
+                                        placeholder="Separate it by lines" class="
+                                                                    block
+                                                                    mt-1
+                                                                    w-full
+                                                                    rounded-md
+                                                                    border-gray-500
+                                                                    shadow-sm
+                                                                    focus:border-indigo-300
+                                                                    focus:ring
+                                                                    focus:ring-indigo-200
+                                                                    focus:ring-opacity-50
+                                                                    dark:bg-gray-800
+                                                                    " v-model="activity.policy_en" />
+                                </div>
+                            </div>
+                            <div class="w-full">
+                                <label for="policy_ar"
+                                    class="block text-sm font-medium text-gray-700 dark:text-gray-200">Arabic Booking
+                                    Policy</label>
+                                <div class="mt-1">
+                                    <textarea dir="rtl" rows="10" type="text" placeholder="Separate it by lines"
+                                        name="policy_ar" id="policy_ar" class="
+                                                                                                block
+                                                                                                mt-1
+                                                                                                w-full
+                                                                                                rounded-md
+                                                                                                border-gray-500
+                                                                                                shadow-sm
+                                                                                                focus:border-indigo-300
+                                                                                                focus:ring
+                                                                                                focus:ring-indigo-200
+                                                                                                focus:ring-opacity-50
+                                                                                                dark:bg-gray-800
+                                                                                                "
+                                        v-model="activity.policy_ar" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between">
+                            <div class="w-full me-2">
+                                <label for="timing_and_transfer_en"
+                                    class="block text-sm font-medium text-gray-700 dark:text-gray-200">English
+                                    Timing and Transfer Policy</label>
+                                <div class="mt-1">
+                                    <textarea rows="10" type="text" name="timing_and_transfer_en"
+                                        id="timing_and_transfer_en" placeholder="Separate it by lines" class="
+                                                                    block
+                                                                    mt-1
+                                                                    w-full
+                                                                    rounded-md
+                                                                    border-gray-500
+                                                                    shadow-sm
+                                                                    focus:border-indigo-300
+                                                                    focus:ring
+                                                                    focus:ring-indigo-200
+                                                                    focus:ring-opacity-50
+                                                                    dark:bg-gray-800
+                                                                    " v-model="activity.timing_and_transfer_en" />
+                                </div>
+                            </div>
+                            <div class="w-full">
+                                <label for="timing_and_transfer_ar"
+                                    class="block text-sm font-medium text-gray-700 dark:text-gray-200">Arabic
+                                    Timing and Transfer Policy</label>
+                                <div class="mt-1">
+                                    <textarea dir="rtl" rows="10" type="text" placeholder="Separate it by lines"
+                                        name="timing_and_transfer_ar" id="timing_and_transfer_ar" class="
+                                                                                                block
+                                                                                                mt-1
+                                                                                                w-full
+                                                                                                rounded-md
+                                                                                                border-gray-500
+                                                                                                shadow-sm
+                                                                                                focus:border-indigo-300
+                                                                                                focus:ring
+                                                                                                focus:ring-indigo-200
+                                                                                                focus:ring-opacity-50
+                                                                                                dark:bg-gray-800
+                                                                                                "
+                                        v-model="activity.timing_and_transfer_ar" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between">
+                            <div class="w-full me-2">
+                                <label for="terms_and_conditions_en"
+                                    class="block text-sm font-medium text-gray-700 dark:text-gray-200">English
+                                    Terms and Conditions</label>
+                                <div class="mt-1">
+                                    <textarea rows="10" type="text" name="terms_and_conditions_en"
+                                        id="terms_and_conditions_en" placeholder="Separate it by lines" class="
+                                                                                            block
+                                                                                            mt-1
+                                                                                            w-full
+                                                                                            rounded-md
+                                                                                            border-gray-500
+                                                                                            shadow-sm
+                                                                                            focus:border-indigo-300
+                                                                                            focus:ring
+                                                                                            focus:ring-indigo-200
+                                                                                            focus:ring-opacity-50
+                                                                                            dark:bg-gray-800
+                                                                                            "
+                                        v-model="activity.terms_and_conditions_en" />
+                                </div>
+                            </div>
+                            <div class="w-full">
+                                <label for="terms_and_conditions_ar"
+                                    class="block text-sm font-medium text-gray-700 dark:text-gray-200">Arabic
+                                    Terms and Conditions Policy</label>
+                                <div class="mt-1">
+                                    <textarea dir="rtl" rows="10" type="text" placeholder="Separate it by lines"
+                                        name="terms_and_conditions_ar" id="terms_and_conditions_ar"
+                                        class="
+                                                                                                                        block
+                                                                                                                        mt-1
+                                                                                                                        w-full
+                                                                                                                        rounded-md
+                                                                                                                        border-gray-500
+                                                                                                                        shadow-sm
+                                                                                                                        focus:border-indigo-300
+                                                                                                                        focus:ring
+                                                                                                                        focus:ring-indigo-200
+                                                                                                                        focus:ring-opacity-50
+                                                                                                                        dark:bg-gray-800
+                                                                                                                        " v-model="activity.terms_and_conditions_ar" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between">
+                            <div class="w-full me-2">
+                                <label for="notes_en"
+                                    class="block text-sm font-medium text-gray-700 dark:text-gray-200">English
+                                    Notes</label>
+                                <div class="mt-1">
+                                    <textarea rows="10" type="text" name="notes_en" id="notes_en"
+                                        placeholder="Separate it by lines" class="
+                                                                                block
+                                                                                mt-1
+                                                                                w-full
+                                                                                rounded-md
+                                                                                border-gray-500
+                                                                                shadow-sm
+                                                                                focus:border-indigo-300
+                                                                                focus:ring
+                                                                                focus:ring-indigo-200
+                                                                                focus:ring-opacity-50
+                                                                                dark:bg-gray-800
+                                                                                " v-model="activity.notes_en" />
+                                </div>
+                            </div>
+                            <div class="w-full">
+                                <label for="notes_ar"
+                                    class="block text-sm font-medium text-gray-700 dark:text-gray-200">Arabic
+                                    Notes</label>
+                                <div class="mt-1">
+                                    <textarea dir="rtl" rows="10" type="text" placeholder="Separate it by lines"
+                                        name="notes_ar" id="notes_ar" class="
+                                                block
+                                                mt-1
+                                                w-full
+                                                rounded-md
+                                                border-gray-500
+                                                shadow-sm
+                                                focus:border-indigo-300
+                                                focus:ring
+                                                focus:ring-indigo-200
+                                                focus:ring-opacity-50
+                                                dark:bg-gray-800
+                                                " v-model="activity.notes_ar" />
                                 </div>
                             </div>
                         </div>
@@ -423,18 +739,18 @@
                         Price</label>
                     <div class="mt-1">
                         <input type="number" name="adult_price" id="adult_price" class="
-                  block
-                  mt-1
-                  w-full
-                  rounded-md
-                  border-gray-500
-                  shadow-sm
-                  focus:border-indigo-300
-                  focus:ring
-                  focus:ring-indigo-200
-                  focus:ring-opacity-50
-                  dark:bg-gray-800
-                " v-model="activity.adult_price" />
+                            block
+                            mt-1
+                            w-full
+                            rounded-md
+                            border-gray-500
+                            shadow-sm
+                            focus:border-indigo-300
+                            focus:ring
+                            focus:ring-indigo-200
+                            focus:ring-opacity-50
+                            dark:bg-gray-800
+                            " v-model="activity.adult_price" />
                     </div>
                 </div>
                 <div class="w-full me-2 mt-2">
@@ -484,9 +800,16 @@
                     <select name="discount_type" id="discount_type"
                         class="w-full dark:bg-gray-700 rounded text-gray-700 dark:text-gray-200"
                         v-model="activity.discount_type">
-                        <option class="" value="pecentage">Percentage</option>
+                        <option class="" value="percentage">Percentage</option>
                         <option class="py-4" value="amount">Amount</option>
                     </select>
+                </div>
+                <div class="flex items-center  rounded border border-gray-600 w-full mx-auto mt-2 px-2 ">
+                    <input id="is_from" type="checkbox" value="" name="bordered-checkbox"
+                        class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500  focus:ring-2"
+                        v-model="activity.is_from">
+                    <label for="is_from" class="py-2  text-sm font-medium text-gray-200 mx-2 dark:text-gray-300">Is
+                        From?</label>
                 </div>
                 <div class="w-full me-2 mt-2">
                     <label for="max_number_of_people"
@@ -610,13 +933,6 @@ onMounted(async () => {
     await getDestinations();
     await getActivity(props.id);
 });
-let live_property = ref(-1);
-let property = ref({
-    title_en: "",
-    title_ar: "",
-    description_en: "",
-    description_ar: "",
-});
 const saveActivity = async () => {
     isProgressing.value = true;
     await updateActivity(props.id, {
@@ -625,52 +941,6 @@ const saveActivity = async () => {
         properties: activity.value.properties,
     });
     isProgressing.value = false;
-};
-let is_editing = ref(false);
-const editRow = (property_) => {
-    is_editing.value = true;
-    property.value = property_;
-};
-const deleteRow = async (property_) => {
-    Swal.fire({
-        title: "Are you sure?",
-        html: "You won't be able to revert  Order, ",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, delete it!",
-    }).then(async (result) => {
-        if (result.isConfirmed) {
-            if (property_.hasOwnProperty("id")) {
-                await deleteProperty(property_.id);
-                await getActivity(props.id);
-
-            } else {
-                activity.value.properties.splice(property_, 1);
-            }
-            Swal.fire("Deleted!", "Deleted Successfully", "success");
-        }
-    });
-};
-const setProperty = () => {
-    if (!is_editing.value) {
-        activity.value.properties.push(property.value);
-        property.value = {
-            title_en: "",
-            title_ar: "",
-            description_en: "",
-            description_ar: "",
-        };
-    } else {
-        is_editing.value = false;
-        property.value = {
-            title_en: "",
-            title_ar: "",
-            description_en: "",
-            description_ar: "",
-        };
-    }
 };
 const deleteFile = async (id) => {
 

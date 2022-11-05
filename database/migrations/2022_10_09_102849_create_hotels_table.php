@@ -27,7 +27,7 @@ class CreateHotelsTable extends Migration
             $table->boolean('active')->default(1);
             $table->float('discount')->default(0.0);
             $table->string('thumbnail')->default('default.jpg');
-            $table->string('discount_type')->default('persentage');
+            $table->string('discount_type')->default('percentage');
             $table->float('price')->nullable();
             $table->integer('stars');
             $table->json('facilities')->nullable();

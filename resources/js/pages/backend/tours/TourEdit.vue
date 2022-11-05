@@ -378,7 +378,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="flex justify-between">
                             <div class="w-full me-2">
                                 <label for="options_en"
@@ -387,19 +386,18 @@
                                 <div class="mt-1">
                                     <textarea rows="10" type="text" name="options_en" id="options_en"
                                         placeholder="Separate it by lines" class="
-                                                                                            block
-                                                                                            mt-1
-                                                                                            w-full
-                                                                                            rounded-md
-                                                                                            border-gray-500
-                                                                                            shadow-sm
-                                                                                            focus:border-indigo-300
-                                                                                            focus:ring
-                                                                                            focus:ring-indigo-200
-                                                                                            focus:ring-opacity-50
-                                                                                            dark:bg-gray-800
-                                                                                            "
-                                        v-model="tour.options_en" />
+                                                                    block
+                                                                    mt-1
+                                                                    w-full
+                                                                    rounded-md
+                                                                    border-gray-500
+                                                                    shadow-sm
+                                                                    focus:border-indigo-300
+                                                                    focus:ring
+                                                                    focus:ring-indigo-200
+                                                                    focus:ring-opacity-50
+                                                                    dark:bg-gray-800
+                                                                    " v-model="tour.options_en" />
                                 </div>
                             </div>
                             <div class="w-full">
@@ -408,20 +406,20 @@
                                     Options</label>
                                 <div class="mt-1">
                                     <textarea dir="rtl" rows="10" type="text" placeholder="Separate it by lines"
-                                        name="options_ar" id="options_ar"
-                                        class="
-                                                                                                                        block
-                                                                                                                        mt-1
-                                                                                                                        w-full
-                                                                                                                        rounded-md
-                                                                                                                        border-gray-500
-                                                                                                                        shadow-sm
-                                                                                                                        focus:border-indigo-300
-                                                                                                                        focus:ring
-                                                                                                                        focus:ring-indigo-200
-                                                                                                                        focus:ring-opacity-50
-                                                                                                                        dark:bg-gray-800
-                                                                                                                        " v-model="tour.options_ar" />
+                                        name="options_ar" id="options_ar" class="
+                                                                                                block
+                                                                                                mt-1
+                                                                                                w-full
+                                                                                                rounded-md
+                                                                                                border-gray-500
+                                                                                                shadow-sm
+                                                                                                focus:border-indigo-300
+                                                                                                focus:ring
+                                                                                                focus:ring-indigo-200
+                                                                                                focus:ring-opacity-50
+                                                                                                dark:bg-gray-800
+                                                                                                "
+                                        v-model="tour.options_ar" />
                                 </div>
                             </div>
                         </div>
@@ -433,19 +431,18 @@
                                 <div class="mt-1">
                                     <textarea rows="10" type="text" name="highlights_en" id="highlights_en"
                                         placeholder="Separate it by lines" class="
-                                                                                            block
-                                                                                            mt-1
-                                                                                            w-full
-                                                                                            rounded-md
-                                                                                            border-gray-500
-                                                                                            shadow-sm
-                                                                                            focus:border-indigo-300
-                                                                                            focus:ring
-                                                                                            focus:ring-indigo-200
-                                                                                            focus:ring-opacity-50
-                                                                                            dark:bg-gray-800
-                                                                                            "
-                                        v-model="tour.highlights_en" />
+                                                                    block
+                                                                    mt-1
+                                                                    w-full
+                                                                    rounded-md
+                                                                    border-gray-500
+                                                                    shadow-sm
+                                                                    focus:border-indigo-300
+                                                                    focus:ring
+                                                                    focus:ring-indigo-200
+                                                                    focus:ring-opacity-50
+                                                                    dark:bg-gray-800
+                                                                    " v-model="tour.highlights_en" />
                                 </div>
                             </div>
                             <div class="w-full">
@@ -454,77 +451,166 @@
                                     Highlights</label>
                                 <div class="mt-1">
                                     <textarea dir="rtl" rows="10" type="text" placeholder="Separate it by lines"
-                                        name="highlights_ar" id="highlights_ar"
-                                        class="
-                                                                                                                        block
-                                                                                                                        mt-1
-                                                                                                                        w-full
-                                                                                                                        rounded-md
-                                                                                                                        border-gray-500
-                                                                                                                        shadow-sm
-                                                                                                                        focus:border-indigo-300
-                                                                                                                        focus:ring
-                                                                                                                        focus:ring-indigo-200
-                                                                                                                        focus:ring-opacity-50
-                                                                                                                        dark:bg-gray-800
-                                                                                                                        " v-model="tour.highlights_ar" />
+                                        name="highlights_ar" id="highlights_ar" class="
+                                                                                                block
+                                                                                                mt-1
+                                                                                                w-full
+                                                                                                rounded-md
+                                                                                                border-gray-500
+                                                                                                shadow-sm
+                                                                                                focus:border-indigo-300
+                                                                                                focus:ring
+                                                                                                focus:ring-indigo-200
+                                                                                                focus:ring-opacity-50
+                                                                                                dark:bg-gray-800
+                                                                                                "
+                                        v-model="tour.highlights_ar" />
                                 </div>
                             </div>
                         </div>
                         <div class="flex justify-between">
                             <div class="w-full me-2">
-                                <label for="informations_en"
+                                <label for="information_en"
                                     class="block text-sm font-medium text-gray-700 dark:text-gray-200">English
-                                    Informations</label>
+                                    Information</label>
                                 <div class="mt-1">
-                                    <textarea rows="10" type="text" name="informations_en" id="informations_en"
+                                    <textarea rows="10" type="text" name="information_en" id="information_en"
                                         placeholder="Separate it by lines" class="
-                                                                                            block
-                                                                                            mt-1
-                                                                                            w-full
-                                                                                            rounded-md
-                                                                                            border-gray-500
-                                                                                            shadow-sm
-                                                                                            focus:border-indigo-300
-                                                                                            focus:ring
-                                                                                            focus:ring-indigo-200
-                                                                                            focus:ring-opacity-50
-                                                                                            dark:bg-gray-800
-                                                                                            "
-                                        v-model="tour.informations_en" />
+                                                                    block
+                                                                    mt-1
+                                                                    w-full
+                                                                    rounded-md
+                                                                    border-gray-500
+                                                                    shadow-sm
+                                                                    focus:border-indigo-300
+                                                                    focus:ring
+                                                                    focus:ring-indigo-200
+                                                                    focus:ring-opacity-50
+                                                                    dark:bg-gray-800
+                                                                    " v-model="tour.information_en" />
                                 </div>
                             </div>
                             <div class="w-full">
-                                <label for="informations_ar"
+                                <label for="information_ar"
                                     class="block text-sm font-medium text-gray-700 dark:text-gray-200">Arabic
-                                    Informations</label>
+                                    Information</label>
                                 <div class="mt-1">
                                     <textarea dir="rtl" rows="10" type="text" placeholder="Separate it by lines"
-                                        name="informations_ar" id="informations_ar"
-                                        class="
-                                                                                                                        block
-                                                                                                                        mt-1
-                                                                                                                        w-full
-                                                                                                                        rounded-md
-                                                                                                                        border-gray-500
-                                                                                                                        shadow-sm
-                                                                                                                        focus:border-indigo-300
-                                                                                                                        focus:ring
-                                                                                                                        focus:ring-indigo-200
-                                                                                                                        focus:ring-opacity-50
-                                                                                                                        dark:bg-gray-800
-                                                                                                                        " v-model="tour.informations_ar" />
+                                        name="information_ar" id="information_ar" class="
+                                                                                                block
+                                                                                                mt-1
+                                                                                                w-full
+                                                                                                rounded-md
+                                                                                                border-gray-500
+                                                                                                shadow-sm
+                                                                                                focus:border-indigo-300
+                                                                                                focus:ring
+                                                                                                focus:ring-indigo-200
+                                                                                                focus:ring-opacity-50
+                                                                                                dark:bg-gray-800
+                                                                                                "
+                                        v-model="tour.information_ar" />
                                 </div>
                             </div>
                         </div>
                         <div class="flex justify-between">
                             <div class="w-full me-2">
                                 <label for="policy_en"
-                                    class="block text-sm font-medium text-gray-700 dark:text-gray-200">English
-                                    Timing and Transfer Policy</label>
+                                    class="block text-sm font-medium text-gray-700 dark:text-gray-200">English Booking
+                                    Policy</label>
                                 <div class="mt-1">
                                     <textarea rows="10" type="text" name="policy_en" id="policy_en"
                                         placeholder="Separate it by lines" class="
+                                                                    block
+                                                                    mt-1
+                                                                    w-full
+                                                                    rounded-md
+                                                                    border-gray-500
+                                                                    shadow-sm
+                                                                    focus:border-indigo-300
+                                                                    focus:ring
+                                                                    focus:ring-indigo-200
+                                                                    focus:ring-opacity-50
+                                                                    dark:bg-gray-800
+                                                                    " v-model="tour.policy_en" />
+                                </div>
+                            </div>
+                            <div class="w-full">
+                                <label for="policy_ar"
+                                    class="block text-sm font-medium text-gray-700 dark:text-gray-200">Arabic Booking
+                                    Policy</label>
+                                <div class="mt-1">
+                                    <textarea dir="rtl" rows="10" type="text" placeholder="Separate it by lines"
+                                        name="policy_ar" id="policy_ar" class="
+                                                                                                block
+                                                                                                mt-1
+                                                                                                w-full
+                                                                                                rounded-md
+                                                                                                border-gray-500
+                                                                                                shadow-sm
+                                                                                                focus:border-indigo-300
+                                                                                                focus:ring
+                                                                                                focus:ring-indigo-200
+                                                                                                focus:ring-opacity-50
+                                                                                                dark:bg-gray-800
+                                                                                                "
+                                        v-model="tour.policy_ar" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between">
+                            <div class="w-full me-2">
+                                <label for="timing_and_transfer_en"
+                                    class="block text-sm font-medium text-gray-700 dark:text-gray-200">English
+                                    Timing and Transfer Policy</label>
+                                <div class="mt-1">
+                                    <textarea rows="10" type="text" name="timing_and_transfer_en"
+                                        id="timing_and_transfer_en" placeholder="Separate it by lines" class="
+                                                                    block
+                                                                    mt-1
+                                                                    w-full
+                                                                    rounded-md
+                                                                    border-gray-500
+                                                                    shadow-sm
+                                                                    focus:border-indigo-300
+                                                                    focus:ring
+                                                                    focus:ring-indigo-200
+                                                                    focus:ring-opacity-50
+                                                                    dark:bg-gray-800
+                                                                    " v-model="tour.timing_and_transfer_en" />
+                                </div>
+                            </div>
+                            <div class="w-full">
+                                <label for="timing_and_transfer_ar"
+                                    class="block text-sm font-medium text-gray-700 dark:text-gray-200">Arabic
+                                    Timing and Transfer Policy</label>
+                                <div class="mt-1">
+                                    <textarea dir="rtl" rows="10" type="text" placeholder="Separate it by lines"
+                                        name="timing_and_transfer_ar" id="timing_and_transfer_ar" class="
+                                                                                                block
+                                                                                                mt-1
+                                                                                                w-full
+                                                                                                rounded-md
+                                                                                                border-gray-500
+                                                                                                shadow-sm
+                                                                                                focus:border-indigo-300
+                                                                                                focus:ring
+                                                                                                focus:ring-indigo-200
+                                                                                                focus:ring-opacity-50
+                                                                                                dark:bg-gray-800
+                                                                                                "
+                                        v-model="tour.timing_and_transfer_ar" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between">
+                            <div class="w-full me-2">
+                                <label for="terms_and_conditions_en"
+                                    class="block text-sm font-medium text-gray-700 dark:text-gray-200">English
+                                    Terms and Conditions</label>
+                                <div class="mt-1">
+                                    <textarea rows="10" type="text" name="terms_and_conditions_en"
+                                        id="terms_and_conditions_en" placeholder="Separate it by lines" class="
                                                                                             block
                                                                                             mt-1
                                                                                             w-full
@@ -537,16 +623,16 @@
                                                                                             focus:ring-opacity-50
                                                                                             dark:bg-gray-800
                                                                                             "
-                                        v-model="tour.policy_en" />
+                                        v-model="tour.terms_and_conditions_en" />
                                 </div>
                             </div>
                             <div class="w-full">
-                                <label for="policy_ar"
+                                <label for="terms_and_conditions_ar"
                                     class="block text-sm font-medium text-gray-700 dark:text-gray-200">Arabic
-                                    Timing and Transfer Policy</label>
+                                    Terms and Conditions Policy</label>
                                 <div class="mt-1">
                                     <textarea dir="rtl" rows="10" type="text" placeholder="Separate it by lines"
-                                        name="policy_ar" id="policy_ar"
+                                        name="terms_and_conditions_ar" id="terms_and_conditions_ar"
                                         class="
                                                                                                                         block
                                                                                                                         mt-1
@@ -559,7 +645,51 @@
                                                                                                                         focus:ring-indigo-200
                                                                                                                         focus:ring-opacity-50
                                                                                                                         dark:bg-gray-800
-                                                                                                                        " v-model="tour.policy_ar" />
+                                                                                                                        " v-model="tour.terms_and_conditions_ar" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between">
+                            <div class="w-full me-2">
+                                <label for="notes_en"
+                                    class="block text-sm font-medium text-gray-700 dark:text-gray-200">English
+                                    Notes</label>
+                                <div class="mt-1">
+                                    <textarea rows="10" type="text" name="notes_en" id="notes_en"
+                                        placeholder="Separate it by lines" class="
+                                                                                block
+                                                                                mt-1
+                                                                                w-full
+                                                                                rounded-md
+                                                                                border-gray-500
+                                                                                shadow-sm
+                                                                                focus:border-indigo-300
+                                                                                focus:ring
+                                                                                focus:ring-indigo-200
+                                                                                focus:ring-opacity-50
+                                                                                dark:bg-gray-800
+                                                                                " v-model="tour.notes_en" />
+                                </div>
+                            </div>
+                            <div class="w-full">
+                                <label for="notes_ar"
+                                    class="block text-sm font-medium text-gray-700 dark:text-gray-200">Arabic
+                                    Notes</label>
+                                <div class="mt-1">
+                                    <textarea dir="rtl" rows="10" type="text" placeholder="Separate it by lines"
+                                        name="notes_ar" id="notes_ar" class="
+                                                block
+                                                mt-1
+                                                w-full
+                                                rounded-md
+                                                border-gray-500
+                                                shadow-sm
+                                                focus:border-indigo-300
+                                                focus:ring
+                                                focus:ring-indigo-200
+                                                focus:ring-opacity-50
+                                                dark:bg-gray-800
+                                                " v-model="tour.notes_ar" />
                                 </div>
                             </div>
                         </div>
@@ -669,9 +799,16 @@
                     <select name="discount_type" id="discount_type"
                         class="w-full dark:bg-gray-700 rounded text-gray-700 dark:text-gray-200"
                         v-model="tour.discount_type">
-                        <option class="" value="pecentage">Percentage</option>
+                        <option class="" value="percentage">Percentage</option>
                         <option class="py-4" value="amount">Amount</option>
                     </select>
+                </div>
+                <div class="flex items-center  rounded border border-gray-600 w-full mx-auto mt-2 px-2 ">
+                    <input id="is_from" type="checkbox" value="" name="bordered-checkbox"
+                        class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500  focus:ring-2"
+                        v-model="tour.is_from">
+                    <label for="is_from" class="py-2  text-sm font-medium text-gray-200 mx-2 dark:text-gray-300">Is
+                        From?</label>
                 </div>
                 <div class="w-full me-2 mt-2">
                     <label for="max_number_of_people"
