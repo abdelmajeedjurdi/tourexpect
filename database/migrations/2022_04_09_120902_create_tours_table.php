@@ -40,8 +40,7 @@ class CreateToursTable extends Migration
             $table->longText('exclude_ar')->nullable();
             $table->longText('exclude_en')->nullable();
             $table->string('source')->nullable();
-            $table->longText('options_ar')->nullable();
-            $table->longText('options_en')->nullable();
+            $table->json('options')->nullable();
             $table->longText('highlights_ar')->nullable();
             $table->longText('highlights_en')->nullable();
             $table->longText('information_ar')->nullable();

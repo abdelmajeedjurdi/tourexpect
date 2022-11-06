@@ -56,6 +56,7 @@ export default function useTours() {
         let response = await axios.get("/api/tours/" + id);
         tour.value = response.data.data;
         tour.value['banner_highlights'] = JSON.parse(tour.value['banner_highlights'])
+        tour.value['options'] = JSON.parse(tour.value['options'])
     };
     const getTourDetails = async (slug) => {
         let response = await axios.get("/api/tour/" + slug);
@@ -88,8 +89,7 @@ export default function useTours() {
         fd.append("exclude_en", data.form.exclude_en);
         fd.append("exclude_ar", data.form.exclude_ar);
         fd.append("source", data.form.source);
-        fd.append("options_ar", data.form.options_ar);
-        fd.append("options_en", data.form.options_en);
+        fd.append("options", JSON.stringify(data.form.options))
         fd.append("highlights_ar", data.form.highlights_ar);
         fd.append("highlights_en", data.form.highlights_en);
         fd.append("information_ar", data.form.information_ar);
@@ -153,8 +153,7 @@ export default function useTours() {
         fd.append("exclude_en", data.form.exclude_en);
         fd.append("exclude_ar", data.form.exclude_ar);
         fd.append("source", data.form.source);
-        fd.append("options_ar", data.form.options_ar);
-        fd.append("options_en", data.form.options_en);
+        fd.append("options", JSON.stringify(data.form.options))
         fd.append("highlights_ar", data.form.highlights_ar);
         fd.append("highlights_en", data.form.highlights_en);
         fd.append("information_ar", data.form.information_ar);

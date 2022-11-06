@@ -166,8 +166,7 @@ class TourController extends Controller
         $tour->exclude_en = $request->exclude_en;
         $tour->exclude_ar = $request->exclude_ar;
         $tour->source = $request->source;
-        $tour->options_ar = $request->options_ar;
-        $tour->options_en = $request->options_en;
+        $tour->options = $request->options;
         $tour->highlights_ar = $request->highlights_ar;
         $tour->highlights_en = $request->highlights_en;
         $tour->information_ar = $request->information_ar;
@@ -270,8 +269,7 @@ class TourController extends Controller
             'exclude_en' => $request->exclude_en,
             'exclude_ar' => $request->exclude_ar,
             'source' => $request->source,
-            'options_ar' => $request->options_ar,
-            'options_en' => $request->options_en,
+            'options' => $request->options,
             'highlights_ar' => $request->highlights_ar,
             'highlights_en' => $request->highlights_en,
             'information_ar' => $request->information_ar,
