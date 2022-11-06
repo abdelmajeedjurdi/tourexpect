@@ -55,6 +55,7 @@ export default function useTours() {
     const getTour = async (id) => {
         let response = await axios.get("/api/tours/" + id);
         tour.value = response.data.data;
+        tour.value['banner_highlights'] = JSON.parse(tour.value['banner_highlights'])
     };
     const getTourDetails = async (slug) => {
         let response = await axios.get("/api/tour/" + slug);
@@ -102,6 +103,7 @@ export default function useTours() {
         fd.append("terms_and_conditions_en", data.form.terms_and_conditions_en)
         fd.append("terms_and_conditions_ar", data.form.terms_and_conditions_ar)
         fd.append("is_from", data.form.is_from)
+        fd.append("banner_highlights", JSON.stringify(data.form.banner_highlights))
 
 
         fd.append("image", data.file);
@@ -166,6 +168,7 @@ export default function useTours() {
         fd.append("terms_and_conditions_en", data.form.terms_and_conditions_en)
         fd.append("terms_and_conditions_ar", data.form.terms_and_conditions_ar)
         fd.append("is_from", data.form.is_from)
+        fd.append("banner_highlights", JSON.stringify(data.form.banner_highlights))
         fd.append("tour_img", data.form.thumbnail);
         fd.append("new_image", data.file);
         errors.value = "";

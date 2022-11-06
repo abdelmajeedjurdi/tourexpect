@@ -50,6 +50,6 @@ class Tour extends Model
         'notes_ar',
         'terms_and_conditions_en',
         'terms_and_conditions_ar',
-        'is_from',
+        'is_from', 'banner_highlights'
     ];
 }

@@ -55,18 +55,18 @@
                                     Title</label>
                                 <div class="mt-1">
                                     <input dir="rtl" type="text" name="title_ar" id="title_ar" class="
-                            block
-                            mt-1
-                            w-full
-                            rounded-md
-                            border-gray-500
-                            shadow-sm
-                            focus:border-indigo-300
-                            focus:ring
-                            focus:ring-indigo-200
-                            focus:ring-opacity-50
-                            dark:bg-gray-800
-                            " v-model="form.title_ar" />
+                                        block
+                                        mt-1
+                                        w-full
+                                        rounded-md
+                                        border-gray-500
+                                        shadow-sm
+                                        focus:border-indigo-300
+                                        focus:ring
+                                        focus:ring-indigo-200
+                                        focus:ring-opacity-50
+                                        dark:bg-gray-800
+                                        " v-model="form.title_ar" />
                                 </div>
                             </div>
                         </div>
@@ -121,18 +121,18 @@
                                     Description</label>
                                 <div class="mt-1">
                                     <textarea rows="10" type="text" name="description_en" id="description_en" class="
-                  block
-                  mt-1
-                  w-full
-                  rounded-md
-                  border-gray-500
-                  shadow-sm
-                  focus:border-indigo-300
-                  focus:ring
-                  focus:ring-indigo-200
-                  focus:ring-opacity-50
-                  dark:bg-gray-800
-                " v-model="form.description_en" />
+                                            block
+                                            mt-1
+                                            w-full
+                                            rounded-md
+                                            border-gray-500
+                                            shadow-sm
+                                            focus:border-indigo-300
+                                            focus:ring
+                                            focus:ring-indigo-200
+                                            focus:ring-opacity-50
+                                            dark:bg-gray-800
+                                            " v-model="form.description_en" />
                                 </div>
                             </div>
                             <div class="w-full">
@@ -142,23 +142,23 @@
                                 <div class="mt-1">
                                     <textarea dir="rtl" rows="10" type="text" name="description_ar" id="description_ar"
                                         class="
-                  block
-                  mt-1
-                  w-full
-                  rounded-md
-                  border-gray-500
-                  shadow-sm
-                  focus:border-indigo-300
-                  focus:ring
-                  focus:ring-indigo-200
-                  focus:ring-opacity-50
-                  dark:bg-gray-800
-                " v-model="form.description_ar" />
+                                            block
+                                            mt-1
+                                            w-full
+                                            rounded-md
+                                            border-gray-500
+                                            shadow-sm
+                                            focus:border-indigo-300
+                                            focus:ring
+                                            focus:ring-indigo-200
+                                            focus:ring-opacity-50
+                                            dark:bg-gray-800
+                                            " v-model="form.description_ar" />
                                 </div>
                             </div>
                         </div>
                         <div class="flex justify-between">
-                            <div class="space-y-4 rounded-md w-full bg-gray-600 p-6 mt-6 xk:mt-0">
+                            <div class="space-y-4 rounded-md w-full border p-6 mt-6 xk:mt-0">
                                 <h3>Banner Highlights</h3>
                                 <div class="flex justify-between">
                                     <div class="w-full me-2">
@@ -253,7 +253,7 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                                     </svg>
                                 </button>
-                                <div class="rounded" v-for="(ban_highlight, i) in banner_highlights" :key="i">
+                                <div class="rounded" v-for="(ban_highlight, i) in form.banner_highlights" :key="i">
 
                                     <div class="w-full rounded items-center p-1 bg-gray-400 text-black flex ">
                                         <div class="flex w-full justify-between">
@@ -271,7 +271,7 @@
                                                         d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                                                 </svg>
                                             </span>
-                                            <span class="cursor-pointer rotate-90" @click="deleteRow(ban_highlight)">
+                                            <span class="cursor-pointer rotate-90" @click="deleteRow(i)">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 text-red-500"
                                                     fill="none" viewBox="0 0 24 24" stroke="currentColor"
                                                     stroke-width="2">
@@ -426,18 +426,18 @@
                                 <div class="mt-1">
                                     <textarea rows="10" type="text" name="exclude_en" id="exclude_en"
                                         placeholder="Separate it by lines" class="
-                  block
-                  mt-1
-                  w-full
-                  rounded-md
-                  border-gray-500
-                  shadow-sm
-                  focus:border-indigo-300
-                  focus:ring
-                  focus:ring-indigo-200
-                  focus:ring-opacity-50
-                  dark:bg-gray-800
-                " v-model="form.exclude_en" />
+                                                                                    block
+                                                                                    mt-1
+                                                                                    w-full
+                                                                                    rounded-md
+                                                                                    border-gray-500
+                                                                                    shadow-sm
+                                                                                    focus:border-indigo-300
+                                                                                    focus:ring
+                                                                                    focus:ring-indigo-200
+                                                                                    focus:ring-opacity-50
+                                                                                    dark:bg-gray-800
+                                                                                    " v-model="form.exclude_en" />
                                 </div>
                             </div>
                             <div class="w-full">
@@ -1029,7 +1029,8 @@ const form = reactive({
     notes_ar: '',
     terms_and_conditions_en: '',
     terms_and_conditions_ar: '',
-    is_from: true
+    is_from: true,
+    banner_highlights: []
 });
 
 
@@ -1078,10 +1079,10 @@ let banner_highlight = ref({
     title_ar: "",
     img: ''
 });
-let banner_highlights = ref([]);
+
 const setBannerHighlight = () => {
     if (!is_editing.value) {
-        banner_highlights.value.push(banner_highlight.value);
+        form.banner_highlights.push(banner_highlight.value);
         banner_highlight.value = {
             title_en: "",
             title_ar: "",
@@ -1099,14 +1100,14 @@ const setBannerHighlight = () => {
     }
 };
 const deleteRow = (banner_highlight) => {
-    banner_highlights.value.splice(banner_highlight, 1);
+    form.banner_highlights.splice(banner_highlight, 1);
 };
 let is_editing = ref(false);
 const editRow = (banner_highlight_id) => {
     is_editing.value = true;
     console.log(banner_highlight_id);
-    banner_highlight.value = banner_highlights.value[banner_highlight_id];
-    selected_img.value = banner_highlights.value[banner_highlight_id].img;
+    banner_highlight.value = form.banner_highlights[banner_highlight_id];
+    selected_img.value = form.banner_highlights[banner_highlight_id].img;
 };
 let openImgs = ref(false)
 let selected_img = ref('default.jpg')

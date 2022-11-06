@@ -63,6 +63,7 @@ class TourResource extends JsonResource
             'terms_and_conditions_en' => $this->terms_and_conditions_en,
             'terms_and_conditions_ar' => $this->terms_and_conditions_ar,
             'is_from' => $this->is_from == 1 ? 'true' : 'false',
+            'banner_highlights' => $this->banner_highlights,
             // 'files' => TourFile::where('tour_id', $this->id)->get(),
             'images' => TourImage::where('tour_id', $this->id)->get()
         ];

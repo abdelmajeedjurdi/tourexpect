@@ -130,7 +130,7 @@ class TourController extends Controller
      */
     public function store(TourRequest $request)
     {
-        Log::info($request);
+        Log::info(json_decode($request['banner_highlights']));
         if ($request->hasFile('image')) {
             $image = $request->image;
             $imageName = $image->getClientOriginalName();
@@ -181,6 +181,7 @@ class TourController extends Controller
         $tour->terms_and_conditions_en = $request->terms_and_conditions_en;
         $tour->terms_and_conditions_ar = $request->terms_and_conditions_ar;
         $tour->is_from = $request->is_from == 'true' ? 1 : 0;
+        $tour->banner_highlights = $request->banner_highlights;
 
         $tour->save();
 
@@ -284,6 +285,7 @@ class TourController extends Controller
             'terms_and_conditions_en' => $request->terms_and_conditions_en,
             'terms_and_conditions_ar' => $request->terms_and_conditions_ar,
             'is_from' => $request->is_from == 'true' ? 1 : 0,
+            'banner_highlights' => $request->banner_highlights,
             'thumbnail' =>  $imageName,
             'slug' => Str::slug($request->title_en, '-')
         ]);
