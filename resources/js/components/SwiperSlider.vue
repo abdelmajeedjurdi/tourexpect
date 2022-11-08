@@ -6,7 +6,7 @@
     disableOnInteraction: false,
 }" class="mySwiper">
         <swiper-slide v-for="image in imgs" :key="image.id">
-            <img :src="'/images/tours/' + image.image" alt="image" style="height:70vh ;" class="w-full object-cover" />
+            <img :src="'/images/tours/' + image.image" alt="image" style="height:60vh ;" class="w-full object-cover" />
         </swiper-slide>
     </swiper>
 </template>

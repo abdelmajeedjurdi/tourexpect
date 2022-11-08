@@ -1,8 +1,8 @@
 <template>
     <div>
         <h3 class="text-indigo-800 font-bold">{{ $t(section_title) }}</h3>
-        <p class="text-lg">
-            {{ section_description }}
+        <p v-for="p in section_description.split('\n')" :key="p" class="text-lg">
+            {{ p }}
         </p>
     </div>
 </template>

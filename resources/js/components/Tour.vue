@@ -48,7 +48,8 @@
                             (tour['title_' + lang].length > 65 ? "..." : "")
                     }}
                 </h3>
-                <div class=" overflow-hidden text-base text-body-color leading-relaxed text-gray-700">
+                <div v-if="tour['description_' + lang]"
+                    class=" overflow-hidden text-base text-body-color leading-relaxed text-gray-700">
                     {{
                             tour['description_' + lang].substring(0, 60) +
                             (tour['description_' + lang].length > 60 ? "..." : "")

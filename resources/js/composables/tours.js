@@ -61,6 +61,8 @@ export default function useTours() {
     const getTourDetails = async (slug) => {
         let response = await axios.get("/api/tour/" + slug);
         tour.value = response.data.data;
+        tour.value['banner_highlights'] = JSON.parse(tour.value['banner_highlights'])
+        tour.value['options'] = JSON.parse(tour.value['options'])
     };
 
     const storeTour = async (data) => {

@@ -216,7 +216,7 @@
                                                 <li v-for="img in highlight_imgs" :key="img.id">
                                                     <span @click="setHighlightImage(img.name)"
                                                         class="dropdown-item dark:text-gray-200 dark:hover:bg-gray-600 hover:bg-gray-300 cursor-pointer text-gray-200">
-                                                        <img class="h-12" :src="'/images/banner_highlights/' + img.name"
+                                                        <img class="h-6" :src="'/images/banner_highlights/' + img.name"
                                                             alt="">
                                                     </span>
                                                 </li>
@@ -261,7 +261,7 @@
                                             <span class="">{{ ban_highlight.title_en }}</span>
                                             <span>{{ ban_highlight.title_ar }}</span>
                                         </div>
-                                        <img class="h-9 mx-2" :src="'/images/banner_highlights/' + ban_highlight.img"
+                                        <img class="h-6 mx-2" :src="'/images/banner_highlights/' + ban_highlight.img"
                                             alt="">
                                         <div class="flex">
                                             <span class="cursor-pointer rotate-90" @click="editRow(i)">
@@ -338,8 +338,7 @@
                                                 class="block text-sm font-medium text-gray-700 dark:text-gray-200">Adult
                                                 Price</label>
                                             <div class="mt-1">
-                                                <input dir="rtl" type="number" name="adult_price" id="adult_price"
-                                                    class="
+                                                <input type="number" name="adult_price" id="adult_price" class="
                                                                                                               block
                                                                                                               mt-1
                                                                                                               w-full
@@ -360,7 +359,7 @@
                                                 class="block text-sm font-medium text-gray-700 dark:text-gray-200">Child
                                                 Price</label>
                                             <div class="mt-1">
-                                                <input dir="rtl" type="number" name="child_price" id="child_price"
+                                                <input type="number" name="child_price" id="child_price"
                                                     class="
                                                                                                                                                   block
                                                                                                                                                   mt-1
@@ -379,10 +378,10 @@
                                         </div>
                                         <div class="w-full">
                                             <label for="infant_price"
-                                                class="block text-sm font-medium text-gray-700 dark:text-gray-200">Adult
+                                                class="block text-sm font-medium text-gray-700 dark:text-gray-200">Infant
                                                 Price</label>
                                             <div class="mt-1">
-                                                <input dir="rtl" type="number" name="infant_price" id="infant_price"
+                                                <input type="number" name="infant_price" id="infant_price"
                                                     class="
                                                                                                                                                   block
                                                                                                                                                   mt-1
@@ -399,6 +398,32 @@
                                                     v-model="tour_option.infant_price" />
                                             </div>
                                         </div>
+                                        <div class="w-full">
+                                            <label for="option_discount"
+                                                class="block text-sm font-medium text-gray-700 dark:text-gray-200">
+                                                Discount</label>
+                                            <div class="mt-1 flex">
+                                                <input type="number" name="option_discount" id="option_discount" class="
+                                                            block
+                                                            w-16
+                                                            rounded-l-md
+                                                            border-gray-500
+                                                            shadow-sm
+                                                            focus:border-indigo-300
+                                                            focus:ring
+                                                            focus:ring-indigo-200
+                                                            focus:ring-opacity-50
+                                                            dark:bg-gray-800
+                                                        " v-model="tour_option.option_discount" />
+                                                <select name="discount_type" id="discount_type"
+                                                    class="w-20 dark:bg-gray-700 rounded-r-md text-gray-700 dark:text-gray-200"
+                                                    v-model="tour_option.option_discount_type">
+                                                    <option class="" value="percentage">%</option>
+                                                    <option class="py-4" value="amount">F</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </div>
                                 <button v-if="!is_editing_option" type="button" class="
@@ -439,6 +464,9 @@
                                             <span>{{ option.adult_price }}</span>
                                             <span>{{ option.child_price }}</span>
                                             <span>{{ option.infant_price }}</span>
+                                            <span>{{ option.option_discount + ' '
+                                                    + (option.option_discount_type[0] == 'a' ? 'F' : '% ')
+                                            }}</span>
                                         </div>
                                         <div class="flex mx-2">
                                             <span class="cursor-pointer rotate-90" @click="editTourOption(i)">
@@ -785,7 +813,7 @@
                             <div class="w-full me-2">
                                 <label for="timing_and_transfer_en"
                                     class="block text-sm font-medium text-gray-700 dark:text-gray-200">English
-                                    Timing and Transfer Policy</label>
+                                    Timing and Transfer</label>
                                 <div class="mt-1">
                                     <textarea rows="10" type="text" name="timing_and_transfer_en"
                                         id="timing_and_transfer_en" placeholder="Separate it by lines" class="
@@ -806,7 +834,7 @@
                             <div class="w-full">
                                 <label for="timing_and_transfer_ar"
                                     class="block text-sm font-medium text-gray-700 dark:text-gray-200">Arabic
-                                    Timing and Transfer Policy</label>
+                                    Timing and Transfer</label>
                                 <div class="mt-1">
                                     <textarea dir="rtl" rows="10" type="text" placeholder="Separate it by lines"
                                         name="timing_and_transfer_ar" id="timing_and_transfer_ar" class="
@@ -1256,7 +1284,9 @@ let tour_option = ref({
     title_ar: "",
     adult_price: null,
     child_price: null,
-    infant_price: null
+    infant_price: null,
+    option_discount: null,
+    option_discount_type: 'percentage'
 });
 
 const setTourOption = () => {
@@ -1267,7 +1297,9 @@ const setTourOption = () => {
             title_ar: "",
             adult_price: null,
             child_price: null,
-            infant_price: null
+            infant_price: null,
+            option_discount: null,
+            option_discount_type: 'percentage'
         };
         selected_img.value = 'default.jpg'
     } else {
@@ -1277,7 +1309,9 @@ const setTourOption = () => {
             title_ar: "",
             adult_price: null,
             child_price: null,
-            infant_price: null
+            infant_price: null,
+            option_discount: null,
+            option_discount_type: 'percentage'
         };
         selected_img.value = 'default.jpg'
     }

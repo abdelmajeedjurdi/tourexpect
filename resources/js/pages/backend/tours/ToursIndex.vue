@@ -63,15 +63,15 @@
                                 {{ tour.title_en }}
                             </span>
 
-                            <p class="
+                            <p v-if="tour.description_en" class="
                                 text-base text-body-color
                                 leading-relaxed
                                 mb-7
                                 text-gray-600
                                 ">
                                 {{
-                                tour.description_en.substring(0, 100) +
-                                (tour.description_en.length > 100 ? "...." : "")
+                                        tour.description_en.substring(0, 100) +
+                                        (tour.description_en.length > 100 ? "...." : "")
 
 
 
