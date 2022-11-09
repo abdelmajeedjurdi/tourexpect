@@ -17,7 +17,6 @@
                 </p>
             </div>
         </div>
-        {{ form }}
         <div v-if="isProgressing && percentage < 100" class="-ml-6 -mt-6 w-full pt-52 fixed bg-black bg-opacity-50 z-20"
             style="height: 100%">
             <progress-bar :percentage="percentage" />
