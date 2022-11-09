@@ -419,7 +419,7 @@
                                                     class="w-20 dark:bg-gray-700 rounded-r-md text-gray-700 dark:text-gray-200"
                                                     v-model="tour_option.option_discount_type">
                                                     <option class="" value="percentage">%</option>
-                                                    <option class="py-4" value="amount">F</option>
+                                                    <option class="py-4" value="amount">$</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -465,7 +465,7 @@
                                             <span>{{ option.child_price }}</span>
                                             <span>{{ option.infant_price }}</span>
                                             <span>{{ option.option_discount + ' '
-                                                    + (option.option_discount_type[0] == 'a' ? 'F' : '% ')
+                                                    + (option.option_discount_type[0] == 'a' ? '$' : '% ')
                                             }}</span>
                                         </div>
                                         <div class="flex mx-2">

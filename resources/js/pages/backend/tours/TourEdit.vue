@@ -275,7 +275,7 @@
                                                         %
                                                     </option>
                                                     <option class="py-4" value="amount">
-                                                        F
+                                                        $
                                                     </option>
                                                 </select>
                                             </div>
@@ -321,7 +321,7 @@
                                                     (option
                                                         .option_discount_type[0] ==
                                                         "a"
-                                                        ? "F"
+                                                        ? "$"
                                                         : "% ")
                                             }}</span>
                                         </div>
