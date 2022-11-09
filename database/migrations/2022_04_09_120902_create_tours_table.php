@@ -27,11 +27,7 @@ class CreateToursTable extends Migration
             $table->longText('itinerary_en')->nullable();
             $table->string('slug');
             $table->boolean('active')->default(1);
-            $table->float('adult_price')->nullable();
-            $table->float('child_price')->nullable();
-            $table->float('discount')->default(0.0);
             $table->string('thumbnail')->default('default.jpg');
-            $table->string('discount_type')->default('percentage');
             $table->string('duration_en')->nullable();
             $table->string('duration_ar')->nullable();
             $table->integer('max_number_of_people')->nullable();
@@ -40,7 +36,6 @@ class CreateToursTable extends Migration
             $table->longText('exclude_ar')->nullable();
             $table->longText('exclude_en')->nullable();
             $table->string('source')->nullable();
-            $table->json('options')->nullable();
             $table->longText('highlights_ar')->nullable();
             $table->longText('highlights_en')->nullable();
             $table->longText('information_ar')->nullable();
@@ -55,6 +50,7 @@ class CreateToursTable extends Migration
             $table->longText('terms_and_conditions_ar')->nullable();
             $table->boolean('is_from')->nullable();
             $table->json('banner_highlights')->nullable();
+            $table->json('options')->nullable();
             $table->timestamps();
         });
     }

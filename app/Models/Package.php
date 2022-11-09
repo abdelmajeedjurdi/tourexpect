@@ -24,10 +24,6 @@ class Package extends Model
         'itinerary_ar',
         'itinerary_en',
         'active',
-        'adult_price',
-        'child_price',
-        'discount',
-        'discount_type',
         'duration_en',
         'duration_ar',
         'max_number_of_people',
@@ -36,8 +32,6 @@ class Package extends Model
         'exclude_ar',
         'exclude_en',
         'source',
-        'options_ar',
-        'options_en',
         'highlights_ar',
         'highlights_en',
         'information_ar',
@@ -50,6 +44,6 @@ class Package extends Model
         'notes_ar',
         'terms_and_conditions_en',
         'terms_and_conditions_ar',
-        'is_from',
+        'is_from', 'banner_highlights', 'options'
     ];
 }

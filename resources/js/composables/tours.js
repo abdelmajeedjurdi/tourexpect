@@ -79,10 +79,6 @@ export default function useTours() {
         fd.append("itinerary_en", data.form.itinerary_en);
         fd.append("itinerary_ar", data.form.itinerary_ar);
         fd.append("active", data.form.active);
-        fd.append("adult_price", data.form.adult_price);
-        fd.append("child_price", data.form.child_price);
-        fd.append("discount", data.form.discount);
-        fd.append("discount_type", data.form.discount_type);
         fd.append("duration_en", data.form.duration_en);
         fd.append("duration_ar", data.form.duration_ar);
         fd.append("max_number_of_people", data.form.max_number_of_people);
@@ -143,10 +139,6 @@ export default function useTours() {
         fd.append("itinerary_en", data.form.itinerary_en);
         fd.append("itinerary_ar", data.form.itinerary_ar);
         fd.append("active", data.form.active);
-        fd.append("adult_price", data.form.adult_price);
-        fd.append("child_price", data.form.child_price);
-        fd.append("discount", data.form.discount);
-        fd.append("discount_type", data.form.discount_type);
         fd.append("duration_en", data.form.duration_en);
         fd.append("duration_ar", data.form.duration_ar);
         fd.append("max_number_of_people", data.form.max_number_of_people);

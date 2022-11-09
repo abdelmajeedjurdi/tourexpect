@@ -75,11 +75,7 @@ class TourController extends Controller
                     'tours.description_en',
                     'tours.description_ar',
                     'tours.slug',
-                    'tours.adult_price',
-                    'tours.child_price',
-                    'tours.discount',
                     'tours.thumbnail',
-                    'tours.discount_type',
                     'tours.duration_en',
                     'tours.duration_ar',
                     'destinations.name_en as destination_en',
@@ -98,11 +94,7 @@ class TourController extends Controller
                     'tours.description_en',
                     'tours.description_ar',
                     'tours.slug',
-                    'tours.adult_price',
-                    'tours.child_price',
-                    'tours.discount',
                     'tours.thumbnail',
-                    'tours.discount_type',
                     'tours.duration_en',
                     'tours.duration_ar',
                     'destinations.name_en as destination_en',
@@ -154,10 +146,6 @@ class TourController extends Controller
         $tour->itinerary_en = $request->itinerary_en;
         $tour->itinerary_ar = $request->itinerary_ar;
         $tour->active = $request->active == 'true' ? 1 : 0;
-        $tour->adult_price = $request->adult_price;
-        $tour->child_price = $request->child_price;
-        $tour->discount = $request->discount;
-        $tour->discount_type = $request->discount_type;
         $tour->duration_en = $request->duration_en;
         $tour->duration_ar = $request->duration_ar;
         $tour->max_number_of_people = $request->max_number_of_people;
@@ -257,10 +245,6 @@ class TourController extends Controller
             'itinerary_en' => $request->itinerary_en,
             'itinerary_ar' => $request->itinerary_ar,
             'active' => $request->active == 'true' ? 1 : 0,
-            'adult_price' => $request->adult_price,
-            'child_price' => $request->child_price,
-            'discount' => $request->discount,
-            'discount_type' => $request->discount_type,
             'duration_en' => $request->duration_en,
             'duration_ar' => $request->duration_ar,
             'max_number_of_people' => $request->max_number_of_people,
@@ -269,7 +253,6 @@ class TourController extends Controller
             'exclude_en' => $request->exclude_en,
             'exclude_ar' => $request->exclude_ar,
             'source' => $request->source,
-            'options' => $request->options,
             'highlights_ar' => $request->highlights_ar,
             'highlights_en' => $request->highlights_en,
             'information_ar' => $request->information_ar,
@@ -284,6 +267,7 @@ class TourController extends Controller
             'terms_and_conditions_ar' => $request->terms_and_conditions_ar,
             'is_from' => $request->is_from == 'true' ? 1 : 0,
             'banner_highlights' => $request->banner_highlights,
+            'options' => $request->options,
             'thumbnail' =>  $imageName,
             'slug' => Str::slug($request->title_en, '-')
         ]);
@@ -359,10 +343,6 @@ class TourController extends Controller
         $tour->itinerary_en = $request->itinerary_en;
         $tour->itinerary_ar = $request->itinerary_ar;
         $tour->active = $request->active;
-        $tour->adult_price = $request->adult_price;
-        $tour->child_price = $request->child_price;
-        $tour->discount = $request->discount;
-        $tour->discount_type = $request->discount_type;
         $tour->duration_en = $request->duration_en;
         $tour->duration_ar = $request->duration_ar;
         $tour->max_number_of_people = $request->max_number_of_people;

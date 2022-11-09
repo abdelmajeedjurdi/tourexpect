@@ -288,7 +288,17 @@
                         <!-- tour options -->
                         <div class="flex justify-between">
                             <div class="space-y-4 rounded-md w-full border p-6 mt-6 xk:mt-0">
-                                <h3>Options</h3>
+                                <div class="flex justify-between">
+                                    <h3>Options</h3>
+                                    <div class="flex items-center ">
+                                        <input id="is_from" type="checkbox" value="" name="bordered-checkbox"
+                                            class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500  focus:ring-2"
+                                            v-model="form.is_from">
+                                        <label for="is_from"
+                                            class="py-2 cursor-pointer text-sm font-medium text-gray-200 mx-2 dark:text-gray-300">Is
+                                            From?</label>
+                                    </div>
+                                </div>
                                 <div class="flex justify-between">
                                     <div class="w-1/4 ">
                                         <label for="title_en"
@@ -983,84 +993,6 @@
                     <searchable-dropdown component_placeholder="Select Destination" component_id="destinations"
                         :options="destinations" @selected="selectDestination($event)" class="mt-6 me-2" />
                 </div>
-                <div class="w-full me-2 mt-4">
-                    <label for="adult_price"
-                        class="block text-sm font-medium w-full text-left text-gray-700 dark:text-gray-200">Adult
-                        Price</label>
-                    <div class="mt-1">
-                        <input type="number" name="adult_price" id="adult_price" class="
-                                                                                        block
-                                                                                        mt-1
-                                                                                        w-full
-                                                                                        rounded-md
-                                                                                        border-gray-500
-                                                                                        shadow-sm
-                                                                                        focus:border-indigo-300
-                                                                                        focus:ring
-                                                                                        focus:ring-indigo-200
-                                                                                        focus:ring-opacity-50
-                                                                                        dark:bg-gray-800
-                                                                                        " v-model="form.adult_price" />
-                    </div>
-                </div>
-                <div class="w-full me-2 mt-2">
-                    <label for="child_price"
-                        class="block text-sm font-medium w-full text-left text-gray-700 dark:text-gray-200">Child
-                        Price</label>
-                    <div class="mt-1">
-                        <input type="number" name="child_price" id="child_price" class="
-                  block
-                  mt-1
-                  w-full
-                  rounded-md
-                  border-gray-500
-                  shadow-sm
-                  focus:border-indigo-300
-                  focus:ring
-                  focus:ring-indigo-200
-                  focus:ring-opacity-50
-                  dark:bg-gray-800
-                " v-model="form.child_price" />
-                    </div>
-                </div>
-                <div class="w-full me-2 mt-2">
-                    <label for="discount"
-                        class="block text-sm font-medium w-full text-left text-gray-700 dark:text-gray-200">
-                        Discount</label>
-                    <div class="mt-1">
-                        <input type="number" name="discount" id="discount" class="
-                  block
-                  mt-1
-                  w-full
-                  rounded-md
-                  border-gray-500
-                  shadow-sm
-                  focus:border-indigo-300
-                  focus:ring
-                  focus:ring-indigo-200
-                  focus:ring-opacity-50
-                  dark:bg-gray-800
-                " v-model="form.discount" />
-                    </div>
-                </div>
-                <div class="w-full mt-2">
-                    <label for="discount_type"
-                        class="block text-sm font-medium w-full text-left text-gray-700 dark:text-gray-200">
-                        Discount Type</label>
-                    <select name="discount_type" id="discount_type"
-                        class="w-full dark:bg-gray-700 rounded text-gray-700 dark:text-gray-200"
-                        v-model="form.discount_type">
-                        <option class="" value="percentage">Percentage</option>
-                        <option class="py-4" value="amount">Amount</option>
-                    </select>
-                </div>
-                <div class="flex items-center  rounded border border-gray-600 w-full mx-auto mt-2 px-2 ">
-                    <input id="is_from" type="checkbox" value="" name="bordered-checkbox"
-                        class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500  focus:ring-2"
-                        v-model="form.is_from">
-                    <label for="is_from" class="py-2  text-sm font-medium text-gray-200 mx-2 dark:text-gray-300">Is
-                        From?</label>
-                </div>
                 <div class="w-full me-2 mt-2">
                     <label for="max_number_of_people"
                         class="block text-sm font-medium w-full text-left text-gray-700 dark:text-gray-200">
@@ -1161,13 +1093,9 @@ const form = reactive({
     description_en: "",
     description_ar: "",
     image: "",
-    discount_type: "percentage",
     itinerary_ar: '',
     itinerary_en: '',
     active: '',
-    adult_price: '',
-    child_price: '',
-    discount: '',
     duration_en: '',
     duration_ar: '',
     max_number_of_people: '',
@@ -1237,7 +1165,7 @@ const selectDestination = (destination_id) => {
 let banner_highlight = ref({
     title_en: "",
     title_ar: "",
-    img: ''
+    img: '1.svg'
 });
 
 const setBannerHighlight = () => {
@@ -1246,17 +1174,17 @@ const setBannerHighlight = () => {
         banner_highlight.value = {
             title_en: "",
             title_ar: "",
-            img: ''
+            img: '1.svg'
         };
-        selected_img.value = 'default.jpg'
+        selected_img.value = '1.svg'
     } else {
         is_editing.value = false;
         banner_highlight.value = {
             title_en: "",
             title_ar: "",
-            img: '',
+            img: '1.svg',
         };
-        selected_img.value = 'default.jpg'
+        selected_img.value = '1.svg'
     }
 };
 const deleteRow = (banner_highlight) => {
@@ -1270,8 +1198,8 @@ const editRow = (banner_highlight_id) => {
     selected_img.value = form.banner_highlights[banner_highlight_id].img;
 };
 let openImgs = ref(false)
-let selected_img = ref('default.jpg')
-let highlight_imgs = reactive([{ id: 1, name: 'tour-o.svg' }, { id: 2, name: 'tour-2.svg' }, { id: 3, name: 'tour-3.svg' }])
+let selected_img = ref('1.svg')
+let highlight_imgs = reactive([{ id: 1, name: '1.svg' }, { id: 2, name: '2.svg' }, { id: 3, name: '3.svg' }])
 const setHighlightImage = (img) => {
     selected_img.value = img
     banner_highlight.value.img = img
@@ -1301,7 +1229,7 @@ const setTourOption = () => {
             option_discount: null,
             option_discount_type: 'percentage'
         };
-        selected_img.value = 'default.jpg'
+        selected_img.value = '1.svg'
     } else {
         is_editing_option.value = false;
         tour_option.value = {
@@ -1313,7 +1241,7 @@ const setTourOption = () => {
             option_discount: null,
             option_discount_type: 'percentage'
         };
-        selected_img.value = 'default.jpg'
+        selected_img.value = '1.svg'
     }
 };
 const deleteTourOption = (tour_option) => {

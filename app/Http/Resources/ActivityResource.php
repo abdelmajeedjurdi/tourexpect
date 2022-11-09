@@ -33,10 +33,6 @@ class ActivityResource extends JsonResource
             'itinerary_ar'  => $this->itinerary_ar,
             'itinerary_en'  => $this->itinerary_en,
             'active'  => $this->active == 1 ? 'true' : 'false',
-            'adult_price'  => $this->adult_price,
-            'child_price'  => $this->child_price,
-            'discount'  => $this->discount,
-            'discount_type'  => $this->discount_type,
             'duration_en'  => $this->duration_en,
             'duration_ar'  => $this->duration_ar,
             'max_number_of_people'  => $this->max_number_of_people,
@@ -45,8 +41,6 @@ class ActivityResource extends JsonResource
             'exclude_ar'  => $this->exclude_ar,
             'exclude_en'  => $this->exclude_en,
             'source'  => $this->source,
-            'options_ar' => $this->options_ar,
-            'options_en' => $this->options_en,
             'highlights_ar' => $this->highlights_ar,
             'highlights_en' => $this->highlights_en,
             'information_ar' => $this->information_ar,
@@ -60,6 +54,8 @@ class ActivityResource extends JsonResource
             'terms_and_conditions_en' => $this->terms_and_conditions_en,
             'terms_and_conditions_ar' => $this->terms_and_conditions_ar,
             'is_from' => $this->is_from == 1 ? 'true' : 'false',
+            'banner_highlights' => $this->banner_highlights,
+            'options' => $this->options,
             'images' => ActivityImage::where('activity_id', $this->id)->get()
         ];
     }

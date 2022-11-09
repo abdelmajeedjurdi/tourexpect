@@ -71,11 +71,7 @@ class ActivityController extends Controller
                     'activities.description_en',
                     'activities.description_ar',
                     'activities.slug',
-                    'activities.adult_price',
-                    'activities.child_price',
-                    'activities.discount',
                     'activities.thumbnail',
-                    'activities.discount_type',
                     'activities.duration_en',
                     'activities.duration_ar',
                     'destinations.name_en as destination_en',
@@ -94,11 +90,7 @@ class ActivityController extends Controller
                     'activities.description_en',
                     'activities.description_ar',
                     'activities.slug',
-                    'activities.adult_price',
-                    'activities.child_price',
-                    'activities.discount',
                     'activities.thumbnail',
-                    'activities.discount_type',
                     'activities.duration_en',
                     'activities.duration_ar',
                     'destinations.name_en as destination_en',
@@ -126,7 +118,7 @@ class ActivityController extends Controller
      */
     public function store(ActivityRequest $request)
     {
-
+        Log::info($request);
         if ($request->hasFile('image')) {
             $image = $request->image;
             $imageName = $image->getClientOriginalName();
@@ -150,10 +142,6 @@ class ActivityController extends Controller
         $activity->itinerary_en = $request->itinerary_en;
         $activity->itinerary_ar = $request->itinerary_ar;
         $activity->active = $request->active == 'true' ? 1 : 0;
-        $activity->adult_price = $request->adult_price;
-        $activity->child_price = $request->child_price;
-        $activity->discount = $request->discount;
-        $activity->discount_type = $request->discount_type;
         $activity->duration_en = $request->duration_en;
         $activity->duration_ar = $request->duration_ar;
         $activity->max_number_of_people = $request->max_number_of_people;
@@ -162,8 +150,6 @@ class ActivityController extends Controller
         $activity->exclude_en = $request->exclude_en;
         $activity->exclude_ar = $request->exclude_ar;
         $activity->source = $request->source;
-        $activity->options_ar = $request->options_ar;
-        $activity->options_en = $request->options_en;
         $activity->information_ar = $request->information_ar;
         $activity->information_en = $request->information_en;
         $activity->policy_ar = $request->policy_ar;
@@ -177,6 +163,8 @@ class ActivityController extends Controller
         $activity->terms_and_conditions_en = $request->terms_and_conditions_en;
         $activity->terms_and_conditions_ar = $request->terms_and_conditions_ar;
         $activity->is_from = $request->is_from == 'true' ? 1 : 0;
+        $activity->banner_highlights = $request->banner_highlights;
+        $activity->options = $request->options;
 
 
         $activity->save();
@@ -253,10 +241,6 @@ class ActivityController extends Controller
             'itinerary_en' => $request->itinerary_en,
             'itinerary_ar' => $request->itinerary_ar,
             'active' => $request->active == 'true' ? 1 : 0,
-            'adult_price' => $request->adult_price,
-            'child_price' => $request->child_price,
-            'discount' => $request->discount,
-            'discount_type' => $request->discount_type,
             'duration_en' => $request->duration_en,
             'duration_ar' => $request->duration_ar,
             'max_number_of_people' => $request->max_number_of_people,
@@ -265,8 +249,6 @@ class ActivityController extends Controller
             'exclude_en' => $request->exclude_en,
             'exclude_ar' => $request->exclude_ar,
             'source' => $request->source,
-            'options_ar' => $request->options_ar,
-            'options_en' => $request->options_en,
             'information_ar' => $request->information_ar,
             'information_en' => $request->information_en,
             'policy_ar' => $request->policy_ar,
@@ -280,6 +262,8 @@ class ActivityController extends Controller
             'terms_and_conditions_en' => $request->terms_and_conditions_en,
             'terms_and_conditions_ar' => $request->terms_and_conditions_ar,
             'is_from' => $request->is_from == 'true' ? 1 : 0,
+            'banner_highlights' => $request->banner_highlights,
+            'options' => $request->options,
             'thumbnail' =>  $imageName,
             'slug' => Str::slug($request->title_en, '-')
         ]);
@@ -355,10 +339,6 @@ class ActivityController extends Controller
         $activity->highlights_en = $request->highlights_en;
         $activity->highlights_ar = $request->highlights_ar;
         $activity->active = $request->active;
-        $activity->adult_price = $request->adult_price;
-        $activity->child_price = $request->child_price;
-        $activity->discount = $request->discount;
-        $activity->discount_type = $request->discount_type;
         $activity->duration_en = $request->duration_en;
         $activity->duration_ar = $request->duration_ar;
         $activity->max_number_of_people = $request->max_number_of_people;

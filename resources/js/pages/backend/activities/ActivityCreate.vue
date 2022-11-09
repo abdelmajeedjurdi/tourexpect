@@ -22,7 +22,6 @@
             <progress-bar :percentage="percentage" />
         </div>
         <div class="flex">
-
             <form class="space-y-6 w-full" @submit.prevent="saveActivity">
                 <h1>Activity Create</h1>
                 <div class="lg:flex justify-between space-x-4">
@@ -55,18 +54,18 @@
                                     Title</label>
                                 <div class="mt-1">
                                     <input dir="rtl" type="text" name="title_ar" id="title_ar" class="
-                            block
-                            mt-1
-                            w-full
-                            rounded-md
-                            border-gray-500
-                            shadow-sm
-                            focus:border-indigo-300
-                            focus:ring
-                            focus:ring-indigo-200
-                            focus:ring-opacity-50
-                            dark:bg-gray-800
-                            " v-model="form.title_ar" />
+                                        block
+                                        mt-1
+                                        w-full
+                                        rounded-md
+                                        border-gray-500
+                                        shadow-sm
+                                        focus:border-indigo-300
+                                        focus:ring
+                                        focus:ring-indigo-200
+                                        focus:ring-opacity-50
+                                        dark:bg-gray-800
+                                        " v-model="form.title_ar" />
                                 </div>
                             </div>
                         </div>
@@ -121,18 +120,18 @@
                                     Description</label>
                                 <div class="mt-1">
                                     <textarea rows="10" type="text" name="description_en" id="description_en" class="
-                  block
-                  mt-1
-                  w-full
-                  rounded-md
-                  border-gray-500
-                  shadow-sm
-                  focus:border-indigo-300
-                  focus:ring
-                  focus:ring-indigo-200
-                  focus:ring-opacity-50
-                  dark:bg-gray-800
-                " v-model="form.description_en" />
+                                            block
+                                            mt-1
+                                            w-full
+                                            rounded-md
+                                            border-gray-500
+                                            shadow-sm
+                                            focus:border-indigo-300
+                                            focus:ring
+                                            focus:ring-indigo-200
+                                            focus:ring-opacity-50
+                                            dark:bg-gray-800
+                                            " v-model="form.description_en" />
                                 </div>
                             </div>
                             <div class="w-full">
@@ -142,18 +141,361 @@
                                 <div class="mt-1">
                                     <textarea dir="rtl" rows="10" type="text" name="description_ar" id="description_ar"
                                         class="
-                  block
-                  mt-1
-                  w-full
-                  rounded-md
-                  border-gray-500
-                  shadow-sm
-                  focus:border-indigo-300
-                  focus:ring
-                  focus:ring-indigo-200
-                  focus:ring-opacity-50
-                  dark:bg-gray-800
-                " v-model="form.description_ar" />
+                                            block
+                                            mt-1
+                                            w-full
+                                            rounded-md
+                                            border-gray-500
+                                            shadow-sm
+                                            focus:border-indigo-300
+                                            focus:ring
+                                            focus:ring-indigo-200
+                                            focus:ring-opacity-50
+                                            dark:bg-gray-800
+                                            " v-model="form.description_ar" />
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Banner Highlights -->
+                        <div class="flex justify-between">
+                            <div class="space-y-4 rounded-md w-full border p-6 mt-6 xk:mt-0">
+                                <h3>Banner Highlights</h3>
+                                <div class="flex justify-between">
+                                    <div class="w-full me-2">
+                                        <label for="title_en"
+                                            class="block text-sm font-medium text-gray-700 dark:text-gray-200">English
+                                            Title</label>
+                                        <div class="mt-1">
+                                            <input type="text" name="title_en" id="title_en" class="
+                                              block
+                                              mt-1
+                                              w-full
+                                              rounded-md
+                                              border-gray-500
+                                              shadow-sm
+                                              focus:border-indigo-300
+                                              focus:ring
+                                              focus:ring-indigo-200
+                                              focus:ring-opacity-50
+                                              dark:bg-gray-800
+                                            " v-model="banner_highlight.title_en" />
+                                        </div>
+                                    </div>
+                                    <div class="w-full">
+                                        <label for="title_ar"
+                                            class="block text-sm font-medium text-gray-700 dark:text-gray-200">Arabic
+                                            Title</label>
+                                        <div class="mt-1">
+                                            <input dir="rtl" type="text" name="title_ar" id="title_ar" class="
+                                              block
+                                              mt-1
+                                              w-full
+                                              rounded-md
+                                              border-gray-500
+                                              shadow-sm
+                                              focus:border-indigo-300
+                                              focus:ring
+                                              focus:ring-indigo-200
+                                              focus:ring-opacity-50
+                                              dark:bg-gray-800
+                                            " v-model="banner_highlight.title_ar" />
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="dropdown mt-4">
+                                            <button
+                                                :style="`background-image: url(/images/banner_highlights/${selected_img})`"
+                                                class="rounded py-2 bg-gray-100 dropdown-toggle bg-no-repeat w-20 dark:bg-gray-800"
+                                                type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+                                                aria-expanded="false" @click="openImgs = true">
+                                            </button>
+                                            <ul id="component_id" class="dropdown-menu dark:dropdown-menu-dark"
+                                                :class="openImgs == true ? 'show' : 'hidden'"
+                                                aria-labelledby="dropdownMenuButton1">
+                                                <li v-for="img in highlight_imgs" :key="img.id">
+                                                    <span @click="setHighlightImage(img.name)"
+                                                        class="dropdown-item dark:text-gray-200 dark:hover:bg-gray-600 hover:bg-gray-300 cursor-pointer text-gray-200">
+                                                        <img class="h-6" :src="'/images/banner_highlights/' + img.name"
+                                                            alt="">
+                                                    </span>
+                                                </li>
+                                            </ul>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <button v-if="!is_editing" type="button" class="
+                                        px-6
+                                        py-1
+                                        bg-green-400
+                                        rounded-lg
+                                        text-blue-600
+                                        hover:bg-green-300
+                                        duration-300
+                                      " @click="setBannerHighlight">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                                    </svg>
+                                </button>
+                                <button v-else type="button" class="
+                                        px-6
+                                        py-1
+                                        bg-green-400
+                                        rounded-lg
+                                        text-blue-600
+                                        hover:bg-green-300
+                                        duration-300
+                                      " @click="setBannerHighlight">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                                    </svg>
+                                </button>
+                                <div class="rounded" v-for="(ban_highlight, i) in form.banner_highlights" :key="i">
+
+                                    <div class="w-full rounded items-center p-1 bg-gray-400 text-black flex ">
+                                        <div class="flex w-full justify-between">
+                                            <span class="">{{ ban_highlight.title_en }}</span>
+                                            <span>{{ ban_highlight.title_ar }}</span>
+                                        </div>
+                                        <img class="h-6 mx-2" :src="'/images/banner_highlights/' + ban_highlight.img"
+                                            alt="">
+                                        <div class="flex">
+                                            <span class="cursor-pointer rotate-90" @click="editRow(i)">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-500"
+                                                    fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                                    stroke-width="2">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                                                </svg>
+                                            </span>
+                                            <span class="cursor-pointer rotate-90" @click="deleteRow(i)">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 text-red-500"
+                                                    fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                                    stroke-width="2">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                </svg>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- activity options -->
+                        <div class="flex justify-between">
+                            <div class="space-y-4 rounded-md w-full border p-6 mt-6 xk:mt-0">
+                                <div class="flex justify-between">
+                                    <h3>Options</h3>
+                                    <div class="flex items-center ">
+                                        <input id="is_from" type="checkbox" value="" name="bordered-checkbox"
+                                            class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500  focus:ring-2"
+                                            v-model="form.is_from">
+                                        <label for="is_from"
+                                            class="py-2 cursor-pointer text-sm font-medium text-gray-200 mx-2 dark:text-gray-300">Is
+                                            From?</label>
+                                    </div>
+                                </div>
+                                <div class="flex justify-between">
+                                    <div class="w-1/4 ">
+                                        <label for="title_en"
+                                            class="block text-sm font-medium text-gray-700 dark:text-gray-200">English
+                                            Title</label>
+                                        <div class="mt-1">
+                                            <input type="text" name="title_en" id="title_en" class="
+                                                                      block
+                                                                      mt-1
+                                                                      w-full
+                                                                      rounded-md
+                                                                      border-gray-500
+                                                                      shadow-sm
+                                                                      focus:border-indigo-300
+                                                                      focus:ring
+                                                                      focus:ring-indigo-200
+                                                                      focus:ring-opacity-50
+                                                                      dark:bg-gray-800
+                                                                    " v-model="activity_option.title_en" />
+                                        </div>
+                                    </div>
+                                    <div class="w-1/4 me-2">
+                                        <label for="title_ar"
+                                            class="block text-sm font-medium text-gray-700 dark:text-gray-200">Arabic
+                                            Title</label>
+                                        <div class="mt-1">
+                                            <input dir="rtl" type="text" name="title_ar" id="title_ar" class="
+                                                                      block
+                                                                      mt-1
+                                                                      w-full
+                                                                      rounded-md
+                                                                      border-gray-500
+                                                                      shadow-sm
+                                                                      focus:border-indigo-300
+                                                                      focus:ring
+                                                                      focus:ring-indigo-200
+                                                                      focus:ring-opacity-50
+                                                                      dark:bg-gray-800
+                                                                    " v-model="activity_option.title_ar" />
+                                        </div>
+                                    </div>
+                                    <!-- prices -->
+                                    <div class="flex justify-between w-1/2">
+
+                                        <div class="w-full">
+                                            <label for="adult_price"
+                                                class="block text-sm font-medium text-gray-700 dark:text-gray-200">Adult
+                                                Price</label>
+                                            <div class="mt-1">
+                                                <input type="number" name="adult_price" id="adult_price" class="
+                                                                                                              block
+                                                                                                              mt-1
+                                                                                                              w-full
+                                                                                                              rounded-md
+                                                                                                              border-gray-500
+                                                                                                              shadow-sm
+                                                                                                              focus:border-indigo-300
+                                                                                                              focus:ring
+                                                                                                              focus:ring-indigo-200
+                                                                                                              focus:ring-opacity-50
+                                                                                                              dark:bg-gray-800
+                                                                                                            "
+                                                    v-model="activity_option.adult_price" />
+                                            </div>
+                                        </div>
+                                        <div class="w-full">
+                                            <label for="child_price"
+                                                class="block text-sm font-medium text-gray-700 dark:text-gray-200">Child
+                                                Price</label>
+                                            <div class="mt-1">
+                                                <input type="number" name="child_price" id="child_price"
+                                                    class="
+                                                                                                                                                  block
+                                                                                                                                                  mt-1
+                                                                                                                                                  w-full
+                                                                                                                                                  rounded-md
+                                                                                                                                                  border-gray-500
+                                                                                                                                                  shadow-sm
+                                                                                                                                                  focus:border-indigo-300
+                                                                                                                                                  focus:ring
+                                                                                                                                                  focus:ring-indigo-200
+                                                                                                                                                  focus:ring-opacity-50
+                                                                                                                                                  dark:bg-gray-800
+                                                                                                                                                "
+                                                    v-model="activity_option.child_price" />
+                                            </div>
+                                        </div>
+                                        <div class="w-full">
+                                            <label for="infant_price"
+                                                class="block text-sm font-medium text-gray-700 dark:text-gray-200">Infant
+                                                Price</label>
+                                            <div class="mt-1">
+                                                <input type="number" name="infant_price" id="infant_price"
+                                                    class="
+                                                                                                                                                  block
+                                                                                                                                                  mt-1
+                                                                                                                                                  w-full
+                                                                                                                                                  rounded-md
+                                                                                                                                                  border-gray-500
+                                                                                                                                                  shadow-sm
+                                                                                                                                                  focus:border-indigo-300
+                                                                                                                                                  focus:ring
+                                                                                                                                                  focus:ring-indigo-200
+                                                                                                                                                  focus:ring-opacity-50
+                                                                                                                                                  dark:bg-gray-800
+                                                                                                                                                "
+                                                    v-model="activity_option.infant_price" />
+                                            </div>
+                                        </div>
+                                        <div class="w-full">
+                                            <label for="option_discount"
+                                                class="block text-sm font-medium text-gray-700 dark:text-gray-200">
+                                                Discount</label>
+                                            <div class="mt-1 flex">
+                                                <input type="number" name="option_discount" id="option_discount" class="
+                                                            block
+                                                            w-16
+                                                            rounded-l-md
+                                                            border-gray-500
+                                                            shadow-sm
+                                                            focus:border-indigo-300
+                                                            focus:ring
+                                                            focus:ring-indigo-200
+                                                            focus:ring-opacity-50
+                                                            dark:bg-gray-800
+                                                        " v-model="activity_option.option_discount" />
+                                                <select name="discount_type" id="discount_type"
+                                                    class="w-20 dark:bg-gray-700 rounded-r-md text-gray-700 dark:text-gray-200"
+                                                    v-model="activity_option.option_discount_type">
+                                                    <option class="" value="percentage">%</option>
+                                                    <option class="py-4" value="amount">$</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <button v-if="!is_editing_option" type="button" class="
+                                                                px-6
+                                                                py-1
+                                                                bg-green-400
+                                                                rounded-lg
+                                                                text-blue-600
+                                                                hover:bg-green-300
+                                                                duration-300
+                                                              " @click="setActivityOption">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                                    </svg>
+                                </button>
+                                <button v-else type="button" class="
+                                                                px-6
+                                                                py-1
+                                                                bg-green-400
+                                                                rounded-lg
+                                                                text-blue-600
+                                                                hover:bg-green-300
+                                                                duration-300
+                                                              " @click="setActivityOption">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                                    </svg>
+                                </button>
+                                <div class="rounded" v-for="(option, i) in form.options" :key="i">
+
+                                    <div class="w-full rounded items-center p-1 bg-gray-400 text-black flex ">
+                                        <div class="flex w-full justify-between">
+                                            <span class="">{{ option.title_en }}</span>
+                                            <span>{{ option.title_ar }}</span>
+                                            <span>{{ option.adult_price }}</span>
+                                            <span>{{ option.child_price }}</span>
+                                            <span>{{ option.infant_price }}</span>
+                                            <span>{{ option.option_discount + ' '
+                                                    + (option.option_discount_type[0] == 'a' ? '$' : '% ')
+                                            }}</span>
+                                        </div>
+                                        <div class="flex mx-2">
+                                            <span class="cursor-pointer rotate-90" @click="editActivityOption(i)">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-500"
+                                                    fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                                    stroke-width="2">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                                                </svg>
+                                            </span>
+                                            <span class="cursor-pointer rotate-90" @click="deleteActivityOption(i)">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 text-red-500"
+                                                    fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                                    stroke-width="2">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                </svg>
+                                            </span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -210,18 +552,18 @@
                                     Duration</label>
                                 <div class="mt-1">
                                     <input type="text" name="duration_en" id="duration_en" class="
-                  block
-                  mt-1
-                  w-full
-                  rounded-md
-                  border-gray-500
-                  shadow-sm
-                  focus:border-indigo-300
-                  focus:ring
-                  focus:ring-indigo-200
-                  focus:ring-opacity-50
-                  dark:bg-gray-800
-                " v-model="form.duration_en" />
+                                                        block
+                                                        mt-1
+                                                        w-full
+                                                        rounded-md
+                                                        border-gray-500
+                                                        shadow-sm
+                                                        focus:border-indigo-300
+                                                        focus:ring
+                                                        focus:ring-indigo-200
+                                                        focus:ring-opacity-50
+                                                        dark:bg-gray-800
+                                                        " v-model="form.duration_en" />
                                 </div>
                             </div>
                             <div class="w-full">
@@ -299,18 +641,18 @@
                                 <div class="mt-1">
                                     <textarea rows="10" type="text" name="exclude_en" id="exclude_en"
                                         placeholder="Separate it by lines" class="
-                  block
-                  mt-1
-                  w-full
-                  rounded-md
-                  border-gray-500
-                  shadow-sm
-                  focus:border-indigo-300
-                  focus:ring
-                  focus:ring-indigo-200
-                  focus:ring-opacity-50
-                  dark:bg-gray-800
-                " v-model="form.exclude_en" />
+                                                                                    block
+                                                                                    mt-1
+                                                                                    w-full
+                                                                                    rounded-md
+                                                                                    border-gray-500
+                                                                                    shadow-sm
+                                                                                    focus:border-indigo-300
+                                                                                    focus:ring
+                                                                                    focus:ring-indigo-200
+                                                                                    focus:ring-opacity-50
+                                                                                    dark:bg-gray-800
+                                                                                    " v-model="form.exclude_en" />
                                 </div>
                             </div>
                             <div class="w-full">
@@ -341,51 +683,6 @@
                             <UploadImages @changed="handleImages" />
                         </div>
 
-                        <div class="flex justify-between">
-                            <div class="w-full me-2">
-                                <label for="options_en"
-                                    class="block text-sm font-medium text-gray-700 dark:text-gray-200">English
-                                    Options</label>
-                                <div class="mt-1">
-                                    <textarea rows="10" type="text" name="options_en" id="options_en"
-                                        placeholder="Separate it by lines" class="
-                                                                    block
-                                                                    mt-1
-                                                                    w-full
-                                                                    rounded-md
-                                                                    border-gray-500
-                                                                    shadow-sm
-                                                                    focus:border-indigo-300
-                                                                    focus:ring
-                                                                    focus:ring-indigo-200
-                                                                    focus:ring-opacity-50
-                                                                    dark:bg-gray-800
-                                                                    " v-model="form.options_en" />
-                                </div>
-                            </div>
-                            <div class="w-full">
-                                <label for="options_ar"
-                                    class="block text-sm font-medium text-gray-700 dark:text-gray-200">Arabic
-                                    Options</label>
-                                <div class="mt-1">
-                                    <textarea dir="rtl" rows="10" type="text" placeholder="Separate it by lines"
-                                        name="options_ar" id="options_ar" class="
-                                                                                                block
-                                                                                                mt-1
-                                                                                                w-full
-                                                                                                rounded-md
-                                                                                                border-gray-500
-                                                                                                shadow-sm
-                                                                                                focus:border-indigo-300
-                                                                                                focus:ring
-                                                                                                focus:ring-indigo-200
-                                                                                                focus:ring-opacity-50
-                                                                                                dark:bg-gray-800
-                                                                                                "
-                                        v-model="form.options_ar" />
-                                </div>
-                            </div>
-                        </div>
                         <div class="flex justify-between">
                             <div class="w-full me-2">
                                 <label for="highlights_en"
@@ -525,7 +822,7 @@
                             <div class="w-full me-2">
                                 <label for="timing_and_transfer_en"
                                     class="block text-sm font-medium text-gray-700 dark:text-gray-200">English
-                                    Timing and Transfer Policy</label>
+                                    Timing and Transfer</label>
                                 <div class="mt-1">
                                     <textarea rows="10" type="text" name="timing_and_transfer_en"
                                         id="timing_and_transfer_en" placeholder="Separate it by lines" class="
@@ -546,7 +843,7 @@
                             <div class="w-full">
                                 <label for="timing_and_transfer_ar"
                                     class="block text-sm font-medium text-gray-700 dark:text-gray-200">Arabic
-                                    Timing and Transfer Policy</label>
+                                    Timing and Transfer</label>
                                 <div class="mt-1">
                                     <textarea dir="rtl" rows="10" type="text" placeholder="Separate it by lines"
                                         name="timing_and_transfer_ar" id="timing_and_transfer_ar" class="
@@ -695,84 +992,6 @@
                     <searchable-dropdown component_placeholder="Select Destination" component_id="destinations"
                         :options="destinations" @selected="selectDestination($event)" class="mt-6 me-2" />
                 </div>
-                <div class="w-full me-2 mt-4">
-                    <label for="adult_price"
-                        class="block text-sm font-medium w-full text-left text-gray-700 dark:text-gray-200">Adult
-                        Price</label>
-                    <div class="mt-1">
-                        <input type="number" name="adult_price" id="adult_price" class="
-                                                                                        block
-                                                                                        mt-1
-                                                                                        w-full
-                                                                                        rounded-md
-                                                                                        border-gray-500
-                                                                                        shadow-sm
-                                                                                        focus:border-indigo-300
-                                                                                        focus:ring
-                                                                                        focus:ring-indigo-200
-                                                                                        focus:ring-opacity-50
-                                                                                        dark:bg-gray-800
-                                                                                        " v-model="form.adult_price" />
-                    </div>
-                </div>
-                <div class="w-full me-2 mt-2">
-                    <label for="child_price"
-                        class="block text-sm font-medium w-full text-left text-gray-700 dark:text-gray-200">Child
-                        Price</label>
-                    <div class="mt-1">
-                        <input type="number" name="child_price" id="child_price" class="
-                  block
-                  mt-1
-                  w-full
-                  rounded-md
-                  border-gray-500
-                  shadow-sm
-                  focus:border-indigo-300
-                  focus:ring
-                  focus:ring-indigo-200
-                  focus:ring-opacity-50
-                  dark:bg-gray-800
-                " v-model="form.child_price" />
-                    </div>
-                </div>
-                <div class="w-full me-2 mt-2">
-                    <label for="discount"
-                        class="block text-sm font-medium w-full text-left text-gray-700 dark:text-gray-200">
-                        Discount</label>
-                    <div class="mt-1">
-                        <input type="number" name="discount" id="discount" class="
-                  block
-                  mt-1
-                  w-full
-                  rounded-md
-                  border-gray-500
-                  shadow-sm
-                  focus:border-indigo-300
-                  focus:ring
-                  focus:ring-indigo-200
-                  focus:ring-opacity-50
-                  dark:bg-gray-800
-                " v-model="form.discount" />
-                    </div>
-                </div>
-                <div class="w-full mt-2">
-                    <label for="discount_type"
-                        class="block text-sm font-medium w-full text-left text-gray-700 dark:text-gray-200">
-                        Discount Type</label>
-                    <select name="discount_type" id="discount_type"
-                        class="w-full dark:bg-gray-700 rounded text-gray-700 dark:text-gray-200"
-                        v-model="form.discount_type">
-                        <option class="" value="percentage">Percentage</option>
-                        <option class="py-4" value="amount">Amount</option>
-                    </select>
-                </div>
-                <div class="flex items-center  rounded border border-gray-600 w-full mx-auto mt-2 px-2 ">
-                    <input id="is_from" type="checkbox" value="" name="bordered-checkbox"
-                        class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500  focus:ring-2"
-                        v-model="form.is_from">
-                    <label for="is_from" class="py-2  text-sm font-medium text-gray-200 mx-2 dark:text-gray-300">Is
-                        From?</label>
-                </div>
                 <div class="w-full me-2 mt-2">
                     <label for="max_number_of_people"
                         class="block text-sm font-medium w-full text-left text-gray-700 dark:text-gray-200">
@@ -873,13 +1092,9 @@ const form = reactive({
     description_en: "",
     description_ar: "",
     image: "",
-    discount_type: "percentage",
     itinerary_ar: '',
     itinerary_en: '',
     active: '',
-    adult_price: '',
-    child_price: '',
-    discount: '',
     duration_en: '',
     duration_ar: '',
     max_number_of_people: '',
@@ -888,8 +1103,7 @@ const form = reactive({
     exclude_en: '',
     exclude_ar: '',
     source: '',
-    options_ar: '',
-    options_en: '',
+    options: [],
     highlights_ar: '',
     highlights_en: '',
     information_ar: '',
@@ -902,7 +1116,8 @@ const form = reactive({
     notes_ar: '',
     terms_and_conditions_en: '',
     terms_and_conditions_ar: '',
-    is_from: true
+    is_from: true,
+    banner_highlights: []
 });
 
 
@@ -943,5 +1158,98 @@ const selectCategory = (category_id) => {
 };
 const selectDestination = (destination_id) => {
     form.destination_id = destination_id;
+};
+
+
+let banner_highlight = ref({
+    title_en: "",
+    title_ar: "",
+    img: '1.svg'
+});
+
+const setBannerHighlight = () => {
+    if (!is_editing.value) {
+        form.banner_highlights.push(banner_highlight.value);
+        banner_highlight.value = {
+            title_en: "",
+            title_ar: "",
+            img: '1.svg'
+        };
+        selected_img.value = '1.svg'
+    } else {
+        is_editing.value = false;
+        banner_highlight.value = {
+            title_en: "",
+            title_ar: "",
+            img: '1.svg',
+        };
+        selected_img.value = '1.svg'
+    }
+};
+const deleteRow = (banner_highlight) => {
+    form.banner_highlights.splice(banner_highlight, 1);
+};
+let is_editing = ref(false);
+const editRow = (banner_highlight_id) => {
+    is_editing.value = true;
+    console.log(banner_highlight_id);
+    banner_highlight.value = form.banner_highlights[banner_highlight_id];
+    selected_img.value = form.banner_highlights[banner_highlight_id].img;
+};
+let openImgs = ref(false)
+let selected_img = ref('1.svg')
+let highlight_imgs = reactive([{ id: 1, name: '1.svg' }, { id: 2, name: '2.svg' }, { id: 3, name: '3.svg' }])
+const setHighlightImage = (img) => {
+    selected_img.value = img
+    banner_highlight.value.img = img
+}
+// ---------
+
+
+let activity_option = ref({
+    title_en: "",
+    title_ar: "",
+    adult_price: null,
+    child_price: null,
+    infant_price: null,
+    option_discount: null,
+    option_discount_type: 'percentage'
+});
+
+const setActivityOption = () => {
+    if (!is_editing_option.value) {
+        form.options.push(activity_option.value);
+        activity_option.value = {
+            title_en: "",
+            title_ar: "",
+            adult_price: null,
+            child_price: null,
+            infant_price: null,
+            option_discount: null,
+            option_discount_type: 'percentage'
+        };
+        selected_img.value = '1.svg'
+    } else {
+        is_editing_option.value = false;
+        activity_option.value = {
+            title_en: "",
+            title_ar: "",
+            adult_price: null,
+            child_price: null,
+            infant_price: null,
+            option_discount: null,
+            option_discount_type: 'percentage'
+        };
+        selected_img.value = '1.svg'
+    }
+};
+const deleteActivityOption = (activity_option) => {
+    form.options.splice(activity_option, 1);
+};
+let is_editing_option = ref(false);
+const editActivityOption = (option_id) => {
+    is_editing_option.value = true;
+    console.log(option_id);
+    activity_option.value = form.options[option_id];
 };
 </script>

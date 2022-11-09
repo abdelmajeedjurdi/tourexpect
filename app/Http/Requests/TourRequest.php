@@ -28,7 +28,6 @@ class TourRequest extends FormRequest
             'destination_id' => ['required'],
             'title_en' => ['required'],
             'title_ar' => ['required'],
-            'adult_price' => ['required'],
         ];
     }
 }

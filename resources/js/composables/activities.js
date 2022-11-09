@@ -55,10 +55,14 @@ export default function useActivities() {
     const getActivity = async (id) => {
         let response = await axios.get("/api/activities/" + id);
         activity.value = response.data.data;
+        activity.value['banner_highlights'] = JSON.parse(activity.value['banner_highlights'])
+        activity.value['options'] = JSON.parse(activity.value['options'])
     };
     const getActivityDetails = async (slug) => {
         let response = await axios.get("/api/activity/" + slug);
         activity.value = response.data.data;
+        activity.value['banner_highlights'] = JSON.parse(activity.value['banner_highlights'])
+        activity.value['options'] = JSON.parse(activity.value['options'])
     };
 
     const storeActivity = async (data) => {
@@ -73,10 +77,6 @@ export default function useActivities() {
         fd.append("itinerary_en", data.form.itinerary_en);
         fd.append("itinerary_ar", data.form.itinerary_ar);
         fd.append("active", data.form.active);
-        fd.append("adult_price", data.form.adult_price);
-        fd.append("child_price", data.form.child_price);
-        fd.append("discount", data.form.discount);
-        fd.append("discount_type", data.form.discount_type);
         fd.append("duration_en", data.form.duration_en);
         fd.append("duration_ar", data.form.duration_ar);
         fd.append("max_number_of_people", data.form.max_number_of_people);
@@ -85,8 +85,6 @@ export default function useActivities() {
         fd.append("exclude_en", data.form.exclude_en);
         fd.append("exclude_ar", data.form.exclude_ar);
         fd.append("source", data.form.source);
-        fd.append("options_ar", data.form.options_ar);
-        fd.append("options_en", data.form.options_en);
         fd.append("highlights_ar", data.form.highlights_ar);
         fd.append("highlights_en", data.form.highlights_en);
         fd.append("information_ar", data.form.information_ar);
@@ -99,6 +97,8 @@ export default function useActivities() {
         fd.append("notes_ar", data.form.notes_ar)
         fd.append("terms_and_conditions_en", data.form.terms_and_conditions_en)
         fd.append("terms_and_conditions_ar", data.form.terms_and_conditions_ar)
+        fd.append("banner_highlights", JSON.stringify(data.form.banner_highlights))
+        fd.append("options", JSON.stringify(data.form.options))
         fd.append("is_from", data.form.is_from)
 
 
@@ -138,10 +138,6 @@ export default function useActivities() {
         fd.append("itinerary_en", data.form.itinerary_en);
         fd.append("itinerary_ar", data.form.itinerary_ar);
         fd.append("active", data.form.active);
-        fd.append("adult_price", data.form.adult_price);
-        fd.append("child_price", data.form.child_price);
-        fd.append("discount", data.form.discount);
-        fd.append("discount_type", data.form.discount_type);
         fd.append("duration_en", data.form.duration_en);
         fd.append("duration_ar", data.form.duration_ar);
         fd.append("max_number_of_people", data.form.max_number_of_people);
@@ -150,8 +146,6 @@ export default function useActivities() {
         fd.append("exclude_en", data.form.exclude_en);
         fd.append("exclude_ar", data.form.exclude_ar);
         fd.append("source", data.form.source);
-        fd.append("options_ar", data.form.options_ar);
-        fd.append("options_en", data.form.options_en);
         fd.append("highlights_ar", data.form.highlights_ar);
         fd.append("highlights_en", data.form.highlights_en);
         fd.append("information_ar", data.form.information_ar);
@@ -164,6 +158,8 @@ export default function useActivities() {
         fd.append("notes_ar", data.form.notes_ar)
         fd.append("terms_and_conditions_en", data.form.terms_and_conditions_en)
         fd.append("terms_and_conditions_ar", data.form.terms_and_conditions_ar)
+        fd.append("banner_highlights", JSON.stringify(data.form.banner_highlights))
+        fd.append("options", JSON.stringify(data.form.options))
         fd.append("is_from", data.form.is_from)
         fd.append("activity_img", data.form.thumbnail);
         fd.append("new_image", data.file);

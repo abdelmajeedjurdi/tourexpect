@@ -66,11 +66,7 @@ class PackageController extends Controller
                     'packages.description_en',
                     'packages.description_ar',
                     'packages.slug',
-                    'packages.adult_price',
-                    'packages.child_price',
-                    'packages.discount',
                     'packages.thumbnail',
-                    'packages.discount_type',
                     'packages.duration_en',
                     'packages.duration_ar',
                     'destinations.name_en as destination_en',
@@ -89,11 +85,7 @@ class PackageController extends Controller
                     'packages.description_en',
                     'packages.description_ar',
                     'packages.slug',
-                    'packages.adult_price',
-                    'packages.child_price',
-                    'packages.discount',
                     'packages.thumbnail',
-                    'packages.discount_type',
                     'packages.duration_en',
                     'packages.duration_ar',
                     'destinations.name_en as destination_en',
@@ -145,10 +137,6 @@ class PackageController extends Controller
         $package->itinerary_en = $request->itinerary_en;
         $package->itinerary_ar = $request->itinerary_ar;
         $package->active = $request->active == 'true' ? 1 : 0;
-        $package->adult_price = $request->adult_price;
-        $package->child_price = $request->child_price;
-        $package->discount = $request->discount;
-        $package->discount_type = $request->discount_type;
         $package->duration_en = $request->duration_en;
         $package->duration_ar = $request->duration_ar;
         $package->max_number_of_people = $request->max_number_of_people;
@@ -157,8 +145,6 @@ class PackageController extends Controller
         $package->exclude_en = $request->exclude_en;
         $package->exclude_ar = $request->exclude_ar;
         $package->source = $request->source;
-        $package->options_ar = $request->options_ar;
-        $package->options_en = $request->options_en;
         $package->highlights_ar = $request->highlights_ar;
         $package->highlights_en = $request->highlights_en;
         $package->information_ar = $request->information_ar;
@@ -172,6 +158,8 @@ class PackageController extends Controller
         $package->terms_and_conditions_en = $request->terms_and_conditions_en;
         $package->terms_and_conditions_ar = $request->terms_and_conditions_ar;
         $package->is_from = $request->is_from == 'true' ? 1 : 0;
+        $package->banner_highlights = $request->banner_highlights;
+        $package->options = $request->options;
 
 
         $package->save();
@@ -220,6 +208,7 @@ class PackageController extends Controller
      */
     public function update(PackageRequest $request, Package $package)
     {
+        Log::info($request);
         $path = 'images/packages/';
         //code for remove old image
         if ($request->new_image != 'null' && $request->new_image != 'default.jpg') {
@@ -247,10 +236,6 @@ class PackageController extends Controller
             'itinerary_en' => $request->itinerary_en,
             'itinerary_ar' => $request->itinerary_ar,
             'active' => $request->active == 'true' ? 1 : 0,
-            'adult_price' => $request->adult_price,
-            'child_price' => $request->child_price,
-            'discount' => $request->discount,
-            'discount_type' => $request->discount_type,
             'duration_en' => $request->duration_en,
             'duration_ar' => $request->duration_ar,
             'max_number_of_people' => $request->max_number_of_people,
@@ -259,8 +244,6 @@ class PackageController extends Controller
             'exclude_en' => $request->exclude_en,
             'exclude_ar' => $request->exclude_ar,
             'source' => $request->source,
-            'options_ar' => $request->options_ar,
-            'options_en' => $request->options_en,
             'highlights_ar' => $request->highlights_ar,
             'highlights_en' => $request->highlights_en,
             'information_ar' => $request->information_ar,
@@ -274,6 +257,8 @@ class PackageController extends Controller
             'terms_and_conditions_en' => $request->terms_and_conditions_en,
             'terms_and_conditions_ar' => $request->terms_and_conditions_ar,
             'is_from' => $request->is_from == 'true' ? 1 : 0,
+            'banner_highlights' => $request->banner_highlights,
+            'options' => $request->options,
             'thumbnail' =>  $imageName,
             'slug' => Str::slug($request->title_en, '-')
         ]);
@@ -348,10 +333,6 @@ class PackageController extends Controller
         $package->itinerary_en = $request->itinerary_en;
         $package->itinerary_ar = $request->itinerary_ar;
         $package->active = $request->active;
-        $package->adult_price = $request->adult_price;
-        $package->child_price = $request->child_price;
-        $package->discount = $request->discount;
-        $package->discount_type = $request->discount_type;
         $package->duration_en = $request->duration_en;
         $package->duration_ar = $request->duration_ar;
         $package->max_number_of_people = $request->max_number_of_people;
