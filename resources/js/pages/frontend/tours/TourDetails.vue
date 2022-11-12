@@ -11,7 +11,7 @@
         <div class="sm:px-4 xl:px-0 sm:flex w-full max-w-6xl mx-auto my-10 justify-between">
 
             <div class="w-3/4 ">
-                <div class="w-full">
+                <div class="w-full mb-8">
                     <h1 class="font-bold text-indigo-800 text-3xl pb-3 pt-0  my-auto">{{ tour['title_' + lang] }}</h1>
                     <div class="grid gap-4 grid-cols-4 justify-between w-full" v-if="tour['banner_highlights']">
                         <div v-for="highlight in tour['banner_highlights']" :key="highlight">
@@ -58,6 +58,8 @@
                         </div>
                     </div>
                 </div>
+                <itinerary v-if="tour['itinerary'] && tour['itinerary'] != 'null'" class="border py-2 mt-3"
+                    :section_list="tour['itinerary']" section_title="itinerary" />
                 <base-section v-if="tour['description_' + lang] && tour['description_' + lang] != 'null'"
                     class="border p-2 mt-3" :section_description="tour['description_' + lang]"
                     section_title="tour_overview" />
@@ -66,11 +68,23 @@
                     section_title="tour_highlights" />
                 <list-section v-if="tour['include_' + lang] && tour['include_' + lang] != 'null'"
                     class="border py-2 mt-3" :section_list="tour['include_' + lang]" section_title="tour_inclusion" />
+                <list-section v-if="tour['exclude_' + lang] && tour['exclude_' + lang] != 'null'"
+                    class="border py-2 mt-3" :section_list="tour['exclude_' + lang]" section_title="tour_exclusion" />
                 <list-section v-if="tour['information_' + lang] && tour['information_' + lang] != 'null'"
                     class="border py-2 mt-3" :section_list="tour['information_' + lang]"
                     section_title="important_information" />
                 <list-section v-if="tour['policy_' + lang] && tour['policy_' + lang] != 'null'" class="border py-2 mt-3"
-                    :section_list="tour['policy_' + lang]" section_title="timing_and_transfer_policy" />
+                    :section_list="tour['policy_' + lang]" section_title="policy" />
+                <list-section
+                    v-if="tour['timing_and_transfer_' + lang] && tour['timing_and_transfer_' + lang] != 'null'"
+                    class="border py-2 mt-3" :section_list="tour['timing_and_transfer_' + lang]"
+                    section_title="timing_and_transfer" />
+                <list-section
+                    v-if="tour['terms_and_conditions_' + lang] && tour['terms_and_conditions_' + lang] != 'null'"
+                    class="border py-2 mt-3" :section_list="tour['terms_and_conditions_' + lang]"
+                    section_title="terms_and_conditions" />
+                <list-section v-if="tour['notes_' + lang] && tour['notes_' + lang] != 'null'" class="border py-2 mt-3"
+                    :section_list="tour['notes_' + lang]" section_title="notes" />
             </div>
             <div class="w-1/4 mx-2  ">
                 <div class="sticky top-24">
@@ -125,20 +139,20 @@
                                         <div class="flex justify-between">
                                             <div>Adults</div>
                                             <div class="flex">
-                                                <button @click="adults--"
+                                                <button @click.prevent="adults--"
                                                     class="bg-yellow-500 w-6 h-6 rounded text-white">-</button>
                                                 <span class="w-10 text-center">{{ adults }}</span>
-                                                <button type="button" @click="adults++"
+                                                <button type="button" @click.prevent="adults++"
                                                     class="bg-yellow-500 w-6 h-6 rounded text-white">+</button>
                                             </div>
                                         </div>
                                         <div class="flex justify-between mt-3">
                                             <div>Children</div>
                                             <div class="flex">
-                                                <button type="button" @click="children--"
+                                                <button type="button" @click.prevent="children--"
                                                     class="bg-yellow-500 w-6 h-6 rounded text-white">-</button>
                                                 <span class="w-10 text-center">{{ children }}</span>
-                                                <button type="button" @click="children++"
+                                                <button type="button" @click.prevent="children++"
                                                     class="bg-yellow-500 w-6 h-6 rounded text-white">+</button>
                                             </div>
                                         </div>
@@ -151,9 +165,7 @@
                                 class="text-white w-full rounded bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium   text-sm px-5 py-2.5 text-center">Reserve</button>
                         </form>
                     </div>
-                    <!-- 0000000000000000000000000000000000000000000000000000000 -->
 
-                    <CallToAction class="" />
                 </div>
             </div>
         </div>
@@ -164,6 +176,7 @@ import { onMounted, inject, ref } from 'vue';
 import useTours from '../../../composables/tours';
 import SwiperSlider from '../../../components/SwiperSlider.vue';
 import BaseSection from '../../../components/BaseSection.vue';
+import Itinerary from '../../../components/Itinerary.vue';
 import ListSection from '../../../components/ListSection.vue';
 import CallToAction from '../../../components/CallToAction.vue';
 const { getTourDetails, tour } = useTours()

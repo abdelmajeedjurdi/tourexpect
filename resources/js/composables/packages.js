@@ -74,8 +74,7 @@ export default function usePackages() {
         fd.append("package_img", data.form.image);
         fd.append("address_ar", data.form.address_ar);
         fd.append("address_en", data.form.address_en);
-        fd.append("itinerary_en", data.form.itinerary_en);
-        fd.append("itinerary_ar", data.form.itinerary_ar);
+        fd.append("itinerary", data.form.itinerary);
         fd.append("active", data.form.active);
         fd.append("duration_en", data.form.duration_en);
         fd.append("duration_ar", data.form.duration_ar);
@@ -135,8 +134,7 @@ export default function usePackages() {
         fd.append("description_ar", data.form.description_ar);
         fd.append("address_ar", data.form.address_ar);
         fd.append("address_en", data.form.address_en);
-        fd.append("itinerary_en", data.form.itinerary_en);
-        fd.append("itinerary_ar", data.form.itinerary_ar);
+        fd.append("itinerary", data.form.itinerary);
         fd.append("active", data.form.active);
         fd.append("duration_en", data.form.duration_en);
         fd.append("duration_ar", data.form.duration_ar);

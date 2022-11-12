@@ -143,8 +143,7 @@ class TourController extends Controller
         $tour->slug = Str::slug($tour->title_en, '-');
         $tour->address_en = $request->address_en;
         $tour->address_ar = $request->address_ar;
-        $tour->itinerary_en = $request->itinerary_en;
-        $tour->itinerary_ar = $request->itinerary_ar;
+        $tour->itinerary = $request->itinerary;
         $tour->active = $request->active == 'true' ? 1 : 0;
         $tour->duration_en = $request->duration_en;
         $tour->duration_ar = $request->duration_ar;
@@ -242,8 +241,7 @@ class TourController extends Controller
             'address_en' => $request->address_en,
             'description_ar' => $request->description_ar,
             'description_en' => $request->description_en,
-            'itinerary_en' => $request->itinerary_en,
-            'itinerary_ar' => $request->itinerary_ar,
+            'itinerary' => $request->itinerary,
             'active' => $request->active == 'true' ? 1 : 0,
             'duration_en' => $request->duration_en,
             'duration_ar' => $request->duration_ar,
@@ -340,8 +338,7 @@ class TourController extends Controller
             Str::slug($tour->title_en, '-') . '-' . Tour::max('id');
         $tour->address_en = $request->address_en;
         $tour->address_ar = $request->address_ar;
-        $tour->itinerary_en = $request->itinerary_en;
-        $tour->itinerary_ar = $request->itinerary_ar;
+        $tour->itinerary = $request->itinerary;
         $tour->active = $request->active;
         $tour->duration_en = $request->duration_en;
         $tour->duration_ar = $request->duration_ar;

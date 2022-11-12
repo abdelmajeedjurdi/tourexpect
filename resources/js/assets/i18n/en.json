@@ -60,6 +60,10 @@
     "tour_options":"Tour Options",
     "tour_highlights":"Tour Highlights",
     "tour_inclusion":"Tour Inclusion",
+    "tour_exclusion":"Tour Exclusion",
     "important_information":"Important Information",
-    "timing_and_transfer_policy":"Timing and Transfer Policy"
+    "timing_and_transfer":"Timing and Transfer",
+    "policy":"Policy",
+    "terms_and_conditions":"Terms and Conditions",
+    "notes":"Notes"
 }

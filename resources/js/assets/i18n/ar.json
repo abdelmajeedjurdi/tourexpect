@@ -57,7 +57,12 @@
     "tour_overview":"نظرة عامة على الرحلة",
     "tour_options":"خيارات الرحلة",
     "tour_highlights":"مميزات الرحلة",
-    "tour_inclusion":"تشمل الرحلة",
+    "tour_inclusion":"الرحلة تشمل",
+    "tour_exclusion":"الرحلة لا تشمل",
     "important_information":"معلومات مهمة",
-    "timing_and_transfer_policy":"سياسة التوقيت والتحويل"
+    "timing_and_transfer_policy":"سياسة التوقيت والتحويل",
+    "timing_and_transfer":"التوقيت والتحويل",
+    "policy":"السياسة",
+    "terms_and_conditions":"الأحكام والشروط",
+    "notes":"ملاحظات"
 }

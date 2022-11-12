@@ -313,8 +313,7 @@ class HotelController extends Controller
             Str::slug($tour->title_en, '-') . '-' . Hotel::max('id');
         $tour->address_en = $request->address_en;
         $tour->address_ar = $request->address_ar;
-        $tour->itinerary_en = $request->itinerary_en;
-        $tour->itinerary_ar = $request->itinerary_ar;
+        $tour->itinerary = $request->itinerary;
         $tour->active = $request->active;
         $tour->adult_price = $request->adult_price;
         $tour->child_price = $request->child_price;

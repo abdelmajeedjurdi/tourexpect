@@ -134,8 +134,7 @@ class PackageController extends Controller
         $package->slug = Str::slug($package->title_en, '-');
         $package->address_en = $request->address_en;
         $package->address_ar = $request->address_ar;
-        $package->itinerary_en = $request->itinerary_en;
-        $package->itinerary_ar = $request->itinerary_ar;
+        $package->itinerary = $request->itinerary;
         $package->active = $request->active == 'true' ? 1 : 0;
         $package->duration_en = $request->duration_en;
         $package->duration_ar = $request->duration_ar;
@@ -233,8 +232,7 @@ class PackageController extends Controller
             'address_en' => $request->address_en,
             'description_ar' => $request->description_ar,
             'description_en' => $request->description_en,
-            'itinerary_en' => $request->itinerary_en,
-            'itinerary_ar' => $request->itinerary_ar,
+            'itinerary' => $request->itinerary,
             'active' => $request->active == 'true' ? 1 : 0,
             'duration_en' => $request->duration_en,
             'duration_ar' => $request->duration_ar,
@@ -330,8 +328,7 @@ class PackageController extends Controller
             Str::slug($package->title_en, '-') . '-' . Package::max('id');
         $package->address_en = $request->address_en;
         $package->address_ar = $request->address_ar;
-        $package->itinerary_en = $request->itinerary_en;
-        $package->itinerary_ar = $request->itinerary_ar;
+        $package->itinerary = $request->itinerary;
         $package->active = $request->active;
         $package->duration_en = $request->duration_en;
         $package->duration_ar = $request->duration_ar;

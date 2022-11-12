@@ -23,8 +23,7 @@ class CreateActivitiesTable extends Migration
             $table->string('address_en')->nullable();
             $table->longText('description_en')->nullable();
             $table->longText('description_ar')->nullable();
-            $table->longText('itinerary_ar')->nullable();
-            $table->longText('itinerary_en')->nullable();
+            $table->longText('itinerary')->nullable();
             $table->string('slug');
             $table->boolean('active')->default(1);
             $table->string('thumbnail')->default('default.jpg');

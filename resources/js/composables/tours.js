@@ -57,12 +57,14 @@ export default function useTours() {
         tour.value = response.data.data;
         tour.value['banner_highlights'] = JSON.parse(tour.value['banner_highlights'])
         tour.value['options'] = JSON.parse(tour.value['options'])
+        tour.value['itinerary'] = JSON.parse(tour.value['itinerary'])
     };
     const getTourDetails = async (slug) => {
         let response = await axios.get("/api/tour/" + slug);
         tour.value = response.data.data;
         tour.value['banner_highlights'] = JSON.parse(tour.value['banner_highlights'])
         tour.value['options'] = JSON.parse(tour.value['options'])
+        tour.value['itinerary'] = JSON.parse(tour.value['itinerary'])
     };
 
     const storeTour = async (data) => {
@@ -76,8 +78,7 @@ export default function useTours() {
         fd.append("tour_img", data.form.image);
         fd.append("address_ar", data.form.address_ar);
         fd.append("address_en", data.form.address_en);
-        fd.append("itinerary_en", data.form.itinerary_en);
-        fd.append("itinerary_ar", data.form.itinerary_ar);
+        fd.append("itinerary", JSON.stringify(data.form.itinerary));
         fd.append("active", data.form.active);
         fd.append("duration_en", data.form.duration_en);
         fd.append("duration_ar", data.form.duration_ar);
@@ -136,8 +137,7 @@ export default function useTours() {
         fd.append("description_ar", data.form.description_ar);
         fd.append("address_ar", data.form.address_ar);
         fd.append("address_en", data.form.address_en);
-        fd.append("itinerary_en", data.form.itinerary_en);
-        fd.append("itinerary_ar", data.form.itinerary_ar);
+        fd.append("itinerary", JSON.stringify(data.form.itinerary))
         fd.append("active", data.form.active);
         fd.append("duration_en", data.form.duration_en);
         fd.append("duration_ar", data.form.duration_ar);
