@@ -98,24 +98,15 @@
                                     <span class="text-xl">
                                         {{ $t('price') }}</span>
                                     <div>
-                                        <div v-if="tour['discount']" class="line-through text-gray-400 me-1 text-xl">
-                                            {{ (selected_option['adult_price'] * adults +
-                                                    selected_option['child_price'] * children) + '$'
-                                            }}
+                                        <div v-if="selected_option['option_discount']"
+                                            class="line-through text-gray-400 me-1 text-xl">
+                                            {{
+                                                    original_price
+                                            }}$
                                         </div>
                                         <div class="text-gray-800 text-4xl ">
                                             {{
-                                                    selected_option['option_discount_type'] == 'amount' ?
-                                                        selected_option['adult_price'] * adults - selected_option['option_discount']
-                                                        * adults + selected_option['child_price'] * children
-                                                        : (((selected_option['adult_price'] - (selected_option['adult_price'] *
-                                                            selected_option['option_discount']
-                                                            /
-                                                            100)) * adults) + ((selected_option['child_price'] -
-                                                                (selected_option['child_price'] *
-                                                                    selected_option['option_discount']
-                                                                    /
-                                                                    100)) * children)).toFixed(2)
+                                                    total_price.toFixed(2)
                                             }}$
                                         </div>
                                     </div>
@@ -133,20 +124,20 @@
                                         <div class="flex justify-between">
                                             <div>Adults</div>
                                             <div class="flex">
-                                                <button @click.prevent="adults--"
+                                                <button @click.prevent="setGuests('a', -1)"
                                                     class="bg-yellow-500 w-6 h-6 rounded text-white">-</button>
                                                 <span class="w-10 text-center">{{ adults }}</span>
-                                                <button type="button" @click.prevent="adults++"
+                                                <button type="button" @click.prevent="setGuests('a', 1)"
                                                     class="bg-yellow-500 w-6 h-6 rounded text-white">+</button>
                                             </div>
                                         </div>
                                         <div class="flex justify-between mt-3">
                                             <div>Children</div>
                                             <div class="flex">
-                                                <button type="button" @click.prevent="children--"
+                                                <button type="button" @click.prevent="setGuests('c', -1)"
                                                     class="bg-yellow-500 w-6 h-6 rounded text-white">-</button>
                                                 <span class="w-10 text-center">{{ children }}</span>
-                                                <button type="button" @click.prevent="children++"
+                                                <button type="button" @click.prevent="setGuests('c', 1)"
                                                     class="bg-yellow-500 w-6 h-6 rounded text-white">+</button>
                                             </div>
                                         </div>
@@ -192,16 +183,53 @@ let phone = ref(null);
 let adults = ref(1)
 let children = ref(0)
 let selected_option = ref(null)
+let total_price = ref(null)
 let selected_idx = ref(0)
 let lang = inject('lang') || 'en'
 onMounted(async () => {
     await getTourDetails(props.slug)
     selected_option.value = tour.value.options[0]
+    calculatePrice()
 
 })
 const setOption = (opt, idx) => {
     selected_idx.value = idx
     selected_option.value = opt
+    calculatePrice()
+}
+let original_price = ref(null)
+const calculatePrice = () => {
+    original_price.value = (selected_option.value['adult_price'] * adults.value + selected_option.value['child_price'] * children.value)
+
+    if (selected_option.value['option_discount_type'] == 'amount') {
+
+        total_price.value =
+            selected_option.value['adult_price'] * adults.value - selected_option.value['option_discount'] * adults.value +
+            selected_option.value['child_price'] * children.value - selected_option.value['option_discount'] * children.value
+    }
+    else {
+        total_price.value = ((selected_option.value['adult_price'] - (selected_option.value['adult_price'] *
+            selected_option.value['option_discount']
+            /
+            100)) * adults.value) + ((selected_option.value['child_price'] -
+                (selected_option.value['child_price'] *
+                    selected_option.value['option_discount']
+                    /
+                    100)) * children.value)
+    }
+
+    console.log(selected_option.value);
+}
+const setGuests = (person, num) => {
+    if (person == 'a') {
+        if (adults.value + num > 0)
+            adults.value += num
+    }
+    else {
+        if (children.value + num >= 0)
+            children.value += num
+    }
+    calculatePrice()
 }
 </script>
 <style>

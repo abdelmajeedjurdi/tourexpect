@@ -31,11 +31,12 @@
                     Your ideal partner in the middle east to discover Tourexpect wonders
                 </p>
             </div>
-            <div v-for="coulomn in menu_meue">
-                <h3 class="text-white mx-7 pt-4 ">{{ coulomn['title_'+lang] }}</h3>
+            <div v-for="coulomn in menu_meue" :key="coulomn">
+                <h3 class="text-white mx-7 pt-4 ">{{ coulomn['title_' + lang] }}</h3>
                 <ul class="   w-full">
-                    <li class=" w-full" v-for="link in coulomn['links']">
-                        <router-link class="text-white" :to="link['slug']">{{ link['name_'+lang] }}</router-link>
+                    <li class=" w-full" v-for="link in coulomn['links']" :key="link">
+                        <router-link class="text-white" :to="'/' + link['slug']">{{ link['name_' + lang] }}
+                        </router-link>
                     </li>
                 </ul>
             </div>
@@ -102,7 +103,7 @@ const menu_meue = ref([
             {
                 name_en: "About Us",
                 name_ar: "حولنا",
-                slug: "#"
+                slug: "about"
             },
             {
                 name_en: "We Are Hiring",

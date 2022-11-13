@@ -872,7 +872,7 @@ const selectDestination = (destination_id) => {
 let banner_highlight = ref({
     title_en: "",
     title_ar: "",
-    img: "",
+    img: "1.svg",
 });
 
 const setBannerHighlight = () => {
@@ -881,7 +881,7 @@ const setBannerHighlight = () => {
         banner_highlight.value = {
             title_en: "",
             title_ar: "",
-            img: "",
+            img: "1.svg",
         };
         selected_img.value = "1.svg";
     } else {
@@ -889,7 +889,7 @@ const setBannerHighlight = () => {
         banner_highlight.value = {
             title_en: "",
             title_ar: "",
-            img: "",
+            img: "1.svg",
         };
         selected_img.value = "1.svg";
     }
