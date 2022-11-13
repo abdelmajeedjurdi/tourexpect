@@ -91,7 +91,7 @@
 
                     <!-- 1111111111111111111111111111111111 -->
                     <div class=" border p-4">
-                        <form v-if="selected_option != null">
+                        <form v-if="selected_option != null" class=" mb-4">
                             <div
                                 class="overflow-hidden text-right text-base text-body-color leading-relaxed text-indigo-800 font-bold m-2 ">
                                 <span class="flex">
@@ -121,13 +121,7 @@
                                     </div>
                                 </span>
                             </div>
-                            <div class="mb-6">
-                                <label for="name" class="tour-label ">{{ $t("your_name") }}</label>
-                                <input type="name" id="name"
-                                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm   focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                    :placeholder="$t('required')" required>
-                            </div>
-                            <div class="mb-6 ">
+                            <div class="mb-3 ">
                                 <label for="guests" class="tour-label  ">{{ $t('guests') }}</label>
                                 <div class="dropdown">
                                     <div class="peer border p-2 w-full dropbtn">
@@ -164,6 +158,15 @@
                             <button type="submit"
                                 class="text-white w-full rounded bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium   text-sm px-5 py-2.5 text-center">Reserve</button>
                         </form>
+
+                        <a :href="'https://wa.me/+9647509882000/?text=' + 'https://tourexpect.com' + router.currentRoute.value.fullPath + '\u000a I want to ask about this'"
+                            target="_blank"
+                            class="flex bg-green-400 text-white rounded-full items-center py-2 px-4 space-x-2 mx-auto mb-4">
+                            <img src="/images/whatsapp.svg" alt="whatsapp" class="h-6">
+                            <span>Text us on
+                                Whatsapp</span></a>
+
+                        <TourInquire />
                     </div>
 
                 </div>
@@ -179,8 +182,11 @@ import BaseSection from '../../../components/BaseSection.vue';
 import Itinerary from '../../../components/Itinerary.vue';
 import ListSection from '../../../components/ListSection.vue';
 import CallToAction from '../../../components/CallToAction.vue';
+import TourInquire from '../../../components/TourInquire.vue';
+import { useRoute, useRouter } from 'vue-router';
 const { getTourDetails, tour } = useTours()
 const props = defineProps({ slug: String })
+const router = useRouter()
 
 let phone = ref(null);
 let adults = ref(1)
