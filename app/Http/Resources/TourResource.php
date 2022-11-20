@@ -4,10 +4,12 @@ namespace App\Http\Resources;
 
 use App\Models\Category;
 use App\Models\Destination;
+use App\Models\OptionIcon;
 // use App\Models\TourFile;
 use App\Models\TourImage;
 // use App\Models\TourProperty;
 use Illuminate\Http\Resources\Json\JsonResource;
+use PhpOption\Option;
 
 class TourResource extends JsonResource
 {
@@ -22,6 +24,9 @@ class TourResource extends JsonResource
         return [
             'id'  => $this->id,
             'slug'  => $this->slug,
+            'adult_price' => json_decode($this->options)[0]->adult_price,
+            'discount_type' => json_decode($this->options)[0]->option_discount_type,
+            'discount' => json_decode($this->options)[0]->option_discount,
             'category_id' => $this->category_id,
             'destination_id' => $this->destination_id,
             // 'category' => Category::where('id', $this->category_id)->select('name_en', 'name_ar', 'id')->first(),
@@ -59,7 +64,8 @@ class TourResource extends JsonResource
             'is_from' => $this->is_from == 1 ? 'true' : 'false',
             'banner_highlights' => $this->banner_highlights,
             // 'files' => TourFile::where('tour_id', $this->id)->get(),
-            'images' => TourImage::where('tour_id', $this->id)->get()
+            'images' => TourImage::where('tour_id', $this->id)->get(),
+
         ];
     }
 }

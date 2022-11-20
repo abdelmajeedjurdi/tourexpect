@@ -18,8 +18,14 @@
                         </svg>
                     </div>
                 </div>
-                <div class="mt-2 px-2 child" v-if="opened == i">
+                <!-- <div class="mt-2 px-2 child   duration-1000" :class="opened == i ? 'h-96' : ' invisible h-0'">
                     {{ d['description_' + lang] }}
+                </div> -->
+                <div class=" mt-2 px-2 flex flex-col border-none transition-all duration-300 itinerary"
+                    :class="opened == i ? 'h-28' : 'h-0'">
+                    <div class="flex flex-grow flex-col justify-between overflow-y-hidden">Lorem ipsum dolor sit amet
+                        {{ d['description_' + lang] }}
+                    </div>
                 </div>
             </div>
         </div>

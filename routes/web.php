@@ -4,9 +4,11 @@ use App\Http\Controllers\Api\ActivityController;
 use App\Http\Controllers\Api\BlogController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\DestinationController;
+use App\Http\Controllers\Api\GeneralController;
 use App\Http\Controllers\Api\HotelController;
 use App\Http\Controllers\Api\PackageController;
 use App\Http\Controllers\Api\TourController;
+use App\Http\Controllers\Api\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -45,6 +47,13 @@ Route::post('api/rooms', [HotelController::class, 'storeRoom'])->middleware(['au
 Route::get('api/rooms/{id}', [HotelController::class, 'getRoom'])->middleware(['auth', 'isAdmin']);
 Route::patch('api/rooms/{id}', [HotelController::class, 'updateRoom'])->middleware(['auth', 'isAdmin']);
 Route::delete('api/rooms/{id}', [HotelController::class, 'deleteRoom'])->middleware(['auth', 'isAdmin']);
+
+Route::patch('api/update-icons', [GeneralController::class, 'updateOptionsImages'])->middleware(['auth', 'isAdmin']);
+Route::get('api/get-icons', [GeneralController::class, 'get'])->middleware(['auth', 'isAdmin']);
+Route::delete('api/delete-icon/{id}', [GeneralController::class, 'deleteIcon'])->middleware(['auth', 'isAdmin']);
+
+
+Route::apiResource('api/users', UserController::class)->middleware(['auth', 'isAdmin']);
 
 Route::get('/', function () {
     return view('frontend');

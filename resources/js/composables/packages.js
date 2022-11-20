@@ -56,12 +56,14 @@ export default function usePackages() {
         single_package.value = response.data.data;
         single_package.value['banner_highlights'] = JSON.parse(single_package.value['banner_highlights'])
         single_package.value['options'] = JSON.parse(single_package.value['options'])
+        single_package.value['itinerary'] = JSON.parse(single_package.value['itinerary'])
     };
     const getPackageDetails = async (slug) => {
         let response = await axios.get("/api/single_package/" + slug);
         single_package.value = response.data.data;
         single_package.value['banner_highlights'] = JSON.parse(single_package.value['banner_highlights'])
         single_package.value['options'] = JSON.parse(single_package.value['options'])
+        single_package.value['itinerary'] = JSON.parse(single_package.value['itinerary'])
     };
 
     const storePackage = async (data) => {
@@ -74,7 +76,6 @@ export default function usePackages() {
         fd.append("package_img", data.form.image);
         fd.append("address_ar", data.form.address_ar);
         fd.append("address_en", data.form.address_en);
-        fd.append("itinerary", data.form.itinerary);
         fd.append("active", data.form.active);
         fd.append("duration_en", data.form.duration_en);
         fd.append("duration_ar", data.form.duration_ar);
@@ -98,6 +99,7 @@ export default function usePackages() {
         fd.append("terms_and_conditions_ar", data.form.terms_and_conditions_ar)
         fd.append("banner_highlights", JSON.stringify(data.form.banner_highlights))
         fd.append("options", JSON.stringify(data.form.options))
+        fd.append("itinerary", JSON.stringify(data.form.itinerary));
         fd.append("is_from", data.form.is_from)
 
 
@@ -134,7 +136,7 @@ export default function usePackages() {
         fd.append("description_ar", data.form.description_ar);
         fd.append("address_ar", data.form.address_ar);
         fd.append("address_en", data.form.address_en);
-        fd.append("itinerary", data.form.itinerary);
+        fd.append("itinerary", JSON.stringify(data.form.itinerary))
         fd.append("active", data.form.active);
         fd.append("duration_en", data.form.duration_en);
         fd.append("duration_ar", data.form.duration_ar);

@@ -111,8 +111,7 @@
                                     </div>
                                     <div>
                                         <div class="dropdown mt-4">
-                                            <button
-                                                :style="`background-image: url(/images/banner_highlights/${selected_img})`"
+                                            <button :style="`background-image: url(/images/icons/${selected_img})`"
                                                 class="rounded py-2 bg-gray-100 dropdown-toggle bg-no-repeat w-20 dark:bg-gray-800"
                                                 type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
                                                 aria-expanded="false" @click="openImgs = true"></button>
@@ -121,16 +120,16 @@
                                                     ? 'show'
                                                     : 'hidden'
                                             " aria-labelledby="dropdownMenuButton1">
-                                                <li v-for="img in highlight_imgs" :key="img.id">
+                                                <li v-for="img in icons" :key="img.id">
                                                     <span @click="
                                                         setHighlightImage(
-                                                            img.name
+                                                            img.image
                                                         )
                                                     "
                                                         class="dropdown-item dark:text-gray-200 dark:hover:bg-gray-600 hover:bg-gray-300 cursor-pointer text-gray-200">
                                                         <img class="h-6" :src="
-                                                            '/images/banner_highlights/' +
-                                                            img.name
+                                                            '/images/icons/' +
+                                                            img.image
                                                         " alt="" />
                                                     </span>
                                                 </li>
@@ -168,7 +167,7 @@
                                             }}</span>
                                         </div>
                                         <img class="h-6 mx-2" :src="
-                                            '/images/banner_highlights/' +
+                                            '/images/icons/' +
                                             ban_highlight.img
                                         " alt="" />
                                         <div class="flex">
@@ -810,8 +809,11 @@ import { useSwal } from "../../../plugins/useSwal.js";
 import UploadImages from "vue-upload-drop-images";
 import SearchableDropdown from "../../../components/SearchableDropdown.vue";
 import ProgressBar from "../../../components/ProgressBar.vue";
+import useGeneral from "../../../composables/general";
+
 const props = defineProps({ id: String });
 const { categories, getCategoriesOnSection } = useCategories();
+const { icons, getIcons } = useGeneral();
 const { destinations, getDestinations } = useDestinations();
 let isProgressing = ref(false);
 const {
@@ -832,6 +834,7 @@ onMounted(async () => {
     await getCategoriesOnSection("tours");
     await getDestinations();
     await getTour(props.id);
+    getIcons()
 });
 const saveTour = async () => {
     isProgressing.value = true;

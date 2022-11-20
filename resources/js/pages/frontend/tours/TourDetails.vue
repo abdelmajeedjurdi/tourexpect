@@ -4,19 +4,16 @@
             <SwiperSlider :imgs="tour.images" />
 
         </div>
-        <div class="sm:px-4 xl:px-0 sm:flex w-full max-w-6xl mx-auto my-2 flex justify-between">
+        <div class="px-2 sm:px-4 xl:px-0 md:flex w-full max-w-6xl mx-auto my-10 justify-between">
 
-
-        </div>
-        <div class="sm:px-4 xl:px-0 sm:flex w-full max-w-6xl mx-auto my-10 justify-between">
-
-            <div class="w-3/4 ">
-                <div class="w-full mb-8">
+            <div class="w-full md:w-3/4 ">
+                <div class="w-full mb-8 px-2">
                     <h1 class="font-bold text-indigo-800 text-3xl pb-3 pt-0  my-auto">{{ tour['title_' + lang] }}</h1>
-                    <div class="grid gap-4 grid-cols-4 justify-between w-full" v-if="tour['banner_highlights']">
+                    <div class="grid gap-4 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 justify-between w-full"
+                        v-if="tour['banner_highlights']">
                         <div v-for="highlight in tour['banner_highlights']" :key="highlight">
                             <div class="flex">
-                                <img class="h-6 mx-1" :src="'/images/banner_highlights/' + highlight.img" alt="">
+                                <img class="h-6 mx-1" :src="'/images/icons/' + highlight.img" alt="">
                                 <span class="text-base font-bold">{{ highlight['title_en'] }}</span>
                             </div>
 
@@ -27,7 +24,7 @@
                     <h3 class="text-indigo-800 font-bold">{{ $t('tour_options') }}</h3>
                     <div class="space-y-2 mt-4">
                         <div v-for="(option, i) in tour['options']" :key="option"
-                            class="rounded py-3 px-16 border flex justify-between cursor-pointer hover:bg-blue-200"
+                            class="rounded py-3 px-16 border flex justify-between cursor-pointer duration-500 hover:bg-blue-200"
                             :class="selected_idx == i ? 'bg-blue-300' : ''" @click="setOption(option, i)">
                             <div>
                                 <h3 class="font-bold text-xl">{{ option['title_' + lang] }}</h3>
@@ -39,8 +36,8 @@
                                 <span class="flex">
 
                                     <div>
-                                        <div v-if="option['option_discount']"
-                                            class="line-through text-gray-400 me-1 text-xl">
+                                        <div v-if="option['option_discount']" style="text-decoration: line-through;"
+                                            class=" text-gray-400 me-1 text-xl">
                                             {{ option['adult_price'] + '$' }}
                                         </div>
                                         <div class="text-gray-800 font-bold text-2xl ">
@@ -58,6 +55,7 @@
                         </div>
                     </div>
                 </div>
+
                 <itinerary v-if="tour['itinerary'] && tour['itinerary'] != 'null'" class="border py-2 mt-3"
                     :section_list="tour['itinerary']" section_title="itinerary" />
                 <base-section v-if="tour['description_' + lang] && tour['description_' + lang] != 'null'"
@@ -86,7 +84,7 @@
                 <list-section v-if="tour['notes_' + lang] && tour['notes_' + lang] != 'null'" class="border py-2 mt-3"
                     :section_list="tour['notes_' + lang]" section_title="notes" />
             </div>
-            <div class="w-1/4 mx-2  ">
+            <div class="w-full md:w-1/4 mt-4   ">
                 <div class="sticky top-24">
 
                     <!-- 1111111111111111111111111111111111 -->
@@ -94,17 +92,18 @@
                         <form v-if="selected_option != null" class=" mb-4">
                             <div
                                 class="overflow-hidden text-right text-base text-body-color leading-relaxed text-indigo-800 font-bold m-2 ">
-                                <span class="flex">
+                                <span class="flex justify-between">
                                     <span class="text-xl">
                                         {{ $t('price') }}</span>
                                     <div>
                                         <div v-if="selected_option['option_discount']"
+                                            style="text-decoration: line-through;"
                                             class="line-through text-gray-400 me-1 text-xl">
                                             {{
                                                     original_price
                                             }}$
                                         </div>
-                                        <div class="text-gray-800 text-4xl ">
+                                        <div class="text-gray-800 text-2xl ">
                                             {{
                                                     total_price.toFixed(2)
                                             }}$
@@ -147,7 +146,7 @@
                                 </div>
                             </div>
                             <button type="submit"
-                                class="text-white w-full rounded bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium   text-sm px-5 py-2.5 text-center">Reserve</button>
+                                class="text-white w-full rounded bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium   text-sm px-5 py-2.5 text-center duration-300">Reserve</button>
                         </form>
 
                         <a :href="'https://wa.me/+9647509882000/?text=' + 'https://tourexpect.com' + router.currentRoute.value.fullPath + '\u000a I want to ask about this'"

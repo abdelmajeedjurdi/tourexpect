@@ -115,25 +115,26 @@
                                     <div>
                                         <div class="dropdown mt-4">
                                             <button
-                                                :style="`background-image: url(/images/banner_highlights/${selected_img})`"
+                                                :style="`background-image: url(/images/icons/${selected_img}); background-size: 100% 100%; background-color:white`"
                                                 class="rounded py-2 bg-gray-100 dropdown-toggle bg-no-repeat w-20 dark:bg-gray-800"
                                                 type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
-                                                aria-expanded="false" @click="openImgs = true"></button>
+                                                aria-expanded="false" @click="openImgs = true">
+                                            </button>
                                             <ul id="component_id" class="dropdown-menu dark:dropdown-menu-dark" :class="
                                                 openImgs == true
                                                     ? 'show'
                                                     : 'hidden'
                                             " aria-labelledby="dropdownMenuButton1">
-                                                <li v-for="img in highlight_imgs" :key="img.id">
+                                                <li v-for="img in icons" :key="img.id">
                                                     <span @click="
                                                         setHighlightImage(
-                                                            img.name
+                                                            img.image
                                                         )
                                                     "
                                                         class="dropdown-item dark:text-gray-200 dark:hover:bg-gray-600 hover:bg-gray-300 cursor-pointer text-gray-200">
                                                         <img class="h-6" :src="
-                                                            '/images/banner_highlights/' +
-                                                            img.name
+                                                            '/images/icons/' +
+                                                            img.image
                                                         " alt="" />
                                                     </span>
                                                 </li>
@@ -171,7 +172,7 @@
                                             }}</span>
                                         </div>
                                         <img class="h-6 mx-2" :src="
-                                            '/images/banner_highlights/' +
+                                            '/images/icons/' +
                                             ban_highlight.img
                                         " alt="" />
                                         <div class="flex">
@@ -765,6 +766,7 @@ import useDestinations from "../../../composables/destinations";
 import SearchableDropdown from "../../../components/SearchableDropdown.vue";
 import ProgressBar from "../../../components/ProgressBar.vue";
 import UploadImages from "vue-upload-drop-images";
+import useGeneral from "../../../composables/general";
 
 const form = reactive({
     category_id: "",
@@ -805,11 +807,13 @@ const form = reactive({
 
 let isProgressing = ref(false);
 const { errors, storeTour, addGallery, addFiles, percentage } = useTours();
+const { icons, getIcons } = useGeneral();
 const { categories, getCategoriesOnSection } = useCategories();
 const { destinations, getDestinations } = useDestinations();
 onMounted(() => {
     getCategoriesOnSection("tours");
     getDestinations();
+    getIcons()
 });
 const handleImages = (images) => {
     addGallery(images);
@@ -877,13 +881,14 @@ const editRow = (banner_highlight_id) => {
     selected_img.value = form.banner_highlights[banner_highlight_id].img;
 };
 let openImgs = ref(false);
-let selected_img = ref("1.svg");
+let selected_img = ref('');
 let highlight_imgs = reactive([
     { id: 1, name: "1.svg" },
     { id: 2, name: "2.svg" },
     { id: 3, name: "3.svg" },
 ]);
 const setHighlightImage = (img) => {
+    console.log(img);
     selected_img.value = img;
     banner_highlight.value.img = img;
 };

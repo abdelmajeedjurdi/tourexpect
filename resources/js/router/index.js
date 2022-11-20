@@ -35,6 +35,8 @@ import BlogsIndex from "../pages/backend/blogs/BlogsIndex"
 import BlogEdit from "../pages/backend/blogs/BlogEdit"
 import BlogDetails from "../pages/backend/blogs/BlogDetails"
 
+import Options from "../pages/backend/options/Options"
+
 // Frontend
 import Frontend from "../pages/frontend";
 import CommingSoon from "../pages/frontend/CommingSoon";
@@ -228,6 +230,12 @@ const routes = [
         name: "blog.details",
         component: BlogDetails,
         props: true,
+    },
+    // (((((((((((((((((--Options--)))))))))))))))))
+    {
+        path: "/dashboard/options",
+        name: "options",
+        component: Options,
     },
 
     // [[[[[[[[[[[<<<<<<<<<<<<<<<<<<<<<<<<<<(((((((((((((((((--Front-End--)))))))))))))))))>>>>>>>>>>>>>>>>>>>>>>>>>>]]]]]]]]]]],
