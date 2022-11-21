@@ -1,16 +1,28 @@
 <template>
-    <div>
-        <swiper :navigation="true" :modules="modules" :loop="true" :effect="'fade'" :pagination="{
-            clickable: true,
-        }" :autoplay="{
-    delay: 2500,
-    disableOnInteraction: false,
-}" class="mySwiper">
-            <swiper-slide v-for="image in imgs" :key="image.id">
-                <img :src="'/images/tours/' + image.image" alt="image" class="w-full object-cover hero_img" />
-            </swiper-slide>
-        </swiper>
-    </div>
+  <div>
+    <swiper
+      :navigation="true"
+      :modules="modules"
+      :loop="true"
+      :effect="'fade'"
+      :pagination="{
+        clickable: true,
+      }"
+      :autoplay="{
+        delay: 2500,
+        disableOnInteraction: false,
+      }"
+      class="mySwiper"
+    >
+      <swiper-slide v-for="image in imgs" :key="image.id">
+        <img
+          :src="'/images/tours/' + image.image"
+          alt="image"
+          class="w-full object-cover hero_img"
+        />
+      </swiper-slide>
+    </swiper>
+  </div>
 </template>
 <script setup>
 // Import Swiper Vue.js components
@@ -23,31 +35,41 @@ import "swiper/css/effect-fade";
 import "swiper/css/pagination";
 
 import { Navigation, EffectFade, Pagination, Autoplay } from "swiper";
-const modules = [EffectFade, Navigation, Pagination, Autoplay]
-const props = defineProps({ imgs: Array })
-
-
+const modules = [EffectFade, Navigation, Pagination, Autoplay];
+const props = defineProps({ imgs: Array });
 </script>
 <style>
-/* .slide_img{
-    height: 15rem;
-} */
-/* Smartphones (portrait) */
-@media only screen and (max-width: 320px) {
-    .slide_img {
-            height: 20rem !important;
-        }
+.hero_img {
+  height: 25 !important;
 }
-
-/* iPads (portrait and landscape)  */
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
-    .slide_img {
-            height: 20rem !important;
-        }
+/* sm */
+@media (min-width: 640px) {
+  /* .hero_img {
+    height: 10vh !important;
+  } */
 }
-
-/* Desktops and laptops  */
-@media only screen and (min-width: 1224px) {
-    /* Styles */
+/* md */
+@media (min-width: 768px) {
+  .hero_img {
+    height: 60vh !important;
+  }
+}
+/* lg */
+@media (min-width: 1024px) {
+  .hero_img {
+    height: 60vh !important;
+  }
+}
+/* xl */
+@media (min-width: 1280px) {
+  .hero_img {
+    height: 60vh !important;
+  }
+}
+/* 2xl */
+@media (min-width: 1536px) {
+  /* .hero_img {
+    height: 45vh !important;
+  } */
 }
 </style>
