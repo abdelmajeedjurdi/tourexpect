@@ -1,7 +1,7 @@
 <template>
   <div class="">
     <div>
-      <SwiperSlider :imgs="tour.images" />
+      <SwiperSlider img_src="tours" :imgs="tour.images" />
     </div>
     <div
       class="
@@ -398,8 +398,6 @@ const calculatePrice = () => {
           100) *
         children.value;
   }
-
-  console.log(selected_option.value);
 };
 const setGuests = (person, num) => {
   if (person == "a") {

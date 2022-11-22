@@ -33,8 +33,6 @@ class PackageController extends Controller
     }
     public function getFilteredPacks(Request $request)
     {
-        Log::info($request);
-        // return Destination::where('slug', $request->d)->first('id')->id;
         if ($request->d == '*' && $request->c == '*')
             return PackageResource::collection(Package::paginate(9));
         if ($request->d == '*' && $request->c != '*') {
@@ -69,6 +67,7 @@ class PackageController extends Controller
                     'packages.thumbnail',
                     'packages.duration_en',
                     'packages.duration_ar',
+                    'packages.options',
                     'destinations.name_en as destination_en',
                     'destinations.name_ar as destination_ar'
                 )->where('countries.slug', '=', $request->destination)->paginate(12);
@@ -88,6 +87,7 @@ class PackageController extends Controller
                     'packages.thumbnail',
                     'packages.duration_en',
                     'packages.duration_ar',
+                    'packages.options as options',
                     'destinations.name_en as destination_en',
                     'destinations.name_ar as destination_ar'
                 )->where('destinations.slug', '=', $request->subdestination)->paginate(12);

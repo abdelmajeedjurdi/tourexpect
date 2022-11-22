@@ -370,11 +370,9 @@ const saveUser = () => {
     is_editing.value = false;
   } else {
     if (is_show_form.value) {
-      console.log("show");
       storeUser(new_user);
       is_show_form.value = false;
     } else {
-      console.log("not show");
       is_show_form.value = true;
     }
   }

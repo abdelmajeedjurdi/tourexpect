@@ -16,7 +16,7 @@
     >
       <swiper-slide v-for="image in imgs" :key="image.id">
         <img
-          :src="'/images/tours/' + image.image"
+          :src="`/images/${img_src}/${image.image}`"
           alt="image"
           class="w-full object-cover hero_img"
         />
@@ -36,7 +36,7 @@ import "swiper/css/pagination";
 
 import { Navigation, EffectFade, Pagination, Autoplay } from "swiper";
 const modules = [EffectFade, Navigation, Pagination, Autoplay];
-const props = defineProps({ imgs: Array });
+const props = defineProps({ imgs: Array, img_src: String });
 </script>
 <style>
 .hero_img {

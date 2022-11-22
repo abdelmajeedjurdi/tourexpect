@@ -35,7 +35,6 @@ export default function useGeneral() {
         } catch (e) {
             if (e.response.status === 422) {
                 // errors.value = e.response.data.errors;
-                console.log(e.response.data.errors);
             }
         }
     }

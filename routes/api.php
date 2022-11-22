@@ -44,7 +44,6 @@ Route::group(['middleware' => 'web'], function () {
 Route::get('all-categories', [CategoryController::class, 'index']);
 Route::get('categories-on-section', [CategoryController::class, 'getCategoriesOnSection']);
 Route::get('all-tours', [TourController::class, 'getAllTours']);
-Route::get('destination-tours', [TourController::class, 'getDestinationTours']);
 Route::get('all-activities', [ActivityController::class, 'getAllActivities']);
 Route::get('destination-tours', [TourController::class, 'getDestinationTours']);
 Route::get('all-hotels', [HotelController::class, 'getAllHotels']);
@@ -61,6 +60,7 @@ Route::get('category/{slug}', [CategoryController::class, 'getCategoryDetails'])
 Route::get('countries', [DestinationController::class, 'getCountries']);
 Route::get('countries-destinations', [DestinationController::class, 'getDestinationsOnCountry']);
 Route::get('tour/{slug}', [TourController::class, 'getTourDetails']);
+Route::get('single_package/{slug}', [PackageController::class, 'getPackageDetails']);
 Route::post('inquire', [ContactController::class, 'makeInquire']);
 Route::post('contact', [ContactController::class, 'makeContact']);
 Route::get('nav-destination', [GeneralController::class, 'destinations']);

@@ -23,7 +23,6 @@ export default function useUsers() {
 
     const getUsers = async (page) => {
         let response = await axios.get(`/api/users?page=${page}`);
-        console.log(users.value);
         users.value = response.data;
         // pages.value = response.data.meta
     };
@@ -31,7 +30,6 @@ export default function useUsers() {
 
     const getUser = async (id) => {
         let response = await axios.get("/api/users/" + id);
-        console.log(response);
         user.value = response.data;
     };
 
@@ -41,7 +39,6 @@ export default function useUsers() {
         fd.append("email", data.email);
         fd.append("password", data.password);
         fd.append("role", data.role);
-        console.log(data);
         errors.value = "";
         try {
             await axios.post("/api/users", fd);
