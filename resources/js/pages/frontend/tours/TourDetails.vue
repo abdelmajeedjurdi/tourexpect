@@ -50,7 +50,10 @@
             </div>
           </div>
         </div>
-        <div class="border rounded p-2">
+        <div
+          class="border rounded p-2"
+          v-if="tour['options'] != undefined && tour['options'].length"
+        >
           <h3 class="text-indigo-800 font-bold">{{ $t("tour_options") }}</h3>
           <div class="space-y-2 mt-4">
             <div
@@ -113,7 +116,7 @@
         </div>
 
         <itinerary
-          v-if="tour['itinerary'] && tour['itinerary'] != 'null'"
+          v-if="tour['itinerary'] != undefined && tour['itinerary'].length"
           class="border py-2 mt-3"
           :section_list="tour['itinerary']"
           section_title="itinerary"
@@ -240,8 +243,8 @@
                       dropdown-content
                       peer-hover:flex
                       hover:flex
-                      h-0
-                      w-0
+                      h-24
+                      w-60
                       flex-col
                       bg-white
                       drop-shadow-lg
@@ -375,6 +378,9 @@ const setOption = (opt, idx) => {
 };
 let original_price = ref(null);
 const calculatePrice = () => {
+  if (!selected_option.value) {
+    return;
+  }
   original_price.value =
     selected_option.value["adult_price"] * adults.value +
     selected_option.value["child_price"] * children.value;
@@ -410,6 +416,7 @@ const setGuests = (person, num) => {
 </script>
 <style>
 .dropdown-content {
+  display: none;
   position: absolute;
   z-index: 1;
   transition-duration: 500ms;
@@ -419,7 +426,7 @@ const setGuests = (person, num) => {
 .dropdown:hover .dropdown-content {
   display: flex;
   padding: 0.75rem;
-  height: 6rem;
-  width: 15rem;
+  /* height: 6rem;
+  width: 15rem; */
 }
 </style>

@@ -15,10 +15,10 @@ class CreateToursTable extends Migration
     {
         Schema::create('tours', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('category_id');
-            $table->bigInteger('destination_id');
-            $table->string('title_en');
-            $table->string('title_ar');
+            $table->bigInteger('category_id')->nullable();
+            $table->bigInteger('destination_id')->nullable();
+            $table->string('title_en')->nullable();
+            $table->string('title_ar')->nullable();
             $table->string('address_ar')->nullable();
             $table->string('address_en')->nullable();
             $table->longText('description_en')->nullable();

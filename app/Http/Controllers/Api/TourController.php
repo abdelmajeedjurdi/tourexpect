@@ -233,8 +233,8 @@ class TourController extends Controller
             $imageName = $request->tour_img;
         }
         $tour->update([
-            'category_id' => $request->category_id,
-            'destination_id' => $request->destination_id,
+            'category_id' => $request->category_id == 'null' ? null : $request->category_id,
+            'destination_id' => $request->destination_id == 'null' ? null : $request->destination_id,
             'title_en' => $request->title_en,
             'title_ar' => $request->title_ar,
             'address_ar' => $request->address_ar,
@@ -245,7 +245,7 @@ class TourController extends Controller
             'active' => $request->active == 'true' ? 1 : 0,
             'duration_en' => $request->duration_en,
             'duration_ar' => $request->duration_ar,
-            'max_number_of_people' => $request->max_number_of_people,
+            'max_number_of_people' => $request->max_number_of_people == 'null' ? null : $request->max_number_of_people,
             'include_en' => $request->include_en,
             'include_ar' => $request->include_ar,
             'exclude_en' => $request->exclude_en,

@@ -50,7 +50,13 @@
             </div>
           </div>
         </div>
-        <div class="border rounded p-2">
+        <div
+          v-if="
+            single_package['options'] != undefined &&
+            single_package['options'].length
+          "
+          class="border rounded p-2"
+        >
           <h3 class="text-indigo-800 font-bold">{{ $t("Package_options") }}</h3>
           <div class="space-y-2 mt-4">
             <div
@@ -116,7 +122,8 @@
 
         <itinerary
           v-if="
-            single_package['itinerary'] && single_package['itinerary'] != 'null'
+            single_package['itinerary'] != undefined &&
+            single_package['itinerary'].length
           "
           class="border py-2 mt-3"
           :section_list="single_package['itinerary']"
@@ -394,6 +401,9 @@ const setOption = (opt, idx) => {
 };
 let original_price = ref(null);
 const calculatePrice = () => {
+  if (!selected_option.value) {
+    return;
+  }
   original_price.value =
     selected_option.value["adult_price"] * adults.value +
     selected_option.value["child_price"] * children.value;
@@ -429,16 +439,19 @@ const setGuests = (person, num) => {
 </script>
 <style>
 .dropdown-content {
+  display: none;
   position: absolute;
   z-index: 1;
   transition-duration: 500ms;
   overflow: hidden;
+  height: 6rem;
+  width: 15rem;
 }
 
 .dropdown:hover .dropdown-content {
   display: flex;
   padding: 0.75rem;
-  height: 6rem;
-  width: 15rem;
+  /* height: 6rem;
+  width: 15rem; */
 }
 </style>

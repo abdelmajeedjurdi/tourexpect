@@ -24,8 +24,8 @@ class TourRequest extends FormRequest
     public function rules()
     {
         return [
-            'category_id' => ['required'],
-            'destination_id' => ['required'],
+            // 'category_id' => ['required'],
+            // 'destination_id' => ['required'],
             'title_en' => ['required'],
             'title_ar' => ['required'],
         ];
