@@ -19,9 +19,9 @@ class PackageResource extends JsonResource
         return [
             'id'  => $this->id,
             'slug'  => $this->slug,
-            'adult_price' => json_decode($this->options)[0]->adult_price,
-            'discount_type' => json_decode($this->options)[0]->option_discount_type,
-            'discount' => json_decode($this->options)[0]->option_discount,
+            'adult_price' => strlen($this->options) > 2 ? json_decode($this->options)[0]->adult_price : '',
+            'discount_type' => strlen($this->options) > 2 ? json_decode($this->options)[0]->option_discount_type : '',
+            'discount' => strlen($this->options) > 2 ? json_decode($this->options)[0]->option_discount : '',
             'category_id' => $this->category_id,
             'destination_id' => $this->destination_id,
             'destination' => Destination::where('id', $this->destination_id)->select('name_en', 'name_ar', 'id')->first(),
