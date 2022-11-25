@@ -93,11 +93,11 @@
           </div>
         </div>
       </div>
-      <div class="p-3 h-40 relative">
+      <div class="p-3 h-48 relative">
         <h3 class="text-lg text-black font-bold">
           {{
-            pack["title_" + lang].substring(0, 65) +
-            (pack["title_" + lang].length > 65 ? "..." : "")
+            pack["title_" + lang].substring(0, 40) +
+            (pack["title_" + lang].length > 40 ? "..." : "")
           }}
         </h3>
         <div
