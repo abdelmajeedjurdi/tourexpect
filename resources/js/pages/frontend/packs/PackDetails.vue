@@ -57,7 +57,7 @@
           "
           class="border rounded p-2"
         >
-          <h3 class="text-indigo-800 font-bold">{{ $t("Package_options") }}</h3>
+          <h3 class="text-indigo-800 font-bold">{{ $t("package_options") }}</h3>
           <div class="space-y-2 mt-4">
             <div
               v-for="(option, i) in single_package['options']"
@@ -136,7 +136,7 @@
           "
           class="border p-2 mt-3"
           :section_description="single_package['description_' + lang]"
-          section_title="Package_overview"
+          section_title="package_overview"
         />
         <list-section
           v-if="
@@ -145,7 +145,7 @@
           "
           class="border py-2 mt-3"
           :section_list="single_package['highlights_' + lang]"
-          section_title="Package_highlights"
+          section_title="package_highlights"
         />
         <list-section
           v-if="
@@ -154,7 +154,7 @@
           "
           class="border py-2 mt-3"
           :section_list="single_package['include_' + lang]"
-          section_title="Package_inclusion"
+          section_title="package_inclusion"
         />
         <list-section
           v-if="
@@ -163,7 +163,7 @@
           "
           class="border py-2 mt-3"
           :section_list="single_package['exclude_' + lang]"
-          section_title="Package_exclusion"
+          section_title="package_exclusion"
         />
         <list-section
           v-if="

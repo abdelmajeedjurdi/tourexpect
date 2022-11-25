@@ -64,5 +64,11 @@
     "timing_and_transfer":"التوقيت والتحويل",
     "policy":"السياسة",
     "terms_and_conditions":"الأحكام والشروط",
-    "notes":"ملاحظات"
+    "notes":"ملاحظات",
+    "package_options":"خيارات الجولة",
+    "itinerary":"Itinerary",
+    "package_overview":"نظرة عامة على الجولة",
+    "package_highlights":"مميزات الجولة",
+    "package_inclusion":"الجولة تشمل",
+    "package_exclusion":"الجولة لا تشمل"
 }

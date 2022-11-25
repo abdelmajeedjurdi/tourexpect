@@ -65,5 +65,11 @@
     "timing_and_transfer":"Timing and Transfer",
     "policy":"Policy",
     "terms_and_conditions":"Terms and Conditions",
-    "notes":"Notes"
+    "notes":"Notes",
+    "package_options":"Packages Options",
+    "itinerary":"Itinerary",
+    "package_overview":"Packages Overview",
+    "package_highlights":"Package Highlights",
+    "package_inclusion":"Package Inclusion",
+    "package_exclusion":"Package Exclusion"
 }
