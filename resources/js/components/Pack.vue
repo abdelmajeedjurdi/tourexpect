@@ -119,6 +119,7 @@
             absolute
             left-0
             right-0
+            py-2
             px-3
             overflow-hidden
             flex
@@ -127,19 +128,27 @@
             leading-relaxed
             text-indigo-800
             font-bold
-            mt-1
           "
         >
           <span class="flex">
             <span class="me-1"> {{ $t("from") }}</span>
-            <div>
-              <div
-                v-if="pack['discount']"
-                class="line-through text-gray-400 me-1"
-              >
+            <div v-if="pack['discount']">
+              <div class="line-through text-gray-400 me-1">
                 {{ pack["adult_price"] + "$" }}
               </div>
               <div class="text-gray-800 -mt-2">
+                {{
+                  pack["discount_type"] == "amount"
+                    ? pack["adult_price"] - pack["discount"]
+                    : (
+                        pack["adult_price"] -
+                        (pack["adult_price"] * pack["discount"]) / 100
+                      ).toFixed(2)
+                }}$
+              </div>
+            </div>
+            <div v-else>
+              <div class="text-gray-800">
                 {{
                   pack["discount_type"] == "amount"
                     ? pack["adult_price"] - pack["discount"]

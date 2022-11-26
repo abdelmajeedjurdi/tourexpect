@@ -1,9 +1,19 @@
 <template>
   <footer class="bg-blue-900 w-full">
     <!-- first layer -->
-    <div class="bg-indigo-50 w-full pt-1 pb-4">
-      <div class="max-w-3xl mx-auto">
-        <div class="w-full px-4">
+    <div
+      class="w-full h-96 bg-no-repeat bg-cover pt-16"
+      style="background-image: url('/images/newsletter-bg.png')"
+    >
+      <div class="max-w-4xl mx-auto flex">
+        <div class="hidden lg:block absolute left-32 -mt-32">
+          <img
+            src="/images/news-letter-img.png"
+            class="floating"
+            alt="news letter image"
+          />
+        </div>
+        <div class="w-full lg:w-1/2 xl:w-2/3 2xl:w-3/4 px-4 ms-auto">
           <h1
             class="
               text-xl
@@ -25,7 +35,7 @@
             class="
               text-base
               leading-normal
-              text-gray-600 text-center
+              text-gray-900 text-center
               xl:text-left
             "
           >
@@ -233,3 +243,24 @@ const menu_meue = ref([
   },
 ]);
 </script>
+<style>
+@keyframes Floating {
+  0% {
+    transform: translate(0px, 0px);
+  }
+  65% {
+    transform: translate(0px, 15px);
+  }
+  100% {
+    transform: translate(0px, 0px);
+  }
+}
+.floating {
+  float: left;
+  animation-name: Floating;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  top: 33rem;
+}
+</style>
