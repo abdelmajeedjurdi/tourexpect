@@ -93,28 +93,81 @@
           </div>
         </div>
       </div>
-      <div class="p-3 h-48 relative">
-        <h3 class="text-lg text-black font-bold">
-          {{
-            pack["title_" + lang].substring(0, 40) +
-            (pack["title_" + lang].length > 40 ? "..." : "")
-          }}
-        </h3>
+      <div class="h-72 relative">
+        <div class="items-center border-b mb-2 h-16 flex px-2">
+          <h3 class="text-lg text-black font-bold">
+            {{
+              pack["title_" + lang].substring(0, 50) +
+              (pack["title_" + lang].length > 50 ? "..." : "")
+            }}
+          </h3>
+        </div>
         <div
           class="
             overflow-hidden
             text-base text-body-color
             leading-relaxed
             text-gray-700
+            px-2
           "
         >
-          {{
+          <div class="grid gap-0 grid-cols-2">
+            <div
+              v-for="highlight in JSON.parse(pack['banner_highlights'])"
+              :key="highlight"
+              class="flex h-12"
+            >
+              <img
+                :src="'/images/icons/' + highlight['img']"
+                class="w-5"
+                style="fill: orange"
+                alt=""
+              />
+              <span class="flex items-center text-black text-xs font-bold">
+                {{ highlight["title_" + lang] }}</span
+              >
+            </div>
+          </div>
+          <!-- title_en img -->
+          <!-- {{
             pack["description_" + lang].substring(0, 60) +
             (pack["description_" + lang].length > 60 ? "..." : "")
-          }}
+          }} -->
+
+          <!-- <span class="flex mx-auto justify-center">
+            <span class="me-1 uppercase"> {{ $t("from") }}</span>
+            <div v-if="pack['discount']">
+              <div class="text-gray-800 text-2xl">
+                {{
+                  pack["discount_type"] == "amount"
+                    ? pack["adult_price"] - pack["discount"]
+                    : (
+                        pack["adult_price"] -
+                        (pack["adult_price"] * pack["discount"]) / 100
+                      ).toFixed(2)
+                }}$
+              </div>
+              <div class="line-through text-gray-400 me-1">
+                {{ pack["adult_price"] + "$" }}
+              </div>
+            </div>
+            <div v-else>
+              <div class="text-gray-800">
+                {{
+                  pack["discount_type"] == "amount"
+                    ? pack["adult_price"] - pack["discount"]
+                    : (
+                        pack["adult_price"] -
+                        (pack["adult_price"] * pack["discount"]) / 100
+                      ).toFixed(2)
+                }}$
+              </div>
+            </div>
+          </span> -->
         </div>
         <div
           class="
+            border-t
             bottom-0
             absolute
             left-0
@@ -130,37 +183,17 @@
             font-bold
           "
         >
-          <span class="flex">
-            <span class="me-1"> {{ $t("from") }}</span>
-            <div v-if="pack['discount']">
-              <div class="line-through text-gray-400 me-1">
-                {{ pack["adult_price"] + "$" }}
-              </div>
-              <div class="text-gray-800 -mt-2">
-                {{
-                  pack["discount_type"] == "amount"
-                    ? pack["adult_price"] - pack["discount"]
-                    : (
-                        pack["adult_price"] -
-                        (pack["adult_price"] * pack["discount"]) / 100
-                      ).toFixed(2)
-                }}$
-              </div>
-            </div>
-            <div v-else>
-              <div class="text-gray-800">
-                {{
-                  pack["discount_type"] == "amount"
-                    ? pack["adult_price"] - pack["discount"]
-                    : (
-                        pack["adult_price"] -
-                        (pack["adult_price"] * pack["discount"]) / 100
-                      ).toFixed(2)
-                }}$
-              </div>
-            </div>
-          </span>
-          <button class="px-4 h-8 bg-yellow-600 text-white rounded-lg">
+          <button
+            class="
+              px-4
+              h-8
+              bg-yellow-600
+              text-white
+              rounded-full
+              mx-auto
+              w-full
+            "
+          >
             {{ $t("book_now") }}
           </button>
         </div>
