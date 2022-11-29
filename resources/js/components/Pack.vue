@@ -111,7 +111,7 @@
             px-2
           "
         >
-          <div class="grid gap-0 grid-cols-2">
+          <div class="grid gap-0 grid-cols-2" v-if="pack['banner_highlights']">
             <div
               v-for="highlight in JSON.parse(pack['banner_highlights'])"
               :key="highlight"

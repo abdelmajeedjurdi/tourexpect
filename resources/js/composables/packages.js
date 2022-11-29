@@ -33,7 +33,8 @@ export default function usePackages() {
         pages.value = response.data.meta
     };
     const getFilteredPacks = async (filter) => {
-        let response = await axios.get(`/api/filtered-packs?d=${filter.destination}&c=${filter.category}&page=${filter.page}`);
+        console.log(filter.categories);
+        let response = await axios.get(`/api/filtered-packs?d=${JSON.stringify(filter.destinations)}&c=${JSON.stringify(filter.categories)}&page=${filter.page}`);
 
         packages.value = response.data.data;
         pages.value = response.data.meta

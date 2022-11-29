@@ -33,23 +33,26 @@ class PackageController extends Controller
     }
     public function getFilteredPacks(Request $request)
     {
-        if ($request->d == '*' && $request->c == '*')
+        Log::info($request->d);
+        $destinations = json_decode($request->d);
+        $categories = json_decode($request->c);
+        Log::info('working');
+        if (!count($categories) && !count($destinations))
             return PackageResource::collection(Package::paginate(9));
-        if ($request->d == '*' && $request->c != '*') {
-            $c_id = Category::where('slug', $request->c)->first('id')->id;
-            return PackageResource::collection(Package::where('category_id', $c_id)->paginate(9));
+        if (count($categories) && !count($destinations)) {
+            // $c_id = Category::where('slug', $request->c)->first('id')->id;
+            return PackageResource::collection(Package::whereIn('category_id', $categories)->paginate(9));
         }
-        if ($request->c == '*' && $request->d != '*') {
-            $d_id = Destination::where('slug', $request->d)->first('id')->id;
-            return PackageResource::collection(Package::where('destination_id', $d_id)->paginate(9));
+        if (!count($categories) && count($destinations)) {
+            // $d_id = Destination::where('slug', $request->d)->first('id')->id;
+            return PackageResource::collection(Package::whereIn('destination_id', $destinations)->paginate(9));
         }
-        $d_id = Destination::where('slug', $request->d)->first('id')->id;
-        $c_id = Category::where('slug', $request->c)->first('id')->id;
         return
-            PackageResource::collection(Package::where('destination_id', $d_id)->where('category_id', $c_id)->paginate(9));
+            PackageResource::collection(Package::whereIn('destination_id', $destinations)->whereIn('category_id', $categories)->paginate(9));
     }
     public function getDestinationPacks(Request $request)
     {
+
         if ($request->subdestination == 'null') {
             $all = DB::table('countries')
                 ->join('destinations', 'countries.id', '=', 'destinations.country_id')

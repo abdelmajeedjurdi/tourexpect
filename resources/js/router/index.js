@@ -56,6 +56,7 @@ import Activities from "../pages/frontend/activities/Activities"
 import DestinationActivites from "../pages/frontend/activities/DestinationActivities"
 import SubDestinationActivites from "../pages/frontend/activities/SubDestinationActivities"
 import Packages from "../pages/frontend/packs/Packs"
+import temp from "../pages/frontend/packs/temp"
 import DestinationPacks from "../pages/frontend/packs/DestinationPacks"
 import SubDestinationPacks from "../pages/frontend/packs/SubDestinationPacks"
 import Test from "../pages/backend/Test.vue";
@@ -320,6 +321,12 @@ const routes = [
         path: "/packages",
         name: "packages",
         component: Packages,
+    },
+
+    {
+        path: "/temp",
+        name: "temp",
+        component: temp,
     },
     {
         path: "/packages/:destination",

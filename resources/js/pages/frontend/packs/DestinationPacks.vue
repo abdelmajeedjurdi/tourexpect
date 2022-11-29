@@ -162,7 +162,6 @@
       >
         <div v-for="pack in packages" :key="pack.id">
           <PackVue :pack="pack" />
-          <!-- <p>{{ pack }}</p> -->
         </div>
       </div>
       <!-- pagenation -->
