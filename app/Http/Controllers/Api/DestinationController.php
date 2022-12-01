@@ -150,6 +150,7 @@ class DestinationController extends Controller
      */
     public function destroy(Destination $destination)
     {
+        DB::table('package_destination')->where('destination_id', '=', $destination->id)->delete();
         if ($destination->image !== 'default.jpg' && $destination->image !== '')
             unlink('images/destinations/' . $destination->image);
         $destination->delete();

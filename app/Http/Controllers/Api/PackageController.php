@@ -33,22 +33,47 @@ class PackageController extends Controller
     }
     public function getFilteredPacks(Request $request)
     {
-        Log::info($request->d);
         $destinations = json_decode($request->d);
         $categories = json_decode($request->c);
-        Log::info('working');
+
+        // if both categories and destinations are empty
         if (!count($categories) && !count($destinations))
             return PackageResource::collection(Package::paginate(9));
+
+        // if destinations is empty and categories is not empty
         if (count($categories) && !count($destinations)) {
-            // $c_id = Category::where('slug', $request->c)->first('id')->id;
-            return PackageResource::collection(Package::whereIn('category_ids', $categories)->paginate(9));
+            $all = DB::table('packages')
+                ->join('package_category as pc', 'packages.id', '=', 'pc.package_id')
+                ->join('categories', 'pc.category_id', '=', 'categories.id')
+                ->whereIn('categories.id', $categories)->select(
+                    'packages.*',
+                )->distinct()->paginate(12);
+            return PackageResource::collection($all);
         }
+
+        // if categories is empty and destination is not empty
         if (!count($categories) && count($destinations)) {
-            // $d_id = Destination::where('slug', $request->d)->first('id')->id;
-            return PackageResource::collection(Package::whereIn('destination_ids', $destinations)->paginate(9));
+            $all = DB::table('packages')
+                ->join('package_destination as pd', 'packages.id', '=', 'pd.package_id')
+                ->join('destinations', 'pd.destination_id', '=', 'destinations.id')
+                ->whereIn('destinations.id', $destinations)->select(
+                    'packages.*',
+                )->distinct()->paginate(12);
+            return PackageResource::collection($all);
         }
-        return
-            PackageResource::collection(Package::whereIn('destination_ids', $destinations)->whereIn('category_ids', $categories)->paginate(9));
+
+        // if non of categories and destinations are empty
+        $all = DB::table('packages')
+            ->join('package_destination as pd', 'packages.id', '=', 'pd.package_id')
+            ->join('destinations', 'pd.destination_id', '=', 'destinations.id')
+
+            ->join('package_category as pc', 'packages.id', '=', 'pc.package_id')
+            ->join('categories', 'pc.category_id', '=', 'categories.id')
+
+            ->whereIn('destinations.id', $destinations)->whereIn('categories.id', $categories)->select(
+                'packages.*',
+            )->distinct()->paginate(12);
+        return PackageResource::collection($all);
     }
     public function getDestinationPacks(Request $request)
     {
@@ -167,6 +192,21 @@ class PackageController extends Controller
         $package->save();
 
 
+        $categories = json_decode($request->category_ids);
+        for ($i = 0; $i < count($categories); $i++) {
+            DB::table('package_category')->insert([
+                'category_id' => $categories[$i],
+                'package_id' => $package->id
+            ]);
+        }
+
+        $destinations = json_decode($request->destination_ids);
+        for ($i = 0; $i < count($destinations); $i++) {
+            DB::table('package_destination')->insert([
+                'destination_id' => $destinations[$i],
+                'package_id' => $package->id
+            ]);
+        }
         if ($request->hasFile('images')) {
 
             foreach ($request->file('images') as $file) {
@@ -210,7 +250,6 @@ class PackageController extends Controller
      */
     public function update(PackageRequest $request, Package $package)
     {
-        Log::info($request);
         $path = 'images/packages/';
         //code for remove old image
         if ($request->new_image != 'null' && $request->new_image != 'default.jpg') {
@@ -263,6 +302,25 @@ class PackageController extends Controller
             'thumbnail' =>  $imageName,
             'slug' => Str::slug($request->title_en, '-')
         ]);
+
+        DB::table('package_category')->where('package_id', '=', $request->id)->delete();
+        $categories = json_decode($request->category_ids);
+        for ($i = 0; $i < count($categories); $i++) {
+            DB::table('package_category')->insert([
+                'category_id' => $categories[$i],
+                'package_id' => $package->id
+            ]);
+        }
+
+        DB::table('package_destination')->where('package_id', '=', $request->id)->delete();
+        $destinations = json_decode($request->destination_ids);
+        for ($i = 0; $i < count($destinations); $i++) {
+            DB::table('package_destination')->insert([
+                'destination_id' => $destinations[$i],
+                'package_id' => $package->id
+            ]);
+        }
+
         if ($request->hasFile('images')) {
 
             foreach ($request->file('images') as $file) {
@@ -305,6 +363,9 @@ class PackageController extends Controller
      */
     public function destroy($id)
     {
+        DB::table('package_category')->where('package_id', '=', $id)->delete();
+        DB::table('package_destination')->where('package_id', '=', $id)->delete();
+
         $package = Package::find($id);
         if ($package->thumbnail !== 'default.jpg' && $package->thumbnail !== '')
             unlink('images/packages/' . $package->thumbnail);
@@ -316,6 +377,7 @@ class PackageController extends Controller
         $package->delete();
         return;
     }
+
     public function dublicate($id)
     {
         $request = Package::where('id', $id)->first();

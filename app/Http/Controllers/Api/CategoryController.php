@@ -9,6 +9,7 @@ use App\Http\Resources\TourResource;
 use App\Models\Category;
 use App\Models\Tour;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 
@@ -129,6 +130,8 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
+
+        DB::table('package_category')->where('category_id', '=', $category->id)->delete();
         if ($category->image !== 'default.jpg' && $category->image !== '')
             unlink('images/categories/' . $category->image);
         $category->delete();
