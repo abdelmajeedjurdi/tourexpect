@@ -1876,15 +1876,108 @@
         "
         style="height: 95vh"
       >
-        <div>
+        <!-- <div>
           <searchable-dropdown
             component_id="categories"
             :options="categories"
             @selected="selectCategory($event)"
             class="mt-6 me-2"
           />
+        </div> -->
+
+        <!-- categories filter -->
+        <div class="border-b border-gray-200 py-6">
+          <label
+            for="max_number_of_people"
+            class="
+              block
+              font-medium
+              w-full
+              text-left text-gray-700
+              dark:text-gray-200
+              mb-2
+            "
+          >
+            Categories</label
+          >
+          <div id="filter-section-1">
+            <div class="space-y-4">
+              <div
+                class="flex items-center"
+                v-for="category in categories"
+                :key="category.id"
+              >
+                <input
+                  :id="category['name_en']"
+                  :name="category['name_en']"
+                  :value="category.id"
+                  type="checkbox"
+                  v-model="form.category_ids"
+                  class="
+                    h-4
+                    w-4
+                    rounded
+                    border-gray-300
+                    text-indigo-600
+                    focus:ring-indigo-500
+                  "
+                />
+                <label
+                  :for="category['name_en']"
+                  class="ml-3 text-sm text-white"
+                  >{{ category["name_en"] }}</label
+                >
+              </div>
+            </div>
+          </div>
         </div>
-        <div>
+        <div class="border-b border-gray-200 py-6">
+          <label
+            for="max_number_of_people"
+            class="
+              block
+              font-medium
+              w-full
+              text-left text-gray-700
+              dark:text-gray-200
+              mb-2
+            "
+          >
+            Destinations</label
+          >
+          <div id="filter-section-1">
+            <div class="space-y-4">
+              <div
+                class="flex items-center"
+                v-for="destination in destinations"
+                :key="destination.id"
+              >
+                <input
+                  :id="destination['name_en']"
+                  :name="destination['name_en']"
+                  :value="destination.id"
+                  type="checkbox"
+                  v-model="form.destination_ids"
+                  class="
+                    h-4
+                    w-4
+                    rounded
+                    border-gray-300
+                    text-indigo-600
+                    focus:ring-indigo-500
+                  "
+                />
+                <label
+                  :for="destination['name_en']"
+                  class="ml-3 text-sm text-white"
+                  >{{ destination["name_en"] }}</label
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- <div>
           <searchable-dropdown
             component_placeholder="Select Destination"
             component_id="destinations"
@@ -1892,7 +1985,7 @@
             @selected="selectDestination($event)"
             class="mt-6 me-2"
           />
-        </div>
+        </div> -->
         <div class="w-full me-2 mt-2">
           <label
             for="max_number_of_people"
@@ -2101,8 +2194,8 @@ import UploadImages from "vue-upload-drop-images";
 import useGeneral from "../../../composables/general";
 
 const form = reactive({
-  category_id: "",
-  destination_id: "",
+  category_ids: [],
+  destination_ids: [],
   title_en: "",
   title_ar: "",
   address_ar: "",
@@ -2172,7 +2265,11 @@ function onFileSelected(event) {
 }
 
 const selectCategory = (category_id) => {
-  form.category_id = category_id;
+  console.log(ctg);
+  for (let i in form.category_ids) {
+    if (form.category_ids[i] == ctg) return;
+  }
+  form.category_ids.push(category_id);
 };
 const selectDestination = (destination_id) => {
   form.destination_id = destination_id;

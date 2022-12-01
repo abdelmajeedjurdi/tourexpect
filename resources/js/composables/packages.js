@@ -58,6 +58,8 @@ export default function usePackages() {
         single_package.value['banner_highlights'] = JSON.parse(single_package.value['banner_highlights'])
         single_package.value['options'] = JSON.parse(single_package.value['options'])
         single_package.value['itinerary'] = JSON.parse(single_package.value['itinerary'])
+        single_package.value['category_ids'] = JSON.parse(single_package.value['category_ids'])
+        single_package.value['destination_ids'] = JSON.parse(single_package.value['destination_ids'])
     };
     const getPackageDetails = async (slug) => {
         let response = await axios.get("/api/single_package/" + slug);
@@ -68,8 +70,8 @@ export default function usePackages() {
     };
 
     const storePackage = async (data) => {
-        fd.append("category_id", data.form.category_id);
-        fd.append("destination_id", data.form.destination_id);
+        fd.append("category_ids", JSON.stringify(data.form.category_ids));
+        fd.append("destination_ids", JSON.stringify(data.form.destination_ids));
         fd.append("title_en", data.form.title_en);
         fd.append("title_ar", data.form.title_ar);
         fd.append("description_en", data.form.description_en);
@@ -129,8 +131,8 @@ export default function usePackages() {
 
     const updatePackage = async (id, data) => {
         fd.append("_method", "patch");
-        fd.append("category_id", data.form.category_id);
-        fd.append("destination_id", data.form.destination_id);
+        fd.append("category_ids", JSON.stringify(data.form.category_ids));
+        fd.append("destination_ids", JSON.stringify(data.form.destination_ids));
         fd.append("title_en", data.form.title_en);
         fd.append("title_ar", data.form.title_ar);
         fd.append("description_en", data.form.description_en);

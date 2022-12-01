@@ -1924,7 +1924,7 @@
         "
         style="height: 95vh"
       >
-        <div
+        <!-- <div
           v-if="categories.length && single_package['category_id']"
           class="me-2"
         >
@@ -1947,8 +1947,98 @@
             @selected="selectDestination($event)"
             class="mt-6 me-2"
           />
-        </div>
+        </div> -->
 
+        <div class="border-b border-gray-200 py-6">
+          <label
+            for="max_number_of_people"
+            class="
+              block
+              font-medium
+              w-full
+              text-left text-gray-700
+              dark:text-gray-200
+              mb-2
+            "
+          >
+            Categories</label
+          >
+          <div id="filter-section-1">
+            <div class="space-y-4">
+              <div
+                class="flex items-center"
+                v-for="category in categories"
+                :key="category.id"
+              >
+                <input
+                  :id="category['name_en']"
+                  :name="category['name_en']"
+                  :value="category.id"
+                  type="checkbox"
+                  v-model="single_package.category_ids"
+                  class="
+                    h-4
+                    w-4
+                    rounded
+                    border-gray-300
+                    text-indigo-600
+                    focus:ring-indigo-500
+                  "
+                />
+                <label
+                  :for="category['name_en']"
+                  class="ml-3 text-sm text-white"
+                  >{{ category["name_en"] }}</label
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="border-b border-gray-200 py-6">
+          <label
+            for="max_number_of_people"
+            class="
+              block
+              font-medium
+              w-full
+              text-left text-gray-700
+              dark:text-gray-200
+              mb-2
+            "
+          >
+            Destinations</label
+          >
+          <div id="filter-section-1">
+            <div class="space-y-4">
+              <div
+                class="flex items-center"
+                v-for="destination in destinations"
+                :key="destination.id"
+              >
+                <input
+                  :id="destination['name_en']"
+                  :name="destination['name_en']"
+                  :value="destination.id"
+                  type="checkbox"
+                  v-model="single_package.destination_ids"
+                  class="
+                    h-4
+                    w-4
+                    rounded
+                    border-gray-300
+                    text-indigo-600
+                    focus:ring-indigo-500
+                  "
+                />
+                <label
+                  :for="destination['name_en']"
+                  class="ml-3 text-sm text-white"
+                  >{{ destination["name_en"] }}</label
+                >
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="w-full me-2 mt-2">
           <label
             for="max_number_of_people"

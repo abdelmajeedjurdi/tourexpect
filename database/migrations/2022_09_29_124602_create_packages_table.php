@@ -15,8 +15,8 @@ class CreatePackagesTable extends Migration
     {
         Schema::create('packages', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('category_id')->nullable();
-            $table->bigInteger('destination_id')->nullable();
+            $table->json('category_ids')->nullable();
+            $table->json('destination_ids')->nullable();
             $table->string('title_en')->nullable();
             $table->string('title_ar')->nullable();
             $table->string('address_ar')->nullable();

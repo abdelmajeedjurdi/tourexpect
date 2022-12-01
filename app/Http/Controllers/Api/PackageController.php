@@ -41,14 +41,14 @@ class PackageController extends Controller
             return PackageResource::collection(Package::paginate(9));
         if (count($categories) && !count($destinations)) {
             // $c_id = Category::where('slug', $request->c)->first('id')->id;
-            return PackageResource::collection(Package::whereIn('category_id', $categories)->paginate(9));
+            return PackageResource::collection(Package::whereIn('category_ids', $categories)->paginate(9));
         }
         if (!count($categories) && count($destinations)) {
             // $d_id = Destination::where('slug', $request->d)->first('id')->id;
-            return PackageResource::collection(Package::whereIn('destination_id', $destinations)->paginate(9));
+            return PackageResource::collection(Package::whereIn('destination_ids', $destinations)->paginate(9));
         }
         return
-            PackageResource::collection(Package::whereIn('destination_id', $destinations)->whereIn('category_id', $categories)->paginate(9));
+            PackageResource::collection(Package::whereIn('destination_ids', $destinations)->whereIn('category_ids', $categories)->paginate(9));
     }
     public function getDestinationPacks(Request $request)
     {
@@ -56,10 +56,10 @@ class PackageController extends Controller
         if ($request->subdestination == 'null') {
             $all = DB::table('countries')
                 ->join('destinations', 'countries.id', '=', 'destinations.country_id')
-                ->join('packages', 'destinations.id', '=', 'packages.destination_id')
+                ->join('packages', 'destinations.id', '=', 'packages.destination_ids')
                 ->select(
                     'packages.id',
-                    'packages.destination_id',
+                    'packages.destination_ids',
                     'packages.title_en',
                     'packages.title_ar',
                     'packages.address_ar',
@@ -76,10 +76,10 @@ class PackageController extends Controller
                 )->where('countries.slug', '=', $request->destination)->paginate(12);
         } else {
             $all = DB::table('destinations')
-                ->join('packages', 'destinations.id', '=', 'packages.destination_id')
+                ->join('packages', 'destinations.id', '=', 'packages.destination_ids')
                 ->select(
                     'packages.id',
-                    'packages.destination_id',
+                    'packages.destination_ids',
                     'packages.title_en',
                     'packages.title_ar',
                     'packages.address_ar',
@@ -127,8 +127,8 @@ class PackageController extends Controller
         }
 
         $package = new Package();
-        $package->category_id = $request->category_id;
-        $package->destination_id = $request->destination_id;
+        $package->category_ids = $request->category_ids;
+        $package->destination_ids = $request->destination_ids;
         $package->title_en = $request->title_en;
         $package->title_ar = $request->title_ar;
         $package->description_en = $request->description_en;
@@ -227,8 +227,8 @@ class PackageController extends Controller
             $imageName = $request->package_img;
         }
         $package->update([
-            'category_id' => $request->category_id == 'null' ? null : $request->category_id,
-            'destination_id' => $request->destination_id == 'null' ? null : $request->destination_id,
+            'category_ids' => $request->category_ids, // == 'null' ? null : $request->category_ids,
+            'destination_ids' => $request->destination_ids, // == 'null' ? null : $request->destination_ids,
             'title_en' => $request->title_en,
             'title_ar' => $request->title_ar,
             'address_ar' => $request->address_ar,
@@ -320,8 +320,8 @@ class PackageController extends Controller
     {
         $request = Package::where('id', $id)->first();
         $package = new Package();
-        $package->category_id = $request->category_id;
-        $package->destination_id = $request->destination_id;
+        $package->category_ids = $request->category_ids;
+        $package->destination_ids = $request->destination_ids;
         $package->title_en = $request->title_en;
         $package->title_ar = $request->title_ar;
         $package->description_en = $request->description_en;
