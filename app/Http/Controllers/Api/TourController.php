@@ -41,21 +41,49 @@ class TourController extends Controller
     public function getFilteredTours(Request $request)
     {
         Log::info($request);
-        // return Destination::where('slug', $request->d)->first('id')->id;
-        if ($request->d == '*' && $request->c == '*')
+        $destinations = json_decode($request->d);
+        $categories = json_decode($request->c);
+
+        // if both categories and destinations are empty
+        if (!count($categories) && !count($destinations))
             return TourResource::collection(Tour::paginate(9));
-        if ($request->d == '*' && $request->c != '*') {
-            $c_id = Category::where('slug', $request->c)->first('id')->id;
-            return TourResource::collection(Tour::where('category_id', $c_id)->paginate(9));
+
+        // if destinations is empty and categories is not empty
+        if (count($categories) && !count($destinations)) {
+
+            $all = DB::table('tours')
+                ->join('tour_category as tc', 'tours.id', '=', 'tc.tour_id')
+                ->join('categories', 'tc.category_id', '=', 'categories.id')
+                ->whereIn('categories.id', $categories)->select(
+                    'tours.*',
+                )->distinct()->paginate(12);
+            return TourResource::collection($all);
         }
-        if ($request->c == '*' && $request->d != '*') {
-            $d_id = Destination::where('slug', $request->d)->first('id')->id;
-            return TourResource::collection(Tour::where('destination_id', $d_id)->paginate(9));
+
+        // if categories is empty and destination is not empty
+        if (!count($categories) && count($destinations)) {
+
+            $all = DB::table('tours')
+                ->join('tour_destination as td', 'tours.id', '=', 'td.tour_id')
+                ->join('destinations', 'td.destination_id', '=', 'destinations.id')
+                ->whereIn('destinations.id', $destinations)->select(
+                    'tours.*',
+                )->distinct()->paginate(12);
+            return TourResource::collection($all);
         }
-        $d_id = Destination::where('slug', $request->d)->first('id')->id;
-        $c_id = Category::where('slug', $request->c)->first('id')->id;
-        return
-            TourResource::collection(Tour::where('destination_id', $d_id)->where('category_id', $c_id)->paginate(9));
+
+        // if non of categories and destinations are empty
+        $all = DB::table('tours')
+            ->join('tour_destination as td', 'tours.id', '=', 'td.tour_id')
+            ->join('destinations', 'td.destination_id', '=', 'destinations.id')
+
+            ->join('tour_category as tc', 'tours.id', '=', 'tc.tour_id')
+            ->join('categories', 'tc.category_id', '=', 'categories.id')
+
+            ->whereIn('destinations.id', $destinations)->whereIn('categories.id', $categories)->select(
+                'tours.*',
+            )->distinct()->paginate(12);
+        return TourResource::collection($all);
     }
     public function getDestinationTours(Request $request)
     {
@@ -64,10 +92,10 @@ class TourController extends Controller
         if ($request->subdestination == 'null') {
             $all = DB::table('countries')
                 ->join('destinations', 'countries.id', '=', 'destinations.country_id')
-                ->join('tours', 'destinations.id', '=', 'tours.destination_id')
+                ->join('tours', 'destinations.id', '=', 'tours.destination_ids')
                 ->select(
                     'tours.id',
-                    'tours.destination_id',
+                    'tours.destination_ids',
                     'tours.title_en',
                     'tours.title_ar',
                     'tours.address_ar',
@@ -83,10 +111,10 @@ class TourController extends Controller
                 )->where('countries.slug', '=', $request->destination)->paginate(12);
         } else {
             $all = DB::table('destinations')
-                ->join('tours', 'destinations.id', '=', 'tours.destination_id')
+                ->join('tours', 'destinations.id', '=', 'tours.destination_ids')
                 ->select(
                     'tours.id',
-                    'tours.destination_id',
+                    'tours.destination_ids',
                     'tours.title_en',
                     'tours.title_ar',
                     'tours.address_ar',
@@ -122,7 +150,7 @@ class TourController extends Controller
      */
     public function store(TourRequest $request)
     {
-        Log::info(json_decode($request['banner_highlights']));
+        Log::info($request);
         if ($request->hasFile('image')) {
             $image = $request->image;
             $imageName = $image->getClientOriginalName();
@@ -133,8 +161,8 @@ class TourController extends Controller
         }
 
         $tour = new Tour();
-        $tour->category_id = $request->category_id;
-        $tour->destination_id = $request->destination_id;
+        $tour->category_ids = $request->category_ids;
+        $tour->destination_ids = $request->destination_ids;
         $tour->title_en = $request->title_en;
         $tour->title_ar = $request->title_ar;
         $tour->description_en = $request->description_en;
@@ -171,6 +199,22 @@ class TourController extends Controller
 
         $tour->save();
 
+
+        $categories = json_decode($request->category_ids);
+        for ($i = 0; $i < count($categories); $i++) {
+            DB::table('tour_category')->insert([
+                'category_id' => $categories[$i],
+                'tour_id' => $tour->id
+            ]);
+        }
+
+        $destinations = json_decode($request->destination_ids);
+        for ($i = 0; $i < count($destinations); $i++) {
+            DB::table('tour_destination')->insert([
+                'destination_id' => $destinations[$i],
+                'tour_id' => $tour->id
+            ]);
+        }
 
         if ($request->hasFile('images')) {
 
@@ -215,7 +259,7 @@ class TourController extends Controller
      */
     public function update(TourRequest $request, Tour $tour)
     {
-        Log::info($request);
+        Log::info($tour);
 
         $path = 'images/tours/';
         //code for remove old image
@@ -233,8 +277,8 @@ class TourController extends Controller
             $imageName = $request->tour_img;
         }
         $tour->update([
-            'category_id' => $request->category_id == 'null' ? null : $request->category_id,
-            'destination_id' => $request->destination_id == 'null' ? null : $request->destination_id,
+            'category_ids' => $request->category_ids, // == 'null' ? null : $request->category_ids,
+            'destination_ids' => $request->destination_ids, // == 'null' ? null : $request->destination_ids,
             'title_en' => $request->title_en,
             'title_ar' => $request->title_ar,
             'address_ar' => $request->address_ar,
@@ -269,6 +313,26 @@ class TourController extends Controller
             'thumbnail' =>  $imageName,
             'slug' => Str::slug($request->title_en, '-')
         ]);
+
+        DB::table('tour_category')->where('tour_id', '=', $tour->id)->delete();
+        $categories = json_decode($request->category_ids);
+        for ($i = 0; $i < count($categories); $i++) {
+            DB::table('tour_category')->insert([
+                'category_id' => $categories[$i],
+                'tour_id' => $tour->id
+            ]);
+        }
+
+        DB::table('tour_destination')->where('tour_id', '=', $tour->id)->delete();
+        $destinations = json_decode($request->destination_ids);
+        for ($i = 0; $i < count($destinations); $i++) {
+            DB::table('tour_destination')->insert([
+                'destination_id' => $destinations[$i],
+                'tour_id' => $tour->id
+            ]);
+        }
+
+
         if ($request->hasFile('images')) {
 
             foreach ($request->file('images') as $file) {
@@ -327,8 +391,8 @@ class TourController extends Controller
     {
         $request = Tour::where('id', $id)->first();
         $tour = new Tour();
-        $tour->category_id = $request->category_id;
-        $tour->destination_id = $request->destination_id;
+        $tour->category_ids = $request->category_ids;
+        $tour->destination_ids = $request->destination_ids;
         $tour->title_en = $request->title_en;
         $tour->title_ar = $request->title_ar;
         $tour->description_en = $request->description_en;

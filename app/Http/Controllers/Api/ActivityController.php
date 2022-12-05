@@ -37,21 +37,50 @@ class ActivityController extends Controller
     }
     public function getFilteredActivities(Request $request)
     {
-        // return Destination::where('slug', $request->d)->first('id')->id;
-        if ($request->d == '*' && $request->c == '*')
+        Log::info($request);
+        $destinations = json_decode($request->d);
+        $categories = json_decode($request->c);
+
+        // if both categories and destinations are empty
+        if (!count($categories) && !count($destinations))
             return ActivityResource::collection(Activity::paginate(9));
-        if ($request->d == '*' && $request->c != '*') {
-            $c_id = Category::where('slug', $request->c)->first('id')->id;
-            return ActivityResource::collection(Activity::where('category_id', $c_id)->paginate(9));
+
+        // if destinations is empty and categories is not empty
+        if (count($categories) && !count($destinations)) {
+
+            $all = DB::table('activities')
+                ->join('activity_category as ac', 'activities.id', '=', 'ac.activity_id')
+                ->join('categories', 'ac.category_id', '=', 'categories.id')
+                ->whereIn('categories.id', $categories)->select(
+                    'activities.*',
+                )->distinct()->paginate(12);
+            return ActivityResource::collection($all);
         }
-        if ($request->c == '*' && $request->d != '*') {
-            $d_id = Destination::where('slug', $request->d)->first('id')->id;
-            return ActivityResource::collection(Activity::where('destination_id', $d_id)->paginate(9));
+
+        // if categories is empty and destination is not empty
+        if (!count($categories) && count($destinations)) {
+
+            $all = DB::table('activities')
+                ->join('activity_destination as ad', 'activities.id', '=', 'ad.activity_id')
+                ->join('destinations', 'ad.destination_id', '=', 'destinations.id')
+                ->whereIn('destinations.id', $destinations)->select(
+                    'activities.*',
+                )->distinct()->paginate(12);
+            return ActivityResource::collection($all);
         }
-        $d_id = Destination::where('slug', $request->d)->first('id')->id;
-        $c_id = Category::where('slug', $request->c)->first('id')->id;
-        return
-            ActivityResource::collection(Activity::where('destination_id', $d_id)->where('category_id', $c_id)->paginate(9));
+
+        // if non of categories and destinations are empty
+        $all = DB::table('activities')
+            ->join('activity_destination as ad', 'activities.id', '=', 'ad.activity_id')
+            ->join('destinations', 'ad.destination_id', '=', 'destinations.id')
+
+            ->join('activity_category as tc', 'activities.id', '=', 'tc.activity_id')
+            ->join('categories', 'tc.category_id', '=', 'categories.id')
+
+            ->whereIn('destinations.id', $destinations)->whereIn('categories.id', $categories)->select(
+                'activities.*',
+            )->distinct()->paginate(12);
+        return ActivityResource::collection($all);
     }
     public function getDestinationActivities(Request $request)
     {
@@ -60,10 +89,10 @@ class ActivityController extends Controller
         if ($request->subdestination == 'null') {
             $all = DB::table('countries')
                 ->join('destinations', 'countries.id', '=', 'destinations.country_id')
-                ->join('activities', 'destinations.id', '=', 'activities.destination_id')
+                ->join('activities', 'destinations.id', '=', 'activities.destination_ids')
                 ->select(
                     'activities.id',
-                    'activities.destination_id',
+                    'activities.destination_ids',
                     'activities.title_en',
                     'activities.title_ar',
                     'activities.address_ar',
@@ -79,10 +108,10 @@ class ActivityController extends Controller
                 )->where('countries.slug', '=', $request->destination)->paginate(12);
         } else {
             $all = DB::table('destinations')
-                ->join('activities', 'destinations.id', '=', 'activities.destination_id')
+                ->join('activities', 'destinations.id', '=', 'activities.destination_ids')
                 ->select(
                     'activities.id',
-                    'activities.destination_id',
+                    'activities.destination_ids',
                     'activities.title_en',
                     'activities.title_ar',
                     'activities.address_ar',
@@ -129,8 +158,8 @@ class ActivityController extends Controller
         }
 
         $activity = new Activity();
-        $activity->category_id = $request->category_id;
-        $activity->destination_id = $request->destination_id;
+        $activity->category_ids = $request->category_ids;
+        $activity->destination_ids = $request->destination_ids;
         $activity->title_en = $request->title_en;
         $activity->title_ar = $request->title_ar;
         $activity->description_en = $request->description_en;
@@ -167,7 +196,21 @@ class ActivityController extends Controller
 
 
         $activity->save();
+        $categories = json_decode($request->category_ids);
+        for ($i = 0; $i < count($categories); $i++) {
+            DB::table('activity_category')->insert([
+                'category_id' => $categories[$i],
+                'activity_id' => $activity->id
+            ]);
+        }
 
+        $destinations = json_decode($request->destination_ids);
+        for ($i = 0; $i < count($destinations); $i++) {
+            DB::table('activity_destination')->insert([
+                'destination_id' => $destinations[$i],
+                'activity_id' => $activity->id
+            ]);
+        }
 
         if ($request->hasFile('images')) {
 
@@ -179,7 +222,6 @@ class ActivityController extends Controller
                 ActivityImage::create([
                     'activity_id' => $activity->id,
                     'image' => $imageName,
-                    // 'created_at' => Carbon::now()
                 ]);
             }
         }
@@ -229,8 +271,8 @@ class ActivityController extends Controller
             $imageName = $request->activity_img;
         }
         $activity->update([
-            'category_id' => $request->category_id,
-            'destination_id' => $request->destination_id,
+            'category_ids' => $request->category_ids,
+            'destination_ids' => $request->destination_ids,
             'title_en' => $request->title_en,
             'title_ar' => $request->title_ar,
             'address_ar' => $request->address_ar,
@@ -265,6 +307,25 @@ class ActivityController extends Controller
             'thumbnail' =>  $imageName,
             'slug' => Str::slug($request->title_en, '-')
         ]);
+
+        DB::table('activity_category')->where('activity_id', '=', $activity->id)->delete();
+        $categories = json_decode($request->category_ids);
+        for ($i = 0; $i < count($categories); $i++) {
+            DB::table('activity_category')->insert([
+                'category_id' => $categories[$i],
+                'activity_id' => $activity->id
+            ]);
+        }
+
+        DB::table('activity_destination')->where('activity_id', '=', $activity->id)->delete();
+        $destinations = json_decode($request->destination_ids);
+        for ($i = 0; $i < count($destinations); $i++) {
+            DB::table('activity_destination')->insert([
+                'destination_id' => $destinations[$i],
+                'activity_id' => $activity->id
+            ]);
+        }
+
         if ($request->hasFile('images')) {
 
             foreach ($request->file('images') as $file) {
@@ -323,8 +384,8 @@ class ActivityController extends Controller
     {
         $request = Activity::where('id', $id)->first();
         $activity = new Activity();
-        $activity->category_id = $request->category_id;
-        $activity->destination_id = $request->destination_id;
+        $activity->category_ids = $request->category_ids;
+        $activity->destination_ids = $request->destination_ids;
         $activity->title_en = $request->title_en;
         $activity->title_ar = $request->title_ar;
         $activity->description_en = $request->description_en;

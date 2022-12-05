@@ -303,7 +303,7 @@ class PackageController extends Controller
             'slug' => Str::slug($request->title_en, '-')
         ]);
 
-        DB::table('package_category')->where('package_id', '=', $request->id)->delete();
+        DB::table('package_category')->where('package_id', '=', $package->id)->delete();
         $categories = json_decode($request->category_ids);
         for ($i = 0; $i < count($categories); $i++) {
             DB::table('package_category')->insert([
@@ -312,7 +312,7 @@ class PackageController extends Controller
             ]);
         }
 
-        DB::table('package_destination')->where('package_id', '=', $request->id)->delete();
+        DB::table('package_destination')->where('package_id', '=', $package->id)->delete();
         $destinations = json_decode($request->destination_ids);
         for ($i = 0; $i < count($destinations); $i++) {
             DB::table('package_destination')->insert([

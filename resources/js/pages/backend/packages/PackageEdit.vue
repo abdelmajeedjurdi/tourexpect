@@ -1919,36 +1919,10 @@
           w-96
           text-center
           px-4
-          sticky
           top-5
         "
-        style="height: 95vh"
+        style="height: 112vh"
       >
-        <!-- <div
-          v-if="categories.length && single_package['category_id']"
-          class="me-2"
-        >
-          <searchable-dropdown
-            component_id="categories"
-            :options="categories"
-            :category_id="single_package['category_id']"
-            @selected="selectCategory($event)"
-            class="mt-6 me-2"
-          />
-        </div>
-        <div
-          v-if="destinations.length && single_package['destination_id']"
-          class="me-2"
-        >
-          <searchable-dropdown
-            component_id="destinations"
-            :options="destinations"
-            :category_id="single_package['destination_id']"
-            @selected="selectDestination($event)"
-            class="mt-6 me-2"
-          />
-        </div> -->
-
         <div class="border-b border-gray-200 py-6">
           <label
             for="max_number_of_people"
@@ -1964,7 +1938,7 @@
             Categories</label
           >
           <div id="filter-section-1">
-            <div class="space-y-4">
+            <div class="space-y-4 h-28 overflow-y-scroll">
               <div
                 class="flex items-center"
                 v-for="category in categories"
@@ -2009,7 +1983,7 @@
             Destinations</label
           >
           <div id="filter-section-1">
-            <div class="space-y-4">
+            <div class="space-y-4 h-28 overflow-y-scroll">
               <div
                 class="flex items-center"
                 v-for="destination in destinations"

@@ -60,6 +60,7 @@ Route::get('category/{slug}', [CategoryController::class, 'getCategoryDetails'])
 Route::get('countries', [DestinationController::class, 'getCountries']);
 Route::get('countries-destinations', [DestinationController::class, 'getDestinationsOnCountry']);
 Route::get('tour/{slug}', [TourController::class, 'getTourDetails']);
+Route::get('activity/{slug}', [ActivityController::class, 'getActivityDetails']);
 Route::get('single_package/{slug}', [PackageController::class, 'getPackageDetails']);
 Route::post('inquire', [ContactController::class, 'makeInquire']);
 Route::post('contact', [ContactController::class, 'makeContact']);

@@ -325,7 +325,7 @@
                   <div>
                     <div class="dropdown mt-4">
                       <button
-                        :style="`background-image: url(/images/banner_highlights/${selected_img})`"
+                        :style="`background-image: url(/images/icons/${selected_img}); background-size: 100% 100%; background-color:white`"
                         class="
                           rounded
                           py-2
@@ -347,9 +347,9 @@
                         :class="openImgs == true ? 'show' : 'hidden'"
                         aria-labelledby="dropdownMenuButton1"
                       >
-                        <li v-for="img in highlight_imgs" :key="img.id">
+                        <li v-for="img in icons" :key="img.id">
                           <span
-                            @click="setHighlightImage(img.name)"
+                            @click="setHighlightImage(img.image)"
                             class="
                               dropdown-item
                               dark:text-gray-200 dark:hover:bg-gray-600
@@ -360,7 +360,7 @@
                           >
                             <img
                               class="h-6"
-                              :src="'/images/banner_highlights/' + img.name"
+                              :src="'/images/icons/' + img.image"
                               alt=""
                             />
                           </span>
@@ -449,7 +449,7 @@
                     </div>
                     <img
                       class="h-6 mx-2"
-                      :src="'/images/banner_highlights/' + ban_highlight.img"
+                      :src="'/images/icons/' + ban_highlight.img"
                       alt=""
                     />
                     <div class="flex">
@@ -888,78 +888,265 @@
                 </div>
               </div>
             </div>
+
             <div class="flex justify-between">
-              <div class="w-full me-2">
-                <label
-                  for="itinerary_en"
-                  class="
-                    block
-                    text-sm
-                    font-medium
-                    text-gray-700
-                    dark:text-gray-200
-                  "
-                  >English Itinerary</label
-                >
-                <div class="mt-1">
-                  <textarea
-                    rows="10"
-                    type="text"
-                    name="itinerary_en"
-                    id="itinerary_en"
-                    placeholder="Separate it by lines"
-                    class="
-                      block
-                      mt-1
-                      w-full
-                      rounded-md
-                      border-gray-500
-                      shadow-sm
-                      focus:border-indigo-300
-                      focus:ring
-                      focus:ring-indigo-200
-                      focus:ring-opacity-50
-                      dark:bg-gray-800
-                    "
-                    v-model="form.itinerary_en"
-                  />
+              <div class="space-y-4 rounded-md w-full border p-6 mt-6 xk:mt-0">
+                <h3>Itinerary</h3>
+                <div class="flex justify-between">
+                  <div class="w-full me-2">
+                    <div class="mt-1">
+                      <input
+                        type="text"
+                        name="destination_title_en"
+                        id="destination_title_en"
+                        placeholder="English Title"
+                        class="
+                          block
+                          mt-1
+                          w-full
+                          rounded-md
+                          border-gray-500
+                          shadow-sm
+                          focus:border-indigo-300
+                          focus:ring
+                          focus:ring-indigo-200
+                          focus:ring-opacity-50
+                          dark:bg-gray-800
+                        "
+                        v-model="destination.title_en"
+                      />
+                    </div>
+                    <div class="mt-1">
+                      <textarea
+                        rows="3"
+                        type="text"
+                        name="destination_include_en"
+                        id="destination_include_en"
+                        placeholder="English Description"
+                        class="
+                          block
+                          mt-1
+                          w-full
+                          rounded-md
+                          border-gray-500
+                          shadow-sm
+                          focus:border-indigo-300
+                          focus:ring
+                          focus:ring-indigo-200
+                          focus:ring-opacity-50
+                          dark:bg-gray-800
+                        "
+                        v-model="destination.description_en"
+                      />
+                    </div>
+                  </div>
+                  <div class="w-full">
+                    <div class="mt-1">
+                      <input
+                        dir="rtl"
+                        type="text"
+                        name="destination_title_ar"
+                        id="destination_title_ar"
+                        placeholder="Arabic Title"
+                        class="
+                          block
+                          mt-1
+                          w-full
+                          rounded-md
+                          border-gray-500
+                          shadow-sm
+                          focus:border-indigo-300
+                          focus:ring
+                          focus:ring-indigo-200
+                          focus:ring-opacity-50
+                          dark:bg-gray-800
+                        "
+                        v-model="destination.title_ar"
+                      />
+                    </div>
+                    <div class="mt-1">
+                      <textarea
+                        rows="3"
+                        type="text"
+                        name="desc_ar"
+                        id="desc_ar"
+                        dir="rtl"
+                        placeholder="Arabic Description"
+                        class="
+                          block
+                          mt-1
+                          w-full
+                          rounded-md
+                          border-gray-500
+                          shadow-sm
+                          focus:border-indigo-300
+                          focus:ring
+                          focus:ring-indigo-200
+                          focus:ring-opacity-50
+                          dark:bg-gray-800
+                        "
+                        v-model="destination.description_ar"
+                      />
+                    </div>
+                  </div>
                 </div>
-              </div>
-              <div class="w-full">
-                <label
-                  for="itinerary_ar"
+                <button
+                  v-if="!is_itinerary_editing"
+                  type="button"
                   class="
-                    block
-                    text-sm
-                    font-medium
-                    text-gray-700
-                    dark:text-gray-200
+                    px-6
+                    py-1
+                    bg-green-400
+                    rounded-lg
+                    text-blue-600
+                    hover:bg-green-300
+                    duration-300
                   "
-                  >Arabic Itinerary</label
+                  @click="setItinerary"
                 >
-                <div class="mt-1">
-                  <textarea
-                    dir="rtl"
-                    rows="10"
-                    type="text"
-                    placeholder="Separate it by lines"
-                    name="itinerary_ar"
-                    id="itinerary_ar"
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                    />
+                  </svg>
+                </button>
+                <button
+                  v-else
+                  type="button"
+                  class="
+                    px-6
+                    py-1
+                    bg-green-400
+                    rounded-lg
+                    text-blue-600
+                    hover:bg-green-300
+                    duration-300
+                  "
+                  @click="setItinerary"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                </button>
+                <div
+                  class="rounded"
+                  v-for="(destination, i) in form.itinerary"
+                  :key="i"
+                >
+                  <div
                     class="
-                      block
-                      mt-1
                       w-full
-                      rounded-md
-                      border-gray-500
-                      shadow-sm
-                      focus:border-indigo-300
-                      focus:ring
-                      focus:ring-indigo-200
-                      focus:ring-opacity-50
-                      dark:bg-gray-800
+                      rounded
+                      items-center
+                      p-1
+                      bg-gray-400
+                      text-black
+                      flex
                     "
-                    v-model="form.itinerary_ar"
-                  />
+                  >
+                    <span
+                      class="
+                        mb-auto
+                        h-6
+                        w-6
+                        rounded-full
+                        text-center
+                        mr-2
+                        border-2 border-blue-600
+                        text-blue-600
+                        items-center
+                        text-sm
+                      "
+                      >{{ i + 1 }}</span
+                    >
+                    <div
+                      class="flex w-full justify-between cursor-pointer"
+                      @click="
+                        opened_destination != i
+                          ? (opened_destination = i)
+                          : (opened_destination = -1)
+                      "
+                    >
+                      <div class="w-full">
+                        {{ destination.title_en }}
+                        <div
+                          v-show="opened_destination == i"
+                          class="w-full bg-gray-300 p-2 rounded mr-1"
+                        >
+                          {{ destination.description_en }}
+                        </div>
+                      </div>
+                      <div class="w-full text-right">
+                        {{ destination.title_ar }}
+                        <div
+                          v-show="opened_destination == i"
+                          class="w-full bg-gray-300 p-2 text-right rounded ml-1"
+                        >
+                          {{ destination.description_ar }}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="flex mb-auto">
+                      <span
+                        class="cursor-pointer rotate-90"
+                        @click="editItineraryRow(i)"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="h-6 w-6 text-blue-500"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          stroke-width="2"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+                          />
+                        </svg>
+                      </span>
+                      <span
+                        class="cursor-pointer rotate-90"
+                        @click="deleteItineraryRow(i)"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="h-6 text-red-500"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          stroke-width="2"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                          />
+                        </svg>
+                      </span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -1684,26 +1871,102 @@
           w-96
           text-center
           px-4
+          top-5
         "
-        style="height: 115vh"
+        style="height: 112vh"
       >
-        <div>
-          <searchable-dropdown
-            component_id="categories"
-            :options="categories"
-            @selected="selectCategory($event)"
-            class="mt-6 me-2"
-          />
+        <!-- categories filter -->
+        <div class="border-b border-gray-200 py-6">
+          <label
+            for="max_number_of_people"
+            class="
+              block
+              font-medium
+              w-full
+              text-left text-gray-700
+              dark:text-gray-200
+              mb-2
+            "
+          >
+            Categories</label
+          >
+          <div id="filter-section-1 ">
+            <div class="space-y-4 h-28 overflow-y-scroll">
+              <div
+                class="flex items-center"
+                v-for="category in categories"
+                :key="category.id"
+              >
+                <input
+                  :id="category['name_en']"
+                  :name="category['name_en']"
+                  :value="category.id"
+                  type="checkbox"
+                  v-model="form.category_ids"
+                  class="
+                    h-4
+                    w-4
+                    rounded
+                    border-gray-300
+                    text-indigo-600
+                    focus:ring-indigo-500
+                  "
+                />
+                <label
+                  :for="category['name_en']"
+                  class="ml-3 text-sm text-white"
+                  >{{ category["name_en"] }}</label
+                >
+              </div>
+            </div>
+          </div>
         </div>
-        <div>
-          <searchable-dropdown
-            component_placeholder="Select Destination"
-            component_id="destinations"
-            :options="destinations"
-            @selected="selectDestination($event)"
-            class="mt-6 me-2"
-          />
+        <div class="border-b border-gray-200 py-6">
+          <label
+            for="max_number_of_people"
+            class="
+              block
+              font-medium
+              w-full
+              text-left text-gray-700
+              dark:text-gray-200
+              mb-2
+            "
+          >
+            Destinations</label
+          >
+          <div id="filter-section-1 ">
+            <div class="space-y-4 h-28 overflow-y-scroll">
+              <div
+                class="flex items-center"
+                v-for="destination in destinations"
+                :key="destination.id"
+              >
+                <input
+                  :id="destination['name_en']"
+                  :name="destination['name_en']"
+                  :value="destination.id"
+                  type="checkbox"
+                  v-model="form.destination_ids"
+                  class="
+                    h-4
+                    w-4
+                    rounded
+                    border-gray-300
+                    text-indigo-600
+                    focus:ring-indigo-500
+                  "
+                />
+                <label
+                  :for="destination['name_en']"
+                  class="ml-3 text-sm text-white"
+                  >{{ destination["name_en"] }}</label
+                >
+              </div>
+            </div>
+          </div>
         </div>
+
         <div class="w-full me-2 mt-2">
           <label
             for="max_number_of_people"
@@ -1866,6 +2129,36 @@
             >Active</label
           >
         </div>
+
+        <div class="w-full text-left mt-4">
+          <button
+            @click.prevent="saveActivity"
+            class="
+              inline-flex
+              items-center
+              px-4
+              py-2
+              text-xs
+              font-semibold
+              tracking-widest
+              text-white
+              uppercase
+              bg-gray-800
+              rounded-md
+              border border-transparent
+              ring-gray-300
+              transition
+              duration-150
+              ease-in-out
+              hover:bg-gray-700
+              active:bg-gray-900
+              focus:outline-none focus:border-gray-900 focus:ring
+              disabled:opacity-25
+            "
+          >
+            Save
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -1879,10 +2172,11 @@ import useDestinations from "../../../composables/destinations";
 import SearchableDropdown from "../../../components/SearchableDropdown.vue";
 import ProgressBar from "../../../components/ProgressBar.vue";
 import UploadImages from "vue-upload-drop-images";
+import useGeneral from "../../../composables/general";
 
 const form = reactive({
-  category_id: "",
-  destination_id: "",
+  category_ids: [],
+  destination_ids: [],
   title_en: "",
   title_ar: "",
   address_ar: "",
@@ -1890,8 +2184,7 @@ const form = reactive({
   description_en: "",
   description_ar: "",
   image: "",
-  itinerary_ar: "",
-  itinerary_en: "",
+  itinerary: [],
   active: "",
   duration_en: "",
   duration_ar: "",
@@ -1917,6 +2210,7 @@ const form = reactive({
   is_from: true,
   banner_highlights: [],
 });
+const { icons, getIcons } = useGeneral();
 
 let isProgressing = ref(false);
 const { errors, storeActivity, addGallery, addFiles, percentage } =
@@ -1926,6 +2220,7 @@ const { destinations, getDestinations } = useDestinations();
 onMounted(() => {
   getCategoriesOnSection("activities");
   getDestinations();
+  getIcons();
 });
 const handleImages = (images) => {
   addGallery(images);
@@ -1951,7 +2246,11 @@ function onFileSelected(event) {
 }
 
 const selectCategory = (category_id) => {
-  form.category_id = category_id;
+  console.log(ctg);
+  for (let i in form.category_ids) {
+    if (form.category_ids[i] == ctg) return;
+  }
+  form.category_ids.push(category_id);
 };
 const selectDestination = (destination_id) => {
   form.destination_id = destination_id;
@@ -2049,4 +2348,42 @@ const editActivityOption = (option_id) => {
   is_editing_option.value = true;
   activity_option.value = form.options[option_id];
 };
+
+// -------------------
+
+let destination = ref({
+  title_en: "",
+  title_ar: "",
+  description_en: "",
+  description_ar: "",
+});
+
+const setItinerary = () => {
+  if (!is_itinerary_editing.value) {
+    form.itinerary.push(destination.value);
+    destination.value = {
+      title_en: "",
+      title_ar: "",
+      description_en: "",
+      description_ar: "",
+    };
+  } else {
+    is_itinerary_editing.value = false;
+    destination.value = {
+      title_en: "",
+      title_ar: "",
+      description_en: "",
+      description_ar: "",
+    };
+  }
+};
+const deleteItineraryRow = (destination) => {
+  form.itinerary.splice(destination, 1);
+};
+let is_itinerary_editing = ref(false);
+const editItineraryRow = (destination_id) => {
+  is_itinerary_editing.value = true;
+  destination.value = form.itinerary[destination_id];
+};
+let opened_destination = ref(-1);
 </script>

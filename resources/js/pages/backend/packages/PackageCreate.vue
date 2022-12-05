@@ -1871,20 +1871,10 @@
           w-96
           text-center
           px-4
-          sticky
           top-5
         "
-        style="height: 95vh"
+        style="height: 112vh"
       >
-        <!-- <div>
-          <searchable-dropdown
-            component_id="categories"
-            :options="categories"
-            @selected="selectCategory($event)"
-            class="mt-6 me-2"
-          />
-        </div> -->
-
         <!-- categories filter -->
         <div class="border-b border-gray-200 py-6">
           <label
@@ -1900,8 +1890,8 @@
           >
             Categories</label
           >
-          <div id="filter-section-1">
-            <div class="space-y-4">
+          <div id="filter-section-1 ">
+            <div class="space-y-4 h-28 overflow-y-scroll">
               <div
                 class="flex items-center"
                 v-for="category in categories"
@@ -1945,8 +1935,8 @@
           >
             Destinations</label
           >
-          <div id="filter-section-1">
-            <div class="space-y-4">
+          <div id="filter-section-1 ">
+            <div class="space-y-4 h-28 overflow-y-scroll">
               <div
                 class="flex items-center"
                 v-for="destination in destinations"
@@ -1977,15 +1967,6 @@
           </div>
         </div>
 
-        <!-- <div>
-          <searchable-dropdown
-            component_placeholder="Select Destination"
-            component_id="destinations"
-            :options="destinations"
-            @selected="selectDestination($event)"
-            class="mt-6 me-2"
-          />
-        </div> -->
         <div class="w-full me-2 mt-2">
           <label
             for="max_number_of_people"

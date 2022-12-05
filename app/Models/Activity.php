@@ -11,8 +11,8 @@ class Activity extends Model
     protected $fillable = [
         'id',
         'slug',
-        'category_id',
-        'destination_id',
+        'category_ids',
+        'destination_ids',
         'category',
         'title_en',
         'title_ar',

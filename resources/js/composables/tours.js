@@ -26,14 +26,15 @@ export default function useTours() {
         tours.value = response.data.data;
         pages.value = response.data.meta
     };
+
     const getAllTours = async (page) => {
         let response = await axios.get(`/api/all-tours?page=${page}`);
         tours.value = response.data.data;
         pages.value = response.data.meta
     };
-
     const getFilteredTours = async (filter) => {
-        let response = await axios.get(`/api/filtered-tours?d=${filter.destination}&c=${filter.category}&page=${filter.page}`);
+        console.log(filter.categories);
+        let response = await axios.get(`/api/filtered-tours?d=${JSON.stringify(filter.destinations)}&c=${JSON.stringify(filter.categories)}&page=${filter.page}`);
 
         tours.value = response.data.data;
         pages.value = response.data.meta
@@ -51,13 +52,14 @@ export default function useTours() {
         alter_pages.value['path'] = response.data['path']
 
     };
-
     const getTour = async (id) => {
         let response = await axios.get("/api/tours/" + id);
         tour.value = response.data.data;
         tour.value['banner_highlights'] = JSON.parse(tour.value['banner_highlights'])
         tour.value['options'] = JSON.parse(tour.value['options'])
         tour.value['itinerary'] = JSON.parse(tour.value['itinerary'])
+        tour.value['category_ids'] = JSON.parse(tour.value['category_ids'])
+        tour.value['destination_ids'] = JSON.parse(tour.value['destination_ids'])
     };
     const getTourDetails = async (slug) => {
         let response = await axios.get("/api/tour/" + slug);
@@ -68,8 +70,8 @@ export default function useTours() {
     };
 
     const storeTour = async (data) => {
-        fd.append("category_id", data.form.category_id);
-        fd.append("destination_id", data.form.destination_id);
+        fd.append("category_ids", JSON.stringify(data.form.category_ids));
+        fd.append("destination_ids", JSON.stringify(data.form.destination_ids));
         fd.append("title_en", data.form.title_en);
         fd.append("title_ar", data.form.title_ar);
         fd.append("description_en", data.form.description_en);
@@ -77,7 +79,6 @@ export default function useTours() {
         fd.append("tour_img", data.form.image);
         fd.append("address_ar", data.form.address_ar);
         fd.append("address_en", data.form.address_en);
-        fd.append("itinerary", JSON.stringify(data.form.itinerary));
         fd.append("active", data.form.active);
         fd.append("duration_en", data.form.duration_en);
         fd.append("duration_ar", data.form.duration_ar);
@@ -87,7 +88,6 @@ export default function useTours() {
         fd.append("exclude_en", data.form.exclude_en);
         fd.append("exclude_ar", data.form.exclude_ar);
         fd.append("source", data.form.source);
-        fd.append("options", JSON.stringify(data.form.options))
         fd.append("highlights_ar", data.form.highlights_ar);
         fd.append("highlights_en", data.form.highlights_en);
         fd.append("information_ar", data.form.information_ar);
@@ -100,13 +100,16 @@ export default function useTours() {
         fd.append("notes_ar", data.form.notes_ar)
         fd.append("terms_and_conditions_en", data.form.terms_and_conditions_en)
         fd.append("terms_and_conditions_ar", data.form.terms_and_conditions_ar)
-        fd.append("is_from", data.form.is_from)
         fd.append("banner_highlights", JSON.stringify(data.form.banner_highlights))
+        fd.append("options", JSON.stringify(data.form.options))
+        fd.append("itinerary", JSON.stringify(data.form.itinerary));
+        fd.append("is_from", data.form.is_from)
 
 
         fd.append("image", data.file);
 
 
+        fd.append("properties", JSON.stringify(data.properties));
         errors.value = "";
         try {
             await axios.post("/api/tours", fd, {
@@ -128,8 +131,8 @@ export default function useTours() {
 
     const updateTour = async (id, data) => {
         fd.append("_method", "patch");
-        fd.append("category_id", data.form.category_id);
-        fd.append("destination_id", data.form.destination_id);
+        fd.append("category_ids", JSON.stringify(data.form.category_ids));
+        fd.append("destination_ids", JSON.stringify(data.form.destination_ids));
         fd.append("title_en", data.form.title_en);
         fd.append("title_ar", data.form.title_ar);
         fd.append("description_en", data.form.description_en);
@@ -146,7 +149,6 @@ export default function useTours() {
         fd.append("exclude_en", data.form.exclude_en);
         fd.append("exclude_ar", data.form.exclude_ar);
         fd.append("source", data.form.source);
-        fd.append("options", JSON.stringify(data.form.options))
         fd.append("highlights_ar", data.form.highlights_ar);
         fd.append("highlights_en", data.form.highlights_en);
         fd.append("information_ar", data.form.information_ar);
@@ -161,8 +163,10 @@ export default function useTours() {
         fd.append("terms_and_conditions_ar", data.form.terms_and_conditions_ar)
         fd.append("is_from", data.form.is_from)
         fd.append("banner_highlights", JSON.stringify(data.form.banner_highlights))
+        fd.append("options", JSON.stringify(data.form.options))
         fd.append("tour_img", data.form.thumbnail);
         fd.append("new_image", data.file);
+        fd.append("properties", JSON.stringify(data.properties));
         errors.value = "";
         try {
             await axios.post("/api/tours/" + id, fd, {
@@ -204,7 +208,7 @@ export default function useTours() {
         }
     };
     const destroyImage = async (id) => {
-        await axios.delete("/api/delete-image/" + id);
+        await axios.delete("/api/delete-tour-image/" + id);
     };
     const destroyFile = async (id) => {
         await axios.delete("/api/delete-file/" + id);
@@ -227,7 +231,7 @@ export default function useTours() {
         addFiles,
         getTourDetails,
         destroyImage,
-        destroyFile, getDestinationTours,
-        percentage, pages, getAllTours, alter_pages, getFilteredTours
+        destroyFile,
+        percentage, pages, getAllTours, getDestinationTours, getFilteredTours
     };
 }

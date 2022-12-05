@@ -231,7 +231,6 @@
                 </div>
               </div>
             </div>
-
             <!-- Banner Highlights -->
             <div class="flex justify-between">
               <div class="space-y-4 rounded-md w-full border p-6 mt-6 xk:mt-0">
@@ -872,7 +871,6 @@
                 </div>
               </div>
             </div>
-
             <!-- Itinerary -->
             <div class="flex justify-between">
               <div class="space-y-4 rounded-md w-full border p-6 mt-6 xk:mt-0">
@@ -907,7 +905,7 @@
                         type="text"
                         name="destination_include_en"
                         id="destination_include_en"
-                        placeholder="Arabic Description"
+                        placeholder="English Description"
                         class="
                           block
                           mt-1
@@ -956,7 +954,7 @@
                         name="include_en"
                         id="include_en"
                         dir="rtl"
-                        placeholder="English Description"
+                        placeholder="Arabic Description"
                         class="
                           block
                           mt-1
@@ -1919,32 +1917,102 @@
           dark:bg-gray-600
           rounded
           w-96
-          sticky
-          top-5
           text-center
           px-4
+          top-5
         "
-        style="height: 95vh"
+        style="height: 112vh"
       >
-        <div v-if="categories.length && tour['category_id']" class="me-2">
-          <searchable-dropdown
-            component_id="categories"
-            :options="categories"
-            :category_id="tour['category_id']"
-            @selected="selectCategory($event)"
-            class="mt-6 me-2"
-          />
+        <div class="border-b border-gray-200 py-6">
+          <label
+            for="max_number_of_people"
+            class="
+              block
+              font-medium
+              w-full
+              text-left text-gray-700
+              dark:text-gray-200
+              mb-2
+            "
+          >
+            Categories</label
+          >
+          <div id="filter-section-1">
+            <div class="space-y-4 h-28 overflow-y-scroll">
+              <div
+                class="flex items-center"
+                v-for="category in categories"
+                :key="category.id"
+              >
+                <input
+                  :id="category['name_en']"
+                  :name="category['name_en']"
+                  :value="category.id"
+                  type="checkbox"
+                  v-model="tour.category_ids"
+                  class="
+                    h-4
+                    w-4
+                    rounded
+                    border-gray-300
+                    text-indigo-600
+                    focus:ring-indigo-500
+                  "
+                />
+                <label
+                  :for="category['name_en']"
+                  class="ml-3 text-sm text-white"
+                  >{{ category["name_en"] }}</label
+                >
+              </div>
+            </div>
+          </div>
         </div>
-        <div v-if="destinations.length && tour['destination_id']" class="me-2">
-          <searchable-dropdown
-            component_id="destinations"
-            :options="destinations"
-            :category_id="tour['destination_id']"
-            @selected="selectDestination($event)"
-            class="mt-6 me-2"
-          />
+        <div class="border-b border-gray-200 py-6">
+          <label
+            for="max_number_of_people"
+            class="
+              block
+              font-medium
+              w-full
+              text-left text-gray-700
+              dark:text-gray-200
+              mb-2
+            "
+          >
+            Destinations</label
+          >
+          <div id="filter-section-1">
+            <div class="space-y-4 h-28 overflow-y-scroll">
+              <div
+                class="flex items-center"
+                v-for="destination in destinations"
+                :key="destination.id"
+              >
+                <input
+                  :id="destination['name_en']"
+                  :name="destination['name_en']"
+                  :value="destination.id"
+                  type="checkbox"
+                  v-model="tour.destination_ids"
+                  class="
+                    h-4
+                    w-4
+                    rounded
+                    border-gray-300
+                    text-indigo-600
+                    focus:ring-indigo-500
+                  "
+                />
+                <label
+                  :for="destination['name_en']"
+                  class="ml-3 text-sm text-white"
+                  >{{ destination["name_en"] }}</label
+                >
+              </div>
+            </div>
+          </div>
         </div>
-
         <div class="w-full me-2 mt-2">
           <label
             for="max_number_of_people"
@@ -2119,7 +2187,6 @@
             >Active</label
           >
         </div>
-
         <div class="w-full text-left mt-4">
           <button
             @click.prevent="saveTour"
@@ -2146,7 +2213,7 @@
               disabled:opacity-25
             "
           >
-            Save
+            Update
           </button>
         </div>
       </div>
@@ -2164,11 +2231,10 @@ import UploadImages from "vue-upload-drop-images";
 import SearchableDropdown from "../../../components/SearchableDropdown.vue";
 import ProgressBar from "../../../components/ProgressBar.vue";
 import useGeneral from "../../../composables/general";
-
 const props = defineProps({ id: String });
 const { categories, getCategoriesOnSection } = useCategories();
-const { icons, getIcons } = useGeneral();
 const { destinations, getDestinations } = useDestinations();
+const { icons, getIcons } = useGeneral();
 let isProgressing = ref(false);
 const {
   errors,
@@ -2229,7 +2295,7 @@ const selectDestination = (destination_id) => {
 let banner_highlight = ref({
   title_en: "",
   title_ar: "",
-  img: "1.svg",
+  img: "",
 });
 
 const setBannerHighlight = () => {
@@ -2238,7 +2304,7 @@ const setBannerHighlight = () => {
     banner_highlight.value = {
       title_en: "",
       title_ar: "",
-      img: "1.svg",
+      img: "",
     };
     selected_img.value = "1.svg";
   } else {
@@ -2246,7 +2312,7 @@ const setBannerHighlight = () => {
     banner_highlight.value = {
       title_en: "",
       title_ar: "",
-      img: "1.svg",
+      img: "",
     };
     selected_img.value = "1.svg";
   }
@@ -2257,7 +2323,6 @@ const deleteRow = (item) => {
 let is_editing = ref(false);
 const editRow = (banner_highlight_id) => {
   is_editing.value = true;
-
   banner_highlight.value = tour.value.banner_highlights[banner_highlight_id];
   selected_img.value = tour.value.banner_highlights[banner_highlight_id].img;
 };
@@ -2318,7 +2383,6 @@ const deleteTourOption = (tour_option) => {
 let is_editing_option = ref(false);
 const editTourOption = (option_id) => {
   is_editing_option.value = true;
-
   tour_option.value = tour.value.options[option_id];
 };
 
@@ -2356,7 +2420,6 @@ const deleteItineraryRow = (destination) => {
 let is_itinerary_editing = ref(false);
 const editItineraryRow = (destination_id) => {
   is_itinerary_editing.value = true;
-
   destination.value = tour.value.itinerary[destination_id];
 };
 let opened_destination = ref(-1);

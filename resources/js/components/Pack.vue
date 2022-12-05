@@ -113,19 +113,21 @@
         >
           <div class="grid gap-0 grid-cols-2" v-if="pack['banner_highlights']">
             <div
-              v-for="highlight in JSON.parse(pack['banner_highlights'])"
+              v-for="(highlight, i) in JSON.parse(pack['banner_highlights'])"
               :key="highlight"
               class="flex h-12"
             >
-              <img
-                :src="'/images/icons/' + highlight['img']"
-                class="w-5"
-                style="fill: orange"
-                alt=""
-              />
-              <span class="flex items-center text-black text-xs font-bold">
-                {{ highlight["title_" + lang] }}</span
-              >
+              <div v-if="i < 6" class="flex space-x-1">
+                <img
+                  :src="'/images/icons/' + highlight['img']"
+                  class="w-5"
+                  style="fill: orange"
+                  alt=""
+                />
+                <span class="flex items-center text-black text-xs font-bold">
+                  {{ highlight["title_" + lang] }}</span
+                >
+              </div>
             </div>
           </div>
           <!-- title_en img -->

@@ -26,14 +26,15 @@ export default function useActivities() {
         activities.value = response.data.data;
         pages.value = response.data.meta
     };
+
     const getAllActivities = async (page) => {
         let response = await axios.get(`/api/all-activities?page=${page}`);
         activities.value = response.data.data;
-
         pages.value = response.data.meta
     };
     const getFilteredActivities = async (filter) => {
-        let response = await axios.get(`/api/filtered-activities?d=${filter.destination}&c=${filter.category}&page=${filter.page}`);
+        console.log(filter.categories);
+        let response = await axios.get(`/api/filtered-activities?d=${JSON.stringify(filter.destinations)}&c=${JSON.stringify(filter.categories)}&page=${filter.page}`);
 
         activities.value = response.data.data;
         pages.value = response.data.meta
@@ -51,30 +52,34 @@ export default function useActivities() {
         alter_pages.value['path'] = response.data['path']
 
     };
-
     const getActivity = async (id) => {
         let response = await axios.get("/api/activities/" + id);
         activity.value = response.data.data;
         activity.value['banner_highlights'] = JSON.parse(activity.value['banner_highlights'])
         activity.value['options'] = JSON.parse(activity.value['options'])
+        activity.value['itinerary'] = JSON.parse(activity.value['itinerary'])
+        activity.value['category_ids'] = JSON.parse(activity.value['category_ids'])
+        activity.value['destination_ids'] = JSON.parse(activity.value['destination_ids'])
     };
     const getActivityDetails = async (slug) => {
         let response = await axios.get("/api/activity/" + slug);
+        console.log(response.data.data);
         activity.value = response.data.data;
         activity.value['banner_highlights'] = JSON.parse(activity.value['banner_highlights'])
         activity.value['options'] = JSON.parse(activity.value['options'])
+        activity.value['itinerary'] = JSON.parse(activity.value['itinerary'])
     };
 
     const storeActivity = async (data) => {
-        fd.append("category_id", data.form.category_id);
-        fd.append("destination_id", data.form.destination_id);
+        fd.append("category_ids", JSON.stringify(data.form.category_ids));
+        fd.append("destination_ids", JSON.stringify(data.form.destination_ids));
         fd.append("title_en", data.form.title_en);
         fd.append("title_ar", data.form.title_ar);
         fd.append("description_en", data.form.description_en);
         fd.append("description_ar", data.form.description_ar);
+        fd.append("activity_img", data.form.image);
         fd.append("address_ar", data.form.address_ar);
         fd.append("address_en", data.form.address_en);
-        fd.append("itinerary", data.form.itinerary);
         fd.append("active", data.form.active);
         fd.append("duration_en", data.form.duration_en);
         fd.append("duration_ar", data.form.duration_ar);
@@ -98,6 +103,7 @@ export default function useActivities() {
         fd.append("terms_and_conditions_ar", data.form.terms_and_conditions_ar)
         fd.append("banner_highlights", JSON.stringify(data.form.banner_highlights))
         fd.append("options", JSON.stringify(data.form.options))
+        fd.append("itinerary", JSON.stringify(data.form.itinerary));
         fd.append("is_from", data.form.is_from)
 
 
@@ -126,15 +132,15 @@ export default function useActivities() {
 
     const updateActivity = async (id, data) => {
         fd.append("_method", "patch");
-        fd.append("category_id", data.form.category_id);
-        fd.append("destination_id", data.form.destination_id);
+        fd.append("category_ids", JSON.stringify(data.form.category_ids));
+        fd.append("destination_ids", JSON.stringify(data.form.destination_ids));
         fd.append("title_en", data.form.title_en);
         fd.append("title_ar", data.form.title_ar);
         fd.append("description_en", data.form.description_en);
         fd.append("description_ar", data.form.description_ar);
         fd.append("address_ar", data.form.address_ar);
         fd.append("address_en", data.form.address_en);
-        fd.append("itinerary", data.form.itinerary);
+        fd.append("itinerary", JSON.stringify(data.form.itinerary))
         fd.append("active", data.form.active);
         fd.append("duration_en", data.form.duration_en);
         fd.append("duration_ar", data.form.duration_ar);
@@ -156,9 +162,9 @@ export default function useActivities() {
         fd.append("notes_ar", data.form.notes_ar)
         fd.append("terms_and_conditions_en", data.form.terms_and_conditions_en)
         fd.append("terms_and_conditions_ar", data.form.terms_and_conditions_ar)
+        fd.append("is_from", data.form.is_from)
         fd.append("banner_highlights", JSON.stringify(data.form.banner_highlights))
         fd.append("options", JSON.stringify(data.form.options))
-        fd.append("is_from", data.form.is_from)
         fd.append("activity_img", data.form.thumbnail);
         fd.append("new_image", data.file);
         fd.append("properties", JSON.stringify(data.properties));
@@ -203,7 +209,7 @@ export default function useActivities() {
         }
     };
     const destroyImage = async (id) => {
-        await axios.delete("/api/delete-image/" + id);
+        await axios.delete("/api/delete-activity-image/" + id);
     };
     const destroyFile = async (id) => {
         await axios.delete("/api/delete-file/" + id);
@@ -226,7 +232,7 @@ export default function useActivities() {
         addFiles,
         getActivityDetails,
         destroyImage,
-        destroyFile, getDestinationActivities,
-        percentage, pages, getAllActivities, alter_pages, getFilteredActivities
+        destroyFile,
+        percentage, pages, getAllActivities, getDestinationActivities, getFilteredActivities
     };
 }

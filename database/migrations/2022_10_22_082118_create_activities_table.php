@@ -15,8 +15,8 @@ class CreateActivitiesTable extends Migration
     {
         Schema::create('activities', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('category_id')->nullable();
-            $table->bigInteger('destination_id')->nullable();
+            $table->json('category_ids')->nullable();
+            $table->json('destination_ids')->nullable();
             $table->string('title_en')->nullable();
             $table->string('title_ar')->nullable();
             $table->string('address_ar')->nullable();
@@ -47,9 +47,9 @@ class CreateActivitiesTable extends Migration
             $table->longText('notes_ar')->nullable();
             $table->longText('terms_and_conditions_en')->nullable();
             $table->longText('terms_and_conditions_ar')->nullable();
-            $table->boolean('is_from')->nullable();
             $table->json('banner_highlights')->nullable();
             $table->json('options')->nullable();
+            $table->boolean('is_from')->nullable();
             $table->timestamps();
         });
     }
