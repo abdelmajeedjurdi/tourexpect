@@ -368,8 +368,11 @@ class ActivityController extends Controller
      */
     public function destroy($id)
     {
+
+        DB::table('activity_category')->where('activity_id', '=', $id)->delete();
+        DB::table('activity_destination')->where('activity_id', '=', $id)->delete();
+
         $activity = Activity::find($id);
-        Log::info($activity);
         if ($activity->thumbnail !== 'default.jpg' && $activity->thumbnail !== '')
             unlink('images/activities/' . $activity->thumbnail);
         $images = ActivityImage::where('activity_id', $activity->id)->get();

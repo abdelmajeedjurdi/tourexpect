@@ -244,12 +244,12 @@ const routes = [
     // [[[[[[[[[[[<<<<<<<<<<<<<<<<<<<<<<<<<<(((((((((((((((((--Front-End--)))))))))))))))))>>>>>>>>>>>>>>>>>>>>>>>>>>]]]]]]]]]]],
 
     {
-        path: "/test",
+        path: "/",
         name: "Home",
         component: Frontend,
     },
     {
-        path: "/",
+        path: "/test",
         name: "CommingSoon",
         component: CommingSoon,
     },

@@ -375,8 +375,10 @@ class TourController extends Controller
      */
     public function destroy($id)
     {
+        DB::table('tour_category')->where('tour_id', '=', $id)->delete();
+        DB::table('tour_destination')->where('tour_id', '=', $id)->delete();
+
         $tour = Tour::find($id);
-        Log::info($tour);
         if ($tour->thumbnail !== 'default.jpg' && $tour->thumbnail !== '')
             unlink('images/tours/' . $tour->thumbnail);
         $images = TourImage::where('tour_id', $tour->id)->get();

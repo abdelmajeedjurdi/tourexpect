@@ -32,6 +32,7 @@
               items-center
               text-white
             "
+            v-if="pack['address_' + lang]"
           >
             <span class="">
               <svg
@@ -56,11 +57,7 @@
               </svg>
             </span>
             <span class="ms-1">
-              {{
-                pack.destination
-                  ? pack.destination["name_" + lang]
-                  : pack["destination_" + lang]
-              }}
+              {{ pack["address_" + lang] }}
             </span>
           </div>
           <div
