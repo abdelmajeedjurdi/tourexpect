@@ -147,15 +147,23 @@
           :section_list="single_package['highlights_' + lang]"
           section_title="package_highlights"
         />
-        <include-exclude
+        <include
           v-if="
             single_package['include_' + lang] &&
             single_package['include_' + lang] != 'null'
           "
           class="border py-2 mt-3"
           :includes="single_package['include_' + lang]"
-          :excludes="single_package['exclude_' + lang]"
           section_title="package_inclusion"
+        />
+        <exclude
+          v-if="
+            single_package['exclude_' + lang] &&
+            single_package['exclude_' + lang] != 'null'
+          "
+          class="border py-2 mt-3"
+          :excludes="single_package['exclude_' + lang]"
+          section_title="package_exclusion"
         />
         <list-section
           v-if="
@@ -369,7 +377,8 @@ import Itinerary from "../../../components/Itinerary.vue";
 import ListSection from "../../../components/ListSection.vue";
 import CallToAction from "../../../components/CallToAction.vue";
 import TourInquire from "../../../components/TourInquire.vue";
-import IncludeExclude from "../../../components/IncludeExclude.vue";
+import Exclude from "../../../components/Exclude.vue";
+import Include from "../../../components/Include.vue";
 import { useRoute, useRouter } from "vue-router";
 const { getPackageDetails, single_package } = usePackages();
 const props = defineProps({ slug: String });
