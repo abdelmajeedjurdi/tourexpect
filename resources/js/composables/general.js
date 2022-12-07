@@ -10,7 +10,7 @@ export default function useGeneral() {
 
     const getDestinations = async (page) => {
         let response = await axios.get(`/api/nav-destination`);
-        destinations.value = response.data.data;
+        destinations.value = response.data;
     };
 
     const addGallery = async (images) => {

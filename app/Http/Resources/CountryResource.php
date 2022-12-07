@@ -4,6 +4,7 @@ namespace App\Http\Resources;
 
 use App\Models\Destination;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\DB;
 
 class CountryResource extends JsonResource
 {
