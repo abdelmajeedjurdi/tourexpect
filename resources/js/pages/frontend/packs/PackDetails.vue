@@ -214,7 +214,10 @@
       </div>
       <div class="w-full md:w-1/4 mt-4">
         <div class="top-24">
-          <div class="rounded-xl border border-blue-800">
+          <div
+            v-if="selected_option != null"
+            class="rounded-xl border border-blue-800"
+          >
             <div
               class="
                 rounded-t-xl
@@ -227,7 +230,7 @@
             </div>
 
             <div class="p-3">
-              <form class="" v-if="selected_option != null">
+              <form class="">
                 <div class="flex items-center">
                   <div class="text-xl font-semibold text-gray-500">
                     Starting from
