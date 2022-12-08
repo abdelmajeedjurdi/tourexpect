@@ -355,7 +355,7 @@
               <span>Text us on Whatsapp</span></a
             >
 
-            <TourInquire />
+            <Inquire />
           </div>
         </div>
       </div>
@@ -370,7 +370,7 @@ import BaseSection from "../../../components/BaseSection.vue";
 import Itinerary from "../../../components/Itinerary.vue";
 import ListSection from "../../../components/ListSection.vue";
 import CallToAction from "../../../components/CallToAction.vue";
-import TourInquire from "../../../components/TourInquire.vue";
+import Inquire from "../../../components/Inquire.vue";
 import { useRoute, useRouter } from "vue-router";
 const { getActivityDetails, activity } = useActivities();
 const props = defineProps({ slug: String });

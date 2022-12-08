@@ -14,6 +14,7 @@
         mx-auto
         my-10
         justify-between
+        space-x-2
       "
     >
       <div class="w-full md:w-3/4">
@@ -212,156 +213,170 @@
         />
       </div>
       <div class="w-full md:w-1/4 mt-4">
-        <div class="sticky top-24">
-          <!-- 1111111111111111111111111111111111 -->
-          <div class="border p-4">
-            <form v-if="selected_option != null" class="mb-4">
-              <div
-                class="
-                  overflow-hidden
-                  text-right text-base text-body-color
-                  leading-relaxed
-                  text-indigo-800
-                  font-bold
-                  m-2
-                "
-              >
-                <span class="flex justify-between">
-                  <span class="text-xl"> {{ $t("price") }}</span>
-                  <div>
-                    <div
-                      v-if="selected_option['option_discount']"
-                      style="text-decoration: line-through"
-                      class="line-through text-gray-400 me-1 text-xl"
-                    >
-                      {{ original_price }}$
-                    </div>
-                    <div class="text-gray-800 text-2xl">
-                      {{ total_price.toFixed(2) }}$
-                    </div>
+        <div class="top-24">
+          <div class="rounded-xl border border-blue-800">
+            <div
+              class="
+                rounded-t-xl
+                bg-blue-800
+                py-2
+                text-center text-xl text-white
+              "
+            >
+              Pricing
+            </div>
+
+            <div class="p-3">
+              <form class="" v-if="selected_option != null">
+                <div class="flex items-center">
+                  <div class="text-xl font-semibold text-gray-500">
+                    Starting from
                   </div>
-                </span>
-              </div>
-              <div class="mb-3">
-                <label for="guests" class="tour-label">{{
-                  $t("guests")
-                }}</label>
-                <div class="dropdown">
-                  <div class="peer border p-2 w-full dropbtn">
-                    {{
-                      adults +
-                      " " +
-                      $t("adults") +
-                      ", " +
-                      children +
-                      " " +
-                      $t("child") +
-                      " "
-                    }}
-                  </div>
-                  <!-- the menu here -->
-                  <div
-                    class="
-                      absolute
-                      dropdown-content
-                      peer-hover:flex
-                      hover:flex
-                      h-0
-                      w-0
-                      flex-col
-                      bg-white
-                      drop-shadow-lg
-                    "
-                  >
-                    <div class="flex justify-between">
-                      <div>Adults</div>
-                      <div class="flex">
-                        <button
-                          @click.prevent="setGuests('a', -1)"
-                          class="bg-yellow-500 w-6 h-6 rounded text-white"
-                        >
-                          -
-                        </button>
-                        <span class="w-10 text-center">{{ adults }}</span>
-                        <button
-                          type="button"
-                          @click.prevent="setGuests('a', 1)"
-                          class="bg-yellow-500 w-6 h-6 rounded text-white"
-                        >
-                          +
-                        </button>
-                      </div>
-                    </div>
-                    <div class="flex justify-between mt-3">
-                      <div>Children</div>
-                      <div class="flex">
-                        <button
-                          type="button"
-                          @click.prevent="setGuests('c', -1)"
-                          class="bg-yellow-500 w-6 h-6 rounded text-white"
-                        >
-                          -
-                        </button>
-                        <span class="w-10 text-center">{{ children }}</span>
-                        <button
-                          type="button"
-                          @click.prevent="setGuests('c', 1)"
-                          class="bg-yellow-500 w-6 h-6 rounded text-white"
-                        >
-                          +
-                        </button>
-                      </div>
-                    </div>
+                  <div class="mx-2 text-xl text-gray-400 line-through">
+                    {{ original_price }}$
                   </div>
                 </div>
+                <div class="flex justify-between">
+                  <div class="text-4xl text-red-500">
+                    {{ total_price.toFixed(2) }}$
+                  </div>
+                  <span
+                    class="
+                      flex
+                      items-center
+                      rounded
+                      bg-red-100
+                      px-1
+                      text-yellow-500
+                    "
+                    >{{
+                      selected_option["option_discount"] +
+                      (selected_option["option_discount_type"] == "percentage"
+                        ? "%"
+                        : "$")
+                    }}</span
+                  >
+                </div>
+              </form>
+              <div class="mt-7">
+                <div class="mt-auto flex justify-between">
+                  <div>Adults</div>
+                  <div class="flex justify-between w-1/3">
+                    <button
+                      @click.prevent="setGuests('a', -1)"
+                      class="w-6 rounded bg-yellow-500 text-white"
+                    >
+                      -
+                    </button>
+                    <span>{{ adults }}</span>
+                    <button
+                      @click.prevent="setGuests('a', 1)"
+                      class="w-6 rounded bg-yellow-500 text-white"
+                    >
+                      +
+                    </button>
+                  </div>
+                </div>
+                <div class="mt-4 flex justify-between">
+                  <div>Children</div>
+                  <div class="flex justify-between w-1/3">
+                    <button
+                      @click.prevent="setGuests('c', -1)"
+                      class="w-6 rounded bg-yellow-500 text-white"
+                    >
+                      -
+                    </button>
+                    <span>{{ children }}</span>
+                    <button
+                      @click.prevent="setGuests('c', 1)"
+                      class="w-6 rounded bg-yellow-500 text-white"
+                    >
+                      +
+                    </button>
+                  </div>
+                </div>
+                <div class="mt-4 flex justify-between">
+                  <div>Infants</div>
+                  <div class="flex justify-between w-1/3">
+                    <button
+                      @click.prevent="setGuests('i', -1)"
+                      class="w-6 rounded bg-yellow-500 text-white"
+                    >
+                      -
+                    </button>
+                    <span>{{ infants }}</span>
+                    <button
+                      @click.prevent="setGuests('i', 1)"
+                      class="w-6 rounded bg-yellow-500 text-white"
+                    >
+                      +
+                    </button>
+                  </div>
+                </div>
+                <button
+                  type="submit"
+                  class="
+                    mt-4
+                    text-white
+                    w-full
+                    rounded
+                    bg-blue-700
+                    hover:bg-blue-800
+                    focus:ring-4 focus:outline-none focus:ring-blue-300
+                    font-medium
+                    text-sm
+                    px-5
+                    py-2.5
+                    text-center
+                    duration-300
+                  "
+                >
+                  Reserve
+                </button>
               </div>
-              <button
-                type="submit"
+            </div>
+          </div>
+
+          <!-- 1111111111111111111111111111111111 -->
+          <div class="rounded-xl border border-blue-800 mt-4">
+            <div
+              class="
+                rounded-t-xl
+                bg-blue-800
+                py-2
+                text-center text-xl text-white
+              "
+            >
+              Inquiry
+            </div>
+
+            <div class="p-3">
+              <Inquire />
+              <a
+                :href="
+                  'https://wa.me/+9647509882000/?text=' +
+                  'https://tourexpect.com' +
+                  router.currentRoute.value.fullPath +
+                  '\u000a I want to ask about this'
+                "
+                target="_blank"
                 class="
+                  flex
+                  bg-green-400
                   text-white
-                  w-full
-                  rounded
-                  bg-blue-700
-                  hover:bg-blue-800
-                  focus:ring-4 focus:outline-none focus:ring-blue-300
-                  font-medium
-                  text-sm
-                  px-5
-                  py-2.5
-                  text-center
-                  duration-300
+                  rounded-full
+                  items-center
+                  py-2
+                  px-4
+                  space-x-2
+                  mx-auto
+                  mt-4
                 "
               >
-                Reserve
-              </button>
-            </form>
-
-            <a
-              :href="
-                'https://wa.me/+9647509882000/?text=' +
-                'https://tourexpect.com' +
-                router.currentRoute.value.fullPath +
-                '\u000a I want to ask about this'
-              "
-              target="_blank"
-              class="
-                flex
-                bg-green-400
-                text-white
-                rounded-full
-                items-center
-                py-2
-                px-4
-                space-x-2
-                mx-auto
-                mb-4
-              "
-            >
-              <img src="/images/whatsapp.svg" alt="whatsapp" class="h-6" />
-              <span>Text us on Whatsapp</span></a
-            >
-
-            <TourInquire />
+                <img src="/images/whatsapp.svg" alt="whatsapp" class="h-6" />
+                <span>Text us on Whatsapp</span></a
+              >
+            </div>
           </div>
         </div>
       </div>
@@ -376,7 +391,7 @@ import BaseSection from "../../../components/BaseSection.vue";
 import Itinerary from "../../../components/Itinerary.vue";
 import ListSection from "../../../components/ListSection.vue";
 import CallToAction from "../../../components/CallToAction.vue";
-import TourInquire from "../../../components/TourInquire.vue";
+import Inquire from "../../../components/Inquire.vue";
 import Exclude from "../../../components/Exclude.vue";
 import Include from "../../../components/Include.vue";
 import { useRoute, useRouter } from "vue-router";
@@ -387,6 +402,7 @@ const router = useRouter();
 let phone = ref(null);
 let adults = ref(1);
 let children = ref(0);
+let infants = ref(0);
 let selected_option = ref(null);
 let total_price = ref(null);
 let selected_idx = ref(0);
@@ -408,7 +424,8 @@ const calculatePrice = () => {
   }
   original_price.value =
     selected_option.value["adult_price"] * adults.value +
-    selected_option.value["child_price"] * children.value;
+    selected_option.value["child_price"] * children.value +
+    selected_option.value["infant_price"] * infants.value;
 
   if (selected_option.value["option_discount_type"] == "amount") {
     total_price.value =
@@ -427,14 +444,21 @@ const calculatePrice = () => {
         (selected_option.value["child_price"] *
           selected_option.value["option_discount"]) /
           100) *
-        children.value;
+        children.value +
+      (selected_option.value["infant_price"] -
+        (selected_option.value["infant_price"] *
+          selected_option.value["option_discount"]) /
+          100) *
+        infants.value;
   }
 };
 const setGuests = (person, num) => {
   if (person == "a") {
     if (adults.value + num > 0) adults.value += num;
-  } else {
+  } else if (person == "c") {
     if (children.value + num >= 0) children.value += num;
+  } else {
+    if (infants.value + num >= 0) infants.value += num;
   }
   calculatePrice();
 };
