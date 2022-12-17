@@ -113,8 +113,8 @@ export default function useCategories() {
     const destroyCategory = async (id) => {
         await axios.delete("/api/categories/" + id);
     };
-    const dublicate = async (id) => {
-        await axios.post("/api/category/dublicate/" + id);
+    const duplicate = async (id) => {
+        await axios.post("/api/category/duplicate/" + id);
     }
 
     return {
@@ -131,6 +131,6 @@ export default function useCategories() {
         slides,
         getCategoryDetails,
         tours,
-        getFlagsOrSigns, pages, dublicate
+        getFlagsOrSigns, pages, duplicate
     };
 }

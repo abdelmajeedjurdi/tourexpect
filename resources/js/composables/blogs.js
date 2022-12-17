@@ -106,13 +106,13 @@ export default function useBlogs() {
         await axios.delete("/api/blogs/" + id);
     };
 
-    const dublicate = async (id) => {
-        await axios.post("/api/blog/dublicate/" + id);
+    const duplicate = async (id) => {
+        await axios.post("/api/blog/duplicate/" + id);
     }
 
     return {
         blogs,
-        blog, dublicate,
+        blog, duplicate,
         errors,
         getBlogs,
         getBlog,

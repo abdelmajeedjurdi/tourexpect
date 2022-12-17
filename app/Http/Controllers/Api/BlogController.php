@@ -154,7 +154,7 @@ class BlogController extends Controller
         return response()->noContent();
     }
 
-    public function dublicate($id)
+    public function duplicate($id)
     {
         $request = Blog::where('id', $id)->first();
         $blog = new Blog();

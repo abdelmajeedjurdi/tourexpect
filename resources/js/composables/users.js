@@ -78,7 +78,7 @@ export default function useUsers() {
     };
 
     const duplicate = async (id) => {
-        await axios.post("/api/user/dublicate/" + id);
+        await axios.post("/api/user/duplicate/" + id);
     }
     return {
         users, duplicate,

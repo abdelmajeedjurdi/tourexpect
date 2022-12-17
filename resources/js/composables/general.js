@@ -46,8 +46,12 @@ export default function useGeneral() {
     const destroyIcon = async (id) => {
         await axios.delete("/api/delete-icon/" + id);
     };
+
+    const inquire = async (form) => {
+        await axios.post("/api/inquire", form);
+    }
     return {
         destinations,
-        getDestinations, addGallery, updateIcons, icons, getIcons, destroyIcon
+        getDestinations, addGallery, updateIcons, icons, getIcons, destroyIcon, inquire
     };
 }

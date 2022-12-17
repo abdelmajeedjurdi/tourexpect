@@ -389,7 +389,7 @@ class TourController extends Controller
         $tour->delete();
         return;
     }
-    public function dublicate($id)
+    public function duplicate($id)
     {
         $request = Tour::where('id', $id)->first();
         $tour = new Tour();
@@ -415,7 +415,21 @@ class TourController extends Controller
         $tour->exclude_ar = $request->exclude_ar;
 
         $tour->save();
+        $categories = json_decode($request->category_ids);
+        for ($i = 0; $i < count($categories); $i++) {
+            DB::table('tour_category')->insert([
+                'category_id' => $categories[$i],
+                'tour_id' => $tour->id
+            ]);
+        }
 
+        $destinations = json_decode($request->destination_ids);
+        for ($i = 0; $i < count($destinations); $i++) {
+            DB::table('tour_destination')->insert([
+                'destination_id' => $destinations[$i],
+                'tour_id' => $tour->id
+            ]);
+        }
         return response()->noContent();
     }
     public function deleteImage($id)

@@ -224,11 +224,11 @@ export default function useHotels() {
         await axios.delete("/api/delete-file/" + id);
     };
 
-    const dublicate = async (id) => {
-        await axios.post("/api/hotel/dublicate/" + id);
+    const duplicate = async (id) => {
+        await axios.post("/api/hotel/duplicate/" + id);
     }
     return {
-        hotels, dublicate,
+        hotels, duplicate,
         hotel,
         errors,
         getHotels,

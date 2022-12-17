@@ -383,7 +383,7 @@ class ActivityController extends Controller
         $activity->delete();
         return;
     }
-    public function dublicate($id)
+    public function duplicate($id)
     {
         $request = Activity::where('id', $id)->first();
         $activity = new Activity();
@@ -412,6 +412,21 @@ class ActivityController extends Controller
 
         $activity->save();
 
+        $categories = json_decode($request->category_ids);
+        for ($i = 0; $i < count($categories); $i++) {
+            DB::table('activity_category')->insert([
+                'category_id' => $categories[$i],
+                'activity_id' => $activity->id
+            ]);
+        }
+
+        $destinations = json_decode($request->destination_ids);
+        for ($i = 0; $i < count($destinations); $i++) {
+            DB::table('activity_destination')->insert([
+                'destination_id' => $destinations[$i],
+                'activity_id' => $activity->id
+            ]);
+        }
         return response()->noContent();
     }
     public function deleteImage($id)

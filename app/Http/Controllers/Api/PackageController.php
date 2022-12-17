@@ -141,7 +141,6 @@ class PackageController extends Controller
      */
     public function store(PackageRequest $request)
     {
-        Log::info($request);
         if ($request->hasFile('image')) {
             $image = $request->image;
             $imageName = $image->getClientOriginalName();
@@ -378,7 +377,7 @@ class PackageController extends Controller
         return;
     }
 
-    public function dublicate($id)
+    public function duplicate($id)
     {
         $request = Package::where('id', $id)->first();
         $package = new Package();
@@ -403,7 +402,24 @@ class PackageController extends Controller
         $package->exclude_en = $request->exclude_en;
         $package->exclude_ar = $request->exclude_ar;
 
+
         $package->save();
+        $categories = json_decode($request->category_ids);
+        for ($i = 0; $i < count($categories); $i++) {
+            DB::table('package_category')->insert([
+                'category_id' => $categories[$i],
+                'package_id' => $package->id
+            ]);
+        }
+
+        $destinations = json_decode($request->destination_ids);
+        for ($i = 0; $i < count($destinations); $i++) {
+            DB::table('package_destination')->insert([
+                'destination_id' => $destinations[$i],
+                'package_id' => $package->id
+            ]);
+        }
+
 
         return response()->noContent();
     }

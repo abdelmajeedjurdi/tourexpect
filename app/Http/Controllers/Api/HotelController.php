@@ -298,7 +298,7 @@ class HotelController extends Controller
         $tour->delete();
         return;
     }
-    public function dublicate($id)
+    public function duplicate($id)
     {
         $request = Hotel::where('id', $id)->first();
         $tour = new Hotel();

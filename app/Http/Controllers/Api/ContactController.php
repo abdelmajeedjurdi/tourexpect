@@ -13,6 +13,7 @@ class ContactController extends Controller
 {
     public function makeInquire(Request $request)
     {
+        // Log::info($request);
 
         Mail::to('tourexpect4@gmail.com')->send(new InquiryMail($request));
 

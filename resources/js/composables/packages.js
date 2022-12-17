@@ -214,11 +214,11 @@ export default function usePackages() {
         await axios.delete("/api/delete-file/" + id);
     };
 
-    const dublicate = async (id) => {
-        await axios.post("/api/single_package/dublicate/" + id);
+    const duplicate = async (id) => {
+        await axios.post("/api/single_package/duplicate/" + id);
     }
     return {
-        packages, dublicate,
+        packages, duplicate,
         single_package,
         errors,
         getPackages,

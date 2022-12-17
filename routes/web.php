@@ -37,11 +37,12 @@ Route::delete('api/delete-image/{id}', [TourController::class, 'deleteImage'])->
 Route::delete('api/delete-hotel-image/{id}', [HotelController::class, 'deleteImage'])->middleware(['auth', 'isAdmin']);
 Route::delete('api/delete-package-image/{id}', [PackageController::class, 'deleteImage'])->middleware(['auth', 'isAdmin']);
 Route::delete('api/delete-file/{id}', [TourController::class, 'deleteFile'])->middleware(['auth', 'isAdmin']);
-Route::post('api/category/dublicate/{id}', [CategoryController::class, 'dublicate'])->middleware(['auth', 'isAdmin']);
-Route::post('api/destination/dublicate/{id}', [DestinationController::class, 'dublicate'])->middleware(['auth', 'isAdmin']);
-Route::post('api/tour/dublicate/{id}', [TourController::class, 'dublicate'])->middleware(['auth', 'isAdmin']);
-Route::post('api/activity/dublicate/{id}', [ActivityController::class, 'dublicate'])->middleware(['auth', 'isAdmin']);
-Route::post('api/blog/dublicate/{id}', [BlogController::class, 'dublicate'])->middleware(['auth', 'isAdmin']);
+Route::post('api/category/duplicate/{id}', [CategoryController::class, 'duplicate'])->middleware(['auth', 'isAdmin']);
+Route::post('api/destination/duplicate/{id}', [DestinationController::class, 'duplicate'])->middleware(['auth', 'isAdmin']);
+Route::post('api/tour/duplicate/{id}', [TourController::class, 'duplicate'])->middleware(['auth', 'isAdmin']);
+Route::post('api/activity/duplicate/{id}', [ActivityController::class, 'duplicate'])->middleware(['auth', 'isAdmin']);
+Route::post('api/blog/duplicate/{id}', [BlogController::class, 'duplicate'])->middleware(['auth', 'isAdmin']);
+Route::post('api/single_package/duplicate/{id}', [PackageController::class, 'duplicate'])->middleware(['auth', 'isAdmin']);
 
 Route::post('api/rooms', [HotelController::class, 'storeRoom'])->middleware(['auth', 'isAdmin']);
 Route::get('api/rooms/{id}', [HotelController::class, 'getRoom'])->middleware(['auth', 'isAdmin']);

@@ -15,7 +15,7 @@
     "airport_transfer": "Airport Transfer",
     "private_car": "Private Car",
     "header": "Ayder Heights Tour",
-    "start_from": "START FROM :50 $",
+    "start_from": "Starting from",
     "reservation": "Reserve Your Trip Immediately",
     "your_name": "Your Name",
     "your_phone": "Your Phone",
@@ -71,5 +71,17 @@
     "package_overview":"Packages Overview",
     "package_highlights":"Package Highlights",
     "package_inclusion":"Package Inclusion",
-    "package_exclusion":"Package Exclusion"
+    "package_exclusion":"Package Exclusion",
+    "newsletter_text":"Subscribe our Newsletter",
+    "newsletter_subtext":"Subscribe now to get all news",
+    "subscribe":"Subscribe",
+    "your_email":"Your Email",
+    "footer_message":"Your ideal partner in the middle east to discover Tourexpect wonders",
+    "copyright_text":"Copyright © 2022 . Powered by Tourexpect All rights reserved.",
+    "whatsapp_text":"whatsapp_text",
+    "children":"Children",
+    "infants":"Infants",
+    "inquiry":"Inquiry",
+    "your_message":"Your Message",
+    "inquire_now":"Inquire Now"
 }

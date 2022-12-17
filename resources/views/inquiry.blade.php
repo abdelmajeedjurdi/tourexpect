@@ -14,7 +14,6 @@
         .container {
             margin: 2rem;
         }
-
     </style>
 </head>
 
@@ -23,8 +22,11 @@
         <div class="filed"><strong>From: </strong> {{ $details['name'] }}</div>
         <div class="filed"><strong>Email: </strong> {{ $details['email'] }}</div>
         <div class="filed"><strong>Phone: </strong> {{ $details['phone'] }}</div>
-        <div class="filed"><strong>Url: </strong> {{ $details['url'] }}</div>
+        {{-- <div class="filed"><strong>Url: </strong> {{ $details['url'] }}</div> --}}
         <div class="filed"><strong>Message: </strong><br> {{ $details['message'] }}</div>
+        <div class="filed"><strong>Type: </strong><br> {{ $details['type'] }}</div>
+        <div class="filed"><strong>Item Name: </strong><br> {{ $details['item_name'] }}</div>
+        <div class="filed"><strong>URL: </strong><br> {{ $details['url'] }}</div>
     </div>
 </body>
 

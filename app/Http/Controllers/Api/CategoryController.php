@@ -138,7 +138,7 @@ class CategoryController extends Controller
 
         return response()->noContent();
     }
-    public function dublicate($id)
+    public function duplicate($id)
     {
         $request = Category::where('id', $id)->first();
         $category = new Category;

@@ -98,8 +98,8 @@ export default function useDestinations() {
         await axios.delete("/api/destinations/" + id);
     };
 
-    const dublicate = async (id) => {
-        await axios.post("/api/destination/dublicate/" + id);
+    const duplicate = async (id) => {
+        await axios.post("/api/destination/duplicate/" + id);
     }
 
     return {
@@ -114,6 +114,6 @@ export default function useDestinations() {
         deleteProperty,
         getDestinationDetails,
         tours,
-        countries, getCountries, getDestinationsOnCountry, pages, dublicate
+        countries, getCountries, getDestinationsOnCountry, pages, duplicate
     };
 }

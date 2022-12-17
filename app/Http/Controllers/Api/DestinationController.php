@@ -156,7 +156,7 @@ class DestinationController extends Controller
         $destination->delete();
         return response()->noContent();
     }
-    public function dublicate($id)
+    public function duplicate($id)
     {
         $request = Destination::where('id', $id)->first();
         $item = new Destination;

@@ -214,11 +214,11 @@ export default function useTours() {
         await axios.delete("/api/delete-file/" + id);
     };
 
-    const dublicate = async (id) => {
-        await axios.post("/api/tour/dublicate/" + id);
+    const duplicate = async (id) => {
+        await axios.post("/api/tour/duplicate/" + id);
     }
     return {
-        tours, dublicate,
+        tours, duplicate,
         tour,
         errors,
         getTours,
