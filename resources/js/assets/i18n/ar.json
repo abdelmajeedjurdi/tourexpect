@@ -84,5 +84,10 @@
     "infants":"الرضع",
     "inquiry":"الأستفسار",
     "your_message":"الرسالة",
-    "inquire_now":"استفسر الان"
+    "inquire_now":"استفسر الان",
+    "activity_options":"خيارات التشاط",
+    "activity_overview":"نظرة عامة على التشاط",
+    "activity_highlights":"مميزات التشاط",
+    "activity_inclusion":"التشاط تشمل",
+    "activity_exclusion":"التشاط لا تشمل"
 }

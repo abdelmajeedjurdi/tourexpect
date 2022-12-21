@@ -83,5 +83,10 @@
     "infants":"Infants",
     "inquiry":"Inquiry",
     "your_message":"Your Message",
-    "inquire_now":"Inquire Now"
+    "inquire_now":"Inquire Now",
+    "activity_options":"Activity Options",
+    "activity_overview":"Activity Overview",
+    "activity_highlights":"Activity Highlights",
+    "activity_inclusion":"Activity Inclusion",
+    "activity_exclusion":"Activity Exclusion"
 }

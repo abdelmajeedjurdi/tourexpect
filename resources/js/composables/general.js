@@ -48,7 +48,8 @@ export default function useGeneral() {
     };
 
     const inquire = async (form) => {
-        await axios.post("/api/inquire", form);
+        return await axios.post("/api/inquire", form);
+
     }
     return {
         destinations,

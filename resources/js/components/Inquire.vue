@@ -36,23 +36,38 @@
 
             <div>
                 <button
-                    class="hover:shadow-form rounded-md bg-blue-500 py-2 px-8 text-base font-semibold text-white outline-none"
+                    type="submit"
+                    v-if="!is_sending"
+                    class="hover:shadow-form rounded-md bg-blue-500 h-10 w-40 text-base font-semibold text-white outline-none"
                 >
-                    {{ $t("inquire_now") }}
+                    <span>
+                        {{ $t("inquire_now") }}
+                    </span>
+                </button>
+
+                <button
+                    type="button"
+                    v-else
+                    class="hover:shadow-form rounded-md bg-blue-500 m-auto h-10 w-40 text-base font-semibold text-white outline-none cursor-not-allowed"
+                >
+                    <div id="animation">
+                        <div class="box" id="box1"></div>
+                        <div class="box" id="box2"></div>
+                        <div class="box" id="box3"></div>
+                        <div class="box" id="box4"></div>
+                    </div>
                 </button>
             </div>
         </form>
     </div>
 </template>
 <script setup>
-import { reactive } from "vue";
+import { reactive, ref } from "vue";
 import useGeneral from "../composables/general";
 const { inquire } = useGeneral();
 const props = defineProps({ type: String, item_name: String, url: String });
-const sendInquiry = () => {
-    inquire(inquiry_form);
-};
-let inquiry_form = reactive({
+let is_sending = ref(false);
+let inquiry_form = ref({
     name: "",
     phone: "",
     message: "",
@@ -61,4 +76,58 @@ let inquiry_form = reactive({
     type: props.type,
     item_name: props.item_name,
 });
+const sendInquiry = async () => {
+    is_sending.value = true;
+    const res = await inquire(inquiry_form.value);
+    console.log(res);
+    inquiry_form.value = {
+        name: "",
+        phone: "",
+        message: "",
+        email: "",
+        url: props.url,
+        type: props.type,
+        item_name: props.item_name,
+    };
+    is_sending.value = res.status ? false : true;
+};
 </script>
+<style scoped>
+#animation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.box {
+    width: 5px;
+    height: 5px;
+    margin: 2px;
+}
+.box:nth-child(1) {
+    background: white;
+    animation: balls 1s linear infinite;
+}
+.box:nth-child(2) {
+    background: white;
+    animation: balls 1s 0.1s linear infinite;
+}
+.box:nth-child(3) {
+    background: white;
+    animation: balls 1s 0.2s linear infinite;
+}
+.box:nth-child(4) {
+    background: white;
+    animation: balls 1s 0.4s linear infinite;
+}
+@keyframes balls {
+    0% {
+        transform: sclaeY(1);
+    }
+    50% {
+        transform: scaleY(3);
+    }
+    100% {
+        transform: sclaeY(1);
+    }
+}
+</style>
