@@ -36,6 +36,7 @@ Route::apiResource('api/blogs', BlogController::class)->middleware(['auth', 'isA
 Route::delete('api/delete-image/{id}', [TourController::class, 'deleteImage'])->middleware(['auth', 'isAdmin']);
 Route::delete('api/delete-hotel-image/{id}', [HotelController::class, 'deleteImage'])->middleware(['auth', 'isAdmin']);
 Route::delete('api/delete-package-image/{id}', [PackageController::class, 'deleteImage'])->middleware(['auth', 'isAdmin']);
+Route::delete('api/delete-tour-image/{id}', [TourController::class, 'deleteImage'])->middleware(['auth', 'isAdmin']);
 Route::delete('api/delete-file/{id}', [TourController::class, 'deleteFile'])->middleware(['auth', 'isAdmin']);
 Route::post('api/category/duplicate/{id}', [CategoryController::class, 'duplicate'])->middleware(['auth', 'isAdmin']);
 Route::post('api/destination/duplicate/{id}', [DestinationController::class, 'duplicate'])->middleware(['auth', 'isAdmin']);

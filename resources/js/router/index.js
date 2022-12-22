@@ -63,6 +63,7 @@ import SubDestinationPacks from "../pages/frontend/packs/SubDestinationPacks"
 import Test from "../pages/backend/Test.vue";
 import Dashboard from "../pages/backend/Dashboard.vue";
 import SingleBlog from "../pages/frontend/SingleBlog"
+import WeAreHiring from "../pages/frontend/WeAreHiring"
 
 const routes = [
     {
@@ -272,6 +273,12 @@ const routes = [
         path: "/blogs/:slug",
         name: "blog",
         component: SingleBlog,
+        props: true,
+    },
+    {
+        path: "/we-are-hiring",
+        name: "we-are-hiring",
+        component: WeAreHiring,
         props: true,
     },
 

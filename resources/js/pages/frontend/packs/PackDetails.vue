@@ -217,6 +217,9 @@
                             <form class="">
                                 <div class="flex items-center">
                                     <div
+                                        v-if="
+                                            single_package['is_from'] == 'true'
+                                        "
                                         class="text-xl font-semibold text-gray-500"
                                     >
                                         {{ $t("start_from") }}
@@ -239,7 +242,9 @@
                                                 "option_discount_type"
                                             ] == "percentage"
                                                 ? "%"
-                                                : "$")
+                                                : "$") +
+                                            " " +
+                                            $t("off")
                                         }}</span
                                     >
                                 </div>

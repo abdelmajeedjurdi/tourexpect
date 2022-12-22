@@ -78,7 +78,7 @@
     "your_email":"Your Email",
     "footer_message":"Your ideal partner in the middle east to discover Tourexpect wonders",
     "copyright_text":"Copyright © 2022 . Powered by Tourexpect All rights reserved.",
-    "whatsapp_text":"whatsapp_text",
+    "whatsapp_text":"Text us on Whatsapp",
     "children":"Children",
     "infants":"Infants",
     "inquiry":"Inquiry",
@@ -88,5 +88,6 @@
     "activity_overview":"Activity Overview",
     "activity_highlights":"Activity Highlights",
     "activity_inclusion":"Activity Inclusion",
-    "activity_exclusion":"Activity Exclusion"
+    "activity_exclusion":"Activity Exclusion",
+    "off":"Off"
 }

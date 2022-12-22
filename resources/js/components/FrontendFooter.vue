@@ -155,7 +155,7 @@ const menu_meue = ref([
             {
                 name_en: "We Are Hiring",
                 name_ar: "نحن نوظف",
-                slug: "#",
+                slug: "we-are-hiring",
             },
             {
                 name_en: "Terms & Conditions",
