@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\DestinationController;
 use App\Http\Controllers\Api\GeneralController;
 use App\Http\Controllers\Api\HotelController;
+use App\Http\Controllers\Api\JobController;
 use App\Http\Controllers\Api\PackageController;
 use App\Http\Controllers\Api\TourController;
 use App\Http\Controllers\Api\UserController;
@@ -56,6 +57,7 @@ Route::delete('api/delete-icon/{id}', [GeneralController::class, 'deleteIcon'])-
 
 
 Route::apiResource('api/users', UserController::class)->middleware(['auth', 'isAdmin']);
+Route::apiResource('api/jobs', JobController::class)->middleware(['auth', 'isAdmin']);
 
 Route::get('/', function () {
     return view('frontend');

@@ -36,6 +36,7 @@ import BlogEdit from "../pages/backend/blogs/BlogEdit"
 import BlogDetails from "../pages/backend/blogs/BlogDetails"
 
 import Options from "../pages/backend/options/Options"
+import Jobs from "../pages/backend/jobs/Jobs"
 
 // Frontend
 import Frontend from "../pages/frontend";
@@ -240,6 +241,12 @@ const routes = [
         path: "/dashboard/options",
         name: "options",
         component: Options,
+    },
+    // (((((((((((((((((--Jobs--)))))))))))))))))
+    {
+        path: "/dashboard/jobs",
+        name: "jobs",
+        component: Jobs,
     },
 
     // [[[[[[[[[[[<<<<<<<<<<<<<<<<<<<<<<<<<<(((((((((((((((((--Front-End--)))))))))))))))))>>>>>>>>>>>>>>>>>>>>>>>>>>]]]]]]]]]]],
