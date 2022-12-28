@@ -24,7 +24,6 @@ export default function useJobs() {
     const getJobs = async (page) => {
         let response = await axios.get(`/api/jobs?page=${page}`);
         jobs.value = response.data;
-        // pages.value = response.data.meta
     };
 
 
@@ -33,7 +32,23 @@ export default function useJobs() {
         console.log(response);
         job.value = response.data;
     };
-
+    const apply = async (data) => {
+        fd.append("name", data.name);
+        fd.append("position", data.position);
+        fd.append("email", data.email);
+        fd.append("linked_in", data.linked_in);
+        fd.append("phone", data.phone);
+        fd.append("message", data.your_message);
+        errors.value = "";
+        try {
+            await axios.post("/api/jobs", fd);
+            getJobs()
+        } catch (e) {
+            if (e.response.status === 422) {
+                errors.value = e.response.data.errors;
+            }
+        }
+    }
 
     const storeJob = async (data) => {
         fd.append("title_en", data.title_en);
@@ -90,6 +105,6 @@ export default function useJobs() {
         storeJob,
         updateJob,
         destroyJob,
-        percentage, pages,
+        percentage, pages, apply
     };
 }

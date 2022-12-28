@@ -380,10 +380,12 @@ class TourController extends Controller
 
         $tour = Tour::find($id);
         if ($tour->thumbnail !== 'default.jpg' && $tour->thumbnail !== '')
-            unlink('images/tours/' . $tour->thumbnail);
+            if (file_exists('images/tours/' . $tour->thumbnail))
+                unlink('images/tours/' . $tour->thumbnail);
         $images = TourImage::where('tour_id', $tour->id)->get();
         foreach ($images as $image) {
-            unlink('images/tours/' . $image->image);
+            if (file_exists('images/tours/' . $image->image))
+                unlink('images/tours/' . $image->image);
         }
         TourImage::where('tour_id', $tour->id)->delete();
         $tour->delete();
