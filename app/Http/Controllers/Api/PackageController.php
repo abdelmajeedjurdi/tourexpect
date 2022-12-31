@@ -254,7 +254,8 @@ class PackageController extends Controller
         if ($request->new_image != 'null' && $request->new_image != 'default.jpg') {
             $file_old = $path . $request->package_img;
             if ($request->package_img != 'default.jpg' && $request->package_img != null)
-                unlink($file_old);
+                if (file_exists($file_old))
+                    unlink($file_old);
 
             //code for add new image
             $image = $request->new_image;
@@ -367,10 +368,12 @@ class PackageController extends Controller
 
         $package = Package::find($id);
         if ($package->thumbnail !== 'default.jpg' && $package->thumbnail !== '')
-            unlink('images/packages/' . $package->thumbnail);
+            if (file_exists('images/packages/' . $package->thumbnail))
+                unlink('images/packages/' . $package->thumbnail);
         $images = PackageImage::where('package_id', $package->id)->get();
         foreach ($images as $image) {
-            unlink('images/packages/' . $image->image);
+            if (file_exists('images/packages/' . $image->image))
+                unlink('images/packages/' . $image->image);
         }
         PackageImage::where('package_id', $package->id)->delete();
         $package->delete();

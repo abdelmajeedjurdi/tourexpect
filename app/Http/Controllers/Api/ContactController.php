@@ -15,14 +15,14 @@ class ContactController extends Controller
     {
         // Log::info($request);
 
-        Mail::to('tourexpect4@gmail.com')->send(new InquiryMail($request));
+        Mail::to('info@tourexpect.com')->send(new InquiryMail($request));
 
         return response()->json('Your message has been sent. Thank you!', 200);
     }
     public function makeContact(Request $request)
     {
         // $details = $request->validated();
-        Mail::to('tourexpect4@gmail.com')->send(new ContactMail($request));
+        Mail::to('eido.khudyda@gmail.com')->send(new ContactMail($request));
 
         return response()->json('Your message has been sent. Thank you!', 200);
     }
