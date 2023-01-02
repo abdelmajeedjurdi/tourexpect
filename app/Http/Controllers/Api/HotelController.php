@@ -337,7 +337,8 @@ class HotelController extends Controller
         $path = 'images/hotels/';
 
         $image = DB::table('hotel_images')->where('id', $id)->first('image');
-        unlink($path . $image->image);
+        if (file_exists($path . $image->image))
+            unlink($path . $image->image);
         DB::table('hotel_images')->delete($id);
         return "done";
     }

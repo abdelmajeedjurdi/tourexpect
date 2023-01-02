@@ -266,7 +266,8 @@ class TourController extends Controller
         if ($request->new_image != 'null' && $request->new_image != 'default.jpg') {
             $file_old = $path . $request->tour_img;
             if ($request->tour_img != 'default.jpg' && $request->tour_img != null)
-                unlink($file_old);
+                if (file_exists($file_old))
+                    unlink($file_old);
 
             //code for add new image
             $image = $request->new_image;
@@ -439,7 +440,8 @@ class TourController extends Controller
         $path = 'images/tours/';
 
         $image = DB::table('tour_images')->where('id', $id)->first('image');
-        unlink($path . $image->image);
+        if (file_exists($path . $image->image))
+            unlink($path . $image->image);
         DB::table('tour_images')->delete($id);
         return "done";
     }

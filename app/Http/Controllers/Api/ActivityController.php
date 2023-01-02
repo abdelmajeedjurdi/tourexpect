@@ -434,7 +434,8 @@ class ActivityController extends Controller
         $path = 'images/activities/';
 
         $image = DB::table('activity_images')->where('id', $id)->first('image');
-        unlink($path . $image->image);
+        if (file_exists($path . $image->image))
+            unlink($path . $image->image);
         DB::table('activity_images')->delete($id);
         return "done";
     }

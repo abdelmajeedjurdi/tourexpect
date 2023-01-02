@@ -28,6 +28,6 @@ class InquiryMail extends Mailable
      */
     public function build()
     {
-        return $this->from('eido.khudyda@gmail.com')->subject('testing inquiring')->view('inquiry');
+        return $this->from('tourexpect4@gmail.com')->subject('testing inquiring')->view('inquiry');
     }
 }

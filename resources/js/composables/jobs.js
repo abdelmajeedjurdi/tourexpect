@@ -22,7 +22,7 @@ export default function useJobs() {
     let fd = new FormData();
 
     const getJobs = async (page) => {
-        let response = await axios.get(`/api/jobs?page=${page}`);
+        let response = await axios.get(`/api/all-jobs?page=${page}`);
         jobs.value = response.data;
     };
 
@@ -38,10 +38,10 @@ export default function useJobs() {
         fd.append("email", data.email);
         fd.append("linked_in", data.linked_in);
         fd.append("phone", data.phone);
-        fd.append("message", data.your_message);
+        fd.append("message", data.message);
         errors.value = "";
         try {
-            await axios.post("/api/jobs", fd);
+            return await axios.post("/api/apply-to-job", fd);
             getJobs()
         } catch (e) {
             if (e.response.status === 422) {
@@ -50,6 +50,12 @@ export default function useJobs() {
         }
     }
 
+    const addFiles = async (files) => {
+        for (var i = 0; i < files.length; i++) {
+            let file = files[i];
+            fd.append("files[" + i + "]", file);
+        }
+    };
     const storeJob = async (data) => {
         fd.append("title_en", data.title_en);
         fd.append("title_ar", data.title_ar);
@@ -105,6 +111,6 @@ export default function useJobs() {
         storeJob,
         updateJob,
         destroyJob,
-        percentage, pages, apply
+        percentage, pages, apply, addFiles
     };
 }

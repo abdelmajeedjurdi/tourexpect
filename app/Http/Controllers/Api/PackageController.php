@@ -431,7 +431,8 @@ class PackageController extends Controller
         $path = 'images/packages/';
 
         $image = DB::table('package_images')->where('id', $id)->first('image');
-        unlink($path . $image->image);
+        if (file_exists($path . $image->image))
+            unlink($path . $image->image);
         DB::table('package_images')->delete($id);
         return "done";
     }
