@@ -21,14 +21,14 @@ class ContactController extends Controller
     public function makeContact(Request $request)
     {
         // $details = $request->validated();
-        Mail::to('eido.khudyda@gmail.com')->send(new ContactMail($request));
+        Mail::to('info@tourexpect.com')->send(new ContactMail($request));
 
         return response()->json('Your message has been sent. Thank you!', 200);
     }
     public function applyToJob(Request $request)
     {
         Log::info($request);
-        Mail::to('info@tourexpect.com')->send(new JobApplicationMail($request));
+        Mail::to('careers@tourexpect.com')->send(new JobApplicationMail($request));
 
         return response()->json('Your message has been sent. Thank you!', 200);
     }
