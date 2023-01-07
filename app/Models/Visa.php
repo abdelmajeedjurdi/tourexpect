@@ -10,7 +10,7 @@ class Visa extends Model
     use HasFactory;
     protected $fillable = [
         'slug',
-        'destination_ids',
+        'country_passport_ids',
         'title_en',
         'title_ar',
         'documents_en',

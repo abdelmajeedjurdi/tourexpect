@@ -71,18 +71,21 @@
                     </div>
                 </div>
             </div>
-            <button
-                type="submit"
-                class="inline-flex items-center px-4 py-2 my-2 text-xs font-semibold tracking-widest text-white uppercase bg-gray-800 rounded-md border border-transparent ring-gray-300 transition duration-150 ease-in-out hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring disabled:opacity-25"
-            >
-                {{
-                    is_show_form
-                        ? "Create"
-                        : is_editing
-                        ? "Save"
-                        : "New Country"
-                }}
-            </button>
+            <div class="flex justify-between">
+                <h3>All Passports</h3>
+                <button
+                    type="submit"
+                    class="inline-flex items-center px-4 py-2 my-2 text-xs font-semibold tracking-widest text-white uppercase bg-gray-800 rounded-md border border-transparent ring-gray-300 transition duration-150 ease-in-out hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring disabled:opacity-25"
+                >
+                    {{
+                        is_show_form
+                            ? "Create"
+                            : is_editing
+                            ? "Save"
+                            : "New Passport"
+                    }}
+                </button>
+            </div>
         </form>
         <table
             class="w-full text-sm text-left text-gray-500 dark:text-gray-400"

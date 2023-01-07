@@ -94,9 +94,32 @@ class VisaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Visa $visa)
     {
-        //
+        Log::info($request);
+        $visa->update([
+            'slug' => Str::slug($request->title_en, '-'),
+            'country_passport_ids' => $request->country_passport_ids,
+            'title_en' => $request->title_en,
+            'title_ar' => $request->title_ar,
+            'documents_en' => $request->documents_en,
+            'documents_ar' => $request->documents_ar,
+            'conditions_en' => $request->conditions_en,
+            'conditions_ar' => $request->conditions_ar,
+            'types_en' => $request->types_en,
+            'types_ar' => $request->types_ar,
+            'options' => $request->options,
+        ]);
+
+        DB::table('country_passport_visa')->where('visa_id', '=', $visa->id)->delete();
+        $destinations = json_decode($request->country_passport_ids);
+        for ($i = 0; $i < count($destinations); $i++) {
+            Log::info($destinations[$i]);
+            DB::table('country_passport_visa')->insert([
+                'country_passport_id' => $destinations[$i],
+                'visa_id' => $visa->id
+            ]);
+        }
     }
 
     /**

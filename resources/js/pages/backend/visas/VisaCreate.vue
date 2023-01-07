@@ -302,6 +302,73 @@
                             </select>
                         </div>
                     </div>
+
+                    <div class="w-1/5">
+                        <label
+                            for="visa_validity_en"
+                            class="block text-sm font-medium text-gray-700 dark:text-gray-200"
+                            >English Visa Validity</label
+                        >
+                        <div class="mt-1">
+                            <input
+                                type="text"
+                                name="visa_validity_en"
+                                id="visa_validity_en"
+                                class="block mt-1 w-full rounded-md border-gray-500 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-800"
+                                v-model="visa_option.visa_validity_en"
+                            />
+                        </div>
+                    </div>
+                    <div class="w-1/5">
+                        <label
+                            for="visa_validity_ar"
+                            class="block text-sm font-medium text-gray-700 dark:text-gray-200"
+                            >Arabic Visa Validity</label
+                        >
+                        <div class="mt-1">
+                            <input
+                                dir="rtl"
+                                type="text"
+                                name="visa_validity_ar"
+                                id="visa_validity_ar"
+                                class="block mt-1 w-full rounded-md border-gray-500 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-800"
+                                v-model="visa_option.visa_validity_ar"
+                            />
+                        </div>
+                    </div>
+                    <div class="w-1/5">
+                        <label
+                            for="processing_time_en"
+                            class="block text-sm font-medium text-gray-700 dark:text-gray-200"
+                            >English Processing Time</label
+                        >
+                        <div class="mt-1">
+                            <input
+                                type="text"
+                                name="processing_time_en"
+                                id="processing_time_en"
+                                class="block mt-1 w-full rounded-md border-gray-500 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-800"
+                                v-model="visa_option.processing_time_en"
+                            />
+                        </div>
+                    </div>
+                    <div class="w-1/5">
+                        <label
+                            for="processing_time_ar"
+                            class="block text-sm font-medium text-gray-700 dark:text-gray-200"
+                            >Arabic Processing Time</label
+                        >
+                        <div class="mt-1">
+                            <input
+                                dir="rtl"
+                                type="text"
+                                name="processing_time_ar"
+                                id="processing_time_ar"
+                                class="block mt-1 w-full rounded-md border-gray-500 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-800"
+                                v-model="visa_option.processing_time_ar"
+                            />
+                        </div>
+                    </div>
                     <!-- prices -->
 
                     <div class="w-1/5">
@@ -394,6 +461,18 @@
                                     No. of Entries
                                 </th>
                                 <th scope="col" class="px-6 py-3">
+                                    en Validity
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    ar Validity
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    En Processing Time
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Ar. Processing Time
+                                </th>
+                                <th scope="col" class="px-6 py-3">
                                     Adult Price
                                 </th>
                                 <th scope="col" class="px-6 py-3">
@@ -416,6 +495,18 @@
                                 </td>
                                 <td class="px-6 py-4">
                                     {{ option.no_of_entries }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    {{ option.visa_validity_en }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    {{ option.visa_validity_ar }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    {{ option.processing_time_en }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    {{ option.processing_time_ar }}
                                 </td>
                                 <td class="px-6 py-4">
                                     {{ option.adult_price }}
@@ -523,6 +614,10 @@ let visa_option = ref({
     adult_price: null,
     child_price: null,
     no_of_entries: "single_entry",
+    visa_validity_en: "",
+    visa_validity_ar: "",
+    processing_time_en: "",
+    processing_time_ar: "",
 });
 
 const setVisaOption = () => {
@@ -534,6 +629,10 @@ const setVisaOption = () => {
             adult_price: null,
             child_price: null,
             no_of_entries: "single_entry",
+            visa_validity_en: "",
+            visa_validity_ar: "",
+            processing_time_en: "",
+            processing_time_ar: "",
         };
     } else {
         is_editing_option.value = false;
@@ -543,6 +642,10 @@ const setVisaOption = () => {
             adult_price: null,
             child_price: null,
             no_of_entries: "single_entry",
+            visa_validity_en: "",
+            visa_validity_ar: "",
+            processing_time_en: "",
+            processing_time_ar: "",
         };
     }
 };

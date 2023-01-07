@@ -55,10 +55,7 @@ export default function useVisas() {
     const getVisa = async (id) => {
         let response = await axios.get("/api/visas/" + id);
         visa.value = response.data.data;
-        visa.value['banner_highlights'] = JSON.parse(visa.value['banner_highlights'])
         visa.value['options'] = JSON.parse(visa.value['options'])
-        visa.value['itinerary'] = JSON.parse(visa.value['itinerary'])
-        visa.value['category_ids'] = JSON.parse(visa.value['category_ids'])
         visa.value['country_passport_ids'] = JSON.parse(visa.value['country_passport_ids'])
     };
     const getVisaDetails = async (slug) => {
@@ -101,43 +98,18 @@ export default function useVisas() {
     };
 
     const updateVisa = async (id, data) => {
+        console.log(data);
         fd.append("_method", "patch");
-        fd.append("category_ids", JSON.stringify(data.form.category_ids));
         fd.append("country_passport_ids", JSON.stringify(data.form.country_passport_ids));
         fd.append("title_en", data.form.title_en);
         fd.append("title_ar", data.form.title_ar);
-        fd.append("description_en", data.form.description_en);
-        fd.append("description_ar", data.form.description_ar);
-        fd.append("address_ar", data.form.address_ar);
-        fd.append("address_en", data.form.address_en);
-        fd.append("itinerary", JSON.stringify(data.form.itinerary))
-        fd.append("active", data.form.active);
-        fd.append("duration_en", data.form.duration_en);
-        fd.append("duration_ar", data.form.duration_ar);
-        fd.append("max_number_of_people", data.form.max_number_of_people);
-        fd.append("include_en", data.form.include_en);
-        fd.append("include_ar", data.form.include_ar);
-        fd.append("exclude_en", data.form.exclude_en);
-        fd.append("exclude_ar", data.form.exclude_ar);
-        fd.append("source", data.form.source);
-        fd.append("highlights_ar", data.form.highlights_ar);
-        fd.append("highlights_en", data.form.highlights_en);
-        fd.append("information_ar", data.form.information_ar);
-        fd.append("information_en", data.form.information_en);
-        fd.append("policy_ar", data.form.policy_ar);
-        fd.append("policy_en", data.form.policy_en);
-        fd.append("timing_and_transfer_ar", data.form.timing_and_transfer_ar)
-        fd.append("timing_and_transfer_en", data.form.timing_and_transfer_en)
-        fd.append("notes_en", data.form.notes_en)
-        fd.append("notes_ar", data.form.notes_ar)
-        fd.append("terms_and_conditions_en", data.form.terms_and_conditions_en)
-        fd.append("terms_and_conditions_ar", data.form.terms_and_conditions_ar)
-        fd.append("is_from", data.form.is_from)
-        fd.append("banner_highlights", JSON.stringify(data.form.banner_highlights))
-        fd.append("options", JSON.stringify(data.form.options))
-        fd.append("visa_img", data.form.thumbnail);
-        fd.append("new_image", data.file);
-        fd.append("properties", JSON.stringify(data.properties));
+        fd.append("documents_en", data.form.documents_en);
+        fd.append("documents_ar", data.form.documents_ar);
+        fd.append("conditions_en", data.form.conditions_en);
+        fd.append("conditions_ar", data.form.conditions_ar);
+        fd.append("types_en", data.form.types_en);
+        fd.append("types_ar", data.form.types_ar);
+        fd.append("options", JSON.stringify(data.form.options));
         errors.value = "";
         try {
             await axios.post("/api/visas/" + id, fd, {
