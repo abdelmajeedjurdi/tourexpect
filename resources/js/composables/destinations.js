@@ -9,7 +9,10 @@ export default function useDestinations() {
     const errors = ref("");
     const tours = ref([]);
     const countries = ref([]);
+    const country = ref([]);
     const pages = ref([])
+
+    let fd = new FormData();
 
     const getDestinations = async (page) => {
         let response = await axios.get(`/api/destinations?page=${page}`);
@@ -102,6 +105,54 @@ export default function useDestinations() {
         await axios.post("/api/destination/duplicate/" + id);
     }
 
+
+    const getCountry = async (id) => {
+        let response = await axios.get("/api/countries/" + id);
+        console.log(response.data);
+        country.value = response.data;
+    };
+
+
+    const storeCountry = async (data) => {
+        fd.append("name_en", data.name_en);
+        fd.append("name_ar", data.name_ar);
+        errors.value = "";
+        try {
+            await axios.post("/api/countries", fd);
+            getCountries()
+        } catch (e) {
+            if (e.response.status === 422) {
+                errors.value = e.response.data.errors;
+            }
+        }
+    };
+
+    const updateCountry = async (data) => {
+        fd.append("_method", "patch");
+        fd.append("name", data.name);
+        fd.append("email", data.email);
+        fd.append("password", data.password);
+        fd.append("role", data.role);
+        errors.value = "";
+        try {
+            await axios.post("/api/countries/" + data.id, fd, {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                },
+
+            });
+            getCountries()
+        } catch (e) {
+            if (e.response.status === 422) {
+                errors.value = e.response.data.errors;
+            }
+        }
+    };
+
+    const destroyCountry = async (id) => {
+        await axios.delete("/api/countries/" + id);
+        getCountries()
+    };
     return {
         destinations,
         destination,
@@ -113,7 +164,7 @@ export default function useDestinations() {
         destroyDestination,
         deleteProperty,
         getDestinationDetails,
-        tours,
-        countries, getCountries, getDestinationsOnCountry, pages, duplicate
+        tours, getDestinationsOnCountry, pages, duplicate,
+        getCountry, storeCountry, updateCountry, destroyCountry, countries, getCountries, country
     };
 }

@@ -3,6 +3,8 @@
 use App\Http\Controllers\Api\ActivityController;
 use App\Http\Controllers\Api\BlogController;
 use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\CountriesPassportController;
+use App\Http\Controllers\Api\CountryController;
 use App\Http\Controllers\Api\DestinationController;
 use App\Http\Controllers\Api\GeneralController;
 use App\Http\Controllers\Api\HotelController;
@@ -10,6 +12,7 @@ use App\Http\Controllers\Api\JobController;
 use App\Http\Controllers\Api\PackageController;
 use App\Http\Controllers\Api\TourController;
 use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\VisaController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -58,6 +61,9 @@ Route::delete('api/delete-icon/{id}', [GeneralController::class, 'deleteIcon'])-
 
 Route::apiResource('api/users', UserController::class)->middleware(['auth', 'isAdmin']);
 Route::apiResource('api/jobs', JobController::class)->middleware(['auth', 'isAdmin']);
+Route::apiResource('api/visas', VisaController::class)->middleware(['auth', 'isAdmin']);
+Route::apiResource('api/countries', CountryController::class)->middleware(['auth', 'isAdmin']);
+Route::apiResource('api/country_passports', CountriesPassportController::class)->middleware(['auth', 'isAdmin']);
 
 Route::get('/', function () {
     return view('frontend');

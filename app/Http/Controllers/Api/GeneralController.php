@@ -5,9 +5,11 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\CountryActivitiesResource;
 use App\Http\Resources\CountryPackagesResource;
+use App\Http\Resources\CountryPassportResource;
 use App\Http\Resources\CountryResource;
 use App\Http\Resources\CountryTourResource;
 use App\Http\Resources\CountryToursResource;
+use App\Http\Resources\VisaResource;
 use App\Models\OptionIcon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -42,16 +44,25 @@ class GeneralController extends Controller
 
         $activities = DB::table('activities')
             ->join('activity_destination as pd', 'activities.id', '=', 'pd.activity_id')
-            ->join('destinations', 'pd.destination_id', '=', 'destinations.id')->join('countries', 'countries.id', 'destinations.country_id')
+            ->join('destinations', 'pd.destination_id', '=', 'destinations.id')
+            ->join('countries', 'countries.id', 'destinations.country_id')
             ->select(
                 'countries.*',
+            )->distinct()->get();
+
+        $visas = DB::table('visas')
+            ->join('country_passport_visa as pd', 'visas.id', '=', 'pd.visa_id')
+            ->join('countries_passports', 'pd.country_passport_id', '=', 'countries_passports.id')
+            ->select(
+                'countries_passports.*',
             )->distinct()->get();
 
         return [
             'packages' => CountryPackagesResource::collection($packages),
             'tours' => CountryToursResource::collection($tours),
             'activities' => CountryActivitiesResource::collection($activities),
-            'destinations' => CountryResource::collection($destinations)
+            'destinations' => CountryResource::collection($destinations),
+            'visas' => CountryPassportResource::collection($visas)
         ];
     }
 

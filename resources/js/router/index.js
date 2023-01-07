@@ -25,6 +25,11 @@ import ActivityCreate from "../pages/backend/activities/ActivityCreate";
 import ActivityEdit from "../pages/backend/activities/ActivityEdit";
 import ActivityDetails from "../pages/backend/activities/ActivityDetails";
 
+import VisasIndex from "../pages/backend/visas/VisasIndex";
+import VisaCreate from "../pages/backend/visas/VisaCreate";
+import VisaEdit from "../pages/backend/visas/VisaEdit";
+import VisaDetails from "../pages/backend/visas/VisaDetails";
+
 import HotelsIndex from "../pages/backend/hotels/HotelsIndex";
 import HotelCreate from "../pages/backend/hotels/HotelCreate";
 import HotelEdit from "../pages/backend/hotels/HotelEdit";
@@ -183,10 +188,27 @@ const routes = [
         component: ActivityEdit,
         props: true,
     },
+    // (((((((((((((((((--Visas--)))))))))))))))))
+    {
+        path: "/dashboard/visas",
+        name: "visas.index",
+        component: VisasIndex,
+    },
+    {
+        path: "/dashboard/visas/create",
+        name: "visa.create",
+        component: VisaCreate,
+    },
+    {
+        path: "/dashboard/visas/:id/edit",
+        name: "visa.edit",
+        component: VisaEdit,
+        props: true,
+    },
     {
         path: "/dashboard/packages/:id/details",
         name: "activity.details",
-        component: ActivityDetails,
+        component: VisaDetails,
         props: true,
     },
     // (((((((((((((((((--Hotels And Resorts--)))))))))))))))))
@@ -331,6 +353,25 @@ const routes = [
         component: SubDestinationActivites,
         props: true
     },
+
+
+    // {
+    //     path: "/visas",
+    //     name: "visas",
+    //     component: Visas,
+    // },
+    // {
+    //     path: "/visas/:destination",
+    //     name: "DActivities",
+    //     component: DestinationActivites,
+    //     props: true
+    // },
+    // {
+    //     path: "/visas/:destination/:subdestination",
+    //     name: "SDActivities",
+    //     component: SubDestinationActivites,
+    //     props: true
+    // },
 
     {
         path: "/packages",

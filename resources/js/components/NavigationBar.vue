@@ -521,7 +521,9 @@ onMounted(async () => {
     menu.value[1]["items"] = destinations.value.packages;
     menu.value[2]["items"] = destinations.value.tours;
     menu.value[3]["items"] = destinations.value.activities;
+    menu.value[4]["items"] = destinations.value.visas;
     //   menu.value[5]["items"] = destinations.value;
+    console.log(destinations.value);
 });
 
 let menu = ref([
@@ -563,6 +565,15 @@ let menu = ref([
     },
     {
         id: 4,
+        name_en: "Visas",
+        name_ar: "التأشيرات",
+        slug: "visas",
+        is_link: false,
+        only_sidebar: false,
+        items: [],
+    },
+    {
+        id: 5,
         name_en: "Transfer",
         name_ar: "التنقل",
         slug: "transfer",
@@ -572,7 +583,7 @@ let menu = ref([
         // items: [{ id: 0, name_en: 'turkiye', items: ['trabzon', 'istanbul'] }]
     },
     {
-        id: 5,
+        id: 6,
         name_en: "Hotels & Resorts",
         name_ar: "الفنادق و المنتجعات",
         slug: "hotels-and-resorts",
@@ -581,7 +592,7 @@ let menu = ref([
         items: [],
     },
     {
-        id: 6,
+        id: 7,
         name_en: "Blogs",
         name_ar: "المدونة",
         slug: "blogs",
