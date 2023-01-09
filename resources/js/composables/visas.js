@@ -61,9 +61,7 @@ export default function useVisas() {
     const getVisaDetails = async (slug) => {
         let response = await axios.get("/api/visa/" + slug);
         visa.value = response.data.data;
-        visa.value['banner_highlights'] = JSON.parse(visa.value['banner_highlights'])
         visa.value['options'] = JSON.parse(visa.value['options'])
-        visa.value['itinerary'] = JSON.parse(visa.value['itinerary'])
     };
 
     const storeVisa = async (data) => {

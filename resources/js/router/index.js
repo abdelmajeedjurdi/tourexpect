@@ -66,6 +66,11 @@ import Packages from "../pages/frontend/packs/Packs"
 import temp from "../pages/frontend/packs/temp"
 import DestinationPacks from "../pages/frontend/packs/DestinationPacks"
 import SubDestinationPacks from "../pages/frontend/packs/SubDestinationPacks"
+
+import PassportVisa from "../pages/frontend/visas/PassportVisa"
+import proceedToApply from "../pages/frontend/visas/proceedToApply"
+
+
 import Test from "../pages/backend/Test.vue";
 import Dashboard from "../pages/backend/Dashboard.vue";
 import SingleBlog from "../pages/frontend/SingleBlog"
@@ -333,6 +338,20 @@ const routes = [
         path: "/tours/:destination/:subdestination",
         name: "SDTours",
         component: SubDestinationTours,
+        props: true
+    },
+
+
+    {
+        path: "/visas/:passport/:visa",
+        name: "SDVisas",
+        component: PassportVisa,
+        props: true
+    },
+    {
+        path: "/visas/:passport/:visa/proceed-to-apply",
+        name: "proceed-to-apply",
+        component: proceedToApply,
         props: true
     },
 

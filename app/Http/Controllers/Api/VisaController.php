@@ -76,6 +76,10 @@ class VisaController extends Controller
         return new VisaResource($visa);
     }
 
+    public function getVisaDetails($slug)
+    {
+        return new VisaResource(Visa::where('slug', $slug)->first());
+    }
     /**
      * Show the form for editing the specified resource.
      *
