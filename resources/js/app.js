@@ -35,6 +35,7 @@ createApp({
     },
     provide: {
         lang: localStorage.getItem("lang") || "en",
+        pk: "pk_test_51MGGbYDcVBlUUJwWjHdX6YNt8gW82OWIAvNXJkScE4SqRkx2CfsQNE1xmrQM5oCzZt5QvD9D4gw4g7AA1g8jNT8e004MaWF7s1"
     },
 })
     .use(router)

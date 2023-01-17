@@ -96,7 +96,7 @@ export default function useVisas() {
     };
 
     const updateVisa = async (id, data) => {
-        console.log(data);
+        ;
         fd.append("_method", "patch");
         fd.append("country_passport_ids", JSON.stringify(data.form.country_passport_ids));
         fd.append("title_en", data.form.title_en);

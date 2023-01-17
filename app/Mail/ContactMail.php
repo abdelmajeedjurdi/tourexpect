@@ -21,7 +21,6 @@ class ContactMail extends Mailable
     public function __construct($request)
     {
         $this->details = $request;
-        Log::info($this->details);
     }
 
     /**

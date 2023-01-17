@@ -262,7 +262,6 @@ const applyToJob = async () => {
     }
 
     const res = await apply(application_form.value);
-    console.log(res);
     application_form.value = {
         name: "",
         position: "",
@@ -274,9 +273,7 @@ const applyToJob = async () => {
     job_title.value = "";
     is_sending.value = res.status ? false : true;
 };
-const handleFiles = (files) => {
-    console.log(files);
-};
+const handleFiles = (files) => {};
 </script>
 <style scoped>
 #animation {

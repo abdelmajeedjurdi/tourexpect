@@ -13,7 +13,6 @@ use App\Http\Controllers\Api\PackageController;
 use App\Http\Controllers\Api\TourController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\VisaController;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*

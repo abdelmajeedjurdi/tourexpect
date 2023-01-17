@@ -79,7 +79,6 @@ let inquiry_form = ref({
 const sendInquiry = async () => {
     is_sending.value = true;
     const res = await inquire(inquiry_form.value);
-    console.log(res);
     inquiry_form.value = {
         name: "",
         phone: "",

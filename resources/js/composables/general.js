@@ -7,6 +7,7 @@ export default function useGeneral() {
     const router = useRouter();
     let fd = new FormData();
     let icons = ref([])
+    let session_id = ref(null)
 
     const getDestinations = async (page) => {
         let response = await axios.get(`/api/nav-destination`);
@@ -43,6 +44,16 @@ export default function useGeneral() {
         icons.value = response.data;
     }
 
+    const getSession = async (amount, name) => {
+        let response = await axios.post(`/api/get-session`, { 'amount': amount, 'name': name });
+        session_id.value = response.data.id;
+    }
+
+    const applyToVisa = async (form) => {
+        return await axios.post("/api/visa-application", form);
+
+    }
+
     const destroyIcon = async (id) => {
         await axios.delete("/api/delete-icon/" + id);
     };
@@ -53,6 +64,13 @@ export default function useGeneral() {
     }
     return {
         destinations,
-        getDestinations, addGallery, updateIcons, icons, getIcons, destroyIcon, inquire
+        getDestinations,
+        addGallery,
+        updateIcons,
+        icons,
+        getIcons,
+        destroyIcon,
+        inquire,
+        getSession, session_id, applyToVisa
     };
 }

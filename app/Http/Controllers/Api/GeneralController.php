@@ -10,13 +10,47 @@ use App\Http\Resources\CountryResource;
 use App\Http\Resources\CountryTourResource;
 use App\Http\Resources\CountryToursResource;
 use App\Http\Resources\VisaResource;
+use App\Mail\VisaMail;
 use App\Models\OptionIcon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class GeneralController extends Controller
 {
+    public function getSession(Request $request)
+    {
+        Log::info($request);
+
+        $stripe = new \Stripe\StripeClient(
+            env('STRIPE_API_KEY')
+        );
+        $checkout = $stripe->checkout->sessions->create([
+            'success_url' => 'http://127.0.0.1:8000/success',
+            'cancel_url' => 'http://127.0.0.1:8000/cancel',
+            'line_items' => [
+                [
+                    'price_data' => [
+                        'currency' => 'usd',
+                        'unit_amount' => $request->amount * 100,
+                        'product_data' => [
+                            'name' => $request->name
+                        ]
+                    ],
+                    'quantity' => 1
+                ]
+            ],
+            'mode' => 'payment'
+        ]);
+        return $checkout;
+    }
+    public function applyToVisa(Request $request)
+    {
+        Mail::to('info@tourexpect.com')->send(new VisaMail($request));
+
+        return response()->json('Your message has been sent. Thank you!', 200);
+    }
     public function destinations2()
     {
 

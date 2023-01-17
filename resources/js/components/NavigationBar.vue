@@ -516,14 +516,12 @@ onMounted(async () => {
         }
     });
     await getDestinations();
-    console.log(destinations.value);
     menu.value[0]["items"] = destinations.value.destinations;
     menu.value[1]["items"] = destinations.value.packages;
     menu.value[2]["items"] = destinations.value.tours;
     menu.value[3]["items"] = destinations.value.activities;
     menu.value[4]["items"] = destinations.value.visas;
     //   menu.value[5]["items"] = destinations.value;
-    console.log(destinations.value);
 });
 
 let menu = ref([

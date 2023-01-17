@@ -10,6 +10,7 @@ use App\Http\Controllers\Api\GeneralController;
 use App\Http\Controllers\Api\HotelController;
 use App\Http\Controllers\Api\JobController;
 use App\Http\Controllers\Api\PackageController;
+use App\Http\Controllers\Api\StripeController;
 use App\Http\Controllers\Api\VisaController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -72,3 +73,7 @@ Route::get('nav-tours', [GeneralController::class, 'tours']);
 Route::get('single-blog/{slug}', [BlogController::class, 'getSingleBlog']);
 Route::get('all-jobs', [JobController::class, 'index']);
 Route::get('visa/{slug}', [VisaController::class, 'getVisaDetails']);
+
+
+Route::post('get-session', [GeneralController::class, 'getSession']);
+Route::post('visa-application', [GeneralController::class, 'applyToVisa']);

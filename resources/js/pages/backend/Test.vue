@@ -1,53 +1,41 @@
 <template>
-  <div
-    class="
-      w-1/3
-      mx-auto
-      flex
-      max-h-10
-      flex-col
-      border-none
-      bg-blue-900
-      text-blue-500
-      transition-all
-      duration-700
-      dark:bg-gray-900
-      itinerary
-    "
-  >
-    <div
-      id="content"
-      style="line-height: 20px"
-      class="flex flex-grow flex-col justify-between overflow-y-hidden"
-    >
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus illo
-      perferendis corporis error, est, amet, illum accusantium optio delectus
-      consequatur maxime mollitia unde ducimus. Amet laboriosam sunt voluptate!
-      Repellat, dolorem! Lorem ipsum dolor sit amet consectetur adipisicing
-      elit. Doloribus illo perferendis corporis error, est, amet, illum
-      accusantium optio delectus consequatur maxime mollitia unde ducimus. Amet
-      laboriosam sunt voluptate! Repellat, dolorem!
+    <div v-if="session_id != null" class="p-4">
+        <stripe-checkout
+            ref="checkoutRef"
+            :pk="publishableKey"
+            :sessionId="session_id"
+        />
+        <div @click="tempFun">{{ "sid: " + session_id }}</div>
+        <button class="bg-blue-500 py-2 px-8" @click="submit">Pay now!</button>
     </div>
-  </div>
-  <button class="p-3 bg-gray-300" @click="countLines">Count</button>
 </template>
-
 <script setup>
-import { ref } from "vue";
+import { StripeCheckout } from "@vue-stripe/vue-stripe";
+import axios from "axios";
 
-let temp = ref(-1);
-function countLines() {
-  var el = document.getElementById("content");
-  var divHeight = el.offsetHeight;
-  var lineHeight = parseInt(el.style.lineHeight);
-  var lines = divHeight / lineHeight;
-  alert("Lines: " + lines);
-}
+import { onBeforeMount, onMounted, ref } from "vue";
+const checkoutRef = ref(null);
+const publishableKey = ref(
+    "pk_test_51MGGbYDcVBlUUJwWjHdX6YNt8gW82OWIAvNXJkScE4SqRkx2CfsQNE1xmrQM5oCzZt5QvD9D4gw4g7AA1g8jNT8e004MaWF7s1"
+);
+let session_id = ref(null);
+onMounted(() => {
+    console.log("asdfsadfds");
+    // getSession();
+});
+onBeforeMount(() => {
+    console.log("before");
+    // session_id.value = "1111";
+    getSession();
+});
+const getSession = async () => {
+    const response = await axios.get("getSession");
+    console.log(response.data.id);
+    session_id.value = response.data.id;
+};
+
+const submit = () => {
+    console.log(checkoutRef.value);
+    checkoutRef.value.redirectToCheckout();
+};
 </script>
-<style scoped>
-.itinerary:hover {
-  /* height: 20em; */
-  /* height: fit-content; */
-  max-height: 90em;
-}
-</style>

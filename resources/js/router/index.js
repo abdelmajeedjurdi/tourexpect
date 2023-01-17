@@ -68,7 +68,7 @@ import DestinationPacks from "../pages/frontend/packs/DestinationPacks"
 import SubDestinationPacks from "../pages/frontend/packs/SubDestinationPacks"
 
 import PassportVisa from "../pages/frontend/visas/PassportVisa"
-import proceedToApply from "../pages/frontend/visas/proceedToApply"
+import ProceedToApply from "../pages/frontend/visas/ProceedToApply"
 
 
 import Test from "../pages/backend/Test.vue";
@@ -351,7 +351,7 @@ const routes = [
     {
         path: "/visas/:passport/:visa/proceed-to-apply",
         name: "proceed-to-apply",
-        component: proceedToApply,
+        component: ProceedToApply,
         props: true
     },
 

@@ -1,6 +1,9 @@
 <template>
     <div class="sm:px-4 xl:px-0 w-full max-w-6xl mx-auto my-28">
-        <form class="mx-auto my-28 w-full max-w-6xl sm:px-4 xl:px-0 space-y-4">
+        <form
+            @submit.prevent="submit"
+            class="mx-auto my-28 w-full max-w-6xl sm:px-4 xl:px-0 space-y-4"
+        >
             <div class="border">
                 <div class="bg-blue-900 py-2 text-center uppercase text-white">
                     personal details
@@ -19,19 +22,21 @@
                                 id="name"
                                 class="block w-full rounded border border-gray-300 bg-gray-50 p-1.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
                                 required
+                                v-model="application_form.name"
                             />
                         </div>
                         <div class="">
                             <label
                                 for="surname"
                                 class="mb-2 block text-sm font-medium text-gray-900"
-                                >Your email</label
+                                >Surname</label
                             >
                             <input
                                 type="text"
                                 id="surname"
                                 class="block w-full rounded border border-gray-300 bg-gray-50 p-1.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
                                 required
+                                v-model="application_form.surname"
                             />
                         </div>
 
@@ -45,6 +50,8 @@
                                 type="email"
                                 id="email"
                                 class="block w-full rounded border border-gray-300 bg-gray-50 p-1.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
+                                required
+                                v-model="application_form.email"
                             />
                         </div>
 
@@ -58,6 +65,8 @@
                                 type="tel"
                                 id="phone"
                                 class="block w-full rounded border border-gray-300 bg-gray-50 p-1.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
+                                required
+                                v-model="application_form.phone"
                             />
                         </div>
                     </div>
@@ -72,28 +81,30 @@
                     <div class="grid gap-2 sm:grid-cols-2">
                         <div class="">
                             <label
-                                for="name"
+                                for="passport_no"
                                 class="mb-2 block text-sm font-medium text-gray-900"
-                                >Your Name</label
+                                >Passport No.</label
                             >
                             <input
                                 type="text"
-                                id="name"
+                                id="passport_no"
                                 class="block w-full rounded border border-gray-300 bg-gray-50 p-1.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
                                 required
+                                v-model="application_form.passport_no"
                             />
                         </div>
                         <div class="">
                             <label
-                                for="surname"
+                                for="travel_on"
                                 class="mb-2 block text-sm font-medium text-gray-900"
-                                >Your email</label
+                                >Travel On</label
                             >
                             <input
-                                type="text"
-                                id="surname"
+                                type="date"
+                                id="travel_on"
                                 class="block w-full rounded border border-gray-300 bg-gray-50 p-1.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
                                 required
+                                v-model="application_form.travel_on"
                             />
                         </div>
                     </div>
@@ -151,13 +162,44 @@
             >
                 Submit and Proceed to Pay
             </button>
+            <div v-if="session_id != null" class="p-4">
+                <stripe-checkout
+                    ref="checkoutRef"
+                    :pk="pk"
+                    :sessionId="session_id"
+                />
+            </div>
         </form>
     </div>
 </template>
 <script setup>
-import { onMounted } from "@vue/runtime-core";
+import { ref, inject, onBeforeMount, onMounted } from "vue";
+import { StripeCheckout } from "@vue-stripe/vue-stripe";
+import useGeneral from "../../../composables/general";
+import { useQuery, useRoute } from "vue-router";
 
-onMounted(() => {
-    console.log();
+const pk = inject("pk");
+const checkoutRef = ref(null);
+const { getSession, session_id, applyToVisa } = useGeneral();
+const router = useRoute();
+let application_form = ref({
+    name: "",
+    surname: "",
+    email: "",
+    phone: "",
+    passport_no: "",
+    travel_on: "",
+    country: router.query.country,
+    nationality: router.query.nationality,
+    visa_type: router.query.visa_type,
 });
+
+onBeforeMount(async () => {
+    await getSession(900, "UAE Visa for Iraqi Passport");
+});
+
+const submit = () => {
+    console.log(applyToVisa(application_form.value));
+    checkoutRef.value.redirectToCheckout();
+};
 </script>

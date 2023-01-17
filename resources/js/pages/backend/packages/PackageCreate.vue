@@ -1424,7 +1424,6 @@ function onFileSelected(event) {
 }
 
 const selectCategory = (category_id) => {
-    console.log(ctg);
     for (let i in form.category_ids) {
         if (form.category_ids[i] == ctg) return;
     }

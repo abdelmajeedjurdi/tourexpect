@@ -443,7 +443,6 @@ const currentCountryItems = () => {
     for (let i in countries.value) {
         if (countries.value[i]["slug"].trim() == props.destination.trim()) {
             let c = countries.value[i]["items"];
-            console.log(c);
             for (var j in c) {
                 filter.value.destinations.push(
                     countries.value[i]["items"][j]["id"]
