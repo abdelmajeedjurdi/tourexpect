@@ -29,7 +29,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Route::get('/user', function (Request $request) {
-//     Log::info('hello');
 //     return 'hi';
 // });
 

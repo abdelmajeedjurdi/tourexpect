@@ -44,13 +44,30 @@ export default function useGeneral() {
         icons.value = response.data;
     }
 
-    const getSession = async (amount, name) => {
-        let response = await axios.post(`/api/get-session`, { 'amount': amount, 'name': name });
+    const getSession = async (amount, name, customer_email) => {
+        let response = await axios.post(`/api/get-session`, { 'amount': amount, 'name': name, 'customer_email': customer_email });
         session_id.value = response.data.id;
     }
 
     const applyToVisa = async (form) => {
-        return await axios.post("/api/visa-application", form);
+
+        fd.append("name", form.name);
+        fd.append("surname", form.surname);
+        fd.append("email", form.email);
+        fd.append("phone", form.phone);
+        fd.append("passport_no", form.passport_no);
+        fd.append("travel_on", form.travel_on);
+        fd.append("country", form.country);
+        fd.append("nationality", form.nationality);
+        fd.append("visa_type", form.visa_type);
+
+        try {
+            return await axios.post("/api/visa-application", fd);
+        } catch (e) {
+            if (e.response.status === 422) {
+                console.log(e);
+            }
+        }
 
     }
 
@@ -62,6 +79,10 @@ export default function useGeneral() {
         return await axios.post("/api/inquire", form);
 
     }
+
+    const addFiles = async (file_name, file) => {
+        fd.append(file_name, file);
+    };
     return {
         destinations,
         getDestinations,
@@ -71,6 +92,9 @@ export default function useGeneral() {
         getIcons,
         destroyIcon,
         inquire,
-        getSession, session_id, applyToVisa
+        getSession,
+        session_id,
+        applyToVisa,
+        addFiles
     };
 }

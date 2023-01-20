@@ -21,7 +21,7 @@ class GeneralController extends Controller
 {
     public function getSession(Request $request)
     {
-        Log::info($request);
+
 
         $stripe = new \Stripe\StripeClient(
             env('STRIPE_API_KEY')
@@ -29,6 +29,7 @@ class GeneralController extends Controller
         $checkout = $stripe->checkout->sessions->create([
             'success_url' => 'http://127.0.0.1:8000/success',
             'cancel_url' => 'http://127.0.0.1:8000/cancel',
+
             'line_items' => [
                 [
                     'price_data' => [
@@ -41,6 +42,7 @@ class GeneralController extends Controller
                     'quantity' => 1
                 ]
             ],
+            'customer_email' => $request->customer_email,
             'mode' => 'payment'
         ]);
         return $checkout;
@@ -108,7 +110,6 @@ class GeneralController extends Controller
 
                 $imageName = time() . '_' . $file->getClientOriginalName();
                 $file->move('images/icons', $imageName);
-                Log::info($imageName);
                 OptionIcon::create([
                     'image' => $imageName
                 ]);

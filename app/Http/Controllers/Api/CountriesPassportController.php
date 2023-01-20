@@ -39,7 +39,7 @@ class CountriesPassportController extends Controller
      */
     public function store(Request $request)
     {
-        Log::info($request);
+
         $cpp = new CountriesPassport();
         $cpp->name_en = $request->name_en;
         $cpp->name_ar = $request->name_ar;
@@ -79,7 +79,7 @@ class CountriesPassportController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Log::info($request);
+
         DB::table('countries_passports')->where('id', $id)->update([
             'name_en' => $request->name_en,
             'name_ar' => $request->name_ar,

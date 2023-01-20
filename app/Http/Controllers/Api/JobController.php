@@ -38,7 +38,7 @@ class JobController extends Controller
      */
     public function store(Request $request)
     {
-        Log::info($request);
+
         $user = new Job();
         $user->title_en = $request->title_en;
         $user->title_ar = $request->title_ar;
@@ -94,7 +94,6 @@ class JobController extends Controller
      */
     public function destroy(Job $job)
     {
-        Log::info($job);
         $job->delete();
         return 'done';
     }

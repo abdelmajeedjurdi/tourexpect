@@ -40,7 +40,7 @@ class TourController extends Controller
 
     public function getFilteredTours(Request $request)
     {
-        Log::info($request);
+
         $destinations = json_decode($request->d);
         $categories = json_decode($request->c);
 
@@ -150,7 +150,7 @@ class TourController extends Controller
      */
     public function store(TourRequest $request)
     {
-        Log::info($request);
+
         if ($request->hasFile('image')) {
             $image = $request->image;
             $imageName = $image->getClientOriginalName();
@@ -259,7 +259,6 @@ class TourController extends Controller
      */
     public function update(TourRequest $request, Tour $tour)
     {
-        Log::info($tour);
 
         $path = 'images/tours/';
         //code for remove old image
@@ -451,7 +450,6 @@ class TourController extends Controller
     //     $path = public_path() . '/files/tours/';
 
     //     $file = TourImage::find($id);
-    //     Log::info($file);
     //     unlink($path . $file->file);
     //     $file->delete();
     //     return '';

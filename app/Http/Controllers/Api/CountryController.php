@@ -38,7 +38,7 @@ class CountryController extends Controller
      */
     public function store(Request $request)
     {
-        Log::info($request);
+
         DB::table('countries')->insert([
             'name_en' => $request->name_en,
             'name_ar' => $request->name_ar,

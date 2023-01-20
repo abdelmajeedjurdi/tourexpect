@@ -37,7 +37,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        Log::info($request);
+
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
@@ -77,7 +77,7 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        Log::info($request);
+
         if ($request->password == 'undefined')
             $user->update([
                 'name' => $request->name,
@@ -101,7 +101,6 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        Log::info($user);
         $user->delete();
         return 'done';
     }

@@ -27,7 +27,6 @@ class ContactController extends Controller
     }
     public function applyToJob(Request $request)
     {
-        Log::info($request);
         Mail::to('careers@tourexpect.com')->send(new JobApplicationMail($request));
 
         return response()->json('Your message has been sent. Thank you!', 200);

@@ -225,7 +225,7 @@ class HotelController extends Controller
     public function update(Request $request, $id)
     {
         $hotel = Hotel::where('id', $id)->first();
-        Log::info($request);
+
         $path = 'images/hotels/';
         //code for remove old image
         if ($request->new_image != 'null' && $request->new_image != 'default.jpg') {
@@ -333,7 +333,6 @@ class HotelController extends Controller
     }
     public function deleteImage($id)
     {
-        Log::info('id:' . $id);
         $path = 'images/hotels/';
 
         $image = DB::table('hotel_images')->where('id', $id)->first('image');

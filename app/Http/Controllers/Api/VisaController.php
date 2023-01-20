@@ -40,7 +40,7 @@ class VisaController extends Controller
      */
     public function store(Request $request)
     {
-        Log::info($request);
+
         $visa = new Visa();
         $visa->country_passport_ids = $request->country_passport_ids;
         $visa->title_en = $request->title_en;
@@ -100,7 +100,7 @@ class VisaController extends Controller
      */
     public function update(Request $request, Visa $visa)
     {
-        Log::info($request);
+
         $visa->update([
             'slug' => Str::slug($request->title_en, '-'),
             'country_passport_ids' => $request->country_passport_ids,
@@ -118,7 +118,6 @@ class VisaController extends Controller
         DB::table('country_passport_visa')->where('visa_id', '=', $visa->id)->delete();
         $destinations = json_decode($request->country_passport_ids);
         for ($i = 0; $i < count($destinations); $i++) {
-            Log::info($destinations[$i]);
             DB::table('country_passport_visa')->insert([
                 'country_passport_id' => $destinations[$i],
                 'visa_id' => $visa->id

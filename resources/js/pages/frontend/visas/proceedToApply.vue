@@ -120,48 +120,68 @@
                         <div>
                             <label
                                 class="mb-2 block text-sm font-medium text-gray-900"
-                                for="user_avatar"
+                                for="passport_doc"
                                 >Passport</label
                             >
                             <input
                                 class="block w-full rounded border border-gray-300 bg-gray-50 p-1.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
-                                id="user_avatar"
+                                id="passport_doc"
+                                max="1024"
                                 type="file"
+                                @change="validateSize('passport_doc')"
                             />
                         </div>
                         <div>
                             <label
                                 class="mb-2 block text-sm font-medium text-gray-900"
-                                for="user_avatar"
+                                for="national_id"
                                 >National ID</label
                             >
                             <input
                                 class="block w-full rounded border border-gray-300 bg-gray-50 p-1.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
-                                id="user_avatar"
+                                id="national_id"
                                 type="file"
+                                @change="validateSize('national_id')"
                             />
                         </div>
                         <div>
                             <label
                                 class="mb-2 block text-sm font-medium text-gray-900"
-                                for="user_avatar"
+                                for="client_photo"
                                 >Photo</label
                             >
                             <input
                                 class="block w-full rounded border border-gray-300 bg-gray-50 p-1.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
-                                id="user_avatar"
+                                id="client_photo"
                                 type="file"
+                                @change="validateSize('client_photo')"
                             />
                         </div>
                     </div>
                 </div>
             </div>
-            <button
-                type="submit"
-                class="mt-6 w-full rounded-lg bg-blue-700 px-8 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 sm:w-auto"
-            >
-                Submit and Proceed to Pay
-            </button>
+            <div>
+                <button
+                    type="submit"
+                    v-if="!is_sending"
+                    class="hover:shadow-form rounded-md bg-blue-500 m-auto h-10 w-60 text-base font-semibold text-white outline-none cursor-not-allowed"
+                >
+                    Submit and Proceed to Pay
+                </button>
+
+                <button
+                    type="button"
+                    v-else
+                    class="hover:shadow-form rounded-md bg-blue-500 m-auto h-10 w-60 text-base font-semibold text-white outline-none cursor-not-allowed"
+                >
+                    <div id="animation">
+                        <div class="box" id="box1"></div>
+                        <div class="box" id="box2"></div>
+                        <div class="box" id="box3"></div>
+                        <div class="box" id="box4"></div>
+                    </div>
+                </button>
+            </div>
             <div v-if="session_id != null" class="p-4">
                 <stripe-checkout
                     ref="checkoutRef"
@@ -180,8 +200,10 @@ import { useQuery, useRoute } from "vue-router";
 
 const pk = inject("pk");
 const checkoutRef = ref(null);
-const { getSession, session_id, applyToVisa } = useGeneral();
+const { getSession, session_id, applyToVisa, addFiles } = useGeneral();
 const router = useRoute();
+const maxSize = 102400; // 100KB in bytes
+let is_sending = ref(false);
 let application_form = ref({
     name: "",
     surname: "",
@@ -193,13 +215,93 @@ let application_form = ref({
     nationality: router.query.nationality,
     visa_type: router.query.visa_type,
 });
+const validateSize = (tag_id) => {
+    console.log("added");
+    var fileInput = document.getElementById(tag_id);
+    var fileSize = fileInput.files[0].size;
+    if (fileSize > maxSize) {
+        alert("File size must be less than 100KB");
+    }
+};
 
-onBeforeMount(async () => {
-    await getSession(900, "UAE Visa for Iraqi Passport");
-});
+const submit = async () => {
+    is_sending.value = true;
+    if (
+        document.getElementById("passport_doc").files.length > 0 &&
+        document.getElementById("passport_doc").files[0].size > maxSize
+    ) {
+        alert("Size of your passport must be less than 100KB");
+        is_sending.value = false;
+        return;
+    }
+    addFiles("passport_doc", document.getElementById("passport_doc").files[0]);
 
-const submit = () => {
+    if (
+        document.getElementById("client_photo").files.length > 0 &&
+        document.getElementById("client_photo").files[0].size > maxSize
+    ) {
+        alert("Size of your photo must be less than 100KB");
+        is_sending.value = false;
+        return;
+    }
+    addFiles("client_photo", document.getElementById("client_photo").files[0]);
+
+    if (
+        document.getElementById("national_id").files.length > 0 &&
+        document.getElementById("national_id").files[0].size > maxSize
+    ) {
+        alert("size of national ID must be less than 100KB");
+        is_sending.value = false;
+        return;
+    }
+    addFiles("national_id", document.getElementById("national_id").files[0]);
+
+    await getSession(
+        900,
+        "UAE Visa for Iraqi Passport",
+        application_form.value.email
+    );
     console.log(applyToVisa(application_form.value));
     checkoutRef.value.redirectToCheckout();
 };
 </script>
+
+<style scoped>
+#animation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.box {
+    width: 5px;
+    height: 5px;
+    margin: 2px;
+}
+.box:nth-child(1) {
+    background: white;
+    animation: balls 1s linear infinite;
+}
+.box:nth-child(2) {
+    background: white;
+    animation: balls 1s 0.1s linear infinite;
+}
+.box:nth-child(3) {
+    background: white;
+    animation: balls 1s 0.2s linear infinite;
+}
+.box:nth-child(4) {
+    background: white;
+    animation: balls 1s 0.4s linear infinite;
+}
+@keyframes balls {
+    0% {
+        transform: sclaeY(1);
+    }
+    50% {
+        transform: scaleY(3);
+    }
+    100% {
+        transform: sclaeY(1);
+    }
+}
+</style>

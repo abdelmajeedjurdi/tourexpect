@@ -37,7 +37,6 @@ class ActivityController extends Controller
     }
     public function getFilteredActivities(Request $request)
     {
-        Log::info($request);
         $destinations = json_decode($request->d);
         $categories = json_decode($request->c);
 
@@ -147,7 +146,6 @@ class ActivityController extends Controller
      */
     public function store(ActivityRequest $request)
     {
-        Log::info($request);
         if ($request->hasFile('image')) {
             $image = $request->image;
             $imageName = $image->getClientOriginalName();
@@ -445,7 +443,6 @@ class ActivityController extends Controller
     //     $path = public_path() . '/files/activities/';
 
     //     $file = ActivityImage::find($id);
-    //     Log::info($file);
     //     unlink($path . $file->file);
     //     $file->delete();
     //     return '';
