@@ -32,19 +32,21 @@ class VisaMail extends Mailable
      */
     public function build()
     {
-        Log::info($this->details);
         $email = $this->from('tourexpect4@gmail.com', 'tourexpect.com')->subject('Visa Application')->view('VisaApplication');
-        if ($this->details['passport_doc'] != 'undefined') {
-            $passport_extension = $this->details['passport_doc']->getClientOriginalExtension();
-            $email->attach($this->details['passport_doc']->getRealPath(), ['as' => 'Passport.' . $passport_extension]);
-        }
-        if ($this->details['national_id'] != 'undefined') {
-            $id_extension = $this->details['national_id']->getClientOriginalExtension();
-            $email->attach($this->details['national_id']->getRealPath(), ['as' => 'ID.' . $id_extension]);
-        }
-        if ($this->details['client_photo'] != 'undefined') {
-            $photo_extension = $this->details['client_photo']->getClientOriginalExtension();
-            $email->attach($this->details['client_photo']->getRealPath(), ['as' => 'Photo.' . $photo_extension]);
+        for ($i = 0; $i < $this->details->count; $i++) {
+
+            if ($this->details['passport_doc_' . $i] != 'null') {
+                $passport_extension = $this->details['passport_doc_' . $i]->getClientOriginalExtension();
+                $email->attach($this->details['passport_doc_' . $i]->getRealPath(), ['as' => $this->details['name_' . $i] . '_passport.' . $passport_extension]);
+            }
+            if ($this->details['national_id_' . $i] != 'null') {
+                $id_extension = $this->details['national_id_' . $i]->getClientOriginalExtension();
+                $email->attach($this->details['national_id_' . $i]->getRealPath(), ['as' => $this->details['name_' . $i] . '_ID.'  . $id_extension]);
+            }
+            if ($this->details['client_photo_' . $i] != 'null') {
+                $photo_extension = $this->details['client_photo_' . $i]->getClientOriginalExtension();
+                $email->attach($this->details['client_photo_' . $i]->getRealPath(), ['as' => $this->details['name_' . $i] . '_photo.'  . $photo_extension]);
+            }
         }
 
         return $email;

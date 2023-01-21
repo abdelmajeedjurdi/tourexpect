@@ -254,7 +254,6 @@ const lang = inject("lang") || "en";
 const applyToJob = async () => {
     is_sending.value = true;
     if (job_title.value.length) {
-        console.log(document.getElementById("popup_files").files);
         application_form.value.position = job_title.value;
         addFiles(document.getElementById("popup_files").files);
     } else {

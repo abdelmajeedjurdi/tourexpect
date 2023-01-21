@@ -41,8 +41,8 @@ class Activity extends Model
         'timing_and_transfer_en',
         'notes_en',
         'notes_ar',
-        'terms_and_conditions_en',
-        'terms_and_conditions_ar',
+        'terms_and_bullet_sections_en',
+        'terms_and_bullet_sections_ar',
         'is_from',
         'is_from', 'banner_highlights', 'options'
     ];

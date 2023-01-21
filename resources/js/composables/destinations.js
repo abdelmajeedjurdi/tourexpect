@@ -108,7 +108,6 @@ export default function useDestinations() {
 
     const getCountry = async (id) => {
         let response = await axios.get("/api/countries/" + id);
-        console.log(response.data);
         country.value = response.data;
     };
 

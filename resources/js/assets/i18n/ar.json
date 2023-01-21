@@ -106,5 +106,15 @@
     "position":"منصب",
     "documents":"المستندات",
     "visa_types_available":"أنواع التأشيرات المتوفرة",
-    "requirements":"المتطلبات"
+    "requirements":"المتطلبات",
+    "proceed_to_apply":"متابعة للتقديم",
+    "apply_to_visa":"قدم على التأشيرة",
+    "uae-visa":"تأشيرة الأمارات",
+    "uae-visa-application-form":"فورمة التقديم على تأشيرة الأمارات",
+    "person_1":"الشخص 1",
+    "person_2":"الشخص 2",
+    "person_3":"الشخص 3",
+    "person_4":"الشخص 4",
+    "person_5":"الشخص 5",
+    "person_6":"الشخص 6"
 }

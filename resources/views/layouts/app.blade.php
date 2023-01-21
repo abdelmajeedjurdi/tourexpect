@@ -43,6 +43,10 @@
         font-family: 'Tajawal', sans-serif;
         line-height: 1.6;
     }
+
+    .bg-main-orange {
+        background-color: #ff8200;
+    }
 </style>
 
 </html>

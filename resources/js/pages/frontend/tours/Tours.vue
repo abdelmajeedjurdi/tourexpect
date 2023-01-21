@@ -410,7 +410,6 @@ const filterCountries = (id, provinces) => {
     } else {
         for (let x in provinces) {
             var index = filter.value.destinations.indexOf(provinces[x]["id"]);
-            console.log(provinces[x]["id"] + ": " + index);
             filter.value.destinations.splice(index, 1);
         }
     }

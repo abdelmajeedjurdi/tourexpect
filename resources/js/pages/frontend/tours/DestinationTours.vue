@@ -429,7 +429,6 @@ let mobileFiltersOpen = ref(false);
 const currentCountryItems2 = () => {
     for (let i = 0; i < countries.value.length; i++) {
         if (countries.value[i]["slug"].trim() == props.destination.trim()) {
-            console.log("working");
             active_countries[countries.value[i]["id"]] = true;
             filterCountries(
                 countries.value[i]["id"],

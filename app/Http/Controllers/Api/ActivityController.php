@@ -186,8 +186,8 @@ class ActivityController extends Controller
         $activity->timing_and_transfer_en = $request->timing_and_transfer_en;
         $activity->notes_en = $request->notes_en;
         $activity->notes_ar = $request->notes_ar;
-        $activity->terms_and_conditions_en = $request->terms_and_conditions_en;
-        $activity->terms_and_conditions_ar = $request->terms_and_conditions_ar;
+        $activity->terms_and_bullet_sections_en = $request->terms_and_bullet_sections_en;
+        $activity->terms_and_bullet_sections_ar = $request->terms_and_bullet_sections_ar;
         $activity->is_from = $request->is_from == 'true' ? 1 : 0;
         $activity->banner_highlights = $request->banner_highlights;
         $activity->options = $request->options;
@@ -297,8 +297,8 @@ class ActivityController extends Controller
             'timing_and_transfer_en' => $request->timing_and_transfer_en,
             'notes_en' => $request->notes_en,
             'notes_ar' => $request->notes_ar,
-            'terms_and_conditions_en' => $request->terms_and_conditions_en,
-            'terms_and_conditions_ar' => $request->terms_and_conditions_ar,
+            'terms_and_bullet_sections_en' => $request->terms_and_bullet_sections_en,
+            'terms_and_bullet_sections_ar' => $request->terms_and_bullet_sections_ar,
             'is_from' => $request->is_from == 'true' ? 1 : 0,
             'banner_highlights' => $request->banner_highlights,
             'options' => $request->options,

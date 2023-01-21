@@ -50,16 +50,22 @@ export default function useGeneral() {
     }
 
     const applyToVisa = async (form) => {
+        for (let i = 0; i < form.length; i++) {
+            fd.append("name_" + i, form[i].name);
+            fd.append("surname_" + i, form[i].surname);
+            fd.append("email_" + i, form[i].email);
+            fd.append("phone_" + i, form[i].phone);
+            fd.append("passport_no_" + i, form[i].passport_no);
+            fd.append("travel_on_" + i, form[i].travel_on);
+            fd.append("country_" + i, form[i].country);
+            fd.append("nationality_" + i, form[i].nationality);
+            fd.append("visa_type_" + i, form[i].visa_type);
+            fd.append("passport_doc_" + i, form[i].passport_doc);
+            fd.append("client_photo_" + i, form[i].client_photo);
+            fd.append("national_id_" + i, form[i].national_id);
+        }
 
-        fd.append("name", form.name);
-        fd.append("surname", form.surname);
-        fd.append("email", form.email);
-        fd.append("phone", form.phone);
-        fd.append("passport_no", form.passport_no);
-        fd.append("travel_on", form.travel_on);
-        fd.append("country", form.country);
-        fd.append("nationality", form.nationality);
-        fd.append("visa_type", form.visa_type);
+        fd.append("count", form.length);
 
         try {
             return await axios.post("/api/visa-application", fd);

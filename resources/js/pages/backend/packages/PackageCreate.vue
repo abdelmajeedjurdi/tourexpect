@@ -1088,7 +1088,7 @@
                         <div class="flex justify-between">
                             <div class="w-full me-2">
                                 <label
-                                    for="terms_and_conditions_en"
+                                    for="terms_and_bullet_sections_en"
                                     class="block text-sm font-medium text-gray-700 dark:text-gray-200"
                                     >English Terms and Conditions</label
                                 >
@@ -1096,17 +1096,19 @@
                                     <textarea
                                         rows="10"
                                         type="text"
-                                        name="terms_and_conditions_en"
-                                        id="terms_and_conditions_en"
+                                        name="terms_and_bullet_sections_en"
+                                        id="terms_and_bullet_sections_en"
                                         placeholder="Separate it by lines"
                                         class="block mt-1 w-full rounded-md border-gray-500 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-800"
-                                        v-model="form.terms_and_conditions_en"
+                                        v-model="
+                                            form.terms_and_bullet_sections_en
+                                        "
                                     />
                                 </div>
                             </div>
                             <div class="w-full">
                                 <label
-                                    for="terms_and_conditions_ar"
+                                    for="terms_and_bullet_sections_ar"
                                     class="block text-sm font-medium text-gray-700 dark:text-gray-200"
                                     >Arabic Terms and Conditions Policy</label
                                 >
@@ -1116,10 +1118,12 @@
                                         rows="10"
                                         type="text"
                                         placeholder="Separate it by lines"
-                                        name="terms_and_conditions_ar"
-                                        id="terms_and_conditions_ar"
+                                        name="terms_and_bullet_sections_ar"
+                                        id="terms_and_bullet_sections_ar"
                                         class="block mt-1 w-full rounded-md border-gray-500 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-800"
-                                        v-model="form.terms_and_conditions_ar"
+                                        v-model="
+                                            form.terms_and_bullet_sections_ar
+                                        "
                                     />
                                 </div>
                             </div>
@@ -1383,8 +1387,8 @@ const form = reactive({
     timing_and_transfer_en: "",
     notes_en: "",
     notes_ar: "",
-    terms_and_conditions_en: "",
-    terms_and_conditions_ar: "",
+    terms_and_bullet_sections_en: "",
+    terms_and_bullet_sections_ar: "",
     is_from: true,
     banner_highlights: [],
 });

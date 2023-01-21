@@ -19,12 +19,8 @@ class CreateVisasTable extends Migration
             $table->json('country_passport_ids')->nullable();
             $table->string('title_en')->nullable();
             $table->string('title_ar')->nullable();
-            $table->longText('documents_en')->nullable();
-            $table->longText('documents_ar')->nullable();
-            $table->longText('conditions_en')->nullable();
-            $table->longText('conditions_ar')->nullable();
-            $table->longText('types_en')->nullable();
-            $table->longText('types_ar')->nullable();
+            $table->longText('paragraph_sections')->nullable();
+            $table->longText('bullet_sections')->nullable();
             $table->json('options')->nullable();
             $table->timestamps();
         });

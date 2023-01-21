@@ -182,12 +182,13 @@
                 />
                 <list-section
                     v-if="
-                        single_package['terms_and_conditions_' + lang] &&
-                        single_package['terms_and_conditions_' + lang] != 'null'
+                        single_package['terms_and_bullet_sections_' + lang] &&
+                        single_package['terms_and_bullet_sections_' + lang] !=
+                            'null'
                     "
                     class="border py-2 mt-3"
                     :section_list="
-                        single_package['terms_and_conditions_' + lang]
+                        single_package['terms_and_bullet_sections_' + lang]
                     "
                     section_title="terms_and_conditions"
                 />

@@ -18,7 +18,6 @@ export default function useCountryPassports() {
 
     const getCountryPassport = async (id) => {
         let response = await axios.get("/api/country_passports/" + id);
-        console.log(response.data);
         country_passport.value = response.data;
     };
 

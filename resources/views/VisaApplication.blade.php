@@ -18,17 +18,27 @@
 </head>
 
 <body>
-    <div class="container">
-        <div class="filed"><strong>Name: </strong> {{ $details['name'] }}</div>
-        <div class="filed"><strong>Surname: </strong> {{ $details['surname'] }}</div>
-        <div class="filed"><strong>Email: </strong> {{ $details['email'] }}</div>
-        <div class="filed"><strong>Phone: </strong> {{ $details['phone'] }}</div>
-        <div class="filed"><strong>Passport No: </strong> {{ $details['passport_no'] }}</div>
-        <div class="filed"><strong>Travel Date: </strong> {{ $details['travel_on'] }}</div>
-        <div class="filed"><strong>Country: </strong> {{ $details['country'] }}</div>
-        <div class="filed"><strong>Nationaity: </strong> {{ $details['nationality'] }}</div>
-        <div class="filed"><strong>Visa Type: </strong> {{ $details['visa_type'] }}</div>
-    </div>
+
+    @php
+        $i = 0;
+    @endphp
+    @while ($i < $details['count'])
+        <div class="container">
+            <h3 style="color: blue">{{ 'Person ' . ($i + 1) }}</h3>
+            <div class="filed"><strong>Name: </strong> {{ $details['name_' . $i] }}</div>
+            <div class="filed"><strong>Surname: </strong> {{ $details['surname_' . $i] }}</div>
+            <div class="filed"><strong>Email: </strong> {{ $details['email_' . $i] }}</div>
+            <div class="filed"><strong>Phone: </strong> {{ $details['phone_' . $i] }}</div>
+            <div class="filed"><strong>Passport No: </strong> {{ $details['passport_no_' . $i] }}</div>
+            <div class="filed"><strong>Travel Date: </strong> {{ $details['travel_on_' . $i] }}</div>
+            <div class="filed"><strong>Country: </strong> {{ $details['country_' . $i] }}</div>
+            <div class="filed"><strong>Nationaity: </strong> {{ $details['nationality_' . $i] }}</div>
+            <div class="filed"><strong>Visa Type: </strong> {{ $details['visa_type_' . $i] }}</div>
+        </div>
+        @php
+            $i++;
+        @endphp
+    @endwhile
 </body>
 
 </html>

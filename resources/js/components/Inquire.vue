@@ -38,7 +38,7 @@
                 <button
                     type="submit"
                     v-if="!is_sending"
-                    class="hover:shadow-form rounded-md bg-blue-500 h-10 w-40 text-base font-semibold text-white outline-none"
+                    class="hover:shadow-form rounded-md bg-main-blue h-10 w-40 text-base font-semibold text-white outline-none"
                 >
                     <span>
                         {{ $t("inquire_now") }}
@@ -48,7 +48,7 @@
                 <button
                     type="button"
                     v-else
-                    class="hover:shadow-form rounded-md bg-blue-500 m-auto h-10 w-40 text-base font-semibold text-white outline-none cursor-not-allowed"
+                    class="hover:shadow-form rounded-md bg-main-blue m-auto h-10 w-40 text-base font-semibold text-white outline-none cursor-not-allowed"
                 >
                     <div id="animation">
                         <div class="box" id="box1"></div>

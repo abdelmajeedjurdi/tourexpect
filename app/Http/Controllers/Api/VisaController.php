@@ -40,17 +40,12 @@ class VisaController extends Controller
      */
     public function store(Request $request)
     {
-
         $visa = new Visa();
         $visa->country_passport_ids = $request->country_passport_ids;
         $visa->title_en = $request->title_en;
         $visa->title_ar = $request->title_ar;
-        $visa->documents_en = $request->documents_en;
-        $visa->documents_ar = $request->documents_ar;
-        $visa->conditions_en = $request->conditions_en;
-        $visa->conditions_ar = $request->conditions_ar;
-        $visa->types_en = $request->types_en;
-        $visa->types_ar = $request->types_ar;
+        $visa->paragraph_sections = $request->paragraph_sections;
+        $visa->bullet_sections = $request->bullet_sections;
         $visa->options = $request->options;
         $visa->slug = Str::slug($visa->title_en, '-');
 
@@ -106,12 +101,8 @@ class VisaController extends Controller
             'country_passport_ids' => $request->country_passport_ids,
             'title_en' => $request->title_en,
             'title_ar' => $request->title_ar,
-            'documents_en' => $request->documents_en,
-            'documents_ar' => $request->documents_ar,
-            'conditions_en' => $request->conditions_en,
-            'conditions_ar' => $request->conditions_ar,
-            'types_en' => $request->types_en,
-            'types_ar' => $request->types_ar,
+            'paragraph_sections' => $request->paragraph_sections,
+            'bullet_sections' => $request->bullet_sections,
             'options' => $request->options,
         ]);
 
@@ -133,6 +124,11 @@ class VisaController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+        DB::table('country_passport_visa')->where('visa_id', '=', $id)->delete();
+
+        $visa = Visa::find($id);
+        $visa->delete();
+        return;
     }
 }

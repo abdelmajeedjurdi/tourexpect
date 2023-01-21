@@ -45,8 +45,8 @@ class CreateToursTable extends Migration
             $table->longText('timing_and_transfer_en')->nullable();
             $table->longText('notes_en')->nullable();
             $table->longText('notes_ar')->nullable();
-            $table->longText('terms_and_conditions_en')->nullable();
-            $table->longText('terms_and_conditions_ar')->nullable();
+            $table->longText('terms_and_bullet_sections_en')->nullable();
+            $table->longText('terms_and_bullet_sections_ar')->nullable();
             $table->boolean('is_from')->nullable();
             $table->json('banner_highlights')->nullable();
             $table->json('options')->nullable();

@@ -58,115 +58,397 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="flex justify-between">
-                            <div class="w-full me-2">
-                                <label
-                                    for="documents_en"
-                                    class="block text-sm font-medium text-gray-700 dark:text-gray-200"
-                                    >English Documents</label
-                                >
-                                <div class="mt-1">
-                                    <textarea
-                                        rows="10"
-                                        type="text"
-                                        name="documents_en"
-                                        id="documents_en"
-                                        class="block mt-1 w-full rounded-md border-gray-500 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-800"
-                                        v-model="form.documents_en"
-                                    />
+
+                        <div class="paragraph border rounded p-2">
+                            <h3 class="text-white font-bold">
+                                Paragraph Sections
+                            </h3>
+                            <div class="flex justify-between">
+                                <div class="w-full me-2">
+                                    <label
+                                        for="paragraph_title_en"
+                                        class="block text-sm font-medium text-gray-700 dark:text-gray-200"
+                                        >Section Title (English)</label
+                                    >
+                                    <div class="mt-1">
+                                        <input
+                                            type="text"
+                                            name="paragraph_title_en"
+                                            id="paragraph_title_en"
+                                            class="block mt-1 w-full rounded-md border-gray-500 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-800"
+                                            v-model="
+                                                paragraph_sections.paragraph_title_en
+                                            "
+                                        />
+                                    </div>
+                                </div>
+                                <div class="w-full">
+                                    <label
+                                        for="title_ar"
+                                        class="block text-sm font-medium text-gray-700 dark:text-gray-200"
+                                        >Section Title (Arabic)</label
+                                    >
+                                    <div class="mt-1">
+                                        <input
+                                            dir="rtl"
+                                            type="text"
+                                            name="paragraph_title_ar"
+                                            id="paragraph_title_ar"
+                                            class="block mt-1 w-full rounded-md border-gray-500 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-800"
+                                            v-model="
+                                                paragraph_sections.paragraph_title_ar
+                                            "
+                                        />
+                                    </div>
                                 </div>
                             </div>
-                            <div class="w-full">
-                                <label
-                                    for="documents_ar"
-                                    class="block text-sm font-medium text-gray-700 dark:text-gray-200"
-                                    >Arabic Documents</label
-                                >
-                                <div class="mt-1">
-                                    <textarea
-                                        dir="rtl"
-                                        rows="10"
-                                        type="text"
-                                        name="documents_ar"
-                                        id="documents_ar"
-                                        class="block mt-1 w-full rounded-md border-gray-500 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-800"
-                                        v-model="form.documents_ar"
-                                    />
+                            <div class="flex justify-between">
+                                <div class="w-full me-2">
+                                    <label
+                                        for="paragraph_text_en"
+                                        class="block text-sm font-medium text-gray-700 dark:text-gray-200"
+                                        >Paragraph Text (English)</label
+                                    >
+                                    <div class="mt-1">
+                                        <textarea
+                                            rows="10"
+                                            type="text"
+                                            name="paragraph_text_en"
+                                            id="paragraph_text_en"
+                                            class="block mt-1 w-full rounded-md border-gray-500 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-800"
+                                            v-model="
+                                                paragraph_sections.paragraph_text_en
+                                            "
+                                        />
+                                    </div>
+                                </div>
+                                <div class="w-full">
+                                    <label
+                                        for="paragraph_text_ar"
+                                        class="block text-sm font-medium text-gray-700 dark:text-gray-200"
+                                        >Paragraph Text (Arabic)</label
+                                    >
+                                    <div class="mt-1">
+                                        <textarea
+                                            dir="rtl"
+                                            rows="10"
+                                            type="text"
+                                            name="paragraph_text_ar"
+                                            id="paragraph_text_ar"
+                                            class="block mt-1 w-full rounded-md border-gray-500 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-800"
+                                            v-model="
+                                                paragraph_sections.paragraph_text_ar
+                                            "
+                                        />
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="flex justify-between">
-                            <div class="w-full me-2">
-                                <label
-                                    for="types_en"
-                                    class="block text-sm font-medium text-gray-700 dark:text-gray-200"
-                                    >English Visa Type</label
+                            <div class="my-2">
+                                <button
+                                    v-if="!is_editing_paragraph"
+                                    type="button"
+                                    class="px-6 py-1 bg-green-400 rounded-lg text-blue-600 hover:bg-green-300 duration-300"
+                                    @click="setParagraphSection"
                                 >
-                                <div class="mt-1">
-                                    <textarea
-                                        rows="10"
-                                        type="text"
-                                        name="types_en"
-                                        id="types_en"
-                                        class="block mt-1 w-full rounded-md border-gray-500 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-800"
-                                        v-model="form.types_en"
-                                    />
-                                </div>
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        class="h-6 w-6"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                                        />
+                                    </svg>
+                                </button>
+                                <button
+                                    v-else
+                                    type="button"
+                                    class="px-6 py-1 bg-green-400 rounded-lg text-blue-600 hover:bg-green-300 duration-300"
+                                    @click="setParagraphSection"
+                                >
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        class="h-6 w-6"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            d="M5 13l4 4L19 7"
+                                        />
+                                    </svg>
+                                </button>
                             </div>
-                            <div class="w-full">
-                                <label
-                                    for="types_ar"
-                                    class="block text-sm font-medium text-gray-700 dark:text-gray-200"
-                                    >Arabic Visa Type</label
+                            <div class="space-y-1">
+                                <div
+                                    v-for="(
+                                        section, i
+                                    ) in form.paragraph_sections"
+                                    :key="section"
+                                    class="border p-2"
                                 >
-                                <div class="mt-1">
-                                    <textarea
-                                        dir="rtl"
-                                        rows="10"
-                                        type="text"
-                                        name="types_ar"
-                                        id="types_ar"
-                                        class="block mt-1 w-full rounded-md border-gray-500 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-800"
-                                        v-model="form.types_ar"
-                                    />
+                                    <div class="flex mx-2">
+                                        <span
+                                            class="cursor-pointer rotate-90"
+                                            @click="editParagraphSection(i)"
+                                        >
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                class="h-6 w-6 text-blue-500"
+                                                fill="none"
+                                                viewBox="0 0 24 24"
+                                                stroke="currentColor"
+                                                stroke-width="2"
+                                            >
+                                                <path
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                    d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+                                                />
+                                            </svg>
+                                        </span>
+                                        <span
+                                            class="cursor-pointer rotate-90"
+                                            @click="deleteParagraphSection(i)"
+                                        >
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                class="h-6 text-red-500"
+                                                fill="none"
+                                                viewBox="0 0 24 24"
+                                                stroke="currentColor"
+                                                stroke-width="2"
+                                            >
+                                                <path
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                    d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                                                />
+                                            </svg>
+                                        </span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <div class="w-1/2">
+                                            <div class="text-xl text-white">
+                                                {{ section.paragraph_title_en }}
+                                            </div>
+                                            <div>
+                                                {{ section.paragraph_text_en }}
+                                            </div>
+                                        </div>
+                                        <div class="w-1/2 text-right">
+                                            <div class="text-xl text-white">
+                                                {{ section.paragraph_title_ar }}
+                                            </div>
+                                            <div>
+                                                {{ section.paragraph_text_ar }}
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="flex justify-between">
-                            <div class="w-full me-2">
-                                <label
-                                    for="conditions_en"
-                                    class="block text-sm font-medium text-gray-700 dark:text-gray-200"
-                                    >English Visa Conditions</label
-                                >
-                                <div class="mt-1">
-                                    <textarea
-                                        rows="10"
-                                        type="text"
-                                        name="conditions_en"
-                                        id="conditions_en"
-                                        class="block mt-1 w-full rounded-md border-gray-500 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-800"
-                                        v-model="form.conditions_en"
-                                    />
+                        <div class="bullet border rounded p-2">
+                            <h3 class="text-white font-bold">
+                                Bullet Sections
+                            </h3>
+                            <div class="flex justify-between">
+                                <div class="w-full me-2">
+                                    <label
+                                        for="bullet_title_en"
+                                        class="block text-sm font-medium text-gray-700 dark:text-gray-200"
+                                        >Section Title (English)</label
+                                    >
+                                    <div class="mt-1">
+                                        <input
+                                            type="text"
+                                            name="bullet_title_en"
+                                            id="bullet_title_en"
+                                            class="block mt-1 w-full rounded-md border-gray-500 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-800"
+                                            v-model="
+                                                bullet_sections.bullet_title_en
+                                            "
+                                        />
+                                    </div>
+                                </div>
+                                <div class="w-full">
+                                    <label
+                                        for="title_ar"
+                                        class="block text-sm font-medium text-gray-700 dark:text-gray-200"
+                                        >Section Title (Arabic)</label
+                                    >
+                                    <div class="mt-1">
+                                        <input
+                                            dir="rtl"
+                                            type="text"
+                                            name="bullet_title_ar"
+                                            id="bullet_title_ar"
+                                            class="block mt-1 w-full rounded-md border-gray-500 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-800"
+                                            v-model="
+                                                bullet_sections.bullet_title_ar
+                                            "
+                                        />
+                                    </div>
                                 </div>
                             </div>
-                            <div class="w-full">
-                                <label
-                                    for="conditions_ar"
-                                    class="block text-sm font-medium text-gray-700 dark:text-gray-200"
-                                    >Arabic Visa Conditions</label
+                            <div class="flex justify-between">
+                                <div class="w-full me-2">
+                                    <label
+                                        for="bullet_text_en"
+                                        class="block text-sm font-medium text-gray-700 dark:text-gray-200"
+                                        >Bullet Text (English)</label
+                                    >
+                                    <div class="mt-1">
+                                        <textarea
+                                            rows="10"
+                                            type="text"
+                                            name="bullet_text_en"
+                                            id="bullet_text_en"
+                                            class="block mt-1 w-full rounded-md border-gray-500 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-800"
+                                            v-model="
+                                                bullet_sections.bullet_text_en
+                                            "
+                                        />
+                                    </div>
+                                </div>
+                                <div class="w-full">
+                                    <label
+                                        for="bullet_text_ar"
+                                        class="block text-sm font-medium text-gray-700 dark:text-gray-200"
+                                        >Bullet Text (Arabic)</label
+                                    >
+                                    <div class="mt-1">
+                                        <textarea
+                                            dir="rtl"
+                                            rows="10"
+                                            type="text"
+                                            name="bullet_text_ar"
+                                            id="bullet_text_ar"
+                                            class="block mt-1 w-full rounded-md border-gray-500 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-800"
+                                            v-model="
+                                                bullet_sections.bullet_text_ar
+                                            "
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="my-2">
+                                <button
+                                    v-if="!is_editing_bullet"
+                                    type="button"
+                                    class="px-6 py-1 bg-green-400 rounded-lg text-blue-600 hover:bg-green-300 duration-300"
+                                    @click="setBulletSection"
                                 >
-                                <div class="mt-1">
-                                    <textarea
-                                        dir="rtl"
-                                        rows="10"
-                                        type="text"
-                                        name="conditions_ar"
-                                        id="conditions_ar"
-                                        class="block mt-1 w-full rounded-md border-gray-500 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-800"
-                                        v-model="form.conditions_ar"
-                                    />
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        class="h-6 w-6"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                                        />
+                                    </svg>
+                                </button>
+                                <button
+                                    v-else
+                                    type="button"
+                                    class="px-6 py-1 bg-green-400 rounded-lg text-blue-600 hover:bg-green-300 duration-300"
+                                    @click="setBulletSection"
+                                >
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        class="h-6 w-6"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            d="M5 13l4 4L19 7"
+                                        />
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="space-y-1">
+                                <div
+                                    v-for="(section, i) in form.bullet_sections"
+                                    :key="section"
+                                    class="border p-2"
+                                >
+                                    <div class="flex mx-2">
+                                        <span
+                                            class="cursor-pointer rotate-90"
+                                            @click="editBulletSection(i)"
+                                        >
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                class="h-6 w-6 text-blue-500"
+                                                fill="none"
+                                                viewBox="0 0 24 24"
+                                                stroke="currentColor"
+                                                stroke-width="2"
+                                            >
+                                                <path
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                    d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+                                                />
+                                            </svg>
+                                        </span>
+                                        <span
+                                            class="cursor-pointer rotate-90"
+                                            @click="deleteBulletSection(i)"
+                                        >
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                class="h-6 text-red-500"
+                                                fill="none"
+                                                viewBox="0 0 24 24"
+                                                stroke="currentColor"
+                                                stroke-width="2"
+                                            >
+                                                <path
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                    d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                                                />
+                                            </svg>
+                                        </span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <div class="w-1/2">
+                                            <div class="text-xl text-white">
+                                                {{ section.bullet_title_en }}
+                                            </div>
+                                            <div>
+                                                {{ section.bullet_text_en }}
+                                            </div>
+                                        </div>
+                                        <div class="w-1/2 text-right">
+                                            <div class="text-xl text-white">
+                                                {{ section.bullet_title_ar }}
+                                            </div>
+                                            <div>
+                                                {{ section.bullet_text_ar }}
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -570,6 +852,8 @@
         >
             Create
         </button>
+
+        {{ form }}
     </div>
 </template>
 
@@ -584,12 +868,8 @@ const form = reactive({
     country_passport_ids: [],
     title_en: "",
     title_ar: "",
-    documents_en: "",
-    documents_ar: "",
-    conditions_en: "",
-    conditions_ar: "",
-    types_en: "",
-    types_ar: "",
+    paragraph_sections: [],
+    bullet_sections: [],
     options: [],
 });
 
@@ -656,5 +936,77 @@ let is_editing_option = ref(false);
 const editVisaOption = (option_id) => {
     is_editing_option.value = true;
     visa_option.value = form.options[option_id];
+};
+
+let paragraph_sections = ref({
+    paragraph_title_en: "",
+    paragraph_title_ar: "",
+    paragraph_text_en: "",
+    paragraph_text_ar: "",
+});
+
+let is_editing_paragraph = ref(false);
+const setParagraphSection = () => {
+    if (!is_editing_paragraph.value) {
+        form.paragraph_sections.push(paragraph_sections.value);
+        paragraph_sections.value = {
+            paragraph_title_en: "",
+            paragraph_title_ar: "",
+            paragraph_text_en: "",
+            paragraph_text_ar: "",
+        };
+    } else {
+        is_editing_paragraph.value = false;
+        paragraph_sections.value = {
+            paragraph_title_en: "",
+            paragraph_title_ar: "",
+            paragraph_text_en: "",
+            paragraph_text_ar: "",
+        };
+    }
+};
+
+const deleteParagraphSection = (paragraph_idx) => {
+    form.paragraph_sections.splice(paragraph_idx, 1);
+};
+const editParagraphSection = (paragraph_idx) => {
+    is_editing_paragraph.value = true;
+    paragraph_sections.value = form.paragraph_sections[paragraph_idx];
+};
+
+let bullet_sections = ref({
+    bullet_title_en: "",
+    bullet_title_ar: "",
+    bullet_text_en: "",
+    bullet_text_ar: "",
+});
+
+let is_editing_bullet = ref(false);
+const setBulletSection = () => {
+    if (!is_editing_bullet.value) {
+        form.bullet_sections.push(bullet_sections.value);
+        bullet_sections.value = {
+            bullet_title_en: "",
+            bullet_title_ar: "",
+            bullet_text_en: "",
+            bullet_text_ar: "",
+        };
+    } else {
+        is_editing_bullet.value = false;
+        bullet_sections.value = {
+            bullet_title_en: "",
+            bullet_title_ar: "",
+            bullet_text_en: "",
+            bullet_text_ar: "",
+        };
+    }
+};
+
+const deleteBulletSection = (bullet_idx) => {
+    form.bullet_sections.splice(bullet_idx, 1);
+};
+const editBulletSection = (bullet_idx) => {
+    is_editing_bullet.value = true;
+    bullet_sections.value = form.bullet_sections[bullet_idx];
 };
 </script>

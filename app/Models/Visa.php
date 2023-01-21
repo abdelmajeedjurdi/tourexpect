@@ -13,12 +13,8 @@ class Visa extends Model
         'country_passport_ids',
         'title_en',
         'title_ar',
-        'documents_en',
-        'documents_ar',
-        'conditions_en',
-        'conditions_ar',
-        'types_en',
-        'types_ar',
+        'paragraph_sections',
+        'bullet_sections',
         'options'
     ];
 }

@@ -254,7 +254,6 @@ const saveJob = () => {
     }
 };
 const putJobOnEdit = (id) => {
-    console.log(id);
     getJob(id);
     is_editing.value = true;
     is_show_form.value = false;

@@ -178,11 +178,13 @@
                 />
                 <list-section
                     v-if="
-                        activity['terms_and_conditions_' + lang] &&
-                        activity['terms_and_conditions_' + lang] != 'null'
+                        activity['terms_and_bullet_sections_' + lang] &&
+                        activity['terms_and_bullet_sections_' + lang] != 'null'
                     "
                     class="border py-2 mt-3"
-                    :section_list="activity['terms_and_conditions_' + lang]"
+                    :section_list="
+                        activity['terms_and_bullet_sections_' + lang]
+                    "
                     section_title="terms_and_conditions"
                 />
                 <list-section
@@ -202,7 +204,7 @@
                         class="rounded-xl border border-blue-800"
                     >
                         <div
-                            class="rounded-t-xl bg-blue-800 py-2 text-center text-xl text-white"
+                            class="rounded-t-xl bg-main-orange py-2 text-center text-xl text-white"
                         >
                             {{ $t("pricing") }}
                         </div>
@@ -295,7 +297,7 @@
                                 </div>
                                 <button
                                     type="submit"
-                                    class="mt-4 text-white w-full rounded bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm px-5 py-2.5 text-center duration-300"
+                                    class="mt-4 text-white w-full rounded bg-blue-700 hover:bg-main-orange focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm px-5 py-2.5 text-center duration-300"
                                 >
                                     {{ $t("reserve") }}
                                 </button>
@@ -305,7 +307,7 @@
                     <!-- 1111111111111111111111111111111111 -->
                     <div class="rounded-xl border border-blue-800 mt-4">
                         <div
-                            class="rounded-t-xl bg-blue-800 py-2 text-center text-xl text-white"
+                            class="rounded-t-xl bg-main-orange py-2 text-center text-xl text-white"
                         >
                             {{ $t("inquiry") }}
                         </div>

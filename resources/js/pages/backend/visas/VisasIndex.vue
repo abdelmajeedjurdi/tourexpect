@@ -64,7 +64,7 @@
                             </router-link>
                             <span
                                 class="cursor-pointer rotate-90"
-                                @click="deleteCountry(visa)"
+                                @click="deleteVisa(visa.id)"
                             >
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -109,7 +109,7 @@ const dublicateRow = async (id) => {
     await duplicate(id);
     getVisas(currentPage.value);
 };
-const deleteVisa = async (id) => {
+const deleteVisa2 = async (id) => {
     if (!window.confirm("Are you sure?")) {
         return;
     }
@@ -117,7 +117,7 @@ const deleteVisa = async (id) => {
     await destroyVisa(id);
     await getVisas(currentPage.value);
 };
-const deleteRow = (visa_) => {
+const deleteVisa = (visa_id) => {
     Swal.fire({
         title: "Are you sure?",
         html: "You won't be able to revert   Order, ",
@@ -128,7 +128,7 @@ const deleteRow = (visa_) => {
         confirmButtonText: "Yes, delete it!",
     }).then(async (result) => {
         if (result.isConfirmed) {
-            await destroyVisa(visa_.id);
+            await destroyVisa(visa_id);
             await getVisas(currentPage.value);
             Swal.fire("Deleted!", "Order has been deleted.", "success");
         }

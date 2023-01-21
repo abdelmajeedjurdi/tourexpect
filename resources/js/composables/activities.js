@@ -33,7 +33,6 @@ export default function useActivities() {
         pages.value = response.data.meta
     };
     const getFilteredActivities = async (filter) => {
-        console.log(filter.categories);
         let response = await axios.get(`/api/filtered-activities?d=${JSON.stringify(filter.destinations)}&c=${JSON.stringify(filter.categories)}&page=${filter.page}`);
 
         activities.value = response.data.data;
@@ -63,7 +62,6 @@ export default function useActivities() {
     };
     const getActivityDetails = async (slug) => {
         let response = await axios.get("/api/activity/" + slug);
-        console.log(response.data.data);
         activity.value = response.data.data;
         activity.value['banner_highlights'] = JSON.parse(activity.value['banner_highlights'])
         activity.value['options'] = JSON.parse(activity.value['options'])
@@ -99,8 +97,8 @@ export default function useActivities() {
         fd.append("timing_and_transfer_en", data.form.timing_and_transfer_en)
         fd.append("notes_en", data.form.notes_en)
         fd.append("notes_ar", data.form.notes_ar)
-        fd.append("terms_and_conditions_en", data.form.terms_and_conditions_en)
-        fd.append("terms_and_conditions_ar", data.form.terms_and_conditions_ar)
+        fd.append("terms_and_bullet_sections_en", data.form.terms_and_bullet_sections_en)
+        fd.append("terms_and_bullet_sections_ar", data.form.terms_and_bullet_sections_ar)
         fd.append("banner_highlights", JSON.stringify(data.form.banner_highlights))
         fd.append("options", JSON.stringify(data.form.options))
         fd.append("itinerary", JSON.stringify(data.form.itinerary));
@@ -160,8 +158,8 @@ export default function useActivities() {
         fd.append("timing_and_transfer_en", data.form.timing_and_transfer_en)
         fd.append("notes_en", data.form.notes_en)
         fd.append("notes_ar", data.form.notes_ar)
-        fd.append("terms_and_conditions_en", data.form.terms_and_conditions_en)
-        fd.append("terms_and_conditions_ar", data.form.terms_and_conditions_ar)
+        fd.append("terms_and_bullet_sections_en", data.form.terms_and_bullet_sections_en)
+        fd.append("terms_and_bullet_sections_ar", data.form.terms_and_bullet_sections_ar)
         fd.append("is_from", data.form.is_from)
         fd.append("banner_highlights", JSON.stringify(data.form.banner_highlights))
         fd.append("options", JSON.stringify(data.form.options))

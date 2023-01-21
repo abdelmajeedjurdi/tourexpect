@@ -29,7 +29,6 @@ export default function useJobs() {
 
     const getJob = async (id) => {
         let response = await axios.get("/api/jobs/" + id);
-        console.log(response);
         job.value = response.data;
     };
     const apply = async (data) => {

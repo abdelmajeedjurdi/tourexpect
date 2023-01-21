@@ -20,22 +20,18 @@ const publishableKey = ref(
 );
 let session_id = ref(null);
 onMounted(() => {
-    console.log("asdfsadfds");
     // getSession();
 });
 onBeforeMount(() => {
-    console.log("before");
     // session_id.value = "1111";
     getSession();
 });
 const getSession = async () => {
     const response = await axios.get("getSession");
-    console.log(response.data.id);
     session_id.value = response.data.id;
 };
 
 const submit = () => {
-    console.log(checkoutRef.value);
     checkoutRef.value.redirectToCheckout();
 };
 </script>
