@@ -69,9 +69,11 @@ import SubDestinationPacks from "../pages/frontend/packs/SubDestinationPacks"
 
 import PassportVisa from "../pages/frontend/visas/PassportVisa"
 import ProceedToApply from "../pages/frontend/visas/ProceedToApply"
+import Payment from "../pages/frontend/visas/Payment"
 
 
 import Test from "../pages/backend/Test.vue";
+import Test2 from "../pages/backend/Test2.vue";
 import Dashboard from "../pages/backend/Dashboard.vue";
 import SingleBlog from "../pages/frontend/SingleBlog"
 import WeAreHiring from "../pages/frontend/WeAreHiring"
@@ -284,11 +286,6 @@ const routes = [
         component: Frontend,
     },
     {
-        path: "/test",
-        name: "CommingSoon",
-        component: CommingSoon,
-    },
-    {
         path: "/about",
         name: "about",
         component: About,
@@ -352,6 +349,12 @@ const routes = [
         path: "/visas/:passport/:visa/proceed-to-apply",
         name: "proceed-to-apply",
         component: ProceedToApply,
+        props: true
+    },
+    {
+        path: "/visas/:passport/:visa/payment",
+        name: "payment",
+        component: Payment,
         props: true
     },
 
@@ -451,9 +454,16 @@ const routes = [
     },
 
     {
-        path: "/test2",
+        path: "/test",
         name: "test",
         component: Test,
+        props: true,
+    },
+
+    {
+        path: "/test2",
+        name: "test2",
+        component: Test2,
         props: true,
     },
     {

@@ -21,7 +21,7 @@ class GeneralController extends Controller
 {
     public function getSession(Request $request)
     {
-
+        Log::info($request);
 
         $stripe = new \Stripe\StripeClient(
             env('STRIPE_API_KEY')

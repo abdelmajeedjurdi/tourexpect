@@ -11,7 +11,6 @@ import "sweetalert2/dist/sweetalert2.min.css";
 import { createHead } from '@vueuse/head'
 import vClickOutside from "click-outside-vue3"
 import VueGtag from 'vue-gtag';
-// import VueMeta from 'vue-meta'
 
 import { createI18n } from "vue-i18n";
 import en from "./assets/i18n/en.json";

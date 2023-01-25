@@ -66,19 +66,17 @@
                             <div class="flex justify-between">
                                 <div class="w-full me-2">
                                     <label
-                                        for="paragraph_title_en"
+                                        for="section_title_en"
                                         class="block text-sm font-medium text-gray-700 dark:text-gray-200"
                                         >Section Title (English)</label
                                     >
                                     <div class="mt-1">
                                         <input
                                             type="text"
-                                            name="paragraph_title_en"
-                                            id="paragraph_title_en"
+                                            name="section_title_en"
+                                            id="section_title_en"
                                             class="block mt-1 w-full rounded-md border-gray-500 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-800"
-                                            v-model="
-                                                paragraph_sections.paragraph_title_en
-                                            "
+                                            v-model="sections.section_title_en"
                                         />
                                     </div>
                                 </div>
@@ -92,12 +90,10 @@
                                         <input
                                             dir="rtl"
                                             type="text"
-                                            name="paragraph_title_ar"
-                                            id="paragraph_title_ar"
+                                            name="section_title_ar"
+                                            id="section_title_ar"
                                             class="block mt-1 w-full rounded-md border-gray-500 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-800"
-                                            v-model="
-                                                paragraph_sections.paragraph_title_ar
-                                            "
+                                            v-model="sections.section_title_ar"
                                         />
                                     </div>
                                 </div>
@@ -105,7 +101,7 @@
                             <div class="flex justify-between">
                                 <div class="w-full me-2">
                                     <label
-                                        for="paragraph_text_en"
+                                        for="section_text_en"
                                         class="block text-sm font-medium text-gray-700 dark:text-gray-200"
                                         >Paragraph Text (English)</label
                                     >
@@ -113,18 +109,16 @@
                                         <textarea
                                             rows="10"
                                             type="text"
-                                            name="paragraph_text_en"
-                                            id="paragraph_text_en"
+                                            name="section_text_en"
+                                            id="section_text_en"
                                             class="block mt-1 w-full rounded-md border-gray-500 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-800"
-                                            v-model="
-                                                paragraph_sections.paragraph_text_en
-                                            "
+                                            v-model="sections.section_text_en"
                                         />
                                     </div>
                                 </div>
                                 <div class="w-full">
                                     <label
-                                        for="paragraph_text_ar"
+                                        for="section_text_ar"
                                         class="block text-sm font-medium text-gray-700 dark:text-gray-200"
                                         >Paragraph Text (Arabic)</label
                                     >
@@ -133,12 +127,10 @@
                                             dir="rtl"
                                             rows="10"
                                             type="text"
-                                            name="paragraph_text_ar"
-                                            id="paragraph_text_ar"
+                                            name="section_text_ar"
+                                            id="section_text_ar"
                                             class="block mt-1 w-full rounded-md border-gray-500 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-800"
-                                            v-model="
-                                                paragraph_sections.paragraph_text_ar
-                                            "
+                                            v-model="sections.section_text_ar"
                                         />
                                     </div>
                                 </div>
@@ -189,9 +181,7 @@
                             </div>
                             <div class="space-y-1">
                                 <div
-                                    v-for="(
-                                        section, i
-                                    ) in form.paragraph_sections"
+                                    v-for="(section, i) in form.sections"
                                     :key="section"
                                     class="border p-2"
                                 >
@@ -235,218 +225,48 @@
                                             </svg>
                                         </span>
                                     </div>
-                                    <div class="flex justify-between">
-                                        <div class="w-1/2">
-                                            <div class="text-xl text-white">
-                                                {{ section.paragraph_title_en }}
-                                            </div>
-                                            <div>
-                                                {{ section.paragraph_text_en }}
-                                            </div>
-                                        </div>
-                                        <div class="w-1/2 text-right">
-                                            <div class="text-xl text-white">
-                                                {{ section.paragraph_title_ar }}
-                                            </div>
-                                            <div>
-                                                {{ section.paragraph_text_ar }}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="bullet border rounded p-2">
-                            <h3 class="text-white font-bold">
-                                Bullet Sections
-                            </h3>
-                            <div class="flex justify-between">
-                                <div class="w-full me-2">
-                                    <label
-                                        for="bullet_title_en"
-                                        class="block text-sm font-medium text-gray-700 dark:text-gray-200"
-                                        >Section Title (English)</label
-                                    >
-                                    <div class="mt-1">
-                                        <input
-                                            type="text"
-                                            name="bullet_title_en"
-                                            id="bullet_title_en"
-                                            class="block mt-1 w-full rounded-md border-gray-500 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-800"
-                                            v-model="
-                                                bullet_sections.bullet_title_en
-                                            "
-                                        />
-                                    </div>
-                                </div>
-                                <div class="w-full">
-                                    <label
-                                        for="title_ar"
-                                        class="block text-sm font-medium text-gray-700 dark:text-gray-200"
-                                        >Section Title (Arabic)</label
-                                    >
-                                    <div class="mt-1">
-                                        <input
-                                            dir="rtl"
-                                            type="text"
-                                            name="bullet_title_ar"
-                                            id="bullet_title_ar"
-                                            class="block mt-1 w-full rounded-md border-gray-500 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-800"
-                                            v-model="
-                                                bullet_sections.bullet_title_ar
-                                            "
-                                        />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="flex justify-between">
-                                <div class="w-full me-2">
-                                    <label
-                                        for="bullet_text_en"
-                                        class="block text-sm font-medium text-gray-700 dark:text-gray-200"
-                                        >Bullet Text (English)</label
-                                    >
-                                    <div class="mt-1">
-                                        <textarea
-                                            rows="10"
-                                            type="text"
-                                            name="bullet_text_en"
-                                            id="bullet_text_en"
-                                            class="block mt-1 w-full rounded-md border-gray-500 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-800"
-                                            v-model="
-                                                bullet_sections.bullet_text_en
-                                            "
-                                        />
-                                    </div>
-                                </div>
-                                <div class="w-full">
-                                    <label
-                                        for="bullet_text_ar"
-                                        class="block text-sm font-medium text-gray-700 dark:text-gray-200"
-                                        >Bullet Text (Arabic)</label
-                                    >
-                                    <div class="mt-1">
-                                        <textarea
-                                            dir="rtl"
-                                            rows="10"
-                                            type="text"
-                                            name="bullet_text_ar"
-                                            id="bullet_text_ar"
-                                            class="block mt-1 w-full rounded-md border-gray-500 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-800"
-                                            v-model="
-                                                bullet_sections.bullet_text_ar
-                                            "
-                                        />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="my-2">
-                                <button
-                                    v-if="!is_editing_bullet"
-                                    type="button"
-                                    class="px-6 py-1 bg-green-400 rounded-lg text-blue-600 hover:bg-green-300 duration-300"
-                                    @click="setBulletSection"
-                                >
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        class="h-6 w-6"
-                                        fill="none"
-                                        viewBox="0 0 24 24"
-                                        stroke="currentColor"
-                                        stroke-width="2"
-                                    >
-                                        <path
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-                                        />
-                                    </svg>
-                                </button>
-                                <button
-                                    v-else
-                                    type="button"
-                                    class="px-6 py-1 bg-green-400 rounded-lg text-blue-600 hover:bg-green-300 duration-300"
-                                    @click="setBulletSection"
-                                >
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        class="h-6 w-6"
-                                        fill="none"
-                                        viewBox="0 0 24 24"
-                                        stroke="currentColor"
-                                        stroke-width="2"
-                                    >
-                                        <path
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            d="M5 13l4 4L19 7"
-                                        />
-                                    </svg>
-                                </button>
-                            </div>
-                            <div class="space-y-1">
-                                <div
-                                    v-for="(section, i) in form.bullet_sections"
-                                    :key="section"
-                                    class="border p-2"
-                                >
-                                    <div class="flex mx-2">
-                                        <span
-                                            class="cursor-pointer rotate-90"
-                                            @click="editBulletSection(i)"
+                                    <div class="flex">
+                                        <div
+                                            class="flex justify-between w-full"
                                         >
-                                            <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                class="h-6 w-6 text-blue-500"
-                                                fill="none"
-                                                viewBox="0 0 24 24"
-                                                stroke="currentColor"
-                                                stroke-width="2"
-                                            >
-                                                <path
-                                                    stroke-linecap="round"
-                                                    stroke-linejoin="round"
-                                                    d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
-                                                />
-                                            </svg>
-                                        </span>
-                                        <span
-                                            class="cursor-pointer rotate-90"
-                                            @click="deleteBulletSection(i)"
-                                        >
-                                            <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                class="h-6 text-red-500"
-                                                fill="none"
-                                                viewBox="0 0 24 24"
-                                                stroke="currentColor"
-                                                stroke-width="2"
-                                            >
-                                                <path
-                                                    stroke-linecap="round"
-                                                    stroke-linejoin="round"
-                                                    d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
-                                                />
-                                            </svg>
-                                        </span>
-                                    </div>
-                                    <div class="flex justify-between">
-                                        <div class="w-1/2">
-                                            <div class="text-xl text-white">
-                                                {{ section.bullet_title_en }}
+                                            <div class="w-1/2">
+                                                <div class="text-xl text-white">
+                                                    {{
+                                                        section.section_title_en
+                                                    }}
+                                                </div>
+                                                <div>
+                                                    {{
+                                                        section.section_text_en
+                                                    }}
+                                                </div>
                                             </div>
-                                            <div>
-                                                {{ section.bullet_text_en }}
+                                            <div class="w-1/2 text-right">
+                                                <div class="text-xl text-white">
+                                                    {{
+                                                        section.section_title_ar
+                                                    }}
+                                                </div>
+                                                <div>
+                                                    {{
+                                                        section.section_text_ar
+                                                    }}
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="w-1/2 text-right">
-                                            <div class="text-xl text-white">
-                                                {{ section.bullet_title_ar }}
-                                            </div>
-                                            <div>
-                                                {{ section.bullet_text_ar }}
-                                            </div>
+                                        <div class="w-20 flex flex-col">
+                                            <button
+                                                @click.prevent="move(i, i - 1)"
+                                                class="bg-green-200 text-green-800"
+                                            >
+                                                UP
+                                            </button>
+                                            <button
+                                                @click.prevent="move(i, i + 1)"
+                                                class="bg-green-200 text-green-800 mt-2"
+                                            >
+                                                DOWN
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -868,8 +688,7 @@ const form = reactive({
     country_passport_ids: [],
     title_en: "",
     title_ar: "",
-    paragraph_sections: [],
-    bullet_sections: [],
+    sections: [],
     options: [],
 });
 
@@ -938,75 +757,47 @@ const editVisaOption = (option_id) => {
     visa_option.value = form.options[option_id];
 };
 
-let paragraph_sections = ref({
-    paragraph_title_en: "",
-    paragraph_title_ar: "",
-    paragraph_text_en: "",
-    paragraph_text_ar: "",
+let sections = ref({
+    section_title_en: "",
+    section_title_ar: "",
+    section_text_en: "",
+    section_text_ar: "",
+    is_bullet: false,
 });
 
 let is_editing_paragraph = ref(false);
 const setParagraphSection = () => {
     if (!is_editing_paragraph.value) {
-        form.paragraph_sections.push(paragraph_sections.value);
-        paragraph_sections.value = {
-            paragraph_title_en: "",
-            paragraph_title_ar: "",
-            paragraph_text_en: "",
-            paragraph_text_ar: "",
+        form.sections.push(sections.value);
+        sections.value = {
+            section_title_en: "",
+            section_title_ar: "",
+            section_text_en: "",
+            section_text_ar: "",
+            is_bullet: false,
         };
     } else {
         is_editing_paragraph.value = false;
-        paragraph_sections.value = {
-            paragraph_title_en: "",
-            paragraph_title_ar: "",
-            paragraph_text_en: "",
-            paragraph_text_ar: "",
+        sections.value = {
+            section_title_en: "",
+            section_title_ar: "",
+            section_text_en: "",
+            section_text_ar: "",
+            is_bullet: false,
         };
     }
 };
 
-const deleteParagraphSection = (paragraph_idx) => {
-    form.paragraph_sections.splice(paragraph_idx, 1);
+const deleteParagraphSection = (section_idx) => {
+    form.sections.splice(section_idx, 1);
 };
-const editParagraphSection = (paragraph_idx) => {
+const editParagraphSection = (section_idx) => {
     is_editing_paragraph.value = true;
-    paragraph_sections.value = form.paragraph_sections[paragraph_idx];
+    sections.value = form.sections[section_idx];
 };
-
-let bullet_sections = ref({
-    bullet_title_en: "",
-    bullet_title_ar: "",
-    bullet_text_en: "",
-    bullet_text_ar: "",
-});
-
-let is_editing_bullet = ref(false);
-const setBulletSection = () => {
-    if (!is_editing_bullet.value) {
-        form.bullet_sections.push(bullet_sections.value);
-        bullet_sections.value = {
-            bullet_title_en: "",
-            bullet_title_ar: "",
-            bullet_text_en: "",
-            bullet_text_ar: "",
-        };
-    } else {
-        is_editing_bullet.value = false;
-        bullet_sections.value = {
-            bullet_title_en: "",
-            bullet_title_ar: "",
-            bullet_text_en: "",
-            bullet_text_ar: "",
-        };
-    }
-};
-
-const deleteBulletSection = (bullet_idx) => {
-    form.bullet_sections.splice(bullet_idx, 1);
-};
-const editBulletSection = (bullet_idx) => {
-    is_editing_bullet.value = true;
-    bullet_sections.value = form.bullet_sections[bullet_idx];
+const move = (idx, idx2) => {
+    const t = form.sections[idx];
+    form.sections[idx] = form.sections[idx2];
+    form.sections[idx2] = t;
 };
 </script>

@@ -87,10 +87,10 @@
                                     {{ option["processing_time_" + lang] }}
                                 </td>
                                 <td class="px-6 py-4">
-                                    {{ option.adult_price }}
+                                    {{ option.adult_price + "$" }}
                                 </td>
                                 <td class="px-6 py-4">
-                                    {{ option.child_price }}
+                                    {{ option.child_price + "$" }}
                                 </td>
                             </tr>
                         </tbody>
@@ -457,7 +457,7 @@
                                             <option value="Latvia">
                                                 Latvia
                                             </option>
-                                            <option value="Lebanon" selected>
+                                            <option value="Lebanon">
                                                 Lebanon
                                             </option>
                                             <option value="Lesotho">
@@ -830,11 +830,11 @@
                                             required
                                         >
                                             <option
-                                                v-for="opt in visa.options"
+                                                v-for="opt in visa_options"
                                                 :key="opt"
-                                                :value="opt.visa_type_en"
+                                                :value="opt.visa_type"
                                             >
-                                                {{ opt["visa_type_" + lang] }}
+                                                {{ opt["visa_type"] }}
                                             </option>
                                         </select>
                                     </div>
@@ -899,9 +899,24 @@ import { useRoute } from "vue-router";
 const { getVisaDetails, visa } = useVisas();
 const props = defineProps({ passport: String, visa: String });
 const url = ref(useRoute());
-onMounted(getVisaDetails(props.visa));
+let visa_options = ref([]);
+onMounted(async () => {
+    await getVisaDetails(props.visa);
+    visa.value.options.forEach((element) => {
+        visa_options.value.push({
+            visa_type: element["visa_type_" + lang] + " (Adults)",
+            price: element["adult_price"],
+        });
+        visa_options.value.push({
+            visa_type: element["visa_type_" + lang] + " (Children)",
+            price: element["child_price"],
+        });
+    });
+    application_form.value["visa_type"] = visa_options.value[0]["visa_type"];
+    console.log(application_form.value);
+});
 let application_form = ref({
-    country: "",
+    country: "Iraq",
     visa_type: "",
 });
 let lang = inject("lang") || "en";
