@@ -13,29 +13,18 @@
             class="px-2 sm:px-4 xl:px-0 md:flex w-full max-w-6xl mx-auto my-10 justify-between space-x-0 sm:space-x-2"
         >
             <div class="w-full md:w-3/4 border rounded p-2">
-                <div
-                    v-for="bullet_section in visa['bullet_sections']"
-                    :key="bullet_section"
-                >
+                <div v-for="section in visa['sections']" :key="section">
                     <list-section
+                        v-if="section.is_bullet"
                         class="border py-2 mt-3"
-                        :section_list="bullet_section['bullet_text_' + lang]"
-                        :section_title="bullet_section['bullet_title_' + lang]"
+                        :section_list="section['section_text_' + lang]"
+                        :section_title="section['section_title_' + lang]"
                     />
-                </div>
-
-                <div
-                    v-for="paragraph_section in visa['paragraph_sections']"
-                    :key="paragraph_section"
-                >
                     <base-section
+                        v-else
                         class="border py-2 mt-3"
-                        :section_description="
-                            paragraph_section['paragraph_text_' + lang]
-                        "
-                        :section_title="
-                            paragraph_section['paragraph_title_' + lang]
-                        "
+                        :section_description="section['section_text_' + lang]"
+                        :section_title="section['section_title_' + lang]"
                     />
                 </div>
 

@@ -44,8 +44,7 @@ class VisaController extends Controller
         $visa->country_passport_ids = $request->country_passport_ids;
         $visa->title_en = $request->title_en;
         $visa->title_ar = $request->title_ar;
-        $visa->paragraph_sections = $request->paragraph_sections;
-        $visa->bullet_sections = $request->bullet_sections;
+        $visa->sections = $request->sections;
         $visa->options = $request->options;
         $visa->slug = Str::slug($visa->title_en, '-');
 
@@ -101,8 +100,7 @@ class VisaController extends Controller
             'country_passport_ids' => $request->country_passport_ids,
             'title_en' => $request->title_en,
             'title_ar' => $request->title_ar,
-            'paragraph_sections' => $request->paragraph_sections,
-            'bullet_sections' => $request->bullet_sections,
+            'sections' => $request->sections,
             'options' => $request->options,
         ]);
 

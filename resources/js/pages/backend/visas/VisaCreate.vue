@@ -60,9 +60,24 @@
                         </div>
 
                         <div class="paragraph border rounded p-2">
-                            <h3 class="text-white font-bold">
-                                Paragraph Sections
-                            </h3>
+                            <div class="flex justify-between">
+                                <h3 class="text-white font-bold">
+                                    Paragraph Sections
+                                </h3>
+                                <div class="flex items-center">
+                                    <input
+                                        id="is_bullet"
+                                        type="checkbox"
+                                        v-model="sections.is_bullet"
+                                        class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 mr-2"
+                                    />
+                                    <label
+                                        for="is_bullet"
+                                        class="text-sm text-white"
+                                        >Bullet</label
+                                    >
+                                </div>
+                            </div>
                             <div class="flex justify-between">
                                 <div class="w-full me-2">
                                     <label
@@ -137,7 +152,7 @@
                             </div>
                             <div class="my-2">
                                 <button
-                                    v-if="!is_editing_paragraph"
+                                    v-if="!is_editing_section"
                                     type="button"
                                     class="px-6 py-1 bg-green-400 rounded-lg text-blue-600 hover:bg-green-300 duration-300"
                                     @click="setParagraphSection"
@@ -185,45 +200,56 @@
                                     :key="section"
                                     class="border p-2"
                                 >
-                                    <div class="flex mx-2">
-                                        <span
-                                            class="cursor-pointer rotate-90"
-                                            @click="editParagraphSection(i)"
-                                        >
-                                            <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                class="h-6 w-6 text-blue-500"
-                                                fill="none"
-                                                viewBox="0 0 24 24"
-                                                stroke="currentColor"
-                                                stroke-width="2"
+                                    <div class="flex justify-between">
+                                        <div class="flex mx-2">
+                                            <span
+                                                class="cursor-pointer rotate-90"
+                                                @click="editParagraphSection(i)"
                                             >
-                                                <path
-                                                    stroke-linecap="round"
-                                                    stroke-linejoin="round"
-                                                    d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
-                                                />
-                                            </svg>
-                                        </span>
-                                        <span
-                                            class="cursor-pointer rotate-90"
-                                            @click="deleteParagraphSection(i)"
-                                        >
-                                            <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                class="h-6 text-red-500"
-                                                fill="none"
-                                                viewBox="0 0 24 24"
-                                                stroke="currentColor"
-                                                stroke-width="2"
+                                                <svg
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    class="h-6 w-6 text-blue-500"
+                                                    fill="none"
+                                                    viewBox="0 0 24 24"
+                                                    stroke="currentColor"
+                                                    stroke-width="2"
+                                                >
+                                                    <path
+                                                        stroke-linecap="round"
+                                                        stroke-linejoin="round"
+                                                        d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+                                                    />
+                                                </svg>
+                                            </span>
+                                            <span
+                                                class="cursor-pointer rotate-90"
+                                                @click="
+                                                    deleteParagraphSection(i)
+                                                "
                                             >
-                                                <path
-                                                    stroke-linecap="round"
-                                                    stroke-linejoin="round"
-                                                    d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
-                                                />
-                                            </svg>
-                                        </span>
+                                                <svg
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    class="h-6 text-red-500"
+                                                    fill="none"
+                                                    viewBox="0 0 24 24"
+                                                    stroke="currentColor"
+                                                    stroke-width="2"
+                                                >
+                                                    <path
+                                                        stroke-linecap="round"
+                                                        stroke-linejoin="round"
+                                                        d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                                                    />
+                                                </svg>
+                                            </span>
+                                        </div>
+                                        <p>
+                                            {{
+                                                section.is_bullet
+                                                    ? "Bullet"
+                                                    : "Paragraph"
+                                            }}
+                                        </p>
                                     </div>
                                     <div class="flex">
                                         <div
@@ -254,18 +280,59 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="w-20 flex flex-col">
+                                        <div class="w-6 space-y-2 ml-2">
                                             <button
+                                                v-show="i > 0"
+                                                type="button"
                                                 @click.prevent="move(i, i - 1)"
-                                                class="bg-green-200 text-green-800"
+                                                class="text-blue-200 border border-blue-700 hover:bg-blue-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-1.5 text-center inline-flex items-center dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:focus:ring-blue-800"
                                             >
-                                                UP
+                                                <!-- up -->
+                                                <svg
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    fill="none"
+                                                    viewBox="0 0 24 24"
+                                                    stroke-width="1.5"
+                                                    stroke="currentColor"
+                                                    class="w-3"
+                                                >
+                                                    <path
+                                                        stroke-linecap="round"
+                                                        stroke-linejoin="round"
+                                                        d="M4.5 15.75l7.5-7.5 7.5 7.5"
+                                                    />
+                                                </svg>
+                                                <span class="sr-only"
+                                                    >Icon description</span
+                                                >
                                             </button>
+
                                             <button
+                                                v-show="
+                                                    i < form.sections.length - 1
+                                                "
+                                                type="button"
                                                 @click.prevent="move(i, i + 1)"
-                                                class="bg-green-200 text-green-800 mt-2"
+                                                class="text-blue-200 border border-blue-700 hover:bg-blue-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-1.5 text-center inline-flex items-center dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:focus:ring-blue-800"
                                             >
-                                                DOWN
+                                                <!-- down -->
+                                                <svg
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    fill="none"
+                                                    viewBox="0 0 24 24"
+                                                    stroke-width="1.5"
+                                                    stroke="currentColor"
+                                                    class="w-3"
+                                                >
+                                                    <path
+                                                        stroke-linecap="round"
+                                                        stroke-linejoin="round"
+                                                        d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+                                                    />
+                                                </svg>
+                                                <span class="sr-only"
+                                                    >Icon description</span
+                                                >
                                             </button>
                                         </div>
                                     </div>
@@ -765,9 +832,9 @@ let sections = ref({
     is_bullet: false,
 });
 
-let is_editing_paragraph = ref(false);
+let is_editing_section = ref(false);
 const setParagraphSection = () => {
-    if (!is_editing_paragraph.value) {
+    if (!is_editing_section.value) {
         form.sections.push(sections.value);
         sections.value = {
             section_title_en: "",
@@ -777,7 +844,7 @@ const setParagraphSection = () => {
             is_bullet: false,
         };
     } else {
-        is_editing_paragraph.value = false;
+        is_editing_section.value = false;
         sections.value = {
             section_title_en: "",
             section_title_ar: "",
@@ -792,7 +859,7 @@ const deleteParagraphSection = (section_idx) => {
     form.sections.splice(section_idx, 1);
 };
 const editParagraphSection = (section_idx) => {
-    is_editing_paragraph.value = true;
+    is_editing_section.value = true;
     sections.value = form.sections[section_idx];
 };
 const move = (idx, idx2) => {

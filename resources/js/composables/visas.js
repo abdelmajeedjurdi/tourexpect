@@ -54,16 +54,14 @@ export default function useVisas() {
     const getVisa = async (id) => {
         let response = await axios.get("/api/visas/" + id);
         visa.value = response.data.data;
-        visa.value['paragraph_sections'] = JSON.parse(visa.value['paragraph_sections'])
-        visa.value['bullet_sections'] = JSON.parse(visa.value['bullet_sections'])
+        visa.value['sections'] = JSON.parse(visa.value['sections'])
         visa.value['options'] = JSON.parse(visa.value['options'])
         visa.value['country_passport_ids'] = JSON.parse(visa.value['country_passport_ids'])
     };
     const getVisaDetails = async (slug) => {
         let response = await axios.get("/api/visa/" + slug);
         visa.value = response.data.data;
-        visa.value['paragraph_sections'] = JSON.parse(visa.value['paragraph_sections'])
-        visa.value['bullet_sections'] = JSON.parse(visa.value['bullet_sections'])
+        visa.value['sections'] = JSON.parse(visa.value['sections'])
         visa.value['options'] = JSON.parse(visa.value['options'])
     };
 
@@ -71,8 +69,7 @@ export default function useVisas() {
         fd.append("country_passport_ids", JSON.stringify(data.form.country_passport_ids));
         fd.append("title_en", data.form.title_en);
         fd.append("title_ar", data.form.title_ar);
-        fd.append("paragraph_sections", JSON.stringify(data.form.paragraph_sections))
-        fd.append("bullet_sections", JSON.stringify(data.form.bullet_sections))
+        fd.append("sections", JSON.stringify(data.form.sections))
         fd.append("options", JSON.stringify(data.form.options))
 
         errors.value = "";
@@ -100,8 +97,7 @@ export default function useVisas() {
         fd.append("country_passport_ids", JSON.stringify(data.form.country_passport_ids));
         fd.append("title_en", data.form.title_en);
         fd.append("title_ar", data.form.title_ar);
-        fd.append("paragraph_sections", JSON.stringify(data.form.paragraph_sections));
-        fd.append("bullet_sections", JSON.stringify(data.form.bullet_sections));
+        fd.append("sections", JSON.stringify(data.form.sections));
         fd.append("options", JSON.stringify(data.form.options));
         errors.value = "";
         try {
