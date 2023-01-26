@@ -757,6 +757,30 @@
                         </div>
                     </div>
                 </div>
+
+                <button
+                    type="button"
+                    v-if="i > 0"
+                    class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                    @click="removeForm(i)"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-5 h-5 mr-2 -ml-1"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M6 18L18 6M6 6l12 12"
+                        />
+                    </svg>
+
+                    Remove Form
+                </button>
             </div>
             <button
                 type="button"
@@ -932,6 +956,10 @@ const newForm = () => {
         country: route.query.country,
         visa_type: route.query.visa_type,
     });
+};
+
+const removeForm = (idx) => {
+    application_forms.value.splice(idx, 1);
 };
 </script>
 
