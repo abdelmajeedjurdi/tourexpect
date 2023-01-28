@@ -69,7 +69,9 @@
                         v-for="link in coulomn['links']"
                         :key="link"
                     >
-                        <router-link class="text-white" :to="'/' + link['slug']"
+                        <router-link
+                            class="text-white"
+                            :to="'/' + lang == 'ar' ? 'ar/' : '' + link['slug']"
                             >{{ link["name_" + lang] }}
                         </router-link>
                     </li>

@@ -3,7 +3,10 @@
         class="bg-white border hover:shadow-lg duration-700 overflow-hidden mb-10"
     >
         <router-link
-            :to="{ name: 'tours-details', params: { slug: tour.slug } }"
+            :to="{
+                name: 'tours-details',
+                params: { slug: tour.slug, lang: lang == 'ar' ? 'ar' : '' },
+            }"
         >
             <div class="relative">
                 <img

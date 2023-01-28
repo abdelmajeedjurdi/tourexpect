@@ -23,7 +23,10 @@
                                 clip-rule="evenodd"
                             />
                         </svg>
-                        <router-link to="/" class="items-center">
+                        <router-link
+                            :to="lang == 'ar' ? '/ar' : '/'"
+                            class="items-center"
+                        >
                             <img
                                 src="/images/logo.svg"
                                 alt="logo"
@@ -92,7 +95,15 @@
                                                 class="md:mx-4"
                                             >
                                                 <router-link
-                                                    :to="{ name: item.slug }"
+                                                    :to="{
+                                                        name: item.slug,
+                                                        params: {
+                                                            lang:
+                                                                lang == 'ar'
+                                                                    ? 'ar'
+                                                                    : '',
+                                                        },
+                                                    }"
                                                     class="peer pr-4 pl-3 font-bold text-xl text-gray-800 border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-400 md:p-0"
                                                 >
                                                     {{
@@ -133,7 +144,7 @@
                                 />
                             </svg>
                             <router-link
-                                to="/"
+                                :to="lang == 'ar' ? '/ar' : '/'"
                                 class="flex items-center justify-center"
                             >
                                 <img
@@ -154,7 +165,10 @@
                                 :key="i"
                             >
                                 <router-link
-                                    :to="'/' + item.slug"
+                                    :to="
+                                        (lang == 'ar' ? '/ar/' : '/') +
+                                        item.slug
+                                    "
                                     @click="closeMenu"
                                     :class="
                                         menu_path_by_id.menu == i
@@ -187,8 +201,12 @@
                             >
                                 <router-link
                                     :to="{
-                                        path: `/${menu_slug}/${submenu_slug} `,
-                                        params: { destination: submenu_slug },
+                                        path: `${
+                                            lang == 'ar' ? '/ar' : ''
+                                        }/${menu_slug}/${submenu_slug} `,
+                                        params: {
+                                            destination: submenu_slug,
+                                        },
                                     }"
                                     @click="closeMenu"
                                     :class="
@@ -255,6 +273,7 @@
                                         params: {
                                             destination: submenu_slug.at,
                                             subdestination: item['slug'],
+                                            lang: lang == 'ar' ? 'ar' : '',
                                         },
                                     }"
                                     @click="closeMenu"
@@ -292,7 +311,7 @@
                         </svg>
 
                         <router-link
-                            to="/"
+                            :to="lang == 'ar' ? '/ar' : '/'"
                             class="flex items-center justify-center"
                         >
                             <img
@@ -312,7 +331,11 @@
                             @click="
                                 item['items'].length > 0
                                     ? setSubmenu(i)
-                                    : (router.push({ path: `/${item.slug}` }),
+                                    : (router.push({
+                                          path: `${lang == 'ar' ? '/ar' : ''}/${
+                                              item.slug
+                                          }`,
+                                      }),
                                       closeMenu())
                             "
                         >
@@ -378,7 +401,9 @@
                                 item['items'].length > 0
                                     ? setSubSubMenu(j)
                                     : (router.push({
-                                          path: `/${menu_slug}/${item.slug}`,
+                                          path: `${
+                                              lang == 'ar' ? '/ar' : ''
+                                          }/${menu_slug}/${item.slug}`,
                                       }),
                                       closeMenu())
                             "
@@ -461,7 +486,11 @@
                                 @click="
                                     () => {
                                         router.push({
-                                            path: `/${menu_slug}/${submenu_slug}/${item.slug}`,
+                                            path: `${
+                                                lang == 'ar' ? '/ar' : ''
+                                            }/${menu_slug}/${submenu_slug}/${
+                                                item.slug
+                                            }`,
                                         });
                                         closeMenu();
                                     }
@@ -478,26 +507,36 @@
     </div>
 </template>
 <script setup>
-import { onMounted, ref } from "vue";
+import { onBeforeMount, onMounted, ref } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import useGeneral from "../composables/general";
 
 const { getDestinations, destinations } = useGeneral();
 const router = useRouter();
+// const props = defineProps({ lang: String });
 let url = ref(useRoute());
 let lang = ref("");
-const switchLanguage = () => {
+const switchLanguage = async () => {
     // if (process.server) {
-    if (window.localStorage.getItem("lang") == "ar") {
+    console.log(url.value.name);
+    console.log(lang.value);
+
+    if (lang.value == "ar") {
         window.localStorage.setItem("lang", "en");
-        lang.value = "en";
-        window.location.reload();
+        await router.replace({
+            name: url.value.name,
+            params: { lang: "" },
+        });
+        router.go();
     }
     // }
     else {
         localStorage.setItem("lang", "ar");
-        lang.value = "ar";
-        window.location.reload();
+        await router.replace({
+            name: url.value.name,
+            params: { lang: "ar" },
+        });
+        router.go();
     }
 };
 // ********************************************

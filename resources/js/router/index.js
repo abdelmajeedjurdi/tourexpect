@@ -45,7 +45,7 @@ import Jobs from "../pages/backend/jobs/Jobs"
 
 // Frontend
 import Frontend from "../pages/frontend";
-import CommingSoon from "../pages/frontend/CommingSoon";
+import ComingSoon from "../pages/frontend/ComingSoon";
 
 import About from "../pages/frontend/AboutUs";
 import Contact from "../pages/frontend/ContactUs";
@@ -281,58 +281,62 @@ const routes = [
     // [[[[[[[[[[[<<<<<<<<<<<<<<<<<<<<<<<<<<(((((((((((((((((--Front-End--)))))))))))))))))>>>>>>>>>>>>>>>>>>>>>>>>>>]]]]]]]]]]],
 
     {
-        path: "/",
+        path: "/:lang?",
         name: "Home",
         component: Frontend,
+        props: true
     },
     {
-        path: "/about",
+        path: "/:lang?/about",
         name: "about",
         component: About,
     },
     {
-        path: "/contact",
+        path: "/:lang?/contact",
         name: "contact",
         component: Contact,
+        props: true
     },
     {
-        path: "/blogs",
+        path: "/:lang?/blogs",
         name: "blogs",
         component: Blogs,
+        props: true
     },
     {
-        path: "/blogs/:slug",
+        path: "/:lang?/blogs/:slug",
         name: "blog",
         component: SingleBlog,
         props: true,
     },
     {
-        path: "/we-are-hiring",
+        path: "/:lang?/we-are-hiring",
         name: "we-are-hiring",
         component: WeAreHiring,
         props: true,
     },
 
     {
-        path: "/tours",
+        path: "/:lang?/tours",
         name: "tours",
         component: Tours,
+        props: true
     },
     {
-        path: "/tours/details/:slug",
+        path: "/:lang?/tours/details/:slug",
         name: "tours-details",
         component: Tour,
         props: true
     },
 
     {
-        path: "/tours/:destination",
+        path: "/:lang?/tours/:destination",
         name: "DTours",
         component: DestinationTours,
         props: true
     },
     {
-        path: "/tours/:destination/:subdestination",
+        path: "/:lang?/tours/:destination/:subdestination",
         name: "SDTours",
         component: SubDestinationTours,
         props: true
@@ -340,37 +344,38 @@ const routes = [
 
 
     {
-        path: "/visas/:passport/:visa",
+        path: "/:lang?/visas/:passport/:visa",
         name: "SDVisas",
         component: PassportVisa,
         props: true
     },
     {
-        path: "/visas/:passport/:visa/proceed-to-apply",
+        path: "/:lang?/visas/:passport/:visa/proceed-to-apply",
         name: "proceed-to-apply",
         component: ProceedToApply,
         props: true
     },
     {
-        path: "/visas/:passport/:visa/payment",
+        path: "/:lang?/visas/:passport/:visa/payment",
         name: "payment",
         component: Payment,
         props: true
     },
 
     {
-        path: "/activities",
+        path: "/:lang?/activities",
         name: "activities",
         component: Activities,
+        props: true
     },
     {
-        path: "/activities/:destination",
+        path: "/:lang?/activities/:destination",
         name: "DActivities",
         component: DestinationActivites,
         props: true
     },
     {
-        path: "/activities/:destination/:subdestination",
+        path: "/:lang?/activities/:destination/:subdestination",
         name: "SDActivities",
         component: SubDestinationActivites,
         props: true
@@ -378,98 +383,102 @@ const routes = [
 
 
     // {
-    //     path: "/visas",
+    //     path: "/:lang?/visas",
     //     name: "visas",
     //     component: Visas,
     // },
     // {
-    //     path: "/visas/:destination",
+    //     path: "/:lang?/visas/:destination",
     //     name: "DActivities",
     //     component: DestinationActivites,
     //     props: true
     // },
     // {
-    //     path: "/visas/:destination/:subdestination",
+    //     path: "/:lang?/visas/:destination/:subdestination",
     //     name: "SDActivities",
     //     component: SubDestinationActivites,
     //     props: true
     // },
 
     {
-        path: "/packages",
+        path: "/:lang?/packages",
         name: "packages",
         component: Packages,
+        props: true
     },
 
     {
-        path: "/temp",
+        path: "/:lang?/temp",
         name: "temp",
         component: temp,
+        props: true
     },
     {
-        path: "/packages/:destination",
+        path: "/:lang?/packages/:destination",
         name: "Dpackages",
         component: DestinationPacks,
         props: true
     },
     {
-        path: "/packages/:destination/:subdestination",
+        path: "/:lang?/packages/:destination/:subdestination",
         name: "SDpackages",
         component: SubDestinationPacks,
         props: true
     },
     {
-        path: "/packages/details/:slug",
+        path: "/:lang?/packages/details/:slug",
         name: "package-details",
         component: Package,
         props: true
     },
     {
-        path: "/activities/details/:slug",
+        path: "/:lang?/activities/details/:slug",
         name: "activity-details",
         component: Activity,
         props: true
     },
     {
-        path: "/hotels-and-resorts",
+        path: "/:lang?/hotels-and-resorts",
         name: "hotels-and-resorts",
         component: HotelsAndResorts,
     },
     {
-        path: "/hotels-and-resorts/:destination",
+        path: "/:lang?/hotels-and-resorts/:destination",
         name: "DHotels",
         component: DestinationHotelsAndResorts,
         props: true
     },
     {
-        path: "/hotels-and-resorts/:destination/:subdestination",
+        path: "/:lang?/hotels-and-resorts/:destination/:subdestination",
         name: "SDHotels",
         component: SubDestinationHotelsAndResorts,
         props: true
     },
     {
-        path: "/transfer",
+        path: "/:lang?/transfer",
         name: "transfer",
-        component: CommingSoon,
+        component: ComingSoon,
+        props: true
     },
 
     {
-        path: "/test",
+        path: "/:lang?/test",
         name: "test",
         component: Test,
         props: true,
     },
 
     {
-        path: "/test2",
+        path: "/:lang?/test2",
         name: "test2",
         component: Test2,
         props: true,
     },
     {
-        path: "/:pathMatch(.*)*",
+        path: "/:lang?/:pathMatch(.*)*",
         name: "404",
-        component: CommingSoon,
+        component: ComingSoon,
+        props: true
     },
 ];
 

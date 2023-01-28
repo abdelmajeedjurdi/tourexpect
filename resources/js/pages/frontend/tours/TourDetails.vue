@@ -28,7 +28,7 @@
                                     alt=""
                                 />
                                 <span class="text-base font-bold">
-                                    {{ highlight["title_en"] }}
+                                    {{ highlight["title_" + lang] }}
                                 </span>
                             </div>
                         </div>
