@@ -88,28 +88,33 @@ class TourController extends Controller
     public function getDestinationTours(Request $request)
     {
 
-        // return TourResource::collection(Tour::paginate(15));
+        $ids = DB::table('countries')
+            ->join('destinations', 'countries.id', '=', 'destinations.country_id')
+            ->select('destinations.id')
+            ->where('countries.slug', '=', $request->destination)
+            ->pluck('id')->toArray();
+
+        $tours = Tour::select('tours.*')
+            ->join('tour_destination', 'tour_destination.tour_id', '=', 'tours.id')
+            ->join('destinations', 'destinations.id', '=', 'tour_destination.destination_id')
+            ->whereIn('destinations.id', $ids)
+            ->distinct()->take($request->count)
+            ->get();
+        return $tours;
         if ($request->subdestination == 'null') {
-            $all = DB::table('countries')
+
+            $ids = DB::table('countries')
                 ->join('destinations', 'countries.id', '=', 'destinations.country_id')
-                ->join('tours', 'destinations.id', '=', 'tours.destination_ids')
-                ->select(
-                    'tours.id',
-                    'tours.destination_ids',
-                    'tours.title_en',
-                    'tours.title_ar',
-                    'tours.address_ar',
-                    'tours.address_en',
-                    'tours.description_en',
-                    'tours.description_ar',
-                    'tours.slug',
-                    'tours.thumbnail',
-                    'tours.duration_en',
-                    'tours.duration_ar',
-                    'destinations.name_en as destination_en',
-                    'destinations.name_ar as destination_ar'
-                )->where('countries.slug', '=', $request->destination)->paginate(12);
+                ->select('destinations.id')
+                ->where('countries.slug', '=', $request->destination)
+                ->pluck('id')->toArray();
+
+            $all = DB::table('tours')
+                ->join('tour_destination as td', 'td.tour_id', '=', 'tours.id')
+                ->whereIn('td.destination_id', $ids)->take($request->count)->distinct()->get();
+            return $all;
         } else {
+            // Log::info($request);
             $all = DB::table('destinations')
                 ->join('tours', 'destinations.id', '=', 'tours.destination_ids')
                 ->select(
@@ -129,7 +134,6 @@ class TourController extends Controller
                     'destinations.name_ar as destination_ar'
                 )->where('destinations.slug', '=', $request->subdestination)->paginate(12);
         }
-        return $all;
     }
 
     /**

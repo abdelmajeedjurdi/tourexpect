@@ -38,17 +38,17 @@ export default function useTours() {
         tours.value = response.data.data;
         pages.value = response.data.meta
     };
-    const getDestinationTours = async (page, destination, subdestination = null) => {
-        let response = await axios.get(`/api/destination-tours?page=${page}&destination=${destination}&subdestination=${subdestination}`);
-        tours.value = response.data.data;
-        pages.value = response.data.meta
-        alter_pages.value['current_page'] = response.data['current_page']
-        alter_pages.value['last_page'] = response.data['last_page']
-        alter_pages.value['from'] = response.data['from']
-        alter_pages.value['links'] = response.data['links']
-        alter_pages.value['to'] = response.data['to']
-        alter_pages.value['total'] = response.data['total']
-        alter_pages.value['path'] = response.data['path']
+    const getDestinationTours = async (count, destination, subdestination = null) => {
+        let response = await axios.get(`/api/destination-tours?count=${count}&destination=${destination}&subdestination=${subdestination}`);
+        return response.data;
+        // pages.value = response.data.meta
+        // alter_pages.value['current_page'] = response.data['current_page']
+        // alter_pages.value['last_page'] = response.data['last_page']
+        // alter_pages.value['from'] = response.data['from']
+        // alter_pages.value['links'] = response.data['links']
+        // alter_pages.value['to'] = response.data['to']
+        // alter_pages.value['total'] = response.data['total']
+        // alter_pages.value['path'] = response.data['path']
 
     };
     const getTour = async (id) => {

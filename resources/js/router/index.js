@@ -44,7 +44,7 @@ import Options from "../pages/backend/options/Options"
 import Jobs from "../pages/backend/jobs/Jobs"
 
 // Frontend
-import Frontend from "../pages/frontend";
+import Homepage from "../pages/frontend/Homepage";
 import ComingSoon from "../pages/frontend/ComingSoon";
 
 import About from "../pages/frontend/AboutUs";
@@ -283,7 +283,7 @@ const routes = [
     {
         path: "/:lang?",
         name: "Home",
-        component: Frontend,
+        component: Homepage,
         props: true
     },
     {
