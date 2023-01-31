@@ -13,7 +13,7 @@ class Destination extends Model
         'name_ar',
         'description_en',
         'description_ar',
-        'image',
+        'image', 'trending',
         'slug',
         'country_id'
     ];

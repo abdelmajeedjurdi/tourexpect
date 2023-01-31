@@ -45,6 +45,7 @@ export default function useDestinations() {
         fd.append("name_ar", data.form.name_ar);
         fd.append("description_en", data.form.description_en);
         fd.append("description_ar", data.form.description_ar);
+        fd.append("trending", data.form.trending);
         fd.append("country_id", data.form.country_id);
         fd.append("destination_img", data.form.image);
         fd.append("image", data.file);
@@ -75,6 +76,7 @@ export default function useDestinations() {
         fd.append("name_ar", data.form.name_ar);
         fd.append("description_en", data.form.description_en);
         fd.append("description_ar", data.form.description_ar);
+        fd.append("trending", data.form.trending);
         fd.append("destination_img", data.form.image);
         fd.append("country_id", data.form.country_id);
         fd.append("new_image", data.file);
@@ -152,6 +154,11 @@ export default function useDestinations() {
         await axios.delete("/api/countries/" + id);
         getCountries()
     };
+
+    const trendingDestinations = async () => {
+        let response = await axios.get("/api/trending-destinations");
+        return response.data;
+    };
     return {
         destinations,
         destination,
@@ -164,6 +171,6 @@ export default function useDestinations() {
         deleteProperty,
         getDestinationDetails,
         tours, getDestinationsOnCountry, pages, duplicate,
-        getCountry, storeCountry, updateCountry, destroyCountry, countries, getCountries, country
+        getCountry, storeCountry, updateCountry, destroyCountry, countries, getCountries, country, trendingDestinations
     };
 }

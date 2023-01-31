@@ -48,6 +48,7 @@ Route::get('categories-on-section', [CategoryController::class, 'getCategoriesOn
 Route::get('all-tours', [TourController::class, 'getAllTours']);
 Route::get('all-activities', [ActivityController::class, 'getAllActivities']);
 Route::get('destination-tours', [TourController::class, 'getDestinationTours']);
+Route::get('trending-destinations', [DestinationController::class, 'trendingDestinations']);
 Route::get('all-hotels', [HotelController::class, 'getAllHotels']);
 Route::get('destination-hotels', [HotelController::class, 'getDestinationHotels']);
 Route::get('all-packs', [PackageController::class, 'getAllPacks']);

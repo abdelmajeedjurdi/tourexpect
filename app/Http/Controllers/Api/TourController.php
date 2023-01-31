@@ -85,55 +85,30 @@ class TourController extends Controller
             )->distinct()->paginate(12);
         return TourResource::collection($all);
     }
+
     public function getDestinationTours(Request $request)
     {
+        // $tours = DB::table('tours')
+        //     ->join('tour_destination', 'tour_destination.tour_id', '=', 'tours.id')
+        //     ->join('destinations', 'destinations.id', '=', 'tour_destination.destination_id')
+        //     ->get();
+        // return $tours;
 
-        $ids = DB::table('countries')
-            ->join('destinations', 'countries.id', '=', 'destinations.country_id')
-            ->select('destinations.id')
-            ->where('countries.slug', '=', $request->destination)
-            ->pluck('id')->toArray();
-
-        $tours = Tour::select('tours.*')
-            ->join('tour_destination', 'tour_destination.tour_id', '=', 'tours.id')
-            ->join('destinations', 'destinations.id', '=', 'tour_destination.destination_id')
-            ->whereIn('destinations.id', $ids)
-            ->distinct()->take($request->count)
+        $destinations = DB::table('destinations')
+            ->join('tour_destination', 'destinations.id', '=', 'tour_destination.destination_id')
+            ->join('tours', 'tours.id', '=', 'tour_destination.tour_id')
+            ->select('destinations.slug as destination_name', 'tours.*')
             ->get();
-        return $tours;
-        if ($request->subdestination == 'null') {
 
-            $ids = DB::table('countries')
-                ->join('destinations', 'countries.id', '=', 'destinations.country_id')
-                ->select('destinations.id')
-                ->where('countries.slug', '=', $request->destination)
-                ->pluck('id')->toArray();
-
-            $all = DB::table('tours')
-                ->join('tour_destination as td', 'td.tour_id', '=', 'tours.id')
-                ->whereIn('td.destination_id', $ids)->take($request->count)->distinct()->get();
-            return $all;
-        } else {
-            // Log::info($request);
-            $all = DB::table('destinations')
-                ->join('tours', 'destinations.id', '=', 'tours.destination_ids')
-                ->select(
-                    'tours.id',
-                    'tours.destination_ids',
-                    'tours.title_en',
-                    'tours.title_ar',
-                    'tours.address_ar',
-                    'tours.address_en',
-                    'tours.description_en',
-                    'tours.description_ar',
-                    'tours.slug',
-                    'tours.thumbnail',
-                    'tours.duration_en',
-                    'tours.duration_ar',
-                    'destinations.name_en as destination_en',
-                    'destinations.name_ar as destination_ar'
-                )->where('destinations.slug', '=', $request->subdestination)->paginate(12);
+        $result = [];
+        foreach ($destinations as $destination) {
+            if (!array_key_exists($destination->destination_name, $result)) {
+                $result[$destination->destination_name] = [];
+            }
+            $result[$destination->destination_name][] = (array) $destination;
         }
+
+        return $result;
     }
 
     /**

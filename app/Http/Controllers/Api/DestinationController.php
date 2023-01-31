@@ -7,6 +7,7 @@ use App\Http\Requests\DestinationRequest;
 use App\Http\Resources\CountryResource;
 use App\Http\Resources\DestinationResource;
 use App\Models\Destination;
+use App\Models\Tour;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -32,14 +33,21 @@ class DestinationController extends Controller
 
     public function getDestinationsOnCountry()
     {
-        // $countries = DB::table('countries')
-        //     ->join('destinations', 'destinations.country_id', '=', 'countries.id')
-        //     ->select('destinations.name_en as destination', 'countries.name_en')
-        //     ->get();
         $countries = CountryResource::collection(DB::table('countries')->get());
-        // $countries= Destination::all()
-        // $countries = DB::table('countries')->get();
         return $countries;
+    }
+    public function trendingDestinations()
+    {
+        $provinces = Destination::all();
+        $countriesWithProvinces = $provinces->where('trending', '=', 1)->groupBy('country_id')
+            ->map(function ($province) {
+                return $province; //->pluck('name_en')->toArray();
+            })
+            ->mapWithKeys(function ($province, $key) {
+                return [DB::table('countries')->find($key)->slug => $province];
+            });
+
+        return $countriesWithProvinces->toArray();
     }
     /**
      * Show the form for creating a new resource.
@@ -74,6 +82,7 @@ class DestinationController extends Controller
         $destination->name_ar = $request->name_ar;
         $destination->description_en = $request->description_en;
         $destination->description_ar = $request->description_ar;
+        $destination->trending = $request->trending == 'true' ? 1 : 0;;
         $destination->image = $imageName;
         $destination->country_id = $request->country_id;
         $destination->slug = Str::slug($destination->name_en, '-');
@@ -114,6 +123,7 @@ class DestinationController extends Controller
      */
     public function update(DestinationRequest $request, Destination $destination)
     {
+        Log::info($request);
         $path = 'images/destinations/';
         //code for remove old image
         if ($request->new_image != 'null' && $request->new_image != 'default.jpg') {
@@ -135,6 +145,7 @@ class DestinationController extends Controller
             'description_en' => $request->description_en,
             'description_ar' => $request->description_ar,
             'country_id' => $request->country_id,
+            'trending' => $request->trending == 'true' ? 1 : 0,
             'image' =>  $imageName,
             'slug' => Str::slug($request->name_en, '-')
         ]);

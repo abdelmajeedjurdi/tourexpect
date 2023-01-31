@@ -38,8 +38,8 @@ export default function useTours() {
         tours.value = response.data.data;
         pages.value = response.data.meta
     };
-    const getDestinationTours = async (count, destination, subdestination = null) => {
-        let response = await axios.get(`/api/destination-tours?count=${count}&destination=${destination}&subdestination=${subdestination}`);
+    const getDestinationTours = async () => {
+        let response = await axios.get(`/api/destination-tours`);
         return response.data;
         // pages.value = response.data.meta
         // alter_pages.value['current_page'] = response.data['current_page']

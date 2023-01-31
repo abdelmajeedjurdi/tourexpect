@@ -13,7 +13,7 @@
             <div>
                 <div class="border-b-4 border-yellow-500 text-center mb-6">
                     <h2 class="font-extrabold uppercase text-black">
-                        Turkey Tours
+                        {{ $t("turkey_tours") }}
                     </h2>
                 </div>
                 <div class="grid grid-cols-5 gap-3">
@@ -29,16 +29,16 @@
                         <div
                             class="text-xl font-medium text-white text-center mt-6"
                         >
-                            Turkey Tours
+                            {{ $t("turkey_tours") }}
                         </div>
                     </div>
                     <div
                         class="relative bg-blue-50 overflow-hidden"
-                        v-for="tour in turkey_tours"
-                        :key="tour.slug"
+                        v-for="province in countries['turkey']"
+                        :key="province.slug"
                     >
                         <img
-                            :src="`/images/tours/${tour.thumbnail}`"
+                            :src="`/images/destinations/${province.image}`"
                             class="w-full h-56 object-cover"
                             alt="Product Image"
                         />
@@ -47,17 +47,18 @@
                                 class="items-center justify-center mb-2 h-16 flex px-2"
                             >
                                 <h3 class="text-lg text-black font-bold">
-                                    {{ tour["title_" + lang] }}
+                                    {{ province["name_" + lang] }}
                                 </h3>
                             </div>
                             <div
                                 class="bottom-0 absolute left-0 right-0 py-2 px-3 overflow-hidden flex justify-between text-base text-body-color leading-relaxed text-indigo-800 font-bold"
                             >
-                                <button
+                                <router-link
+                                    :to="`/tours/turkey/${province.slug}`"
                                     class="px-4 h-8 bg-main-orange text-white rounded-full mx-auto w-full text-center"
                                 >
-                                    See More
-                                </button>
+                                    {{ $t("see_more") }}
+                                </router-link>
                             </div>
                         </div>
                     </div>
@@ -66,7 +67,7 @@
             <div class="mt-20">
                 <div class="border-b-4 border-yellow-500 text-center mb-6">
                     <h2 class="font-extrabold uppercase text-black">
-                        UAE Tours
+                        {{ $t("uae_tours") }}
                     </h2>
                 </div>
                 <div class="grid grid-cols-5 gap-3">
@@ -80,18 +81,18 @@
                             alt="Product Image"
                         />
                         <div
-                            class="text-xl font-medium text-white text-center mt-2"
+                            class="text-xl font-medium text-white text-center mt-1"
                         >
-                            UAE Tours
+                            {{ $t("uae_tours") }}
                         </div>
                     </div>
                     <div
                         class="relative bg-blue-50 overflow-hidden"
-                        v-for="tour in uae_tours"
-                        :key="tour.slug"
+                        v-for="province in countries['uae']"
+                        :key="province.slug"
                     >
                         <img
-                            :src="`/images/tours/${tour.thumbnail}`"
+                            :src="`/images/destinations/${province.image}`"
                             class="w-full h-56 object-cover"
                             alt="Product Image"
                         />
@@ -100,21 +101,46 @@
                                 class="items-center justify-center mb-2 h-16 flex px-2"
                             >
                                 <h3 class="text-lg text-black font-bold">
-                                    {{ tour["title_" + lang] }}
+                                    {{ province["name_" + lang] }}
                                 </h3>
                             </div>
                             <div
                                 class="bottom-0 absolute left-0 right-0 py-2 px-3 overflow-hidden flex justify-between text-base text-body-color leading-relaxed text-indigo-800 font-bold"
                             >
-                                <button
+                                <router-link
+                                    :to="`/tours/uae/${province.slug}`"
                                     class="px-4 h-8 bg-main-orange text-white rounded-full mx-auto w-full text-center"
                                 >
-                                    See More
-                                </button>
+                                    {{ $t("see_more") }}
+                                </router-link>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+            <div>
+                <item-slider
+                    :title="$t('best_of_trabzon_tours')"
+                    :items="province_tours['trabzon']"
+                />
+            </div>
+            <div>
+                <item-slider
+                    :title="$t('best_of_rize_tours')"
+                    :items="province_tours['rize']"
+                />
+            </div>
+            <div>
+                <item-slider
+                    :title="$t('best_of_east_black_sea_region_tours')"
+                    :items="province_tours['east-black-sea-region']"
+                />
+            </div>
+            <div>
+                <item-slider
+                    :title="$t('best_of_dubai_tours')"
+                    :items="province_tours['dubai']"
+                />
             </div>
         </div>
     </div>
@@ -122,16 +148,19 @@
 <script setup>
 import { onBeforeMount, onMounted, inject, ref } from "vue";
 import useTours from "../../composables/tours";
-
+import useDestinations from "../../composables/destinations";
+import ItemSlider from "../../components/ItemSlider.vue";
 const { getDestinationTours } = useTours();
+const { trendingDestinations } = useDestinations();
 
 let lang = inject("lang") || "en";
 onMounted(() => {});
 
-const turkey_tours = ref([]);
-const uae_tours = ref([]);
+let countries = ref([]);
+let province_tours = ref([]);
 onBeforeMount(async () => {
-    turkey_tours.value = await getDestinationTours(8, "turkey");
-    uae_tours.value = await getDestinationTours(4, "uae");
+    countries.value = await trendingDestinations();
+    province_tours.value = await getDestinationTours();
+    console.log(province_tours.value["trabzon"]);
 });
 </script>

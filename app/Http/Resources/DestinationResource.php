@@ -20,6 +20,7 @@ class DestinationResource extends JsonResource
             'name_en'  => $this->name_en,
             'name_ar'  => $this->name_ar,
             'image'  => $this->image,
+            'trending' => $this->trending == 1 ? 'true' : 'false',
             'description_en'  => $this->description_en,
             'description_ar'  => $this->description_ar,
             'country_id'  => $this->country_id,
