@@ -1,109 +1,31 @@
 import { createRouter, createWebHistory } from "vue-router";
 
-import CategoriesIndex from "../pages/backend/categories/CategoriesIndex";
-import CategoryCreate from "../pages/backend/categories/CategoryCreate";
-import CategoryEdit from "../pages/backend/categories/CategoryEdit";
-import CategoryDetails from "../pages/backend/categories/CategoryDetails";
-
-import DestinationsIndex from "../pages/backend/destinations/DestinationsIndex";
-import DestinationCreate from "../pages/backend/destinations/DestinationCreate";
-import DestinationEdit from "../pages/backend/destinations/DestinationEdit";
-import DestinationDetails from "../pages/backend/destinations/DestinationDetails";
-
-import ToursIndex from "../pages/backend/tours/ToursIndex";
-import TourCreate from "../pages/backend/tours/TourCreate";
-import TourEdit from "../pages/backend/tours/TourEdit";
-import TourDetails from "../pages/backend/tours/TourDetails";
-
-import PackagesIndex from "../pages/backend/packages/PackagesIndex";
-import PackageCreate from "../pages/backend/packages/PackageCreate";
-import PackageEdit from "../pages/backend/packages/PackageEdit";
-import PackageDetails from "../pages/backend/packages/PackageDetails";
-
-import ActivitiesIndex from "../pages/backend/activities/ActivitiesIndex";
-import ActivityCreate from "../pages/backend/activities/ActivityCreate";
-import ActivityEdit from "../pages/backend/activities/ActivityEdit";
-import ActivityDetails from "../pages/backend/activities/ActivityDetails";
-
-import VisasIndex from "../pages/backend/visas/VisasIndex";
-import VisaCreate from "../pages/backend/visas/VisaCreate";
-import VisaEdit from "../pages/backend/visas/VisaEdit";
-import VisaDetails from "../pages/backend/visas/VisaDetails";
-
-import HotelsIndex from "../pages/backend/hotels/HotelsIndex";
-import HotelCreate from "../pages/backend/hotels/HotelCreate";
-import HotelEdit from "../pages/backend/hotels/HotelEdit";
-import HotelDetails from "../pages/backend/hotels/HotelDetails";
-
-import BlogCreate from "../pages/backend/blogs/BlogCreate";
-import BlogsIndex from "../pages/backend/blogs/BlogsIndex"
-import BlogEdit from "../pages/backend/blogs/BlogEdit"
-import BlogDetails from "../pages/backend/blogs/BlogDetails"
-
-import Options from "../pages/backend/options/Options"
-import Jobs from "../pages/backend/jobs/Jobs"
-
-// Frontend
-import Homepage from "../pages/frontend/Homepage";
-import ComingSoon from "../pages/frontend/ComingSoon";
-
-import About from "../pages/frontend/AboutUs";
-import Contact from "../pages/frontend/ContactUs";
-import Blogs from "../pages/frontend/Blogs";
-import HotelsAndResorts from "../pages/frontend/hotels/HotelsAndResorts"
-import DestinationHotelsAndResorts from "../pages/frontend/hotels/DestinationHotelsAndResorts"
-import SubDestinationHotelsAndResorts from "../pages/frontend/hotels/SubDestinationHotelsAndResorts"
-import Tours from "../pages/frontend/tours/Tours"
-import Tour from "../pages/frontend/tours/TourDetails"
-import Package from "../pages/frontend/packs/PackDetails"
-import Activity from "../pages/frontend/activities/ActivityDetails"
-import DestinationTours from "../pages/frontend/tours/DestinationTours"
-import SubDestinationTours from "../pages/frontend/tours/SubDestinationTours"
-import Activities from "../pages/frontend/activities/Activities"
-import DestinationActivites from "../pages/frontend/activities/DestinationActivities"
-import SubDestinationActivites from "../pages/frontend/activities/SubDestinationActivities"
-import Packages from "../pages/frontend/packs/Packs"
-import temp from "../pages/frontend/packs/temp"
-import DestinationPacks from "../pages/frontend/packs/DestinationPacks"
-import SubDestinationPacks from "../pages/frontend/packs/SubDestinationPacks"
-
-import PassportVisa from "../pages/frontend/visas/PassportVisa"
-import ProceedToApply from "../pages/frontend/visas/ProceedToApply"
-import Payment from "../pages/frontend/visas/Payment"
-
-
-import Test from "../pages/backend/Test.vue";
-import Test2 from "../pages/backend/Test2.vue";
-import Dashboard from "../pages/backend/Dashboard.vue";
-import SingleBlog from "../pages/frontend/SingleBlog"
-import WeAreHiring from "../pages/frontend/WeAreHiring"
-
 const routes = [
     {
         path: "/dashboard",
         name: "dashboard",
-        component: Dashboard,
+        component: () => import("../pages/backend/Dashboard.vue"),
     },
     {
         path: "/dashboard/categories",
         name: "categories.index",
-        component: CategoriesIndex,
+        component: () => import("../pages/backend/categories/CategoriesIndex"),
     },
     {
         path: "/dashboard/categories/create",
         name: "category.create",
-        component: CategoryCreate,
+        component: () => import("../pages/backend/categories/CategoryCreate"),
     },
     {
         path: "/dashboard/categories/:id/edit",
         name: "category.edit",
-        component: CategoryEdit,
+        component: () => import("../pages/backend/categories/CategoryEdit"),
         props: true,
     },
     {
         path: "/dashboard/categories/:id/details",
         name: "category.details",
-        component: CategoryDetails,
+        component: () => import("../pages/backend/categories/CategoryDetails"),
         props: true,
     },
     // ((((((((((((-- Destinations --)))))))))))))))
@@ -111,23 +33,23 @@ const routes = [
     {
         path: "/dashboard/destinations",
         name: "destinations.index",
-        component: DestinationsIndex,
+        component: () => import("../pages/backend/destinations/DestinationsIndex"),
     },
     {
         path: "/dashboard/destinations/create",
         name: "destination.create",
-        component: DestinationCreate,
+        component: () => import("../pages/backend/destinations/DestinationCreate"),
     },
     {
         path: "/dashboard/destinations/:id/edit",
         name: "destination.edit",
-        component: DestinationEdit,
+        component: () => import("../pages/backend/destinations/DestinationEdit"),
         props: true,
     },
     {
         path: "/dashboard/destinations/:id/details",
         name: "destination.details",
-        component: DestinationDetails,
+        component: () => import("../pages/backend/destinations/DestinationDetails"),
         props: true,
     },
 
@@ -135,23 +57,23 @@ const routes = [
     {
         path: "/dashboard/tours",
         name: "tours.index",
-        component: ToursIndex,
+        component: () => import("../pages/backend/tours/ToursIndex"),
     },
     {
         path: "/dashboard/tours/create",
         name: "tour.create",
-        component: TourCreate,
+        component: () => import("../pages/backend/tours/TourCreate"),
     },
     {
         path: "/dashboard/tours/:id/edit",
         name: "tour.edit",
-        component: TourEdit,
+        component: () => import("../pages/backend/tours/TourEdit"),
         props: true,
     },
     {
         path: "/dashboard/tours/:id/details",
         name: "tour.details",
-        component: TourDetails,
+        component: () => import("../pages/backend/tours/TourDetails"),
         props: true,
     },
 
@@ -159,123 +81,123 @@ const routes = [
     {
         path: "/dashboard/packages",
         name: "packages.index",
-        component: PackagesIndex,
+        component: () => import("../pages/backend/packages/PackagesIndex"),
     },
     {
         path: "/dashboard/packages/create",
         name: "single_package.create",
-        component: PackageCreate,
+        component: () => import("../pages/backend/packages/PackageCreate"),
     },
     {
         path: "/dashboard/packages/:id/edit",
         name: "single_package.edit",
-        component: PackageEdit,
+        component: () => import("../pages/backend/packages/PackageEdit"),
         props: true,
     },
     {
         path: "/dashboard/packages/:id/details",
         name: "single_package.details",
-        component: PackageDetails,
+        component: () => import("../pages/backend/packages/PackageDetails"),
         props: true,
     },
     // (((((((((((((((((--Activities--)))))))))))))))))
     {
         path: "/dashboard/activities",
         name: "activities.index",
-        component: ActivitiesIndex,
+        component: () => import("../pages/backend/activities/ActivitiesIndex"),
     },
     {
         path: "/dashboard/activities/create",
         name: "activity.create",
-        component: ActivityCreate,
+        component: () => import("../pages/backend/activities/ActivityCreate"),
     },
     {
         path: "/dashboard/activities/:id/edit",
         name: "activity.edit",
-        component: ActivityEdit,
+        component: () => import("../pages/backend/activities/ActivityEdit"),
         props: true,
     },
     // (((((((((((((((((--Visas--)))))))))))))))))
     {
         path: "/dashboard/visas",
         name: "visas.index",
-        component: VisasIndex,
+        component: () => import("../pages/backend/visas/VisasIndex"),
     },
     {
         path: "/dashboard/visas/create",
         name: "visa.create",
-        component: VisaCreate,
+        component: () => import("../pages/backend/visas/VisaCreate"),
     },
     {
         path: "/dashboard/visas/:id/edit",
         name: "visa.edit",
-        component: VisaEdit,
+        component: () => import("../pages/backend/visas/VisaEdit"),
         props: true,
     },
     {
         path: "/dashboard/packages/:id/details",
         name: "activity.details",
-        component: VisaDetails,
+        component: () => import("../pages/backend/visas/VisaDetails"),
         props: true,
     },
     // (((((((((((((((((--Hotels And Resorts--)))))))))))))))))
     {
         path: "/dashboard/hotels",
         name: "hotels.index",
-        component: HotelsIndex,
+        component: () => import("../pages/backend/hotels/HotelsIndex"),
     },
     {
         path: "/dashboard/hotels/create",
         name: "hotel.create",
-        component: HotelCreate,
+        component: () => import("../pages/backend/hotels/HotelCreate"),
     },
     {
         path: "/dashboard/hotels/:id/edit",
         name: "hotel.edit",
-        component: HotelEdit,
+        component: () => import("../pages/backend/hotels/HotelEdit"),
         props: true,
     },
     {
         path: "/dashboard/hotels/:id",
         name: "hotel.details",
-        component: HotelDetails,
+        component: () => import("../pages/backend/hotels/HotelDetails"),
         props: true,
     },
     // (((((((((((((((((--Blogs--)))))))))))))))))
     {
         path: "/dashboard/blogs",
         name: "blogs.index",
-        component: BlogsIndex,
+        component: () => import("../pages/backend/blogs/BlogsIndex"),
     },
     {
         path: "/dashboard/blogs/create",
         name: "blog.create",
-        component: BlogCreate,
+        component: () => import("../pages/backend/blogs/BlogCreate"),
 
     },
     {
         path: "/dashboard/blogs/:id/edit",
         name: "blog.edit",
-        component: BlogEdit,
+        component: () => import("../pages/backend/blogs/BlogEdit"),
         props: true,
     },
     {
         path: "/dashboard/blogs/:id/details",
         name: "blog.details",
-        component: BlogDetails,
+        component: () => import("../pages/backend/blogs/BlogDetails"),
         props: true,
     },
     // (((((((((((((((((--Options--)))))))))))))))))
     {
         path: "/dashboard/options",
         name: "options",
-        component: Options,
+        component: () => import("../pages/backend/options/Options"),
     },
     // (((((((((((((((((--Jobs--)))))))))))))))))
     {
         path: "/dashboard/jobs",
         name: "jobs",
-        component: Jobs,
+        component: () => import("../pages/backend/jobs/Jobs"),
     },
 
     // [[[[[[[[[[[<<<<<<<<<<<<<<<<<<<<<<<<<<(((((((((((((((((--Front-End--)))))))))))))))))>>>>>>>>>>>>>>>>>>>>>>>>>>]]]]]]]]]]],
@@ -283,62 +205,63 @@ const routes = [
     {
         path: "/:lang?",
         name: "Home",
-        component: Homepage,
+        component: () => import("../pages/frontend/Homepage"),
         props: true
     },
     {
         path: "/:lang?/about",
         name: "about",
-        component: About,
+        // component: About,
+        component: () => import("../pages/frontend/AboutUs")
     },
     {
         path: "/:lang?/contact",
         name: "contact",
-        component: Contact,
+        component: () => import("../pages/frontend/ContactUs"),
         props: true
     },
     {
         path: "/:lang?/blogs",
         name: "blogs",
-        component: Blogs,
+        component: () => import("../pages/frontend/Blogs"),
         props: true
     },
     {
         path: "/:lang?/blogs/:slug",
         name: "blog",
-        component: SingleBlog,
+        component: () => import("../pages/frontend/SingleBlog"),
         props: true,
     },
     {
         path: "/:lang?/we-are-hiring",
         name: "we-are-hiring",
-        component: WeAreHiring,
+        component: () => import("../pages/frontend/WeAreHiring"),
         props: true,
     },
 
     {
         path: "/:lang?/tours",
         name: "tours",
-        component: Tours,
+        component: () => import("../pages/frontend/tours/Tours"),
         props: true
     },
     {
         path: "/:lang?/tours/details/:slug",
         name: "tours-details",
-        component: Tour,
+        component: () => import("../pages/frontend/tours/TourDetails"),
         props: true
     },
 
     {
         path: "/:lang?/tours/:destination",
         name: "DTours",
-        component: DestinationTours,
+        component: () => import("../pages/frontend/tours/DestinationTours"),
         props: true
     },
     {
         path: "/:lang?/tours/:destination/:subdestination",
         name: "SDTours",
-        component: SubDestinationTours,
+        component: () => import("../pages/frontend/tours/SubDestinationTours"),
         props: true
     },
 
@@ -346,138 +269,120 @@ const routes = [
     {
         path: "/:lang?/visas/:passport/:visa",
         name: "SDVisas",
-        component: PassportVisa,
+        component: () => import("../pages/frontend/visas/PassportVisa"),
         props: true
     },
     {
         path: "/:lang?/visas/:passport/:visa/proceed-to-apply",
         name: "proceed-to-apply",
-        component: ProceedToApply,
+        component: () => import("../pages/frontend/visas/ProceedToApply"),
         props: true
     },
     {
         path: "/:lang?/visas/:passport/:visa/payment",
         name: "payment",
-        component: Payment,
+        component: () => import("../pages/frontend/visas/Payment"),
         props: true
     },
 
     {
         path: "/:lang?/activities",
         name: "activities",
-        component: Activities,
+        component: () => import("../pages/frontend/activities/Activities"),
         props: true
     },
     {
         path: "/:lang?/activities/:destination",
         name: "DActivities",
-        component: DestinationActivites,
+        component: () => import("../pages/frontend/activities/DestinationActivities"),
         props: true
     },
     {
         path: "/:lang?/activities/:destination/:subdestination",
         name: "SDActivities",
-        component: SubDestinationActivites,
+        component: () => import("../pages/frontend/activities/SubDestinationActivities"),
         props: true
     },
 
 
-    // {
-    //     path: "/:lang?/visas",
-    //     name: "visas",
-    //     component: Visas,
-    // },
-    // {
-    //     path: "/:lang?/visas/:destination",
-    //     name: "DActivities",
-    //     component: DestinationActivites,
-    //     props: true
-    // },
-    // {
-    //     path: "/:lang?/visas/:destination/:subdestination",
-    //     name: "SDActivities",
-    //     component: SubDestinationActivites,
-    //     props: true
-    // },
-
     {
         path: "/:lang?/packages",
         name: "packages",
-        component: Packages,
+        component: () => import("../pages/frontend/packs/Packs"),
         props: true
     },
 
     {
         path: "/:lang?/temp",
         name: "temp",
-        component: temp,
+        component: () => import("../pages/frontend/packs/temp"),
         props: true
     },
     {
         path: "/:lang?/packages/:destination",
         name: "Dpackages",
-        component: DestinationPacks,
+        component: () => import("../pages/frontend/packs/DestinationPacks"),
         props: true
     },
     {
         path: "/:lang?/packages/:destination/:subdestination",
         name: "SDpackages",
-        component: SubDestinationPacks,
+        component: () => import("../pages/frontend/packs/SubDestinationPacks"),
         props: true
     },
     {
         path: "/:lang?/packages/details/:slug",
         name: "package-details",
-        component: Package,
+        component: () => import("../pages/frontend/packs/PackDetails"),
         props: true
     },
     {
         path: "/:lang?/activities/details/:slug",
         name: "activity-details",
-        component: Activity,
+        component: () => import("../pages/frontend/activities/ActivityDetails"),
         props: true
     },
     {
         path: "/:lang?/hotels-and-resorts",
         name: "hotels-and-resorts",
-        component: HotelsAndResorts,
+        component: () => import("../pages/frontend/hotels/HotelsAndResorts"),
     },
     {
         path: "/:lang?/hotels-and-resorts/:destination",
         name: "DHotels",
-        component: DestinationHotelsAndResorts,
+        component: () => import("../pages/frontend/hotels/DestinationHotelsAndResorts"),
         props: true
     },
     {
         path: "/:lang?/hotels-and-resorts/:destination/:subdestination",
         name: "SDHotels",
-        component: SubDestinationHotelsAndResorts,
+        component: () => import("../pages/frontend/hotels/SubDestinationHotelsAndResorts"),
         props: true
     },
     {
         path: "/:lang?/transfer",
         name: "transfer",
-        component: ComingSoon,
+        component: () => import("../pages/frontend/ComingSoon"),
         props: true
     },
 
     {
         path: "/:lang?/test",
         name: "test",
-        component: Test,
+        component: () => import("../pages/backend/Test.vue"),
         props: true,
     },
 
     {
         path: "/:lang?/test2",
         name: "test2",
-        component: Test2,
+        component: () => import("../pages/backend/Test2.vue"),
         props: true,
     },
     {
         path: "/:lang?/:pathMatch(.*)*",
         name: "404",
-        component: ComingSoon,
+        component: () => import("../pages/frontend/ComingSoon"),
         props: true
     },
 ];

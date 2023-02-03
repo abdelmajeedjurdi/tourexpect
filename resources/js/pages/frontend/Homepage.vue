@@ -10,13 +10,15 @@
         </div>
         <!-- end hero section -->
         <div class="sm:px-4 xl:px-0 w-full max-w-6xl mx-auto my-14">
-            <div>
+            <div class="px-4 sm:px-0">
                 <div class="border-b-4 border-yellow-500 text-center mb-6">
                     <h2 class="font-extrabold uppercase text-black">
                         {{ $t("turkey_tours") }}
                     </h2>
                 </div>
-                <div class="grid grid-cols-5 gap-3">
+                <div
+                    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3"
+                >
                     <div
                         class="relative row-span-2 overflow-hidden bg-main-orange"
                     >
@@ -64,13 +66,15 @@
                     </div>
                 </div>
             </div>
-            <div class="mt-20">
+            <div class="mt-20 px-4 sm:px-0">
                 <div class="border-b-4 border-yellow-500 text-center mb-6">
                     <h2 class="font-extrabold uppercase text-black">
                         {{ $t("uae_tours") }}
                     </h2>
                 </div>
-                <div class="grid grid-cols-5 gap-3">
+                <div
+                    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3"
+                >
                     <div
                         class="relative row-span-2 overflow-hidden bg-main-orange"
                     >
