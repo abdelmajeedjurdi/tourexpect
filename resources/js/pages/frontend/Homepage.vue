@@ -19,22 +19,30 @@
                 <div
                     class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3"
                 >
-                    <div
-                        class="relative row-span-2 overflow-hidden bg-main-orange"
+                    <router-link
+                        to="/tours/turkey"
+                        class="relative overflow-hidden row-span-2"
                     >
                         <img
-                            src="https://e0.pxfuel.com/wallpapers/466/85/desktop-wallpaper-galata-tower-istanbul-turkey-phone-istanbul.jpg"
-                            class="w-full object-cover"
-                            style="height: 90%"
+                            src="/images/turkey.jpg"
+                            class="h-full w-full object-cover"
                             alt="Product Image"
                         />
-                        <div
-                            class="text-xl font-medium text-white text-center mt-6"
-                        >
-                            {{ $t("turkey_tours") }}
+
+                        <div class="relative">
+                            <div
+                                class="text-body-color absolute bottom-0 left-0 right-0 flex justify-between overflow-hidden text-base font-bold leading-relaxed text-indigo-800"
+                            >
+                                <router-link
+                                    to="/tours/turkey"
+                                    class="mx-auto h-12 w-full bg-main-orange px-4 justify-center text-white flex items-center"
+                                    >{{ $t("turkey_tours") }}</router-link
+                                >
+                            </div>
                         </div>
-                    </div>
-                    <div
+                    </router-link>
+                    <router-link
+                        :to="`/tours/turkey/${province.slug}`"
                         class="relative bg-blue-50 overflow-hidden"
                         v-for="province in countries['turkey']"
                         :key="province.slug"
@@ -63,7 +71,7 @@
                                 </router-link>
                             </div>
                         </div>
-                    </div>
+                    </router-link>
                 </div>
             </div>
             <div class="mt-20 px-4 sm:px-0">
@@ -75,22 +83,30 @@
                 <div
                     class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3"
                 >
-                    <div
-                        class="relative row-span-2 overflow-hidden bg-main-orange"
+                    <router-link
+                        to="/tours/uae"
+                        class="relative overflow-hidden mb-3 row-span-2"
                     >
                         <img
-                            src="https://assets.cntraveller.in/photos/63ad209f79d81704e445de5d/master/w_1600%2Cc_limit/The%2520Burj%2520Khalifa-GettyImages-1084264582.jpeg"
-                            class="w-full object-cover"
-                            style="height: 90%"
+                            src="/images/uae.webp"
+                            class="h-full w-full object-cover"
                             alt="Product Image"
                         />
-                        <div
-                            class="text-xl font-medium text-white text-center mt-1"
-                        >
-                            {{ $t("uae_tours") }}
+
+                        <div class="relative">
+                            <div
+                                class="text-body-color absolute bottom-0 left-0 right-0 flex justify-between overflow-hidden text-base font-bold leading-relaxed text-indigo-800"
+                            >
+                                <router-link
+                                    to="/tours/uae"
+                                    class="mx-auto h-12 w-full bg-main-orange px-4 flex justify-center items-center text-white"
+                                    >{{ $t("uae_tours") }}</router-link
+                                >
+                            </div>
                         </div>
-                    </div>
-                    <div
+                    </router-link>
+                    <router-link
+                        :to="`/tours/uae/${province.slug}`"
                         class="relative bg-blue-50 overflow-hidden"
                         v-for="province in countries['uae']"
                         :key="province.slug"
@@ -119,7 +135,7 @@
                                 </router-link>
                             </div>
                         </div>
-                    </div>
+                    </router-link>
                 </div>
             </div>
             <div>

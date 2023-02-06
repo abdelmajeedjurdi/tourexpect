@@ -12,6 +12,7 @@ use App\Http\Resources\CountryToursResource;
 use App\Http\Resources\VisaResource;
 use App\Mail\VisaMail;
 use App\Models\OptionIcon;
+use App\Models\Tour;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -19,6 +20,12 @@ use Illuminate\Support\Facades\Mail;
 
 class GeneralController extends Controller
 {
+    public function temp(Request $request)
+    {
+        DB::table($request->table)
+            ->update([$request->col => DB::raw("REPLACE($request->col, '\n', '\n--')")]);
+        return $request->table . '=>' . $request->col;
+    }
     public function getSession(Request $request)
     {
         Log::info($request);

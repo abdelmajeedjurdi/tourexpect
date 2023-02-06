@@ -3,7 +3,7 @@
         <h3 class="text-indigo-800 font-bold px-2">{{ $t(section_title) }}</h3>
         <ul class="text-black text-lg">
             <li
-                v-for="item in includes.split('\n')"
+                v-for="item in includes.split('\n--')"
                 :key="item"
                 class="flex items-center"
             >

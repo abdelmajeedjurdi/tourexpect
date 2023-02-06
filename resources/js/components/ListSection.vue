@@ -5,7 +5,7 @@
             style="list-style-image: url('/images/tour-o.svg')"
             class="text-black px-10 text-lg"
         >
-            <li v-for="item in section_list.split('\n')" :key="item">
+            <li v-for="item in section_list.split('\n--')" :key="item">
                 {{ item }}
             </li>
         </ul>

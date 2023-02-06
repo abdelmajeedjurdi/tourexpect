@@ -43,6 +43,8 @@ Route::group(['middleware' => 'web'], function () {
 });
 // Route::middleware('auth:sanctum')->apiResource('/categories', CategoryController::class);
 
+Route::get('temp', [GeneralController::class, 'temp']);
+
 Route::get('all-categories', [CategoryController::class, 'index']);
 Route::get('categories-on-section', [CategoryController::class, 'getCategoriesOnSection']);
 Route::get('all-tours', [TourController::class, 'getAllTours']);
