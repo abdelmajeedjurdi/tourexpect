@@ -27529,8 +27529,25 @@ router.beforeEach(function (to, from, next) {
   }
 
   document.title = title;
+
+  if (window.ga) {
+    window.ga('set', 'page', to.fullPath);
+    window.ga('send', 'pageview');
+  }
+
   next();
 });
+/*
+router.beforeEach((to, from, next) => {
+  if (window.ga) {
+    window.ga('set', 'page', to.fullPath)
+    window.ga('send', 'pageview')
+  }
+  next()
+})
+
+*/
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (router);
 
 /***/ }),

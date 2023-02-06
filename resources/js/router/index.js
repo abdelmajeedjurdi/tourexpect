@@ -407,7 +407,24 @@ router.beforeEach((to, from, next) => {
         title += ` - ${s}`
     }
     document.title = title
+
+
+    if (window.ga) {
+        window.ga('set', 'page', to.fullPath)
+        window.ga('send', 'pageview')
+    }
     next();
 })
+
+/*
+router.beforeEach((to, from, next) => {
+  if (window.ga) {
+    window.ga('set', 'page', to.fullPath)
+    window.ga('send', 'pageview')
+  }
+  next()
+})
+
+*/
 
 export default router;

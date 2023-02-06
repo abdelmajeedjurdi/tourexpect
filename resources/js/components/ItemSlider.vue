@@ -162,7 +162,7 @@ const break_pts = {
 };
 let lang = inject("lang") || "en";
 </script>
-<style>
+<style scoped>
 .swiper-virtual {
     /* padding-right: 1.5rem;
     padding-left: 1.5rem; */
