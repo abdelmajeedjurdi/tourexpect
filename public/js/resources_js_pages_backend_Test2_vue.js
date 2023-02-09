@@ -39,13 +39,33 @@ __webpack_require__.r(__webpack_exports__);
     var __returned__ = {
       modules: modules,
       imgs: imgs,
-      Swiper: swiper_vue__WEBPACK_IMPORTED_MODULE_0__.Swiper,
-      SwiperSlide: swiper_vue__WEBPACK_IMPORTED_MODULE_0__.SwiperSlide,
+
+      get Swiper() {
+        return swiper_vue__WEBPACK_IMPORTED_MODULE_0__.Swiper;
+      },
+
+      get SwiperSlide() {
+        return swiper_vue__WEBPACK_IMPORTED_MODULE_0__.SwiperSlide;
+      },
+
       TourTow: _components_TourTow_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
-      Navigation: swiper__WEBPACK_IMPORTED_MODULE_6__.Navigation,
-      EffectFade: swiper__WEBPACK_IMPORTED_MODULE_6__.EffectFade,
-      Pagination: swiper__WEBPACK_IMPORTED_MODULE_6__.Pagination,
-      Autoplay: swiper__WEBPACK_IMPORTED_MODULE_6__.Autoplay,
+
+      get Navigation() {
+        return swiper__WEBPACK_IMPORTED_MODULE_6__.Navigation;
+      },
+
+      get EffectFade() {
+        return swiper__WEBPACK_IMPORTED_MODULE_6__.EffectFade;
+      },
+
+      get Pagination() {
+        return swiper__WEBPACK_IMPORTED_MODULE_6__.Pagination;
+      },
+
+      get Autoplay() {
+        return swiper__WEBPACK_IMPORTED_MODULE_6__.Autoplay;
+      },
+
       ref: vue__WEBPACK_IMPORTED_MODULE_7__.ref
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {

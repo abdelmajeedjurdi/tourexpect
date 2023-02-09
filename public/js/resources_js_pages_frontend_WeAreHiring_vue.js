@@ -102,9 +102,31 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       getJobs: getJobs,
       apply: apply,
       addFiles: addFiles,
-      is_sending: is_sending,
-      application_form: application_form,
-      job_title: job_title,
+
+      get is_sending() {
+        return is_sending;
+      },
+
+      set is_sending(v) {
+        is_sending = v;
+      },
+
+      get application_form() {
+        return application_form;
+      },
+
+      set application_form(v) {
+        application_form = v;
+      },
+
+      get job_title() {
+        return job_title;
+      },
+
+      set job_title(v) {
+        job_title = v;
+      },
+
       lang: lang,
       applyToJob: applyToJob,
       handleFiles: handleFiles,
@@ -112,7 +134,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       reactive: vue__WEBPACK_IMPORTED_MODULE_0__.reactive,
       ref: vue__WEBPACK_IMPORTED_MODULE_0__.ref,
       inject: vue__WEBPACK_IMPORTED_MODULE_0__.inject,
-      useJobs: _composables_jobs__WEBPACK_IMPORTED_MODULE_1__["default"]
+
+      get useJobs() {
+        return _composables_jobs__WEBPACK_IMPORTED_MODULE_1__["default"];
+      }
+
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,

@@ -88,12 +88,31 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       errors: errors,
       storeCategory: storeCategory,
       saveCategory: saveCategory,
-      imagePreview: imagePreview,
-      file: file,
+
+      get imagePreview() {
+        return imagePreview;
+      },
+
+      set imagePreview(v) {
+        imagePreview = v;
+      },
+
+      get file() {
+        return file;
+      },
+
+      set file(v) {
+        file = v;
+      },
+
       onFileSelected: onFileSelected,
       reactive: vue__WEBPACK_IMPORTED_MODULE_0__.reactive,
       ref: vue__WEBPACK_IMPORTED_MODULE_0__.ref,
-      useCategories: _composables_categories__WEBPACK_IMPORTED_MODULE_1__["default"]
+
+      get useCategories() {
+        return _composables_categories__WEBPACK_IMPORTED_MODULE_1__["default"];
+      }
+
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,

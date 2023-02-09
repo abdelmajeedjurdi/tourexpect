@@ -396,17 +396,17 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-    let name = to.name
-    name = name.replace(/\-/g, ' ');
-    name = name.replace(/(^\w|\s\w)/g, m => m.toUpperCase());
-    let title = `${name} - Tourexpect`
-    if (to.params.slug) {
-        let s = to.params.slug
-        s = s.replace(/\-/g, ' ');
-        s = s.replace(/(^\w|\s\w)/g, m => m.toUpperCase());
-        title += ` - ${s}`
-    }
-    document.title = title
+    // let name = to.name
+    // name = name.replace(/\-/g, ' ');
+    // name = name.replace(/(^\w|\s\w)/g, m => m.toUpperCase());
+    // let title = `${name} - Tourexpect`
+    // if (to.params.slug) {
+    //     let s = to.params.slug
+    //     s = s.replace(/\-/g, ' ');
+    //     s = s.replace(/(^\w|\s\w)/g, m => m.toUpperCase());
+    //     title += ` - ${s}`
+    // }
+    // document.title = title
 
 
     if (window.ga) {

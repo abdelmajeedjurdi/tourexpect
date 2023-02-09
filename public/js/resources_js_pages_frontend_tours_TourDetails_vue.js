@@ -26,7 +26,15 @@ __webpack_require__.r(__webpack_exports__);
     var lang = (0,vue__WEBPACK_IMPORTED_MODULE_0__.inject)("lang") || "en";
     var __returned__ = {
       props: props,
-      lang: lang,
+
+      get lang() {
+        return lang;
+      },
+
+      set lang(v) {
+        lang = v;
+      },
+
       inject: vue__WEBPACK_IMPORTED_MODULE_0__.inject
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
@@ -64,7 +72,15 @@ __webpack_require__.r(__webpack_exports__);
     var lang = (0,vue__WEBPACK_IMPORTED_MODULE_0__.inject)("lang") || "en";
     var __returned__ = {
       props: props,
-      lang: lang,
+
+      get lang() {
+        return lang;
+      },
+
+      set lang(v) {
+        lang = v;
+      },
+
       inject: vue__WEBPACK_IMPORTED_MODULE_0__.inject
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
@@ -102,7 +118,15 @@ __webpack_require__.r(__webpack_exports__);
     var lang = (0,vue__WEBPACK_IMPORTED_MODULE_0__.inject)("lang") || "en";
     var __returned__ = {
       props: props,
-      lang: lang,
+
+      get lang() {
+        return lang;
+      },
+
+      set lang(v) {
+        lang = v;
+      },
+
       inject: vue__WEBPACK_IMPORTED_MODULE_0__.inject
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
@@ -203,12 +227,31 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     var __returned__ = {
       inquire: inquire,
       props: props,
-      is_sending: is_sending,
-      inquiry_form: inquiry_form,
+
+      get is_sending() {
+        return is_sending;
+      },
+
+      set is_sending(v) {
+        is_sending = v;
+      },
+
+      get inquiry_form() {
+        return inquiry_form;
+      },
+
+      set inquiry_form(v) {
+        inquiry_form = v;
+      },
+
       sendInquiry: sendInquiry,
       reactive: vue__WEBPACK_IMPORTED_MODULE_0__.reactive,
       ref: vue__WEBPACK_IMPORTED_MODULE_0__.ref,
-      useGeneral: _composables_general__WEBPACK_IMPORTED_MODULE_1__["default"]
+
+      get useGeneral() {
+        return _composables_general__WEBPACK_IMPORTED_MODULE_1__["default"];
+      }
+
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,
@@ -246,8 +289,23 @@ __webpack_require__.r(__webpack_exports__);
     var opened = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(-1);
     var __returned__ = {
       props: props,
-      lang: lang,
-      opened: opened,
+
+      get lang() {
+        return lang;
+      },
+
+      set lang(v) {
+        lang = v;
+      },
+
+      get opened() {
+        return opened;
+      },
+
+      set opened(v) {
+        opened = v;
+      },
+
       inject: vue__WEBPACK_IMPORTED_MODULE_0__.inject,
       ref: vue__WEBPACK_IMPORTED_MODULE_0__.ref
     };
@@ -286,7 +344,15 @@ __webpack_require__.r(__webpack_exports__);
     var lang = (0,vue__WEBPACK_IMPORTED_MODULE_0__.inject)("lang") || "en";
     var __returned__ = {
       props: props,
-      lang: lang,
+
+      get lang() {
+        return lang;
+      },
+
+      set lang(v) {
+        lang = v;
+      },
+
       inject: vue__WEBPACK_IMPORTED_MODULE_0__.inject
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
@@ -336,12 +402,31 @@ __webpack_require__.r(__webpack_exports__);
     var __returned__ = {
       modules: modules,
       props: props,
-      Swiper: swiper_vue__WEBPACK_IMPORTED_MODULE_0__.Swiper,
-      SwiperSlide: swiper_vue__WEBPACK_IMPORTED_MODULE_0__.SwiperSlide,
-      Navigation: swiper__WEBPACK_IMPORTED_MODULE_5__.Navigation,
-      EffectFade: swiper__WEBPACK_IMPORTED_MODULE_5__.EffectFade,
-      Pagination: swiper__WEBPACK_IMPORTED_MODULE_5__.Pagination,
-      Autoplay: swiper__WEBPACK_IMPORTED_MODULE_5__.Autoplay
+
+      get Swiper() {
+        return swiper_vue__WEBPACK_IMPORTED_MODULE_0__.Swiper;
+      },
+
+      get SwiperSlide() {
+        return swiper_vue__WEBPACK_IMPORTED_MODULE_0__.SwiperSlide;
+      },
+
+      get Navigation() {
+        return swiper__WEBPACK_IMPORTED_MODULE_5__.Navigation;
+      },
+
+      get EffectFade() {
+        return swiper__WEBPACK_IMPORTED_MODULE_5__.EffectFade;
+      },
+
+      get Pagination() {
+        return swiper__WEBPACK_IMPORTED_MODULE_5__.Pagination;
+      },
+
+      get Autoplay() {
+        return swiper__WEBPACK_IMPORTED_MODULE_5__.Autoplay;
+      }
+
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,
@@ -476,23 +561,92 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       tour: tour,
       props: props,
       router: router,
-      phone: phone,
-      adults: adults,
-      children: children,
-      infants: infants,
-      selected_option: selected_option,
-      total_price: total_price,
-      selected_idx: selected_idx,
-      lang: lang,
+
+      get phone() {
+        return phone;
+      },
+
+      set phone(v) {
+        phone = v;
+      },
+
+      get adults() {
+        return adults;
+      },
+
+      set adults(v) {
+        adults = v;
+      },
+
+      get children() {
+        return children;
+      },
+
+      set children(v) {
+        children = v;
+      },
+
+      get infants() {
+        return infants;
+      },
+
+      set infants(v) {
+        infants = v;
+      },
+
+      get selected_option() {
+        return selected_option;
+      },
+
+      set selected_option(v) {
+        selected_option = v;
+      },
+
+      get total_price() {
+        return total_price;
+      },
+
+      set total_price(v) {
+        total_price = v;
+      },
+
+      get selected_idx() {
+        return selected_idx;
+      },
+
+      set selected_idx(v) {
+        selected_idx = v;
+      },
+
+      get lang() {
+        return lang;
+      },
+
+      set lang(v) {
+        lang = v;
+      },
+
       url: url,
       setOption: setOption,
-      original_price: original_price,
+
+      get original_price() {
+        return original_price;
+      },
+
+      set original_price(v) {
+        original_price = v;
+      },
+
       calculatePrice: calculatePrice,
       setGuests: setGuests,
       onMounted: vue__WEBPACK_IMPORTED_MODULE_0__.onMounted,
       inject: vue__WEBPACK_IMPORTED_MODULE_0__.inject,
       ref: vue__WEBPACK_IMPORTED_MODULE_0__.ref,
-      useTours: _composables_tours__WEBPACK_IMPORTED_MODULE_1__["default"],
+
+      get useTours() {
+        return _composables_tours__WEBPACK_IMPORTED_MODULE_1__["default"];
+      },
+
       SwiperSlider: _components_SwiperSlider_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
       BaseSection: _components_BaseSection_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
       Itinerary: _components_Itinerary_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
@@ -501,8 +655,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       Inquire: _components_Inquire_vue__WEBPACK_IMPORTED_MODULE_7__["default"],
       Exclude: _components_Exclude_vue__WEBPACK_IMPORTED_MODULE_8__["default"],
       Include: _components_Include_vue__WEBPACK_IMPORTED_MODULE_9__["default"],
-      useRoute: vue_router__WEBPACK_IMPORTED_MODULE_10__.useRoute,
-      useRouter: vue_router__WEBPACK_IMPORTED_MODULE_10__.useRouter
+
+      get useRoute() {
+        return vue_router__WEBPACK_IMPORTED_MODULE_10__.useRoute;
+      },
+
+      get useRouter() {
+        return vue_router__WEBPACK_IMPORTED_MODULE_10__.useRouter;
+      }
+
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,

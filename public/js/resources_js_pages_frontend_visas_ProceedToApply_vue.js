@@ -200,10 +200,39 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       route: route,
       router: router,
       maxSize: maxSize,
-      is_sending: is_sending,
-      application_forms: application_forms,
-      lang: lang,
-      visa_options: visa_options,
+
+      get is_sending() {
+        return is_sending;
+      },
+
+      set is_sending(v) {
+        is_sending = v;
+      },
+
+      get application_forms() {
+        return application_forms;
+      },
+
+      set application_forms(v) {
+        application_forms = v;
+      },
+
+      get lang() {
+        return lang;
+      },
+
+      set lang(v) {
+        lang = v;
+      },
+
+      get visa_options() {
+        return visa_options;
+      },
+
+      set visa_options(v) {
+        visa_options = v;
+      },
+
       validateSize: validateSize,
       onFileSelected: onFileSelected,
       submit: submit,
@@ -213,11 +242,27 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       inject: vue__WEBPACK_IMPORTED_MODULE_0__.inject,
       onBeforeMount: vue__WEBPACK_IMPORTED_MODULE_0__.onBeforeMount,
       onMounted: vue__WEBPACK_IMPORTED_MODULE_0__.onMounted,
-      useGeneral: _composables_general__WEBPACK_IMPORTED_MODULE_1__["default"],
-      useVisas: _composables_visas__WEBPACK_IMPORTED_MODULE_2__["default"],
-      useQuery: vue_router__WEBPACK_IMPORTED_MODULE_3__.useQuery,
-      useRoute: vue_router__WEBPACK_IMPORTED_MODULE_3__.useRoute,
-      useRouter: vue_router__WEBPACK_IMPORTED_MODULE_3__.useRouter
+
+      get useGeneral() {
+        return _composables_general__WEBPACK_IMPORTED_MODULE_1__["default"];
+      },
+
+      get useVisas() {
+        return _composables_visas__WEBPACK_IMPORTED_MODULE_2__["default"];
+      },
+
+      get useQuery() {
+        return vue_router__WEBPACK_IMPORTED_MODULE_3__.useQuery;
+      },
+
+      get useRoute() {
+        return vue_router__WEBPACK_IMPORTED_MODULE_3__.useRoute;
+      },
+
+      get useRouter() {
+        return vue_router__WEBPACK_IMPORTED_MODULE_3__.useRouter;
+      }
+
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,
@@ -489,11 +534,7 @@ var _hoisted_291 = /*#__PURE__*/_withScopeId(function () {
   );
 });
 
-var _hoisted_292 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Remove Form ");
-
-var _hoisted_293 = [_hoisted_291, _hoisted_292];
-
-var _hoisted_294 = /*#__PURE__*/_withScopeId(function () {
+var _hoisted_292 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
     xmlns: "http://www.w3.org/2000/svg",
     fill: "none",
@@ -510,23 +551,20 @@ var _hoisted_294 = /*#__PURE__*/_withScopeId(function () {
   );
 });
 
-var _hoisted_295 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Add Application Form ");
-
-var _hoisted_296 = [_hoisted_294, _hoisted_295];
-var _hoisted_297 = {
+var _hoisted_293 = {
   key: 0,
   type: "submit",
   "class": "hover:shadow-form rounded-md bg-main-blue m-auto h-10 w-60 text-base font-semibold text-white outline-none cursor-not-allowed"
 };
-var _hoisted_298 = {
+var _hoisted_294 = {
   key: 1,
   type: "button",
   "class": "hover:shadow-form rounded-md bg-main-blue m-auto h-10 w-60 text-base font-semibold text-white outline-none cursor-not-allowed"
 };
 
-var _hoisted_299 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div id=\"animation\" data-v-aebb3f34><div class=\"box\" id=\"box1\" data-v-aebb3f34></div><div class=\"box\" id=\"box2\" data-v-aebb3f34></div><div class=\"box\" id=\"box3\" data-v-aebb3f34></div><div class=\"box\" id=\"box4\" data-v-aebb3f34></div></div>", 1);
+var _hoisted_295 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div id=\"animation\" data-v-aebb3f34><div class=\"box\" id=\"box1\" data-v-aebb3f34></div><div class=\"box\" id=\"box2\" data-v-aebb3f34></div><div class=\"box\" id=\"box3\" data-v-aebb3f34></div><div class=\"box\" id=\"box4\" data-v-aebb3f34></div></div>", 1);
 
-var _hoisted_300 = [_hoisted_299];
+var _hoisted_296 = [_hoisted_295];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", _hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$t($setup.props.visa.trim() + "-application-form")), 1
   /* TEXT */
@@ -661,7 +699,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       onClick: function onClick($event) {
         return $setup.removeForm(i);
       }
-    }, _hoisted_293, 8
+    }, [_hoisted_291, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Remove Form ")], 8
     /* PROPS */
     , _hoisted_290)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]);
   }), 128
@@ -670,7 +708,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     type: "button",
     "class": "text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800",
     onClick: $setup.newForm
-  }, _hoisted_296), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [!$setup.is_sending ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", _hoisted_297, " Submit and Proceed to Pay ")) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", _hoisted_298, _hoisted_300))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <router-link :to=\"`payment`\">Go to payment</router-link> ")], 40
+  }, [_hoisted_292, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Add Application Form ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [!$setup.is_sending ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", _hoisted_293, " Submit and Proceed to Pay ")) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", _hoisted_294, _hoisted_296))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <router-link :to=\"`payment`\">Go to payment</router-link> ")], 40
   /* PROPS, HYDRATE_EVENTS */
   , _hoisted_3)]);
 }

@@ -10,7 +10,7 @@ import VueSweetalert2 from "vue-sweetalert2";
 import "sweetalert2/dist/sweetalert2.min.css";
 import { createHead } from '@vueuse/head'
 import vClickOutside from "click-outside-vue3"
-import VueGtag from 'vue-gtag';
+import { createMetaManager } from 'vue-meta'
 
 import { createI18n } from "vue-i18n";
 import en from "./assets/i18n/en.json";
@@ -27,7 +27,7 @@ const i18n = createI18n({
         ar: ar,
     },
 });
-createApp({
+const app = createApp({
     components: {
         BackendView,
         FrontendView,
@@ -35,16 +35,17 @@ createApp({
     provide: {
         lang: localStorage.getItem("lang") || "en",
         pk: "pk_live_51MGGbYDcVBlUUJwWerFluMqa1NMQj1dgzmgGivkGHZSzipLtESiRhtbkx4xz5OpaYmND2grvm3nBKUZlTqs328eX005LdAK1Wi"
-    },
+    }
 })
     .use(router)
     .use(BackendView)
     .use(FrontendView)
     .use(VueSweetalert2).use(vClickOutside)
-    .use(i18n)
-    // .use(createHead()).use(VueGtag, {
-    //     config: { id: 'G-1N6W2SZ3DV' },
-    //     router,
-    //     enabled: false,
-    // }).provide('gtag', app.config.globalProperties.$gtag)
-    .mount("#app");
+    .use(i18n).use(createMetaManager())
+
+const main = async () => {
+    await router.isReady()
+    app.mount('#app')
+}
+
+main()

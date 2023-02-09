@@ -369,12 +369,26 @@ import Pagenation from "../../../components/Pagenation.vue";
 import TourVue from "../../../components/Tour.vue";
 import useDestinations from "../../../composables/destinations";
 import useCategories from "../../../composables/categories";
+import { useMeta } from "vue-meta";
+import { useI18n } from "vue-i18n";
 
 const { getFilteredTours, tours, pages } = useTours();
 const { getDestinationsOnCountry, countries } = useDestinations();
 const { getCategoriesOnSection, categories } = useCategories();
 
 let lang = inject("lang") || "en";
+const { t } = useI18n();
+useMeta({
+    title: `${t(props.destination + "_tours")}`,
+    meta: [
+        { name: "description", content: description },
+        //   { name: 'keywords', content: keywords },
+        //   { name: 'robots', content: 'index, follow' },
+    ],
+    // link: [
+    //   { rel: 'canonical', href: canonical },
+    // ],
+});
 let currentPage = ref(1);
 const props = defineProps({ destination: String });
 onMounted(async () => {

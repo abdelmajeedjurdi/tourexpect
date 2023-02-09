@@ -106,13 +106,32 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       countries: countries,
       getCountries: getCountries,
       saveDestination: saveDestination,
-      imagePreview: imagePreview,
-      file: file,
+
+      get imagePreview() {
+        return imagePreview;
+      },
+
+      set imagePreview(v) {
+        imagePreview = v;
+      },
+
+      get file() {
+        return file;
+      },
+
+      set file(v) {
+        file = v;
+      },
+
       onFileSelected: onFileSelected,
       onMounted: vue__WEBPACK_IMPORTED_MODULE_0__.onMounted,
       reactive: vue__WEBPACK_IMPORTED_MODULE_0__.reactive,
       ref: vue__WEBPACK_IMPORTED_MODULE_0__.ref,
-      useDestinations: _composables_destinations__WEBPACK_IMPORTED_MODULE_1__["default"]
+
+      get useDestinations() {
+        return _composables_destinations__WEBPACK_IMPORTED_MODULE_1__["default"];
+      }
+
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,

@@ -370,6 +370,9 @@ import Pagenation from "../../../components/Pagenation.vue";
 import TourVue from "../../../components/Tour.vue";
 import useDestinations from "../../../composables/destinations";
 import useCategories from "../../../composables/categories";
+import { useMeta } from "vue-meta";
+
+useMeta({ title: "Tours" });
 
 const { getFilteredTours, tours, pages } = useTours();
 const { getDestinationsOnCountry, countries } = useDestinations();
