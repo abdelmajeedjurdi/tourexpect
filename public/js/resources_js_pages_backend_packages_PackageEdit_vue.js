@@ -12,8 +12,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _vue_reactivity__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @vue/reactivity */ "./node_modules/@vue/reactivity/dist/reactivity.esm-bundler.js");
-function _readOnlyError(name) { throw new TypeError("\"" + name + "\" is read-only"); }
-
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   __name: 'ProgressBar',
@@ -25,18 +23,8 @@ function _readOnlyError(name) { throw new TypeError("\"" + name + "\" is read-on
     expose();
     var props = __props;
     var __returned__ = {
-      get props() {
-        return props;
-      },
-
-      set props(v) {
-        v, _readOnlyError("props");
-      },
-
-      get ref() {
-        return _vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.ref;
-      }
-
+      props: props,
+      ref: _vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.ref
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,
@@ -118,34 +106,12 @@ __webpack_require__.r(__webpack_exports__);
     var __returned__ = {
       props: props,
       emit: emit,
-
-      get selected_option() {
-        return selected_option;
-      },
-
-      set selected_option(v) {
-        selected_option = v;
-      },
-
-      get isListShow() {
-        return isListShow;
-      },
-
-      set isListShow(v) {
-        isListShow = v;
-      },
-
+      selected_option: selected_option,
+      isListShow: isListShow,
       myFunction: myFunction,
       filterFunction: filterFunction,
-
-      get ref() {
-        return _vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.ref;
-      },
-
-      get onMounted() {
-        return _vue_runtime_core__WEBPACK_IMPORTED_MODULE_1__.onMounted;
-      }
-
+      ref: _vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.ref,
+      onMounted: _vue_runtime_core__WEBPACK_IMPORTED_MODULE_1__.onMounted
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,
@@ -496,15 +462,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       getDestinations: getDestinations,
       icons: icons,
       getIcons: getIcons,
-
-      get isProgressing() {
-        return isProgressing;
-      },
-
-      set isProgressing(v) {
-        isProgressing = v;
-      },
-
+      isProgressing: isProgressing,
       errors: errors,
       single_package: single_package,
       percentage: percentage,
@@ -515,168 +473,47 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       addFiles: addFiles,
       destroyImage: destroyImage,
       destroyFile: destroyFile,
-
-      get Swal() {
-        return Swal;
-      },
-
-      set Swal(v) {
-        Swal = v;
-      },
-
-      get imagePreview() {
-        return imagePreview;
-      },
-
-      set imagePreview(v) {
-        imagePreview = v;
-      },
-
+      Swal: Swal,
+      imagePreview: imagePreview,
       savePackage: savePackage,
       deleteFile: deleteFile,
       handleImages: handleImages,
       handleFiles: handleFiles,
-
-      get file() {
-        return file;
-      },
-
-      set file(v) {
-        file = v;
-      },
-
+      file: file,
       onFileSelected: onFileSelected,
       selectCategory: selectCategory,
       selectDestination: selectDestination,
-
-      get banner_highlight() {
-        return banner_highlight;
-      },
-
-      set banner_highlight(v) {
-        banner_highlight = v;
-      },
-
+      banner_highlight: banner_highlight,
       setBannerHighlight: setBannerHighlight,
       deleteRow: deleteRow,
-
-      get is_editing() {
-        return is_editing;
-      },
-
-      set is_editing(v) {
-        is_editing = v;
-      },
-
+      is_editing: is_editing,
       editRow: editRow,
-
-      get openImgs() {
-        return openImgs;
-      },
-
-      set openImgs(v) {
-        openImgs = v;
-      },
-
-      get selected_img() {
-        return selected_img;
-      },
-
-      set selected_img(v) {
-        selected_img = v;
-      },
-
-      get highlight_imgs() {
-        return highlight_imgs;
-      },
-
-      set highlight_imgs(v) {
-        highlight_imgs = v;
-      },
-
+      openImgs: openImgs,
+      selected_img: selected_img,
+      highlight_imgs: highlight_imgs,
       setHighlightImage: setHighlightImage,
-
-      get package_option() {
-        return package_option;
-      },
-
-      set package_option(v) {
-        package_option = v;
-      },
-
+      package_option: package_option,
       setPackageOption: setPackageOption,
       deletePackageOption: deletePackageOption,
-
-      get is_editing_option() {
-        return is_editing_option;
-      },
-
-      set is_editing_option(v) {
-        is_editing_option = v;
-      },
-
+      is_editing_option: is_editing_option,
       editPackageOption: editPackageOption,
-
-      get destination() {
-        return destination;
-      },
-
-      set destination(v) {
-        destination = v;
-      },
-
+      destination: destination,
       setItinerary: setItinerary,
       deleteItineraryRow: deleteItineraryRow,
-
-      get is_itinerary_editing() {
-        return is_itinerary_editing;
-      },
-
-      set is_itinerary_editing(v) {
-        is_itinerary_editing = v;
-      },
-
+      is_itinerary_editing: is_itinerary_editing,
       editItineraryRow: editItineraryRow,
-
-      get opened_destination() {
-        return opened_destination;
-      },
-
-      set opened_destination(v) {
-        opened_destination = v;
-      },
-
-      get usePackages() {
-        return _composables_packages__WEBPACK_IMPORTED_MODULE_0__["default"];
-      },
-
-      get useCategories() {
-        return _composables_categories__WEBPACK_IMPORTED_MODULE_1__["default"];
-      },
-
-      get useDestinations() {
-        return _composables_destinations__WEBPACK_IMPORTED_MODULE_2__["default"];
-      },
-
+      opened_destination: opened_destination,
+      usePackages: _composables_packages__WEBPACK_IMPORTED_MODULE_0__["default"],
+      useCategories: _composables_categories__WEBPACK_IMPORTED_MODULE_1__["default"],
+      useDestinations: _composables_destinations__WEBPACK_IMPORTED_MODULE_2__["default"],
       onMounted: vue__WEBPACK_IMPORTED_MODULE_3__.onMounted,
       reactive: vue__WEBPACK_IMPORTED_MODULE_3__.reactive,
       ref: vue__WEBPACK_IMPORTED_MODULE_3__.ref,
-
-      get useSwal() {
-        return _plugins_useSwal_js__WEBPACK_IMPORTED_MODULE_4__.useSwal;
-      },
-
-      get UploadImages() {
-        return vue_upload_drop_images__WEBPACK_IMPORTED_MODULE_5__["default"];
-      },
-
+      useSwal: _plugins_useSwal_js__WEBPACK_IMPORTED_MODULE_4__.useSwal,
+      UploadImages: vue_upload_drop_images__WEBPACK_IMPORTED_MODULE_5__["default"],
       SearchableDropdown: _components_SearchableDropdown_vue__WEBPACK_IMPORTED_MODULE_6__["default"],
       ProgressBar: _components_ProgressBar_vue__WEBPACK_IMPORTED_MODULE_7__["default"],
-
-      get useGeneral() {
-        return _composables_general__WEBPACK_IMPORTED_MODULE_8__["default"];
-      }
-
+      useGeneral: _composables_general__WEBPACK_IMPORTED_MODULE_8__["default"]
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,

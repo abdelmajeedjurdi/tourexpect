@@ -72,55 +72,19 @@ __webpack_require__.r(__webpack_exports__);
       countries: countries,
       getCategoriesOnSection: getCategoriesOnSection,
       categories: categories,
-
-      get filter() {
-        return filter;
-      },
-
-      set filter(v) {
-        filter = v;
-      },
-
-      get lang() {
-        return lang;
-      },
-
-      set lang(v) {
-        lang = v;
-      },
-
-      get active_country() {
-        return active_country;
-      },
-
-      set active_country(v) {
-        active_country = v;
-      },
-
+      filter: filter,
+      lang: lang,
+      active_country: active_country,
       showFilter: showFilter,
       refreshBlogs: refreshBlogs,
-
-      get createHead() {
-        return _vueuse_head__WEBPACK_IMPORTED_MODULE_4__.createHead;
-      },
-
+      createHead: _vueuse_head__WEBPACK_IMPORTED_MODULE_4__.createHead,
       inject: vue__WEBPACK_IMPORTED_MODULE_0__.inject,
       onMounted: vue__WEBPACK_IMPORTED_MODULE_0__.onMounted,
       ref: vue__WEBPACK_IMPORTED_MODULE_0__.ref,
       watch: vue__WEBPACK_IMPORTED_MODULE_0__.watch,
-
-      get useBlogs() {
-        return _composables_blogs__WEBPACK_IMPORTED_MODULE_1__["default"];
-      },
-
-      get useDestinations() {
-        return _composables_destinations__WEBPACK_IMPORTED_MODULE_2__["default"];
-      },
-
-      get useCategories() {
-        return _composables_categories__WEBPACK_IMPORTED_MODULE_3__["default"];
-      }
-
+      useBlogs: _composables_blogs__WEBPACK_IMPORTED_MODULE_1__["default"],
+      useDestinations: _composables_destinations__WEBPACK_IMPORTED_MODULE_2__["default"],
+      useCategories: _composables_categories__WEBPACK_IMPORTED_MODULE_3__["default"]
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,

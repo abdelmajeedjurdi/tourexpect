@@ -80,49 +80,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     };
 
     var __returned__ = {
-      get lang() {
-        return lang;
-      },
-
-      set lang(v) {
-        lang = v;
-      },
-
-      get form() {
-        return form;
-      },
-
-      set form(v) {
-        form = v;
-      },
-
-      get flashMessage() {
-        return flashMessage;
-      },
-
-      set flashMessage(v) {
-        flashMessage = v;
-      },
-
-      get sending() {
-        return sending;
-      },
-
-      set sending(v) {
-        sending = v;
-      },
-
+      lang: lang,
+      form: form,
+      flashMessage: flashMessage,
+      sending: sending,
       makeContact: makeContact,
       clearForm: clearForm,
-
-      get reactive() {
-        return _vue_reactivity__WEBPACK_IMPORTED_MODULE_1__.reactive;
-      },
-
-      get ref() {
-        return _vue_reactivity__WEBPACK_IMPORTED_MODULE_1__.ref;
-      },
-
+      reactive: _vue_reactivity__WEBPACK_IMPORTED_MODULE_1__.reactive,
+      ref: _vue_reactivity__WEBPACK_IMPORTED_MODULE_1__.ref,
       inject: vue__WEBPACK_IMPORTED_MODULE_0__.inject
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {

@@ -30,15 +30,7 @@ __webpack_require__.r(__webpack_exports__);
     });
     var __returned__ = {
       props: props,
-
-      get page() {
-        return page;
-      },
-
-      set page(v) {
-        page = v;
-      },
-
+      page: page,
       emit: emit,
       ref: vue__WEBPACK_IMPORTED_MODULE_0__.ref,
       watch: vue__WEBPACK_IMPORTED_MODULE_0__.watch
@@ -191,55 +183,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       country_passport: country_passport,
       updateCountryPassport: updateCountryPassport,
       destroyCountryPassport: destroyCountryPassport,
-
-      get Swal() {
-        return Swal;
-      },
-
-      set Swal(v) {
-        Swal = v;
-      },
-
-      get is_show_form() {
-        return is_show_form;
-      },
-
-      set is_show_form(v) {
-        is_show_form = v;
-      },
-
-      get is_editing() {
-        return is_editing;
-      },
-
-      set is_editing(v) {
-        is_editing = v;
-      },
-
+      Swal: Swal,
+      is_show_form: is_show_form,
+      is_editing: is_editing,
       saveCountry: saveCountry,
       putCountryOnEdit: putCountryOnEdit,
       deleteCountry: deleteCountry,
-
-      get new_country_passport() {
-        return new_country_passport;
-      },
-
-      set new_country_passport(v) {
-        new_country_passport = v;
-      },
-
+      new_country_passport: new_country_passport,
       onMounted: vue__WEBPACK_IMPORTED_MODULE_0__.onMounted,
       reactive: vue__WEBPACK_IMPORTED_MODULE_0__.reactive,
       ref: vue__WEBPACK_IMPORTED_MODULE_0__.ref,
-
-      get useCountryPassports() {
-        return _composables_country_passports__WEBPACK_IMPORTED_MODULE_1__["default"];
-      },
-
-      get useSwal() {
-        return _plugins_useSwal_js__WEBPACK_IMPORTED_MODULE_2__.useSwal;
-      }
-
+      useCountryPassports: _composables_country_passports__WEBPACK_IMPORTED_MODULE_1__["default"],
+      useSwal: _plugins_useSwal_js__WEBPACK_IMPORTED_MODULE_2__.useSwal
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,
@@ -410,40 +365,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       destroyVisa: destroyVisa,
       pages: pages,
       duplicate: duplicate,
-
-      get currentPage() {
-        return currentPage;
-      },
-
-      set currentPage(v) {
-        currentPage = v;
-      },
-
-      get Swal() {
-        return Swal;
-      },
-
-      set Swal(v) {
-        Swal = v;
-      },
-
+      currentPage: currentPage,
+      Swal: Swal,
       changePage: changePage,
       dublicateRow: dublicateRow,
       deleteVisa2: deleteVisa2,
       deleteVisa: deleteVisa,
-
-      get useVisas() {
-        return _composables_visas__WEBPACK_IMPORTED_MODULE_0__["default"];
-      },
-
+      useVisas: _composables_visas__WEBPACK_IMPORTED_MODULE_0__["default"],
       CountriesPassports: _CountriesPassports_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
       onMounted: vue__WEBPACK_IMPORTED_MODULE_2__.onMounted,
       ref: vue__WEBPACK_IMPORTED_MODULE_2__.ref,
-
-      get useSwal() {
-        return _plugins_useSwal_js__WEBPACK_IMPORTED_MODULE_3__.useSwal;
-      },
-
+      useSwal: _plugins_useSwal_js__WEBPACK_IMPORTED_MODULE_3__.useSwal,
       Pagenation: _components_Pagenation_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
@@ -816,11 +748,13 @@ var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 /* HOISTED */
 );
 
-var _hoisted_4 = {
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("New Visa ");
+
+var _hoisted_5 = {
   "class": "w-full text-sm text-left text-gray-500 dark:text-gray-400"
 };
 
-var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("thead", {
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("thead", {
   "class": "text-xs text-gray-900 uppercase bg-gray-200 dark:bg-gray-900 dark:text-gray-400"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
   scope: "col",
@@ -835,21 +769,21 @@ var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 /* HOISTED */
 );
 
-var _hoisted_6 = {
+var _hoisted_7 = {
   scope: "row",
   "class": "py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-};
-var _hoisted_7 = {
-  "class": "py-4 px-6"
 };
 var _hoisted_8 = {
   "class": "py-4 px-6"
 };
 var _hoisted_9 = {
+  "class": "py-4 px-6"
+};
+var _hoisted_10 = {
   "class": "flex mx-2"
 };
 
-var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
   xmlns: "http://www.w3.org/2000/svg",
   "class": "h-6 w-6 text-blue-500",
   fill: "none",
@@ -864,9 +798,9 @@ var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_11 = ["onClick"];
+var _hoisted_12 = ["onClick"];
 
-var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
   xmlns: "http://www.w3.org/2000/svg",
   fill: "none",
   viewBox: "0 0 24 24",
@@ -881,7 +815,7 @@ var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_13 = [_hoisted_12];
+var _hoisted_14 = [_hoisted_13];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
 
@@ -892,22 +826,22 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": "px-4 py-2 bg-blue-600 hover:bg-blue-700 cursor-pointer rounded-lg text-sm font-medium text-white"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("New Visa ")];
+      return [_hoisted_4];
     }),
     _: 1
     /* STABLE */
 
   }, 8
   /* PROPS */
-  , ["to"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_4, [_hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.visas, function (visa) {
+  , ["to"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_5, [_hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.visas, function (visa) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("tr", {
       key: visa.id,
       "class": "bg-gray-100 border-b dark:bg-gray-800 dark:border-gray-700"
-    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(visa["title_en"]), 1
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(visa["title_en"]), 1
     /* TEXT */
-    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(visa["title_ar"]), 1
+    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(visa["title_ar"]), 1
     /* TEXT */
-    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
       "class": "",
       to: {
         name: 'visa.edit',
@@ -917,7 +851,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }
     }, {
       "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-        return [_hoisted_10];
+        return [_hoisted_11];
       }),
       _: 2
       /* DYNAMIC */
@@ -929,9 +863,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       onClick: function onClick($event) {
         return $setup.deleteVisa(visa.id);
       }
-    }, _hoisted_13, 8
+    }, _hoisted_14, 8
     /* PROPS */
-    , _hoisted_11)])])]);
+    , _hoisted_12)])])]);
   }), 128
   /* KEYED_FRAGMENT */
   ))])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Pagenation"], {

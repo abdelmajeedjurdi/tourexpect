@@ -380,11 +380,12 @@ let lang = inject("lang") || "en";
 const { t } = useI18n();
 useMeta({
     title: `${t(props.destination + "_tours")}`,
-    meta: [
-        { name: "description", content: description },
-        //   { name: 'keywords', content: keywords },
-        //   { name: 'robots', content: 'index, follow' },
-    ],
+    htmlAttrs: { lang: "en", amp: true },
+    // meta: [
+    //     { name: "description", content: description },
+    //     //   { name: 'keywords', content: keywords },
+    //     //   { name: 'robots', content: 'index, follow' },
+    // ],
     // link: [
     //   { rel: 'canonical', href: canonical },
     // ],

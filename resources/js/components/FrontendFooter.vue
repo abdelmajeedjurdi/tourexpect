@@ -1,5 +1,9 @@
 <template>
     <footer class="bg-blue-900 w-full">
+        <div id="app2">
+            <!-- Place the live chat widget here -->
+            <div id="livechat-widget"></div>
+        </div>
         <!-- first layer -->
         <div
             class="w-full h-96 bg-no-repeat bg-cover pt-16"
@@ -110,8 +114,26 @@
 </template>
 
 <script setup>
-import { inject, ref } from "vue";
+import { inject, ref, onBeforeMount } from "vue";
 
+onBeforeMount(() => {
+    // Add the live chat CSS
+    let link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = "https://tourexpect.odoo.com/im_livechat/external_lib.css";
+    document.head.appendChild(link);
+
+    // Add the live chat JavaScript code
+    let script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://tourexpect.odoo.com/im_livechat/external_lib.js";
+    document.body.appendChild(script);
+
+    script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://tourexpect.odoo.com/im_livechat/loader/8";
+    document.body.appendChild(script);
+});
 let lang = inject("lang");
 const menu_meue = ref([
     {
@@ -205,6 +227,16 @@ const menu_meue = ref([
 ]);
 </script>
 <style>
+.o_thread_window .o_composer_text_field {
+    line-height: 2rem !important;
+    padding-left: 0.5rem !important;
+}
+.o_thread_window_buttons {
+    margin-top: -0.3rem !important;
+}
+.o_thread_window_header {
+    padding-bottom: 1.5rem !important;
+}
 @keyframes Floating {
     0% {
         transform: translate(0px, 0px);

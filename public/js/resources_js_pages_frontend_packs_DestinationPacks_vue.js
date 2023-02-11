@@ -68,15 +68,7 @@ __webpack_require__.r(__webpack_exports__);
     });
     var __returned__ = {
       props: props,
-
-      get page() {
-        return page;
-      },
-
-      set page(v) {
-        page = v;
-      },
-
+      page: page,
       emit: emit,
       ref: vue__WEBPACK_IMPORTED_MODULE_0__.ref,
       watch: vue__WEBPACK_IMPORTED_MODULE_0__.watch
@@ -250,62 +242,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       countries: countries,
       getCategoriesOnSection: getCategoriesOnSection,
       categories: categories,
-
-      get lang() {
-        return lang;
-      },
-
-      set lang(v) {
-        lang = v;
-      },
-
-      get currentPage() {
-        return currentPage;
-      },
-
-      set currentPage(v) {
-        currentPage = v;
-      },
-
+      lang: lang,
+      currentPage: currentPage,
       props: props,
       showFilter: showFilter,
-
-      get active_country() {
-        return active_country;
-      },
-
-      set active_country(v) {
-        active_country = v;
-      },
-
-      get filter() {
-        return filter;
-      },
-
-      set filter(v) {
-        filter = v;
-      },
-
+      active_country: active_country,
+      filter: filter,
       changePage: changePage,
-
-      get active_countries() {
-        return active_countries;
-      },
-
-      set active_countries(v) {
-        active_countries = v;
-      },
-
+      active_countries: active_countries,
       filterCountries: filterCountries,
-
-      get mobileFiltersOpen() {
-        return mobileFiltersOpen;
-      },
-
-      set mobileFiltersOpen(v) {
-        mobileFiltersOpen = v;
-      },
-
+      mobileFiltersOpen: mobileFiltersOpen,
       currentCountryItems2: currentCountryItems2,
       currentCountryItems: currentCountryItems,
       inject: vue__WEBPACK_IMPORTED_MODULE_0__.inject,
@@ -313,22 +259,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       reactive: vue__WEBPACK_IMPORTED_MODULE_0__.reactive,
       ref: vue__WEBPACK_IMPORTED_MODULE_0__.ref,
       watch: vue__WEBPACK_IMPORTED_MODULE_0__.watch,
-
-      get usePackages() {
-        return _composables_packages__WEBPACK_IMPORTED_MODULE_1__["default"];
-      },
-
+      usePackages: _composables_packages__WEBPACK_IMPORTED_MODULE_1__["default"],
       Pagenation: _components_Pagenation_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
       PackVue: _components_Pack_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
-
-      get useDestinations() {
-        return _composables_destinations__WEBPACK_IMPORTED_MODULE_4__["default"];
-      },
-
-      get useCategories() {
-        return _composables_categories__WEBPACK_IMPORTED_MODULE_5__["default"];
-      }
-
+      useDestinations: _composables_destinations__WEBPACK_IMPORTED_MODULE_4__["default"],
+      useCategories: _composables_categories__WEBPACK_IMPORTED_MODULE_5__["default"]
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,

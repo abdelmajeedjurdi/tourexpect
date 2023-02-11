@@ -30,15 +30,7 @@ __webpack_require__.r(__webpack_exports__);
     });
     var __returned__ = {
       props: props,
-
-      get page() {
-        return page;
-      },
-
-      set page(v) {
-        page = v;
-      },
-
+      page: page,
       emit: emit,
       ref: vue__WEBPACK_IMPORTED_MODULE_0__.ref,
       watch: vue__WEBPACK_IMPORTED_MODULE_0__.watch
@@ -155,12 +147,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
     (0,vue_meta__WEBPACK_IMPORTED_MODULE_7__.useMeta)({
       title: "".concat(t(props.destination + "_tours")),
-      meta: [{
-        name: "description",
-        content: description
-      } //   { name: 'keywords', content: keywords },
-      //   { name: 'robots', content: 'index, follow' },
-      ] // link: [
+      htmlAttrs: {
+        lang: "en",
+        amp: true
+      } // meta: [
+      //     { name: "description", content: description },
+      //     //   { name: 'keywords', content: keywords },
+      //     //   { name: 'robots', content: 'index, follow' },
+      // ],
+      // link: [
       //   { rel: 'canonical', href: canonical },
       // ],
 
@@ -270,64 +265,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       countries: countries,
       getCategoriesOnSection: getCategoriesOnSection,
       categories: categories,
-
-      get lang() {
-        return lang;
-      },
-
-      set lang(v) {
-        lang = v;
-      },
-
+      lang: lang,
       t: t,
-
-      get currentPage() {
-        return currentPage;
-      },
-
-      set currentPage(v) {
-        currentPage = v;
-      },
-
+      currentPage: currentPage,
       props: props,
       showFilter: showFilter,
-
-      get active_country() {
-        return active_country;
-      },
-
-      set active_country(v) {
-        active_country = v;
-      },
-
-      get filter() {
-        return filter;
-      },
-
-      set filter(v) {
-        filter = v;
-      },
-
+      active_country: active_country,
+      filter: filter,
       changePage: changePage,
-
-      get active_countries() {
-        return active_countries;
-      },
-
-      set active_countries(v) {
-        active_countries = v;
-      },
-
+      active_countries: active_countries,
       filterCountries: filterCountries,
-
-      get mobileFiltersOpen() {
-        return mobileFiltersOpen;
-      },
-
-      set mobileFiltersOpen(v) {
-        mobileFiltersOpen = v;
-      },
-
+      mobileFiltersOpen: mobileFiltersOpen,
       currentCountryItems2: currentCountryItems2,
       currentCountryItems: currentCountryItems,
       inject: vue__WEBPACK_IMPORTED_MODULE_0__.inject,
@@ -335,30 +283,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       reactive: vue__WEBPACK_IMPORTED_MODULE_0__.reactive,
       ref: vue__WEBPACK_IMPORTED_MODULE_0__.ref,
       watch: vue__WEBPACK_IMPORTED_MODULE_0__.watch,
-
-      get useTours() {
-        return _composables_tours__WEBPACK_IMPORTED_MODULE_1__["default"];
-      },
-
+      useTours: _composables_tours__WEBPACK_IMPORTED_MODULE_1__["default"],
       Pagenation: _components_Pagenation_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
       TourVue: _components_Tour_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
-
-      get useDestinations() {
-        return _composables_destinations__WEBPACK_IMPORTED_MODULE_4__["default"];
-      },
-
-      get useCategories() {
-        return _composables_categories__WEBPACK_IMPORTED_MODULE_5__["default"];
-      },
-
-      get useMeta() {
-        return vue_meta__WEBPACK_IMPORTED_MODULE_7__.useMeta;
-      },
-
-      get useI18n() {
-        return vue_i18n__WEBPACK_IMPORTED_MODULE_6__.useI18n;
-      }
-
+      useDestinations: _composables_destinations__WEBPACK_IMPORTED_MODULE_4__["default"],
+      useCategories: _composables_categories__WEBPACK_IMPORTED_MODULE_5__["default"],
+      useMeta: vue_meta__WEBPACK_IMPORTED_MODULE_7__.useMeta,
+      useI18n: vue_i18n__WEBPACK_IMPORTED_MODULE_6__.useI18n
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,

@@ -111,62 +111,19 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       session_id: session_id,
       applyToVisa: applyToVisa,
       addFiles: addFiles,
-
-      get total_pay() {
-        return total_pay;
-      },
-
-      set total_pay(v) {
-        total_pay = v;
-      },
-
-      get forms() {
-        return forms;
-      },
-
-      set forms(v) {
-        forms = v;
-      },
-
-      get is_sending() {
-        return is_sending;
-      },
-
-      set is_sending(v) {
-        is_sending = v;
-      },
-
-      get is_online_pay() {
-        return is_online_pay;
-      },
-
-      set is_online_pay(v) {
-        is_online_pay = v;
-      },
-
-      get is_terms_and_condition_accepted() {
-        return is_terms_and_condition_accepted;
-      },
-
-      set is_terms_and_condition_accepted(v) {
-        is_terms_and_condition_accepted = v;
-      },
-
+      total_pay: total_pay,
+      forms: forms,
+      is_sending: is_sending,
+      is_online_pay: is_online_pay,
+      is_terms_and_condition_accepted: is_terms_and_condition_accepted,
       pk: pk,
       checkoutRef: checkoutRef,
       goToStripe: goToStripe,
       onBeforeMount: vue__WEBPACK_IMPORTED_MODULE_0__.onBeforeMount,
       ref: vue__WEBPACK_IMPORTED_MODULE_0__.ref,
       inject: vue__WEBPACK_IMPORTED_MODULE_0__.inject,
-
-      get StripeCheckout() {
-        return _vue_stripe_vue_stripe__WEBPACK_IMPORTED_MODULE_1__.StripeCheckout;
-      },
-
-      get useGeneral() {
-        return _composables_general__WEBPACK_IMPORTED_MODULE_2__["default"];
-      }
-
+      StripeCheckout: _vue_stripe_vue_stripe__WEBPACK_IMPORTED_MODULE_1__.StripeCheckout,
+      useGeneral: _composables_general__WEBPACK_IMPORTED_MODULE_2__["default"]
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,

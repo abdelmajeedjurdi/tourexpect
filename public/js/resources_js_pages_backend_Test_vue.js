@@ -22,10 +22,7 @@ __webpack_require__.r(__webpack_exports__);
       title: "Some Page"
     });
     var __returned__ = {
-      get useMeta() {
-        return vue_meta__WEBPACK_IMPORTED_MODULE_0__.useMeta;
-      }
-
+      useMeta: vue_meta__WEBPACK_IMPORTED_MODULE_0__.useMeta
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,

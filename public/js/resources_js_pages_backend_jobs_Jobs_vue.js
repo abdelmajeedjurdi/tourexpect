@@ -121,55 +121,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       job: job,
       updateJob: updateJob,
       destroyJob: destroyJob,
-
-      get Swal() {
-        return Swal;
-      },
-
-      set Swal(v) {
-        Swal = v;
-      },
-
-      get is_show_form() {
-        return is_show_form;
-      },
-
-      set is_show_form(v) {
-        is_show_form = v;
-      },
-
-      get is_editing() {
-        return is_editing;
-      },
-
-      set is_editing(v) {
-        is_editing = v;
-      },
-
+      Swal: Swal,
+      is_show_form: is_show_form,
+      is_editing: is_editing,
       saveJob: saveJob,
       putJobOnEdit: putJobOnEdit,
       deleteJob: deleteJob,
-
-      get new_job() {
-        return new_job;
-      },
-
-      set new_job(v) {
-        new_job = v;
-      },
-
+      new_job: new_job,
       onMounted: vue__WEBPACK_IMPORTED_MODULE_0__.onMounted,
       reactive: vue__WEBPACK_IMPORTED_MODULE_0__.reactive,
       ref: vue__WEBPACK_IMPORTED_MODULE_0__.ref,
-
-      get useJobs() {
-        return _composables_jobs__WEBPACK_IMPORTED_MODULE_1__["default"];
-      },
-
-      get useSwal() {
-        return _plugins_useSwal_js__WEBPACK_IMPORTED_MODULE_2__.useSwal;
-      }
-
+      useJobs: _composables_jobs__WEBPACK_IMPORTED_MODULE_1__["default"],
+      useSwal: _plugins_useSwal_js__WEBPACK_IMPORTED_MODULE_2__.useSwal
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,

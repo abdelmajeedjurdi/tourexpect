@@ -36,15 +36,8 @@ __webpack_require__.r(__webpack_exports__);
       props: props,
       category: category,
       getCategory: getCategory,
-
-      get onMounted() {
-        return _vue_runtime_core__WEBPACK_IMPORTED_MODULE_1__.onMounted;
-      },
-
-      get useCategories() {
-        return _composables_categories__WEBPACK_IMPORTED_MODULE_0__["default"];
-      }
-
+      onMounted: _vue_runtime_core__WEBPACK_IMPORTED_MODULE_1__.onMounted,
+      useCategories: _composables_categories__WEBPACK_IMPORTED_MODULE_0__["default"]
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,

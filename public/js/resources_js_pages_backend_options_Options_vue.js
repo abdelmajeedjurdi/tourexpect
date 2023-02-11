@@ -139,55 +139,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       country: country,
       updateCountry: updateCountry,
       destroyCountry: destroyCountry,
-
-      get Swal() {
-        return Swal;
-      },
-
-      set Swal(v) {
-        Swal = v;
-      },
-
-      get is_show_form() {
-        return is_show_form;
-      },
-
-      set is_show_form(v) {
-        is_show_form = v;
-      },
-
-      get is_editing() {
-        return is_editing;
-      },
-
-      set is_editing(v) {
-        is_editing = v;
-      },
-
+      Swal: Swal,
+      is_show_form: is_show_form,
+      is_editing: is_editing,
       saveCountry: saveCountry,
       putCountryOnEdit: putCountryOnEdit,
       deleteCountry: deleteCountry,
-
-      get new_country() {
-        return new_country;
-      },
-
-      set new_country(v) {
-        new_country = v;
-      },
-
+      new_country: new_country,
       onMounted: vue__WEBPACK_IMPORTED_MODULE_0__.onMounted,
       reactive: vue__WEBPACK_IMPORTED_MODULE_0__.reactive,
       ref: vue__WEBPACK_IMPORTED_MODULE_0__.ref,
-
-      get useDestinations() {
-        return _composables_destinations__WEBPACK_IMPORTED_MODULE_1__["default"];
-      },
-
-      get useSwal() {
-        return _plugins_useSwal_js__WEBPACK_IMPORTED_MODULE_2__.useSwal;
-      }
-
+      useDestinations: _composables_destinations__WEBPACK_IMPORTED_MODULE_1__["default"],
+      useSwal: _plugins_useSwal_js__WEBPACK_IMPORTED_MODULE_2__.useSwal
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,
@@ -282,19 +245,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       destroyIcon: destroyIcon,
       handleImages: handleImages,
       deleteIcon: deleteIcon,
-
-      get onMounted() {
-        return _vue_runtime_core__WEBPACK_IMPORTED_MODULE_4__.onMounted;
-      },
-
-      get UploadImages() {
-        return vue_upload_drop_images__WEBPACK_IMPORTED_MODULE_0__["default"];
-      },
-
-      get useGeneral() {
-        return _composables_general__WEBPACK_IMPORTED_MODULE_1__["default"];
-      },
-
+      onMounted: _vue_runtime_core__WEBPACK_IMPORTED_MODULE_4__.onMounted,
+      UploadImages: vue_upload_drop_images__WEBPACK_IMPORTED_MODULE_0__["default"],
+      useGeneral: _composables_general__WEBPACK_IMPORTED_MODULE_1__["default"],
       Users: _users_Users_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
       Countries: _countries_Countries_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
     };
@@ -428,55 +381,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       user: user,
       updateUser: updateUser,
       destroyUser: destroyUser,
-
-      get Swal() {
-        return Swal;
-      },
-
-      set Swal(v) {
-        Swal = v;
-      },
-
-      get is_show_form() {
-        return is_show_form;
-      },
-
-      set is_show_form(v) {
-        is_show_form = v;
-      },
-
-      get is_editing() {
-        return is_editing;
-      },
-
-      set is_editing(v) {
-        is_editing = v;
-      },
-
+      Swal: Swal,
+      is_show_form: is_show_form,
+      is_editing: is_editing,
       saveUser: saveUser,
       putUserOnEdit: putUserOnEdit,
       deleteUser: deleteUser,
-
-      get new_user() {
-        return new_user;
-      },
-
-      set new_user(v) {
-        new_user = v;
-      },
-
+      new_user: new_user,
       onMounted: vue__WEBPACK_IMPORTED_MODULE_0__.onMounted,
       reactive: vue__WEBPACK_IMPORTED_MODULE_0__.reactive,
       ref: vue__WEBPACK_IMPORTED_MODULE_0__.ref,
-
-      get useUsers() {
-        return _composables_users__WEBPACK_IMPORTED_MODULE_1__["default"];
-      },
-
-      get useSwal() {
-        return _plugins_useSwal_js__WEBPACK_IMPORTED_MODULE_2__.useSwal;
-      }
-
+      useUsers: _composables_users__WEBPACK_IMPORTED_MODULE_1__["default"],
+      useSwal: _plugins_useSwal_js__WEBPACK_IMPORTED_MODULE_2__.useSwal
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,

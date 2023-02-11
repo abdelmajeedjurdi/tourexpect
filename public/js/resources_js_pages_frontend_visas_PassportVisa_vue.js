@@ -26,15 +26,7 @@ __webpack_require__.r(__webpack_exports__);
     var lang = (0,vue__WEBPACK_IMPORTED_MODULE_0__.inject)("lang") || "en";
     var __returned__ = {
       props: props,
-
-      get lang() {
-        return lang;
-      },
-
-      set lang(v) {
-        lang = v;
-      },
-
+      lang: lang,
       inject: vue__WEBPACK_IMPORTED_MODULE_0__.inject
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
@@ -135,31 +127,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     var __returned__ = {
       inquire: inquire,
       props: props,
-
-      get is_sending() {
-        return is_sending;
-      },
-
-      set is_sending(v) {
-        is_sending = v;
-      },
-
-      get inquiry_form() {
-        return inquiry_form;
-      },
-
-      set inquiry_form(v) {
-        inquiry_form = v;
-      },
-
+      is_sending: is_sending,
+      inquiry_form: inquiry_form,
       sendInquiry: sendInquiry,
       reactive: vue__WEBPACK_IMPORTED_MODULE_0__.reactive,
       ref: vue__WEBPACK_IMPORTED_MODULE_0__.ref,
-
-      get useGeneral() {
-        return _composables_general__WEBPACK_IMPORTED_MODULE_1__["default"];
-      }
-
+      useGeneral: _composables_general__WEBPACK_IMPORTED_MODULE_1__["default"]
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,
@@ -196,15 +169,7 @@ __webpack_require__.r(__webpack_exports__);
     var lang = (0,vue__WEBPACK_IMPORTED_MODULE_0__.inject)("lang") || "en";
     var __returned__ = {
       props: props,
-
-      get lang() {
-        return lang;
-      },
-
-      set lang(v) {
-        lang = v;
-      },
-
+      lang: lang,
       inject: vue__WEBPACK_IMPORTED_MODULE_0__.inject
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
@@ -314,61 +279,19 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       visa: visa,
       props: props,
       url: url,
-
-      get visa_options() {
-        return visa_options;
-      },
-
-      set visa_options(v) {
-        visa_options = v;
-      },
-
-      get application_form() {
-        return application_form;
-      },
-
-      set application_form(v) {
-        application_form = v;
-      },
-
-      get lang() {
-        return lang;
-      },
-
-      set lang(v) {
-        lang = v;
-      },
-
+      visa_options: visa_options,
+      application_form: application_form,
+      lang: lang,
       proceedToApply: proceedToApply,
-
-      get onMounted() {
-        return _vue_runtime_core__WEBPACK_IMPORTED_MODULE_7__.onMounted;
-      },
-
-      get inject() {
-        return _vue_runtime_core__WEBPACK_IMPORTED_MODULE_7__.inject;
-      },
-
-      get ref() {
-        return _vue_runtime_core__WEBPACK_IMPORTED_MODULE_5__.ref;
-      },
-
-      get useVisas() {
-        return _composables_visas__WEBPACK_IMPORTED_MODULE_0__["default"];
-      },
-
+      onMounted: _vue_runtime_core__WEBPACK_IMPORTED_MODULE_7__.onMounted,
+      inject: _vue_runtime_core__WEBPACK_IMPORTED_MODULE_7__.inject,
+      ref: _vue_runtime_core__WEBPACK_IMPORTED_MODULE_5__.ref,
+      useVisas: _composables_visas__WEBPACK_IMPORTED_MODULE_0__["default"],
       ListSection: _components_ListSection_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
       BaseSection: _components_BaseSection_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
       Inquire: _components_Inquire_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
-
-      get router() {
-        return _router__WEBPACK_IMPORTED_MODULE_4__["default"];
-      },
-
-      get useRoute() {
-        return vue_router__WEBPACK_IMPORTED_MODULE_6__.useRoute;
-      }
-
+      router: _router__WEBPACK_IMPORTED_MODULE_4__["default"],
+      useRoute: vue_router__WEBPACK_IMPORTED_MODULE_6__.useRoute
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,

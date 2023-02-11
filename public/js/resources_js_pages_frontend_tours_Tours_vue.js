@@ -30,15 +30,7 @@ __webpack_require__.r(__webpack_exports__);
     });
     var __returned__ = {
       props: props,
-
-      get page() {
-        return page;
-      },
-
-      set page(v) {
-        page = v;
-      },
-
+      page: page,
       emit: emit,
       ref: vue__WEBPACK_IMPORTED_MODULE_0__.ref,
       watch: vue__WEBPACK_IMPORTED_MODULE_0__.watch
@@ -189,86 +181,26 @@ __webpack_require__.r(__webpack_exports__);
       countries: countries,
       getCategoriesOnSection: getCategoriesOnSection,
       categories: categories,
-
-      get lang() {
-        return lang;
-      },
-
-      set lang(v) {
-        lang = v;
-      },
-
-      get currentPage() {
-        return currentPage;
-      },
-
-      set currentPage(v) {
-        currentPage = v;
-      },
-
+      lang: lang,
+      currentPage: currentPage,
       showFilter: showFilter,
-
-      get active_country() {
-        return active_country;
-      },
-
-      set active_country(v) {
-        active_country = v;
-      },
-
-      get filter() {
-        return filter;
-      },
-
-      set filter(v) {
-        filter = v;
-      },
-
+      active_country: active_country,
+      filter: filter,
       changePage: changePage,
-
-      get active_countries() {
-        return active_countries;
-      },
-
-      set active_countries(v) {
-        active_countries = v;
-      },
-
+      active_countries: active_countries,
       filterCountries: filterCountries,
-
-      get mobileFiltersOpen() {
-        return mobileFiltersOpen;
-      },
-
-      set mobileFiltersOpen(v) {
-        mobileFiltersOpen = v;
-      },
-
+      mobileFiltersOpen: mobileFiltersOpen,
       inject: vue__WEBPACK_IMPORTED_MODULE_0__.inject,
       onMounted: vue__WEBPACK_IMPORTED_MODULE_0__.onMounted,
       reactive: vue__WEBPACK_IMPORTED_MODULE_0__.reactive,
       ref: vue__WEBPACK_IMPORTED_MODULE_0__.ref,
       watch: vue__WEBPACK_IMPORTED_MODULE_0__.watch,
-
-      get useTours() {
-        return _composables_tours__WEBPACK_IMPORTED_MODULE_1__["default"];
-      },
-
+      useTours: _composables_tours__WEBPACK_IMPORTED_MODULE_1__["default"],
       Pagenation: _components_Pagenation_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
       TourVue: _components_Tour_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
-
-      get useDestinations() {
-        return _composables_destinations__WEBPACK_IMPORTED_MODULE_4__["default"];
-      },
-
-      get useCategories() {
-        return _composables_categories__WEBPACK_IMPORTED_MODULE_5__["default"];
-      },
-
-      get useMeta() {
-        return vue_meta__WEBPACK_IMPORTED_MODULE_6__.useMeta;
-      }
-
+      useDestinations: _composables_destinations__WEBPACK_IMPORTED_MODULE_4__["default"],
+      useCategories: _composables_categories__WEBPACK_IMPORTED_MODULE_5__["default"],
+      useMeta: vue_meta__WEBPACK_IMPORTED_MODULE_6__.useMeta
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,

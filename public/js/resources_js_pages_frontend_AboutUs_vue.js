@@ -20,14 +20,7 @@ __webpack_require__.r(__webpack_exports__);
     expose();
     var lang = (0,vue__WEBPACK_IMPORTED_MODULE_0__.inject)("lang");
     var __returned__ = {
-      get lang() {
-        return lang;
-      },
-
-      set lang(v) {
-        lang = v;
-      },
-
+      lang: lang,
       inject: vue__WEBPACK_IMPORTED_MODULE_0__.inject,
       ref: vue__WEBPACK_IMPORTED_MODULE_0__.ref
     };

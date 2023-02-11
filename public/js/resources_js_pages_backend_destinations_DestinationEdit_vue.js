@@ -111,55 +111,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       updateDestination: updateDestination,
       countries: countries,
       getCountries: getCountries,
-
-      get Swal() {
-        return Swal;
-      },
-
-      set Swal(v) {
-        Swal = v;
-      },
-
-      get imagePreview() {
-        return imagePreview;
-      },
-
-      set imagePreview(v) {
-        imagePreview = v;
-      },
-
+      Swal: Swal,
+      imagePreview: imagePreview,
       saveDestination: saveDestination,
-
-      get file() {
-        return file;
-      },
-
-      set file(v) {
-        file = v;
-      },
-
+      file: file,
       onFileSelected: onFileSelected,
-
-      get is_editing() {
-        return is_editing;
-      },
-
-      set is_editing(v) {
-        is_editing = v;
-      },
-
-      get useDestinations() {
-        return _composables_destinations__WEBPACK_IMPORTED_MODULE_0__["default"];
-      },
-
+      is_editing: is_editing,
+      useDestinations: _composables_destinations__WEBPACK_IMPORTED_MODULE_0__["default"],
       onMounted: vue__WEBPACK_IMPORTED_MODULE_1__.onMounted,
       reactive: vue__WEBPACK_IMPORTED_MODULE_1__.reactive,
       ref: vue__WEBPACK_IMPORTED_MODULE_1__.ref,
-
-      get useSwal() {
-        return _plugins_useSwal_js__WEBPACK_IMPORTED_MODULE_2__.useSwal;
-      }
-
+      useSwal: _plugins_useSwal_js__WEBPACK_IMPORTED_MODULE_2__.useSwal
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,
