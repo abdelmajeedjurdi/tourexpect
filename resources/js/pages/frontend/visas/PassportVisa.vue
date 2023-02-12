@@ -88,9 +88,9 @@
             </div>
             <div class="w-full md:w-1/4 mx-auto">
                 <div class="">
-                    <div class="rounded-xl border border-blue-800">
+                    <div class="border-2 border-gray-500">
                         <div
-                            class="rounded-t-xl bg-main-blue py-2 text-center text-xl text-white"
+                            class="border-b-2 border-gray-500 bg-main-blue py-2 text-center text-xl text-white"
                         >
                             {{ $t("apply_to_visa") }}
                         </div>
@@ -838,9 +838,9 @@
                         </div>
                     </div>
                     <!-- 1111111111111111111111111111111111 -->
-                    <div class="rounded-xl border border-blue-800 mt-4">
+                    <div class="border-2 border-gray-500 mt-4">
                         <div
-                            class="rounded-t-xl bg-main-blue py-2 text-center text-xl text-white"
+                            class="border-b-2 border-gray-500 bg-main-blue py-2 text-center text-xl text-white"
                         >
                             {{ $t("inquiry") }}
                         </div>

@@ -643,10 +643,10 @@ var _hoisted_16 = {
   "class": ""
 };
 var _hoisted_17 = {
-  "class": "rounded-xl border border-blue-800"
+  "class": "border-2 border-gray-500"
 };
 var _hoisted_18 = {
-  "class": "rounded-t-xl bg-main-blue py-2 text-center text-xl text-white"
+  "class": "border-b-2 border-gray-500 bg-main-blue py-2 text-center text-xl text-white"
 };
 var _hoisted_19 = {
   "class": "p-3"
@@ -693,10 +693,10 @@ var _hoisted_267 = {
   "class": "bg-main-orange px-8 py-2 rounded-full text-white mt-4 w-full"
 };
 var _hoisted_268 = {
-  "class": "rounded-xl border border-blue-800 mt-4"
+  "class": "border-2 border-gray-500 mt-4"
 };
 var _hoisted_269 = {
-  "class": "rounded-t-xl bg-main-blue py-2 text-center text-xl text-white"
+  "class": "border-b-2 border-gray-500 bg-main-blue py-2 text-center text-xl text-white"
 };
 var _hoisted_270 = {
   "class": "p-3"
