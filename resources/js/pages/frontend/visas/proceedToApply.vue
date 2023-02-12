@@ -5,7 +5,7 @@
         </h3>
         <form
             @submit.prevent="submit"
-            class="mx-auto w-full max-w-6xl sm:px-4 xl:px-0 space-y-8 border rounded p-2"
+            class="mx-auto w-full max-w-6xl sm:px-4 xl:px-0 space-y-8"
         >
             <div
                 v-for="(application_form, i) in application_forms"
@@ -17,68 +17,12 @@
                 </h3>
                 <div class="border">
                     <div
-                        class="bg-main-orange py-2 text-center uppercase text-white"
+                        class="bg-main-blue py-2 text-center uppercase text-white"
                     >
                         personal details
                     </div>
                     <div class="p-8">
                         <div class="grid gap-2 sm:grid-cols-2">
-                            <div class="">
-                                <label
-                                    for="name"
-                                    class="mb-2 block text-sm font-medium text-gray-900"
-                                    >Your Name</label
-                                >
-                                <input
-                                    type="text"
-                                    id="name"
-                                    class="block w-full rounded border border-gray-300 bg-gray-50 p-1.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
-                                    required
-                                    v-model="application_form.name"
-                                />
-                            </div>
-                            <div class="">
-                                <label
-                                    for="surname"
-                                    class="mb-2 block text-sm font-medium text-gray-900"
-                                    >Surname</label
-                                >
-                                <input
-                                    type="text"
-                                    id="surname"
-                                    class="block w-full rounded border border-gray-300 bg-gray-50 p-1.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
-                                    required
-                                    v-model="application_form.surname"
-                                />
-                            </div>
-                            <div class="">
-                                <label
-                                    for="email"
-                                    class="mb-2 block text-sm font-medium text-gray-900"
-                                    >Your email</label
-                                >
-                                <input
-                                    type="email"
-                                    id="email"
-                                    class="block w-full rounded border border-gray-300 bg-gray-50 p-1.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
-                                    required
-                                    v-model="application_form.email"
-                                />
-                            </div>
-                            <div class="">
-                                <label
-                                    for="phone"
-                                    class="mb-2 block text-sm font-medium text-gray-900"
-                                    >Mobile / Whatsapp</label
-                                >
-                                <input
-                                    type="tel"
-                                    id="phone"
-                                    class="block w-full rounded border border-gray-300 bg-gray-50 p-1.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
-                                    required
-                                    v-model="application_form.phone"
-                                />
-                            </div>
                             <div class="mt-1">
                                 <label
                                     for="title_en"
@@ -89,7 +33,7 @@
                                 <div class="mt-1">
                                     <select
                                         v-model="application_form.country"
-                                        class="block w-full rounded border border-gray-300 bg-gray-50 p-1.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
+                                        class="block w-full border border-gray-300 p-1.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
                                         required
                                     >
                                         <option value="Afghanistan">
@@ -634,7 +578,7 @@
                                 >
                                 <div class="mt-1">
                                     <select
-                                        class="block w-full rounded border border-gray-300 bg-gray-50 p-1.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
+                                        class="block w-full border border-gray-300 p-1.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
                                         v-model="application_form.visa_type"
                                         name=""
                                         id=""
@@ -650,12 +594,68 @@
                                     </select>
                                 </div>
                             </div>
+                            <div class="">
+                                <label
+                                    for="name"
+                                    class="mb-2 block text-sm font-medium text-gray-900"
+                                    >Your Name</label
+                                >
+                                <input
+                                    type="text"
+                                    id="name"
+                                    class="block w-full border border-gray-300 p-1.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
+                                    required
+                                    v-model="application_form.name"
+                                />
+                            </div>
+                            <div class="">
+                                <label
+                                    for="surname"
+                                    class="mb-2 block text-sm font-medium text-gray-900"
+                                    >Surname</label
+                                >
+                                <input
+                                    type="text"
+                                    id="surname"
+                                    class="block w-full border border-gray-300 p-1.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
+                                    required
+                                    v-model="application_form.surname"
+                                />
+                            </div>
+                            <div class="">
+                                <label
+                                    for="email"
+                                    class="mb-2 block text-sm font-medium text-gray-900"
+                                    >Your email</label
+                                >
+                                <input
+                                    type="email"
+                                    id="email"
+                                    class="block w-full border border-gray-300 p-1.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
+                                    required
+                                    v-model="application_form.email"
+                                />
+                            </div>
+                            <div class="">
+                                <label
+                                    for="phone"
+                                    class="mb-2 block text-sm font-medium text-gray-900"
+                                    >Mobile / Whatsapp</label
+                                >
+                                <input
+                                    type="tel"
+                                    id="phone"
+                                    class="block w-full border border-gray-300 p-1.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
+                                    required
+                                    v-model="application_form.phone"
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="border">
                     <div
-                        class="bg-main-orange py-2 text-center uppercase text-white"
+                        class="bg-main-blue py-2 text-center uppercase text-white"
                     >
                         passport and travel information
                     </div>
@@ -670,7 +670,7 @@
                                 <input
                                     type="text"
                                     id="passport_no"
-                                    class="block w-full rounded border border-gray-300 bg-gray-50 p-1.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
+                                    class="block w-full border border-gray-300 p-1.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
                                     required
                                     v-model="application_form.passport_no"
                                 />
@@ -684,7 +684,7 @@
                                 <input
                                     type="date"
                                     id="travel_on"
-                                    class="block w-full rounded border border-gray-300 bg-gray-50 p-1.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
+                                    class="block w-full border border-gray-300 p-1.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
                                     required
                                     v-model="application_form.travel_on"
                                 />
@@ -694,7 +694,7 @@
                 </div>
                 <div class="border">
                     <div
-                        class="bg-main-orange py-2 text-center uppercase text-white"
+                        class="bg-main-blue py-2 text-center uppercase text-white"
                     >
                         upload documents
                     </div>
@@ -707,7 +707,7 @@
                                     >Passport</label
                                 >
                                 <input
-                                    class="block w-full rounded border border-gray-300 bg-gray-50 p-1.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
+                                    class="block w-full border border-gray-300 p-1.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
                                     id="passport_doc"
                                     max="1024"
                                     type="file"
@@ -727,7 +727,7 @@
                                     >National ID</label
                                 >
                                 <input
-                                    class="block w-full rounded border border-gray-300 bg-gray-50 p-1.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
+                                    class="block w-full border border-gray-300 p-1.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
                                     id="national_id"
                                     type="file"
                                     @change="
@@ -742,7 +742,7 @@
                                     >Photo</label
                                 >
                                 <input
-                                    class="block w-full rounded border border-gray-300 bg-gray-50 p-1.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
+                                    class="block w-full border border-gray-300 p-1.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
                                     id="client_photo"
                                     type="file"
                                     @change="
@@ -761,7 +761,7 @@
                 <button
                     type="button"
                     v-if="i > 0"
-                    class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                    class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-full text-sm px-4 py-2.5 text-center inline-flex items-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                     @click="removeForm(i)"
                 >
                     <svg
@@ -784,7 +784,7 @@
             </div>
             <button
                 type="button"
-                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm px-4 py-2.5 text-center inline-flex items-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                 @click="newForm"
             >
                 <svg
@@ -808,7 +808,7 @@
                 <button
                     type="submit"
                     v-if="!is_sending"
-                    class="hover:shadow-form rounded-md bg-main-blue m-auto h-10 w-60 text-base font-semibold text-white outline-none cursor-not-allowed"
+                    class="hover:shadow-form rounded-full bg-main-orange m-auto h-10 w-60 text-base font-semibold text-white outline-none cursor-not-allowed"
                 >
                     Submit and Proceed to Pay
                 </button>
@@ -816,7 +816,7 @@
                 <button
                     type="button"
                     v-else
-                    class="hover:shadow-form rounded-md bg-main-blue m-auto h-10 w-60 text-base font-semibold text-white outline-none cursor-not-allowed"
+                    class="hover:shadow-form rounded-full bg-main-orange m-auto h-10 w-60 text-base font-semibold text-white outline-none cursor-not-allowed"
                 >
                     <div id="animation">
                         <div class="box" id="box1"></div>

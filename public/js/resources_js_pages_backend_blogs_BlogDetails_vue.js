@@ -64,14 +64,32 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }, _callee);
     })));
     var __returned__ = {
-      QuillDeltaToHtmlConverter: QuillDeltaToHtmlConverter,
-      html: html,
+      get QuillDeltaToHtmlConverter() {
+        return QuillDeltaToHtmlConverter;
+      },
+
+      set QuillDeltaToHtmlConverter(v) {
+        QuillDeltaToHtmlConverter = v;
+      },
+
+      get html() {
+        return html;
+      },
+
+      set html(v) {
+        html = v;
+      },
+
       props: props,
       getBlog: getBlog,
       blog: blog,
       onMounted: vue__WEBPACK_IMPORTED_MODULE_0__.onMounted,
       ref: vue__WEBPACK_IMPORTED_MODULE_0__.ref,
-      useBlogs: _composables_blogs__WEBPACK_IMPORTED_MODULE_1__["default"]
+
+      get useBlogs() {
+        return _composables_blogs__WEBPACK_IMPORTED_MODULE_1__["default"];
+      }
+
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,

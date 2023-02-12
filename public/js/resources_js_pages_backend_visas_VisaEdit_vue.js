@@ -12,6 +12,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _vue_reactivity__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @vue/reactivity */ "./node_modules/@vue/reactivity/dist/reactivity.esm-bundler.js");
+function _readOnlyError(name) { throw new TypeError("\"" + name + "\" is read-only"); }
+
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   __name: 'ProgressBar',
@@ -23,8 +25,18 @@ __webpack_require__.r(__webpack_exports__);
     expose();
     var props = __props;
     var __returned__ = {
-      props: props,
-      ref: _vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.ref
+      get props() {
+        return props;
+      },
+
+      set props(v) {
+        v, _readOnlyError("props");
+      },
+
+      get ref() {
+        return _vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.ref;
+      }
+
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,
@@ -220,7 +232,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     };
 
     var __returned__ = {
-      isProgressing: isProgressing,
+      get isProgressing() {
+        return isProgressing;
+      },
+
+      set isProgressing(v) {
+        isProgressing = v;
+      },
+
       errors: errors,
       updateVisa: updateVisa,
       percentage: percentage,
@@ -230,13 +249,44 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       getCountryPassports: getCountryPassports,
       props: props,
       saveVisa: saveVisa,
-      visa_option: visa_option,
+
+      get visa_option() {
+        return visa_option;
+      },
+
+      set visa_option(v) {
+        visa_option = v;
+      },
+
       setVisaOption: setVisaOption,
       deleteVisaOption: deleteVisaOption,
-      is_editing_option: is_editing_option,
+
+      get is_editing_option() {
+        return is_editing_option;
+      },
+
+      set is_editing_option(v) {
+        is_editing_option = v;
+      },
+
       editVisaOption: editVisaOption,
-      sections: sections,
-      is_editing_section: is_editing_section,
+
+      get sections() {
+        return sections;
+      },
+
+      set sections(v) {
+        sections = v;
+      },
+
+      get is_editing_section() {
+        return is_editing_section;
+      },
+
+      set is_editing_section(v) {
+        is_editing_section = v;
+      },
+
       setParagraphSection: setParagraphSection,
       deleteParagraphSection: deleteParagraphSection,
       editParagraphSection: editParagraphSection,
@@ -244,9 +294,19 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       onMounted: vue__WEBPACK_IMPORTED_MODULE_0__.onMounted,
       reactive: vue__WEBPACK_IMPORTED_MODULE_0__.reactive,
       ref: vue__WEBPACK_IMPORTED_MODULE_0__.ref,
-      useVisas: _composables_visas__WEBPACK_IMPORTED_MODULE_1__["default"],
-      useCategories: _composables_categories__WEBPACK_IMPORTED_MODULE_2__["default"],
-      useCountryPassports: _composables_country_passports__WEBPACK_IMPORTED_MODULE_3__["default"],
+
+      get useVisas() {
+        return _composables_visas__WEBPACK_IMPORTED_MODULE_1__["default"];
+      },
+
+      get useCategories() {
+        return _composables_categories__WEBPACK_IMPORTED_MODULE_2__["default"];
+      },
+
+      get useCountryPassports() {
+        return _composables_country_passports__WEBPACK_IMPORTED_MODULE_3__["default"];
+      },
+
       ProgressBar: _components_ProgressBar_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {

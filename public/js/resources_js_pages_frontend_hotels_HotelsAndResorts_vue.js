@@ -69,7 +69,15 @@ __webpack_require__.r(__webpack_exports__);
     });
     var __returned__ = {
       props: props,
-      page: page,
+
+      get page() {
+        return page;
+      },
+
+      set page(v) {
+        page = v;
+      },
+
       emit: emit,
       ref: vue__WEBPACK_IMPORTED_MODULE_0__.ref,
       watch: vue__WEBPACK_IMPORTED_MODULE_0__.watch
@@ -127,11 +135,23 @@ __webpack_require__.r(__webpack_exports__);
       getAllHotels: getAllHotels,
       hotels: hotels,
       pages: pages,
-      currentPage: currentPage,
+
+      get currentPage() {
+        return currentPage;
+      },
+
+      set currentPage(v) {
+        currentPage = v;
+      },
+
       changePage: changePage,
       onMounted: vue__WEBPACK_IMPORTED_MODULE_0__.onMounted,
       ref: vue__WEBPACK_IMPORTED_MODULE_0__.ref,
-      useHotels: _composables_hotels__WEBPACK_IMPORTED_MODULE_1__["default"],
+
+      get useHotels() {
+        return _composables_hotels__WEBPACK_IMPORTED_MODULE_1__["default"];
+      },
+
       Pagenation: _components_Pagenation_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
       HotelVue: _components_Hotel_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
     };

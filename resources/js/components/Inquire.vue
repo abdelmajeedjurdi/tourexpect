@@ -5,7 +5,7 @@
             <input
                 type="name"
                 id="name"
-                class="block w-full border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                class="block w-full border border-gray-300 rounded-full p-2.5 text-sm text-gray-900 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                 :placeholder="$t('your_name') + '*'"
                 v-model="inquiry_form.name"
                 required
@@ -13,7 +13,7 @@
             <input
                 type="tel"
                 id="phone"
-                class="block w-full border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                class="block w-full border border-gray-300 rounded-full p-2.5 text-sm text-gray-900 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                 :placeholder="$t('your_phone') + '*'"
                 v-model="inquiry_form.phone"
                 required
@@ -21,14 +21,14 @@
             <input
                 type="email"
                 id="email"
-                class="block w-full border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                class="block w-full border border-gray-300 rounded-full p-2.5 text-sm text-gray-900 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                 :placeholder="$t('your_email') + '*'"
                 v-model="inquiry_form.email"
                 required
             />
             <textarea
                 id="message"
-                class="block w-full border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                class="block w-full border border-gray-300 rounded-full p-2.5 text-sm text-gray-900 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                 :placeholder="$t('your_message') + '*'"
                 v-model="inquiry_form.message"
                 required
@@ -38,7 +38,7 @@
                 <button
                     type="submit"
                     v-if="!is_sending"
-                    class="hover:shadow-form rounded-md bg-main-blue h-10 w-40 text-base font-semibold text-white outline-none"
+                    class="hover:shadow-form rounded-full bg-main-orange h-10 w-full text-base font-semibold text-white outline-none"
                 >
                     <span>
                         {{ $t("inquire_now") }}
@@ -48,7 +48,7 @@
                 <button
                     type="button"
                     v-else
-                    class="hover:shadow-form rounded-md bg-main-blue m-auto h-10 w-40 text-base font-semibold text-white outline-none cursor-not-allowed"
+                    class="hover:shadow-form rounded-full bg-main-orange m-auto h-10 w-full text-base font-semibold text-white outline-none cursor-not-allowed"
                 >
                     <div id="animation">
                         <div class="box" id="box1"></div>

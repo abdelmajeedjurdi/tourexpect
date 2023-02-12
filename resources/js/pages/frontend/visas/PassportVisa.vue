@@ -12,17 +12,17 @@
         <div
             class="px-2 sm:px-4 xl:px-0 md:flex w-full max-w-6xl mx-auto my-10 justify-between space-x-0 sm:space-x-2"
         >
-            <div class="w-full md:w-3/4 border rounded p-2">
+            <div class="w-full md:w-3/4 rounded p-2">
                 <div v-for="section in visa['sections']" :key="section">
                     <list-section
                         v-if="section.is_bullet"
-                        class="border py-2 mt-3"
+                        class=""
                         :section_list="section['section_text_' + lang]"
                         :section_title="section['section_title_' + lang]"
                     />
                     <base-section
                         v-else
-                        class="border py-2 mt-3"
+                        class=""
                         :section_description="section['section_text_' + lang]"
                         :section_title="section['section_title_' + lang]"
                     />
@@ -59,15 +59,15 @@
                         </thead>
                         <tbody>
                             <tr
-                                class="bg-gray-100 border-b"
+                                class="border-b"
                                 v-for="(option, i) in visa.options"
                                 :key="i"
                             >
                                 <th scope="row" class="px-6 py-4">
-                                    {{ option["visa_type_" + lang] }}
+                                    {{ $t(option["visa_type_" + lang]) }}
                                 </th>
                                 <td class="px-6 py-4">
-                                    {{ option.no_of_entries }}
+                                    {{ $t(option.no_of_entries) }}
                                 </td>
                                 <td class="px-6 py-4">
                                     {{ option["visa_validity_" + lang] }}
@@ -86,11 +86,11 @@
                     </table>
                 </div>
             </div>
-            <div class="w-full md:w-1/4">
+            <div class="w-full md:w-1/4 mx-auto">
                 <div class="">
                     <div class="rounded-xl border border-blue-800">
                         <div
-                            class="rounded-t-xl bg-main-orange py-2 text-center text-xl text-white"
+                            class="rounded-t-xl bg-main-blue py-2 text-center text-xl text-white"
                         >
                             {{ $t("apply_to_visa") }}
                         </div>
@@ -830,7 +830,7 @@
                                 </div>
                                 <button
                                     type="submit"
-                                    class="bg-main-blue px-8 py-2 rounded-md text-white mt-4"
+                                    class="bg-main-orange px-8 py-2 rounded-full text-white mt-4 w-full"
                                 >
                                     {{ $t("proceed_to_apply") }}
                                 </button>
@@ -840,7 +840,7 @@
                     <!-- 1111111111111111111111111111111111 -->
                     <div class="rounded-xl border border-blue-800 mt-4">
                         <div
-                            class="rounded-t-xl bg-main-orange py-2 text-center text-xl text-white"
+                            class="rounded-t-xl bg-main-blue py-2 text-center text-xl text-white"
                         >
                             {{ $t("inquiry") }}
                         </div>

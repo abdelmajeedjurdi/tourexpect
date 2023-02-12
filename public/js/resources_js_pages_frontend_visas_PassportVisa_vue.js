@@ -26,7 +26,15 @@ __webpack_require__.r(__webpack_exports__);
     var lang = (0,vue__WEBPACK_IMPORTED_MODULE_0__.inject)("lang") || "en";
     var __returned__ = {
       props: props,
-      lang: lang,
+
+      get lang() {
+        return lang;
+      },
+
+      set lang(v) {
+        lang = v;
+      },
+
       inject: vue__WEBPACK_IMPORTED_MODULE_0__.inject
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
@@ -127,12 +135,31 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     var __returned__ = {
       inquire: inquire,
       props: props,
-      is_sending: is_sending,
-      inquiry_form: inquiry_form,
+
+      get is_sending() {
+        return is_sending;
+      },
+
+      set is_sending(v) {
+        is_sending = v;
+      },
+
+      get inquiry_form() {
+        return inquiry_form;
+      },
+
+      set inquiry_form(v) {
+        inquiry_form = v;
+      },
+
       sendInquiry: sendInquiry,
       reactive: vue__WEBPACK_IMPORTED_MODULE_0__.reactive,
       ref: vue__WEBPACK_IMPORTED_MODULE_0__.ref,
-      useGeneral: _composables_general__WEBPACK_IMPORTED_MODULE_1__["default"]
+
+      get useGeneral() {
+        return _composables_general__WEBPACK_IMPORTED_MODULE_1__["default"];
+      }
+
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,
@@ -169,7 +196,15 @@ __webpack_require__.r(__webpack_exports__);
     var lang = (0,vue__WEBPACK_IMPORTED_MODULE_0__.inject)("lang") || "en";
     var __returned__ = {
       props: props,
-      lang: lang,
+
+      get lang() {
+        return lang;
+      },
+
+      set lang(v) {
+        lang = v;
+      },
+
       inject: vue__WEBPACK_IMPORTED_MODULE_0__.inject
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
@@ -279,19 +314,61 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       visa: visa,
       props: props,
       url: url,
-      visa_options: visa_options,
-      application_form: application_form,
-      lang: lang,
+
+      get visa_options() {
+        return visa_options;
+      },
+
+      set visa_options(v) {
+        visa_options = v;
+      },
+
+      get application_form() {
+        return application_form;
+      },
+
+      set application_form(v) {
+        application_form = v;
+      },
+
+      get lang() {
+        return lang;
+      },
+
+      set lang(v) {
+        lang = v;
+      },
+
       proceedToApply: proceedToApply,
-      onMounted: _vue_runtime_core__WEBPACK_IMPORTED_MODULE_7__.onMounted,
-      inject: _vue_runtime_core__WEBPACK_IMPORTED_MODULE_7__.inject,
-      ref: _vue_runtime_core__WEBPACK_IMPORTED_MODULE_5__.ref,
-      useVisas: _composables_visas__WEBPACK_IMPORTED_MODULE_0__["default"],
+
+      get onMounted() {
+        return _vue_runtime_core__WEBPACK_IMPORTED_MODULE_7__.onMounted;
+      },
+
+      get inject() {
+        return _vue_runtime_core__WEBPACK_IMPORTED_MODULE_7__.inject;
+      },
+
+      get ref() {
+        return _vue_runtime_core__WEBPACK_IMPORTED_MODULE_5__.ref;
+      },
+
+      get useVisas() {
+        return _composables_visas__WEBPACK_IMPORTED_MODULE_0__["default"];
+      },
+
       ListSection: _components_ListSection_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
       BaseSection: _components_BaseSection_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
       Inquire: _components_Inquire_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
-      router: _router__WEBPACK_IMPORTED_MODULE_4__["default"],
-      useRoute: vue_router__WEBPACK_IMPORTED_MODULE_6__.useRoute
+
+      get router() {
+        return _router__WEBPACK_IMPORTED_MODULE_4__["default"];
+      },
+
+      get useRoute() {
+        return vue_router__WEBPACK_IMPORTED_MODULE_6__.useRoute;
+      }
+
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,
@@ -366,12 +443,12 @@ var _hoisted_6 = ["placeholder"];
 var _hoisted_7 = {
   key: 0,
   type: "submit",
-  "class": "hover:shadow-form rounded-md bg-main-blue h-10 w-40 text-base font-semibold text-white outline-none"
+  "class": "hover:shadow-form rounded-full bg-main-orange h-10 w-full text-base font-semibold text-white outline-none"
 };
 var _hoisted_8 = {
   key: 1,
   type: "button",
-  "class": "hover:shadow-form rounded-md bg-main-blue m-auto h-10 w-40 text-base font-semibold text-white outline-none cursor-not-allowed"
+  "class": "hover:shadow-form rounded-full bg-main-orange m-auto h-10 w-full text-base font-semibold text-white outline-none cursor-not-allowed"
 };
 
 var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div id=\"animation\" data-v-47a5a198><div class=\"box\" id=\"box1\" data-v-47a5a198></div><div class=\"box\" id=\"box2\" data-v-47a5a198></div><div class=\"box\" id=\"box3\" data-v-47a5a198></div><div class=\"box\" id=\"box4\" data-v-47a5a198></div></div>", 1);
@@ -384,7 +461,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "name",
     id: "name",
-    "class": "block w-full border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 shadow-sm focus:border-blue-500 focus:ring-blue-500",
+    "class": "block w-full border border-gray-300 rounded-full p-2.5 text-sm text-gray-900 shadow-sm focus:border-blue-500 focus:ring-blue-500",
     placeholder: _ctx.$t('your_name') + '*',
     "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
       return $setup.inquiry_form.name = $event;
@@ -395,7 +472,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   , _hoisted_3), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.inquiry_form.name]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "tel",
     id: "phone",
-    "class": "block w-full border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 shadow-sm focus:border-blue-500 focus:ring-blue-500",
+    "class": "block w-full border border-gray-300 rounded-full p-2.5 text-sm text-gray-900 shadow-sm focus:border-blue-500 focus:ring-blue-500",
     placeholder: _ctx.$t('your_phone') + '*',
     "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
       return $setup.inquiry_form.phone = $event;
@@ -406,7 +483,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   , _hoisted_4), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.inquiry_form.phone]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "email",
     id: "email",
-    "class": "block w-full border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 shadow-sm focus:border-blue-500 focus:ring-blue-500",
+    "class": "block w-full border border-gray-300 rounded-full p-2.5 text-sm text-gray-900 shadow-sm focus:border-blue-500 focus:ring-blue-500",
     placeholder: _ctx.$t('your_email') + '*',
     "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
       return $setup.inquiry_form.email = $event;
@@ -416,7 +493,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* PROPS */
   , _hoisted_5), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.inquiry_form.email]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("textarea", {
     id: "message",
-    "class": "block w-full border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 shadow-sm focus:border-blue-500 focus:ring-blue-500",
+    "class": "block w-full border border-gray-300 rounded-full p-2.5 text-sm text-gray-900 shadow-sm focus:border-blue-500 focus:ring-blue-500",
     placeholder: _ctx.$t('your_message') + '*',
     "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
       return $setup.inquiry_form.message = $event;
@@ -502,7 +579,7 @@ var _hoisted_3 = {
   "class": "px-2 sm:px-4 xl:px-0 md:flex w-full max-w-6xl mx-auto my-10 justify-between space-x-0 sm:space-x-2"
 };
 var _hoisted_4 = {
-  "class": "w-full md:w-3/4 border rounded p-2"
+  "class": "w-full md:w-3/4 rounded p-2"
 };
 var _hoisted_5 = {
   "class": "relative overflow-x-auto shadow-md sm:rounded-lg mt-4"
@@ -560,7 +637,7 @@ var _hoisted_14 = {
   "class": "px-6 py-4"
 };
 var _hoisted_15 = {
-  "class": "w-full md:w-1/4"
+  "class": "w-full md:w-1/4 mx-auto"
 };
 var _hoisted_16 = {
   "class": ""
@@ -569,7 +646,7 @@ var _hoisted_17 = {
   "class": "rounded-xl border border-blue-800"
 };
 var _hoisted_18 = {
-  "class": "rounded-t-xl bg-main-orange py-2 text-center text-xl text-white"
+  "class": "rounded-t-xl bg-main-blue py-2 text-center text-xl text-white"
 };
 var _hoisted_19 = {
   "class": "p-3"
@@ -613,13 +690,13 @@ var _hoisted_265 = {
 var _hoisted_266 = ["value"];
 var _hoisted_267 = {
   type: "submit",
-  "class": "bg-main-blue px-8 py-2 rounded-md text-white mt-4"
+  "class": "bg-main-orange px-8 py-2 rounded-full text-white mt-4 w-full"
 };
 var _hoisted_268 = {
   "class": "rounded-xl border border-blue-800 mt-4"
 };
 var _hoisted_269 = {
-  "class": "rounded-t-xl bg-main-orange py-2 text-center text-xl text-white"
+  "class": "rounded-t-xl bg-main-blue py-2 text-center text-xl text-white"
 };
 var _hoisted_270 = {
   "class": "p-3"
@@ -646,14 +723,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       key: section
     }, [section.is_bullet ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["ListSection"], {
       key: 0,
-      "class": "border py-2 mt-3",
+      "class": "",
       section_list: section['section_text_' + $setup.lang],
       section_title: section['section_title_' + $setup.lang]
     }, null, 8
     /* PROPS */
     , ["section_list", "section_title"])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["BaseSection"], {
       key: 1,
-      "class": "border py-2 mt-3",
+      "class": "",
       section_description: section['section_text_' + $setup.lang],
       section_title: section['section_title_' + $setup.lang]
     }, null, 8
@@ -665,11 +742,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* TEXT */
   ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_7, [_hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.visa.options, function (option, i) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("tr", {
-      "class": "bg-gray-100 border-b",
+      "class": "border-b",
       key: i
-    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(option["visa_type_" + $setup.lang]), 1
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$t(option["visa_type_" + $setup.lang])), 1
     /* TEXT */
-    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(option.no_of_entries), 1
+    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$t(option.no_of_entries)), 1
     /* TEXT */
     ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(option["visa_validity_" + $setup.lang]), 1
     /* TEXT */
@@ -1277,7 +1354,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#animation[data-v-47a5a198] {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n.box[data-v-47a5a198] {\n    width: 5px;\n    height: 5px;\n    margin: 2px;\n}\n.box[data-v-47a5a198]:nth-child(1) {\n    background: white;\n    -webkit-animation: balls-47a5a198 1s linear infinite;\n            animation: balls-47a5a198 1s linear infinite;\n}\n.box[data-v-47a5a198]:nth-child(2) {\n    background: white;\n    -webkit-animation: balls-47a5a198 1s 0.1s linear infinite;\n            animation: balls-47a5a198 1s 0.1s linear infinite;\n}\n.box[data-v-47a5a198]:nth-child(3) {\n    background: white;\n    -webkit-animation: balls-47a5a198 1s 0.2s linear infinite;\n            animation: balls-47a5a198 1s 0.2s linear infinite;\n}\n.box[data-v-47a5a198]:nth-child(4) {\n    background: white;\n    -webkit-animation: balls-47a5a198 1s 0.4s linear infinite;\n            animation: balls-47a5a198 1s 0.4s linear infinite;\n}\n@-webkit-keyframes balls-47a5a198 {\n0% {\n        transform: sclaeY(1);\n}\n50% {\n        transform: scaleY(3);\n}\n100% {\n        transform: sclaeY(1);\n}\n}\n@keyframes balls-47a5a198 {\n0% {\n        transform: sclaeY(1);\n}\n50% {\n        transform: scaleY(3);\n}\n100% {\n        transform: sclaeY(1);\n}\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#animation[data-v-47a5a198] {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n.box[data-v-47a5a198] {\n    width: 5px;\n    height: 5px;\n    margin: 2px;\n}\n.box[data-v-47a5a198]:nth-child(1) {\n    background: white;\n    animation: balls-47a5a198 1s linear infinite;\n}\n.box[data-v-47a5a198]:nth-child(2) {\n    background: white;\n    animation: balls-47a5a198 1s 0.1s linear infinite;\n}\n.box[data-v-47a5a198]:nth-child(3) {\n    background: white;\n    animation: balls-47a5a198 1s 0.2s linear infinite;\n}\n.box[data-v-47a5a198]:nth-child(4) {\n    background: white;\n    animation: balls-47a5a198 1s 0.4s linear infinite;\n}\n@keyframes balls-47a5a198 {\n0% {\n        transform: sclaeY(1);\n}\n50% {\n        transform: scaleY(3);\n}\n100% {\n        transform: sclaeY(1);\n}\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

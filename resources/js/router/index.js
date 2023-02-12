@@ -279,6 +279,18 @@ const routes = [
         props: true
     },
     {
+        path: "/success",
+        name: "success",
+        component: () => import("../pages/frontend/Success"),
+        props: true
+    },
+    {
+        path: "/cancel",
+        name: "cancel",
+        component: () => import("../pages/frontend/Cancel"),
+        props: true
+    },
+    {
         path: "/:lang?/visas/:passport/:visa/payment",
         name: "payment",
         component: () => import("../pages/frontend/visas/Payment"),

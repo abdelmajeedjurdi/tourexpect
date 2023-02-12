@@ -68,9 +68,30 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }, _callee);
     })));
     var __returned__ = {
-      QuillDeltaToHtmlConverter: QuillDeltaToHtmlConverter,
-      html: html,
-      rout: rout,
+      get QuillDeltaToHtmlConverter() {
+        return QuillDeltaToHtmlConverter;
+      },
+
+      set QuillDeltaToHtmlConverter(v) {
+        QuillDeltaToHtmlConverter = v;
+      },
+
+      get html() {
+        return html;
+      },
+
+      set html(v) {
+        html = v;
+      },
+
+      get rout() {
+        return rout;
+      },
+
+      set rout(v) {
+        rout = v;
+      },
+
       lang: lang,
       props: props,
       getSingleBlog: getSingleBlog,
@@ -78,8 +99,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       inject: vue__WEBPACK_IMPORTED_MODULE_0__.inject,
       onMounted: vue__WEBPACK_IMPORTED_MODULE_0__.onMounted,
       ref: vue__WEBPACK_IMPORTED_MODULE_0__.ref,
-      useRoute: vue_router__WEBPACK_IMPORTED_MODULE_2__.useRoute,
-      useBlogs: _composables_blogs__WEBPACK_IMPORTED_MODULE_1__["default"]
+
+      get useRoute() {
+        return vue_router__WEBPACK_IMPORTED_MODULE_2__.useRoute;
+      },
+
+      get useBlogs() {
+        return _composables_blogs__WEBPACK_IMPORTED_MODULE_1__["default"];
+      }
+
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,

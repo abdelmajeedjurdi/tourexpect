@@ -12,6 +12,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _vue_reactivity__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @vue/reactivity */ "./node_modules/@vue/reactivity/dist/reactivity.esm-bundler.js");
+function _readOnlyError(name) { throw new TypeError("\"" + name + "\" is read-only"); }
+
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   __name: 'ProgressBar',
@@ -23,8 +25,18 @@ __webpack_require__.r(__webpack_exports__);
     expose();
     var props = __props;
     var __returned__ = {
-      props: props,
-      ref: _vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.ref
+      get props() {
+        return props;
+      },
+
+      set props(v) {
+        v, _readOnlyError("props");
+      },
+
+      get ref() {
+        return _vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.ref;
+      }
+
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,
@@ -106,12 +118,34 @@ __webpack_require__.r(__webpack_exports__);
     var __returned__ = {
       props: props,
       emit: emit,
-      selected_option: selected_option,
-      isListShow: isListShow,
+
+      get selected_option() {
+        return selected_option;
+      },
+
+      set selected_option(v) {
+        selected_option = v;
+      },
+
+      get isListShow() {
+        return isListShow;
+      },
+
+      set isListShow(v) {
+        isListShow = v;
+      },
+
       myFunction: myFunction,
       filterFunction: filterFunction,
-      ref: _vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.ref,
-      onMounted: _vue_runtime_core__WEBPACK_IMPORTED_MODULE_1__.onMounted
+
+      get ref() {
+        return _vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.ref;
+      },
+
+      get onMounted() {
+        return _vue_runtime_core__WEBPACK_IMPORTED_MODULE_1__.onMounted;
+      }
+
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,
@@ -306,10 +340,33 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
     var __returned__ = {
       form: form,
-      property: property,
-      properties: properties,
+
+      get property() {
+        return property;
+      },
+
+      set property(v) {
+        property = v;
+      },
+
+      get properties() {
+        return properties;
+      },
+
+      set properties(v) {
+        properties = v;
+      },
+
       setProperty: setProperty,
-      isProgressing: isProgressing,
+
+      get isProgressing() {
+        return isProgressing;
+      },
+
+      set isProgressing(v) {
+        isProgressing = v;
+      },
+
       errors: errors,
       storeHotel: storeHotel,
       addGallery: addGallery,
@@ -322,23 +379,60 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       handleImages: handleImages,
       handleFiles: handleFiles,
       saveHotel: saveHotel,
-      imagePreview: imagePreview,
-      file: file,
+
+      get imagePreview() {
+        return imagePreview;
+      },
+
+      set imagePreview(v) {
+        imagePreview = v;
+      },
+
+      get file() {
+        return file;
+      },
+
+      set file(v) {
+        file = v;
+      },
+
       onFileSelected: onFileSelected,
       deleteRow: deleteRow,
-      is_editing: is_editing,
+
+      get is_editing() {
+        return is_editing;
+      },
+
+      set is_editing(v) {
+        is_editing = v;
+      },
+
       editRow: editRow,
       selectCategory: selectCategory,
       selectDestination: selectDestination,
       onMounted: vue__WEBPACK_IMPORTED_MODULE_0__.onMounted,
       reactive: vue__WEBPACK_IMPORTED_MODULE_0__.reactive,
       ref: vue__WEBPACK_IMPORTED_MODULE_0__.ref,
-      useHotels: _composables_hotels__WEBPACK_IMPORTED_MODULE_1__["default"],
-      useCategories: _composables_categories__WEBPACK_IMPORTED_MODULE_2__["default"],
-      useDestinations: _composables_destinations__WEBPACK_IMPORTED_MODULE_3__["default"],
+
+      get useHotels() {
+        return _composables_hotels__WEBPACK_IMPORTED_MODULE_1__["default"];
+      },
+
+      get useCategories() {
+        return _composables_categories__WEBPACK_IMPORTED_MODULE_2__["default"];
+      },
+
+      get useDestinations() {
+        return _composables_destinations__WEBPACK_IMPORTED_MODULE_3__["default"];
+      },
+
       SearchableDropdown: _components_SearchableDropdown_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
       ProgressBar: _components_ProgressBar_vue__WEBPACK_IMPORTED_MODULE_5__["default"],
-      UploadImages: vue_upload_drop_images__WEBPACK_IMPORTED_MODULE_6__["default"]
+
+      get UploadImages() {
+        return vue_upload_drop_images__WEBPACK_IMPORTED_MODULE_6__["default"];
+      }
+
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,

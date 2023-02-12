@@ -84,27 +84,40 @@
         </div>
         <!-- last layer -->
         <div class="w-full border-t border-b border-blue-500">
+            <h4 class="text-white mt-4 text-center">{{ $t("we_accept") }}</h4>
             <div
                 class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 xl:grid-cols-6 py-3 justify-center border-gray-600 max-w-6xl mx-auto"
             >
-                <router-link class="text-white text-center" to="#"
-                    >First Link</router-link
-                >
-                <router-link class="text-white text-center" to="#"
-                    >Second Link</router-link
-                >
-                <router-link class="text-white text-center" to="#"
-                    >Third Link</router-link
-                >
-                <router-link class="text-white text-center" to="#"
-                    >Fourth Link</router-link
-                >
-                <router-link class="text-white text-center" to="#"
-                    >Fifth Link</router-link
-                >
-                <router-link class="text-white text-center" to="#"
-                    >Sixth Link</router-link
-                >
+                <img
+                    class="rounded h-12"
+                    src="/images/payment/visa.jpg"
+                    alt="Visa"
+                />
+                <img
+                    class="rounded h-12"
+                    src="/images/payment/mastercard.jpg"
+                    alt="Mastercard"
+                />
+                <img
+                    class="rounded h-12"
+                    src="/images/payment/american_express.jpg"
+                    alt="American Express"
+                />
+                <img
+                    class="rounded h-12 bg-white w-20"
+                    src="/images/payment/union-pay.png"
+                    alt="Union pay"
+                />
+                <img
+                    class="rounded h-12"
+                    src="/images/payment/google_pay.jpg"
+                    alt="Google Pay"
+                />
+                <img
+                    class="rounded h-12"
+                    src="/images/payment/apple_pay.jpg"
+                    alt="Apple pay"
+                />
             </div>
         </div>
         <div class="w-full py-3 text-center text-white">

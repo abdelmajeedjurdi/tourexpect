@@ -200,10 +200,39 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       route: route,
       router: router,
       maxSize: maxSize,
-      is_sending: is_sending,
-      application_forms: application_forms,
-      lang: lang,
-      visa_options: visa_options,
+
+      get is_sending() {
+        return is_sending;
+      },
+
+      set is_sending(v) {
+        is_sending = v;
+      },
+
+      get application_forms() {
+        return application_forms;
+      },
+
+      set application_forms(v) {
+        application_forms = v;
+      },
+
+      get lang() {
+        return lang;
+      },
+
+      set lang(v) {
+        lang = v;
+      },
+
+      get visa_options() {
+        return visa_options;
+      },
+
+      set visa_options(v) {
+        visa_options = v;
+      },
+
       validateSize: validateSize,
       onFileSelected: onFileSelected,
       submit: submit,
@@ -213,11 +242,27 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       inject: vue__WEBPACK_IMPORTED_MODULE_0__.inject,
       onBeforeMount: vue__WEBPACK_IMPORTED_MODULE_0__.onBeforeMount,
       onMounted: vue__WEBPACK_IMPORTED_MODULE_0__.onMounted,
-      useGeneral: _composables_general__WEBPACK_IMPORTED_MODULE_1__["default"],
-      useVisas: _composables_visas__WEBPACK_IMPORTED_MODULE_2__["default"],
-      useQuery: vue_router__WEBPACK_IMPORTED_MODULE_3__.useQuery,
-      useRoute: vue_router__WEBPACK_IMPORTED_MODULE_3__.useRoute,
-      useRouter: vue_router__WEBPACK_IMPORTED_MODULE_3__.useRouter
+
+      get useGeneral() {
+        return _composables_general__WEBPACK_IMPORTED_MODULE_1__["default"];
+      },
+
+      get useVisas() {
+        return _composables_visas__WEBPACK_IMPORTED_MODULE_2__["default"];
+      },
+
+      get useQuery() {
+        return vue_router__WEBPACK_IMPORTED_MODULE_3__.useQuery;
+      },
+
+      get useRoute() {
+        return vue_router__WEBPACK_IMPORTED_MODULE_3__.useRoute;
+      },
+
+      get useRouter() {
+        return vue_router__WEBPACK_IMPORTED_MODULE_3__.useRouter;
+      }
+
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,
@@ -262,7 +307,7 @@ var _hoisted_5 = {
 
 var _hoisted_6 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-    "class": "bg-main-orange py-2 text-center uppercase text-white"
+    "class": "bg-main-blue py-2 text-center uppercase text-white"
   }, " personal details ", -1
   /* HOISTED */
   );
@@ -275,66 +320,10 @@ var _hoisted_8 = {
   "class": "grid gap-2 sm:grid-cols-2"
 };
 var _hoisted_9 = {
-  "class": ""
-};
-
-var _hoisted_10 = /*#__PURE__*/_withScopeId(function () {
-  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-    "for": "name",
-    "class": "mb-2 block text-sm font-medium text-gray-900"
-  }, "Your Name", -1
-  /* HOISTED */
-  );
-});
-
-var _hoisted_11 = ["onUpdate:modelValue"];
-var _hoisted_12 = {
-  "class": ""
-};
-
-var _hoisted_13 = /*#__PURE__*/_withScopeId(function () {
-  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-    "for": "surname",
-    "class": "mb-2 block text-sm font-medium text-gray-900"
-  }, "Surname", -1
-  /* HOISTED */
-  );
-});
-
-var _hoisted_14 = ["onUpdate:modelValue"];
-var _hoisted_15 = {
-  "class": ""
-};
-
-var _hoisted_16 = /*#__PURE__*/_withScopeId(function () {
-  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-    "for": "email",
-    "class": "mb-2 block text-sm font-medium text-gray-900"
-  }, "Your email", -1
-  /* HOISTED */
-  );
-});
-
-var _hoisted_17 = ["onUpdate:modelValue"];
-var _hoisted_18 = {
-  "class": ""
-};
-
-var _hoisted_19 = /*#__PURE__*/_withScopeId(function () {
-  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-    "for": "phone",
-    "class": "mb-2 block text-sm font-medium text-gray-900"
-  }, "Mobile / Whatsapp", -1
-  /* HOISTED */
-  );
-});
-
-var _hoisted_20 = ["onUpdate:modelValue"];
-var _hoisted_21 = {
   "class": "mt-1"
 };
 
-var _hoisted_22 = /*#__PURE__*/_withScopeId(function () {
+var _hoisted_10 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
     "for": "title_en",
     "class": "block text-sm text-gray-800 font-bold"
@@ -345,19 +334,19 @@ var _hoisted_22 = /*#__PURE__*/_withScopeId(function () {
   );
 });
 
-var _hoisted_23 = {
+var _hoisted_11 = {
   "class": "mt-1"
 };
-var _hoisted_24 = ["onUpdate:modelValue"];
+var _hoisted_12 = ["onUpdate:modelValue"];
 
-var _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<option value=\"Afghanistan\" data-v-aebb3f34> Afghanistan </option><option value=\"Albania\" data-v-aebb3f34>Albania</option><option value=\"Algeria\" data-v-aebb3f34>Algeria</option><option value=\"American Samoa\" data-v-aebb3f34> American Samoa </option><option value=\"Andorra\" data-v-aebb3f34>Andorra</option><option value=\"Angola\" data-v-aebb3f34>Angola</option><option value=\"Anguilla\" data-v-aebb3f34> Anguilla </option><option value=\"Antartica\" data-v-aebb3f34> Antarctica </option><option value=\"Antigua and Barbuda\" data-v-aebb3f34> Antigua and Barbuda </option><option value=\"Argentina\" data-v-aebb3f34> Argentina </option><option value=\"Armenia\" data-v-aebb3f34>Armenia</option><option value=\"Aruba\" data-v-aebb3f34>Aruba</option><option value=\"Australia\" data-v-aebb3f34> Australia </option><option value=\"Austria\" data-v-aebb3f34>Austria</option><option value=\"Azerbaijan\" data-v-aebb3f34> Azerbaijan </option><option value=\"Bahamas\" data-v-aebb3f34>Bahamas</option><option value=\"Bahrain\" data-v-aebb3f34>Bahrain</option><option value=\"Bangladesh\" data-v-aebb3f34> Bangladesh </option><option value=\"Barbados\" data-v-aebb3f34> Barbados </option><option value=\"Belarus\" data-v-aebb3f34>Belarus</option><option value=\"Belgium\" data-v-aebb3f34>Belgium</option><option value=\"Belize\" data-v-aebb3f34>Belize</option><option value=\"Benin\" data-v-aebb3f34>Benin</option><option value=\"Bermuda\" data-v-aebb3f34>Bermuda</option><option value=\"Bhutan\" data-v-aebb3f34>Bhutan</option><option value=\"Bolivia\" data-v-aebb3f34>Bolivia</option><option value=\"Bosnia and Herzegowina\" data-v-aebb3f34> Bosnia and Herzegowina </option><option value=\"Botswana\" data-v-aebb3f34> Botswana </option><option value=\"Bouvet Island\" data-v-aebb3f34> Bouvet Island </option><option value=\"Brazil\" data-v-aebb3f34>Brazil</option><option value=\"British Indian Ocean Territory\" data-v-aebb3f34> British Indian Ocean Territory </option><option value=\"Brunei Darussalam\" data-v-aebb3f34> Brunei Darussalam </option><option value=\"Bulgaria\" data-v-aebb3f34> Bulgaria </option><option value=\"Burkina Faso\" data-v-aebb3f34> Burkina Faso </option><option value=\"Burundi\" data-v-aebb3f34>Burundi</option><option value=\"Cambodia\" data-v-aebb3f34> Cambodia </option><option value=\"Cameroon\" data-v-aebb3f34> Cameroon </option><option value=\"Canada\" data-v-aebb3f34>Canada</option><option value=\"Cape Verde\" data-v-aebb3f34> Cape Verde </option><option value=\"Cayman Islands\" data-v-aebb3f34> Cayman Islands </option><option value=\"Central African Republic\" data-v-aebb3f34> Central African Republic </option><option value=\"Chad\" data-v-aebb3f34>Chad</option><option value=\"Chile\" data-v-aebb3f34>Chile</option><option value=\"China\" data-v-aebb3f34>China</option><option value=\"Christmas Island\" data-v-aebb3f34> Christmas Island </option><option value=\"Cocos Islands\" data-v-aebb3f34> Cocos (Keeling) Islands </option><option value=\"Colombia\" data-v-aebb3f34> Colombia </option><option value=\"Comoros\" data-v-aebb3f34>Comoros</option><option value=\"Congo\" data-v-aebb3f34>Congo</option><option value=\"Congo\" data-v-aebb3f34> Congo, the Democratic Republic of the </option><option value=\"Cook Islands\" data-v-aebb3f34> Cook Islands </option><option value=\"Costa Rica\" data-v-aebb3f34> Costa Rica </option><option value=\"Cota D&#39;Ivoire\" data-v-aebb3f34> Cote d&#39;Ivoire </option><option value=\"Croatia\" data-v-aebb3f34> Croatia (Hrvatska) </option><option value=\"Cuba\" data-v-aebb3f34>Cuba</option><option value=\"Cyprus\" data-v-aebb3f34>Cyprus</option><option value=\"Czech Republic\" data-v-aebb3f34> Czech Republic </option><option value=\"Denmark\" data-v-aebb3f34>Denmark</option><option value=\"Djibouti\" data-v-aebb3f34> Djibouti </option><option value=\"Dominica\" data-v-aebb3f34> Dominica </option><option value=\"Dominican Republic\" data-v-aebb3f34> Dominican Republic </option><option value=\"East Timor\" data-v-aebb3f34> East Timor </option><option value=\"Ecuador\" data-v-aebb3f34>Ecuador</option><option value=\"Egypt\" data-v-aebb3f34>Egypt</option><option value=\"El Salvador\" data-v-aebb3f34> El Salvador </option><option value=\"Equatorial Guinea\" data-v-aebb3f34> Equatorial Guinea </option><option value=\"Eritrea\" data-v-aebb3f34>Eritrea</option><option value=\"Estonia\" data-v-aebb3f34>Estonia</option><option value=\"Ethiopia\" data-v-aebb3f34> Ethiopia </option><option value=\"Falkland Islands\" data-v-aebb3f34> Falkland Islands (Malvinas) </option><option value=\"Faroe Islands\" data-v-aebb3f34> Faroe Islands </option><option value=\"Fiji\" data-v-aebb3f34>Fiji</option><option value=\"Finland\" data-v-aebb3f34>Finland</option><option value=\"France\" data-v-aebb3f34>France</option><option value=\"France Metropolitan\" data-v-aebb3f34> France, Metropolitan </option><option value=\"French Guiana\" data-v-aebb3f34> French Guiana </option><option value=\"French Polynesia\" data-v-aebb3f34> French Polynesia </option><option value=\"French Southern Territories\" data-v-aebb3f34> French Southern Territories </option><option value=\"Gabon\" data-v-aebb3f34>Gabon</option><option value=\"Gambia\" data-v-aebb3f34>Gambia</option><option value=\"Georgia\" data-v-aebb3f34>Georgia</option><option value=\"Germany\" data-v-aebb3f34>Germany</option><option value=\"Ghana\" data-v-aebb3f34>Ghana</option><option value=\"Gibraltar\" data-v-aebb3f34> Gibraltar </option><option value=\"Greece\" data-v-aebb3f34>Greece</option><option value=\"Greenland\" data-v-aebb3f34> Greenland </option><option value=\"Grenada\" data-v-aebb3f34>Grenada</option><option value=\"Guadeloupe\" data-v-aebb3f34> Guadeloupe </option><option value=\"Guam\" data-v-aebb3f34>Guam</option><option value=\"Guatemala\" data-v-aebb3f34> Guatemala </option><option value=\"Guinea\" data-v-aebb3f34>Guinea</option><option value=\"Guinea-Bissau\" data-v-aebb3f34> Guinea-Bissau </option><option value=\"Guyana\" data-v-aebb3f34>Guyana</option><option value=\"Haiti\" data-v-aebb3f34>Haiti</option><option value=\"Heard and McDonald Islands\" data-v-aebb3f34> Heard and Mc Donald Islands </option><option value=\"Holy See\" data-v-aebb3f34> Holy See (Vatican City State) </option><option value=\"Honduras\" data-v-aebb3f34> Honduras </option><option value=\"Hong Kong\" data-v-aebb3f34> Hong Kong </option><option value=\"Hungary\" data-v-aebb3f34>Hungary</option><option value=\"Iceland\" data-v-aebb3f34>Iceland</option><option value=\"India\" data-v-aebb3f34>India</option><option value=\"Indonesia\" data-v-aebb3f34> Indonesia </option><option value=\"Iran\" data-v-aebb3f34> Iran (Islamic Republic of) </option><option value=\"Iraq\" data-v-aebb3f34>Iraq</option><option value=\"Ireland\" data-v-aebb3f34>Ireland</option><option value=\"Israel\" data-v-aebb3f34>Israel</option><option value=\"Italy\" data-v-aebb3f34>Italy</option><option value=\"Jamaica\" data-v-aebb3f34>Jamaica</option><option value=\"Japan\" data-v-aebb3f34>Japan</option><option value=\"Jordan\" data-v-aebb3f34>Jordan</option><option value=\"Kazakhstan\" data-v-aebb3f34> Kazakhstan </option><option value=\"Kenya\" data-v-aebb3f34>Kenya</option><option value=\"Kiribati\" data-v-aebb3f34> Kiribati </option><option value=\"Democratic People&#39;s Republic of Korea\" data-v-aebb3f34> Korea, Democratic People&#39;s Republic of </option><option value=\"Korea\" data-v-aebb3f34> Korea, Republic of </option><option value=\"Kuwait\" data-v-aebb3f34>Kuwait</option><option value=\"Kyrgyzstan\" data-v-aebb3f34> Kyrgyzstan </option><option value=\"Lao\" data-v-aebb3f34> Lao People&#39;s Democratic Republic </option><option value=\"Latvia\" data-v-aebb3f34>Latvia</option><option value=\"Lebanon\" data-v-aebb3f34>Lebanon</option><option value=\"Lesotho\" data-v-aebb3f34>Lesotho</option><option value=\"Liberia\" data-v-aebb3f34>Liberia</option><option value=\"Libyan Arab Jamahiriya\" data-v-aebb3f34> Libyan Arab Jamahiriya </option><option value=\"Liechtenstein\" data-v-aebb3f34> Liechtenstein </option><option value=\"Lithuania\" data-v-aebb3f34> Lithuania </option><option value=\"Luxembourg\" data-v-aebb3f34> Luxembourg </option><option value=\"Macau\" data-v-aebb3f34>Macau</option><option value=\"Macedonia\" data-v-aebb3f34> Macedonia, The Former Yugoslav Republic of </option><option value=\"Madagascar\" data-v-aebb3f34> Madagascar </option><option value=\"Malawi\" data-v-aebb3f34>Malawi</option><option value=\"Malaysia\" data-v-aebb3f34> Malaysia </option><option value=\"Maldives\" data-v-aebb3f34> Maldives </option><option value=\"Mali\" data-v-aebb3f34>Mali</option><option value=\"Malta\" data-v-aebb3f34>Malta</option><option value=\"Marshall Islands\" data-v-aebb3f34> Marshall Islands </option><option value=\"Martinique\" data-v-aebb3f34> Martinique </option><option value=\"Mauritania\" data-v-aebb3f34> Mauritania </option><option value=\"Mauritius\" data-v-aebb3f34> Mauritius </option><option value=\"Mayotte\" data-v-aebb3f34>Mayotte</option><option value=\"Mexico\" data-v-aebb3f34>Mexico</option><option value=\"Micronesia\" data-v-aebb3f34> Micronesia, Federated States of </option><option value=\"Moldova\" data-v-aebb3f34> Moldova, Republic of </option><option value=\"Monaco\" data-v-aebb3f34>Monaco</option><option value=\"Mongolia\" data-v-aebb3f34> Mongolia </option><option value=\"Montserrat\" data-v-aebb3f34> Montserrat </option><option value=\"Morocco\" data-v-aebb3f34>Morocco</option><option value=\"Mozambique\" data-v-aebb3f34> Mozambique </option><option value=\"Myanmar\" data-v-aebb3f34>Myanmar</option><option value=\"Namibia\" data-v-aebb3f34>Namibia</option><option value=\"Nauru\" data-v-aebb3f34>Nauru</option><option value=\"Nepal\" data-v-aebb3f34>Nepal</option><option value=\"Netherlands\" data-v-aebb3f34> Netherlands </option><option value=\"Netherlands Antilles\" data-v-aebb3f34> Netherlands Antilles </option><option value=\"New Caledonia\" data-v-aebb3f34> New Caledonia </option><option value=\"New Zealand\" data-v-aebb3f34> New Zealand </option><option value=\"Nicaragua\" data-v-aebb3f34> Nicaragua </option><option value=\"Niger\" data-v-aebb3f34>Niger</option><option value=\"Nigeria\" data-v-aebb3f34>Nigeria</option><option value=\"Niue\" data-v-aebb3f34>Niue</option><option value=\"Norfolk Island\" data-v-aebb3f34> Norfolk Island </option><option value=\"Northern Mariana Islands\" data-v-aebb3f34> Northern Mariana Islands </option><option value=\"Norway\" data-v-aebb3f34>Norway</option><option value=\"Oman\" data-v-aebb3f34>Oman</option><option value=\"Pakistan\" data-v-aebb3f34> Pakistan </option><option value=\"Palau\" data-v-aebb3f34>Palau</option><option value=\"Panama\" data-v-aebb3f34>Panama</option><option value=\"Papua New Guinea\" data-v-aebb3f34> Papua New Guinea </option><option value=\"Paraguay\" data-v-aebb3f34> Paraguay </option><option value=\"Peru\" data-v-aebb3f34>Peru</option><option value=\"Philippines\" data-v-aebb3f34> Philippines </option><option value=\"Pitcairn\" data-v-aebb3f34> Pitcairn </option><option value=\"Poland\" data-v-aebb3f34>Poland</option><option value=\"Portugal\" data-v-aebb3f34> Portugal </option><option value=\"Puerto Rico\" data-v-aebb3f34> Puerto Rico </option><option value=\"Qatar\" data-v-aebb3f34>Qatar</option><option value=\"Reunion\" data-v-aebb3f34>Reunion</option><option value=\"Romania\" data-v-aebb3f34>Romania</option><option value=\"Russia\" data-v-aebb3f34> Russian Federation </option><option value=\"Rwanda\" data-v-aebb3f34>Rwanda</option><option value=\"Saint Kitts and Nevis\" data-v-aebb3f34> Saint Kitts and Nevis </option><option value=\"Saint LUCIA\" data-v-aebb3f34> Saint LUCIA </option><option value=\"Saint Vincent\" data-v-aebb3f34> Saint Vincent and the Grenadines </option><option value=\"Samoa\" data-v-aebb3f34>Samoa</option><option value=\"San Marino\" data-v-aebb3f34> San Marino </option><option value=\"Sao Tome and Principe\" data-v-aebb3f34> Sao Tome and Principe </option><option value=\"Saudi Arabia\" data-v-aebb3f34> Saudi Arabia </option><option value=\"Senegal\" data-v-aebb3f34>Senegal</option><option value=\"Seychelles\" data-v-aebb3f34> Seychelles </option><option value=\"Sierra\" data-v-aebb3f34> Sierra Leone </option><option value=\"Singapore\" data-v-aebb3f34> Singapore </option><option value=\"Slovakia\" data-v-aebb3f34> Slovakia (Slovak Republic) </option><option value=\"Slovenia\" data-v-aebb3f34> Slovenia </option><option value=\"Solomon Islands\" data-v-aebb3f34> Solomon Islands </option><option value=\"Somalia\" data-v-aebb3f34>Somalia</option><option value=\"South Africa\" data-v-aebb3f34> South Africa </option><option value=\"South Georgia\" data-v-aebb3f34> South Georgia and the South Sandwich Islands </option><option value=\"Span\" data-v-aebb3f34>Spain</option><option value=\"SriLanka\" data-v-aebb3f34> Sri Lanka </option><option value=\"St. Helena\" data-v-aebb3f34> St. Helena </option><option value=\"St. Pierre and Miguelon\" data-v-aebb3f34> St. Pierre and Miquelon </option><option value=\"Sudan\" data-v-aebb3f34>Sudan</option><option value=\"Suriname\" data-v-aebb3f34> Suriname </option><option value=\"Svalbard\" data-v-aebb3f34> Svalbard and Jan Mayen Islands </option><option value=\"Swaziland\" data-v-aebb3f34> Swaziland </option><option value=\"Sweden\" data-v-aebb3f34>Sweden</option><option value=\"Switzerland\" data-v-aebb3f34> Switzerland </option><option value=\"Syria\" data-v-aebb3f34> Syrian Arab Republic </option><option value=\"Taiwan\" data-v-aebb3f34> Taiwan, Province of China </option><option value=\"Tajikistan\" data-v-aebb3f34> Tajikistan </option><option value=\"Tanzania\" data-v-aebb3f34> Tanzania, United Republic of </option><option value=\"Thailand\" data-v-aebb3f34> Thailand </option><option value=\"Togo\" data-v-aebb3f34>Togo</option><option value=\"Tokelau\" data-v-aebb3f34>Tokelau</option><option value=\"Tonga\" data-v-aebb3f34>Tonga</option><option value=\"Trinidad and Tobago\" data-v-aebb3f34> Trinidad and Tobago </option><option value=\"Tunisia\" data-v-aebb3f34>Tunisia</option><option value=\"Turkey\" data-v-aebb3f34>Turkey</option><option value=\"Turkmenistan\" data-v-aebb3f34> Turkmenistan </option><option value=\"Turks and Caicos\" data-v-aebb3f34> Turks and Caicos Islands </option><option value=\"Tuvalu\" data-v-aebb3f34>Tuvalu</option><option value=\"Uganda\" data-v-aebb3f34>Uganda</option><option value=\"Ukraine\" data-v-aebb3f34>Ukraine</option><option value=\"United Arab Emirates\" data-v-aebb3f34> United Arab Emirates </option><option value=\"United Kingdom\" data-v-aebb3f34> United Kingdom </option><option value=\"United States\" data-v-aebb3f34> United States </option><option value=\"United States Minor Outlying Islands\" data-v-aebb3f34> United States Minor Outlying Islands </option><option value=\"Uruguay\" data-v-aebb3f34>Uruguay</option><option value=\"Uzbekistan\" data-v-aebb3f34> Uzbekistan </option><option value=\"Vanuatu\" data-v-aebb3f34>Vanuatu</option><option value=\"Venezuela\" data-v-aebb3f34> Venezuela </option><option value=\"Vietnam\" data-v-aebb3f34> Viet Nam </option><option value=\"Virgin Islands (British)\" data-v-aebb3f34> Virgin Islands (British) </option><option value=\"Virgin Islands (U.S)\" data-v-aebb3f34> Virgin Islands (U.S.) </option><option value=\"Wallis and Futana Islands\" data-v-aebb3f34> Wallis and Futuna Islands </option><option value=\"Western Sahara\" data-v-aebb3f34> Western Sahara </option><option value=\"Yemen\" data-v-aebb3f34>Yemen</option><option value=\"Serbia\" data-v-aebb3f34>Serbia</option><option value=\"Zambia\" data-v-aebb3f34>Zambia</option><option value=\"Zimbabwe\" data-v-aebb3f34> Zimbabwe </option>", 239);
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<option value=\"Afghanistan\" data-v-aebb3f34> Afghanistan </option><option value=\"Albania\" data-v-aebb3f34>Albania</option><option value=\"Algeria\" data-v-aebb3f34>Algeria</option><option value=\"American Samoa\" data-v-aebb3f34> American Samoa </option><option value=\"Andorra\" data-v-aebb3f34>Andorra</option><option value=\"Angola\" data-v-aebb3f34>Angola</option><option value=\"Anguilla\" data-v-aebb3f34> Anguilla </option><option value=\"Antartica\" data-v-aebb3f34> Antarctica </option><option value=\"Antigua and Barbuda\" data-v-aebb3f34> Antigua and Barbuda </option><option value=\"Argentina\" data-v-aebb3f34> Argentina </option><option value=\"Armenia\" data-v-aebb3f34>Armenia</option><option value=\"Aruba\" data-v-aebb3f34>Aruba</option><option value=\"Australia\" data-v-aebb3f34> Australia </option><option value=\"Austria\" data-v-aebb3f34>Austria</option><option value=\"Azerbaijan\" data-v-aebb3f34> Azerbaijan </option><option value=\"Bahamas\" data-v-aebb3f34>Bahamas</option><option value=\"Bahrain\" data-v-aebb3f34>Bahrain</option><option value=\"Bangladesh\" data-v-aebb3f34> Bangladesh </option><option value=\"Barbados\" data-v-aebb3f34> Barbados </option><option value=\"Belarus\" data-v-aebb3f34>Belarus</option><option value=\"Belgium\" data-v-aebb3f34>Belgium</option><option value=\"Belize\" data-v-aebb3f34>Belize</option><option value=\"Benin\" data-v-aebb3f34>Benin</option><option value=\"Bermuda\" data-v-aebb3f34>Bermuda</option><option value=\"Bhutan\" data-v-aebb3f34>Bhutan</option><option value=\"Bolivia\" data-v-aebb3f34>Bolivia</option><option value=\"Bosnia and Herzegowina\" data-v-aebb3f34> Bosnia and Herzegowina </option><option value=\"Botswana\" data-v-aebb3f34> Botswana </option><option value=\"Bouvet Island\" data-v-aebb3f34> Bouvet Island </option><option value=\"Brazil\" data-v-aebb3f34>Brazil</option><option value=\"British Indian Ocean Territory\" data-v-aebb3f34> British Indian Ocean Territory </option><option value=\"Brunei Darussalam\" data-v-aebb3f34> Brunei Darussalam </option><option value=\"Bulgaria\" data-v-aebb3f34> Bulgaria </option><option value=\"Burkina Faso\" data-v-aebb3f34> Burkina Faso </option><option value=\"Burundi\" data-v-aebb3f34>Burundi</option><option value=\"Cambodia\" data-v-aebb3f34> Cambodia </option><option value=\"Cameroon\" data-v-aebb3f34> Cameroon </option><option value=\"Canada\" data-v-aebb3f34>Canada</option><option value=\"Cape Verde\" data-v-aebb3f34> Cape Verde </option><option value=\"Cayman Islands\" data-v-aebb3f34> Cayman Islands </option><option value=\"Central African Republic\" data-v-aebb3f34> Central African Republic </option><option value=\"Chad\" data-v-aebb3f34>Chad</option><option value=\"Chile\" data-v-aebb3f34>Chile</option><option value=\"China\" data-v-aebb3f34>China</option><option value=\"Christmas Island\" data-v-aebb3f34> Christmas Island </option><option value=\"Cocos Islands\" data-v-aebb3f34> Cocos (Keeling) Islands </option><option value=\"Colombia\" data-v-aebb3f34> Colombia </option><option value=\"Comoros\" data-v-aebb3f34>Comoros</option><option value=\"Congo\" data-v-aebb3f34>Congo</option><option value=\"Congo\" data-v-aebb3f34> Congo, the Democratic Republic of the </option><option value=\"Cook Islands\" data-v-aebb3f34> Cook Islands </option><option value=\"Costa Rica\" data-v-aebb3f34> Costa Rica </option><option value=\"Cota D&#39;Ivoire\" data-v-aebb3f34> Cote d&#39;Ivoire </option><option value=\"Croatia\" data-v-aebb3f34> Croatia (Hrvatska) </option><option value=\"Cuba\" data-v-aebb3f34>Cuba</option><option value=\"Cyprus\" data-v-aebb3f34>Cyprus</option><option value=\"Czech Republic\" data-v-aebb3f34> Czech Republic </option><option value=\"Denmark\" data-v-aebb3f34>Denmark</option><option value=\"Djibouti\" data-v-aebb3f34> Djibouti </option><option value=\"Dominica\" data-v-aebb3f34> Dominica </option><option value=\"Dominican Republic\" data-v-aebb3f34> Dominican Republic </option><option value=\"East Timor\" data-v-aebb3f34> East Timor </option><option value=\"Ecuador\" data-v-aebb3f34>Ecuador</option><option value=\"Egypt\" data-v-aebb3f34>Egypt</option><option value=\"El Salvador\" data-v-aebb3f34> El Salvador </option><option value=\"Equatorial Guinea\" data-v-aebb3f34> Equatorial Guinea </option><option value=\"Eritrea\" data-v-aebb3f34>Eritrea</option><option value=\"Estonia\" data-v-aebb3f34>Estonia</option><option value=\"Ethiopia\" data-v-aebb3f34> Ethiopia </option><option value=\"Falkland Islands\" data-v-aebb3f34> Falkland Islands (Malvinas) </option><option value=\"Faroe Islands\" data-v-aebb3f34> Faroe Islands </option><option value=\"Fiji\" data-v-aebb3f34>Fiji</option><option value=\"Finland\" data-v-aebb3f34>Finland</option><option value=\"France\" data-v-aebb3f34>France</option><option value=\"France Metropolitan\" data-v-aebb3f34> France, Metropolitan </option><option value=\"French Guiana\" data-v-aebb3f34> French Guiana </option><option value=\"French Polynesia\" data-v-aebb3f34> French Polynesia </option><option value=\"French Southern Territories\" data-v-aebb3f34> French Southern Territories </option><option value=\"Gabon\" data-v-aebb3f34>Gabon</option><option value=\"Gambia\" data-v-aebb3f34>Gambia</option><option value=\"Georgia\" data-v-aebb3f34>Georgia</option><option value=\"Germany\" data-v-aebb3f34>Germany</option><option value=\"Ghana\" data-v-aebb3f34>Ghana</option><option value=\"Gibraltar\" data-v-aebb3f34> Gibraltar </option><option value=\"Greece\" data-v-aebb3f34>Greece</option><option value=\"Greenland\" data-v-aebb3f34> Greenland </option><option value=\"Grenada\" data-v-aebb3f34>Grenada</option><option value=\"Guadeloupe\" data-v-aebb3f34> Guadeloupe </option><option value=\"Guam\" data-v-aebb3f34>Guam</option><option value=\"Guatemala\" data-v-aebb3f34> Guatemala </option><option value=\"Guinea\" data-v-aebb3f34>Guinea</option><option value=\"Guinea-Bissau\" data-v-aebb3f34> Guinea-Bissau </option><option value=\"Guyana\" data-v-aebb3f34>Guyana</option><option value=\"Haiti\" data-v-aebb3f34>Haiti</option><option value=\"Heard and McDonald Islands\" data-v-aebb3f34> Heard and Mc Donald Islands </option><option value=\"Holy See\" data-v-aebb3f34> Holy See (Vatican City State) </option><option value=\"Honduras\" data-v-aebb3f34> Honduras </option><option value=\"Hong Kong\" data-v-aebb3f34> Hong Kong </option><option value=\"Hungary\" data-v-aebb3f34>Hungary</option><option value=\"Iceland\" data-v-aebb3f34>Iceland</option><option value=\"India\" data-v-aebb3f34>India</option><option value=\"Indonesia\" data-v-aebb3f34> Indonesia </option><option value=\"Iran\" data-v-aebb3f34> Iran (Islamic Republic of) </option><option value=\"Iraq\" data-v-aebb3f34>Iraq</option><option value=\"Ireland\" data-v-aebb3f34>Ireland</option><option value=\"Israel\" data-v-aebb3f34>Israel</option><option value=\"Italy\" data-v-aebb3f34>Italy</option><option value=\"Jamaica\" data-v-aebb3f34>Jamaica</option><option value=\"Japan\" data-v-aebb3f34>Japan</option><option value=\"Jordan\" data-v-aebb3f34>Jordan</option><option value=\"Kazakhstan\" data-v-aebb3f34> Kazakhstan </option><option value=\"Kenya\" data-v-aebb3f34>Kenya</option><option value=\"Kiribati\" data-v-aebb3f34> Kiribati </option><option value=\"Democratic People&#39;s Republic of Korea\" data-v-aebb3f34> Korea, Democratic People&#39;s Republic of </option><option value=\"Korea\" data-v-aebb3f34> Korea, Republic of </option><option value=\"Kuwait\" data-v-aebb3f34>Kuwait</option><option value=\"Kyrgyzstan\" data-v-aebb3f34> Kyrgyzstan </option><option value=\"Lao\" data-v-aebb3f34> Lao People&#39;s Democratic Republic </option><option value=\"Latvia\" data-v-aebb3f34>Latvia</option><option value=\"Lebanon\" data-v-aebb3f34>Lebanon</option><option value=\"Lesotho\" data-v-aebb3f34>Lesotho</option><option value=\"Liberia\" data-v-aebb3f34>Liberia</option><option value=\"Libyan Arab Jamahiriya\" data-v-aebb3f34> Libyan Arab Jamahiriya </option><option value=\"Liechtenstein\" data-v-aebb3f34> Liechtenstein </option><option value=\"Lithuania\" data-v-aebb3f34> Lithuania </option><option value=\"Luxembourg\" data-v-aebb3f34> Luxembourg </option><option value=\"Macau\" data-v-aebb3f34>Macau</option><option value=\"Macedonia\" data-v-aebb3f34> Macedonia, The Former Yugoslav Republic of </option><option value=\"Madagascar\" data-v-aebb3f34> Madagascar </option><option value=\"Malawi\" data-v-aebb3f34>Malawi</option><option value=\"Malaysia\" data-v-aebb3f34> Malaysia </option><option value=\"Maldives\" data-v-aebb3f34> Maldives </option><option value=\"Mali\" data-v-aebb3f34>Mali</option><option value=\"Malta\" data-v-aebb3f34>Malta</option><option value=\"Marshall Islands\" data-v-aebb3f34> Marshall Islands </option><option value=\"Martinique\" data-v-aebb3f34> Martinique </option><option value=\"Mauritania\" data-v-aebb3f34> Mauritania </option><option value=\"Mauritius\" data-v-aebb3f34> Mauritius </option><option value=\"Mayotte\" data-v-aebb3f34>Mayotte</option><option value=\"Mexico\" data-v-aebb3f34>Mexico</option><option value=\"Micronesia\" data-v-aebb3f34> Micronesia, Federated States of </option><option value=\"Moldova\" data-v-aebb3f34> Moldova, Republic of </option><option value=\"Monaco\" data-v-aebb3f34>Monaco</option><option value=\"Mongolia\" data-v-aebb3f34> Mongolia </option><option value=\"Montserrat\" data-v-aebb3f34> Montserrat </option><option value=\"Morocco\" data-v-aebb3f34>Morocco</option><option value=\"Mozambique\" data-v-aebb3f34> Mozambique </option><option value=\"Myanmar\" data-v-aebb3f34>Myanmar</option><option value=\"Namibia\" data-v-aebb3f34>Namibia</option><option value=\"Nauru\" data-v-aebb3f34>Nauru</option><option value=\"Nepal\" data-v-aebb3f34>Nepal</option><option value=\"Netherlands\" data-v-aebb3f34> Netherlands </option><option value=\"Netherlands Antilles\" data-v-aebb3f34> Netherlands Antilles </option><option value=\"New Caledonia\" data-v-aebb3f34> New Caledonia </option><option value=\"New Zealand\" data-v-aebb3f34> New Zealand </option><option value=\"Nicaragua\" data-v-aebb3f34> Nicaragua </option><option value=\"Niger\" data-v-aebb3f34>Niger</option><option value=\"Nigeria\" data-v-aebb3f34>Nigeria</option><option value=\"Niue\" data-v-aebb3f34>Niue</option><option value=\"Norfolk Island\" data-v-aebb3f34> Norfolk Island </option><option value=\"Northern Mariana Islands\" data-v-aebb3f34> Northern Mariana Islands </option><option value=\"Norway\" data-v-aebb3f34>Norway</option><option value=\"Oman\" data-v-aebb3f34>Oman</option><option value=\"Pakistan\" data-v-aebb3f34> Pakistan </option><option value=\"Palau\" data-v-aebb3f34>Palau</option><option value=\"Panama\" data-v-aebb3f34>Panama</option><option value=\"Papua New Guinea\" data-v-aebb3f34> Papua New Guinea </option><option value=\"Paraguay\" data-v-aebb3f34> Paraguay </option><option value=\"Peru\" data-v-aebb3f34>Peru</option><option value=\"Philippines\" data-v-aebb3f34> Philippines </option><option value=\"Pitcairn\" data-v-aebb3f34> Pitcairn </option><option value=\"Poland\" data-v-aebb3f34>Poland</option><option value=\"Portugal\" data-v-aebb3f34> Portugal </option><option value=\"Puerto Rico\" data-v-aebb3f34> Puerto Rico </option><option value=\"Qatar\" data-v-aebb3f34>Qatar</option><option value=\"Reunion\" data-v-aebb3f34>Reunion</option><option value=\"Romania\" data-v-aebb3f34>Romania</option><option value=\"Russia\" data-v-aebb3f34> Russian Federation </option><option value=\"Rwanda\" data-v-aebb3f34>Rwanda</option><option value=\"Saint Kitts and Nevis\" data-v-aebb3f34> Saint Kitts and Nevis </option><option value=\"Saint LUCIA\" data-v-aebb3f34> Saint LUCIA </option><option value=\"Saint Vincent\" data-v-aebb3f34> Saint Vincent and the Grenadines </option><option value=\"Samoa\" data-v-aebb3f34>Samoa</option><option value=\"San Marino\" data-v-aebb3f34> San Marino </option><option value=\"Sao Tome and Principe\" data-v-aebb3f34> Sao Tome and Principe </option><option value=\"Saudi Arabia\" data-v-aebb3f34> Saudi Arabia </option><option value=\"Senegal\" data-v-aebb3f34>Senegal</option><option value=\"Seychelles\" data-v-aebb3f34> Seychelles </option><option value=\"Sierra\" data-v-aebb3f34> Sierra Leone </option><option value=\"Singapore\" data-v-aebb3f34> Singapore </option><option value=\"Slovakia\" data-v-aebb3f34> Slovakia (Slovak Republic) </option><option value=\"Slovenia\" data-v-aebb3f34> Slovenia </option><option value=\"Solomon Islands\" data-v-aebb3f34> Solomon Islands </option><option value=\"Somalia\" data-v-aebb3f34>Somalia</option><option value=\"South Africa\" data-v-aebb3f34> South Africa </option><option value=\"South Georgia\" data-v-aebb3f34> South Georgia and the South Sandwich Islands </option><option value=\"Span\" data-v-aebb3f34>Spain</option><option value=\"SriLanka\" data-v-aebb3f34> Sri Lanka </option><option value=\"St. Helena\" data-v-aebb3f34> St. Helena </option><option value=\"St. Pierre and Miguelon\" data-v-aebb3f34> St. Pierre and Miquelon </option><option value=\"Sudan\" data-v-aebb3f34>Sudan</option><option value=\"Suriname\" data-v-aebb3f34> Suriname </option><option value=\"Svalbard\" data-v-aebb3f34> Svalbard and Jan Mayen Islands </option><option value=\"Swaziland\" data-v-aebb3f34> Swaziland </option><option value=\"Sweden\" data-v-aebb3f34>Sweden</option><option value=\"Switzerland\" data-v-aebb3f34> Switzerland </option><option value=\"Syria\" data-v-aebb3f34> Syrian Arab Republic </option><option value=\"Taiwan\" data-v-aebb3f34> Taiwan, Province of China </option><option value=\"Tajikistan\" data-v-aebb3f34> Tajikistan </option><option value=\"Tanzania\" data-v-aebb3f34> Tanzania, United Republic of </option><option value=\"Thailand\" data-v-aebb3f34> Thailand </option><option value=\"Togo\" data-v-aebb3f34>Togo</option><option value=\"Tokelau\" data-v-aebb3f34>Tokelau</option><option value=\"Tonga\" data-v-aebb3f34>Tonga</option><option value=\"Trinidad and Tobago\" data-v-aebb3f34> Trinidad and Tobago </option><option value=\"Tunisia\" data-v-aebb3f34>Tunisia</option><option value=\"Turkey\" data-v-aebb3f34>Turkey</option><option value=\"Turkmenistan\" data-v-aebb3f34> Turkmenistan </option><option value=\"Turks and Caicos\" data-v-aebb3f34> Turks and Caicos Islands </option><option value=\"Tuvalu\" data-v-aebb3f34>Tuvalu</option><option value=\"Uganda\" data-v-aebb3f34>Uganda</option><option value=\"Ukraine\" data-v-aebb3f34>Ukraine</option><option value=\"United Arab Emirates\" data-v-aebb3f34> United Arab Emirates </option><option value=\"United Kingdom\" data-v-aebb3f34> United Kingdom </option><option value=\"United States\" data-v-aebb3f34> United States </option><option value=\"United States Minor Outlying Islands\" data-v-aebb3f34> United States Minor Outlying Islands </option><option value=\"Uruguay\" data-v-aebb3f34>Uruguay</option><option value=\"Uzbekistan\" data-v-aebb3f34> Uzbekistan </option><option value=\"Vanuatu\" data-v-aebb3f34>Vanuatu</option><option value=\"Venezuela\" data-v-aebb3f34> Venezuela </option><option value=\"Vietnam\" data-v-aebb3f34> Viet Nam </option><option value=\"Virgin Islands (British)\" data-v-aebb3f34> Virgin Islands (British) </option><option value=\"Virgin Islands (U.S)\" data-v-aebb3f34> Virgin Islands (U.S.) </option><option value=\"Wallis and Futana Islands\" data-v-aebb3f34> Wallis and Futuna Islands </option><option value=\"Western Sahara\" data-v-aebb3f34> Western Sahara </option><option value=\"Yemen\" data-v-aebb3f34>Yemen</option><option value=\"Serbia\" data-v-aebb3f34>Serbia</option><option value=\"Zambia\" data-v-aebb3f34>Zambia</option><option value=\"Zimbabwe\" data-v-aebb3f34> Zimbabwe </option>", 239);
 
-var _hoisted_264 = [_hoisted_25];
-var _hoisted_265 = {
+var _hoisted_252 = [_hoisted_13];
+var _hoisted_253 = {
   "class": "w-full mt-1"
 };
 
-var _hoisted_266 = /*#__PURE__*/_withScopeId(function () {
+var _hoisted_254 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
     "for": "title_en",
     "class": "block text-sm text-gray-800 font-bold"
@@ -368,18 +357,74 @@ var _hoisted_266 = /*#__PURE__*/_withScopeId(function () {
   );
 });
 
-var _hoisted_267 = {
+var _hoisted_255 = {
   "class": "mt-1"
 };
-var _hoisted_268 = ["onUpdate:modelValue"];
-var _hoisted_269 = ["value"];
+var _hoisted_256 = ["onUpdate:modelValue"];
+var _hoisted_257 = ["value"];
+var _hoisted_258 = {
+  "class": ""
+};
+
+var _hoisted_259 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+    "for": "name",
+    "class": "mb-2 block text-sm font-medium text-gray-900"
+  }, "Your Name", -1
+  /* HOISTED */
+  );
+});
+
+var _hoisted_260 = ["onUpdate:modelValue"];
+var _hoisted_261 = {
+  "class": ""
+};
+
+var _hoisted_262 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+    "for": "surname",
+    "class": "mb-2 block text-sm font-medium text-gray-900"
+  }, "Surname", -1
+  /* HOISTED */
+  );
+});
+
+var _hoisted_263 = ["onUpdate:modelValue"];
+var _hoisted_264 = {
+  "class": ""
+};
+
+var _hoisted_265 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+    "for": "email",
+    "class": "mb-2 block text-sm font-medium text-gray-900"
+  }, "Your email", -1
+  /* HOISTED */
+  );
+});
+
+var _hoisted_266 = ["onUpdate:modelValue"];
+var _hoisted_267 = {
+  "class": ""
+};
+
+var _hoisted_268 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+    "for": "phone",
+    "class": "mb-2 block text-sm font-medium text-gray-900"
+  }, "Mobile / Whatsapp", -1
+  /* HOISTED */
+  );
+});
+
+var _hoisted_269 = ["onUpdate:modelValue"];
 var _hoisted_270 = {
   "class": "border"
 };
 
 var _hoisted_271 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-    "class": "bg-main-orange py-2 text-center uppercase text-white"
+    "class": "bg-main-blue py-2 text-center uppercase text-white"
   }, " passport and travel information ", -1
   /* HOISTED */
   );
@@ -425,7 +470,7 @@ var _hoisted_280 = {
 
 var _hoisted_281 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-    "class": "bg-main-orange py-2 text-center uppercase text-white"
+    "class": "bg-main-blue py-2 text-center uppercase text-white"
   }, " upload documents ", -1
   /* HOISTED */
   );
@@ -489,11 +534,7 @@ var _hoisted_291 = /*#__PURE__*/_withScopeId(function () {
   );
 });
 
-var _hoisted_292 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Remove Form ");
-
-var _hoisted_293 = [_hoisted_291, _hoisted_292];
-
-var _hoisted_294 = /*#__PURE__*/_withScopeId(function () {
+var _hoisted_292 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
     xmlns: "http://www.w3.org/2000/svg",
     fill: "none",
@@ -510,85 +551,42 @@ var _hoisted_294 = /*#__PURE__*/_withScopeId(function () {
   );
 });
 
-var _hoisted_295 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Add Application Form ");
-
-var _hoisted_296 = [_hoisted_294, _hoisted_295];
-var _hoisted_297 = {
+var _hoisted_293 = {
   key: 0,
   type: "submit",
-  "class": "hover:shadow-form rounded-md bg-main-blue m-auto h-10 w-60 text-base font-semibold text-white outline-none cursor-not-allowed"
+  "class": "hover:shadow-form rounded-full bg-main-orange m-auto h-10 w-60 text-base font-semibold text-white outline-none cursor-not-allowed"
 };
-var _hoisted_298 = {
+var _hoisted_294 = {
   key: 1,
   type: "button",
-  "class": "hover:shadow-form rounded-md bg-main-blue m-auto h-10 w-60 text-base font-semibold text-white outline-none cursor-not-allowed"
+  "class": "hover:shadow-form rounded-full bg-main-orange m-auto h-10 w-60 text-base font-semibold text-white outline-none cursor-not-allowed"
 };
 
-var _hoisted_299 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div id=\"animation\" data-v-aebb3f34><div class=\"box\" id=\"box1\" data-v-aebb3f34></div><div class=\"box\" id=\"box2\" data-v-aebb3f34></div><div class=\"box\" id=\"box3\" data-v-aebb3f34></div><div class=\"box\" id=\"box4\" data-v-aebb3f34></div></div>", 1);
+var _hoisted_295 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div id=\"animation\" data-v-aebb3f34><div class=\"box\" id=\"box1\" data-v-aebb3f34></div><div class=\"box\" id=\"box2\" data-v-aebb3f34></div><div class=\"box\" id=\"box3\" data-v-aebb3f34></div><div class=\"box\" id=\"box4\" data-v-aebb3f34></div></div>", 1);
 
-var _hoisted_300 = [_hoisted_299];
+var _hoisted_296 = [_hoisted_295];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", _hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$t($setup.props.visa.trim() + "-application-form")), 1
   /* TEXT */
   ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
     onSubmit: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)($setup.submit, ["prevent"]),
-    "class": "mx-auto w-full max-w-6xl sm:px-4 xl:px-0 space-y-8 border rounded p-2"
+    "class": "mx-auto w-full max-w-6xl sm:px-4 xl:px-0 space-y-8"
   }, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.application_forms, function (application_form, i) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
       key: i,
       "class": "space-y-4"
     }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$t("person_" + (i + 1))), 1
     /* TEXT */
-    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [_hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [_hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-      type: "text",
-      id: "name",
-      "class": "block w-full rounded border border-gray-300 bg-gray-50 p-1.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500",
-      required: "",
-      "onUpdate:modelValue": function onUpdateModelValue($event) {
-        return application_form.name = $event;
-      }
-    }, null, 8
-    /* PROPS */
-    , _hoisted_11), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, application_form.name]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [_hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-      type: "text",
-      id: "surname",
-      "class": "block w-full rounded border border-gray-300 bg-gray-50 p-1.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500",
-      required: "",
-      "onUpdate:modelValue": function onUpdateModelValue($event) {
-        return application_form.surname = $event;
-      }
-    }, null, 8
-    /* PROPS */
-    , _hoisted_14), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, application_form.surname]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [_hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-      type: "email",
-      id: "email",
-      "class": "block w-full rounded border border-gray-300 bg-gray-50 p-1.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500",
-      required: "",
-      "onUpdate:modelValue": function onUpdateModelValue($event) {
-        return application_form.email = $event;
-      }
-    }, null, 8
-    /* PROPS */
-    , _hoisted_17), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, application_form.email]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [_hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-      type: "tel",
-      id: "phone",
-      "class": "block w-full rounded border border-gray-300 bg-gray-50 p-1.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500",
-      required: "",
-      "onUpdate:modelValue": function onUpdateModelValue($event) {
-        return application_form.phone = $event;
-      }
-    }, null, 8
-    /* PROPS */
-    , _hoisted_20), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, application_form.phone]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_21, [_hoisted_22, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_23, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
+    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [_hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [_hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
       "onUpdate:modelValue": function onUpdateModelValue($event) {
         return application_form.country = $event;
       },
-      "class": "block w-full rounded border border-gray-300 bg-gray-50 p-1.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500",
+      "class": "block w-full border border-gray-300 p-1.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500",
       required: ""
-    }, _hoisted_264, 8
+    }, _hoisted_252, 8
     /* PROPS */
-    , _hoisted_24), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, application_form.country]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_265, [_hoisted_266, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_267, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
-      "class": "block w-full rounded border border-gray-300 bg-gray-50 p-1.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500",
+    , _hoisted_12), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, application_form.country]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_253, [_hoisted_254, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_255, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
+      "class": "block w-full border border-gray-300 p-1.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500",
       "onUpdate:modelValue": function onUpdateModelValue($event) {
         return application_form.visa_type = $event;
       },
@@ -601,15 +599,55 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         value: opt.visa_type
       }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(opt["visa_type"]), 9
       /* TEXT, PROPS */
-      , _hoisted_269);
+      , _hoisted_257);
     }), 128
     /* KEYED_FRAGMENT */
     ))], 8
     /* PROPS */
-    , _hoisted_268), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, application_form.visa_type]])])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_270, [_hoisted_271, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_272, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_273, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_274, [_hoisted_275, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    , _hoisted_256), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, application_form.visa_type]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_258, [_hoisted_259, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+      type: "text",
+      id: "name",
+      "class": "block w-full border border-gray-300 p-1.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500",
+      required: "",
+      "onUpdate:modelValue": function onUpdateModelValue($event) {
+        return application_form.name = $event;
+      }
+    }, null, 8
+    /* PROPS */
+    , _hoisted_260), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, application_form.name]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_261, [_hoisted_262, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+      type: "text",
+      id: "surname",
+      "class": "block w-full border border-gray-300 p-1.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500",
+      required: "",
+      "onUpdate:modelValue": function onUpdateModelValue($event) {
+        return application_form.surname = $event;
+      }
+    }, null, 8
+    /* PROPS */
+    , _hoisted_263), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, application_form.surname]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_264, [_hoisted_265, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+      type: "email",
+      id: "email",
+      "class": "block w-full border border-gray-300 p-1.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500",
+      required: "",
+      "onUpdate:modelValue": function onUpdateModelValue($event) {
+        return application_form.email = $event;
+      }
+    }, null, 8
+    /* PROPS */
+    , _hoisted_266), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, application_form.email]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_267, [_hoisted_268, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+      type: "tel",
+      id: "phone",
+      "class": "block w-full border border-gray-300 p-1.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500",
+      required: "",
+      "onUpdate:modelValue": function onUpdateModelValue($event) {
+        return application_form.phone = $event;
+      }
+    }, null, 8
+    /* PROPS */
+    , _hoisted_269), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, application_form.phone]])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_270, [_hoisted_271, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_272, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_273, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_274, [_hoisted_275, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
       type: "text",
       id: "passport_no",
-      "class": "block w-full rounded border border-gray-300 bg-gray-50 p-1.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500",
+      "class": "block w-full border border-gray-300 p-1.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500",
       required: "",
       "onUpdate:modelValue": function onUpdateModelValue($event) {
         return application_form.passport_no = $event;
@@ -619,7 +657,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     , _hoisted_276), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, application_form.passport_no]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_277, [_hoisted_278, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
       type: "date",
       id: "travel_on",
-      "class": "block w-full rounded border border-gray-300 bg-gray-50 p-1.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500",
+      "class": "block w-full border border-gray-300 p-1.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500",
       required: "",
       "onUpdate:modelValue": function onUpdateModelValue($event) {
         return application_form.travel_on = $event;
@@ -627,7 +665,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }, null, 8
     /* PROPS */
     , _hoisted_279), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, application_form.travel_on]])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_280, [_hoisted_281, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_282, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_283, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_284, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-      "class": "block w-full rounded border border-gray-300 bg-gray-50 p-1.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500",
+      "class": "block w-full border border-gray-300 p-1.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500",
       id: "passport_doc",
       max: "1024",
       type: "file",
@@ -637,7 +675,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }, null, 40
     /* PROPS, HYDRATE_EVENTS */
     , _hoisted_285)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_286, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-      "class": "block w-full rounded border border-gray-300 bg-gray-50 p-1.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500",
+      "class": "block w-full border border-gray-300 p-1.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500",
       id: "national_id",
       type: "file",
       onChange: function onChange($event) {
@@ -646,7 +684,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }, null, 40
     /* PROPS, HYDRATE_EVENTS */
     , _hoisted_287)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_288, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-      "class": "block w-full rounded border border-gray-300 bg-gray-50 p-1.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500",
+      "class": "block w-full border border-gray-300 p-1.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500",
       id: "client_photo",
       type: "file",
       onChange: function onChange($event) {
@@ -657,20 +695,20 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     , _hoisted_289)])])])]), i > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
       key: 0,
       type: "button",
-      "class": "text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800",
+      "class": "text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-full text-sm px-4 py-2.5 text-center inline-flex items-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800",
       onClick: function onClick($event) {
         return $setup.removeForm(i);
       }
-    }, _hoisted_293, 8
+    }, [_hoisted_291, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Remove Form ")], 8
     /* PROPS */
     , _hoisted_290)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]);
   }), 128
   /* KEYED_FRAGMENT */
   )), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     type: "button",
-    "class": "text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800",
+    "class": "text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm px-4 py-2.5 text-center inline-flex items-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800",
     onClick: $setup.newForm
-  }, _hoisted_296), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [!$setup.is_sending ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", _hoisted_297, " Submit and Proceed to Pay ")) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", _hoisted_298, _hoisted_300))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <router-link :to=\"`payment`\">Go to payment</router-link> ")], 40
+  }, [_hoisted_292, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Add Application Form ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [!$setup.is_sending ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", _hoisted_293, " Submit and Proceed to Pay ")) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", _hoisted_294, _hoisted_296))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <router-link :to=\"`payment`\">Go to payment</router-link> ")], 40
   /* PROPS, HYDRATE_EVENTS */
   , _hoisted_3)]);
 }
@@ -1211,7 +1249,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#animation[data-v-aebb3f34] {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n.box[data-v-aebb3f34] {\n    width: 5px;\n    height: 5px;\n    margin: 2px;\n}\n.box[data-v-aebb3f34]:nth-child(1) {\n    background: white;\n    -webkit-animation: balls-aebb3f34 1s linear infinite;\n            animation: balls-aebb3f34 1s linear infinite;\n}\n.box[data-v-aebb3f34]:nth-child(2) {\n    background: white;\n    -webkit-animation: balls-aebb3f34 1s 0.1s linear infinite;\n            animation: balls-aebb3f34 1s 0.1s linear infinite;\n}\n.box[data-v-aebb3f34]:nth-child(3) {\n    background: white;\n    -webkit-animation: balls-aebb3f34 1s 0.2s linear infinite;\n            animation: balls-aebb3f34 1s 0.2s linear infinite;\n}\n.box[data-v-aebb3f34]:nth-child(4) {\n    background: white;\n    -webkit-animation: balls-aebb3f34 1s 0.4s linear infinite;\n            animation: balls-aebb3f34 1s 0.4s linear infinite;\n}\n@-webkit-keyframes balls-aebb3f34 {\n0% {\n        transform: sclaeY(1);\n}\n50% {\n        transform: scaleY(3);\n}\n100% {\n        transform: sclaeY(1);\n}\n}\n@keyframes balls-aebb3f34 {\n0% {\n        transform: sclaeY(1);\n}\n50% {\n        transform: scaleY(3);\n}\n100% {\n        transform: sclaeY(1);\n}\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#animation[data-v-aebb3f34] {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n.box[data-v-aebb3f34] {\n    width: 5px;\n    height: 5px;\n    margin: 2px;\n}\n.box[data-v-aebb3f34]:nth-child(1) {\n    background: white;\n    animation: balls-aebb3f34 1s linear infinite;\n}\n.box[data-v-aebb3f34]:nth-child(2) {\n    background: white;\n    animation: balls-aebb3f34 1s 0.1s linear infinite;\n}\n.box[data-v-aebb3f34]:nth-child(3) {\n    background: white;\n    animation: balls-aebb3f34 1s 0.2s linear infinite;\n}\n.box[data-v-aebb3f34]:nth-child(4) {\n    background: white;\n    animation: balls-aebb3f34 1s 0.4s linear infinite;\n}\n@keyframes balls-aebb3f34 {\n0% {\n        transform: sclaeY(1);\n}\n50% {\n        transform: scaleY(3);\n}\n100% {\n        transform: sclaeY(1);\n}\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

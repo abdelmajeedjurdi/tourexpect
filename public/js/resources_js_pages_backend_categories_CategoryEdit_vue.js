@@ -197,22 +197,75 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       getCategory: getCategory,
       updateCategory: updateCategory,
       deleteProperty: deleteProperty,
-      Swal: Swal,
-      imagePreview: imagePreview,
-      live_property: live_property,
-      property: property,
+
+      get Swal() {
+        return Swal;
+      },
+
+      set Swal(v) {
+        Swal = v;
+      },
+
+      get imagePreview() {
+        return imagePreview;
+      },
+
+      set imagePreview(v) {
+        imagePreview = v;
+      },
+
+      get live_property() {
+        return live_property;
+      },
+
+      set live_property(v) {
+        live_property = v;
+      },
+
+      get property() {
+        return property;
+      },
+
+      set property(v) {
+        property = v;
+      },
+
       saveCategory: saveCategory,
-      file: file,
+
+      get file() {
+        return file;
+      },
+
+      set file(v) {
+        file = v;
+      },
+
       onFileSelected: onFileSelected,
-      is_editing: is_editing,
+
+      get is_editing() {
+        return is_editing;
+      },
+
+      set is_editing(v) {
+        is_editing = v;
+      },
+
       editRow: editRow,
       deleteRow: deleteRow,
       setProperty: setProperty,
-      useCategories: _composables_categories__WEBPACK_IMPORTED_MODULE_0__["default"],
+
+      get useCategories() {
+        return _composables_categories__WEBPACK_IMPORTED_MODULE_0__["default"];
+      },
+
       onMounted: vue__WEBPACK_IMPORTED_MODULE_1__.onMounted,
       reactive: vue__WEBPACK_IMPORTED_MODULE_1__.reactive,
       ref: vue__WEBPACK_IMPORTED_MODULE_1__.ref,
-      useSwal: _plugins_useSwal_js__WEBPACK_IMPORTED_MODULE_2__.useSwal
+
+      get useSwal() {
+        return _plugins_useSwal_js__WEBPACK_IMPORTED_MODULE_2__.useSwal;
+      }
+
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,

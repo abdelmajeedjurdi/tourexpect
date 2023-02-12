@@ -68,15 +68,45 @@ __webpack_require__.r(__webpack_exports__);
       props: props,
       slides: slides,
       break_pts: break_pts,
-      lang: lang,
-      Swiper: swiper_vue__WEBPACK_IMPORTED_MODULE_0__.Swiper,
-      SwiperSlide: swiper_vue__WEBPACK_IMPORTED_MODULE_0__.SwiperSlide,
+
+      get lang() {
+        return lang;
+      },
+
+      set lang(v) {
+        lang = v;
+      },
+
+      get Swiper() {
+        return swiper_vue__WEBPACK_IMPORTED_MODULE_0__.Swiper;
+      },
+
+      get SwiperSlide() {
+        return swiper_vue__WEBPACK_IMPORTED_MODULE_0__.SwiperSlide;
+      },
+
       TourTow: _TourTow_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
-      Navigation: swiper__WEBPACK_IMPORTED_MODULE_6__.Navigation,
-      EffectFade: swiper__WEBPACK_IMPORTED_MODULE_6__.EffectFade,
-      Pagination: swiper__WEBPACK_IMPORTED_MODULE_6__.Pagination,
-      Autoplay: swiper__WEBPACK_IMPORTED_MODULE_6__.Autoplay,
-      Virtual: swiper__WEBPACK_IMPORTED_MODULE_6__.Virtual,
+
+      get Navigation() {
+        return swiper__WEBPACK_IMPORTED_MODULE_6__.Navigation;
+      },
+
+      get EffectFade() {
+        return swiper__WEBPACK_IMPORTED_MODULE_6__.EffectFade;
+      },
+
+      get Pagination() {
+        return swiper__WEBPACK_IMPORTED_MODULE_6__.Pagination;
+      },
+
+      get Autoplay() {
+        return swiper__WEBPACK_IMPORTED_MODULE_6__.Autoplay;
+      },
+
+      get Virtual() {
+        return swiper__WEBPACK_IMPORTED_MODULE_6__.Virtual;
+      },
+
       inject: vue__WEBPACK_IMPORTED_MODULE_7__.inject
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
@@ -158,15 +188,44 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     var __returned__ = {
       getDestinationTours: getDestinationTours,
       trendingDestinations: trendingDestinations,
-      lang: lang,
-      countries: countries,
-      province_tours: province_tours,
+
+      get lang() {
+        return lang;
+      },
+
+      set lang(v) {
+        lang = v;
+      },
+
+      get countries() {
+        return countries;
+      },
+
+      set countries(v) {
+        countries = v;
+      },
+
+      get province_tours() {
+        return province_tours;
+      },
+
+      set province_tours(v) {
+        province_tours = v;
+      },
+
       onBeforeMount: vue__WEBPACK_IMPORTED_MODULE_0__.onBeforeMount,
       onMounted: vue__WEBPACK_IMPORTED_MODULE_0__.onMounted,
       inject: vue__WEBPACK_IMPORTED_MODULE_0__.inject,
       ref: vue__WEBPACK_IMPORTED_MODULE_0__.ref,
-      useTours: _composables_tours__WEBPACK_IMPORTED_MODULE_1__["default"],
-      useDestinations: _composables_destinations__WEBPACK_IMPORTED_MODULE_2__["default"],
+
+      get useTours() {
+        return _composables_tours__WEBPACK_IMPORTED_MODULE_1__["default"];
+      },
+
+      get useDestinations() {
+        return _composables_destinations__WEBPACK_IMPORTED_MODULE_2__["default"];
+      },
+
       ItemSlider: _components_ItemSlider_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {

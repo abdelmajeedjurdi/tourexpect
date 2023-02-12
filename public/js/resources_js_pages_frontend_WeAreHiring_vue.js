@@ -102,9 +102,31 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       getJobs: getJobs,
       apply: apply,
       addFiles: addFiles,
-      is_sending: is_sending,
-      application_form: application_form,
-      job_title: job_title,
+
+      get is_sending() {
+        return is_sending;
+      },
+
+      set is_sending(v) {
+        is_sending = v;
+      },
+
+      get application_form() {
+        return application_form;
+      },
+
+      set application_form(v) {
+        application_form = v;
+      },
+
+      get job_title() {
+        return job_title;
+      },
+
+      set job_title(v) {
+        job_title = v;
+      },
+
       lang: lang,
       applyToJob: applyToJob,
       handleFiles: handleFiles,
@@ -112,7 +134,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       reactive: vue__WEBPACK_IMPORTED_MODULE_0__.reactive,
       ref: vue__WEBPACK_IMPORTED_MODULE_0__.ref,
       inject: vue__WEBPACK_IMPORTED_MODULE_0__.inject,
-      useJobs: _composables_jobs__WEBPACK_IMPORTED_MODULE_1__["default"]
+
+      get useJobs() {
+        return _composables_jobs__WEBPACK_IMPORTED_MODULE_1__["default"];
+      }
+
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,
@@ -773,7 +799,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#animation[data-v-65c10e43] {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n.box[data-v-65c10e43] {\n    width: 5px;\n    height: 5px;\n    margin: 2px;\n}\n.box[data-v-65c10e43]:nth-child(1) {\n    background: white;\n    -webkit-animation: balls-65c10e43 1s linear infinite;\n            animation: balls-65c10e43 1s linear infinite;\n}\n.box[data-v-65c10e43]:nth-child(2) {\n    background: white;\n    -webkit-animation: balls-65c10e43 1s 0.1s linear infinite;\n            animation: balls-65c10e43 1s 0.1s linear infinite;\n}\n.box[data-v-65c10e43]:nth-child(3) {\n    background: white;\n    -webkit-animation: balls-65c10e43 1s 0.2s linear infinite;\n            animation: balls-65c10e43 1s 0.2s linear infinite;\n}\n.box[data-v-65c10e43]:nth-child(4) {\n    background: white;\n    -webkit-animation: balls-65c10e43 1s 0.4s linear infinite;\n            animation: balls-65c10e43 1s 0.4s linear infinite;\n}\n@-webkit-keyframes balls-65c10e43 {\n0% {\n        transform: sclaeY(1);\n}\n50% {\n        transform: scaleY(3);\n}\n100% {\n        transform: sclaeY(1);\n}\n}\n@keyframes balls-65c10e43 {\n0% {\n        transform: sclaeY(1);\n}\n50% {\n        transform: scaleY(3);\n}\n100% {\n        transform: sclaeY(1);\n}\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#animation[data-v-65c10e43] {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n.box[data-v-65c10e43] {\n    width: 5px;\n    height: 5px;\n    margin: 2px;\n}\n.box[data-v-65c10e43]:nth-child(1) {\n    background: white;\n    animation: balls-65c10e43 1s linear infinite;\n}\n.box[data-v-65c10e43]:nth-child(2) {\n    background: white;\n    animation: balls-65c10e43 1s 0.1s linear infinite;\n}\n.box[data-v-65c10e43]:nth-child(3) {\n    background: white;\n    animation: balls-65c10e43 1s 0.2s linear infinite;\n}\n.box[data-v-65c10e43]:nth-child(4) {\n    background: white;\n    animation: balls-65c10e43 1s 0.4s linear infinite;\n}\n@keyframes balls-65c10e43 {\n0% {\n        transform: sclaeY(1);\n}\n50% {\n        transform: scaleY(3);\n}\n100% {\n        transform: sclaeY(1);\n}\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

@@ -1,8 +1,8 @@
 <template>
     <div class="sm:px-4 xl:px-0 w-full max-w-6xl mx-auto my-28">
-        <div class="border rounded-lg">
+        <div class="border-2 border-gray-500">
             <div
-                class="bg-main-orange py-3 text-center uppercase text-white rounded-lg"
+                class="bg-main-blue py-1 border-b-2 border-gray-500 text-center uppercase text-white"
             >
                 Payment Method
             </div>
@@ -15,36 +15,6 @@
                             :value="true"
                             v-model="is_online_pay"
                             name="payment_method"
-                        />
-                        <img
-                            src="/images/american_express.jpg"
-                            alt="test"
-                            class="h-5 mx-2"
-                        />
-                        <img
-                            src="/images/apple_pay.jpg"
-                            alt="test"
-                            class="h-5 mx-0.5"
-                        />
-                        <img
-                            src="/images/google_pay.jpg"
-                            alt="test"
-                            class="h-5 mx-0.5"
-                        />
-                        <img
-                            src="/images/mastercard.jpg"
-                            alt="test"
-                            class="h-5 mx-0.5"
-                        />
-                        <img
-                            src="/images/visa.jpg"
-                            alt="test"
-                            class="h-5 mx-0.5"
-                        />
-                        <img
-                            src="/images/union_pay.jpg"
-                            alt="test"
-                            class="h-5 mx-0.5"
                         />
                     </div>
                 </div>
@@ -63,9 +33,9 @@
             </div>
         </div>
 
-        <div class="border rounded-lg mt-8">
+        <div class="border-2 border-gray-500 mt-8">
             <div
-                class="bg-main-orange py-3 text-center uppercase text-white rounded-lg"
+                class="bg-main-blue py-1 border-b-2 border-gray-500 text-center uppercase text-white"
             >
                 order summary
             </div>
@@ -76,44 +46,32 @@
                             class="flex justify-between uppercase font-bold text-main-indigo mt-2"
                         >
                             <div class="">No. of Applicant</div>
-                            <div>{{ forms.length }}</div>
+                            <div class="font-extrabold text-black">
+                                {{ forms.length }}
+                            </div>
                         </div>
                         <div
                             class="flex justify-between uppercase font-bold text-main-indigo mt-2"
                         >
                             <div>total visa fees</div>
-                            <div>{{ total_pay + " USD" }}</div>
+                            <div class="font-extrabold text-black">
+                                {{ total_pay + " USD" }}
+                            </div>
                         </div>
                     </div>
                     <div class="border-gray-400 mt-3 space-y-6">
                         <div
-                            class="flex justify-between uppercase font-bold px-3"
+                            class="flex justify-between uppercase font-extrabold text-black px-3"
                         >
                             <h4 class="">Total pay</h4>
                             <h4>{{ total_pay + " USD" }}</h4>
                         </div>
                         <div class="text-center">
-                            <!-- <button
-                                @click.prevent="
-                                    is_terms_and_condition_accepted
-                                        ? goToStripe
-                                        : ''
-                                "
-                                class="capitalize w-40 h-10 rounded-lg mt-2 mx-auto bg-main-blue text-white"
-                                :class="
-                                    is_terms_and_condition_accepted
-                                        ? ''
-                                        : 'opacity-25 cursor-not-allowed'
-                                "
-                            >
-                                pay visa fee
-                            </button> -->
-
                             <button
                                 @click.prevent="goToStripe"
                                 type="submit"
                                 v-if="!is_sending"
-                                class="hover:shadow-form rounded-md bg-main-blue m-auto h-10 w-60 text-base font-semibold text-white outline-none cursor-not-allowed"
+                                class="hover:shadow-form rounded-full bg-main-orange m-auto h-10 w-60 text-base font-semibold text-white outline-none cursor-not-allowed"
                                 :class="
                                     is_terms_and_condition_accepted
                                         ? ''
@@ -126,7 +84,7 @@
                             <button
                                 type="button"
                                 v-else
-                                class="hover:shadow-form rounded-md bg-main-blue m-auto h-10 w-60 text-base font-semibold text-white outline-none cursor-not-allowed"
+                                class="hover:shadow-form rounded-full bg-main-orange m-auto h-10 w-60 text-base font-semibold text-white outline-none cursor-not-allowed"
                             >
                                 <div id="animation">
                                     <div class="box" id="box1"></div>

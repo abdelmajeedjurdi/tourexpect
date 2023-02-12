@@ -431,12 +431,34 @@ __webpack_require__.r(__webpack_exports__);
     var __returned__ = {
       props: props,
       emit: emit,
-      selected_option: selected_option,
-      isListShow: isListShow,
+
+      get selected_option() {
+        return selected_option;
+      },
+
+      set selected_option(v) {
+        selected_option = v;
+      },
+
+      get isListShow() {
+        return isListShow;
+      },
+
+      set isListShow(v) {
+        isListShow = v;
+      },
+
       myFunction: myFunction,
       filterFunction: filterFunction,
-      ref: _vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.ref,
-      onMounted: _vue_runtime_core__WEBPACK_IMPORTED_MODULE_1__.onMounted
+
+      get ref() {
+        return _vue_reactivity__WEBPACK_IMPORTED_MODULE_0__.ref;
+      },
+
+      get onMounted() {
+        return _vue_runtime_core__WEBPACK_IMPORTED_MODULE_1__.onMounted;
+      }
+
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,
@@ -586,19 +608,48 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       categories: categories,
       getCategoriesOnSection: getCategoriesOnSection,
       saveBlog: saveBlog,
-      imagePreview: imagePreview,
-      file: file,
+
+      get imagePreview() {
+        return imagePreview;
+      },
+
+      set imagePreview(v) {
+        imagePreview = v;
+      },
+
+      get file() {
+        return file;
+      },
+
+      set file(v) {
+        file = v;
+      },
+
       onFileSelected: onFileSelected,
       selectCategory: selectCategory,
       selectDestination: selectDestination,
-      QuillEditor: _vueup_vue_quill__WEBPACK_IMPORTED_MODULE_0__.QuillEditor,
+
+      get QuillEditor() {
+        return _vueup_vue_quill__WEBPACK_IMPORTED_MODULE_0__.QuillEditor;
+      },
+
       onMounted: vue__WEBPACK_IMPORTED_MODULE_2__.onMounted,
       reactive: vue__WEBPACK_IMPORTED_MODULE_2__.reactive,
       ref: vue__WEBPACK_IMPORTED_MODULE_2__.ref,
       SearchableDropdown: _components_SearchableDropdown_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
-      useBlogs: _composables_blogs__WEBPACK_IMPORTED_MODULE_4__["default"],
-      useCategories: _composables_categories__WEBPACK_IMPORTED_MODULE_5__["default"],
-      useDestinations: _composables_destinations__WEBPACK_IMPORTED_MODULE_6__["default"]
+
+      get useBlogs() {
+        return _composables_blogs__WEBPACK_IMPORTED_MODULE_4__["default"];
+      },
+
+      get useCategories() {
+        return _composables_categories__WEBPACK_IMPORTED_MODULE_5__["default"];
+      },
+
+      get useDestinations() {
+        return _composables_destinations__WEBPACK_IMPORTED_MODULE_6__["default"];
+      }
+
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,

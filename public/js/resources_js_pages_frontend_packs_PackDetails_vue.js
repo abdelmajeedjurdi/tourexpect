@@ -26,7 +26,15 @@ __webpack_require__.r(__webpack_exports__);
     var lang = (0,vue__WEBPACK_IMPORTED_MODULE_0__.inject)("lang") || "en";
     var __returned__ = {
       props: props,
-      lang: lang,
+
+      get lang() {
+        return lang;
+      },
+
+      set lang(v) {
+        lang = v;
+      },
+
       inject: vue__WEBPACK_IMPORTED_MODULE_0__.inject
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
@@ -64,7 +72,15 @@ __webpack_require__.r(__webpack_exports__);
     var lang = (0,vue__WEBPACK_IMPORTED_MODULE_0__.inject)("lang") || "en";
     var __returned__ = {
       props: props,
-      lang: lang,
+
+      get lang() {
+        return lang;
+      },
+
+      set lang(v) {
+        lang = v;
+      },
+
       inject: vue__WEBPACK_IMPORTED_MODULE_0__.inject
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
@@ -102,7 +118,15 @@ __webpack_require__.r(__webpack_exports__);
     var lang = (0,vue__WEBPACK_IMPORTED_MODULE_0__.inject)("lang") || "en";
     var __returned__ = {
       props: props,
-      lang: lang,
+
+      get lang() {
+        return lang;
+      },
+
+      set lang(v) {
+        lang = v;
+      },
+
       inject: vue__WEBPACK_IMPORTED_MODULE_0__.inject
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
@@ -203,12 +227,31 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     var __returned__ = {
       inquire: inquire,
       props: props,
-      is_sending: is_sending,
-      inquiry_form: inquiry_form,
+
+      get is_sending() {
+        return is_sending;
+      },
+
+      set is_sending(v) {
+        is_sending = v;
+      },
+
+      get inquiry_form() {
+        return inquiry_form;
+      },
+
+      set inquiry_form(v) {
+        inquiry_form = v;
+      },
+
       sendInquiry: sendInquiry,
       reactive: vue__WEBPACK_IMPORTED_MODULE_0__.reactive,
       ref: vue__WEBPACK_IMPORTED_MODULE_0__.ref,
-      useGeneral: _composables_general__WEBPACK_IMPORTED_MODULE_1__["default"]
+
+      get useGeneral() {
+        return _composables_general__WEBPACK_IMPORTED_MODULE_1__["default"];
+      }
+
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,
@@ -246,8 +289,23 @@ __webpack_require__.r(__webpack_exports__);
     var opened = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(-1);
     var __returned__ = {
       props: props,
-      lang: lang,
-      opened: opened,
+
+      get lang() {
+        return lang;
+      },
+
+      set lang(v) {
+        lang = v;
+      },
+
+      get opened() {
+        return opened;
+      },
+
+      set opened(v) {
+        opened = v;
+      },
+
       inject: vue__WEBPACK_IMPORTED_MODULE_0__.inject,
       ref: vue__WEBPACK_IMPORTED_MODULE_0__.ref
     };
@@ -286,7 +344,15 @@ __webpack_require__.r(__webpack_exports__);
     var lang = (0,vue__WEBPACK_IMPORTED_MODULE_0__.inject)("lang") || "en";
     var __returned__ = {
       props: props,
-      lang: lang,
+
+      get lang() {
+        return lang;
+      },
+
+      set lang(v) {
+        lang = v;
+      },
+
       inject: vue__WEBPACK_IMPORTED_MODULE_0__.inject
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
@@ -336,12 +402,31 @@ __webpack_require__.r(__webpack_exports__);
     var __returned__ = {
       modules: modules,
       props: props,
-      Swiper: swiper_vue__WEBPACK_IMPORTED_MODULE_0__.Swiper,
-      SwiperSlide: swiper_vue__WEBPACK_IMPORTED_MODULE_0__.SwiperSlide,
-      Navigation: swiper__WEBPACK_IMPORTED_MODULE_5__.Navigation,
-      EffectFade: swiper__WEBPACK_IMPORTED_MODULE_5__.EffectFade,
-      Pagination: swiper__WEBPACK_IMPORTED_MODULE_5__.Pagination,
-      Autoplay: swiper__WEBPACK_IMPORTED_MODULE_5__.Autoplay
+
+      get Swiper() {
+        return swiper_vue__WEBPACK_IMPORTED_MODULE_0__.Swiper;
+      },
+
+      get SwiperSlide() {
+        return swiper_vue__WEBPACK_IMPORTED_MODULE_0__.SwiperSlide;
+      },
+
+      get Navigation() {
+        return swiper__WEBPACK_IMPORTED_MODULE_5__.Navigation;
+      },
+
+      get EffectFade() {
+        return swiper__WEBPACK_IMPORTED_MODULE_5__.EffectFade;
+      },
+
+      get Pagination() {
+        return swiper__WEBPACK_IMPORTED_MODULE_5__.Pagination;
+      },
+
+      get Autoplay() {
+        return swiper__WEBPACK_IMPORTED_MODULE_5__.Autoplay;
+      }
+
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,
@@ -476,23 +561,92 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       single_package: single_package,
       props: props,
       router: router,
-      phone: phone,
-      adults: adults,
-      children: children,
-      infants: infants,
-      selected_option: selected_option,
-      total_price: total_price,
-      selected_idx: selected_idx,
-      lang: lang,
+
+      get phone() {
+        return phone;
+      },
+
+      set phone(v) {
+        phone = v;
+      },
+
+      get adults() {
+        return adults;
+      },
+
+      set adults(v) {
+        adults = v;
+      },
+
+      get children() {
+        return children;
+      },
+
+      set children(v) {
+        children = v;
+      },
+
+      get infants() {
+        return infants;
+      },
+
+      set infants(v) {
+        infants = v;
+      },
+
+      get selected_option() {
+        return selected_option;
+      },
+
+      set selected_option(v) {
+        selected_option = v;
+      },
+
+      get total_price() {
+        return total_price;
+      },
+
+      set total_price(v) {
+        total_price = v;
+      },
+
+      get selected_idx() {
+        return selected_idx;
+      },
+
+      set selected_idx(v) {
+        selected_idx = v;
+      },
+
+      get lang() {
+        return lang;
+      },
+
+      set lang(v) {
+        lang = v;
+      },
+
       url: url,
       setOption: setOption,
-      original_price: original_price,
+
+      get original_price() {
+        return original_price;
+      },
+
+      set original_price(v) {
+        original_price = v;
+      },
+
       calculatePrice: calculatePrice,
       setGuests: setGuests,
       onMounted: vue__WEBPACK_IMPORTED_MODULE_0__.onMounted,
       inject: vue__WEBPACK_IMPORTED_MODULE_0__.inject,
       ref: vue__WEBPACK_IMPORTED_MODULE_0__.ref,
-      usePackages: _composables_packages__WEBPACK_IMPORTED_MODULE_1__["default"],
+
+      get usePackages() {
+        return _composables_packages__WEBPACK_IMPORTED_MODULE_1__["default"];
+      },
+
       SwiperSlider: _components_SwiperSlider_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
       BaseSection: _components_BaseSection_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
       Itinerary: _components_Itinerary_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
@@ -501,8 +655,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       Inquire: _components_Inquire_vue__WEBPACK_IMPORTED_MODULE_7__["default"],
       Exclude: _components_Exclude_vue__WEBPACK_IMPORTED_MODULE_8__["default"],
       Include: _components_Include_vue__WEBPACK_IMPORTED_MODULE_9__["default"],
-      useRoute: vue_router__WEBPACK_IMPORTED_MODULE_10__.useRoute,
-      useRouter: vue_router__WEBPACK_IMPORTED_MODULE_10__.useRouter
+
+      get useRoute() {
+        return vue_router__WEBPACK_IMPORTED_MODULE_10__.useRoute;
+      },
+
+      get useRouter() {
+        return vue_router__WEBPACK_IMPORTED_MODULE_10__.useRouter;
+      }
+
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,
@@ -706,12 +867,12 @@ var _hoisted_6 = ["placeholder"];
 var _hoisted_7 = {
   key: 0,
   type: "submit",
-  "class": "hover:shadow-form rounded-md bg-main-blue h-10 w-40 text-base font-semibold text-white outline-none"
+  "class": "hover:shadow-form rounded-full bg-main-orange h-10 w-full text-base font-semibold text-white outline-none"
 };
 var _hoisted_8 = {
   key: 1,
   type: "button",
-  "class": "hover:shadow-form rounded-md bg-main-blue m-auto h-10 w-40 text-base font-semibold text-white outline-none cursor-not-allowed"
+  "class": "hover:shadow-form rounded-full bg-main-orange m-auto h-10 w-full text-base font-semibold text-white outline-none cursor-not-allowed"
 };
 
 var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div id=\"animation\" data-v-47a5a198><div class=\"box\" id=\"box1\" data-v-47a5a198></div><div class=\"box\" id=\"box2\" data-v-47a5a198></div><div class=\"box\" id=\"box3\" data-v-47a5a198></div><div class=\"box\" id=\"box4\" data-v-47a5a198></div></div>", 1);
@@ -724,7 +885,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "name",
     id: "name",
-    "class": "block w-full border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 shadow-sm focus:border-blue-500 focus:ring-blue-500",
+    "class": "block w-full border border-gray-300 rounded-full p-2.5 text-sm text-gray-900 shadow-sm focus:border-blue-500 focus:ring-blue-500",
     placeholder: _ctx.$t('your_name') + '*',
     "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
       return $setup.inquiry_form.name = $event;
@@ -735,7 +896,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   , _hoisted_3), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.inquiry_form.name]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "tel",
     id: "phone",
-    "class": "block w-full border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 shadow-sm focus:border-blue-500 focus:ring-blue-500",
+    "class": "block w-full border border-gray-300 rounded-full p-2.5 text-sm text-gray-900 shadow-sm focus:border-blue-500 focus:ring-blue-500",
     placeholder: _ctx.$t('your_phone') + '*',
     "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
       return $setup.inquiry_form.phone = $event;
@@ -746,7 +907,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   , _hoisted_4), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.inquiry_form.phone]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "email",
     id: "email",
-    "class": "block w-full border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 shadow-sm focus:border-blue-500 focus:ring-blue-500",
+    "class": "block w-full border border-gray-300 rounded-full p-2.5 text-sm text-gray-900 shadow-sm focus:border-blue-500 focus:ring-blue-500",
     placeholder: _ctx.$t('your_email') + '*',
     "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
       return $setup.inquiry_form.email = $event;
@@ -756,7 +917,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* PROPS */
   , _hoisted_5), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.inquiry_form.email]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("textarea", {
     id: "message",
-    "class": "block w-full border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 shadow-sm focus:border-blue-500 focus:ring-blue-500",
+    "class": "block w-full border border-gray-300 rounded-full p-2.5 text-sm text-gray-900 shadow-sm focus:border-blue-500 focus:ring-blue-500",
     placeholder: _ctx.$t('your_message') + '*',
     "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
       return $setup.inquiry_form.message = $event;
@@ -2016,7 +2177,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#animation[data-v-47a5a198] {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n.box[data-v-47a5a198] {\n    width: 5px;\n    height: 5px;\n    margin: 2px;\n}\n.box[data-v-47a5a198]:nth-child(1) {\n    background: white;\n    -webkit-animation: balls-47a5a198 1s linear infinite;\n            animation: balls-47a5a198 1s linear infinite;\n}\n.box[data-v-47a5a198]:nth-child(2) {\n    background: white;\n    -webkit-animation: balls-47a5a198 1s 0.1s linear infinite;\n            animation: balls-47a5a198 1s 0.1s linear infinite;\n}\n.box[data-v-47a5a198]:nth-child(3) {\n    background: white;\n    -webkit-animation: balls-47a5a198 1s 0.2s linear infinite;\n            animation: balls-47a5a198 1s 0.2s linear infinite;\n}\n.box[data-v-47a5a198]:nth-child(4) {\n    background: white;\n    -webkit-animation: balls-47a5a198 1s 0.4s linear infinite;\n            animation: balls-47a5a198 1s 0.4s linear infinite;\n}\n@-webkit-keyframes balls-47a5a198 {\n0% {\n        transform: sclaeY(1);\n}\n50% {\n        transform: scaleY(3);\n}\n100% {\n        transform: sclaeY(1);\n}\n}\n@keyframes balls-47a5a198 {\n0% {\n        transform: sclaeY(1);\n}\n50% {\n        transform: scaleY(3);\n}\n100% {\n        transform: sclaeY(1);\n}\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#animation[data-v-47a5a198] {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n.box[data-v-47a5a198] {\n    width: 5px;\n    height: 5px;\n    margin: 2px;\n}\n.box[data-v-47a5a198]:nth-child(1) {\n    background: white;\n    animation: balls-47a5a198 1s linear infinite;\n}\n.box[data-v-47a5a198]:nth-child(2) {\n    background: white;\n    animation: balls-47a5a198 1s 0.1s linear infinite;\n}\n.box[data-v-47a5a198]:nth-child(3) {\n    background: white;\n    animation: balls-47a5a198 1s 0.2s linear infinite;\n}\n.box[data-v-47a5a198]:nth-child(4) {\n    background: white;\n    animation: balls-47a5a198 1s 0.4s linear infinite;\n}\n@keyframes balls-47a5a198 {\n0% {\n        transform: sclaeY(1);\n}\n50% {\n        transform: scaleY(3);\n}\n100% {\n        transform: sclaeY(1);\n}\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
