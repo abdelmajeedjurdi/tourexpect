@@ -64,14 +64,14 @@ Route::apiResource('api/visas', VisaController::class)->middleware(['auth', 'isA
 Route::apiResource('api/countries', CountryController::class)->middleware(['auth', 'isAdmin']);
 Route::apiResource('api/country_passports', CountriesPassportController::class)->middleware(['auth', 'isAdmin']);
 
-Route::get('/', function () {
-    return view('frontend');
-});
+// Route::get('/', function () {
+//     return view('frontend');
+// });
 Route::get('/categories', function () {
     return view('categories');
 });
 Route::middleware(['auth', 'isAdmin'])->group(function () {
-    Route::get('/dashboard', function () {
+    Route::get('/', function () {
         // return 'this is admin';
         return view('dashboard');
     })->name('dashboard');;
