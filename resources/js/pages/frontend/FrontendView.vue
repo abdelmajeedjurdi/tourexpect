@@ -9,7 +9,7 @@
         <div style="min-height: 66vh" class="mt-24">
             <router-view></router-view>
         </div>
-        <frontend-footer></frontend-footer>
+        <!-- <frontend-footer></frontend-footer> -->
     </div>
 </template>
 <script>

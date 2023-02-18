@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 
 const routes = [
     {
-        path: "/dashboard",
+        path: "/",
         name: "dashboard",
         component: () => import("../pages/backend/Dashboard.vue"),
     },
@@ -202,12 +202,12 @@ const routes = [
 
     // [[[[[[[[[[[<<<<<<<<<<<<<<<<<<<<<<<<<<(((((((((((((((((--Front-End--)))))))))))))))))>>>>>>>>>>>>>>>>>>>>>>>>>>]]]]]]]]]]],
 
-    {
-        path: "/:lang?",
-        name: "Home",
-        component: () => import("../pages/frontend/Homepage"),
-        props: true
-    },
+    // {
+    //     path: "/:lang?",
+    //     name: "Home",
+    //     component: () => import("../pages/frontend/Homepage"),
+    //     props: true
+    // },
     {
         path: "/:lang?/about",
         name: "about",

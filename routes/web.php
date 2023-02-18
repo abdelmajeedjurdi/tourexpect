@@ -71,7 +71,7 @@ Route::get('/categories', function () {
     return view('categories');
 });
 Route::middleware(['auth', 'isAdmin'])->group(function () {
-    Route::get('/', function () {
+    Route::get('/dashboard', function () {
         // return 'this is admin';
         return view('dashboard');
     })->name('dashboard');;
@@ -83,5 +83,5 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
 require __DIR__ . '/auth.php';
 
 
-Route::view('/{any}', 'frontend')
-    ->where('any', '.*');
+Route::view('/{any}', 'dashboard')
+    ->where('any', '.*')->middleware('auth');

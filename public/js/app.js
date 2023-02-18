@@ -26928,8 +26928,6 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   var _component_router_view = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-view");
 
-  var _component_frontend_footer = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("frontend-footer");
-
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
     "class": "",
     dir: $setup.lang == 'ar' ? 'rtl' : 'ltr'
@@ -26943,7 +26941,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     _: 1
     /* STABLE */
 
-  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_navigation_bar), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_view)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_frontend_footer)], 8
+  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_navigation_bar), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_view)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <frontend-footer></frontend-footer> ")], 8
   /* PROPS */
   , _hoisted_1);
 }
@@ -27412,7 +27410,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm-bundler.js");
 
 var routes = [{
-  path: "/dashboard",
+  path: "/",
   name: "dashboard",
   component: function component() {
     return __webpack_require__.e(/*! import() */ "resources_js_pages_backend_Dashboard_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../pages/backend/Dashboard.vue */ "./resources/js/pages/backend/Dashboard.vue"));
@@ -27640,14 +27638,13 @@ var routes = [{
     return __webpack_require__.e(/*! import() */ "resources_js_pages_backend_jobs_Jobs_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../pages/backend/jobs/Jobs */ "./resources/js/pages/backend/jobs/Jobs.vue"));
   }
 }, // [[[[[[[[[[[<<<<<<<<<<<<<<<<<<<<<<<<<<(((((((((((((((((--Front-End--)))))))))))))))))>>>>>>>>>>>>>>>>>>>>>>>>>>]]]]]]]]]]],
+// {
+//     path: "/:lang?",
+//     name: "Home",
+//     component: () => import("../pages/frontend/Homepage"),
+//     props: true
+// },
 {
-  path: "/:lang?",
-  name: "Home",
-  component: function component() {
-    return __webpack_require__.e(/*! import() */ "resources_js_pages_frontend_Homepage_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../pages/frontend/Homepage */ "./resources/js/pages/frontend/Homepage.vue"));
-  },
-  props: true
-}, {
   path: "/:lang?/about",
   name: "about",
   // component: About,
@@ -52398,7 +52395,7 @@ module.exports = JSON.parse('{"hello":"Hello World p","hello2":"Hello World 2","
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_pages_backend_Dashboard_vue":1,"resources_js_pages_backend_categories_CategoriesIndex_vue":1,"resources_js_pages_backend_categories_CategoryCreate_vue":1,"resources_js_pages_backend_categories_CategoryEdit_vue":1,"resources_js_pages_backend_categories_CategoryDetails_vue":1,"resources_js_pages_backend_destinations_DestinationsIndex_vue":1,"resources_js_pages_backend_destinations_DestinationCreate_vue":1,"resources_js_pages_backend_destinations_DestinationEdit_vue":1,"resources_js_pages_backend_destinations_DestinationDetails_vue":1,"resources_js_pages_backend_tours_ToursIndex_vue":1,"resources_js_pages_backend_tours_TourCreate_vue":1,"resources_js_pages_backend_tours_TourEdit_vue":1,"resources_js_pages_backend_tours_TourDetails_vue":1,"resources_js_pages_backend_packages_PackagesIndex_vue":1,"resources_js_pages_backend_packages_PackageCreate_vue":1,"resources_js_pages_backend_packages_PackageEdit_vue":1,"resources_js_pages_backend_packages_PackageDetails_vue":1,"resources_js_pages_backend_activities_ActivitiesIndex_vue":1,"resources_js_pages_backend_activities_ActivityCreate_vue":1,"resources_js_pages_backend_activities_ActivityEdit_vue":1,"resources_js_pages_backend_visas_VisasIndex_vue":1,"resources_js_pages_backend_visas_VisaCreate_vue":1,"resources_js_pages_backend_visas_VisaEdit_vue":1,"resources_js_pages_backend_visas_VisaDetails_vue":1,"resources_js_pages_backend_hotels_HotelsIndex_vue":1,"resources_js_pages_backend_hotels_HotelCreate_vue":1,"resources_js_pages_backend_hotels_HotelEdit_vue":1,"resources_js_pages_backend_hotels_HotelDetails_vue":1,"resources_js_pages_backend_blogs_BlogsIndex_vue":1,"resources_js_pages_backend_blogs_BlogCreate_vue":1,"resources_js_pages_backend_blogs_BlogEdit_vue":1,"resources_js_pages_backend_blogs_BlogDetails_vue":1,"resources_js_pages_backend_options_Options_vue":1,"resources_js_pages_backend_jobs_Jobs_vue":1,"resources_js_pages_frontend_Homepage_vue":1,"resources_js_pages_frontend_AboutUs_vue":1,"resources_js_pages_frontend_ContactUs_vue":1,"resources_js_pages_frontend_Blogs_vue":1,"resources_js_pages_frontend_SingleBlog_vue":1,"resources_js_pages_frontend_WeAreHiring_vue":1,"resources_js_pages_frontend_tours_Tours_vue":1,"resources_js_pages_frontend_tours_TourDetails_vue":1,"resources_js_pages_frontend_tours_DestinationTours_vue":1,"resources_js_pages_frontend_tours_SubDestinationTours_vue":1,"resources_js_pages_frontend_visas_PassportVisa_vue":1,"resources_js_pages_frontend_visas_ProceedToApply_vue":1,"resources_js_pages_frontend_Success_vue":1,"resources_js_pages_frontend_Cancel_vue":1,"resources_js_pages_frontend_visas_Payment_vue":1,"resources_js_pages_frontend_activities_Activities_vue":1,"resources_js_pages_frontend_activities_DestinationActivities_vue":1,"resources_js_pages_frontend_activities_SubDestinationActivities_vue":1,"resources_js_pages_frontend_packs_Packs_vue":1,"resources_js_pages_frontend_packs_temp_vue":1,"resources_js_pages_frontend_packs_DestinationPacks_vue":1,"resources_js_pages_frontend_packs_SubDestinationPacks_vue":1,"resources_js_pages_frontend_packs_PackDetails_vue":1,"resources_js_pages_frontend_activities_ActivityDetails_vue":1,"resources_js_pages_frontend_hotels_HotelsAndResorts_vue":1,"resources_js_pages_frontend_hotels_DestinationHotelsAndResorts_vue":1,"resources_js_pages_frontend_hotels_SubDestinationHotelsAndResorts_vue":1,"resources_js_pages_frontend_ComingSoon_vue":1,"resources_js_pages_backend_Test_vue":1,"resources_js_pages_backend_Test2_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_pages_backend_Dashboard_vue":1,"resources_js_pages_backend_categories_CategoriesIndex_vue":1,"resources_js_pages_backend_categories_CategoryCreate_vue":1,"resources_js_pages_backend_categories_CategoryEdit_vue":1,"resources_js_pages_backend_categories_CategoryDetails_vue":1,"resources_js_pages_backend_destinations_DestinationsIndex_vue":1,"resources_js_pages_backend_destinations_DestinationCreate_vue":1,"resources_js_pages_backend_destinations_DestinationEdit_vue":1,"resources_js_pages_backend_destinations_DestinationDetails_vue":1,"resources_js_pages_backend_tours_ToursIndex_vue":1,"resources_js_pages_backend_tours_TourCreate_vue":1,"resources_js_pages_backend_tours_TourEdit_vue":1,"resources_js_pages_backend_tours_TourDetails_vue":1,"resources_js_pages_backend_packages_PackagesIndex_vue":1,"resources_js_pages_backend_packages_PackageCreate_vue":1,"resources_js_pages_backend_packages_PackageEdit_vue":1,"resources_js_pages_backend_packages_PackageDetails_vue":1,"resources_js_pages_backend_activities_ActivitiesIndex_vue":1,"resources_js_pages_backend_activities_ActivityCreate_vue":1,"resources_js_pages_backend_activities_ActivityEdit_vue":1,"resources_js_pages_backend_visas_VisasIndex_vue":1,"resources_js_pages_backend_visas_VisaCreate_vue":1,"resources_js_pages_backend_visas_VisaEdit_vue":1,"resources_js_pages_backend_visas_VisaDetails_vue":1,"resources_js_pages_backend_hotels_HotelsIndex_vue":1,"resources_js_pages_backend_hotels_HotelCreate_vue":1,"resources_js_pages_backend_hotels_HotelEdit_vue":1,"resources_js_pages_backend_hotels_HotelDetails_vue":1,"resources_js_pages_backend_blogs_BlogsIndex_vue":1,"resources_js_pages_backend_blogs_BlogCreate_vue":1,"resources_js_pages_backend_blogs_BlogEdit_vue":1,"resources_js_pages_backend_blogs_BlogDetails_vue":1,"resources_js_pages_backend_options_Options_vue":1,"resources_js_pages_backend_jobs_Jobs_vue":1,"resources_js_pages_frontend_AboutUs_vue":1,"resources_js_pages_frontend_ContactUs_vue":1,"resources_js_pages_frontend_Blogs_vue":1,"resources_js_pages_frontend_SingleBlog_vue":1,"resources_js_pages_frontend_WeAreHiring_vue":1,"resources_js_pages_frontend_tours_Tours_vue":1,"resources_js_pages_frontend_tours_TourDetails_vue":1,"resources_js_pages_frontend_tours_DestinationTours_vue":1,"resources_js_pages_frontend_tours_SubDestinationTours_vue":1,"resources_js_pages_frontend_visas_PassportVisa_vue":1,"resources_js_pages_frontend_visas_ProceedToApply_vue":1,"resources_js_pages_frontend_Success_vue":1,"resources_js_pages_frontend_Cancel_vue":1,"resources_js_pages_frontend_visas_Payment_vue":1,"resources_js_pages_frontend_activities_Activities_vue":1,"resources_js_pages_frontend_activities_DestinationActivities_vue":1,"resources_js_pages_frontend_activities_SubDestinationActivities_vue":1,"resources_js_pages_frontend_packs_Packs_vue":1,"resources_js_pages_frontend_packs_temp_vue":1,"resources_js_pages_frontend_packs_DestinationPacks_vue":1,"resources_js_pages_frontend_packs_SubDestinationPacks_vue":1,"resources_js_pages_frontend_packs_PackDetails_vue":1,"resources_js_pages_frontend_activities_ActivityDetails_vue":1,"resources_js_pages_frontend_hotels_HotelsAndResorts_vue":1,"resources_js_pages_frontend_hotels_DestinationHotelsAndResorts_vue":1,"resources_js_pages_frontend_hotels_SubDestinationHotelsAndResorts_vue":1,"resources_js_pages_frontend_ComingSoon_vue":1,"resources_js_pages_backend_Test_vue":1,"resources_js_pages_backend_Test2_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};
