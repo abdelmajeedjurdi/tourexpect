@@ -832,7 +832,7 @@
     </div>
 </template>
 <script setup>
-import { ref, inject, onBeforeMount, onMounted } from "vue";
+import { ref, inject, onBeforeMount } from "vue";
 import useGeneral from "../../../composables/general";
 import useVisas from "../../../composables/visas";
 import { useQuery, useRoute, useRouter } from "vue-router";
@@ -893,37 +893,6 @@ function onFileSelected(event, i, tag_id) {
 
 const submit = async () => {
     is_sending.value = true;
-    /*
-        if (
-            document.getElementById("passport_doc").files.length > 0 &&
-            document.getElementById("passport_doc").files[0].size > maxSize
-        ) {
-            alert("Size of your passport must be less than 100KB");
-            is_sending.value = false;
-            return;
-        }
-        addFiles("passport_doc", document.getElementById("passport_doc").files[0]);
-
-        if (
-            document.getElementById("client_photo").files.length > 0 &&
-            document.getElementById("client_photo").files[0].size > maxSize
-        ) {
-            alert("Size of your photo must be less than 100KB");
-            is_sending.value = false;
-            return;
-        }
-        addFiles("client_photo", document.getElementById("client_photo").files[0]);
-
-        if (
-            document.getElementById("national_id").files.length > 0 &&
-            document.getElementById("national_id").files[0].size > maxSize
-        ) {
-            alert("size of national ID must be less than 100KB");
-            is_sending.value = false;
-            return;
-        }
-        addFiles("national_id", document.getElementById("national_id").files[0]);
-    */
 
     application_forms.value.forEach((application) => {
         console.log(application.visa_type);

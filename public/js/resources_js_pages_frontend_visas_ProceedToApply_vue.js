@@ -115,36 +115,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context2.prev = _context2.next) {
               case 0:
                 is_sending.value = true;
-                /*
-                    if (
-                        document.getElementById("passport_doc").files.length > 0 &&
-                        document.getElementById("passport_doc").files[0].size > maxSize
-                    ) {
-                        alert("Size of your passport must be less than 100KB");
-                        is_sending.value = false;
-                        return;
-                    }
-                    addFiles("passport_doc", document.getElementById("passport_doc").files[0]);
-                     if (
-                        document.getElementById("client_photo").files.length > 0 &&
-                        document.getElementById("client_photo").files[0].size > maxSize
-                    ) {
-                        alert("Size of your photo must be less than 100KB");
-                        is_sending.value = false;
-                        return;
-                    }
-                    addFiles("client_photo", document.getElementById("client_photo").files[0]);
-                     if (
-                        document.getElementById("national_id").files.length > 0 &&
-                        document.getElementById("national_id").files[0].size > maxSize
-                    ) {
-                        alert("size of national ID must be less than 100KB");
-                        is_sending.value = false;
-                        return;
-                    }
-                    addFiles("national_id", document.getElementById("national_id").files[0]);
-                */
-
                 application_forms.value.forEach(function (application) {
                   console.log(application.visa_type);
                   visa_options.value.forEach(function (type) {
@@ -241,7 +211,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       ref: vue__WEBPACK_IMPORTED_MODULE_0__.ref,
       inject: vue__WEBPACK_IMPORTED_MODULE_0__.inject,
       onBeforeMount: vue__WEBPACK_IMPORTED_MODULE_0__.onBeforeMount,
-      onMounted: vue__WEBPACK_IMPORTED_MODULE_0__.onMounted,
 
       get useGeneral() {
         return _composables_general__WEBPACK_IMPORTED_MODULE_1__["default"];

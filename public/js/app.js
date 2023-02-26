@@ -27415,7 +27415,13 @@ var routes = [{
   component: function component() {
     return __webpack_require__.e(/*! import() */ "resources_js_pages_backend_Dashboard_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../pages/backend/Dashboard.vue */ "./resources/js/pages/backend/Dashboard.vue"));
   }
-}, {
+}, // {
+//     path: "/:lang?",
+//     name: "Home",
+//     component: () => import("../pages/frontend/Homepage"),
+//     props: true
+// },
+{
   path: "/dashboard/categories",
   name: "categories.index",
   component: function component() {

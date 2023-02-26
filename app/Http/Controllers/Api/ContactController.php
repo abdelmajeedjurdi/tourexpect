@@ -16,7 +16,8 @@ class ContactController extends Controller
     {
         Mail::to('info@tourexpect.com')->send(new InquiryMail($request));
 
-        return response()->json('Your message has been sent. Thank you!', 200);
+
+        return ['message' => 'Your message has been sent. Thank you!', 'status' => 200];
     }
     public function makeContact(Request $request)
     {
