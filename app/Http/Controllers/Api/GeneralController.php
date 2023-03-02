@@ -28,14 +28,12 @@ class GeneralController extends Controller
     }
     public function getSession(Request $request)
     {
-        Log::info($request);
-
         $stripe = new \Stripe\StripeClient(
             env('STRIPE_API_KEY')
         );
         $checkout = $stripe->checkout->sessions->create([
-            'success_url' => 'http://127.0.0.1:8000/success',
-            'cancel_url' => 'http://127.0.0.1:8000/cancel',
+            'success_url' => 'https://tourexpect.com/success',
+            'cancel_url' => 'https://tourexpect.com/cancel',
 
             'line_items' => [
                 [
@@ -56,6 +54,7 @@ class GeneralController extends Controller
     }
     public function applyToVisa(Request $request)
     {
+
         Mail::to('info@tourexpect.com')->send(new VisaMail($request));
 
         return response()->json('Your message has been sent. Thank you!', 200);
@@ -138,5 +137,10 @@ class GeneralController extends Controller
         unlink($path . $image->image);
         DB::table('option_icons')->delete($id);
         return "done";
+    }
+
+    public function handleIPN(Request $request)
+    {
+        return response()->json('Your message has been sent. Thank you!', 200);
     }
 }

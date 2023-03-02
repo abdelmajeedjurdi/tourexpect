@@ -6,12 +6,6 @@ const routes = [
         name: "dashboard",
         component: () => import("../pages/backend/Dashboard.vue"),
     },
-    // {
-    //     path: "/:lang?",
-    //     name: "Home",
-    //     component: () => import("../pages/frontend/Homepage"),
-    //     props: true
-    // },
     {
         path: "/dashboard/categories",
         name: "categories.index",

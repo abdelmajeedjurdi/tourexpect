@@ -45,7 +45,7 @@ export default function useGeneral() {
     }
 
     const getSession = async (amount, name, customer_email) => {
-        let response = await axios.post(`/api/get-session`, { 'amount': amount, 'name': name, 'customer_email': customer_email });
+        let response = await axios.get(`/api/get-session?amount=${amount}&name=${name}&customer_email=${customer_email}`);
         session_id.value = response.data.id;
     }
 
@@ -64,7 +64,6 @@ export default function useGeneral() {
             fd.append("client_photo_" + i, form[i].client_photo);
             fd.append("national_id_" + i, form[i].national_id);
         }
-
         fd.append("count", form.length);
 
         try {

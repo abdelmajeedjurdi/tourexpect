@@ -33,6 +33,7 @@ class PackageController extends Controller
     }
     public function getFilteredPacks(Request $request)
     {
+        Log::info($request);
         $destinations = json_decode($request->d);
         $categories = json_decode($request->c);
 

@@ -40,7 +40,7 @@ class TourController extends Controller
 
     public function getFilteredTours(Request $request)
     {
-        Log::info($request);
+
 
         $destinations = json_decode($request->d);
         $categories = json_decode($request->c);

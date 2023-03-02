@@ -123,7 +123,7 @@ class DestinationController extends Controller
      */
     public function update(DestinationRequest $request, Destination $destination)
     {
-        Log::info($request);
+
         $path = 'images/destinations/';
         //code for remove old image
         if ($request->new_image != 'null' && $request->new_image != 'default.jpg') {
