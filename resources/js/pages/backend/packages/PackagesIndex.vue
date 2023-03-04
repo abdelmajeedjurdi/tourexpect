@@ -117,7 +117,7 @@ const { packages, getPackages, destroyPackage, pages, duplicate } =
     usePackages();
 let currentPage = ref(1);
 let Swal = useSwal();
-onMounted(getPackages(currentPage.value));
+onMounted(() => getPackages(currentPage.value));
 const changePage = (page) => {
     currentPage.value = page;
     getPackages(currentPage.value);

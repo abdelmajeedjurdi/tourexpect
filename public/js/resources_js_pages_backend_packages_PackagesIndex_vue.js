@@ -94,7 +94,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
     var currentPage = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)(1);
     var Swal = (0,_plugins_useSwal_js__WEBPACK_IMPORTED_MODULE_2__.useSwal)();
-    (0,vue__WEBPACK_IMPORTED_MODULE_1__.onMounted)(getPackages(currentPage.value));
+    (0,vue__WEBPACK_IMPORTED_MODULE_1__.onMounted)(function () {
+      return getPackages(currentPage.value);
+    });
 
     var changePage = function changePage(page) {
       currentPage.value = page;

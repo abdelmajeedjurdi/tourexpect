@@ -113,7 +113,7 @@ import Pagenation from "../../../components/Pagenation.vue";
 const { hotels, getHotels, destroyHotel, pages, duplicate } = useHotels();
 let currentPage = ref(1);
 let Swal = useSwal();
-onMounted(getHotels(currentPage.value));
+onMounted(() => getHotels(currentPage.value));
 const changePage = (page) => {
     currentPage.value = page;
     getHotels(currentPage.value);

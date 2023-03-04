@@ -100,7 +100,7 @@ import Pagenation from "../../../components/Pagenation.vue";
 const { visas, getVisas, destroyVisa, pages, duplicate } = useVisas();
 let currentPage = ref(1);
 let Swal = useSwal();
-onMounted(getVisas(currentPage.value));
+onMounted(() => getVisas(currentPage.value));
 const changePage = (page) => {
     currentPage.value = page;
     getVisas(currentPage.value);

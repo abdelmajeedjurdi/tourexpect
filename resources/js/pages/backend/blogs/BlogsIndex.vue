@@ -109,7 +109,7 @@ const { blogs, getBlogs, destroyBlog, pages, duplicate } = useBlogs();
 
 let Swal = useSwal();
 let currentPage = ref(1);
-onMounted(getBlogs(currentPage.value));
+onMounted(() => getBlogs(currentPage.value));
 const changePage = (page) => {
     currentPage.value = page;
     getBlogs(currentPage.value);

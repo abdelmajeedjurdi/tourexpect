@@ -94,7 +94,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
     var Swal = (0,_plugins_useSwal_js__WEBPACK_IMPORTED_MODULE_2__.useSwal)();
     var currentPage = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)(1);
-    (0,vue__WEBPACK_IMPORTED_MODULE_1__.onMounted)(getCategories(currentPage.value));
+    (0,vue__WEBPACK_IMPORTED_MODULE_1__.onMounted)(function () {
+      return getCategories(currentPage.value);
+    });
 
     var dublicateRow = /*#__PURE__*/function () {
       var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(id) {

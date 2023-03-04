@@ -110,7 +110,7 @@ const { activities, getActivities, destroyActivity, pages, duplicate } =
     useActivities();
 let currentPage = ref(1);
 let Swal = useSwal();
-onMounted(getActivities(currentPage.value));
+onMounted(() => getActivities(currentPage.value));
 const changePage = (page) => {
     currentPage.value = page;
     getActivities(currentPage.value);

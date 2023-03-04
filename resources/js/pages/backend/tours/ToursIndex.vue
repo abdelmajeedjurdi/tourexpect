@@ -109,7 +109,7 @@ import Pagenation from "../../../components/Pagenation.vue";
 const { tours, getTours, destroyTour, pages, duplicate } = useTours();
 let currentPage = ref(1);
 let Swal = useSwal();
-onMounted(getTours(currentPage.value));
+onMounted(() => getTours(currentPage.value));
 const changePage = (page) => {
     currentPage.value = page;
     getTours(currentPage.value);

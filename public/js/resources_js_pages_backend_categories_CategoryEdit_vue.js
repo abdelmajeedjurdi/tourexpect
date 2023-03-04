@@ -44,7 +44,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
     var Swal = (0,_plugins_useSwal_js__WEBPACK_IMPORTED_MODULE_2__.useSwal)();
     var imagePreview = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)(null);
-    (0,vue__WEBPACK_IMPORTED_MODULE_1__.onMounted)(getCategory(props.id));
+    (0,vue__WEBPACK_IMPORTED_MODULE_1__.onMounted)(function () {
+      return getCategory(props.id);
+    });
     var live_property = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)(-1);
     var property = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)({
       title_en: "",
@@ -375,7 +377,7 @@ var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<option class=\"\" value=\"tours\">Tours</option><option class=\"py-4\" value=\"packages\">Packages</option><option class=\"py-4\" value=\"activities\">Activities</option><option class=\"py-4\" value=\"hotels\">Hotels &amp; Resorts</option><option class=\"py-4\" value=\"blogs\">Blog</option>", 5);
+var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<option class=\"\" value=\"tours\">Tours</option><option class=\"py-4\" value=\"packages\"> Packages </option><option class=\"py-4\" value=\"activities\"> Activities </option><option class=\"py-4\" value=\"hotels\"> Hotels &amp; Resorts </option><option class=\"py-4\" value=\"blogs\">Blog</option>", 5);
 
 var _hoisted_27 = [_hoisted_22];
 var _hoisted_28 = {

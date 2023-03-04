@@ -114,7 +114,7 @@ const { categories, getCategories, destroyCategory, pages, duplicate } =
 
 let Swal = useSwal();
 let currentPage = ref(1);
-onMounted(getCategories(currentPage.value));
+onMounted(() => getCategories(currentPage.value));
 const dublicateRow = async (id) => {
     await duplicate(id);
     getCategories(currentPage.value);
