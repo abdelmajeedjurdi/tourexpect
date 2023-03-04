@@ -835,7 +835,7 @@
 import { ref, inject, onBeforeMount } from "vue";
 import useGeneral from "../../../composables/general";
 import useVisas from "../../../composables/visas";
-import { useQuery, useRoute, useRouter } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 
 const { addFiles } = useGeneral();
 const { getVisaDetails, visa } = useVisas();
