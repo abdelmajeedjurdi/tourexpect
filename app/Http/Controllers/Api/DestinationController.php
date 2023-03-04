@@ -24,7 +24,7 @@ class DestinationController extends Controller
     {
         if ($request->page == -1)
             return DestinationResource::collection(Destination::paginate());
-        return DestinationResource::collection(Destination::paginate(15));
+        return DestinationResource::collection(Destination::paginate(10));
     }
 
     public function getCountries()
