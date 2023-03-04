@@ -186,7 +186,6 @@
             Update
         </button>
     </form>
-    {{ destination }}
 </template>
 
 <script setup>

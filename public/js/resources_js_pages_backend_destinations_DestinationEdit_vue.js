@@ -430,9 +430,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* NEED_PATCH */
   ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, $setup.destination.trending]]), _hoisted_29])])]), _hoisted_30], 40
   /* PROPS, HYDRATE_EVENTS */
-  , _hoisted_2), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.destination), 1
-  /* TEXT */
-  )], 64
+  , _hoisted_2)], 64
   /* STABLE_FRAGMENT */
   );
 }
