@@ -6,6 +6,13 @@ const routes = [
         name: "dashboard",
         component: () => import("../pages/backend/Dashboard.vue"),
     },
+
+    // {
+    //     path: "/",
+    //     name: "Home",
+    //     component: () => import("../pages/frontend/Homepage"),
+    //     props: true
+    // },
     {
         path: "/dashboard/categories",
         name: "categories.index",
@@ -202,12 +209,6 @@ const routes = [
 
     // [[[[[[[[[[[<<<<<<<<<<<<<<<<<<<<<<<<<<(((((((((((((((((--Front-End--)))))))))))))))))>>>>>>>>>>>>>>>>>>>>>>>>>>]]]]]]]]]]],
 
-    // {
-    //     path: "/:lang?",
-    //     name: "Home",
-    //     component: () => import("../pages/frontend/Homepage"),
-    //     props: true
-    // },
     {
         path: "/:lang?/about",
         name: "about",
@@ -407,26 +408,26 @@ const router = createRouter({
     }
 });
 
-router.beforeEach((to, from, next) => {
-    // let name = to.name
-    // name = name.replace(/\-/g, ' ');
-    // name = name.replace(/(^\w|\s\w)/g, m => m.toUpperCase());
-    // let title = `${name} - Tourexpect`
-    // if (to.params.slug) {
-    //     let s = to.params.slug
-    //     s = s.replace(/\-/g, ' ');
-    //     s = s.replace(/(^\w|\s\w)/g, m => m.toUpperCase());
-    //     title += ` - ${s}`
-    // }
-    // document.title = title
+// router.beforeEach((to, from, next) => {
+//     // let name = to.name
+//     // name = name.replace(/\-/g, ' ');
+//     // name = name.replace(/(^\w|\s\w)/g, m => m.toUpperCase());
+//     // let title = `${name} - Tourexpect`
+//     // if (to.params.slug) {
+//     //     let s = to.params.slug
+//     //     s = s.replace(/\-/g, ' ');
+//     //     s = s.replace(/(^\w|\s\w)/g, m => m.toUpperCase());
+//     //     title += ` - ${s}`
+//     // }
+//     // document.title = title
 
 
-    if (window.ga) {
-        window.ga('set', 'page', to.fullPath)
-        window.ga('send', 'pageview')
-    }
-    next();
-})
+//     if (window.ga) {
+//         window.ga('set', 'page', to.fullPath)
+//         window.ga('send', 'pageview')
+//     }
+//     next();
+// })
 
 /*
 router.beforeEach((to, from, next) => {

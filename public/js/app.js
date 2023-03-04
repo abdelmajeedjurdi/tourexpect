@@ -27411,7 +27411,13 @@ var routes = [{
   component: function component() {
     return __webpack_require__.e(/*! import() */ "resources_js_pages_backend_Dashboard_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../pages/backend/Dashboard.vue */ "./resources/js/pages/backend/Dashboard.vue"));
   }
-}, {
+}, // {
+//     path: "/",
+//     name: "Home",
+//     component: () => import("../pages/frontend/Homepage"),
+//     props: true
+// },
+{
   path: "/dashboard/categories",
   name: "categories.index",
   component: function component() {
@@ -27634,12 +27640,6 @@ var routes = [{
     return __webpack_require__.e(/*! import() */ "resources_js_pages_backend_jobs_Jobs_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../pages/backend/jobs/Jobs */ "./resources/js/pages/backend/jobs/Jobs.vue"));
   }
 }, // [[[[[[[[[[[<<<<<<<<<<<<<<<<<<<<<<<<<<(((((((((((((((((--Front-End--)))))))))))))))))>>>>>>>>>>>>>>>>>>>>>>>>>>]]]]]]]]]]],
-// {
-//     path: "/:lang?",
-//     name: "Home",
-//     component: () => import("../pages/frontend/Homepage"),
-//     props: true
-// },
 {
   path: "/:lang?/about",
   name: "about",
@@ -27858,26 +27858,25 @@ var router = (0,vue_router__WEBPACK_IMPORTED_MODULE_0__.createRouter)({
       top: 0
     };
   }
-});
-router.beforeEach(function (to, from, next) {
-  // let name = to.name
-  // name = name.replace(/\-/g, ' ');
-  // name = name.replace(/(^\w|\s\w)/g, m => m.toUpperCase());
-  // let title = `${name} - Tourexpect`
-  // if (to.params.slug) {
-  //     let s = to.params.slug
-  //     s = s.replace(/\-/g, ' ');
-  //     s = s.replace(/(^\w|\s\w)/g, m => m.toUpperCase());
-  //     title += ` - ${s}`
-  // }
-  // document.title = title
-  if (window.ga) {
-    window.ga('set', 'page', to.fullPath);
-    window.ga('send', 'pageview');
-  }
+}); // router.beforeEach((to, from, next) => {
+//     // let name = to.name
+//     // name = name.replace(/\-/g, ' ');
+//     // name = name.replace(/(^\w|\s\w)/g, m => m.toUpperCase());
+//     // let title = `${name} - Tourexpect`
+//     // if (to.params.slug) {
+//     //     let s = to.params.slug
+//     //     s = s.replace(/\-/g, ' ');
+//     //     s = s.replace(/(^\w|\s\w)/g, m => m.toUpperCase());
+//     //     title += ` - ${s}`
+//     // }
+//     // document.title = title
+//     if (window.ga) {
+//         window.ga('set', 'page', to.fullPath)
+//         window.ga('send', 'pageview')
+//     }
+//     next();
+// })
 
-  next();
-});
 /*
 router.beforeEach((to, from, next) => {
   if (window.ga) {

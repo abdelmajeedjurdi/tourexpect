@@ -220,10 +220,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         return _composables_visas__WEBPACK_IMPORTED_MODULE_2__["default"];
       },
 
-      get useQuery() {
-        return vue_router__WEBPACK_IMPORTED_MODULE_3__.useQuery;
-      },
-
       get useRoute() {
         return vue_router__WEBPACK_IMPORTED_MODULE_3__.useRoute;
       },
