@@ -23,7 +23,7 @@ class DestinationController extends Controller
     public function index(Request $request)
     {
         if ($request->page == -1)
-            return DestinationResource::collection(Destination::paginate());
+            return DestinationResource::collection(Destination::all());
         return DestinationResource::collection(Destination::paginate(10));
     }
 
