@@ -14,7 +14,7 @@ export default function useDestinations() {
 
     let fd = new FormData();
 
-    const getDestinations = async (page) => {
+    const getDestinations = async (page = -1) => {
         let response = await axios.get(`/api/destinations?page=${page}`);
         destinations.value = response.data.data;
         pages.value = response.data.meta

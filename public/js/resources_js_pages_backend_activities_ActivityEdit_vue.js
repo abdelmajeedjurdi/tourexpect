@@ -3635,21 +3635,24 @@ function useDestinations() {
   var fd = new FormData();
 
   var getDestinations = /*#__PURE__*/function () {
-    var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(page) {
-      var response;
+    var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+      var page,
+          response,
+          _args = arguments;
       return _regeneratorRuntime().wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              _context.next = 2;
+              page = _args.length > 0 && _args[0] !== undefined ? _args[0] : -1;
+              _context.next = 3;
               return axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/destinations?page=".concat(page));
 
-            case 2:
+            case 3:
               response = _context.sent;
               destinations.value = response.data.data;
               pages.value = response.data.meta;
 
-            case 5:
+            case 6:
             case "end":
               return _context.stop();
           }
@@ -3657,7 +3660,7 @@ function useDestinations() {
       }, _callee);
     }));
 
-    return function getDestinations(_x) {
+    return function getDestinations() {
       return _ref.apply(this, arguments);
     };
   }();
@@ -3738,7 +3741,7 @@ function useDestinations() {
       }, _callee4);
     }));
 
-    return function getDestination(_x2) {
+    return function getDestination(_x) {
       return _ref4.apply(this, arguments);
     };
   }();
@@ -3766,7 +3769,7 @@ function useDestinations() {
       }, _callee5);
     }));
 
-    return function getDestinationDetails(_x3) {
+    return function getDestinationDetails(_x2) {
       return _ref5.apply(this, arguments);
     };
   }();
@@ -3825,7 +3828,7 @@ function useDestinations() {
       }, _callee6, null, [[10, 17]]);
     }));
 
-    return function storeDestination(_x4) {
+    return function storeDestination(_x3) {
       return _ref6.apply(this, arguments);
     };
   }();
@@ -3883,7 +3886,7 @@ function useDestinations() {
       }, _callee7, null, [[12, 19]]);
     }));
 
-    return function updateDestination(_x5, _x6) {
+    return function updateDestination(_x4, _x5) {
       return _ref7.apply(this, arguments);
     };
   }();
@@ -3905,7 +3908,7 @@ function useDestinations() {
       }, _callee8);
     }));
 
-    return function deleteProperty(_x7) {
+    return function deleteProperty(_x6) {
       return _ref8.apply(this, arguments);
     };
   }();
@@ -3927,7 +3930,7 @@ function useDestinations() {
       }, _callee9);
     }));
 
-    return function destroyDestination(_x8) {
+    return function destroyDestination(_x7) {
       return _ref9.apply(this, arguments);
     };
   }();
@@ -3949,7 +3952,7 @@ function useDestinations() {
       }, _callee10);
     }));
 
-    return function duplicate(_x9) {
+    return function duplicate(_x8) {
       return _ref10.apply(this, arguments);
     };
   }();
@@ -3976,7 +3979,7 @@ function useDestinations() {
       }, _callee11);
     }));
 
-    return function getCountry(_x10) {
+    return function getCountry(_x9) {
       return _ref11.apply(this, arguments);
     };
   }();
@@ -4015,7 +4018,7 @@ function useDestinations() {
       }, _callee12, null, [[3, 9]]);
     }));
 
-    return function storeCountry(_x11) {
+    return function storeCountry(_x10) {
       return _ref12.apply(this, arguments);
     };
   }();
@@ -4061,7 +4064,7 @@ function useDestinations() {
       }, _callee13, null, [[6, 12]]);
     }));
 
-    return function updateCountry(_x12) {
+    return function updateCountry(_x11) {
       return _ref13.apply(this, arguments);
     };
   }();
@@ -4086,7 +4089,7 @@ function useDestinations() {
       }, _callee14);
     }));
 
-    return function destroyCountry(_x13) {
+    return function destroyCountry(_x12) {
       return _ref14.apply(this, arguments);
     };
   }();

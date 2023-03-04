@@ -20,8 +20,10 @@ class DestinationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        if ($request->page == -1)
+            return DestinationResource::collection(Destination::paginate());
         return DestinationResource::collection(Destination::paginate(15));
     }
 
