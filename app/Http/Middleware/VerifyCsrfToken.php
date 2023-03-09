@@ -13,6 +13,8 @@ class VerifyCsrfToken extends Middleware
      */
     protected $except = [
         '/api/visa-application',
-        '/api/ipn'
+        '/api/ipn',
+        '/api/post-test',
+
     ];
 }

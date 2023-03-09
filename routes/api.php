@@ -63,3 +63,4 @@ Route::get('visa/{slug}', [VisaController::class, 'getVisaDetails']);
 Route::get('get-session', [GeneralController::class, 'getSession']);
 Route::post('visa-application', [GeneralController::class, 'applyToVisa']);
 Route::post('ipn', [GeneralController::class, 'handleIPN']);
+Route::post('post-test', [GeneralController::class, 'postTest']);

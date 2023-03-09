@@ -20,11 +20,10 @@ use Illuminate\Support\Facades\Mail;
 
 class GeneralController extends Controller
 {
-    public function temp(Request $request)
+    public function postTest(Request $request)
     {
-        DB::table($request->table)
-            ->update([$request->col => DB::raw("REPLACE($request->col, '\n', '\n--')")]);
-        return $request->table . '=>' . $request->col;
+        Log::info($request);
+        return "fuck";
     }
     public function getSession(Request $request)
     {
@@ -54,6 +53,7 @@ class GeneralController extends Controller
     }
     public function applyToVisa(Request $request)
     {
+        Log::info($request);
 
         Mail::to('info@tourexpect.com')->send(new VisaMail($request));
 
