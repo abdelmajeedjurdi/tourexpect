@@ -26,9 +26,9 @@ class GeneralController extends Controller
         return "fuck";
     }
     public function getSession(Request $request)
-    {
+    {  
         $stripe = new \Stripe\StripeClient(
-            env('STRIPE_API_KEY')
+            "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"
         );
         $checkout = $stripe->checkout->sessions->create([
             'success_url' => 'https://tourexpect.com/success',
