@@ -26,6 +26,95 @@ class DestinationController extends Controller
             return DestinationResource::collection(Destination::all());
         return DestinationResource::collection(Destination::paginate(10));
     }
+    public function getDestinations(Request $request)
+    {
+        if ($request) {
+            $destinations = DB::table('destinations')
+                ->join('countries', 'destinations.country_id', '=', 'countries.id')->where('countries.slug', $request->country)
+                ->select('destinations.*', 'countries.name_ar as country_ar', 'countries.name_en as country_en', 'countries.slug as country_slug')
+                ->get();
+
+            $tours = DB::table('tours')
+                ->join('tour_destination', 'tours.id', '=', 'tour_destination.tour_id')
+                ->join('destinations', 'destinations.id', '=', 'tour_destination.destination_id')
+                ->join('countries', 'countries.id', '=', 'destinations.country_id')
+                ->where('countries.slug', '=', $request->country)
+                ->select('tours.*')
+                ->distinct()
+                ->get();
+
+
+            $packages = DB::table('packages')
+                ->join('package_destination', 'packages.id', '=', 'package_destination.package_id')
+                ->join('destinations', 'destinations.id', '=', 'package_destination.destination_id')
+                ->join('countries', 'countries.id', '=', 'destinations.country_id')
+                ->where('countries.slug', '=', $request->country)
+                ->select('packages.*')
+                ->distinct()
+                ->get();
+
+
+            return ['destinations' => $destinations, 'tours' => $tours, 'packages' => $packages];
+        }
+
+        $destinations = DB::table('destinations')
+            ->join('countries', 'destinations.country_id', '=', 'countries.id')
+            ->select('destinations.*', 'countries.name_ar as country_ar', 'countries.name_en as country_en', 'countries.slug as country_slug')
+            ->orderBy('destinations.country_id')
+            ->get()
+            ->groupBy('country_slug')
+            ->map(function ($destinations, $country_slug) {
+                return [
+                    'slug' => $country_slug,
+                    'name_en' => $destinations->first()->country_en,
+                    'name_ar' => $destinations->first()->country_ar,
+                    'destinations' => $destinations->map(function ($destination) {
+                        return [
+                            'id' => $destination->id,
+                            'name_en' => $destination->name_en,
+                            'name_ar' => $destination->name_ar,
+                            'description_en' => $destination->description_en,
+                            'description_ar' => $destination->description_ar,
+                            'image' => $destination->image,
+                            'trending' => $destination->trending,
+                            'slug' => $destination->slug,
+                            'country_id' => $destination->country_id
+                        ];
+                    })->toArray()
+                ];
+            })
+            ->values()
+            ->toArray();
+
+        return $destinations;
+    }
+
+
+    public function getDestination(Request $request)
+    {
+
+        $destination = DB::table('destinations')->where('destinations.slug', '=', $request->destination)->first();
+
+        $tours = DB::table('tours')
+            ->join('tour_destination', 'tours.id', '=', 'tour_destination.tour_id')
+            ->join('destinations', 'destinations.id', '=', 'tour_destination.destination_id')
+            ->where('destinations.slug', '=', $request->destination)
+            ->select('tours.*')
+            ->distinct()
+            ->get();
+
+
+        $packages = DB::table('packages')
+            ->join('package_destination', 'packages.id', '=', 'package_destination.package_id')
+            ->join('destinations', 'destinations.id', '=', 'package_destination.destination_id')
+            ->where('destinations.slug', '=', $request->destination)
+            ->select('packages.*')
+            ->distinct()
+            ->get();
+
+
+        return ['destination' => $destination, 'tours' => $tours, 'packages' => $packages];
+    }
 
     public function getCountries()
     {

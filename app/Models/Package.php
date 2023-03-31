@@ -17,7 +17,7 @@ class Package extends Model
         'title_en',
         'title_ar',
         'address_ar',
-        'title_ar',
+        'address_en',
         'thumbnail',
         'description_en',
         'description_ar',
@@ -43,6 +43,8 @@ class Package extends Model
         'notes_ar',
         'terms_and_bullet_sections_en',
         'terms_and_bullet_sections_ar',
-        'is_from', 'banner_highlights', 'options'
+        'is_from',
+        'banner_highlights',
+        'options'
     ];
 }

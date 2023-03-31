@@ -31,7 +31,6 @@ class Tour extends Model
         'exclude_ar',
         'exclude_en',
         'source',
-        'options',
         'highlights_ar',
         'highlights_en',
         'information_ar',
@@ -44,6 +43,8 @@ class Tour extends Model
         'notes_ar',
         'terms_and_bullet_sections_en',
         'terms_and_bullet_sections_ar',
-        'is_from', 'banner_highlights'
+        'is_from',
+        'banner_highlights',
+        'options',
     ];
 }
