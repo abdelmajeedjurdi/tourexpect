@@ -170,14 +170,34 @@
                                     <div>
                                         <div class="dropdown mt-4">
                                             <button
-                                                :style="`background-image: url(/images/icons/${selected_img})`"
-                                                class="rounded py-2 bg-gray-100 dropdown-toggle bg-no-repeat w-20 dark:bg-gray-800"
+                                                class="rounded bg-gray-100 bg-no-repeat py-2 px-4 dark:bg-gray-800 flex items-center"
                                                 type="button"
                                                 id="dropdownMenuButton1"
                                                 data-bs-toggle="dropdown"
                                                 aria-expanded="false"
                                                 @click="openImgs = true"
-                                            ></button>
+                                            >
+                                                <img
+                                                    class="mr-2 h-6 w-6 rounded-full"
+                                                    :src="`/images/icons/${selected_img}`"
+                                                    alt="Avatar image"
+                                                />
+
+                                                <svg
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    fill="none"
+                                                    viewBox="0 0 24 24"
+                                                    stroke-width="1.5"
+                                                    stroke="currentColor"
+                                                    class="w-10 text-gray-700 dark:text-gray-200"
+                                                >
+                                                    <path
+                                                        stroke-linecap="round"
+                                                        stroke-linejoin="round"
+                                                        d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+                                                    />
+                                                </svg>
+                                            </button>
                                             <ul
                                                 id="component_id"
                                                 class="dropdown-menu dark:dropdown-menu-dark"

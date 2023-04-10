@@ -739,8 +739,6 @@
         >
             Create
         </button>
-
-        {{ form }}
     </div>
 </template>
 
