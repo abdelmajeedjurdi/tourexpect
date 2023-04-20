@@ -141,6 +141,7 @@ class GeneralController extends Controller
 
     public function handleIPN(Request $request)
     {
+        Log::info($request);
         return response()->json('Your message has been sent. Thank you!', 200);
     }
 }
