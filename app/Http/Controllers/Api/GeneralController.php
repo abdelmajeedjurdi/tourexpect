@@ -25,11 +25,6 @@ class GeneralController extends Controller
         // dispatch(new OfflinePaymentJob());
         // Mail::to('info@tourexpect.com')->send(new SendFastpayMail());
         // return "completed";
-
-        return [
-            'MAIL_USERNAME' => env('MAIL_USERNAME'),
-            'MAIL_PASSWORD' => env('MAIL_PASSWORD')
-        ];
     }
     public function getSession(Request $request)
     {
