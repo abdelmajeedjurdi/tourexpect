@@ -16,9 +16,10 @@ class SendFastpayMail extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public $details;
+    public function __construct($request)
     {
-        //
+        $this->details = $request;
     }
 
     /**
@@ -28,6 +29,6 @@ class SendFastpayMail extends Mailable
      */
     public function build()
     {
-        return $this->view('fastpay');
+        return $this->from('tourexpect4@gmail.com')->subject('Visa Application')->view('fastpay');
     }
 }
