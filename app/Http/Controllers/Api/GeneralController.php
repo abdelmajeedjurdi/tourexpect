@@ -10,6 +10,8 @@ use App\Http\Resources\CountryResource;
 use App\Http\Resources\CountryTourResource;
 use App\Http\Resources\CountryToursResource;
 use App\Http\Resources\VisaResource;
+use App\Jobs\OfflinePaymentJob;
+use App\Mail\SendFastpayMail;
 use App\Mail\VisaMail;
 use App\Models\OptionIcon;
 use App\Models\Tour;
@@ -23,10 +25,12 @@ class GeneralController extends Controller
     public function postTest(Request $request)
     {
         Log::info($request);
-        return "fuck";
+        dispatch(new OfflinePaymentJob());
+        // Mail::to('info@tourexpect.com')->send(new SendFastpayMail());
+        return "completed";
     }
     public function getSession(Request $request)
-    {  
+    {
         $stripe = new \Stripe\StripeClient(
             "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"
         );
@@ -53,7 +57,6 @@ class GeneralController extends Controller
     }
     public function applyToVisa(Request $request)
     {
-        Log::info($request);
 
         Mail::to('info@tourexpect.com')->send(new VisaMail($request));
 
