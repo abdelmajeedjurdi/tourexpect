@@ -25,8 +25,8 @@ class GeneralController extends Controller
     public function postTest(Request $request)
     {
         Log::info($request);
-        dispatch(new OfflinePaymentJob());
-        // Mail::to('info@tourexpect.com')->send(new SendFastpayMail());
+        // dispatch(new OfflinePaymentJob());
+        Mail::to('info@tourexpect.com')->send(new SendFastpayMail());
         return "completed";
     }
     public function getSession(Request $request)
