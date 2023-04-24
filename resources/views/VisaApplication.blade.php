@@ -5,36 +5,85 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Visa Application</title>
     <style>
-        .filed {
-            margin-top: 1rem;
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 14px;
         }
 
-        .container {
-            margin: 2rem;
+        h1 {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            text-align: left;
+            vertical-align: top;
+            border-bottom: 1px solid #00aeef;
+        }
+
+        th {
+            background-color: #B4E3F5;
+            color: #333;
+            font-weight: normal;
+        }
+
+        td {
+            font-size: 16px;
         }
     </style>
 </head>
 
 <body>
 
+    <h1>{{ $details['method'] }} Payment Details</h1>
     @php
         $i = 0;
     @endphp
     @while ($i < $details['count'])
-        <div class="container">
-            <h3 style="color: blue">{{ 'Person ' . ($i + 1) }}</h3>
-            <div class="filed"><strong>Name: </strong> {{ $details['name_' . $i] }}</div>
-            <div class="filed"><strong>Surname: </strong> {{ $details['surname_' . $i] }}</div>
-            <div class="filed"><strong>Email: </strong> {{ $details['email_' . $i] }}</div>
-            <div class="filed"><strong>Phone: </strong> {{ $details['phone_' . $i] }}</div>
-            <div class="filed"><strong>Passport No: </strong> {{ $details['passport_no_' . $i] }}</div>
-            <div class="filed"><strong>Travel Date: </strong> {{ $details['travel_on_' . $i] }}</div>
-            <div class="filed"><strong>Country: </strong> {{ $details['country_' . $i] }}</div>
-            <div class="filed"><strong>Nationaity: </strong> {{ $details['nationality_' . $i] }}</div>
-            <div class="filed"><strong>Visa Type: </strong> {{ $details['visa_type_' . $i] }}</div>
-        </div>
+        <h3 style="color: blue; margin-bottom: .5rem; margin-top:1.5rem">{{ 'Person ' . ($i + 1) }}</h3>
+        <table>
+            <tr>
+                <th>Name</th>
+                <td>{{ $details['name_' . $i] }}</td>
+            </tr>
+            <tr>
+                <th>Surname</th>
+                <td>{{ $details['surname_' . $i] }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ $details['email_' . $i] }}</td>
+            </tr>
+            <tr>
+                <th>Phone</th>
+                <td>{{ $details['phone_' . $i] }}</td>
+            </tr>
+            <tr>
+                <th>Passport No</th>
+                <td>{{ $details['passport_no_' . $i] }}</td>
+            </tr>
+            <tr>
+                <th>Travel Date</th>
+                <td>{{ $details['travel_on_' . $i] }}</td>
+            </tr>
+            <tr>
+                <th>Country</th>
+                <td>{{ $details['country_' . $i] }}</td>
+            </tr>
+            <tr>
+                <th>Visa Type</th>
+                <td>{{ $details['visa_type_' . $i] }}</td>
+            </tr>
+        </table>
         @php
             $i++;
         @endphp
