@@ -9,6 +9,7 @@ use App\Http\Resources\CountryPassportResource;
 use App\Http\Resources\CountryResource;
 use App\Http\Resources\CountryTourResource;
 use App\Http\Resources\CountryToursResource;
+use App\Jobs\OfflinePaymentJob;
 use App\Mail\SendFastpayMail;
 use App\Mail\VisaMail;
 use App\Models\OptionIcon;
@@ -23,8 +24,10 @@ class GeneralController extends Controller
     {
         // Log::info($request);
         // dispatch(new OfflinePaymentJob());
-        // Mail::to('info@tourexpect.com')->send(new SendFastpayMail());
-        // return "completed";
+        OfflinePaymentJob::dispatch($request);
+
+        // Mail::to('eido.khudyda@gmail.com')->send(new SendFastpayMail($request));
+        return "completed";
     }
     public function getSession(Request $request)
     {
