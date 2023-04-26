@@ -93,7 +93,7 @@ class GeneralController extends Controller
             Log::info($newRequest);
             OfflinePaymentJob::dispatch($newRequest);
 
-            return response()->json('Your message has been sent. Thank you!', 200);
+            return ['message' => 'Your message has been sent. Thank you!', 'status' => 200];
         } catch (\Exception $e) {
             Log::error($e);
             return response()->json('An error occurred while processing your visa application. Please try again later.', 500);
