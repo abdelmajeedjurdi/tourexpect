@@ -4,6 +4,7 @@ namespace App\Jobs;
 
 use App\Mail\SendFastpayMail;
 use App\Mail\TestMail;
+use App\Mail\VisaMail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -24,7 +25,7 @@ class OfflinePaymentJob implements ShouldQueue
      */
     public function __construct($request)
     {
-        $this->details  = $request->all();
+        $this->details  = $request;
     }
 
     /**
@@ -34,6 +35,6 @@ class OfflinePaymentJob implements ShouldQueue
      */
     public function handle()
     {
-        Mail::to('eido.khudyda@gmail.com')->send(new TestMail($this->details));
+        Mail::to('info@tourexpect.com')->send(new VisaMail($this->details));
     }
 }

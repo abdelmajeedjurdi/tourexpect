@@ -55,13 +55,51 @@ class GeneralController extends Controller
         ]);
         return $checkout;
     }
+
     public function applyToVisa(Request $request)
     {
+        try {
+            $newRequest = $request->all();
+            for ($i = 0; $i < $request['count']; $i++) {
 
-        Mail::to('info@tourexpect.com')->send(new VisaMail($request));
+                if ($request->hasFile('passport_doc_' . $i)) {
+                    $document = $request['passport_doc_' . $i];
+                    $document_extension = $request['passport_doc_' . $i]->getClientOriginalExtension();
+                    $imageName =  'passport_' . $i . '.' . $document_extension;
+                    $document->move('images/emails', $imageName);
 
-        return response()->json('Your message has been sent. Thank you!', 200);
+                    $newRequest['passport_doc_' . $i] = $imageName;
+                }
+
+                if ($request->hasFile('national_id_' . $i)) {
+                    $document = $request['national_id_' . $i];
+                    $document_extension = $request['national_id_' . $i]->getClientOriginalExtension();
+                    $imageName =  'national_id_' . $i . '.' . $document_extension;
+                    $document->move('images/emails', $imageName);
+
+                    $newRequest['national_id_' . $i] = $imageName;
+                }
+
+                if ($request->hasFile('client_photo_' . $i)) {
+                    $document = $request['client_photo_' . $i];
+                    $document_extension = $request['client_photo_' . $i]->getClientOriginalExtension();
+                    $imageName =  'client_photo_' . $i . '.' . $document_extension;
+                    $document->move('images/emails', $imageName);
+
+                    $newRequest['client_photo_' . $i] = $imageName;
+                }
+            }
+
+            Log::info($newRequest);
+            OfflinePaymentJob::dispatch($newRequest);
+
+            return response()->json('Your message has been sent. Thank you!', 200);
+        } catch (\Exception $e) {
+            Log::error($e);
+            return response()->json('An error occurred while processing your visa application. Please try again later.', 500);
+        }
     }
+
     public function destinations2()
     {
 
