@@ -17,6 +17,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
+use Intervention\Image\Facades\Image;
 
 class GeneralController extends Controller
 {
@@ -58,24 +59,43 @@ class GeneralController extends Controller
 
     public function applyToVisa(Request $request)
     {
+        $file_size_kb = 250 * 1024; //this is for the condition where checking if the file is bigger or less than
+        $decreasing = 10; // this is for the file decreasing percentage, the larger the this variable, the larger the size of image sending.
         try {
+
             $newRequest = $request->all();
             for ($i = 0; $i < $request['count']; $i++) {
 
                 if ($request->hasFile('passport_doc_' . $i)) {
+
                     $document = $request['passport_doc_' . $i];
                     $document_extension = $request['passport_doc_' . $i]->getClientOriginalExtension();
                     $imageName =  'passport_' . $i . '.' . $document_extension;
-                    $document->move('images/emails', $imageName);
+
+                    if ($document->getSize() < $file_size_kb) {
+                        $document->move(public_path(), $imageName);
+                    } else {
+                        // $file_name  = 'compressed_' . $file->getClientOriginalName();
+                        $img = Image::make($document);
+                        $img->save(public_path($imageName), $decreasing);
+                    }
 
                     $newRequest['passport_doc_' . $i] = $imageName;
                 }
 
                 if ($request->hasFile('national_id_' . $i)) {
                     $document = $request['national_id_' . $i];
+
                     $document_extension = $request['national_id_' . $i]->getClientOriginalExtension();
                     $imageName =  'national_id_' . $i . '.' . $document_extension;
-                    $document->move('images/emails', $imageName);
+
+                    if ($document->getSize() < $file_size_kb) {
+                        $document->move(public_path(), $imageName);
+                    } else {
+                        // $file_name  = 'compressed_' . $file->getClientOriginalName();
+                        $img = Image::make($document);
+                        $img->save(public_path($imageName), $decreasing);
+                    }
 
                     $newRequest['national_id_' . $i] = $imageName;
                 }
@@ -84,8 +104,14 @@ class GeneralController extends Controller
                     $document = $request['client_photo_' . $i];
                     $document_extension = $request['client_photo_' . $i]->getClientOriginalExtension();
                     $imageName =  'client_photo_' . $i . '.' . $document_extension;
-                    $document->move('images/emails', $imageName);
 
+                    if ($document->getSize() < $file_size_kb) {
+                        $document->move(public_path(), $imageName);
+                    } else {
+                        // $file_name  = 'compressed_' . $file->getClientOriginalName();
+                        $img = Image::make($document);
+                        $img->save(public_path($imageName), $decreasing);
+                    }
                     $newRequest['client_photo_' . $i] = $imageName;
                 }
             }
