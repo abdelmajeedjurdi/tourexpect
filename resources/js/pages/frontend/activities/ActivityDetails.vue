@@ -178,13 +178,11 @@
                 />
                 <list-section
                     v-if="
-                        activity['terms_and_bullet_sections_' + lang] &&
-                        activity['terms_and_bullet_sections_' + lang] != 'null'
+                        activity['terms_and_conditions_' + lang] &&
+                        activity['terms_and_conditions_' + lang] != 'null'
                     "
                     class="border py-2 mt-3"
-                    :section_list="
-                        activity['terms_and_bullet_sections_' + lang]
-                    "
+                    :section_list="activity['terms_and_conditions_' + lang]"
                     section_title="terms_and_conditions"
                 />
                 <list-section

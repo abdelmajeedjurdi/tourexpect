@@ -877,7 +877,7 @@
                                         type="text"
                                         name="include_en"
                                         id="include_en"
-                                        placeholder="Separate it by lines"
+                                        placeholder="Separate it by lines followed by --"
                                         class="block mt-1 w-full rounded-md border-gray-500 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-800"
                                         v-model="form.include_en"
                                     />
@@ -894,7 +894,7 @@
                                         dir="rtl"
                                         rows="10"
                                         type="text"
-                                        placeholder="Separate it by lines"
+                                        placeholder="Separate it by lines followed by --"
                                         name="include_ar"
                                         id="include_ar"
                                         class="block mt-1 w-full rounded-md border-gray-500 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-800"
@@ -917,7 +917,7 @@
                                         type="text"
                                         name="exclude_en"
                                         id="exclude_en"
-                                        placeholder="Separate it by lines"
+                                        placeholder="Separate it by lines followed by --"
                                         class="block mt-1 w-full rounded-md border-gray-500 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-800"
                                         v-model="form.exclude_en"
                                     />
@@ -934,7 +934,7 @@
                                         dir="rtl"
                                         rows="10"
                                         type="text"
-                                        placeholder="Separate it by lines"
+                                        placeholder="Separate it by lines followed by --"
                                         name="exclude_ar"
                                         id="exclude_ar"
                                         class="block mt-1 w-full rounded-md border-gray-500 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-800"
@@ -962,7 +962,7 @@
                                         type="text"
                                         name="highlights_en"
                                         id="highlights_en"
-                                        placeholder="Separate it by lines"
+                                        placeholder="Separate it by lines followed by --"
                                         class="block mt-1 w-full rounded-md border-gray-500 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-800"
                                         v-model="form.highlights_en"
                                     />
@@ -979,7 +979,7 @@
                                         dir="rtl"
                                         rows="10"
                                         type="text"
-                                        placeholder="Separate it by lines"
+                                        placeholder="Separate it by lines followed by --"
                                         name="highlights_ar"
                                         id="highlights_ar"
                                         class="block mt-1 w-full rounded-md border-gray-500 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-800"
@@ -1001,7 +1001,7 @@
                                         type="text"
                                         name="information_en"
                                         id="information_en"
-                                        placeholder="Separate it by lines"
+                                        placeholder="Separate it by lines followed by --"
                                         class="block mt-1 w-full rounded-md border-gray-500 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-800"
                                         v-model="form.information_en"
                                     />
@@ -1018,7 +1018,7 @@
                                         dir="rtl"
                                         rows="10"
                                         type="text"
-                                        placeholder="Separate it by lines"
+                                        placeholder="Separate it by lines followed by --"
                                         name="information_ar"
                                         id="information_ar"
                                         class="block mt-1 w-full rounded-md border-gray-500 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-800"
@@ -1040,7 +1040,7 @@
                                         type="text"
                                         name="policy_en"
                                         id="policy_en"
-                                        placeholder="Separate it by lines"
+                                        placeholder="Separate it by lines followed by --"
                                         class="block mt-1 w-full rounded-md border-gray-500 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-800"
                                         v-model="form.policy_en"
                                     />
@@ -1057,7 +1057,7 @@
                                         dir="rtl"
                                         rows="10"
                                         type="text"
-                                        placeholder="Separate it by lines"
+                                        placeholder="Separate it by lines followed by --"
                                         name="policy_ar"
                                         id="policy_ar"
                                         class="block mt-1 w-full rounded-md border-gray-500 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-800"
@@ -1079,7 +1079,7 @@
                                         type="text"
                                         name="timing_and_transfer_en"
                                         id="timing_and_transfer_en"
-                                        placeholder="Separate it by lines"
+                                        placeholder="Separate it by lines followed by --"
                                         class="block mt-1 w-full rounded-md border-gray-500 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-800"
                                         v-model="form.timing_and_transfer_en"
                                     />
@@ -1096,7 +1096,7 @@
                                         dir="rtl"
                                         rows="10"
                                         type="text"
-                                        placeholder="Separate it by lines"
+                                        placeholder="Separate it by lines followed by --"
                                         name="timing_and_transfer_ar"
                                         id="timing_and_transfer_ar"
                                         class="block mt-1 w-full rounded-md border-gray-500 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-800"
@@ -1108,7 +1108,7 @@
                         <div class="flex justify-between">
                             <div class="w-full me-2">
                                 <label
-                                    for="terms_and_bullet_sections_en"
+                                    for="terms_and_conditions_en"
                                     class="block text-sm font-medium text-gray-700 dark:text-gray-200"
                                     >English Terms and Conditions</label
                                 >
@@ -1116,19 +1116,17 @@
                                     <textarea
                                         rows="10"
                                         type="text"
-                                        name="terms_and_bullet_sections_en"
-                                        id="terms_and_bullet_sections_en"
-                                        placeholder="Separate it by lines"
+                                        name="terms_and_conditions_en"
+                                        id="terms_and_conditions_en"
+                                        placeholder="Separate it by lines followed by --"
                                         class="block mt-1 w-full rounded-md border-gray-500 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-800"
-                                        v-model="
-                                            form.terms_and_bullet_sections_en
-                                        "
+                                        v-model="form.terms_and_conditions_en"
                                     />
                                 </div>
                             </div>
                             <div class="w-full">
                                 <label
-                                    for="terms_and_bullet_sections_ar"
+                                    for="terms_and_conditions_ar"
                                     class="block text-sm font-medium text-gray-700 dark:text-gray-200"
                                     >Arabic Terms and Conditions Policy</label
                                 >
@@ -1137,13 +1135,11 @@
                                         dir="rtl"
                                         rows="10"
                                         type="text"
-                                        placeholder="Separate it by lines"
-                                        name="terms_and_bullet_sections_ar"
-                                        id="terms_and_bullet_sections_ar"
+                                        placeholder="Separate it by lines followed by --"
+                                        name="terms_and_conditions_ar"
+                                        id="terms_and_conditions_ar"
                                         class="block mt-1 w-full rounded-md border-gray-500 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-800"
-                                        v-model="
-                                            form.terms_and_bullet_sections_ar
-                                        "
+                                        v-model="form.terms_and_conditions_ar"
                                     />
                                 </div>
                             </div>
@@ -1161,7 +1157,7 @@
                                         type="text"
                                         name="notes_en"
                                         id="notes_en"
-                                        placeholder="Separate it by lines"
+                                        placeholder="Separate it by lines followed by --"
                                         class="block mt-1 w-full rounded-md border-gray-500 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-800"
                                         v-model="form.notes_en"
                                     />
@@ -1178,7 +1174,7 @@
                                         dir="rtl"
                                         rows="10"
                                         type="text"
-                                        placeholder="Separate it by lines"
+                                        placeholder="Separate it by lines followed by --"
                                         name="notes_ar"
                                         id="notes_ar"
                                         class="block mt-1 w-full rounded-md border-gray-500 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-800"
@@ -1407,8 +1403,8 @@ const form = reactive({
     timing_and_transfer_en: "",
     notes_en: "",
     notes_ar: "",
-    terms_and_bullet_sections_en: "",
-    terms_and_bullet_sections_ar: "",
+    terms_and_conditions_en: "",
+    terms_and_conditions_ar: "",
     is_from: true,
     banner_highlights: [],
 });

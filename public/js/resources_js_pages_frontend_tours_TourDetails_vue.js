@@ -1374,10 +1374,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     section_title: "timing_and_transfer"
   }, null, 8
   /* PROPS */
-  , ["section_list"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $setup.tour['terms_and_bullet_sections_' + $setup.lang] && $setup.tour['terms_and_bullet_sections_' + $setup.lang] != 'null' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["ListSection"], {
+  , ["section_list"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $setup.tour['terms_and_conditions_' + $setup.lang] && $setup.tour['terms_and_conditions_' + $setup.lang] != 'null' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["ListSection"], {
     key: 9,
     "class": "border py-2 mt-3",
-    section_list: $setup.tour['terms_and_bullet_sections_' + $setup.lang],
+    section_list: $setup.tour['terms_and_conditions_' + $setup.lang],
     section_title: "terms_and_conditions"
   }, null, 8
   /* PROPS */
@@ -1714,8 +1714,8 @@ function useTours() {
               fd.append("timing_and_transfer_en", data.form.timing_and_transfer_en);
               fd.append("notes_en", data.form.notes_en);
               fd.append("notes_ar", data.form.notes_ar);
-              fd.append("terms_and_bullet_sections_en", data.form.terms_and_bullet_sections_en);
-              fd.append("terms_and_bullet_sections_ar", data.form.terms_and_bullet_sections_ar);
+              fd.append("terms_and_conditions_en", data.form.terms_and_conditions_en);
+              fd.append("terms_and_conditions_ar", data.form.terms_and_conditions_ar);
               fd.append("banner_highlights", JSON.stringify(data.form.banner_highlights));
               fd.append("options", JSON.stringify(data.form.options));
               fd.append("itinerary", JSON.stringify(data.form.itinerary));
@@ -1797,8 +1797,8 @@ function useTours() {
               fd.append("timing_and_transfer_en", data.form.timing_and_transfer_en);
               fd.append("notes_en", data.form.notes_en);
               fd.append("notes_ar", data.form.notes_ar);
-              fd.append("terms_and_bullet_sections_en", data.form.terms_and_bullet_sections_en);
-              fd.append("terms_and_bullet_sections_ar", data.form.terms_and_bullet_sections_ar);
+              fd.append("terms_and_conditions_en", data.form.terms_and_conditions_en);
+              fd.append("terms_and_conditions_ar", data.form.terms_and_conditions_ar);
               fd.append("is_from", data.form.is_from);
               fd.append("banner_highlights", JSON.stringify(data.form.banner_highlights));
               fd.append("options", JSON.stringify(data.form.options));

@@ -1375,10 +1375,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     section_title: "timing_and_transfer"
   }, null, 8
   /* PROPS */
-  , ["section_list"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $setup.single_package['terms_and_bullet_sections_' + $setup.lang] && $setup.single_package['terms_and_bullet_sections_' + $setup.lang] != 'null' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["ListSection"], {
+  , ["section_list"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $setup.single_package['terms_and_conditions_' + $setup.lang] && $setup.single_package['terms_and_conditions_' + $setup.lang] != 'null' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["ListSection"], {
     key: 9,
     "class": "border py-2 mt-3",
-    section_list: $setup.single_package['terms_and_bullet_sections_' + $setup.lang],
+    section_list: $setup.single_package['terms_and_conditions_' + $setup.lang],
     section_title: "terms_and_conditions"
   }, null, 8
   /* PROPS */
@@ -1726,8 +1726,8 @@ function usePackages() {
               fd.append("timing_and_transfer_en", data.form.timing_and_transfer_en);
               fd.append("notes_en", data.form.notes_en);
               fd.append("notes_ar", data.form.notes_ar);
-              fd.append("terms_and_bullet_sections_en", data.form.terms_and_bullet_sections_en);
-              fd.append("terms_and_bullet_sections_ar", data.form.terms_and_bullet_sections_ar);
+              fd.append("terms_and_conditions_en", data.form.terms_and_conditions_en);
+              fd.append("terms_and_conditions_ar", data.form.terms_and_conditions_ar);
               fd.append("banner_highlights", JSON.stringify(data.form.banner_highlights));
               fd.append("options", JSON.stringify(data.form.options));
               fd.append("itinerary", JSON.stringify(data.form.itinerary));
@@ -1809,8 +1809,8 @@ function usePackages() {
               fd.append("timing_and_transfer_en", data.form.timing_and_transfer_en);
               fd.append("notes_en", data.form.notes_en);
               fd.append("notes_ar", data.form.notes_ar);
-              fd.append("terms_and_bullet_sections_en", data.form.terms_and_bullet_sections_en);
-              fd.append("terms_and_bullet_sections_ar", data.form.terms_and_bullet_sections_ar);
+              fd.append("terms_and_conditions_en", data.form.terms_and_conditions_en);
+              fd.append("terms_and_conditions_ar", data.form.terms_and_conditions_ar);
               fd.append("is_from", data.form.is_from);
               fd.append("banner_highlights", JSON.stringify(data.form.banner_highlights));
               fd.append("options", JSON.stringify(data.form.options));
@@ -17116,189 +17116,2180 @@ const Swiper = {
       default: undefined
     }
   },
-  emits: ['_beforeBreakpoint', '_containerClasses', '_slideClass', '_slideClasses', '_swiper', '_freeModeNoMomentumRelease', 'activeIndexChange', 'afterInit', 'autoplay', 'autoplayStart', 'autoplayStop', 'autoplayPause', 'autoplayResume', 'beforeDestroy', 'beforeInit', 'beforeLoopFix', 'beforeResize', 'beforeSlideChangeStart', 'beforeTransitionStart', 'breakpoint', 'changeDirection', 'click', 'disable', 'doubleTap', 'doubleClick', 'destroy', 'enable', 'fromEdge', 'hashChange', 'hashSet', 'imagesReady', 'init', 'keyPress', 'lazyImageLoad', 'lazyImageReady', 'lock', 'loopFix', 'momentumBounce', 'navigationHide', 'navigationShow', 'navigationPrev', 'navigationNext', 'observerUpdate', 'orientationchange', 'paginationHide', 'paginationRender', 'paginationShow', 'paginationUpdate', 'progress', 'reachBeginning', 'reachEnd', 'realIndexChange', 'resize', 'scroll', 'scrollbarDragEnd', 'scrollbarDragMove', 'scrollbarDragStart', 'setTransition', 'setTranslate', 'slideChange', 'slideChangeTransitionEnd', 'slideChangeTransitionStart', 'slideNextTransitionEnd', 'slideNextTransitionStart', 'slidePrevTransitionEnd', 'slidePrevTransitionStart', 'slideResetTransitionStart', 'slideResetTransitionEnd', 'sliderMove', 'sliderFirstMove', 'slidesLengthChange', 'slidesGridLengthChange', 'snapGridLengthChange', 'snapIndexChange', 'swiper', 'tap', 'toEdge', 'touchEnd', 'touchMove', 'touchMoveOpposite', 'touchStart', 'transitionEnd', 'transitionStart', 'unlock', 'update', 'virtualUpdate', 'zoomChange'],
+  emits: ['_beforeBreakpoint', '_containerClasses', '_slideClass', '_slideClasses', '_swiper', '_freeModeNoMomentumRelease', 'activeIndexChange', 'afterInit', 'autoplay', 'autoplayStart', 'autoplayStop', 'autoplayPause', 'autoplayResume', 'beforeDestroy', 'beforeInit', 'beforeLoopFix', 'beforeResize', 'beforeSlideChangeStart', 'beforeTransitionStart', 'breakpoint', 'changeDirec.prevTime) velocity.prevTime = Date.now();
+          velocity.x = (image.touchesCurrent.x - velocity.prevPositionX) / (Date.now() - velocity.prevTime) / 2;
+          velocity.y = (image.touchesCurrent.y - velocity.prevPositionY) / (Date.now() - velocity.prevTime) / 2;
+          if (Math.abs(image.touchesCurrent.x - velocity.prevPositionX) < 2) velocity.x = 0;
+          if (Math.abs(image.touchesCurrent.y - velocity.prevPositionY) < 2) velocity.y = 0;
+          velocity.prevPositionX = image.touchesCurrent.x;
+          velocity.prevPositionY = image.touchesCurrent.y;
+          velocity.prevTime = Date.now();
+          gesture.$imageWrapEl.transform(`translate3d(${image.currentX}px, ${image.currentY}px,0)`);
+        }
 
-  setup(props, _ref) {
-    let {
-      slots: originalSlots,
-      emit
-    } = _ref;
-    const {
-      tag: Tag,
-      wrapperTag: WrapperTag
-    } = props;
-    const containerClasses = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)('swiper');
-    const virtualData = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
-    const breakpointChanged = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(false);
-    const initializedRef = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(false);
-    const swiperElRef = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
-    const swiperRef = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
-    const oldPassedParamsRef = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
-    const slidesRef = {
-      value: []
-    };
-    const oldSlidesRef = {
-      value: []
-    };
-    const nextElRef = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
-    const prevElRef = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
-    const paginationElRef = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
-    const scrollbarElRef = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
-    const {
-      params: swiperParams,
-      passedParams
-    } = (0,_components_shared_get_params_js__WEBPACK_IMPORTED_MODULE_2__.getParams)(props, false);
-    (0,_get_children_js__WEBPACK_IMPORTED_MODULE_7__.getChildren)(originalSlots, slidesRef, oldSlidesRef);
-    oldPassedParamsRef.value = passedParams;
-    oldSlidesRef.value = slidesRef.value;
+        function onTouchEnd() {
+          const zoom = swiper.zoom;
+          if (!gesture.$imageEl || gesture.$imageEl.length === 0) return;
 
-    const onBeforeBreakpoint = () => {
-      (0,_get_children_js__WEBPACK_IMPORTED_MODULE_7__.getChildren)(originalSlots, slidesRef, oldSlidesRef);
-      breakpointChanged.value = true;
-    };
+          if (!image.isTouched || !image.isMoved) {
+            image.isTouched = false;
+            image.isMoved = false;
+            return;
+          }
 
-    swiperParams.onAny = function (event) {
-      for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-        args[_key - 1] = arguments[_key];
+          image.isTouched = false;
+          image.isMoved = false;
+          let momentumDurationX = 300;
+          let momentumDurationY = 300;
+          const momentumDistanceX = velocity.x * momentumDurationX;
+          const newPositionX = image.currentX + momentumDistanceX;
+          const momentumDistanceY = velocity.y * momentumDurationY;
+          const newPositionY = image.currentY + momentumDistanceY; // Fix duration
+
+          if (velocity.x !== 0) momentumDurationX = Math.abs((newPositionX - image.currentX) / velocity.x);
+          if (velocity.y !== 0) momentumDurationY = Math.abs((newPositionY - image.currentY) / velocity.y);
+          const momentumDuration = Math.max(momentumDurationX, momentumDurationY);
+          image.currentX = newPositionX;
+          image.currentY = newPositionY; // Define if we need image drag
+
+          const scaledWidth = image.width * zoom.scale;
+          const scaledHeight = image.height * zoom.scale;
+          image.minX = Math.min(gesture.slideWidth / 2 - scaledWidth / 2, 0);
+          image.maxX = -image.minX;
+          image.minY = Math.min(gesture.slideHeight / 2 - scaledHeight / 2, 0);
+          image.maxY = -image.minY;
+          image.currentX = Math.max(Math.min(image.currentX, image.maxX), image.minX);
+          image.currentY = Math.max(Math.min(image.currentY, image.maxY), image.minY);
+          gesture.$imageWrapEl.transition(momentumDuration).transform(`translate3d(${image.currentX}px, ${image.currentY}px,0)`);
+        }
+
+        function onTransitionEnd() {
+          const zoom = swiper.zoom;
+
+          if (gesture.$slideEl && swiper.previousIndex !== swiper.activeIndex) {
+            if (gesture.$imageEl) {
+              gesture.$imageEl.transform('translate3d(0,0,0) scale(1)');
+            }
+
+            if (gesture.$imageWrapEl) {
+              gesture.$imageWrapEl.transform('translate3d(0,0,0)');
+            }
+
+            zoom.scale = 1;
+            currentScale = 1;
+            gesture.$slideEl = undefined;
+            gesture.$imageEl = undefined;
+            gesture.$imageWrapEl = undefined;
+          }
+        }
+
+        function zoomIn(e) {
+          const zoom = swiper.zoom;
+          const params = swiper.params.zoom;
+
+          if (!gesture.$slideEl) {
+            if (e && e.target) {
+              gesture.$slideEl = (0, _shared_dom_js__WEBPACK_IMPORTED_MODULE_1__["default"])(e.target).closest(`.${swiper.params.slideClass}`);
+            }
+
+            if (!gesture.$slideEl) {
+              if (swiper.params.virtual && swiper.params.virtual.enabled && swiper.virtual) {
+                gesture.$slideEl = swiper.$wrapperEl.children(`.${swiper.params.slideActiveClass}`);
+              } else {
+                gesture.$slideEl = swiper.slides.eq(swiper.activeIndex);
+              }
+            }
+
+            gesture.$imageEl = gesture.$slideEl.find(`.${params.containerClass}`).eq(0).find('picture, img, svg, canvas, .swiper-zoom-target').eq(0);
+            gesture.$imageWrapEl = gesture.$imageEl.parent(`.${params.containerClass}`);
+          }
+
+          if (!gesture.$imageEl || gesture.$imageEl.length === 0 || !gesture.$imageWrapEl || gesture.$imageWrapEl.length === 0) return;
+
+          if (swiper.params.cssMode) {
+            swiper.wrapperEl.style.overflow = 'hidden';
+            swiper.wrapperEl.style.touchAction = 'none';
+          }
+
+          gesture.$slideEl.addClass(`${params.zoomedSlideClass}`);
+          let touchX;
+          let touchY;
+          let offsetX;
+          let offsetY;
+          let diffX;
+          let diffY;
+          let translateX;
+          let translateY;
+          let imageWidth;
+          let imageHeight;
+          let scaledWidth;
+          let scaledHeight;
+          let translateMinX;
+          let translateMinY;
+          let translateMaxX;
+          let translateMaxY;
+          let slideWidth;
+          let slideHeight;
+
+          if (typeof image.touchesStart.x === 'undefined' && e) {
+            touchX = e.type === 'touchend' ? e.changedTouches[0].pageX : e.pageX;
+            touchY = e.type === 'touchend' ? e.changedTouches[0].pageY : e.pageY;
+          } else {
+            touchX = image.touchesStart.x;
+            touchY = image.touchesStart.y;
+          }
+
+          zoom.scale = gesture.$imageWrapEl.attr('data-swiper-zoom') || params.maxRatio;
+          currentScale = gesture.$imageWrapEl.attr('data-swiper-zoom') || params.maxRatio;
+
+          if (e) {
+            slideWidth = gesture.$slideEl[0].offsetWidth;
+            slideHeight = gesture.$slideEl[0].offsetHeight;
+            offsetX = gesture.$slideEl.offset().left + window.scrollX;
+            offsetY = gesture.$slideEl.offset().top + window.scrollY;
+            diffX = offsetX + slideWidth / 2 - touchX;
+            diffY = offsetY + slideHeight / 2 - touchY;
+            imageWidth = gesture.$imageEl[0].offsetWidth;
+            imageHeight = gesture.$imageEl[0].offsetHeight;
+            scaledWidth = imageWidth * zoom.scale;
+            scaledHeight = imageHeight * zoom.scale;
+            translateMinX = Math.min(slideWidth / 2 - scaledWidth / 2, 0);
+            translateMinY = Math.min(slideHeight / 2 - scaledHeight / 2, 0);
+            translateMaxX = -translateMinX;
+            translateMaxY = -translateMinY;
+            translateX = diffX * zoom.scale;
+            translateY = diffY * zoom.scale;
+
+            if (translateX < translateMinX) {
+              translateX = translateMinX;
+            }
+
+            if (translateX > translateMaxX) {
+              translateX = translateMaxX;
+            }
+
+            if (translateY < translateMinY) {
+              translateY = translateMinY;
+            }
+
+            if (translateY > translateMaxY) {
+              translateY = translateMaxY;
+            }
+          } else {
+            translateX = 0;
+            translateY = 0;
+          }
+
+          gesture.$imageWrapEl.transition(300).transform(`translate3d(${translateX}px, ${translateY}px,0)`);
+          gesture.$imageEl.transition(300).transform(`translate3d(0,0,0) scale(${zoom.scale})`);
+        }
+
+        function zoomOut() {
+          const zoom = swiper.zoom;
+          const params = swiper.params.zoom;
+
+          if (!gesture.$slideEl) {
+            if (swiper.params.virtual && swiper.params.virtual.enabled && swiper.virtual) {
+              gesture.$slideEl = swiper.$wrapperEl.children(`.${swiper.params.slideActiveClass}`);
+            } else {
+              gesture.$slideEl = swiper.slides.eq(swiper.activeIndex);
+            }
+
+            gesture.$imageEl = gesture.$slideEl.find(`.${params.containerClass}`).eq(0).find('picture, img, svg, canvas, .swiper-zoom-target').eq(0);
+            gesture.$imageWrapEl = gesture.$imageEl.parent(`.${params.containerClass}`);
+          }
+
+          if (!gesture.$imageEl || gesture.$imageEl.length === 0 || !gesture.$imageWrapEl || gesture.$imageWrapEl.length === 0) return;
+
+          if (swiper.params.cssMode) {
+            swiper.wrapperEl.style.overflow = '';
+            swiper.wrapperEl.style.touchAction = '';
+          }
+
+          zoom.scale = 1;
+          currentScale = 1;
+          gesture.$imageWrapEl.transition(300).transform('translate3d(0,0,0)');
+          gesture.$imageEl.transition(300).transform('translate3d(0,0,0) scale(1)');
+          gesture.$slideEl.removeClass(`${params.zoomedSlideClass}`);
+          gesture.$slideEl = undefined;
+        } // Toggle Zoom
+
+
+        function zoomToggle(e) {
+          const zoom = swiper.zoom;
+
+          if (zoom.scale && zoom.scale !== 1) {
+            // Zoom Out
+            zoomOut();
+          } else {
+            // Zoom In
+            zoomIn(e);
+          }
+        }
+
+        function getListeners() {
+          const support = swiper.support;
+          const passiveListener = swiper.touchEvents.start === 'touchstart' && support.passiveListener && swiper.params.passiveListeners ? {
+            passive: true,
+            capture: false
+          } : false;
+          const activeListenerWithCapture = support.passiveListener ? {
+            passive: false,
+            capture: true
+          } : true;
+          return {
+            passiveListener,
+            activeListenerWithCapture
+          };
+        }
+
+        function getSlideSelector() {
+          return `.${swiper.params.slideClass}`;
+        }
+
+        function toggleGestures(method) {
+          const {
+            passiveListener
+          } = getListeners();
+          const slideSelector = getSlideSelector();
+          swiper.$wrapperEl[method]('gesturestart', slideSelector, onGestureStart, passiveListener);
+          swiper.$wrapperEl[method]('gesturechange', slideSelector, onGestureChange, passiveListener);
+          swiper.$wrapperEl[method]('gestureend', slideSelector, onGestureEnd, passiveListener);
+        }
+
+        function enableGestures() {
+          if (gesturesEnabled) return;
+          gesturesEnabled = true;
+          toggleGestures('on');
+        }
+
+        function disableGestures() {
+          if (!gesturesEnabled) return;
+          gesturesEnabled = false;
+          toggleGestures('off');
+        } // Attach/Detach Events
+
+
+        function enable() {
+          const zoom = swiper.zoom;
+          if (zoom.enabled) return;
+          zoom.enabled = true;
+          const support = swiper.support;
+          const {
+            passiveListener,
+            activeListenerWithCapture
+          } = getListeners();
+          const slideSelector = getSlideSelector(); // Scale image
+
+          if (support.gestures) {
+            swiper.$wrapperEl.on(swiper.touchEvents.start, enableGestures, passiveListener);
+            swiper.$wrapperEl.on(swiper.touchEvents.end, disableGestures, passiveListener);
+          } else if (swiper.touchEvents.start === 'touchstart') {
+            swiper.$wrapperEl.on(swiper.touchEvents.start, slideSelector, onGestureStart, passiveListener);
+            swiper.$wrapperEl.on(swiper.touchEvents.move, slideSelector, onGestureChange, activeListenerWithCapture);
+            swiper.$wrapperEl.on(swiper.touchEvents.end, slideSelector, onGestureEnd, passiveListener);
+
+            if (swiper.touchEvents.cancel) {
+              swiper.$wrapperEl.on(swiper.touchEvents.cancel, slideSelector, onGestureEnd, passiveListener);
+            }
+          } // Move image
+
+
+          swiper.$wrapperEl.on(swiper.touchEvents.move, `.${swiper.params.zoom.containerClass}`, onTouchMove, activeListenerWithCapture);
+        }
+
+        function disable() {
+          const zoom = swiper.zoom;
+          if (!zoom.enabled) return;
+          const support = swiper.support;
+          zoom.enabled = false;
+          const {
+            passiveListener,
+            activeListenerWithCapture
+          } = getListeners();
+          const slideSelector = getSlideSelector(); // Scale image
+
+          if (support.gestures) {
+            swiper.$wrapperEl.off(swiper.touchEvents.start, enableGestures, passiveListener);
+            swiper.$wrapperEl.off(swiper.touchEvents.end, disableGestures, passiveListener);
+          } else if (swiper.touchEvents.start === 'touchstart') {
+            swiper.$wrapperEl.off(swiper.touchEvents.start, slideSelector, onGestureStart, passiveListener);
+            swiper.$wrapperEl.off(swiper.touchEvents.move, slideSelector, onGestureChange, activeListenerWithCapture);
+            swiper.$wrapperEl.off(swiper.touchEvents.end, slideSelector, onGestureEnd, passiveListener);
+
+            if (swiper.touchEvents.cancel) {
+              swiper.$wrapperEl.off(swiper.touchEvents.cancel, slideSelector, onGestureEnd, passiveListener);
+            }
+          } // Move image
+
+
+          swiper.$wrapperEl.off(swiper.touchEvents.move, `.${swiper.params.zoom.containerClass}`, onTouchMove, activeListenerWithCapture);
+        }
+
+        on('init', () => {
+          if (swiper.params.zoom.enabled) {
+            enable();
+          }
+        });
+        on('destroy', () => {
+          disable();
+        });
+        on('touchStart', (_s, e) => {
+          if (!swiper.zoom.enabled) return;
+          onTouchStart(e);
+        });
+        on('touchEnd', (_s, e) => {
+          if (!swiper.zoom.enabled) return;
+          onTouchEnd(e);
+        });
+        on('doubleTap', (_s, e) => {
+          if (!swiper.animating && swiper.params.zoom.enabled && swiper.zoom.enabled && swiper.params.zoom.toggle) {
+            zoomToggle(e);
+          }
+        });
+        on('transitionEnd', () => {
+          if (swiper.zoom.enabled && swiper.params.zoom.enabled) {
+            onTransitionEnd();
+          }
+        });
+        on('slideChange', () => {
+          if (swiper.zoom.enabled && swiper.params.zoom.enabled && swiper.params.cssMode) {
+            onTransitionEnd();
+          }
+        });
+        Object.assign(swiper.zoom, {
+          enable,
+          disable,
+          in: zoomIn,
+          out: zoomOut,
+          toggle: zoomToggle
+        });
       }
 
-      emit(event, ...args);
-    };
+      /***/
+}),
 
-    Object.assign(swiperParams.on, {
-      _beforeBreakpoint: onBeforeBreakpoint,
+/***/ "./node_modules/swiper/shared/calc-looped-slides.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/swiper/shared/calc-looped-slides.js ***!
+  \**********************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
-      _containerClasses(swiper, classes) {
-        containerClasses.value = classes;
-      }
+      __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "calcLoopedSlides": () => (/* binding */ calcLoopedSlides)
+        /* harmony export */
+});
+/* harmony import */ var swiper__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! swiper */ "./node_modules/swiper/swiper.esm.js");
 
-    }); // init Swiper
+      const calcLoopedSlides = (slides, swiperParams) => {
+        let slidesPerViewParams = swiperParams.slidesPerView;
 
-    swiperRef.value = new swiper__WEBPACK_IMPORTED_MODULE_1__["default"](swiperParams);
+        if (swiperParams.breakpoints) {
+          const breakpoint = swiper__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.getBreakpoint(swiperParams.breakpoints);
+          const breakpointOnlyParams = breakpoint in swiperParams.breakpoints ? swiperParams.breakpoints[breakpoint] : undefined;
 
-    swiperRef.value.loopCreate = () => {};
+          if (breakpointOnlyParams && breakpointOnlyParams.slidesPerView) {
+            slidesPerViewParams = breakpointOnlyParams.slidesPerView;
+          }
+        }
 
-    swiperRef.value.loopDestroy = () => {};
+        let loopedSlides = Math.ceil(parseFloat(swiperParams.loopedSlides || slidesPerViewParams, 10));
+        loopedSlides += swiperParams.loopAdditionalSlides;
 
-    if (swiperParams.loop) {
-      swiperRef.value.loopedSlides = (0,_loop_js__WEBPACK_IMPORTED_MODULE_5__.calcLoopedSlides)(slidesRef.value, swiperParams);
-    }
+        if (loopedSlides > slides.length && swiperParams.loopedSlidesLimit) {
+          loopedSlides = slides.length;
+        }
 
-    if (swiperRef.value.virtual && swiperRef.value.params.virtual.enabled) {
-      swiperRef.value.virtual.slides = slidesRef.value;
-      const extendWith = {
-        cache: false,
-        slides: slidesRef.value,
-        renderExternal: data => {
-          virtualData.value = data;
-        },
-        renderExternalUpdate: false
+        return loopedSlides;
       };
-      (0,_components_shared_utils_js__WEBPACK_IMPORTED_MODULE_4__.extend)(swiperRef.value.params.virtual, extendWith);
-      (0,_components_shared_utils_js__WEBPACK_IMPORTED_MODULE_4__.extend)(swiperRef.value.originalParams.virtual, extendWith);
-    }
 
-    (0,vue__WEBPACK_IMPORTED_MODULE_0__.onUpdated)(() => {
-      // set initialized flag
-      if (!initializedRef.value && swiperRef.value) {
-        swiperRef.value.emitSlidesClasses();
-        initializedRef.value = true;
-      } // watch for params change
+      /***/
+}),
 
+/***/ "./node_modules/swiper/shared/classes-to-selector.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/swiper/shared/classes-to-selector.js ***!
+  \***********************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
-      const {
-        passedParams: newPassedParams
-      } = (0,_components_shared_get_params_js__WEBPACK_IMPORTED_MODULE_2__.getParams)(props, false);
-      const changedParams = (0,_components_shared_get_changed_params_js__WEBPACK_IMPORTED_MODULE_6__.getChangedParams)(newPassedParams, oldPassedParamsRef.value, slidesRef.value, oldSlidesRef.value, c => c.props && c.props.key);
-      oldPassedParamsRef.value = newPassedParams;
-
-      if ((changedParams.length || breakpointChanged.value) && swiperRef.value && !swiperRef.value.destroyed) {
-        (0,_components_shared_update_swiper_js__WEBPACK_IMPORTED_MODULE_8__.updateSwiper)({
-          swiper: swiperRef.value,
-          slides: slidesRef.value,
-          passedParams: newPassedParams,
-          changedParams,
-          nextEl: nextElRef.value,
-          prevEl: prevElRef.value,
-          scrollbarEl: scrollbarElRef.value,
-          paginationEl: paginationElRef.value
-        });
+      __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ classesToSelector)
+        /* harmony export */
+});
+      function classesToSelector(classes = '') {
+        return `.${classes.trim().replace(/([\.:!\/])/g, '\\$1') // eslint-disable-line
+          .replace(/ /g, '.')}`;
       }
 
-      breakpointChanged.value = false;
-    });
-    (0,vue__WEBPACK_IMPORTED_MODULE_0__.provide)('swiper', swiperRef); // update on virtual update
+      /***/
+}),
 
-    (0,vue__WEBPACK_IMPORTED_MODULE_0__.watch)(virtualData, () => {
-      (0,vue__WEBPACK_IMPORTED_MODULE_0__.nextTick)(() => {
-        (0,_components_shared_update_on_virtual_data_js__WEBPACK_IMPORTED_MODULE_10__.updateOnVirtualData)(swiperRef.value);
+/***/ "./node_modules/swiper/shared/create-element-if-not-defined.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/swiper/shared/create-element-if-not-defined.js ***!
+  \*********************************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+      __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ createElementIfNotDefined)
+        /* harmony export */
+});
+/* harmony import */ var ssr_window__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ssr-window */ "./node_modules/ssr-window/ssr-window.esm.js");
+
+      function createElementIfNotDefined(swiper, originalParams, params, checkProps) {
+        const document = (0, ssr_window__WEBPACK_IMPORTED_MODULE_0__.getDocument)();
+
+        if (swiper.params.createElements) {
+          Object.keys(checkProps).forEach(key => {
+            if (!params[key] && params.auto === true) {
+              let element = swiper.$el.children(`.${checkProps[key]}`)[0];
+
+              if (!element) {
+                element = document.createElement('div');
+                element.className = checkProps[key];
+                swiper.$el.append(element);
+              }
+
+              params[key] = element;
+              originalParams[key] = element;
+            }
+          });
+        }
+
+        return params;
+      }
+
+      /***/
+}),
+
+/***/ "./node_modules/swiper/shared/create-shadow.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/swiper/shared/create-shadow.js ***!
+  \*****************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+      __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ createShadow)
+        /* harmony export */
+});
+/* harmony import */ var _dom_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./dom.js */ "./node_modules/swiper/shared/dom.js");
+
+      function createShadow(params, $slideEl, side) {
+        const shadowClass = `swiper-slide-shadow${side ? `-${side}` : ''}`;
+        const $shadowContainer = params.transformEl ? $slideEl.find(params.transformEl) : $slideEl;
+        let $shadowEl = $shadowContainer.children(`.${shadowClass}`);
+
+        if (!$shadowEl.length) {
+          $shadowEl = (0, _dom_js__WEBPACK_IMPORTED_MODULE_0__["default"])(`<div class="swiper-slide-shadow${side ? `-${side}` : ''}"></div>`);
+          $shadowContainer.append($shadowEl);
+        }
+
+        return $shadowEl;
+      }
+
+      /***/
+}),
+
+/***/ "./node_modules/swiper/shared/dom.js":
+/*!*******************************************!*\
+  !*** ./node_modules/swiper/shared/dom.js ***!
+  \*******************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+      __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+        /* harmony export */
+});
+/* harmony import */ var dom7__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! dom7 */ "./node_modules/dom7/dom7.esm.js");
+
+      const Methods = {
+        addClass: dom7__WEBPACK_IMPORTED_MODULE_0__.addClass,
+        removeClass: dom7__WEBPACK_IMPORTED_MODULE_0__.removeClass,
+        hasClass: dom7__WEBPACK_IMPORTED_MODULE_0__.hasClass,
+        toggleClass: dom7__WEBPACK_IMPORTED_MODULE_0__.toggleClass,
+        attr: dom7__WEBPACK_IMPORTED_MODULE_0__.attr,
+        removeAttr: dom7__WEBPACK_IMPORTED_MODULE_0__.removeAttr,
+        transform: dom7__WEBPACK_IMPORTED_MODULE_0__.transform,
+        transition: dom7__WEBPACK_IMPORTED_MODULE_0__.transition,
+        on: dom7__WEBPACK_IMPORTED_MODULE_0__.on,
+        off: dom7__WEBPACK_IMPORTED_MODULE_0__.off,
+        trigger: dom7__WEBPACK_IMPORTED_MODULE_0__.trigger,
+        transitionEnd: dom7__WEBPACK_IMPORTED_MODULE_0__.transitionEnd,
+        outerWidth: dom7__WEBPACK_IMPORTED_MODULE_0__.outerWidth,
+        outerHeight: dom7__WEBPACK_IMPORTED_MODULE_0__.outerHeight,
+        styles: dom7__WEBPACK_IMPORTED_MODULE_0__.styles,
+        offset: dom7__WEBPACK_IMPORTED_MODULE_0__.offset,
+        css: dom7__WEBPACK_IMPORTED_MODULE_0__.css,
+        each: dom7__WEBPACK_IMPORTED_MODULE_0__.each,
+        html: dom7__WEBPACK_IMPORTED_MODULE_0__.html,
+        text: dom7__WEBPACK_IMPORTED_MODULE_0__.text,
+        is: dom7__WEBPACK_IMPORTED_MODULE_0__.is,
+        index: dom7__WEBPACK_IMPORTED_MODULE_0__.index,
+        eq: dom7__WEBPACK_IMPORTED_MODULE_0__.eq,
+        append: dom7__WEBPACK_IMPORTED_MODULE_0__.append,
+        prepend: dom7__WEBPACK_IMPORTED_MODULE_0__.prepend,
+        next: dom7__WEBPACK_IMPORTED_MODULE_0__.next,
+        nextAll: dom7__WEBPACK_IMPORTED_MODULE_0__.nextAll,
+        prev: dom7__WEBPACK_IMPORTED_MODULE_0__.prev,
+        prevAll: dom7__WEBPACK_IMPORTED_MODULE_0__.prevAll,
+        parent: dom7__WEBPACK_IMPORTED_MODULE_0__.parent,
+        parents: dom7__WEBPACK_IMPORTED_MODULE_0__.parents,
+        closest: dom7__WEBPACK_IMPORTED_MODULE_0__.closest,
+        find: dom7__WEBPACK_IMPORTED_MODULE_0__.find,
+        children: dom7__WEBPACK_IMPORTED_MODULE_0__.children,
+        filter: dom7__WEBPACK_IMPORTED_MODULE_0__.filter,
+        remove: dom7__WEBPACK_IMPORTED_MODULE_0__.remove
+      };
+      Object.keys(Methods).forEach(methodName => {
+        Object.defineProperty(dom7__WEBPACK_IMPORTED_MODULE_0__.$.fn, methodName, {
+          value: Methods[methodName],
+          writable: true
+        });
       });
-    }); // mount swiper
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (dom7__WEBPACK_IMPORTED_MODULE_0__.$);
 
-    (0,vue__WEBPACK_IMPORTED_MODULE_0__.onMounted)(() => {
-      if (!swiperElRef.value) return;
-      (0,_components_shared_mount_swiper_js__WEBPACK_IMPORTED_MODULE_3__.mountSwiper)({
-        el: swiperElRef.value,
-        nextEl: nextElRef.value,
-        prevEl: prevElRef.value,
-        paginationEl: paginationElRef.value,
-        scrollbarEl: scrollbarElRef.value,
-        swiper: swiperRef.value
-      }, swiperParams);
-      emit('swiper', swiperRef.value);
-    });
-    (0,vue__WEBPACK_IMPORTED_MODULE_0__.onBeforeUnmount)(() => {
-      if (swiperRef.value && !swiperRef.value.destroyed) {
-        swiperRef.value.destroy(true, false);
-      }
-    }); // bypass swiper instance to slides
+      /***/
+}),
 
-    function renderSlides(slides) {
-      if (swiperParams.virtual) {
-        return (0,_virtual_js__WEBPACK_IMPORTED_MODULE_9__.renderVirtual)(swiperRef, slides, virtualData.value);
-      }
+/***/ "./node_modules/swiper/shared/effect-init.js":
+/*!***************************************************!*\
+  !*** ./node_modules/swiper/shared/effect-init.js ***!
+  \***************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
-      if (!swiperParams.loop || swiperRef.value && swiperRef.value.destroyed) {
-        slides.forEach(slide => {
-          if (!slide.props) slide.props = {};
-          slide.props.swiperRef = swiperRef;
+      __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ effectInit)
+        /* harmony export */
+});
+      function effectInit(params) {
+        const {
+          effect,
+          swiper,
+          on,
+          setTranslate,
+          setTransition,
+          overwriteParams,
+          perspective,
+          recreateShadows,
+          getEffectParams
+        } = params;
+        on('beforeInit', () => {
+          if (swiper.params.effect !== effect) return;
+          swiper.classNames.push(`${swiper.params.containerModifierClass}${effect}`);
+
+          if (perspective && perspective()) {
+            swiper.classNames.push(`${swiper.params.containerModifierClass}3d`);
+          }
+
+          const overwriteParamsResult = overwriteParams ? overwriteParams() : {};
+          Object.assign(swiper.params, overwriteParamsResult);
+          Object.assign(swiper.originalParams, overwriteParamsResult);
         });
-        return slides;
+        on('setTranslate', () => {
+          if (swiper.params.effect !== effect) return;
+          setTranslate();
+        });
+        on('setTransition', (_s, duration) => {
+          if (swiper.params.effect !== effect) return;
+          setTransition(duration);
+        });
+        on('transitionEnd', () => {
+          if (swiper.params.effect !== effect) return;
+
+          if (recreateShadows) {
+            if (!getEffectParams || !getEffectParams().slideShadows) return; // remove shadows
+
+            swiper.slides.each(slideEl => {
+              const $slideEl = swiper.$(slideEl);
+              $slideEl.find('.swiper-slide-shadow-top, .swiper-slide-shadow-right, .swiper-slide-shadow-bottom, .swiper-slide-shadow-left').remove();
+            }); // create new one
+
+            recreateShadows();
+          }
+        });
+        let requireUpdateOnVirtual;
+        on('virtualUpdate', () => {
+          if (swiper.params.effect !== effect) return;
+
+          if (!swiper.slides.length) {
+            requireUpdateOnVirtual = true;
+          }
+
+          requestAnimationFrame(() => {
+            if (requireUpdateOnVirtual && swiper.slides && swiper.slides.length) {
+              setTranslate();
+              requireUpdateOnVirtual = false;
+            }
+          });
+        });
       }
 
-      return (0,_loop_js__WEBPACK_IMPORTED_MODULE_5__.renderLoop)(swiperRef, slides, swiperParams);
-    }
+      /***/
+}),
 
-    return () => {
-      const {
-        slides,
-        slots
-      } = (0,_get_children_js__WEBPACK_IMPORTED_MODULE_7__.getChildren)(originalSlots, slidesRef, oldSlidesRef);
-      return (0,vue__WEBPACK_IMPORTED_MODULE_0__.h)(Tag, {
-        ref: swiperElRef,
-        class: (0,_components_shared_utils_js__WEBPACK_IMPORTED_MODULE_4__.uniqueClasses)(containerClasses.value)
-      }, [slots['container-start'], (0,vue__WEBPACK_IMPORTED_MODULE_0__.h)(WrapperTag, {
-        class: 'swiper-wrapper'
-      }, [slots['wrapper-start'], renderSlides(slides), slots['wrapper-end']]), (0,_components_shared_utils_js__WEBPACK_IMPORTED_MODULE_4__.needsNavigation)(props) && [(0,vue__WEBPACK_IMPORTED_MODULE_0__.h)('div', {
-        ref: prevElRef,
-        class: 'swiper-button-prev'
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.h)('div', {
-        ref: nextElRef,
-        class: 'swiper-button-next'
-      })], (0,_components_shared_utils_js__WEBPACK_IMPORTED_MODULE_4__.needsScrollbar)(props) && (0,vue__WEBPACK_IMPORTED_MODULE_0__.h)('div', {
-        ref: scrollbarElRef,
-        class: 'swiper-scrollbar'
-      }), (0,_components_shared_utils_js__WEBPACK_IMPORTED_MODULE_4__.needsPagination)(props) && (0,vue__WEBPACK_IMPORTED_MODULE_0__.h)('div', {
-        ref: paginationElRef,
-        class: 'swiper-pagination'
-      }), slots['container-end']]);
-    };
-  }
+/***/ "./node_modules/swiper/shared/effect-target.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/swiper/shared/effect-target.js ***!
+  \*****************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
-};
+      __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ effectTarget)
+        /* harmony export */
+});
+      function effectTarget(effectParams, $slideEl) {
+        if (effectParams.transformEl) {
+          return $slideEl.find(effectParams.transformEl).css({
+            'backface-visibility': 'hidden',
+            '-webkit-backface-visibility': 'hidden'
+          });
+        }
+
+        return $slideEl;
+      }
+
+      /***/
+}),
+
+/***/ "./node_modules/swiper/shared/effect-virtual-transition-end.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/swiper/shared/effect-virtual-transition-end.js ***!
+  \*********************************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+      __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ effectVirtualTransitionEnd)
+        /* harmony export */
+});
+      function effectVirtualTransitionEnd({
+        swiper,
+        duration,
+        transformEl,
+        allSlides
+      }) {
+        const {
+          slides,
+          activeIndex,
+          $wrapperEl
+        } = swiper;
+
+        if (swiper.params.virtualTranslate && duration !== 0) {
+          let eventTriggered = false;
+          let $transitionEndTarget;
+
+          if (allSlides) {
+            $transitionEndTarget = transformEl ? slides.find(transformEl) : slides;
+          } else {
+            $transitionEndTarget = transformEl ? slides.eq(activeIndex).find(transformEl) : slides.eq(activeIndex);
+          }
+
+          $transitionEndTarget.transitionEnd(() => {
+            if (eventTriggered) return;
+            if (!swiper || swiper.destroyed) return;
+            eventTriggered = true;
+            swiper.animating = false;
+            const triggerEvents = ['webkitTransitionEnd', 'transitionend'];
+
+            for (let i = 0; i < triggerEvents.length; i += 1) {
+              $wrapperEl.trigger(triggerEvents[i]);
+            }
+          });
+        }
+      }
+
+      /***/
+}),
+
+/***/ "./node_modules/swiper/shared/get-browser.js":
+/*!***************************************************!*\
+  !*** ./node_modules/swiper/shared/get-browser.js ***!
+  \***************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+      __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "getBrowser": () => (/* binding */ getBrowser)
+        /* harmony export */
+});
+/* harmony import */ var ssr_window__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ssr-window */ "./node_modules/ssr-window/ssr-window.esm.js");
+
+      let browser;
+
+      function calcBrowser() {
+        const window = (0, ssr_window__WEBPACK_IMPORTED_MODULE_0__.getWindow)();
+
+        function isSafari() {
+          const ua = window.navigator.userAgent.toLowerCase();
+          return ua.indexOf('safari') >= 0 && ua.indexOf('chrome') < 0 && ua.indexOf('android') < 0;
+        }
+
+        return {
+          isSafari: isSafari(),
+          isWebView: /(iPhone|iPod|iPad).*AppleWebKit(?!.*Safari)/i.test(window.navigator.userAgent)
+        };
+      }
+
+      function getBrowser() {
+        if (!browser) {
+          browser = calcBrowser();
+        }
+
+        return browser;
+      }
 
 
-/***/ }),
+
+      /***/
+}),
+
+/***/ "./node_modules/swiper/shared/get-device.js":
+/*!**************************************************!*\
+  !*** ./node_modules/swiper/shared/get-device.js ***!
+  \**************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+      __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "getDevice": () => (/* binding */ getDevice)
+        /* harmony export */
+});
+/* harmony import */ var ssr_window__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ssr-window */ "./node_modules/ssr-window/ssr-window.esm.js");
+/* harmony import */ var _get_support_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./get-support.js */ "./node_modules/swiper/shared/get-support.js");
+
+
+      let deviceCached;
+
+      function calcDevice({
+        userAgent
+      } = {}) {
+        const support = (0, _get_support_js__WEBPACK_IMPORTED_MODULE_1__.getSupport)();
+        const window = (0, ssr_window__WEBPACK_IMPORTED_MODULE_0__.getWindow)();
+        const platform = window.navigator.platform;
+        const ua = userAgent || window.navigator.userAgent;
+        const device = {
+          ios: false,
+          android: false
+        };
+        const screenWidth = window.screen.width;
+        const screenHeight = window.screen.height;
+        const android = ua.match(/(Android);?[\s\/]+([\d.]+)?/); // eslint-disable-line
+
+        let ipad = ua.match(/(iPad).*OS\s([\d_]+)/);
+        const ipod = ua.match(/(iPod)(.*OS\s([\d_]+))?/);
+        const iphone = !ipad && ua.match(/(iPhone\sOS|iOS)\s([\d_]+)/);
+        const windows = platform === 'Win32';
+        let macos = platform === 'MacIntel'; // iPadOs 13 fix
+
+        const iPadScreens = ['1024x1366', '1366x1024', '834x1194', '1194x834', '834x1112', '1112x834', '768x1024', '1024x768', '820x1180', '1180x820', '810x1080', '1080x810'];
+
+        if (!ipad && macos && support.touch && iPadScreens.indexOf(`${screenWidth}x${screenHeight}`) >= 0) {
+          ipad = ua.match(/(Version)\/([\d.]+)/);
+          if (!ipad) ipad = [0, 1, '13_0_0'];
+          macos = false;
+        } // Android
+
+
+        if (android && !windows) {
+          device.os = 'android';
+          device.android = true;
+        }
+
+        if (ipad || iphone || ipod) {
+          device.os = 'ios';
+          device.ios = true;
+        } // Export object
+
+
+        return device;
+      }
+
+      function getDevice(overrides = {}) {
+        if (!deviceCached) {
+          deviceCached = calcDevice(overrides);
+        }
+
+        return deviceCached;
+      }
+
+
+
+      /***/
+}),
+
+/***/ "./node_modules/swiper/shared/get-support.js":
+/*!***************************************************!*\
+  !*** ./node_modules/swiper/shared/get-support.js ***!
+  \***************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+      __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "getSupport": () => (/* binding */ getSupport)
+        /* harmony export */
+});
+/* harmony import */ var ssr_window__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ssr-window */ "./node_modules/ssr-window/ssr-window.esm.js");
+
+      let support;
+
+      function calcSupport() {
+        const window = (0, ssr_window__WEBPACK_IMPORTED_MODULE_0__.getWindow)();
+        const document = (0, ssr_window__WEBPACK_IMPORTED_MODULE_0__.getDocument)();
+        return {
+          smoothScroll: document.documentElement && 'scrollBehavior' in document.documentElement.style,
+          touch: !!('ontouchstart' in window || window.DocumentTouch && document instanceof window.DocumentTouch),
+          passiveListener: function checkPassiveListener() {
+            let supportsPassive = false;
+
+            try {
+              const opts = Object.defineProperty({}, 'passive', {
+                // eslint-disable-next-line
+                get() {
+                  supportsPassive = true;
+                }
+
+              });
+              window.addEventListener('testPassiveListener', null, opts);
+            } catch (e) {// No support
+            }
+
+            return supportsPassive;
+          }(),
+          gestures: function checkGestures() {
+            return 'ongesturestart' in window;
+          }()
+        };
+      }
+
+      function getSupport() {
+        if (!support) {
+          support = calcSupport();
+        }
+
+        return support;
+      }
+
+
+
+      /***/
+}),
+
+/***/ "./node_modules/swiper/shared/utils.js":
+/*!*********************************************!*\
+  !*** ./node_modules/swiper/shared/utils.js ***!
+  \*********************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+      __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "animateCSSModeScroll": () => (/* binding */ animateCSSModeScroll),
+/* harmony export */   "deleteProps": () => (/* binding */ deleteProps),
+/* harmony export */   "extend": () => (/* binding */ extend),
+/* harmony export */   "getComputedStyle": () => (/* binding */ getComputedStyle),
+/* harmony export */   "getTranslate": () => (/* binding */ getTranslate),
+/* harmony export */   "isObject": () => (/* binding */ isObject),
+/* harmony export */   "nextTick": () => (/* binding */ nextTick),
+/* harmony export */   "now": () => (/* binding */ now),
+/* harmony export */   "setCSSProperty": () => (/* binding */ setCSSProperty)
+        /* harmony export */
+});
+/* harmony import */ var ssr_window__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ssr-window */ "./node_modules/ssr-window/ssr-window.esm.js");
+
+
+      function deleteProps(obj) {
+        const object = obj;
+        Object.keys(object).forEach(key => {
+          try {
+            object[key] = null;
+          } catch (e) {// no getter for object
+          }
+
+          try {
+            delete object[key];
+          } catch (e) {// something got wrong
+          }
+        });
+      }
+
+      function nextTick(callback, delay = 0) {
+        return setTimeout(callback, delay);
+      }
+
+      function now() {
+        return Date.now();
+      }
+
+      function getComputedStyle(el) {
+        const window = (0, ssr_window__WEBPACK_IMPORTED_MODULE_0__.getWindow)();
+        let style;
+
+        if (window.getComputedStyle) {
+          style = window.getComputedStyle(el, null);
+        }
+
+        if (!style && el.currentStyle) {
+          style = el.currentStyle;
+        }
+
+        if (!style) {
+          style = el.style;
+        }
+
+        return style;
+      }
+
+      function getTranslate(el, axis = 'x') {
+        const window = (0, ssr_window__WEBPACK_IMPORTED_MODULE_0__.getWindow)();
+        let matrix;
+        let curTransform;
+        let transformMatrix;
+        const curStyle = getComputedStyle(el, null);
+
+        if (window.WebKitCSSMatrix) {
+          curTransform = curStyle.transform || curStyle.webkitTransform;
+
+          if (curTransform.split(',').length > 6) {
+            curTransform = curTransform.split(', ').map(a => a.replace(',', '.')).join(', ');
+          } // Some old versions of Webkit choke when 'none' is passed; pass
+          // empty string instead in this case
+
+
+          transformMatrix = new window.WebKitCSSMatrix(curTransform === 'none' ? '' : curTransform);
+        } else {
+          transformMatrix = curStyle.MozTransform || curStyle.OTransform || curStyle.MsTransform || curStyle.msTransform || curStyle.transform || curStyle.getPropertyValue('transform').replace('translate(', 'matrix(1, 0, 0, 1,');
+          matrix = transformMatrix.toString().split(',');
+        }
+
+        if (axis === 'x') {
+          // Latest Chrome and webkits Fix
+          if (window.WebKitCSSMatrix) curTransform = transformMatrix.m41; // Crazy IE10 Matrix
+          else if (matrix.length === 16) curTransform = parseFloat(matrix[12]); // Normal Browsers
+          else curTransform = parseFloat(matrix[4]);
+        }
+
+        if (axis === 'y') {
+          // Latest Chrome and webkits Fix
+          if (window.WebKitCSSMatrix) curTransform = transformMatrix.m42; // Crazy IE10 Matrix
+          else if (matrix.length === 16) curTransform = parseFloat(matrix[13]); // Normal Browsers
+          else curTransform = parseFloat(matrix[5]);
+        }
+
+        return curTransform || 0;
+      }
+
+      function isObject(o) {
+        return typeof o === 'object' && o !== null && o.constructor && Object.prototype.toString.call(o).slice(8, -1) === 'Object';
+      }
+
+      function isNode(node) {
+        // eslint-disable-next-line
+        if (typeof window !== 'undefined' && typeof window.HTMLElement !== 'undefined') {
+          return node instanceof HTMLElement;
+        }
+
+        return node && (node.nodeType === 1 || node.nodeType === 11);
+      }
+
+      function extend(...args) {
+        const to = Object(args[0]);
+        const noExtend = ['__proto__', 'constructor', 'prototype'];
+
+        for (let i = 1; i < args.length; i += 1) {
+          const nextSource = args[i];
+
+          if (nextSource !== undefined && nextSource !== null && !isNode(nextSource)) {
+            const keysArray = Object.keys(Object(nextSource)).filter(key => noExtend.indexOf(key) < 0);
+
+            for (let nextIndex = 0, len = keysArray.length; nextIndex < len; nextIndex += 1) {
+              const nextKey = keysArray[nextIndex];
+              const desc = Object.getOwnPropertyDescriptor(nextSource, nextKey);
+
+              if (desc !== undefined && desc.enumerable) {
+                if (isObject(to[nextKey]) && isObject(nextSource[nextKey])) {
+                  if (nextSource[nextKey].__swiper__) {
+                    to[nextKey] = nextSource[nextKey];
+                  } else {
+                    extend(to[nextKey], nextSource[nextKey]);
+                  }
+                } else if (!isObject(to[nextKey]) && isObject(nextSource[nextKey])) {
+                  to[nextKey] = {};
+
+                  if (nextSource[nextKey].__swiper__) {
+                    to[nextKey] = nextSource[nextKey];
+                  } else {
+                    extend(to[nextKey], nextSource[nextKey]);
+                  }
+                } else {
+                  to[nextKey] = nextSource[nextKey];
+                }
+              }
+            }
+          }
+        }
+
+        return to;
+      }
+
+      function setCSSProperty(el, varName, varValue) {
+        el.style.setProperty(varName, varValue);
+      }
+
+      function animateCSSModeScroll({
+        swiper,
+        targetPosition,
+        side
+      }) {
+        const window = (0, ssr_window__WEBPACK_IMPORTED_MODULE_0__.getWindow)();
+        const startPosition = -swiper.translate;
+        let startTime = null;
+        let time;
+        const duration = swiper.params.speed;
+        swiper.wrapperEl.style.scrollSnapType = 'none';
+        window.cancelAnimationFrame(swiper.cssModeFrameID);
+        const dir = targetPosition > startPosition ? 'next' : 'prev';
+
+        const isOutOfBound = (current, target) => {
+          return dir === 'next' && current >= target || dir === 'prev' && current <= target;
+        };
+
+        const animate = () => {
+          time = new Date().getTime();
+
+          if (startTime === null) {
+            startTime = time;
+          }
+
+          const progress = Math.max(Math.min((time - startTime) / duration, 1), 0);
+          const easeProgress = 0.5 - Math.cos(progress * Math.PI) / 2;
+          let currentPosition = startPosition + easeProgress * (targetPosition - startPosition);
+
+          if (isOutOfBound(currentPosition, targetPosition)) {
+            currentPosition = targetPosition;
+          }
+
+          swiper.wrapperEl.scrollTo({
+            [side]: currentPosition
+          });
+
+          if (isOutOfBound(currentPosition, targetPosition)) {
+            swiper.wrapperEl.style.overflow = 'hidden';
+            swiper.wrapperEl.style.scrollSnapType = '';
+            setTimeout(() => {
+              swiper.wrapperEl.style.overflow = '';
+              swiper.wrapperEl.scrollTo({
+                [side]: currentPosition
+              });
+            });
+            window.cancelAnimationFrame(swiper.cssModeFrameID);
+            return;
+          }
+
+          swiper.cssModeFrameID = window.requestAnimationFrame(animate);
+        };
+
+        animate();
+      }
+
+
+
+      /***/
+}),
+
+/***/ "./node_modules/swiper/swiper.esm.js":
+/*!*******************************************!*\
+  !*** ./node_modules/swiper/swiper.esm.js ***!
+  \*******************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+      __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "A11y": () => (/* reexport safe */ _modules_a11y_a11y_js__WEBPACK_IMPORTED_MODULE_11__["default"]),
+/* harmony export */   "Autoplay": () => (/* reexport safe */ _modules_autoplay_autoplay_js__WEBPACK_IMPORTED_MODULE_14__["default"]),
+/* harmony export */   "Controller": () => (/* reexport safe */ _modules_controller_controller_js__WEBPACK_IMPORTED_MODULE_10__["default"]),
+/* harmony export */   "EffectCards": () => (/* reexport safe */ _modules_effect_cards_effect_cards_js__WEBPACK_IMPORTED_MODULE_24__["default"]),
+/* harmony export */   "EffectCoverflow": () => (/* reexport safe */ _modules_effect_coverflow_effect_coverflow_js__WEBPACK_IMPORTED_MODULE_22__["default"]),
+/* harmony export */   "EffectCreative": () => (/* reexport safe */ _modules_effect_creative_effect_creative_js__WEBPACK_IMPORTED_MODULE_23__["default"]),
+/* harmony export */   "EffectCube": () => (/* reexport safe */ _modules_effect_cube_effect_cube_js__WEBPACK_IMPORTED_MODULE_20__["default"]),
+/* harmony export */   "EffectFade": () => (/* reexport safe */ _modules_effect_fade_effect_fade_js__WEBPACK_IMPORTED_MODULE_19__["default"]),
+/* harmony export */   "EffectFlip": () => (/* reexport safe */ _modules_effect_flip_effect_flip_js__WEBPACK_IMPORTED_MODULE_21__["default"]),
+/* harmony export */   "FreeMode": () => (/* reexport safe */ _modules_free_mode_free_mode_js__WEBPACK_IMPORTED_MODULE_16__["default"]),
+/* harmony export */   "Grid": () => (/* reexport safe */ _modules_grid_grid_js__WEBPACK_IMPORTED_MODULE_17__["default"]),
+/* harmony export */   "HashNavigation": () => (/* reexport safe */ _modules_hash_navigation_hash_navigation_js__WEBPACK_IMPORTED_MODULE_13__["default"]),
+/* harmony export */   "History": () => (/* reexport safe */ _modules_history_history_js__WEBPACK_IMPORTED_MODULE_12__["default"]),
+/* harmony export */   "Keyboard": () => (/* reexport safe */ _modules_keyboard_keyboard_js__WEBPACK_IMPORTED_MODULE_2__["default"]),
+/* harmony export */   "Lazy": () => (/* reexport safe */ _modules_lazy_lazy_js__WEBPACK_IMPORTED_MODULE_9__["default"]),
+/* harmony export */   "Manipulation": () => (/* reexport safe */ _modules_manipulation_manipulation_js__WEBPACK_IMPORTED_MODULE_18__["default"]),
+/* harmony export */   "Mousewheel": () => (/* reexport safe */ _modules_mousewheel_mousewheel_js__WEBPACK_IMPORTED_MODULE_3__["default"]),
+/* harmony export */   "Navigation": () => (/* reexport safe */ _modules_navigation_navigation_js__WEBPACK_IMPORTED_MODULE_4__["default"]),
+/* harmony export */   "Pagination": () => (/* reexport safe */ _modules_pagination_pagination_js__WEBPACK_IMPORTED_MODULE_5__["default"]),
+/* harmony export */   "Parallax": () => (/* reexport safe */ _modules_parallax_parallax_js__WEBPACK_IMPORTED_MODULE_7__["default"]),
+/* harmony export */   "Scrollbar": () => (/* reexport safe */ _modules_scrollbar_scrollbar_js__WEBPACK_IMPORTED_MODULE_6__["default"]),
+/* harmony export */   "Swiper": () => (/* reexport safe */ _core_core_js__WEBPACK_IMPORTED_MODULE_0__["default"]),
+/* harmony export */   "Thumbs": () => (/* reexport safe */ _modules_thumbs_thumbs_js__WEBPACK_IMPORTED_MODULE_15__["default"]),
+/* harmony export */   "Virtual": () => (/* reexport safe */ _modules_virtual_virtual_js__WEBPACK_IMPORTED_MODULE_1__["default"]),
+/* harmony export */   "Zoom": () => (/* reexport safe */ _modules_zoom_zoom_js__WEBPACK_IMPORTED_MODULE_8__["default"]),
+/* harmony export */   "default": () => (/* reexport safe */ _core_core_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+        /* harmony export */
+});
+/* harmony import */ var _core_core_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./core/core.js */ "./node_modules/swiper/core/core.js");
+/* harmony import */ var _modules_virtual_virtual_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/virtual/virtual.js */ "./node_modules/swiper/modules/virtual/virtual.js");
+/* harmony import */ var _modules_keyboard_keyboard_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/keyboard/keyboard.js */ "./node_modules/swiper/modules/keyboard/keyboard.js");
+/* harmony import */ var _modules_mousewheel_mousewheel_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/mousewheel/mousewheel.js */ "./node_modules/swiper/modules/mousewheel/mousewheel.js");
+/* harmony import */ var _modules_navigation_navigation_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/navigation/navigation.js */ "./node_modules/swiper/modules/navigation/navigation.js");
+/* harmony import */ var _modules_pagination_pagination_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/pagination/pagination.js */ "./node_modules/swiper/modules/pagination/pagination.js");
+/* harmony import */ var _modules_scrollbar_scrollbar_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modules/scrollbar/scrollbar.js */ "./node_modules/swiper/modules/scrollbar/scrollbar.js");
+/* harmony import */ var _modules_parallax_parallax_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./modules/parallax/parallax.js */ "./node_modules/swiper/modules/parallax/parallax.js");
+/* harmony import */ var _modules_zoom_zoom_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./modules/zoom/zoom.js */ "./node_modules/swiper/modules/zoom/zoom.js");
+/* harmony import */ var _modules_lazy_lazy_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./modules/lazy/lazy.js */ "./node_modules/swiper/modules/lazy/lazy.js");
+/* harmony import */ var _modules_controller_controller_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./modules/controller/controller.js */ "./node_modules/swiper/modules/controller/controller.js");
+/* harmony import */ var _modules_a11y_a11y_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./modules/a11y/a11y.js */ "./node_modules/swiper/modules/a11y/a11y.js");
+/* harmony import */ var _modules_history_history_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./modules/history/history.js */ "./node_modules/swiper/modules/history/history.js");
+/* harmony import */ var _modules_hash_navigation_hash_navigation_js__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./modules/hash-navigation/hash-navigation.js */ "./node_modules/swiper/modules/hash-navigation/hash-navigation.js");
+/* harmony import */ var _modules_autoplay_autoplay_js__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./modules/autoplay/autoplay.js */ "./node_modules/swiper/modules/autoplay/autoplay.js");
+/* harmony import */ var _modules_thumbs_thumbs_js__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./modules/thumbs/thumbs.js */ "./node_modules/swiper/modules/thumbs/thumbs.js");
+/* harmony import */ var _modules_free_mode_free_mode_js__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./modules/free-mode/free-mode.js */ "./node_modules/swiper/modules/free-mode/free-mode.js");
+/* harmony import */ var _modules_grid_grid_js__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./modules/grid/grid.js */ "./node_modules/swiper/modules/grid/grid.js");
+/* harmony import */ var _modules_manipulation_manipulation_js__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./modules/manipulation/manipulation.js */ "./node_modules/swiper/modules/manipulation/manipulation.js");
+/* harmony import */ var _modules_effect_fade_effect_fade_js__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./modules/effect-fade/effect-fade.js */ "./node_modules/swiper/modules/effect-fade/effect-fade.js");
+/* harmony import */ var _modules_effect_cube_effect_cube_js__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./modules/effect-cube/effect-cube.js */ "./node_modules/swiper/modules/effect-cube/effect-cube.js");
+/* harmony import */ var _modules_effect_flip_effect_flip_js__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./modules/effect-flip/effect-flip.js */ "./node_modules/swiper/modules/effect-flip/effect-flip.js");
+/* harmony import */ var _modules_effect_coverflow_effect_coverflow_js__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./modules/effect-coverflow/effect-coverflow.js */ "./node_modules/swiper/modules/effect-coverflow/effect-coverflow.js");
+/* harmony import */ var _modules_effect_creative_effect_creative_js__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./modules/effect-creative/effect-creative.js */ "./node_modules/swiper/modules/effect-creative/effect-creative.js");
+/* harmony import */ var _modules_effect_cards_effect_cards_js__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./modules/effect-cards/effect-cards.js */ "./node_modules/swiper/modules/effect-cards/effect-cards.js");
+      /**
+       * Swiper 8.4.4
+       * Most modern mobile touch slider and framework with hardware accelerated transitions
+       * https://swiperjs.com
+       *
+       * Copyright 2014-2022 Vladimir Kharlampidi
+       *
+       * Released under the MIT License
+       *
+       * Released on: October 12, 2022
+       */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      /***/
+}),
+
+/***/ "./node_modules/swiper/vue/context.js":
+/*!********************************************!*\
+  !*** ./node_modules/swiper/vue/context.js ***!
+  \********************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+      __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "useSwiper": () => (/* binding */ useSwiper),
+/* harmony export */   "useSwiperSlide": () => (/* binding */ useSwiperSlide)
+        /* harmony export */
+});
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+      const useSwiperSlide = () => {
+        return (0, vue__WEBPACK_IMPORTED_MODULE_0__.inject)('swiperSlide');
+      };
+      const useSwiper = () => {
+        return (0, vue__WEBPACK_IMPORTED_MODULE_0__.inject)('swiper');
+      };
+
+      /***/
+}),
+
+/***/ "./node_modules/swiper/vue/get-children.js":
+/*!*************************************************!*\
+  !*** ./node_modules/swiper/vue/get-children.js ***!
+  \*************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+      __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "getChildren": () => (/* binding */ getChildren)
+        /* harmony export */
+});
+      function getChildren(originalSlots, slidesRef, oldSlidesRef) {
+        if (originalSlots === void 0) {
+          originalSlots = {};
+        }
+
+        const slides = [];
+        const slots = {
+          'container-start': [],
+          'container-end': [],
+          'wrapper-start': [],
+          'wrapper-end': []
+        };
+
+        const getSlidesFromElements = (els, slotName) => {
+          if (!Array.isArray(els)) {
+            return;
+          }
+
+          els.forEach(vnode => {
+            const isFragment = typeof vnode.type === 'symbol';
+            if (slotName === 'default') slotName = 'container-end';
+
+            if (isFragment && vnode.children) {
+              getSlidesFromElements(vnode.children, 'default');
+            } else if (vnode.type && (vnode.type.name === 'SwiperSlide' || vnode.type.name === 'AsyncComponentWrapper')) {
+              slides.push(vnode);
+            } else if (slots[slotName]) {
+              slots[slotName].push(vnode);
+            }
+          });
+        };
+
+        Object.keys(originalSlots).forEach(slotName => {
+          if (typeof originalSlots[slotName] !== 'function') return;
+          const els = originalSlots[slotName]();
+          getSlidesFromElements(els, slotName);
+        });
+        oldSlidesRef.value = slidesRef.value;
+        slidesRef.value = slides;
+        return {
+          slides,
+          slots
+        };
+      }
+
+
+
+      /***/
+}),
+
+/***/ "./node_modules/swiper/vue/loop.js":
+/*!*****************************************!*\
+  !*** ./node_modules/swiper/vue/loop.js ***!
+  \*****************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+      __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "calcLoopedSlides": () => (/* reexport safe */ _shared_calc_looped_slides_js__WEBPACK_IMPORTED_MODULE_1__.calcLoopedSlides),
+/* harmony export */   "renderLoop": () => (/* binding */ renderLoop)
+        /* harmony export */
+});
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+/* harmony import */ var _shared_calc_looped_slides_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../shared/calc-looped-slides.js */ "./node_modules/swiper/shared/calc-looped-slides.js");
+
+
+
+      function renderLoop(swiperRef, slides, swiperParams) {
+        const modifiedSlides = slides.map((child, index) => {
+          if (!child.props) child.props = {};
+          child.props.swiperRef = swiperRef;
+          child.props['data-swiper-slide-index'] = index;
+          return child;
+        });
+
+        function duplicateSlide(child, index, position) {
+          if (!child.props) child.props = {};
+          return (0, vue__WEBPACK_IMPORTED_MODULE_0__.h)(child.type, {
+            ...child.props,
+            key: `${child.key}-duplicate-${index}-${position}`,
+            class: `${child.props.className || ''} ${swiperParams.slideDuplicateClass} ${child.props.class || ''}`
+          }, child.children);
+        }
+
+        if (swiperParams.loopFillGroupWithBlank) {
+          const blankSlidesNum = swiperParams.slidesPerGroup - modifiedSlides.length % swiperParams.slidesPerGroup;
+
+          if (blankSlidesNum !== swiperParams.slidesPerGroup) {
+            for (let i = 0; i < blankSlidesNum; i += 1) {
+              const blankSlide = (0, vue__WEBPACK_IMPORTED_MODULE_0__.h)('div', {
+                class: `${swiperParams.slideClass} ${swiperParams.slideBlankClass}`
+              });
+              modifiedSlides.push(blankSlide);
+            }
+          }
+        }
+
+        if (swiperParams.slidesPerView === 'auto' && !swiperParams.loopedSlides) {
+          swiperParams.loopedSlides = modifiedSlides.length;
+        }
+
+        const loopedSlides = (0, _shared_calc_looped_slides_js__WEBPACK_IMPORTED_MODULE_1__.calcLoopedSlides)(modifiedSlides, swiperParams);
+        const prependSlides = [];
+        const appendSlides = [];
+
+        for (let i = 0; i < loopedSlides; i += 1) {
+          const index = i - Math.floor(i / modifiedSlides.length) * modifiedSlides.length;
+          appendSlides.push(duplicateSlide(modifiedSlides[index], i, 'append'));
+          prependSlides.unshift(duplicateSlide(modifiedSlides[modifiedSlides.length - index - 1], i, 'prepend'));
+        }
+
+        if (swiperRef.value) {
+          swiperRef.value.loopedSlides = loopedSlides;
+        }
+
+        return [...prependSlides, ...modifiedSlides, ...appendSlides];
+      }
+
+
+
+      /***/
+}),
+
+/***/ "./node_modules/swiper/vue/swiper-slide.js":
+/*!*************************************************!*\
+  !*** ./node_modules/swiper/vue/swiper-slide.js ***!
+  \*************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+      __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "SwiperSlide": () => (/* binding */ SwiperSlide)
+        /* harmony export */
+});
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+/* harmony import */ var _components_shared_utils_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components-shared/utils.js */ "./node_modules/swiper/components-shared/utils.js");
+
+
+      const SwiperSlide = {
+        name: 'SwiperSlide',
+        props: {
+          tag: {
+            type: String,
+            default: 'div'
+          },
+          swiperRef: {
+            type: Object,
+            required: false
+          },
+          zoom: {
+            type: Boolean,
+            default: undefined
+          },
+          virtualIndex: {
+            type: [String, Number],
+            default: undefined
+          }
+        },
+
+        setup(props, _ref) {
+          let {
+            slots
+          } = _ref;
+          let eventAttached = false;
+          const {
+            swiperRef
+          } = props;
+          const slideElRef = (0, vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
+          const slideClasses = (0, vue__WEBPACK_IMPORTED_MODULE_0__.ref)('swiper-slide');
+
+          function updateClasses(swiper, el, classNames) {
+            if (el === slideElRef.value) {
+              slideClasses.value = classNames;
+            }
+          }
+
+          (0, vue__WEBPACK_IMPORTED_MODULE_0__.onMounted)(() => {
+            if (!swiperRef || !swiperRef.value) return;
+            swiperRef.value.on('_slideClass', updateClasses);
+            eventAttached = true;
+          });
+          (0, vue__WEBPACK_IMPORTED_MODULE_0__.onBeforeUpdate)(() => {
+            if (eventAttached || !swiperRef || !swiperRef.value) return;
+            swiperRef.value.on('_slideClass', updateClasses);
+            eventAttached = true;
+          });
+          (0, vue__WEBPACK_IMPORTED_MODULE_0__.onUpdated)(() => {
+            if (!slideElRef.value || !swiperRef || !swiperRef.value) return;
+
+            if (swiperRef.value.destroyed) {
+              if (slideClasses.value !== 'swiper-slide') {
+                slideClasses.value = 'swiper-slide';
+              }
+            }
+          });
+          (0, vue__WEBPACK_IMPORTED_MODULE_0__.onBeforeUnmount)(() => {
+            if (!swiperRef || !swiperRef.value) return;
+            swiperRef.value.off('_slideClass', updateClasses);
+          });
+          const slideData = (0, vue__WEBPACK_IMPORTED_MODULE_0__.computed)(() => ({
+            isActive: slideClasses.value.indexOf('swiper-slide-active') >= 0 || slideClasses.value.indexOf('swiper-slide-duplicate-active') >= 0,
+            isVisible: slideClasses.value.indexOf('swiper-slide-visible') >= 0,
+            isDuplicate: slideClasses.value.indexOf('swiper-slide-duplicate') >= 0,
+            isPrev: slideClasses.value.indexOf('swiper-slide-prev') >= 0 || slideClasses.value.indexOf('swiper-slide-duplicate-prev') >= 0,
+            isNext: slideClasses.value.indexOf('swiper-slide-next') >= 0 || slideClasses.value.indexOf('swiper-slide-duplicate-next') >= 0
+          }));
+          (0, vue__WEBPACK_IMPORTED_MODULE_0__.provide)('swiperSlide', slideData);
+          return () => {
+            return (0, vue__WEBPACK_IMPORTED_MODULE_0__.h)(props.tag, {
+              class: (0, _components_shared_utils_js__WEBPACK_IMPORTED_MODULE_1__.uniqueClasses)(`${slideClasses.value}`),
+              ref: slideElRef,
+              'data-swiper-slide-index': props.virtualIndex
+            }, props.zoom ? (0, vue__WEBPACK_IMPORTED_MODULE_0__.h)('div', {
+              class: 'swiper-zoom-container',
+              'data-swiper-zoom': typeof props.zoom === 'number' ? props.zoom : undefined
+            }, slots.default && slots.default(slideData.value)) : slots.default && slots.default(slideData.value));
+          };
+        }
+
+      };
+
+
+      /***/
+}),
+
+/***/ "./node_modules/swiper/vue/swiper-vue.js":
+/*!***********************************************!*\
+  !*** ./node_modules/swiper/vue/swiper-vue.js ***!
+  \***********************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+      __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Swiper": () => (/* reexport safe */ _swiper_js__WEBPACK_IMPORTED_MODULE_0__.Swiper),
+/* harmony export */   "SwiperSlide": () => (/* reexport safe */ _swiper_slide_js__WEBPACK_IMPORTED_MODULE_1__.SwiperSlide),
+/* harmony export */   "useSwiper": () => (/* reexport safe */ _context_js__WEBPACK_IMPORTED_MODULE_2__.useSwiper),
+/* harmony export */   "useSwiperSlide": () => (/* reexport safe */ _context_js__WEBPACK_IMPORTED_MODULE_2__.useSwiperSlide)
+        /* harmony export */
+});
+/* harmony import */ var _swiper_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./swiper.js */ "./node_modules/swiper/vue/swiper.js");
+/* harmony import */ var _swiper_slide_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./swiper-slide.js */ "./node_modules/swiper/vue/swiper-slide.js");
+/* harmony import */ var _context_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./context.js */ "./node_modules/swiper/vue/context.js");
+      /**
+       * Swiper Vue 8.4.4
+       * Most modern mobile touch slider and framework with hardware accelerated transitions
+       * https://swiperjs.com
+       *
+       * Copyright 2014-2022 Vladimir Kharlampidi
+       *
+       * Released under the MIT License
+       *
+       * Released on: October 12, 2022
+       */
+
+
+
+
+
+
+      /***/
+}),
+
+/***/ "./node_modules/swiper/vue/swiper.js":
+/*!*******************************************!*\
+  !*** ./node_modules/swiper/vue/swiper.js ***!
+  \*******************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+      __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Swiper": () => (/* binding */ Swiper)
+        /* harmony export */
+});
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+/* harmony import */ var swiper__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! swiper */ "./node_modules/swiper/swiper.esm.js");
+/* harmony import */ var _components_shared_get_params_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components-shared/get-params.js */ "./node_modules/swiper/components-shared/get-params.js");
+/* harmony import */ var _components_shared_mount_swiper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components-shared/mount-swiper.js */ "./node_modules/swiper/components-shared/mount-swiper.js");
+/* harmony import */ var _components_shared_utils_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components-shared/utils.js */ "./node_modules/swiper/components-shared/utils.js");
+/* harmony import */ var _loop_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./loop.js */ "./node_modules/swiper/vue/loop.js");
+/* harmony import */ var _components_shared_get_changed_params_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components-shared/get-changed-params.js */ "./node_modules/swiper/components-shared/get-changed-params.js");
+/* harmony import */ var _get_children_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./get-children.js */ "./node_modules/swiper/vue/get-children.js");
+/* harmony import */ var _components_shared_update_swiper_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components-shared/update-swiper.js */ "./node_modules/swiper/components-shared/update-swiper.js");
+/* harmony import */ var _virtual_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./virtual.js */ "./node_modules/swiper/vue/virtual.js");
+/* harmony import */ var _components_shared_update_on_virtual_data_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../components-shared/update-on-virtual-data.js */ "./node_modules/swiper/components-shared/update-on-virtual-data.js");
+
+
+
+
+
+
+
+
+
+
+
+      const Swiper = {
+        name: 'Swiper',
+        props: {
+          tag: {
+            type: String,
+            default: 'div'
+          },
+          wrapperTag: {
+            type: String,
+            default: 'div'
+          },
+          modules: {
+            type: Array,
+            default: undefined
+          },
+          init: {
+            type: Boolean,
+            default: undefined
+          },
+          direction: {
+            type: String,
+            default: undefined
+          },
+          touchEventsTarget: {
+            type: String,
+            default: undefined
+          },
+          initialSlide: {
+            type: Number,
+            default: undefined
+          },
+          speed: {
+            type: Number,
+            default: undefined
+          },
+          cssMode: {
+            type: Boolean,
+            default: undefined
+          },
+          updateOnWindowResize: {
+            type: Boolean,
+            default: undefined
+          },
+          resizeObserver: {
+            type: Boolean,
+            default: undefined
+          },
+          nested: {
+            type: Boolean,
+            default: undefined
+          },
+          focusableElements: {
+            type: String,
+            default: undefined
+          },
+          width: {
+            type: Number,
+            default: undefined
+          },
+          height: {
+            type: Number,
+            default: undefined
+          },
+          preventInteractionOnTransition: {
+            type: Boolean,
+            default: undefined
+          },
+          userAgent: {
+            type: String,
+            default: undefined
+          },
+          url: {
+            type: String,
+            default: undefined
+          },
+          edgeSwipeDetection: {
+            type: [Boolean, String],
+            default: undefined
+          },
+          edgeSwipeThreshold: {
+            type: Number,
+            default: undefined
+          },
+          autoHeight: {
+            type: Boolean,
+            default: undefined
+          },
+          setWrapperSize: {
+            type: Boolean,
+            default: undefined
+          },
+          virtualTranslate: {
+            type: Boolean,
+            default: undefined
+          },
+          effect: {
+            type: String,
+            default: undefined
+          },
+          breakpoints: {
+            type: Object,
+            default: undefined
+          },
+          spaceBetween: {
+            type: Number,
+            default: undefined
+          },
+          slidesPerView: {
+            type: [Number, String],
+            default: undefined
+          },
+          maxBackfaceHiddenSlides: {
+            type: Number,
+            default: undefined
+          },
+          slidesPerGroup: {
+            type: Number,
+            default: undefined
+          },
+          slidesPerGroupSkip: {
+            type: Number,
+            default: undefined
+          },
+          slidesPerGroupAuto: {
+            type: Boolean,
+            default: undefined
+          },
+          centeredSlides: {
+            type: Boolean,
+            default: undefined
+          },
+          centeredSlidesBounds: {
+            type: Boolean,
+            default: undefined
+          },
+          slidesOffsetBefore: {
+            type: Number,
+            default: undefined
+          },
+          slidesOffsetAfter: {
+            type: Number,
+            default: undefined
+          },
+          normalizeSlideIndex: {
+            type: Boolean,
+            default: undefined
+          },
+          centerInsufficientSlides: {
+            type: Boolean,
+            default: undefined
+          },
+          watchOverflow: {
+            type: Boolean,
+            default: undefined
+          },
+          roundLengths: {
+            type: Boolean,
+            default: undefined
+          },
+          touchRatio: {
+            type: Number,
+            default: undefined
+          },
+          touchAngle: {
+            type: Number,
+            default: undefined
+          },
+          simulateTouch: {
+            type: Boolean,
+            default: undefined
+          },
+          shortSwipes: {
+            type: Boolean,
+            default: undefined
+          },
+          longSwipes: {
+            type: Boolean,
+            default: undefined
+          },
+          longSwipesRatio: {
+            type: Number,
+            default: undefined
+          },
+          longSwipesMs: {
+            type: Number,
+            default: undefined
+          },
+          followFinger: {
+            type: Boolean,
+            default: undefined
+          },
+          allowTouchMove: {
+            type: Boolean,
+            default: undefined
+          },
+          threshold: {
+            type: Number,
+            default: undefined
+          },
+          touchMoveStopPropagation: {
+            type: Boolean,
+            default: undefined
+          },
+          touchStartPreventDefault: {
+            type: Boolean,
+            default: undefined
+          },
+          touchStartForcePreventDefault: {
+            type: Boolean,
+            default: undefined
+          },
+          touchReleaseOnEdges: {
+            type: Boolean,
+            default: undefined
+          },
+          uniqueNavElements: {
+            type: Boolean,
+            default: undefined
+          },
+          resistance: {
+            type: Boolean,
+            default: undefined
+          },
+          resistanceRatio: {
+            type: Number,
+            default: undefined
+          },
+          watchSlidesProgress: {
+            type: Boolean,
+            default: undefined
+          },
+          grabCursor: {
+            type: Boolean,
+            default: undefined
+          },
+          preventClicks: {
+            type: Boolean,
+            default: undefined
+          },
+          preventClicksPropagation: {
+            type: Boolean,
+            default: undefined
+          },
+          slideToClickedSlide: {
+            type: Boolean,
+            default: undefined
+          },
+          preloadImages: {
+            type: Boolean,
+            default: undefined
+          },
+          updateOnImagesReady: {
+            type: Boolean,
+            default: undefined
+          },
+          loop: {
+            type: Boolean,
+            default: undefined
+          },
+          loopAdditionalSlides: {
+            type: Number,
+            default: undefined
+          },
+          loopedSlides: {
+            type: Number,
+            default: undefined
+          },
+          loopedSlidesLimit: {
+            type: Boolean,
+            default: true
+          },
+          loopFillGroupWithBlank: {
+            type: Boolean,
+            default: undefined
+          },
+          loopPreventsSlide: {
+            type: Boolean,
+            default: undefined
+          },
+          rewind: {
+            type: Boolean,
+            default: undefined
+          },
+          allowSlidePrev: {
+            type: Boolean,
+            default: undefined
+          },
+          allowSlideNext: {
+            type: Boolean,
+            default: undefined
+          },
+          swipeHandler: {
+            type: Boolean,
+            default: undefined
+          },
+          noSwiping: {
+            type: Boolean,
+            default: undefined
+          },
+          noSwipingClass: {
+            type: String,
+            default: undefined
+          },
+          noSwipingSelector: {
+            type: String,
+            default: undefined
+          },
+          passiveListeners: {
+            type: Boolean,
+            default: undefined
+          },
+          containerModifierClass: {
+            type: String,
+            default: undefined
+          },
+          slideClass: {
+            type: String,
+            default: undefined
+          },
+          slideBlankClass: {
+            type: String,
+            default: undefined
+          },
+          slideActiveClass: {
+            type: String,
+            default: undefined
+          },
+          slideDuplicateActiveClass: {
+            type: String,
+            default: undefined
+          },
+          slideVisibleClass: {
+            type: String,
+            default: undefined
+          },
+          slideDuplicateClass: {
+            type: String,
+            default: undefined
+          },
+          slideNextClass: {
+            type: String,
+            default: undefined
+          },
+          slideDuplicateNextClass: {
+            type: String,
+            default: undefined
+          },
+          slidePrevClass: {
+            type: String,
+            default: undefined
+          },
+          slideDuplicatePrevClass: {
+            type: String,
+            default: undefined
+          },
+          wrapperClass: {
+            type: String,
+            default: undefined
+          },
+          runCallbacksOnInit: {
+            type: Boolean,
+            default: undefined
+          },
+          observer: {
+            type: Boolean,
+            default: undefined
+          },
+          observeParents: {
+            type: Boolean,
+            default: undefined
+          },
+          observeSlideChildren: {
+            type: Boolean,
+            default: undefined
+          },
+          a11y: {
+            type: [Boolean, Object],
+            default: undefined
+          },
+          autoplay: {
+            type: [Boolean, Object],
+            default: undefined
+          },
+          controller: {
+            type: Object,
+            default: undefined
+          },
+          coverflowEffect: {
+            type: Object,
+            default: undefined
+          },
+          cubeEffect: {
+            type: Object,
+            default: undefined
+          },
+          fadeEffect: {
+            type: Object,
+            default: undefined
+          },
+          flipEffect: {
+            type: Object,
+            default: undefined
+          },
+          creativeEffect: {
+            type: Object,
+            default: undefined
+          },
+          cardsEffect: {
+            type: Object,
+            default: undefined
+          },
+          hashNavigation: {
+            type: [Boolean, Object],
+            default: undefined
+          },
+          history: {
+            type: [Boolean, Object],
+            default: undefined
+          },
+          keyboard: {
+            type: [Boolean, Object],
+            default: undefined
+          },
+          lazy: {
+            type: [Boolean, Object],
+            default: undefined
+          },
+          mousewheel: {
+            type: [Boolean, Object],
+            default: undefined
+          },
+          navigation: {
+            type: [Boolean, Object],
+            default: undefined
+          },
+          pagination: {
+            type: [Boolean, Object],
+            default: undefined
+          },
+          parallax: {
+            type: [Boolean, Object],
+            default: undefined
+          },
+          scrollbar: {
+            type: [Boolean, Object],
+            default: undefined
+          },
+          thumbs: {
+            type: Object,
+            default: undefined
+          },
+          virtual: {
+            type: [Boolean, Object],
+            default: undefined
+          },
+          zoom: {
+            type: [Boolean, Object],
+            default: undefined
+          },
+          grid: {
+            type: [Object],
+            default: undefined
+          },
+          freeMode: {
+            type: [Boolean, Object],
+            default: undefined
+          },
+          enabled: {
+            type: Boolean,
+            default: undefined
+          }
+        },
+        emits: ['_beforeBreakpoint', '_containerClasses', '_slideClass', '_slideClasses', '_swiper', '_freeModeNoMomentumRelease', 'activeIndexChange', 'afterInit', 'autoplay', 'autoplayStart', 'autoplayStop', 'autoplayPause', 'autoplayResume', 'beforeDestroy', 'beforeInit', 'beforeLoopFix', 'beforeResize', 'beforeSlideChangeStart', 'beforeTransitionStart', 'breakpoint', 'changeDirection', 'click', 'disable', 'doubleTap', 'doubleClick', 'destroy', 'enable', 'fromEdge', 'hashChange', 'hashSet', 'imagesReady', 'init', 'keyPress', 'lazyImageLoad', 'lazyImageReady', 'lock', 'loopFix', 'momentumBounce', 'navigationHide', 'navigationShow', 'navigationPrev', 'navigationNext', 'observerUpdate', 'orientationchange', 'paginationHide', 'paginationRender', 'paginationShow', 'paginationUpdate', 'progress', 'reachBeginning', 'reachEnd', 'realIndexChange', 'resize', 'scroll', 'scrollbarDragEnd', 'scrollbarDragMove', 'scrollbarDragStart', 'setTransition', 'setTranslate', 'slideChange', 'slideChangeTransitionEnd', 'slideChangeTransitionStart', 'slideNextTransitionEnd', 'slideNextTransitionStart', 'slidePrevTransitionEnd', 'slidePrevTransitionStart', 'slideResetTransitionStart', 'slideResetTransitionEnd', 'sliderMove', 'sliderFirstMove', 'slidesLengthChange', 'slidesGridLengthChange', 'snapGridLengthChange', 'snapIndexChange', 'swiper', 'tap', 'toEdge', 'touchEnd', 'touchMove', 'touchMoveOpposite', 'touchStart', 'transitionEnd', 'transitionStart', 'unlock', 'update', 'virtualUpdate', 'zoomChange'],
+
+        setup(props, _ref) {
+          let {
+            slots: originalSlots,
+            emit
+          } = _ref;
+          const {
+            tag: Tag,
+            wrapperTag: WrapperTag
+          } = props;
+          const containerClasses = (0, vue__WEBPACK_IMPORTED_MODULE_0__.ref)('swiper');
+          const virtualData = (0, vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
+          const breakpointChanged = (0, vue__WEBPACK_IMPORTED_MODULE_0__.ref)(false);
+          const initializedRef = (0, vue__WEBPACK_IMPORTED_MODULE_0__.ref)(false);
+          const swiperElRef = (0, vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
+          const swiperRef = (0, vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
+          const oldPassedParamsRef = (0, vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
+          const slidesRef = {
+            value: []
+          };
+          const oldSlidesRef = {
+            value: []
+          };
+          const nextElRef = (0, vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
+          const prevElRef = (0, vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
+          const paginationElRef = (0, vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
+          const scrollbarElRef = (0, vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
+          const {
+            params: swiperParams,
+            passedParams
+          } = (0, _components_shared_get_params_js__WEBPACK_IMPORTED_MODULE_2__.getParams)(props, false);
+          (0, _get_children_js__WEBPACK_IMPORTED_MODULE_7__.getChildren)(originalSlots, slidesRef, oldSlidesRef);
+          oldPassedParamsRef.value = passedParams;
+          oldSlidesRef.value = slidesRef.value;
+
+          const onBeforeBreakpoint = () => {
+            (0, _get_children_js__WEBPACK_IMPORTED_MODULE_7__.getChildren)(originalSlots, slidesRef, oldSlidesRef);
+            breakpointChanged.value = true;
+          };
+
+          swiperParams.onAny = function (event) {
+            for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+              args[_key - 1] = arguments[_key];
+            }
+
+            emit(event, ...args);
+          };
+
+          Object.assign(swiperParams.on, {
+            _beforeBreakpoint: onBeforeBreakpoint,
+
+            _containerClasses(swiper, classes) {
+              containerClasses.value = classes;
+            }
+
+          }); // init Swiper
+
+          swiperRef.value = new swiper__WEBPACK_IMPORTED_MODULE_1__["default"](swiperParams);
+
+          swiperRef.value.loopCreate = () => { };
+
+          swiperRef.value.loopDestroy = () => { };
+
+          if (swiperParams.loop) {
+            swiperRef.value.loopedSlides = (0, _loop_js__WEBPACK_IMPORTED_MODULE_5__.calcLoopedSlides)(slidesRef.value, swiperParams);
+          }
+
+          if (swiperRef.value.virtual && swiperRef.value.params.virtual.enabled) {
+            swiperRef.value.virtual.slides = slidesRef.value;
+            const extendWith = {
+              cache: false,
+              slides: slidesRef.value,
+              renderExternal: data => {
+                virtualData.value = data;
+              },
+              renderExternalUpdate: false
+            };
+            (0, _components_shared_utils_js__WEBPACK_IMPORTED_MODULE_4__.extend)(swiperRef.value.params.virtual, extendWith);
+            (0, _components_shared_utils_js__WEBPACK_IMPORTED_MODULE_4__.extend)(swiperRef.value.originalParams.virtual, extendWith);
+          }
+
+          (0, vue__WEBPACK_IMPORTED_MODULE_0__.onUpdated)(() => {
+            // set initialized flag
+            if (!initializedRef.value && swiperRef.value) {
+              swiperRef.value.emitSlidesClasses();
+              initializedRef.value = true;
+            } // watch for params change
+
+
+            const {
+              passedParams: newPassedParams
+            } = (0, _components_shared_get_params_js__WEBPACK_IMPORTED_MODULE_2__.getParams)(props, false);
+            const changedParams = (0, _components_shared_get_changed_params_js__WEBPACK_IMPORTED_MODULE_6__.getChangedParams)(newPassedParams, oldPassedParamsRef.value, slidesRef.value, oldSlidesRef.value, c => c.props && c.props.key);
+            oldPassedParamsRef.value = newPassedParams;
+
+            if ((changedParams.length || breakpointChanged.value) && swiperRef.value && !swiperRef.value.destroyed) {
+              (0, _components_shared_update_swiper_js__WEBPACK_IMPORTED_MODULE_8__.updateSwiper)({
+                swiper: swiperRef.value,
+                slides: slidesRef.value,
+                passedParams: newPassedParams,
+                changedParams,
+                nextEl: nextElRef.value,
+                prevEl: prevElRef.value,
+                scrollbarEl: scrollbarElRef.value,
+                paginationEl: paginationElRef.value
+              });
+            }
+
+            breakpointChanged.value = false;
+          });
+          (0, vue__WEBPACK_IMPORTED_MODULE_0__.provide)('swiper', swiperRef); // update on virtual update
+
+          (0, vue__WEBPACK_IMPORTED_MODULE_0__.watch)(virtualData, () => {
+            (0, vue__WEBPACK_IMPORTED_MODULE_0__.nextTick)(() => {
+              (0, _components_shared_update_on_virtual_data_js__WEBPACK_IMPORTED_MODULE_10__.updateOnVirtualData)(swiperRef.value);
+            });
+          }); // mount swiper
+
+          (0, vue__WEBPACK_IMPORTED_MODULE_0__.onMounted)(() => {
+            if (!swiperElRef.value) return;
+            (0, _components_shared_mount_swiper_js__WEBPACK_IMPORTED_MODULE_3__.mountSwiper)({
+              el: swiperElRef.value,
+              nextEl: nextElRef.value,
+              prevEl: prevElRef.value,
+              paginationEl: paginationElRef.value,
+              scrollbarEl: scrollbarElRef.value,
+              swiper: swiperRef.value
+            }, swiperParams);
+            emit('swiper', swiperRef.value);
+          });
+          (0, vue__WEBPACK_IMPORTED_MODULE_0__.onBeforeUnmount)(() => {
+            if (swiperRef.value && !swiperRef.value.destroyed) {
+              swiperRef.value.destroy(true, false);
+            }
+          }); // bypass swiper instance to slides
+
+          function renderSlides(slides) {
+            if (swiperParams.virtual) {
+              return (0, _virtual_js__WEBPACK_IMPORTED_MODULE_9__.renderVirtual)(swiperRef, slides, virtualData.value);
+            }
+
+            if (!swiperParams.loop || swiperRef.value && swiperRef.value.destroyed) {
+              slides.forEach(slide => {
+                if (!slide.props) slide.props = {};
+                slide.props.swiperRef = swiperRef;
+              });
+              return slides;
+            }
+
+            return (0, _loop_js__WEBPACK_IMPORTED_MODULE_5__.renderLoop)(swiperRef, slides, swiperParams);
+          }
+
+          return () => {
+            const {
+              slides,
+              slots
+            } = (0, _get_children_js__WEBPACK_IMPORTED_MODULE_7__.getChildren)(originalSlots, slidesRef, oldSlidesRef);
+            return (0, vue__WEBPACK_IMPORTED_MODULE_0__.h)(Tag, {
+              ref: swiperElRef,
+              class: (0, _components_shared_utils_js__WEBPACK_IMPORTED_MODULE_4__.uniqueClasses)(containerClasses.value)
+            }, [slots['container-start'], (0, vue__WEBPACK_IMPORTED_MODULE_0__.h)(WrapperTag, {
+              class: 'swiper-wrapper'
+            }, [slots['wrapper-start'], renderSlides(slides), slots['wrapper-end']]), (0, _components_shared_utils_js__WEBPACK_IMPORTED_MODULE_4__.needsNavigation)(props) && [(0, vue__WEBPACK_IMPORTED_MODULE_0__.h)('div', {
+              ref: prevElRef,
+              class: 'swiper-button-prev'
+            }), (0, vue__WEBPACK_IMPORTED_MODULE_0__.h)('div', {
+              ref: nextElRef,
+              class: 'swiper-button-next'
+            })], (0, _components_shared_utils_js__WEBPACK_IMPORTED_MODULE_4__.needsScrollbar)(props) && (0, vue__WEBPACK_IMPORTED_MODULE_0__.h)('div', {
+              ref: scrollbarElRef,
+              class: 'swiper-scrollbar'
+            }), (0, _components_shared_utils_js__WEBPACK_IMPORTED_MODULE_4__.needsPagination)(props) && (0, vue__WEBPACK_IMPORTED_MODULE_0__.h)('div', {
+              ref: paginationElRef,
+              class: 'swiper-pagination'
+            }), slots['container-end']]);
+          };
+        }
+
+      };
+
+
+      /***/
+}),
 
 /***/ "./node_modules/swiper/vue/virtual.js":
 /*!********************************************!*\
@@ -17306,32 +19297,35 @@ const Swiper = {
   \********************************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
-__webpack_require__.r(__webpack_exports__);
+      __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "renderVirtual": () => (/* binding */ renderVirtual)
-/* harmony export */ });
+        /* harmony export */
+});
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 
-function renderVirtual(swiperRef, slides, virtualData) {
-  if (!virtualData) return null;
-  const style = swiperRef.value.isHorizontal() ? {
-    [swiperRef.value.rtlTranslate ? 'right' : 'left']: `${virtualData.offset}px`
-  } : {
-    top: `${virtualData.offset}px`
-  };
-  return slides.filter((slide, index) => index >= virtualData.from && index <= virtualData.to).map(slide => {
-    if (!slide.props) slide.props = {};
-    if (!slide.props.style) slide.props.style = {};
-    slide.props.swiperRef = swiperRef;
-    slide.props.style = style;
-    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.h)(slide.type, { ...slide.props
-    }, slide.children);
-  });
-}
+      function renderVirtual(swiperRef, slides, virtualData) {
+        if (!virtualData) return null;
+        const style = swiperRef.value.isHorizontal() ? {
+          [swiperRef.value.rtlTranslate ? 'right' : 'left']: `${virtualData.offset}px`
+        } : {
+          top: `${virtualData.offset}px`
+        };
+        return slides.filter((slide, index) => index >= virtualData.from && index <= virtualData.to).map(slide => {
+          if (!slide.props) slide.props = {};
+          if (!slide.props.style) slide.props.style = {};
+          slide.props.swiperRef = swiperRef;
+          slide.props.style = style;
+          return (0, vue__WEBPACK_IMPORTED_MODULE_0__.h)(slide.type, {
+            ...slide.props
+          }, slide.children);
+        });
+      }
 
 
 
-/***/ })
+      /***/
+})
 
 }]);

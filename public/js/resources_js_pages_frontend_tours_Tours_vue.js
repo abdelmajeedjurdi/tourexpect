@@ -2204,8 +2204,8 @@ function useTours() {
               fd.append("timing_and_transfer_en", data.form.timing_and_transfer_en);
               fd.append("notes_en", data.form.notes_en);
               fd.append("notes_ar", data.form.notes_ar);
-              fd.append("terms_and_bullet_sections_en", data.form.terms_and_bullet_sections_en);
-              fd.append("terms_and_bullet_sections_ar", data.form.terms_and_bullet_sections_ar);
+              fd.append("terms_and_conditions_en", data.form.terms_and_conditions_en);
+              fd.append("terms_and_conditions_ar", data.form.terms_and_conditions_ar);
               fd.append("banner_highlights", JSON.stringify(data.form.banner_highlights));
               fd.append("options", JSON.stringify(data.form.options));
               fd.append("itinerary", JSON.stringify(data.form.itinerary));
@@ -2287,8 +2287,8 @@ function useTours() {
               fd.append("timing_and_transfer_en", data.form.timing_and_transfer_en);
               fd.append("notes_en", data.form.notes_en);
               fd.append("notes_ar", data.form.notes_ar);
-              fd.append("terms_and_bullet_sections_en", data.form.terms_and_bullet_sections_en);
-              fd.append("terms_and_bullet_sections_ar", data.form.terms_and_bullet_sections_ar);
+              fd.append("terms_and_conditions_en", data.form.terms_and_conditions_en);
+              fd.append("terms_and_conditions_ar", data.form.terms_and_conditions_ar);
               fd.append("is_from", data.form.is_from);
               fd.append("banner_highlights", JSON.stringify(data.form.banner_highlights));
               fd.append("options", JSON.stringify(data.form.options));
