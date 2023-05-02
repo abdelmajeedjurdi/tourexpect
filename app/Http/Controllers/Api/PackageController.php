@@ -29,7 +29,6 @@ class PackageController extends Controller
     public function getAllPacks()
     {
         return PackageResource::collection(Package::paginate(15));
-        // return "index is working";
     }
     public function getFilteredPacks(Request $request)
     {
@@ -39,13 +38,14 @@ class PackageController extends Controller
 
         // if both categories and destinations are empty
         if (!count($categories) && !count($destinations))
-            return PackageResource::collection(Package::paginate(9));
+            return PackageResource::collection(Package::where('active', '1')->paginate(9));
 
         // if destinations is empty and categories is not empty
         if (count($categories) && !count($destinations)) {
             $all = DB::table('packages')
                 ->join('package_category as pc', 'packages.id', '=', 'pc.package_id')
                 ->join('categories', 'pc.category_id', '=', 'categories.id')
+                ->where('packages.active', '1')
                 ->whereIn('categories.id', $categories)->select(
                     'packages.*',
                 )->distinct()->paginate(12);
@@ -57,9 +57,9 @@ class PackageController extends Controller
             $all = DB::table('packages')
                 ->join('package_destination as pd', 'packages.id', '=', 'pd.package_id')
                 ->join('destinations', 'pd.destination_id', '=', 'destinations.id')
-                ->whereIn('destinations.id', $destinations)->select(
-                    'packages.*',
-                )->distinct()->paginate(12);
+                ->where('packages.active', '1')
+                ->whereIn('destinations.id', $destinations)
+                ->select('packages.*')->distinct()->paginate(12);
             return PackageResource::collection($all);
         }
 
@@ -70,7 +70,7 @@ class PackageController extends Controller
 
             ->join('package_category as pc', 'packages.id', '=', 'pc.package_id')
             ->join('categories', 'pc.category_id', '=', 'categories.id')
-
+            ->where('packages.active', '1')
             ->whereIn('destinations.id', $destinations)->whereIn('categories.id', $categories)->select(
                 'packages.*',
             )->distinct()->paginate(12);

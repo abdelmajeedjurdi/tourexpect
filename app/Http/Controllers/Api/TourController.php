@@ -47,7 +47,7 @@ class TourController extends Controller
 
         // if both categories and destinations are empty
         if (!count($categories) && !count($destinations))
-            return TourResource::collection(Tour::paginate(9));
+            return TourResource::collection(Tour::where('active', '1')->paginate(9));
 
         // if destinations is empty and categories is not empty
         if (count($categories) && !count($destinations)) {
@@ -55,6 +55,7 @@ class TourController extends Controller
             $all = DB::table('tours')
                 ->join('tour_category as tc', 'tours.id', '=', 'tc.tour_id')
                 ->join('categories', 'tc.category_id', '=', 'categories.id')
+                ->where('tours.active', '1')
                 ->whereIn('categories.id', $categories)->select(
                     'tours.*',
                 )->distinct()->paginate(12);
@@ -67,8 +68,9 @@ class TourController extends Controller
             $all = DB::table('tours')
                 ->join('tour_destination as td', 'tours.id', '=', 'td.tour_id')
                 ->join('destinations', 'td.destination_id', '=', 'destinations.id')
+                ->where('tours.active', '1')
                 ->whereIn('destinations.id', $destinations)->select(
-                    'tours.*',
+                    'tours.*'
                 )->distinct()->paginate(12);
             return TourResource::collection($all);
         }
@@ -80,6 +82,7 @@ class TourController extends Controller
 
             ->join('tour_category as tc', 'tours.id', '=', 'tc.tour_id')
             ->join('categories', 'tc.category_id', '=', 'categories.id')
+            ->where('tours.active', '1')
 
             ->whereIn('destinations.id', $destinations)->whereIn('categories.id', $categories)->select(
                 'tours.*',

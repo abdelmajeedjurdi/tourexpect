@@ -42,7 +42,7 @@ class ActivityController extends Controller
 
         // if both categories and destinations are empty
         if (!count($categories) && !count($destinations))
-            return ActivityResource::collection(Activity::paginate(9));
+            return ActivityResource::collection(Activity::where('active', '1')->paginate(9));
 
         // if destinations is empty and categories is not empty
         if (count($categories) && !count($destinations)) {
@@ -50,6 +50,7 @@ class ActivityController extends Controller
             $all = DB::table('activities')
                 ->join('activity_category as ac', 'activities.id', '=', 'ac.activity_id')
                 ->join('categories', 'ac.category_id', '=', 'categories.id')
+                ->where('activities.active', '1')
                 ->whereIn('categories.id', $categories)->select(
                     'activities.*',
                 )->distinct()->paginate(12);
@@ -62,6 +63,7 @@ class ActivityController extends Controller
             $all = DB::table('activities')
                 ->join('activity_destination as ad', 'activities.id', '=', 'ad.activity_id')
                 ->join('destinations', 'ad.destination_id', '=', 'destinations.id')
+                ->where('activities.active', '1')
                 ->whereIn('destinations.id', $destinations)->select(
                     'activities.*',
                 )->distinct()->paginate(12);
@@ -75,6 +77,7 @@ class ActivityController extends Controller
 
             ->join('activity_category as tc', 'activities.id', '=', 'tc.activity_id')
             ->join('categories', 'tc.category_id', '=', 'categories.id')
+            ->where('activities.active', '1')
 
             ->whereIn('destinations.id', $destinations)->whereIn('categories.id', $categories)->select(
                 'activities.*',
