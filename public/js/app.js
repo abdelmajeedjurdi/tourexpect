@@ -26556,18 +26556,41 @@ var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
   "stroke-linecap": "round",
   "stroke-linejoin": "round",
-  d: "M20.893 13.393l-1.135-1.135a2.252 2.252 0 01-.421-.585l-1.08-2.16a.414.414 0 00-.663-.107.827.827 0 01-.812.21l-1.273-.363a.89.89 0 00-.738 1.595l.587.39c.59.395.674 1.23.172 1.732l-.2.2c-.212.212-.33.498-.33.796v.41c0 .409-.11.809-.32 1.158l-1.315 2.191a2.11 2.11 0 01-1.81 1.025 1.055 1.055 0 01-1.055-1.055v-1.172c0-.92-.56-1.747-1.414-2.089l-.655-.261a2.25 2.25 0 01-1.383-2.46l.007-.042a2.25 2.25 0 01.29-.787l.09-.15a2.25 2.25 0 012.37-1.048l1.178.236a1.125 1.125 0 001.302-.795l.208-.73a1.125 1.125 0 00-.578-1.315l-.665-.332-.091.091a2.25 2.25 0 01-1.591.659h-.18c-.249 0-.487.1-.662.274a.931.931 0 01-1.458-1.137l1.411-2.353a2.25 2.25 0 00.286-.76m11.928 9.869A9 9 0 008.965 3.525m11.928 9.868A9 9 0 118.965 3.525"
+  d: "M12.75 3.03v.568c0 .334.148.65.405.864l1.068.89c.442.369.535 1.01.216 1.49l-.51.766a2.25 2.25 0 01-1.161.886l-.143.048a1.107 1.107 0 00-.57 1.664c.369.555.169 1.307-.427 1.605L9 13.125l.423 1.059a.956.956 0 01-1.652.928l-.679-.906a1.125 1.125 0 00-1.906.172L4.5 15.75l-.612.153M12.75 3.031a9 9 0 00-8.862 12.872M12.75 3.031a9 9 0 016.69 14.036m0 0l-.177-.529A2.25 2.25 0 0017.128 15H16.5l-.324-.324a1.453 1.453 0 00-2.328.377l-.036.073a1.586 1.586 0 01-.982.816l-.99.282c-.55.157-.894.702-.8 1.267l.073.438c.08.474.49.821.97.821.846 0 1.598.542 1.865 1.345l.215.643m5.276-3.67a9.012 9.012 0 01-5.276 3.67m0 0a9 9 0 01-10.275-4.835M15.75 9c0 .896-.393 1.7-1.016 2.25"
 })])], -1
 /* HOISTED */
 );
 
 var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "ml-2 text-sm tracking-wide truncate"
-}, "Tours", -1
+}, "Countries", -1
 /* HOISTED */
 );
 
 var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  "class": "inline-flex justify-center items-center"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
+  xmlns: "http://www.w3.org/2000/svg",
+  fill: "none",
+  viewBox: "0 0 24 24",
+  "stroke-width": "1.5",
+  stroke: "currentColor",
+  "class": "w-5"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
+  "stroke-linecap": "round",
+  "stroke-linejoin": "round",
+  d: "M20.893 13.393l-1.135-1.135a2.252 2.252 0 01-.421-.585l-1.08-2.16a.414.414 0 00-.663-.107.827.827 0 01-.812.21l-1.273-.363a.89.89 0 00-.738 1.595l.587.39c.59.395.674 1.23.172 1.732l-.2.2c-.212.212-.33.498-.33.796v.41c0 .409-.11.809-.32 1.158l-1.315 2.191a2.11 2.11 0 01-1.81 1.025 1.055 1.055 0 01-1.055-1.055v-1.172c0-.92-.56-1.747-1.414-2.089l-.655-.261a2.25 2.25 0 01-1.383-2.46l.007-.042a2.25 2.25 0 01.29-.787l.09-.15a2.25 2.25 0 012.37-1.048l1.178.236a1.125 1.125 0 001.302-.795l.208-.73a1.125 1.125 0 00-.578-1.315l-.665-.332-.091.091a2.25 2.25 0 01-1.591.659h-.18c-.249 0-.487.1-.662.274a.931.931 0 01-1.458-1.137l1.411-2.353a2.25 2.25 0 00.286-.76m11.928 9.869A9 9 0 008.965 3.525m11.928 9.868A9 9 0 118.965 3.525"
+})])], -1
+/* HOISTED */
+);
+
+var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  "class": "ml-2 text-sm tracking-wide truncate"
+}, "Tours", -1
+/* HOISTED */
+);
+
+var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "inline-flex justify-center items-center"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
   xmlns: "http://www.w3.org/2000/svg",
@@ -26584,13 +26607,13 @@ var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+var _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "ml-2 text-sm tracking-wide truncate"
 }, "Packages", -1
 /* HOISTED */
 );
 
-var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+var _hoisted_26 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "inline-flex justify-center items-center"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
   xmlns: "http://www.w3.org/2000/svg",
@@ -26607,13 +26630,13 @@ var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+var _hoisted_27 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "ml-2 text-sm tracking-wide truncate"
 }, "Activities", -1
 /* HOISTED */
 );
 
-var _hoisted_26 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "inline-flex justify-center items-center"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
   xmlns: "http://www.w3.org/2000/svg",
@@ -26630,13 +26653,13 @@ var _hoisted_26 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_27 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+var _hoisted_29 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "ml-2 text-sm tracking-wide truncate"
 }, "Visas", -1
 /* HOISTED */
 );
 
-var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+var _hoisted_30 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "inline-flex justify-center items-center"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
   xmlns: "http://www.w3.org/2000/svg",
@@ -26653,13 +26676,13 @@ var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_29 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+var _hoisted_31 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "ml-2 text-sm tracking-wide truncate"
 }, "Hotels And Resorts", -1
 /* HOISTED */
 );
 
-var _hoisted_30 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+var _hoisted_32 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "inline-flex justify-center items-center"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
   xmlns: "http://www.w3.org/2000/svg",
@@ -26676,13 +26699,13 @@ var _hoisted_30 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_31 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+var _hoisted_33 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "ml-2 text-sm tracking-wide truncate"
 }, "Blogs", -1
 /* HOISTED */
 );
 
-var _hoisted_32 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+var _hoisted_34 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "inline-flex justify-center items-center"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
   xmlns: "http://www.w3.org/2000/svg",
@@ -26699,13 +26722,13 @@ var _hoisted_32 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_33 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+var _hoisted_35 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "ml-2 text-sm tracking-wide truncate"
 }, "Jobs", -1
 /* HOISTED */
 );
 
-var _hoisted_34 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+var _hoisted_36 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "inline-flex justify-center items-center"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
   xmlns: "http://www.w3.org/2000/svg",
@@ -26722,13 +26745,13 @@ var _hoisted_34 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_35 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+var _hoisted_37 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "ml-2 text-sm tracking-wide truncate"
 }, "Option", -1
 /* HOISTED */
 );
 
-var _hoisted_36 = {
+var _hoisted_38 = {
   "class": "min-h-screen ml-10 dark:bg-gray-700 dark:text-gray-400 p-6"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -26788,7 +26811,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* PROPS */
   , ["to"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: {
-      name: 'tours.index'
+      name: 'countries.index'
     },
     "class": "relative flex flex-row items-center h-11 focus:outline-none dark:hover:bg-gray-600 text-gray-200 hover:text-white border-l-4 border-transparent hover:bg-blue-800 hover:border-blue-500 dark:hover:border-gray-800 pr-6e"
   }, {
@@ -26802,7 +26825,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* PROPS */
   , ["to"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: {
-      name: 'packages.index'
+      name: 'tours.index'
     },
     "class": "relative flex flex-row items-center h-11 focus:outline-none dark:hover:bg-gray-600 text-gray-200 hover:text-white border-l-4 border-transparent hover:bg-blue-800 hover:border-blue-500 dark:hover:border-gray-800 pr-6e"
   }, {
@@ -26816,7 +26839,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* PROPS */
   , ["to"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: {
-      name: 'activities.index'
+      name: 'packages.index'
     },
     "class": "relative flex flex-row items-center h-11 focus:outline-none dark:hover:bg-gray-600 text-gray-200 hover:text-white border-l-4 border-transparent hover:bg-blue-800 hover:border-blue-500 dark:hover:border-gray-800 pr-6e"
   }, {
@@ -26830,7 +26853,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* PROPS */
   , ["to"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: {
-      name: 'visas.index'
+      name: 'activities.index'
     },
     "class": "relative flex flex-row items-center h-11 focus:outline-none dark:hover:bg-gray-600 text-gray-200 hover:text-white border-l-4 border-transparent hover:bg-blue-800 hover:border-blue-500 dark:hover:border-gray-800 pr-6e"
   }, {
@@ -26844,7 +26867,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* PROPS */
   , ["to"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: {
-      name: 'hotels.index'
+      name: 'visas.index'
     },
     "class": "relative flex flex-row items-center h-11 focus:outline-none dark:hover:bg-gray-600 text-gray-200 hover:text-white border-l-4 border-transparent hover:bg-blue-800 hover:border-blue-500 dark:hover:border-gray-800 pr-6e"
   }, {
@@ -26858,7 +26881,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* PROPS */
   , ["to"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: {
-      name: 'blogs.index'
+      name: 'hotels.index'
     },
     "class": "relative flex flex-row items-center h-11 focus:outline-none dark:hover:bg-gray-600 text-gray-200 hover:text-white border-l-4 border-transparent hover:bg-blue-800 hover:border-blue-500 dark:hover:border-gray-800 pr-6e"
   }, {
@@ -26872,12 +26895,26 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* PROPS */
   , ["to"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: {
-      name: 'jobs'
+      name: 'blogs.index'
     },
     "class": "relative flex flex-row items-center h-11 focus:outline-none dark:hover:bg-gray-600 text-gray-200 hover:text-white border-l-4 border-transparent hover:bg-blue-800 hover:border-blue-500 dark:hover:border-gray-800 pr-6e"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [_hoisted_32, _hoisted_33];
+    }),
+    _: 1
+    /* STABLE */
+
+  }, 8
+  /* PROPS */
+  , ["to"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+    to: {
+      name: 'jobs'
+    },
+    "class": "relative flex flex-row items-center h-11 focus:outline-none dark:hover:bg-gray-600 text-gray-200 hover:text-white border-l-4 border-transparent hover:bg-blue-800 hover:border-blue-500 dark:hover:border-gray-800 pr-6e"
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [_hoisted_34, _hoisted_35];
     }),
     _: 1
     /* STABLE */
@@ -26889,12 +26926,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": "relative flex flex-row items-center h-11 focus:outline-none dark:hover:bg-gray-600 text-gray-200 hover:text-white border-l-4 border-transparent hover:bg-blue-800 hover:border-blue-500 dark:hover:border-gray-800 pr-6e"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_34, _hoisted_35];
+      return [_hoisted_36, _hoisted_37];
     }),
     _: 1
     /* STABLE */
 
-  })])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" ./Sidebar "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_36, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_view)])])], 2
+  })])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" ./Sidebar "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_38, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_view)])])], 2
   /* CLASS */
   );
 }
@@ -27468,6 +27505,33 @@ var routes = [{
   name: "destination.details",
   component: function component() {
     return __webpack_require__.e(/*! import() */ "resources_js_pages_backend_destinations_DestinationDetails_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../pages/backend/destinations/DestinationDetails */ "./resources/js/pages/backend/destinations/DestinationDetails.vue"));
+  },
+  props: true
+}, // ((((((((((((-- Countries --)))))))))))))))
+{
+  path: "/dashboard/countries",
+  name: "countries.index",
+  component: function component() {
+    return __webpack_require__.e(/*! import() */ "resources_js_pages_backend_countries_CountriesIndex_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../pages/backend/countries/CountriesIndex */ "./resources/js/pages/backend/countries/CountriesIndex.vue"));
+  }
+}, {
+  path: "/dashboard/countries/create",
+  name: "country.create",
+  component: function component() {
+    return __webpack_require__.e(/*! import() */ "resources_js_pages_backend_countries_CountryCreate_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../pages/backend/countries/CountryCreate */ "./resources/js/pages/backend/countries/CountryCreate.vue"));
+  }
+}, {
+  path: "/dashboard/countries/:id/edit",
+  name: "country.edit",
+  component: function component() {
+    return __webpack_require__.e(/*! import() */ "resources_js_pages_backend_countries_CountryEdit_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../pages/backend/countries/CountryEdit */ "./resources/js/pages/backend/countries/CountryEdit.vue"));
+  },
+  props: true
+}, {
+  path: "/dashboard/countries/:id/details",
+  name: "country.details",
+  component: function component() {
+    return Promise.resolve().then(function webpackMissingModule() { var e = new Error("Cannot find module '../pages/backend/countries/CountryDetails'"); e.code = 'MODULE_NOT_FOUND'; throw e; });
   },
   props: true
 }, // (((((((((((((((((--Tours--)))))))))))))))))
@@ -52390,7 +52454,7 @@ module.exports = JSON.parse('{"hello":"Hello World p","hello2":"Hello World 2","
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_pages_backend_Dashboard_vue":1,"resources_js_pages_backend_categories_CategoriesIndex_vue":1,"resources_js_pages_backend_categories_CategoryCreate_vue":1,"resources_js_pages_backend_categories_CategoryEdit_vue":1,"resources_js_pages_backend_categories_CategoryDetails_vue":1,"resources_js_pages_backend_destinations_DestinationsIndex_vue":1,"resources_js_pages_backend_destinations_DestinationCreate_vue":1,"resources_js_pages_backend_destinations_DestinationEdit_vue":1,"resources_js_pages_backend_destinations_DestinationDetails_vue":1,"resources_js_pages_backend_tours_ToursIndex_vue":1,"resources_js_pages_backend_tours_TourCreate_vue":1,"resources_js_pages_backend_tours_TourEdit_vue":1,"resources_js_pages_backend_tours_TourDetails_vue":1,"resources_js_pages_backend_packages_PackagesIndex_vue":1,"resources_js_pages_backend_packages_PackageCreate_vue":1,"resources_js_pages_backend_packages_PackageEdit_vue":1,"resources_js_pages_backend_packages_PackageDetails_vue":1,"resources_js_pages_backend_activities_ActivitiesIndex_vue":1,"resources_js_pages_backend_activities_ActivityCreate_vue":1,"resources_js_pages_backend_activities_ActivityEdit_vue":1,"resources_js_pages_backend_visas_VisasIndex_vue":1,"resources_js_pages_backend_visas_VisaCreate_vue":1,"resources_js_pages_backend_visas_VisaEdit_vue":1,"resources_js_pages_backend_visas_VisaDetails_vue":1,"resources_js_pages_backend_hotels_HotelsIndex_vue":1,"resources_js_pages_backend_hotels_HotelCreate_vue":1,"resources_js_pages_backend_hotels_HotelEdit_vue":1,"resources_js_pages_backend_hotels_HotelDetails_vue":1,"resources_js_pages_backend_blogs_BlogsIndex_vue":1,"resources_js_pages_backend_blogs_BlogCreate_vue":1,"resources_js_pages_backend_blogs_BlogEdit_vue":1,"resources_js_pages_backend_blogs_BlogDetails_vue":1,"resources_js_pages_backend_options_Options_vue":1,"resources_js_pages_backend_jobs_Jobs_vue":1,"resources_js_pages_frontend_AboutUs_vue":1,"resources_js_pages_frontend_ContactUs_vue":1,"resources_js_pages_frontend_Blogs_vue":1,"resources_js_pages_frontend_SingleBlog_vue":1,"resources_js_pages_frontend_WeAreHiring_vue":1,"resources_js_pages_frontend_tours_Tours_vue":1,"resources_js_pages_frontend_tours_TourDetails_vue":1,"resources_js_pages_frontend_tours_DestinationTours_vue":1,"resources_js_pages_frontend_tours_SubDestinationTours_vue":1,"resources_js_pages_frontend_visas_PassportVisa_vue":1,"resources_js_pages_frontend_visas_ProceedToApply_vue":1,"resources_js_pages_frontend_Success_vue":1,"resources_js_pages_frontend_Cancel_vue":1,"resources_js_pages_frontend_visas_Payment_vue":1,"resources_js_pages_frontend_activities_Activities_vue":1,"resources_js_pages_frontend_activities_DestinationActivities_vue":1,"resources_js_pages_frontend_activities_SubDestinationActivities_vue":1,"resources_js_pages_frontend_packs_Packs_vue":1,"resources_js_pages_frontend_packs_temp_vue":1,"resources_js_pages_frontend_packs_DestinationPacks_vue":1,"resources_js_pages_frontend_packs_SubDestinationPacks_vue":1,"resources_js_pages_frontend_packs_PackDetails_vue":1,"resources_js_pages_frontend_activities_ActivityDetails_vue":1,"resources_js_pages_frontend_hotels_HotelsAndResorts_vue":1,"resources_js_pages_frontend_hotels_DestinationHotelsAndResorts_vue":1,"resources_js_pages_frontend_hotels_SubDestinationHotelsAndResorts_vue":1,"resources_js_pages_frontend_ComingSoon_vue":1,"resources_js_pages_backend_Test_vue":1,"resources_js_pages_backend_Test2_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_pages_backend_Dashboard_vue":1,"resources_js_pages_backend_categories_CategoriesIndex_vue":1,"resources_js_pages_backend_categories_CategoryCreate_vue":1,"resources_js_pages_backend_categories_CategoryEdit_vue":1,"resources_js_pages_backend_categories_CategoryDetails_vue":1,"resources_js_pages_backend_destinations_DestinationsIndex_vue":1,"resources_js_pages_backend_destinations_DestinationCreate_vue":1,"resources_js_pages_backend_destinations_DestinationEdit_vue":1,"resources_js_pages_backend_destinations_DestinationDetails_vue":1,"resources_js_pages_backend_countries_CountriesIndex_vue":1,"resources_js_pages_backend_countries_CountryCreate_vue":1,"resources_js_pages_backend_countries_CountryEdit_vue":1,"resources_js_pages_backend_tours_ToursIndex_vue":1,"resources_js_pages_backend_tours_TourCreate_vue":1,"resources_js_pages_backend_tours_TourEdit_vue":1,"resources_js_pages_backend_tours_TourDetails_vue":1,"resources_js_pages_backend_packages_PackagesIndex_vue":1,"resources_js_pages_backend_packages_PackageCreate_vue":1,"resources_js_pages_backend_packages_PackageEdit_vue":1,"resources_js_pages_backend_packages_PackageDetails_vue":1,"resources_js_pages_backend_activities_ActivitiesIndex_vue":1,"resources_js_pages_backend_activities_ActivityCreate_vue":1,"resources_js_pages_backend_activities_ActivityEdit_vue":1,"resources_js_pages_backend_visas_VisasIndex_vue":1,"resources_js_pages_backend_visas_VisaCreate_vue":1,"resources_js_pages_backend_visas_VisaEdit_vue":1,"resources_js_pages_backend_visas_VisaDetails_vue":1,"resources_js_pages_backend_hotels_HotelsIndex_vue":1,"resources_js_pages_backend_hotels_HotelCreate_vue":1,"resources_js_pages_backend_hotels_HotelEdit_vue":1,"resources_js_pages_backend_hotels_HotelDetails_vue":1,"resources_js_pages_backend_blogs_BlogsIndex_vue":1,"resources_js_pages_backend_blogs_BlogCreate_vue":1,"resources_js_pages_backend_blogs_BlogEdit_vue":1,"resources_js_pages_backend_blogs_BlogDetails_vue":1,"resources_js_pages_backend_options_Options_vue":1,"resources_js_pages_backend_jobs_Jobs_vue":1,"resources_js_pages_frontend_AboutUs_vue":1,"resources_js_pages_frontend_ContactUs_vue":1,"resources_js_pages_frontend_Blogs_vue":1,"resources_js_pages_frontend_SingleBlog_vue":1,"resources_js_pages_frontend_WeAreHiring_vue":1,"resources_js_pages_frontend_tours_Tours_vue":1,"resources_js_pages_frontend_tours_TourDetails_vue":1,"resources_js_pages_frontend_tours_DestinationTours_vue":1,"resources_js_pages_frontend_tours_SubDestinationTours_vue":1,"resources_js_pages_frontend_visas_PassportVisa_vue":1,"resources_js_pages_frontend_visas_ProceedToApply_vue":1,"resources_js_pages_frontend_Success_vue":1,"resources_js_pages_frontend_Cancel_vue":1,"resources_js_pages_frontend_visas_Payment_vue":1,"resources_js_pages_frontend_activities_Activities_vue":1,"resources_js_pages_frontend_activities_DestinationActivities_vue":1,"resources_js_pages_frontend_activities_SubDestinationActivities_vue":1,"resources_js_pages_frontend_packs_Packs_vue":1,"resources_js_pages_frontend_packs_temp_vue":1,"resources_js_pages_frontend_packs_DestinationPacks_vue":1,"resources_js_pages_frontend_packs_SubDestinationPacks_vue":1,"resources_js_pages_frontend_packs_PackDetails_vue":1,"resources_js_pages_frontend_activities_ActivityDetails_vue":1,"resources_js_pages_frontend_hotels_HotelsAndResorts_vue":1,"resources_js_pages_frontend_hotels_DestinationHotelsAndResorts_vue":1,"resources_js_pages_frontend_hotels_SubDestinationHotelsAndResorts_vue":1,"resources_js_pages_frontend_ComingSoon_vue":1,"resources_js_pages_backend_Test_vue":1,"resources_js_pages_backend_Test2_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

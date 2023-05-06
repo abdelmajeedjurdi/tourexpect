@@ -60,6 +60,32 @@ const routes = [
         props: true,
     },
 
+
+    // ((((((((((((-- Countries --)))))))))))))))
+
+    {
+        path: "/dashboard/countries",
+        name: "countries.index",
+        component: () => import("../pages/backend/countries/CountriesIndex"),
+    },
+    {
+        path: "/dashboard/countries/create",
+        name: "country.create",
+        component: () => import("../pages/backend/countries/CountryCreate"),
+    },
+    {
+        path: "/dashboard/countries/:id/edit",
+        name: "country.edit",
+        component: () => import("../pages/backend/countries/CountryEdit"),
+        props: true,
+    },
+    {
+        path: "/dashboard/countries/:id/details",
+        name: "country.details",
+        component: () => import("../pages/backend/countries/CountryDetails"),
+        props: true,
+    },
+
     // (((((((((((((((((--Tours--)))))))))))))))))
     {
         path: "/dashboard/tours",

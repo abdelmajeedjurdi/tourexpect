@@ -15,20 +15,6 @@ use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\VisaController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-
-
-
 Route::apiResource('api/categories', CategoryController::class)->middleware(['auth', 'isAdmin']);
 Route::apiResource('api/destinations', DestinationController::class)->middleware(['auth', 'isAdmin']);
 Route::apiResource('api/tours', TourController::class)->middleware(['auth', 'isAdmin']);
@@ -43,6 +29,7 @@ Route::delete('api/delete-tour-image/{id}', [TourController::class, 'deleteImage
 Route::delete('api/delete-file/{id}', [TourController::class, 'deleteFile'])->middleware(['auth', 'isAdmin']);
 Route::post('api/category/duplicate/{id}', [CategoryController::class, 'duplicate'])->middleware(['auth', 'isAdmin']);
 Route::post('api/destination/duplicate/{id}', [DestinationController::class, 'duplicate'])->middleware(['auth', 'isAdmin']);
+Route::post('api/country/duplicate/{id}', [CountryController::class, 'duplicate'])->middleware(['auth', 'isAdmin']);
 Route::post('api/tour/duplicate/{id}', [TourController::class, 'duplicate'])->middleware(['auth', 'isAdmin']);
 Route::post('api/activity/duplicate/{id}', [ActivityController::class, 'duplicate'])->middleware(['auth', 'isAdmin']);
 Route::post('api/blog/duplicate/{id}', [BlogController::class, 'duplicate'])->middleware(['auth', 'isAdmin']);

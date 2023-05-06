@@ -2292,21 +2292,16 @@ function useDestinations() {
     };
   }();
 
-  var getCountry = /*#__PURE__*/function () {
+  var duplicateCountry = /*#__PURE__*/function () {
     var _ref11 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee11(id) {
-      var response;
       return _regeneratorRuntime().wrap(function _callee11$(_context11) {
         while (1) {
           switch (_context11.prev = _context11.next) {
             case 0:
               _context11.next = 2;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/countries/" + id);
+              return axios__WEBPACK_IMPORTED_MODULE_1___default().post("/api/country/duplicate/" + id);
 
             case 2:
-              response = _context11.sent;
-              country.value = response.data;
-
-            case 4:
             case "end":
               return _context11.stop();
           }
@@ -2314,103 +2309,158 @@ function useDestinations() {
       }, _callee11);
     }));
 
-    return function getCountry(_x9) {
+    return function duplicateCountry(_x9) {
       return _ref11.apply(this, arguments);
     };
   }();
 
-  var storeCountry = /*#__PURE__*/function () {
-    var _ref12 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee12(data) {
+  var getCountry = /*#__PURE__*/function () {
+    var _ref12 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee12(id) {
+      var response;
       return _regeneratorRuntime().wrap(function _callee12$(_context12) {
         while (1) {
           switch (_context12.prev = _context12.next) {
             case 0:
-              fd.append("name_en", data.name_en);
-              fd.append("name_ar", data.name_ar);
-              errors.value = "";
-              _context12.prev = 3;
-              _context12.next = 6;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default().post("/api/countries", fd);
+              _context12.next = 2;
+              return axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/countries/" + id);
 
-            case 6:
-              getCountries();
-              _context12.next = 12;
-              break;
+            case 2:
+              response = _context12.sent;
+              country.value = response.data;
 
-            case 9:
-              _context12.prev = 9;
-              _context12.t0 = _context12["catch"](3);
-
-              if (_context12.t0.response.status === 422) {
-                errors.value = _context12.t0.response.data.errors;
-              }
-
-            case 12:
+            case 4:
             case "end":
               return _context12.stop();
           }
         }
-      }, _callee12, null, [[3, 9]]);
+      }, _callee12);
     }));
 
-    return function storeCountry(_x10) {
+    return function getCountry(_x10) {
       return _ref12.apply(this, arguments);
     };
   }();
 
-  var updateCountry = /*#__PURE__*/function () {
+  var storeCountry = /*#__PURE__*/function () {
     var _ref13 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee13(data) {
+      var fd;
       return _regeneratorRuntime().wrap(function _callee13$(_context13) {
         while (1) {
           switch (_context13.prev = _context13.next) {
             case 0:
-              fd.append("_method", "patch");
-              fd.append("name", data.name);
-              fd.append("email", data.email);
-              fd.append("password", data.password);
-              fd.append("role", data.role);
+              fd = new FormData();
+              fd.append("name_en", data.form.name_en);
+              fd.append("name_ar", data.form.name_ar);
+              fd.append("description_en", data.form.description_en);
+              fd.append("description_ar", data.form.description_ar);
+              fd.append("country_img", data.form.image);
+              fd.append("image", data.file);
               errors.value = "";
-              _context13.prev = 6;
-              _context13.next = 9;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default().post("/api/countries/" + data.id, fd, {
-                headers: {
-                  "Content-Type": "multipart/form-data"
+              _context13.prev = 8;
+              _context13.next = 11;
+              return axios__WEBPACK_IMPORTED_MODULE_1___default().post("/api/countries", fd, {
+                onUploadProgress: function onUploadProgress(progressEvent) {// uploadPercentage = parseInt(
+                  //     Math.round(
+                  //         (progressEvent.loaded / progressEvent.total) * 100
+                  //     )
+                  // );
                 }
               });
 
-            case 9:
-              getCountries();
-              _context13.next = 15;
+            case 11:
+              _context13.next = 13;
+              return router.push({
+                name: "countries.index"
+              });
+
+            case 13:
+              _context13.next = 18;
               break;
 
-            case 12:
-              _context13.prev = 12;
-              _context13.t0 = _context13["catch"](6);
+            case 15:
+              _context13.prev = 15;
+              _context13.t0 = _context13["catch"](8);
 
               if (_context13.t0.response.status === 422) {
                 errors.value = _context13.t0.response.data.errors;
               }
 
-            case 15:
+            case 18:
             case "end":
               return _context13.stop();
           }
         }
-      }, _callee13, null, [[6, 12]]);
+      }, _callee13, null, [[8, 15]]);
     }));
 
-    return function updateCountry(_x11) {
+    return function storeCountry(_x11) {
       return _ref13.apply(this, arguments);
     };
   }();
 
-  var destroyCountry = /*#__PURE__*/function () {
-    var _ref14 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee14(id) {
+  var updateCountry = /*#__PURE__*/function () {
+    var _ref14 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee14(id, data) {
+      var fd;
       return _regeneratorRuntime().wrap(function _callee14$(_context14) {
         while (1) {
           switch (_context14.prev = _context14.next) {
             case 0:
-              _context14.next = 2;
+              fd = new FormData();
+              fd.append("_method", "patch");
+              fd.append("destination", 'flag');
+              fd.append("name_en", data.form.name_en);
+              fd.append("name_ar", data.form.name_ar);
+              fd.append("description_en", data.form.description_en);
+              fd.append("description_ar", data.form.description_ar);
+              fd.append("country_img", data.form.image);
+              fd.append("new_image", data.file);
+              errors.value = "";
+              _context14.prev = 10;
+              _context14.next = 13;
+              return axios__WEBPACK_IMPORTED_MODULE_1___default().post("/api/countries/" + id, fd, {
+                headers: {
+                  "Content-Type": "multipart/form-data"
+                }
+              });
+
+            case 13:
+              _context14.next = 15;
+              return router.push({
+                name: "countries.index"
+              });
+
+            case 15:
+              _context14.next = 20;
+              break;
+
+            case 17:
+              _context14.prev = 17;
+              _context14.t0 = _context14["catch"](10);
+
+              if (_context14.t0.response.status === 422) {
+                errors.value = _context14.t0.response.data.errors;
+              }
+
+            case 20:
+            case "end":
+              return _context14.stop();
+          }
+        }
+      }, _callee14, null, [[10, 17]]);
+    }));
+
+    return function updateCountry(_x12, _x13) {
+      return _ref14.apply(this, arguments);
+    };
+  }();
+
+  var destroyCountry = /*#__PURE__*/function () {
+    var _ref15 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee15(id) {
+      return _regeneratorRuntime().wrap(function _callee15$(_context15) {
+        while (1) {
+          switch (_context15.prev = _context15.next) {
+            case 0:
+              _context15.next = 2;
               return axios__WEBPACK_IMPORTED_MODULE_1___default()["delete"]("/api/countries/" + id);
 
             case 2:
@@ -2418,41 +2468,41 @@ function useDestinations() {
 
             case 3:
             case "end":
-              return _context14.stop();
-          }
-        }
-      }, _callee14);
-    }));
-
-    return function destroyCountry(_x12) {
-      return _ref14.apply(this, arguments);
-    };
-  }();
-
-  var trendingDestinations = /*#__PURE__*/function () {
-    var _ref15 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee15() {
-      var response;
-      return _regeneratorRuntime().wrap(function _callee15$(_context15) {
-        while (1) {
-          switch (_context15.prev = _context15.next) {
-            case 0:
-              _context15.next = 2;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/trending-destinations");
-
-            case 2:
-              response = _context15.sent;
-              return _context15.abrupt("return", response.data);
-
-            case 4:
-            case "end":
               return _context15.stop();
           }
         }
       }, _callee15);
     }));
 
-    return function trendingDestinations() {
+    return function destroyCountry(_x14) {
       return _ref15.apply(this, arguments);
+    };
+  }();
+
+  var trendingDestinations = /*#__PURE__*/function () {
+    var _ref16 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee16() {
+      var response;
+      return _regeneratorRuntime().wrap(function _callee16$(_context16) {
+        while (1) {
+          switch (_context16.prev = _context16.next) {
+            case 0:
+              _context16.next = 2;
+              return axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/trending-destinations");
+
+            case 2:
+              response = _context16.sent;
+              return _context16.abrupt("return", response.data);
+
+            case 4:
+            case "end":
+              return _context16.stop();
+          }
+        }
+      }, _callee16);
+    }));
+
+    return function trendingDestinations() {
+      return _ref16.apply(this, arguments);
     };
   }();
 
@@ -2478,7 +2528,8 @@ function useDestinations() {
     countries: countries,
     getCountries: getCountries,
     country: country,
-    trendingDestinations: trendingDestinations
+    trendingDestinations: trendingDestinations,
+    duplicateCountry: duplicateCountry
   };
 }
 

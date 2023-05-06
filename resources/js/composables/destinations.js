@@ -106,6 +106,9 @@ export default function useDestinations() {
     const duplicate = async (id) => {
         await axios.post("/api/destination/duplicate/" + id);
     }
+    const duplicateCountry = async (id) => {
+        await axios.post("/api/country/duplicate/" + id);
+    }
 
 
     const getCountry = async (id) => {
@@ -115,12 +118,25 @@ export default function useDestinations() {
 
 
     const storeCountry = async (data) => {
-        fd.append("name_en", data.name_en);
-        fd.append("name_ar", data.name_ar);
+        let fd = new FormData();
+        fd.append("name_en", data.form.name_en);
+        fd.append("name_ar", data.form.name_ar);
+        fd.append("description_en", data.form.description_en);
+        fd.append("description_ar", data.form.description_ar);
+        fd.append("country_img", data.form.image);
+        fd.append("image", data.file);
         errors.value = "";
         try {
-            await axios.post("/api/countries", fd);
-            getCountries()
+            await axios.post("/api/countries", fd, {
+                onUploadProgress: function (progressEvent) {
+                    // uploadPercentage = parseInt(
+                    //     Math.round(
+                    //         (progressEvent.loaded / progressEvent.total) * 100
+                    //     )
+                    // );
+                },
+            });
+            await router.push({ name: "countries.index" });
         } catch (e) {
             if (e.response.status === 422) {
                 errors.value = e.response.data.errors;
@@ -128,21 +144,25 @@ export default function useDestinations() {
         }
     };
 
-    const updateCountry = async (data) => {
+    const updateCountry = async (id, data) => {
+        let fd = new FormData();
         fd.append("_method", "patch");
-        fd.append("name", data.name);
-        fd.append("email", data.email);
-        fd.append("password", data.password);
-        fd.append("role", data.role);
+        fd.append("destination", 'flag');
+        fd.append("name_en", data.form.name_en);
+        fd.append("name_ar", data.form.name_ar);
+        fd.append("description_en", data.form.description_en);
+        fd.append("description_ar", data.form.description_ar);
+        fd.append("country_img", data.form.image);
+        fd.append("new_image", data.file);
+
         errors.value = "";
         try {
-            await axios.post("/api/countries/" + data.id, fd, {
+            await axios.post("/api/countries/" + id, fd, {
                 headers: {
                     "Content-Type": "multipart/form-data",
                 },
-
             });
-            getCountries()
+            await router.push({ name: "countries.index" });
         } catch (e) {
             if (e.response.status === 422) {
                 errors.value = e.response.data.errors;
@@ -171,6 +191,6 @@ export default function useDestinations() {
         deleteProperty,
         getDestinationDetails,
         tours, getDestinationsOnCountry, pages, duplicate,
-        getCountry, storeCountry, updateCountry, destroyCountry, countries, getCountries, country, trendingDestinations
+        getCountry, storeCountry, updateCountry, destroyCountry, countries, getCountries, country, trendingDestinations, duplicateCountry
     };
 }

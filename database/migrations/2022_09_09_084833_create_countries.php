@@ -17,6 +17,9 @@ class CreateCountries extends Migration
             $table->id();
             $table->string('name_en');
             $table->string('name_ar');
+            $table->longText('description_en')->default('no description');
+            $table->longText('description_ar')->default('no description');
+            $table->string('image')->default('default.jpg');
             $table->string('slug')->unique();
             $table->timestamps();
         });

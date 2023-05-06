@@ -68,12 +68,6 @@
                 </form>
             </div>
         </div>
-
-        <div class="flex">
-            <div class="w-1/2 px-2">
-                <Countries />
-            </div>
-        </div>
     </div>
 </template>
 <script setup>
@@ -81,7 +75,6 @@ import { onMounted } from "@vue/runtime-core";
 import UploadImages from "vue-upload-drop-images";
 import useGeneral from "../../../composables/general";
 import Users from "../users/Users.vue";
-import Countries from "../countries/Countries.vue";
 
 const { addGallery, updateIcons, icons, getIcons, destroyIcon } = useGeneral();
 onMounted(() => {
