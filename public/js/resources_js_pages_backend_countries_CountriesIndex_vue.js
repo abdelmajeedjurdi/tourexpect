@@ -431,6 +431,9 @@ var _hoisted_15 = {
 var _hoisted_16 = {
   "class": "text-base text-blue-500"
 };
+var _hoisted_17 = {
+  "class": "text-base text-body-color leading-relaxed mb-7 text-gray-600"
+};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
 
@@ -502,7 +505,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         /* PROPS */
         , _hoisted_14), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(country.name_en), 1
         /* TEXT */
-        ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <p\n                                class=\"text-base text-body-color leading-relaxed mb-7 text-gray-600\"\n                            >\n                                {{\n                                    country.description_en.substring(0, 100) +\n                                    (country.description_en.length > 100\n                                        ? \"....\"\n                                        : \"\")\n                                }}\n                            </p> ")])];
+        ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(country.description_en.substring(0, 100) + (country.description_en.length > 100 ? "...." : "")), 1
+        /* TEXT */
+        )])];
       }),
       _: 2
       /* DYNAMIC */

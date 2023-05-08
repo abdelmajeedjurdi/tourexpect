@@ -21,7 +21,10 @@ class CountryResource extends JsonResource
             'slug'  => $this->slug,
             'name_en'  => $this->name_en,
             'name_ar'  => $this->name_ar,
-            'items' => Destination::select('id', 'country_id', 'name_en', 'name_ar', 'slug', 'image')->where('country_id', $this->id)->get()
+            'description_en'  => $this->description_en,
+            'description_ar'  => $this->description_ar,
+            'image'  => $this->image,
+            'items' => Destination::select('id', 'country_id', 'name_en', 'name_ar', 'description_en', 'description_ar', 'slug', 'image')->where('country_id', $this->id)->get()
 
         ];
     }

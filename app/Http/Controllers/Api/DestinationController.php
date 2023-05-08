@@ -31,7 +31,15 @@ class DestinationController extends Controller
         if (strlen($request->country) > 2) {
             $destinations = DB::table('destinations')
                 ->join('countries', 'destinations.country_id', '=', 'countries.id')->where('countries.slug', $request->country)
-                ->select('destinations.*', 'countries.name_ar as country_ar', 'countries.name_en as country_en', 'countries.slug as country_slug')
+                ->select(
+                    'destinations.*',
+                    'countries.name_ar as country_ar',
+                    'countries.name_en as country_en',
+                    'countries.description_ar as country_description_ar',
+                    'countries.description_en as country_description_en',
+                    'countries.image as country_image',
+                    'countries.slug as country_slug'
+                )
                 ->get();
 
             $tours = DB::table('tours')

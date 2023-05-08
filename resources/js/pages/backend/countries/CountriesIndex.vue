@@ -84,7 +84,7 @@
                                 {{ country.name_en }}
                             </span>
 
-                            <!-- <p
+                            <p
                                 class="text-base text-body-color leading-relaxed mb-7 text-gray-600"
                             >
                                 {{
@@ -93,7 +93,7 @@
                                         ? "...."
                                         : "")
                                 }}
-                            </p> -->
+                            </p>
                         </div>
                     </router-link>
                 </div>
