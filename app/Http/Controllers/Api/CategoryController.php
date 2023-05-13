@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryRequest;
 use App\Http\Resources\CategoryResource;
+use App\Http\Resources\PackageResource;
 use App\Http\Resources\TourResource;
 use App\Models\Category;
+use App\Models\Package;
 use App\Models\Tour;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -78,8 +80,25 @@ class CategoryController extends Controller
     {
         $category
             = new CategoryResource(Category::where('slug', $slug)->first());
-        $tours = TourResource::collection(Tour::where('category_id', $category->id)->get());
-        return ['category' => $category, 'tours' => $tours];
+
+        $packages
+            = DB::table('packages')
+            ->join('package_category as pc', 'packages.id', '=', 'pc.package_id')
+            ->join('categories', 'pc.category_id', '=', 'categories.id')
+            ->where('packages.active', '1')
+            ->where('categories.id', $category->id)->select(
+                'packages.*',
+            )->distinct()->get();
+
+        $tours
+            = DB::table('tours')
+            ->join('tour_category as pc', 'tours.id', '=', 'pc.tour_id')
+            ->join('categories', 'pc.category_id', '=', 'categories.id')
+            ->where('tours.active', '1')
+            ->where('categories.id', $category->id)->select(
+                'tours.*',
+            )->distinct()->get();
+        return ['category' => $category, 'tours' => $tours, 'packages' => $packages];
     }
 
     /**
