@@ -378,6 +378,74 @@
                     </div>
                 </div>
 
+                <div>
+                    <div
+                        class="flex w-full justify-start mt-2"
+                        v-if="visa.image != undefined"
+                    >
+                        <img
+                            :src="
+                                imagePreview != null
+                                    ? imagePreview
+                                    : '/images/visas/' + visa.image
+                            "
+                            alt=""
+                            class="figure-img img-fluid rounded"
+                            style="max-height: 100px"
+                        />
+                    </div>
+
+                    <div class="flex flex-col mt-2">
+                        <input
+                            class="w-100 mt-2 py-3 px-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 dark:text-gray-50 font-semibold focus:border-blue-500 focus:outline-none hidden"
+                            @change="onFileSelected"
+                            type="file"
+                            id="user-image"
+                            accept="image/*"
+                        />
+                        <label
+                            for="user-image"
+                            class="w-100 flex justify-start"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="w-12 cursor-pointer"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                                />
+                            </svg>
+
+                            <span class="my-auto text-gray-200"
+                                >Change thumbnail</span
+                            >
+                        </label>
+                    </div>
+                </div>
+                <div
+                    class="flex items-center rounded border border-gray-600 w-full mx-auto mt-2 px-2"
+                >
+                    <input
+                        id="active"
+                        type="checkbox"
+                        value=""
+                        name="bordered-checkbox"
+                        class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 focus:ring-2"
+                        v-model="visa.active"
+                    />
+                    <label
+                        for="active"
+                        class="py-2 text-sm font-medium text-gray-200 mx-2 dark:text-gray-300"
+                        >Active</label
+                    >
+                </div>
+
                 <div class="w-full text-left mt-4">
                     <button
                         @click.prevent="saveVisa"
@@ -737,7 +805,7 @@ onMounted(() => {
 });
 const saveVisa = async () => {
     isProgressing.value = true;
-    await updateVisa(props.id, { form: visa.value });
+    await updateVisa(props.id, { form: visa.value, file });
     isProgressing.value = false;
 };
 
@@ -836,4 +904,17 @@ const move = (idx, idx2) => {
     visa.value.sections[idx] = visa.value.sections[idx2];
     visa.value.sections[idx2] = t;
 };
+
+let imagePreview = ref(null);
+
+let file = reactive(null);
+function onFileSelected(event) {
+    file = event.target.files[0];
+
+    let reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = (event) => {
+        imagePreview.value = event.target.result;
+    };
+}
 </script>

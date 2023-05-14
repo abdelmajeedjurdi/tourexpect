@@ -20,7 +20,9 @@ class VisaResource extends JsonResource
             'country_passport_ids' => $this->country_passport_ids,
             'title_en' => $this->title_en,
             'title_ar' => $this->title_ar,
+            'active'  => $this->active == 1 ? 'true' : 'false',
             'sections' => $this->sections,
+            'image' => $this->image,
             'options' => $this->options,
         ];
     }

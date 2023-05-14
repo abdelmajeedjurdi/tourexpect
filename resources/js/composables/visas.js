@@ -69,9 +69,10 @@ export default function useVisas() {
         fd.append("country_passport_ids", JSON.stringify(data.form.country_passport_ids));
         fd.append("title_en", data.form.title_en);
         fd.append("title_ar", data.form.title_ar);
+        fd.append("active", data.form.active);
         fd.append("sections", JSON.stringify(data.form.sections))
         fd.append("options", JSON.stringify(data.form.options))
-
+        fd.append("image", data.file);
         errors.value = "";
         try {
             await axios.post("/api/visas", fd, {
@@ -97,8 +98,11 @@ export default function useVisas() {
         fd.append("country_passport_ids", JSON.stringify(data.form.country_passport_ids));
         fd.append("title_en", data.form.title_en);
         fd.append("title_ar", data.form.title_ar);
+        fd.append("active", data.form.active);
         fd.append("sections", JSON.stringify(data.form.sections));
         fd.append("options", JSON.stringify(data.form.options));
+        fd.append("visa_img", data.form.image);
+        fd.append("new_image", data.file);
         errors.value = "";
         try {
             await axios.post("/api/visas/" + id, fd, {

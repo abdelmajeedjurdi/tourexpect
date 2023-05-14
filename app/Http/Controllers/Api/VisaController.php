@@ -40,6 +40,17 @@ class VisaController extends Controller
      */
     public function store(Request $request)
     {
+        Log::info($request);
+
+
+        if ($request->hasFile('image')) {
+            $image = $request->image;
+            $imageName = $image->getClientOriginalName();
+            $imageName = time() . '_' . $imageName;
+            $image->move('images/visas', $imageName);
+        } else {
+            $imageName = 'default.jpg';
+        }
         $visa = new Visa();
         $visa->country_passport_ids = $request->country_passport_ids;
         $visa->title_en = $request->title_en;
@@ -47,6 +58,8 @@ class VisaController extends Controller
         $visa->sections = $request->sections;
         $visa->options = $request->options;
         $visa->slug = Str::slug($visa->title_en, '-');
+        $visa->image = $imageName;
+        $visa->active = $request->active == 'true' ? 1 : 0;
 
         $visa->save();
 
@@ -94,14 +107,33 @@ class VisaController extends Controller
      */
     public function update(Request $request, Visa $visa)
     {
+        Log::info($request);
 
+        $path = 'images/visas/';
+        //code for remove old image
+        if ($request->new_image != 'null' && $request->new_image != 'default.jpg') {
+            $file_old = $path . $request->visa_img;
+            if ($request->visa_img != 'default.jpg' && $request->visa_img != null)
+                if (file_exists($file_old))
+                    unlink($file_old);
+
+            //code for add new image
+            $image = $request->new_image;
+            $imageName = $image->getClientOriginalName();
+            $imageName = time() . '_' . $imageName;
+            $image->move('images/visas/', $imageName);
+        } else {
+            $imageName = $request->visa_img;
+        }
         $visa->update([
             'slug' => Str::slug($request->title_en, '-'),
             'country_passport_ids' => $request->country_passport_ids,
             'title_en' => $request->title_en,
             'title_ar' => $request->title_ar,
+            'active' => $request->active == 'true' ? 1 : 0,
             'sections' => $request->sections,
             'options' => $request->options,
+            'image' =>  $imageName,
         ]);
 
         DB::table('country_passport_visa')->where('visa_id', '=', $visa->id)->delete();
@@ -126,6 +158,10 @@ class VisaController extends Controller
         DB::table('country_passport_visa')->where('visa_id', '=', $id)->delete();
 
         $visa = Visa::find($id);
+        if ($visa->image !== 'default.jpg' && $visa->image !== '')
+            if (file_exists('images/visas/' . $visa->image))
+                unlink('images/visas/' . $visa->image);
+
         $visa->delete();
         return;
     }

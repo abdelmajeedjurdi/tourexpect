@@ -27527,13 +27527,6 @@ var routes = [{
     return __webpack_require__.e(/*! import() */ "resources_js_pages_backend_countries_CountryEdit_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../pages/backend/countries/CountryEdit */ "./resources/js/pages/backend/countries/CountryEdit.vue"));
   },
   props: true
-}, {
-  path: "/dashboard/countries/:id/details",
-  name: "country.details",
-  component: function component() {
-    return Promise.resolve().then(function webpackMissingModule() { var e = new Error("Cannot find module '../pages/backend/countries/CountryDetails'"); e.code = 'MODULE_NOT_FOUND'; throw e; });
-  },
-  props: true
 }, // (((((((((((((((((--Tours--)))))))))))))))))
 {
   path: "/dashboard/tours",

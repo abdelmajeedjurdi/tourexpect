@@ -1393,41 +1393,43 @@ function useVisas() {
               fd.append("country_passport_ids", JSON.stringify(data.form.country_passport_ids));
               fd.append("title_en", data.form.title_en);
               fd.append("title_ar", data.form.title_ar);
+              fd.append("active", data.form.active);
               fd.append("sections", JSON.stringify(data.form.sections));
               fd.append("options", JSON.stringify(data.form.options));
+              fd.append("image", data.file);
               errors.value = "";
-              _context7.prev = 6;
-              _context7.next = 9;
+              _context7.prev = 8;
+              _context7.next = 11;
               return axios__WEBPACK_IMPORTED_MODULE_1___default().post("/api/visas", fd, {
                 onUploadProgress: function onUploadProgress(progressEvent) {
                   percentage.value = parseInt(Math.round(progressEvent.loaded / progressEvent.total * 100));
                 }
               });
 
-            case 9:
-              _context7.next = 11;
+            case 11:
+              _context7.next = 13;
               return router.push({
                 name: "visas.index"
               });
 
-            case 11:
-              _context7.next = 16;
+            case 13:
+              _context7.next = 18;
               break;
 
-            case 13:
-              _context7.prev = 13;
-              _context7.t0 = _context7["catch"](6);
+            case 15:
+              _context7.prev = 15;
+              _context7.t0 = _context7["catch"](8);
 
               if (_context7.t0.response.status === 422) {
                 errors.value = _context7.t0.response.data.errors;
               }
 
-            case 16:
+            case 18:
             case "end":
               return _context7.stop();
           }
         }
-      }, _callee7, null, [[6, 13]]);
+      }, _callee7, null, [[8, 15]]);
     }));
 
     return function storeVisa(_x8) {
@@ -1446,11 +1448,14 @@ function useVisas() {
               fd.append("country_passport_ids", JSON.stringify(data.form.country_passport_ids));
               fd.append("title_en", data.form.title_en);
               fd.append("title_ar", data.form.title_ar);
+              fd.append("active", data.form.active);
               fd.append("sections", JSON.stringify(data.form.sections));
               fd.append("options", JSON.stringify(data.form.options));
+              fd.append("visa_img", data.form.image);
+              fd.append("new_image", data.file);
               errors.value = "";
-              _context8.prev = 8;
-              _context8.next = 11;
+              _context8.prev = 11;
+              _context8.next = 14;
               return axios__WEBPACK_IMPORTED_MODULE_1___default().post("/api/visas/" + id, fd, {
                 headers: {
                   "Content-Type": "multipart/form-data"
@@ -1460,30 +1465,30 @@ function useVisas() {
                 }
               });
 
-            case 11:
-              _context8.next = 13;
+            case 14:
+              _context8.next = 16;
               return router.push({
                 name: "visas.index"
               });
 
-            case 13:
-              _context8.next = 18;
+            case 16:
+              _context8.next = 21;
               break;
 
-            case 15:
-              _context8.prev = 15;
-              _context8.t0 = _context8["catch"](8);
+            case 18:
+              _context8.prev = 18;
+              _context8.t0 = _context8["catch"](11);
 
               if (_context8.t0.response.status === 422) {
                 errors.value = _context8.t0.response.data.errors;
               }
 
-            case 18:
+            case 21:
             case "end":
               return _context8.stop();
           }
         }
-      }, _callee8, null, [[8, 15]]);
+      }, _callee8, null, [[11, 18]]);
     }));
 
     return function updateVisa(_x9, _x10) {

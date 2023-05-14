@@ -365,6 +365,7 @@ class TourController extends Controller
         if ($tour->thumbnail !== 'default.jpg' && $tour->thumbnail !== '')
             if (file_exists('images/tours/' . $tour->thumbnail))
                 unlink('images/tours/' . $tour->thumbnail);
+
         $images = TourImage::where('tour_id', $tour->id)->get();
         foreach ($images as $image) {
             if (file_exists('images/tours/' . $image->image))
