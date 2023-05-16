@@ -59,6 +59,20 @@ class GeneralController extends Controller
 
     public function applyToVisa(Request $request)
     {
+        $totalSize = 0;
+        foreach ($request->allFiles() as $file) {
+            if ($file->isFile()) {
+                $totalSize += $file->getSize();
+            }
+        }
+
+        $maxSize = 1 * 1024 * 1024; // 500MB in bytes
+
+        if ($totalSize > $maxSize) {
+            Log::info($totalSize);
+            return ['message' => 'size_exceeds', 'status' => 422];
+        }
+
         $file_size_kb = 250 * 1024; //this is for the condition where checking if the file is bigger or less than
         $decreasing = 10; // this is for the file decreasing percentage, the larger the this variable, the larger the size of image sending.
         try {
@@ -119,10 +133,10 @@ class GeneralController extends Controller
             Log::info($newRequest);
             OfflinePaymentJob::dispatch($newRequest);
 
-            return ['message' => 'Your message has been sent. Thank you!', 'status' => 200];
+            return ['message' => 'message_sent', 'status' => 200];
         } catch (\Exception $e) {
             Log::error($e);
-            return response()->json('An error occurred while processing your visa application. Please try again later.', 500);
+            return ['message' => 'something_wrong', 'status' => 500];
         }
     }
 
