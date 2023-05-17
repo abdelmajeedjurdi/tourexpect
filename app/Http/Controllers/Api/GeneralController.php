@@ -7,11 +7,9 @@ use App\Http\Resources\CountryActivitiesResource;
 use App\Http\Resources\CountryPackagesResource;
 use App\Http\Resources\CountryPassportResource;
 use App\Http\Resources\CountryResource;
-use App\Http\Resources\CountryTourResource;
 use App\Http\Resources\CountryToursResource;
 use App\Jobs\OfflinePaymentJob;
 use App\Mail\SendFastpayMail;
-use App\Mail\VisaMail;
 use App\Models\OptionIcon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -19,15 +17,29 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Intervention\Image\Facades\Image;
 
+// use Intervention\Image\ImageManagerStatic as Images;
+use Illuminate\Support\Facades\File;
+
 class GeneralController extends Controller
 {
     public function postTest(Request $request)
     {
-        //
-        // dispatch(new OfflinePaymentJob());
-        OfflinePaymentJob::dispatch($request);
 
-        // Mail::to('eido.khudyda@gmail.com')->send(new SendFastpayMail($request));
+        $bookFolderPath = public_path('images/tours');
+
+        // Get all files within the book folder
+        $files = File::files($bookFolderPath);
+        // Set compression quality
+        $compressionQuality = 20;
+
+        foreach ($files as $file) {
+            $imagePath = $file->getPathname();
+            $imageName = $file->getFilename();
+
+            $img = Image::make($imagePath);
+            $img->save(public_path('images/tours/compressed/' . $imageName), $compressionQuality);
+        }
+
         return "completed";
     }
     public function getSession(Request $request)

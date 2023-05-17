@@ -47,4 +47,9 @@ class Tour extends Model
         'banner_highlights',
         'options',
     ];
+
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class, 'tour_category');
+    }
 }

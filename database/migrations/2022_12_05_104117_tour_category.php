@@ -14,8 +14,8 @@ class TourCategory extends Migration
     public function up()
     {
         Schema::create('tour_category', function (Blueprint $table) {
-            $table->integer('tour_id')->unsigned();
-            $table->integer('category_id')->unsigned();
+            $table->foreignId('tour_id')->constrained();
+            $table->foreignId('category_id')->constrained();
         });
     }
 
@@ -26,6 +26,6 @@ class TourCategory extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('tour_category');
     }
 }

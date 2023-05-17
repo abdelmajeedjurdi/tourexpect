@@ -19,4 +19,9 @@ class Category extends Model
         'is_slide',
         'slug', 'for_category'
     ];
+
+    public function tours()
+    {
+        return $this->belongsToMany(Tour::class, 'tour_category');
+    }
 }
