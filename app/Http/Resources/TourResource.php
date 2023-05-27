@@ -22,7 +22,7 @@ class TourResource extends JsonResource
             'discount_type' => strlen($this->options) > 2 && $this->options != 'null' ? json_decode($this->options)[0]->option_discount_type : '',
             'discount' => strlen($this->options) > 2 && $this->options != 'null' ? json_decode($this->options)[0]->option_discount : '',
             'category_ids' => $this->category_ids,
-            'categories' => CategoryResource::collection($this->categories),
+            // 'categories' => CategoryResource::collection($this->categories),
             'destination_ids' => $this->destination_ids,
             'title_en'  => $this->title_en,
             'title_ar'  => $this->title_ar,

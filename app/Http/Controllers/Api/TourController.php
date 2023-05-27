@@ -41,14 +41,13 @@ class TourController extends Controller
     public function getFilteredTours(Request $request)
     {
 
-
         $destinations = json_decode($request->d);
         $categories = json_decode($request->c);
 
         // if both categories and destinations are empty
-        if (!count($categories) && !count($destinations))
+        if (!count($categories) && !count($destinations)) {
             return TourResource::collection(Tour::where('active', '1')->paginate(9));
-
+        }
         // if destinations is empty and categories is not empty
         if (count($categories) && !count($destinations)) {
 
@@ -64,7 +63,7 @@ class TourController extends Controller
 
         // if categories is empty and destination is not empty
         if (!count($categories) && count($destinations)) {
-
+            Log::info($request);
             $all = DB::table('tours')
                 ->join('tour_destination as td', 'tours.id', '=', 'td.tour_id')
                 ->join('destinations', 'td.destination_id', '=', 'destinations.id')
