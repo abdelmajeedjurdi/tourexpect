@@ -27,7 +27,7 @@ class VisaController extends Controller
     public function allVisas(Request $request)
     {
         Log::info($request);
-        if ($request->country == '')
+        if ($request->country == '' || $request->country == NULL || $request->country == 'null')
             return CountriesPassportResource::collection(CountriesPassport::paginate(15));
 
 
