@@ -57,6 +57,7 @@ Route::get('nav-destination', [GeneralController::class, 'destinations']);
 Route::get('nav-tours', [GeneralController::class, 'tours']);
 Route::get('single-blog/{slug}', [BlogController::class, 'getSingleBlog']);
 Route::get('all-jobs', [JobController::class, 'index']);
+Route::get('all-visas', [VisaController::class, 'allVisas']);
 Route::get('visa/{slug}', [VisaController::class, 'getVisaDetails']);
 Route::get('all-destinations', [DestinationController::class, 'getDestinations']);
 Route::get('single-destinations', [DestinationController::class, 'getDestination']);

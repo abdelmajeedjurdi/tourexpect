@@ -11,4 +11,10 @@ class CountriesPassport extends Model
     protected $fillable = [
         'name_en', 'name_ar', 'slug'
     ];
+
+
+    public function visas()
+    {
+        return $this->belongsToMany(Visa::class, 'country_passport_visa', 'country_passport_id');
+    }
 }

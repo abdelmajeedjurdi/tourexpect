@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\CountriesPassportResource;
 use App\Http\Resources\VisaResource;
+use App\Models\CountriesPassport;
 use App\Models\Visa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -20,6 +22,17 @@ class VisaController extends Controller
     public function index()
     {
         return VisaResource::collection(Visa::paginate(15));
+    }
+
+    public function allVisas(Request $request)
+    {
+        Log::info($request);
+        if ($request->country == '')
+            return CountriesPassportResource::collection(CountriesPassport::paginate(15));
+
+
+
+        return CountriesPassportResource::collection(CountriesPassport::where('slug', $request->country)->paginate(15));
     }
 
     /**

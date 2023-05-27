@@ -14,8 +14,8 @@ class CountryPassportVisa extends Migration
     public function up()
     {
         Schema::create('country_passport_visa', function (Blueprint $table) {
-            $table->integer('visa_id')->unsigned();
-            $table->integer('country_passport_id')->unsigned();
+            $table->foreignId('visa_id')->constrained('countries_passports', 'id');
+            $table->foreignId('country_passport_id')->constrained('countries_passports', 'id');
         });
     }
 

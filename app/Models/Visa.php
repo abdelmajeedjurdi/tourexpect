@@ -18,4 +18,10 @@ class Visa extends Model
         'sections',
         'options'
     ];
+
+
+    public function countries()
+    {
+        return $this->belongsToMany(CountriesPassport::class, 'country_passport_visa', 'visa_id');
+    }
 }
