@@ -22,6 +22,11 @@ class ContactController extends Controller
     }
     public function makeContact(Request $request)
     {
+        if ($request->has('promo_code')) {
+            Log::info($request->all());
+            Mail::to('info@tourexpect.com')->send(new CouponMail($request));
+            return response()->json('Your message has been sent. Thank you!', 200);
+        }
         Mail::to('info@tourexpect.com')->send(new ContactMail($request));
 
         return response()->json('Your message has been sent. Thank you!', 200);
