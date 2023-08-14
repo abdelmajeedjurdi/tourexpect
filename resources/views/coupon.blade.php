@@ -22,7 +22,7 @@
         <div class="filed"><strong>From: </strong> {{ $details['name'] }}</div>
         <div class="filed"><strong>Email: </strong> {{ $details['email'] }}</div>
         <div class="filed"><strong>Phone: </strong> {{ $details['phone'] }}</div>
-        <div class="filed"><strong>Subject: </strong> {{ $details['promo_code'] }}</div>
+        <div class="filed"><strong>Promocode: </strong> {{ $details['promo_code'] }}</div>
     </div>
 </body>
 
