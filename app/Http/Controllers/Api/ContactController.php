@@ -22,8 +22,8 @@ class ContactController extends Controller
     }
     public function makeContact(Request $request)
     {
-        if ($request->input('is_coupon')) {
-            Log::info($request->all());
+        Log::info($request['is_coupon']);
+        if ($request['is_coupon']) {
             Mail::to('info@tourexpect.com')->send(new CouponMail($request));
             return response()->json('Your message has been sent. Thank you!', 200);
         } else {
