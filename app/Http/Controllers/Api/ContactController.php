@@ -28,6 +28,7 @@ class ContactController extends Controller
     }
     public function haveCoupon(Request $request)
     {
+        Log::info($request->all());
         Mail::to('info@tourexpect.com')->send(new CouponMail($request));
         return response()->json('Your message has been sent. Thank you!', 200);
     }
