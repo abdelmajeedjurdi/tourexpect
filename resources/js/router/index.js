@@ -79,6 +79,12 @@ const routes = [
         component: () => import("../pages/backend/countries/CountryEdit"),
         props: true,
     },
+    {
+        path: "/dashboard/countries/:id/details",
+        name: "country.details",
+        component: () => import("../pages/backend/countries/CountryDetails"),
+        props: true,
+    },
 
     // (((((((((((((((((--Tours--)))))))))))))))))
     {

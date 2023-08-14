@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Mail\ContactMail;
+use App\Mail\CouponMail;
 use App\Mail\InquiryMail;
 use App\Mail\JobApplicationMail;
 use Illuminate\Http\Request;
@@ -21,9 +22,13 @@ class ContactController extends Controller
     }
     public function makeContact(Request $request)
     {
-        // $details = $request->validated();
         Mail::to('info@tourexpect.com')->send(new ContactMail($request));
 
+        return response()->json('Your message has been sent. Thank you!', 200);
+    }
+    public function haveCoupon(Request $request)
+    {
+        Mail::to('info@tourexpect.com')->send(new CouponMail($request));
         return response()->json('Your message has been sent. Thank you!', 200);
     }
     public function applyToJob(Request $request)

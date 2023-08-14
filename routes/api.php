@@ -52,6 +52,7 @@ Route::get('activity/{slug}', [ActivityController::class, 'getActivityDetails'])
 Route::get('single_package/{slug}', [PackageController::class, 'getPackageDetails']);
 Route::get('inquire', [ContactController::class, 'makeInquire']);
 Route::get('contact', [ContactController::class, 'makeContact']);
+Route::get('coupon', [ContactController::class, 'haveCoupon']);
 Route::post('apply-to-job', [ContactController::class, 'applyToJob']);
 Route::get('nav-destination', [GeneralController::class, 'destinations']);
 Route::get('nav-tours', [GeneralController::class, 'tours']);
