@@ -15,6 +15,7 @@ class VerifyCsrfToken extends Middleware
         '/api/visa-application',
         '/api/ipn',
         '/api/post-test',
+        '/api/coupon',
 
     ];
 }
