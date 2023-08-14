@@ -22,7 +22,7 @@ class ContactController extends Controller
     }
     public function makeContact(Request $request)
     {
-        Log::info($request['is_coupon']);
+        Log::info($request);
         if ($request['is_coupon']) {
             Mail::to('info@tourexpect.com')->send(new CouponMail($request));
             return response()->json('Your message has been sent. Thank you!', 200);
