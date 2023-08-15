@@ -21,8 +21,9 @@ class ContactController extends Controller
         return ['message' => 'Your message has been sent. Thank you!', 'status' => 200];
     }
     public function makeContact(Request $request)
-    {
-        Log::info($request);
+    { return $request;
+        Log::info(json_encode($request));
+	Log::info('just for testing');
         if ($request['is_coupon']) {
             Mail::to('info@tourexpect.com')->send(new CouponMail($request));
             return response()->json('Your message has been sent. Thank you!', 200);
