@@ -14,7 +14,6 @@
         .container {
             margin: 2rem;
         }
-
     </style>
 </head>
 
@@ -23,8 +22,12 @@
         <div class="filed"><strong>From: </strong> {{ $details['name'] }}</div>
         <div class="filed"><strong>Email: </strong> {{ $details['email'] }}</div>
         <div class="filed"><strong>Phone: </strong> {{ $details['phone'] }}</div>
-        <div class="filed"><strong>Subject: </strong> {{ $details['subject'] }}</div>
-        <div class="filed"><strong>Message: </strong><br> {{ $details['message'] }}</div>
+        @if ($details['is_coupon'] == 1)
+            <div class="filed"><strong>Coupon: </strong> {{ $details['promo_code'] }}</div>
+        @else
+            <div class="filed"><strong>Subject: </strong> {{ $details['subject'] }}</div>
+            <div class="filed"><strong>Message: </strong><br> {{ $details['message'] }}</div>
+        @endif
     </div>
 </body>
 
