@@ -25647,14 +25647,13 @@ var i18n = (0,vue_i18n__WEBPACK_IMPORTED_MODULE_8__.createI18n)({
 });
 var app = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createApp)({
   components: {
-    BackendView: _pages_backend_BackendView_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
-    FrontendView: FrontendView
+    BackendView: _pages_backend_BackendView_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
   provide: {
     lang: localStorage.getItem("lang") || "en",
     pk: "pk_live_51MGGbYDcVBlUUJwWerFluMqa1NMQj1dgzmgGivkGHZSzipLtESiRhtbkx4xz5OpaYmND2grvm3nBKUZlTqs328eX005LdAK1Wi"
   }
-}).use(_router__WEBPACK_IMPORTED_MODULE_1__["default"]).use(_pages_backend_BackendView_vue__WEBPACK_IMPORTED_MODULE_2__["default"]).use(FrontendView).use((vue_sweetalert2__WEBPACK_IMPORTED_MODULE_3___default())).use((click_outside_vue3__WEBPACK_IMPORTED_MODULE_5___default())).use(i18n).use((0,vue_meta__WEBPACK_IMPORTED_MODULE_9__.createMetaManager)());
+}).use(_router__WEBPACK_IMPORTED_MODULE_1__["default"]).use(_pages_backend_BackendView_vue__WEBPACK_IMPORTED_MODULE_2__["default"]).use((vue_sweetalert2__WEBPACK_IMPORTED_MODULE_3___default())).use((click_outside_vue3__WEBPACK_IMPORTED_MODULE_5___default())).use(i18n).use((0,vue_meta__WEBPACK_IMPORTED_MODULE_9__.createMetaManager)());
 
 var main = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {

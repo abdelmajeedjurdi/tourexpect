@@ -29,7 +29,6 @@ const i18n = createI18n({
 const app = createApp({
     components: {
         BackendView,
-        FrontendView,
     },
     provide: {
         lang: localStorage.getItem("lang") || "en",
@@ -38,7 +37,6 @@ const app = createApp({
 })
     .use(router)
     .use(BackendView)
-    .use(FrontendView)
     .use(VueSweetalert2).use(vClickOutside)
     .use(i18n).use(createMetaManager())
 
