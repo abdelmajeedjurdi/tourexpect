@@ -452,7 +452,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": "px-4 py-2 bg-blue-600 hover:bg-blue-700 cursor-pointer rounded-lg text-sm font-medium text-white"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("New Category ")];
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Add New Category ")];
     }),
     _: 1
     /* STABLE */

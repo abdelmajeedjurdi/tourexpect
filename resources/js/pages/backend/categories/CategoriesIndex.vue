@@ -6,7 +6,7 @@
             <router-link
                 :to="{ name: 'category.create' }"
                 class="px-4 py-2 bg-blue-600 hover:bg-blue-700 cursor-pointer rounded-lg text-sm font-medium text-white"
-                >New Category
+                >Add New Category
             </router-link>
         </div>
         <div
